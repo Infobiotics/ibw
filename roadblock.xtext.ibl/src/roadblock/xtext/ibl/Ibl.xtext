@@ -1,0 +1,9 @@
+grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
+
+generate ibl "http://www.xtext.roadblock/ibl/Ibl"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
