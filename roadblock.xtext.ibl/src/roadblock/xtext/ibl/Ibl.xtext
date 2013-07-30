@@ -1,3 +1,7 @@
+// xtext grammar for Roadblock IBL language
+// 2013, released under GNU GPL V3
+// jamie.twycross AT nottingham.ac.uk
+
 grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
 
 generate ibl "http://www.xtext.roadblock/ibl/Ibl"
