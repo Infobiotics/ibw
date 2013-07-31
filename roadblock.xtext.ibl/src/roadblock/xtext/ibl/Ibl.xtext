@@ -6,8 +6,60 @@ grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
 
 generate ibl "http://www.xtext.roadblock/ibl/Ibl"
 
+// a model is composed of model members
 Model:
-	greetings+=Greeting*;
+	{Model}
+	members+=ModelMember*
+;
 	
-Greeting:
-	'Hello' name=ID '!';
+// these are the model members
+ModelMember:
+	Definition | Import
+;
+
+// a definition
+Definition:
+	{Definition}
+	'define' (type=VariableType)? name=ID
+	'{'
+		members+=DefinitionMember*
+	'}'	
+;
+
+// entries allowed inside definition
+DefinitionMember:
+	VariableDeclaration
+;
+
+VariableDeclaration:
+	{VariableDeclaration}
+	(type=VariableType name=ID) |
+	(collection=CollectionID '<' type=VariableType '>' name=ID)
+;
+
+VariableType:
+	primitive=PrimitiveVariableType | reference=[Definition]
+;
+
+CollectionID:
+	'LIST' | 'SET'
+;
+
+PrimitiveVariableType:
+	'ID' | 'URI' | 'DNA' | 'RATE' | 'CHASSIS' | 'PROCESS'
+;
+
+// allow import of multiple model files e.g. libraries
+Import:
+	{Import}
+	'import' importedNamespace = QualifiedNameWithWildcard
+;
+    
+// a qualified name                                                                                      
+QualifiedNameWithWildcard:
+	QualifiedName '.*'?
+;
+
+QualifiedName:
+	ID ('.' ID)*
+;
