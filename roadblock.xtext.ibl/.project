@@ -31,16 +31,4 @@
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>models/example01.ibl</name>
-			<type>1</type>
-			<location>/mnt/data/jpt/working/eclipse/workspaces/runtime-roadblock.xtext/examples/example01.ibl</location>
-		</link>
-		<link>
-			<name>models/library01.ibl</name>
-			<type>1</type>
-			<location>/mnt/data/jpt/working/eclipse/workspaces/runtime-roadblock.xtext/examples/library01.ibl</location>
-		</link>
-	</linkedResources>
 </projectDescription>
