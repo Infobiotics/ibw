@@ -2,6 +2,7 @@
  */
 package roadblock.xtext.ibl.ibl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,6 +13,8 @@ package roadblock.xtext.ibl.ibl;
  * The following features are supported:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#getRhs <em>Rhs</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,5 +49,37 @@ public interface RuleDefinition extends FunctionDefinitionMember
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Lhs</b></em>' containment reference list.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.RuleObject}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Lhs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Lhs</em>' containment reference list.
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getRuleDefinition_Lhs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<RuleObject> getLhs();
+
+  /**
+   * Returns the value of the '<em><b>Rhs</b></em>' containment reference list.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.RuleObject}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Rhs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Rhs</em>' containment reference list.
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getRuleDefinition_Rhs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<RuleObject> getRhs();
 
 } // RuleDefinition

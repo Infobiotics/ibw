@@ -77,15 +77,6 @@ public interface IblFactory extends EFactory
   FunctionDefinitionMember createFunctionDefinitionMember();
 
   /**
-   * Returns a new object of class '<em>Rule Definition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Definition</em>'.
-   * @generated
-   */
-  RuleDefinition createRuleDefinition();
-
-  /**
    * Returns a new object of class '<em>Variable Definition Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -111,6 +102,24 @@ public interface IblFactory extends EFactory
    * @generated
    */
   VariableType createVariableType();
+
+  /**
+   * Returns a new object of class '<em>Rule Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rule Definition</em>'.
+   * @generated
+   */
+  RuleDefinition createRuleDefinition();
+
+  /**
+   * Returns a new object of class '<em>Rule Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rule Object</em>'.
+   * @generated
+   */
+  RuleObject createRuleObject();
 
   /**
    * Returns a new object of class '<em>Import</em>'.

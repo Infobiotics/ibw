@@ -116,14 +116,6 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.RULE_DEFINITION:
-      {
-        RuleDefinition ruleDefinition = (RuleDefinition)theEObject;
-        T result = caseRuleDefinition(ruleDefinition);
-        if (result == null) result = caseFunctionDefinitionMember(ruleDefinition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case IblPackage.VARIABLE_DEFINITION_MEMBER:
       {
         VariableDefinitionMember variableDefinitionMember = (VariableDefinitionMember)theEObject;
@@ -143,6 +135,21 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableType variableType = (VariableType)theEObject;
         T result = caseVariableType(variableType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.RULE_DEFINITION:
+      {
+        RuleDefinition ruleDefinition = (RuleDefinition)theEObject;
+        T result = caseRuleDefinition(ruleDefinition);
+        if (result == null) result = caseFunctionDefinitionMember(ruleDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.RULE_OBJECT:
+      {
+        RuleObject ruleObject = (RuleObject)theEObject;
+        T result = caseRuleObject(ruleObject);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -255,22 +262,6 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule Definition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule Definition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRuleDefinition(RuleDefinition object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Variable Definition Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -314,6 +305,38 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableType(VariableType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rule Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rule Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRuleDefinition(RuleDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rule Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rule Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRuleObject(RuleObject object)
   {
     return null;
   }

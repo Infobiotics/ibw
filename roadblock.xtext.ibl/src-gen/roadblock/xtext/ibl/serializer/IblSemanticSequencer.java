@@ -19,6 +19,7 @@ import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableType;
@@ -62,6 +63,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
 				   context == grammarAccess.getRuleDefinitionRule()) {
 					sequence_RuleDefinition(context, (RuleDefinition) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.RULE_OBJECT:
+				if(context == grammarAccess.getRuleObjectRule()) {
+					sequence_RuleObject(context, (RuleObject) semanticObject); 
 					return; 
 				}
 				else break;
@@ -154,17 +161,19 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID lhs+=RuleObject lhs+=RuleObject* rhs+=RuleObject rhs+=RuleObject*)
 	 */
 	protected void sequence_RuleDefinition(EObject context, RuleDefinition semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.RULE_DEFINITION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.RULE_DEFINITION__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getRuleDefinitionAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (subobjects+=ID subobjects+=ID*)
+	 */
+	protected void sequence_RuleObject(EObject context, RuleObject semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -188,7 +197,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (primitive=PrimitiveVariableType | reference=ID)
+	 *     (primitive=PrimitiveVariableType | primitive=ID)
 	 */
 	protected void sequence_VariableType(EObject context, VariableType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

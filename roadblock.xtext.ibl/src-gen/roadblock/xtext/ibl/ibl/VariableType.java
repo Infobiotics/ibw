@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableType#getPrimitive <em>Primitive</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.VariableType#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,31 +47,5 @@ public interface VariableType extends EObject
    * @generated
    */
   void setPrimitive(String value);
-
-  /**
-   * Returns the value of the '<em><b>Reference</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Reference</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference</em>' attribute.
-   * @see #setReference(String)
-   * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableType_Reference()
-   * @model
-   * @generated
-   */
-  String getReference();
-
-  /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableType#getReference <em>Reference</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Reference</em>' attribute.
-   * @see #getReference()
-   * @generated
-   */
-  void setReference(String value);
 
 } // VariableType

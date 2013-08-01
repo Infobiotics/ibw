@@ -18,6 +18,7 @@ import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
@@ -78,13 +79,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ruleDefinitionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass variableDefinitionMemberEClass = null;
 
   /**
@@ -100,6 +94,20 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass variableTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ruleDefinitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ruleObjectEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -346,26 +354,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRuleDefinition()
-  {
-    return ruleDefinitionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRuleDefinition_Name()
-  {
-    return (EAttribute)ruleDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getVariableDefinitionMember()
   {
     return variableDefinitionMemberEClass;
@@ -436,9 +424,59 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariableType_Reference()
+  public EClass getRuleDefinition()
   {
-    return (EAttribute)variableTypeEClass.getEStructuralFeatures().get(1);
+    return ruleDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRuleDefinition_Name()
+  {
+    return (EAttribute)ruleDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRuleDefinition_Lhs()
+  {
+    return (EReference)ruleDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRuleDefinition_Rhs()
+  {
+    return (EReference)ruleDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRuleObject()
+  {
+    return ruleObjectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRuleObject_Subobjects()
+  {
+    return (EAttribute)ruleObjectEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -514,9 +552,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     functionDefinitionMemberEClass = createEClass(FUNCTION_DEFINITION_MEMBER);
 
-    ruleDefinitionEClass = createEClass(RULE_DEFINITION);
-    createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
-
     variableDefinitionMemberEClass = createEClass(VARIABLE_DEFINITION_MEMBER);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
@@ -526,7 +561,14 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     variableTypeEClass = createEClass(VARIABLE_TYPE);
     createEAttribute(variableTypeEClass, VARIABLE_TYPE__PRIMITIVE);
-    createEAttribute(variableTypeEClass, VARIABLE_TYPE__REFERENCE);
+
+    ruleDefinitionEClass = createEClass(RULE_DEFINITION);
+    createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
+    createEReference(ruleDefinitionEClass, RULE_DEFINITION__LHS);
+    createEReference(ruleDefinitionEClass, RULE_DEFINITION__RHS);
+
+    ruleObjectEClass = createEClass(RULE_OBJECT);
+    createEAttribute(ruleObjectEClass, RULE_OBJECT__SUBOBJECTS);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
@@ -563,8 +605,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     importEClass.getESuperTypes().add(this.getModelMember());
 
     // Initialize classes and features; add operations and parameters
@@ -591,9 +633,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(functionDefinitionMemberEClass, FunctionDefinitionMember.class, "FunctionDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(variableDefinitionMemberEClass, VariableDefinitionMember.class, "VariableDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -603,7 +642,14 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(variableTypeEClass, VariableType.class, "VariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableType_Primitive(), ecorePackage.getEString(), "primitive", null, 0, 1, VariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableType_Reference(), ecorePackage.getEString(), "reference", null, 0, 1, VariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Lhs(), this.getRuleObject(), null, "lhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Rhs(), this.getRuleObject(), null, "rhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ruleObjectEClass, RuleObject.class, "RuleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRuleObject_Subobjects(), ecorePackage.getEString(), "subobjects", null, 0, -1, RuleObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

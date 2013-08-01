@@ -105,11 +105,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionDefinitionMemberAdapter();
       }
       @Override
-      public Adapter caseRuleDefinition(RuleDefinition object)
-      {
-        return createRuleDefinitionAdapter();
-      }
-      @Override
       public Adapter caseVariableDefinitionMember(VariableDefinitionMember object)
       {
         return createVariableDefinitionMemberAdapter();
@@ -123,6 +118,16 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseVariableType(VariableType object)
       {
         return createVariableTypeAdapter();
+      }
+      @Override
+      public Adapter caseRuleDefinition(RuleDefinition object)
+      {
+        return createRuleDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseRuleObject(RuleObject object)
+      {
+        return createRuleObjectAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -242,21 +247,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RuleDefinition <em>Rule Definition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.RuleDefinition
-   * @generated
-   */
-  public Adapter createRuleDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionMember <em>Variable Definition Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -297,6 +287,36 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createVariableTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RuleDefinition <em>Rule Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.RuleDefinition
+   * @generated
+   */
+  public Adapter createRuleDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RuleObject <em>Rule Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.RuleObject
+   * @generated
+   */
+  public Adapter createRuleObjectAdapter()
   {
     return null;
   }

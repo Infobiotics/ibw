@@ -52,11 +52,6 @@ FunctionDefinitionMember:
 	RuleDefinition
 ;
 
-RuleDefinition:
-	{RuleDefinition}
-	'RULE' name=ID ':'
-;
-
 // entries allowed inside variabledefinition
 VariableDefinitionMember:
 	VariableDeclaration
@@ -69,7 +64,8 @@ VariableDeclaration:
 ;
 
 VariableType:
-	primitive=PrimitiveVariableType | reference=ID
+	{VariableType}
+	primitive=(PrimitiveVariableType | ID)
 //	primitive=PrimitiveVariableType | reference=[VariableDefinition] // fix crossreferencing
 ;
 
@@ -78,7 +74,18 @@ CollectionID:
 ;
 
 PrimitiveVariableType:
-	'ID' | 'URI' | 'DNA' | 'RATE' | 'CHASSIS' | 'PROCESS'
+	'ID' | 'URI' | 'DNA' | 'RATE' | 'CHASSIS' | 'PROCESS' | 'RULE'
+;
+
+// rules
+RuleDefinition:
+	{RuleDefinition}
+	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*) ('->'|'<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)
+;
+
+RuleObject:
+	{RuleObject}
+	subobjects+=ID ('~' subobjects+=ID)*
 ;
 
 // allow import of multiple model files e.g. libraries

@@ -28,9 +28,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/scope"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//FunctionDefinitionMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
-    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionMember"/>
     <genClasses ecoreClass="Ibl.ecore#//VariableDeclaration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDeclaration/type"/>
@@ -39,7 +36,14 @@
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableType/primitive"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableType/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//RuleObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleObject/subobjects"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Import/importedNamespace"/>

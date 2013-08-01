@@ -70,10 +70,11 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.FUNCTION_DEFINITION: return createFunctionDefinition();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_DEFINITION_MEMBER: return createFunctionDefinitionMember();
-      case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
       case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case IblPackage.VARIABLE_TYPE: return createVariableType();
+      case IblPackage.RULE_DEFINITION: return createRuleDefinition();
+      case IblPackage.RULE_OBJECT: return createRuleObject();
       case IblPackage.IMPORT: return createImport();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -151,17 +152,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RuleDefinition createRuleDefinition()
-  {
-    RuleDefinitionImpl ruleDefinition = new RuleDefinitionImpl();
-    return ruleDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public VariableDefinitionMember createVariableDefinitionMember()
   {
     VariableDefinitionMemberImpl variableDefinitionMember = new VariableDefinitionMemberImpl();
@@ -188,6 +178,28 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     VariableTypeImpl variableType = new VariableTypeImpl();
     return variableType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RuleDefinition createRuleDefinition()
+  {
+    RuleDefinitionImpl ruleDefinition = new RuleDefinitionImpl();
+    return ruleDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RuleObject createRuleObject()
+  {
+    RuleObjectImpl ruleObject = new RuleObjectImpl();
+    return ruleObject;
   }
 
   /**

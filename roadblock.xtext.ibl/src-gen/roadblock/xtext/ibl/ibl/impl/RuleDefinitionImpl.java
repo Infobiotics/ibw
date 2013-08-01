@@ -2,14 +2,24 @@
  */
 package roadblock.xtext.ibl.ibl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.RuleObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +29,8 @@ import roadblock.xtext.ibl.ibl.RuleDefinition;
  * The following features are implemented:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#getRhs <em>Rhs</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +57,26 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLhs()
+   * @generated
+   * @ordered
+   */
+  protected EList<RuleObject> lhs;
+
+  /**
+   * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRhs()
+   * @generated
+   * @ordered
+   */
+  protected EList<RuleObject> rhs;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,6 +127,52 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<RuleObject> getLhs()
+  {
+    if (lhs == null)
+    {
+      lhs = new EObjectContainmentEList<RuleObject>(RuleObject.class, this, IblPackage.RULE_DEFINITION__LHS);
+    }
+    return lhs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<RuleObject> getRhs()
+  {
+    if (rhs == null)
+    {
+      rhs = new EObjectContainmentEList<RuleObject>(RuleObject.class, this, IblPackage.RULE_DEFINITION__RHS);
+    }
+    return rhs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case IblPackage.RULE_DEFINITION__LHS:
+        return ((InternalEList<?>)getLhs()).basicRemove(otherEnd, msgs);
+      case IblPackage.RULE_DEFINITION__RHS:
+        return ((InternalEList<?>)getRhs()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -102,6 +180,10 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     {
       case IblPackage.RULE_DEFINITION__NAME:
         return getName();
+      case IblPackage.RULE_DEFINITION__LHS:
+        return getLhs();
+      case IblPackage.RULE_DEFINITION__RHS:
+        return getRhs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -111,6 +193,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -118,6 +201,14 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     {
       case IblPackage.RULE_DEFINITION__NAME:
         setName((String)newValue);
+        return;
+      case IblPackage.RULE_DEFINITION__LHS:
+        getLhs().clear();
+        getLhs().addAll((Collection<? extends RuleObject>)newValue);
+        return;
+      case IblPackage.RULE_DEFINITION__RHS:
+        getRhs().clear();
+        getRhs().addAll((Collection<? extends RuleObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,6 +227,12 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
       case IblPackage.RULE_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case IblPackage.RULE_DEFINITION__LHS:
+        getLhs().clear();
+        return;
+      case IblPackage.RULE_DEFINITION__RHS:
+        getRhs().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -152,6 +249,10 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     {
       case IblPackage.RULE_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case IblPackage.RULE_DEFINITION__LHS:
+        return lhs != null && !lhs.isEmpty();
+      case IblPackage.RULE_DEFINITION__RHS:
+        return rhs != null && !rhs.isEmpty();
     }
     return super.eIsSet(featureID);
   }

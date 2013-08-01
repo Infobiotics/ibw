@@ -20,7 +20,6 @@ import roadblock.xtext.ibl.ibl.VariableType;
  * The following features are implemented:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableTypeImpl#getPrimitive <em>Primitive</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableTypeImpl#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,26 +46,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
    * @ordered
    */
   protected String primitive = PRIMITIVE_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getReference() <em>Reference</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReference()
-   * @generated
-   * @ordered
-   */
-  protected static final String REFERENCE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getReference() <em>Reference</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReference()
-   * @generated
-   * @ordered
-   */
-  protected String reference = REFERENCE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,29 +96,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getReference()
-  {
-    return reference;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setReference(String newReference)
-  {
-    String oldReference = reference;
-    reference = newReference;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_TYPE__REFERENCE, oldReference, reference));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -147,8 +103,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
     {
       case IblPackage.VARIABLE_TYPE__PRIMITIVE:
         return getPrimitive();
-      case IblPackage.VARIABLE_TYPE__REFERENCE:
-        return getReference();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -165,9 +119,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
     {
       case IblPackage.VARIABLE_TYPE__PRIMITIVE:
         setPrimitive((String)newValue);
-        return;
-      case IblPackage.VARIABLE_TYPE__REFERENCE:
-        setReference((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -186,9 +137,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
       case IblPackage.VARIABLE_TYPE__PRIMITIVE:
         setPrimitive(PRIMITIVE_EDEFAULT);
         return;
-      case IblPackage.VARIABLE_TYPE__REFERENCE:
-        setReference(REFERENCE_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -205,8 +153,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
     {
       case IblPackage.VARIABLE_TYPE__PRIMITIVE:
         return PRIMITIVE_EDEFAULT == null ? primitive != null : !PRIMITIVE_EDEFAULT.equals(primitive);
-      case IblPackage.VARIABLE_TYPE__REFERENCE:
-        return REFERENCE_EDEFAULT == null ? reference != null : !REFERENCE_EDEFAULT.equals(reference);
     }
     return super.eIsSet(featureID);
   }
@@ -224,8 +170,6 @@ public class VariableTypeImpl extends MinimalEObjectImpl.Container implements Va
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (primitive: ");
     result.append(primitive);
-    result.append(", reference: ");
-    result.append(reference);
     result.append(')');
     return result.toString();
   }
