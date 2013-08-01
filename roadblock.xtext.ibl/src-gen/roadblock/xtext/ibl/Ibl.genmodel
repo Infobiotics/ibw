@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/roadblock.xtext.ibl/src-gen" editDirectory="/roadblock.xtext.ibl.edit/src"
+    editorDirectory="/roadblock.xtext.ibl.editor/src" modelPluginID="roadblock.xtext.ibl"
+    forceOverwrite="true" modelName="Ibl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="roadblock.xtext.ibl.edit"
+    editorPluginID="roadblock.xtext.ibl.editor" runtimeVersion="2.8">
+  <genPackages prefix="Ibl" basePackage="roadblock.xtext.ibl" disposableProviderFactory="true"
+      fileExtensions="ibl" ecorePackage="Ibl.ecore#/">
+    <genClasses ecoreClass="Ibl.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//Model/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ModelMember"/>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//FunctionDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//FunctionParameterMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/scope"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//FunctionDefinitionMember"/>
+    <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionMember"/>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDeclaration/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDeclaration/collection"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableType/primitive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableType/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Import/importedNamespace"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

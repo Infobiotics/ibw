@@ -1,0 +1,97 @@
+// xtext grammar for Roadblock IBL language
+// 2013, released under GNU GPL V3
+// jamie.twycross AT nottingham.ac.uk
+
+grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
+
+generate ibl "http://www.xtext.roadblock/ibl/Ibl"
+
+// a model is composed of model members
+Model:
+	{Model}
+	members+=ModelMember*
+;
+	
+// these are the model members
+ModelMember:
+	Import | VariableDefinition | FunctionDefinition
+;
+
+// a definition of a variable
+VariableDefinition:
+	{VariableDefinition}
+	'define' (type=VariableType)? name=ID
+	'{'
+		members+=VariableDefinitionMember*
+	'}'	
+;
+
+// a definition of a function
+FunctionDefinition:
+	{FunctionDefinition}
+	'define' (type=VariableType)? name=ID
+	'('
+		parameters+=FunctionParameterMember*
+		parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*
+	')'
+	'{'
+		members+=FunctionDefinitionMember*
+	'}'	
+;
+
+FunctionParameterMember:
+	type=ID name=ID ':' scope=ParameterScope
+//	type=[VariableDefinition] name=ID ':' scope=ParameterScope // fix crossreferencing
+;
+
+ParameterScope:
+	'required' | 'returned'
+;
+
+FunctionDefinitionMember:
+	RuleDefinition
+;
+
+RuleDefinition:
+	{RuleDefinition}
+	'RULE' name=ID ':'
+;
+
+// entries allowed inside variabledefinition
+VariableDefinitionMember:
+	VariableDeclaration
+;
+
+VariableDeclaration:
+	{VariableDeclaration}
+	(type=VariableType name=ID) |
+	(collection=CollectionID '<' type=VariableType '>' name=ID)
+;
+
+VariableType:
+	primitive=PrimitiveVariableType | reference=ID
+//	primitive=PrimitiveVariableType | reference=[VariableDefinition] // fix crossreferencing
+;
+
+CollectionID:
+	'LIST' | 'SET'
+;
+
+PrimitiveVariableType:
+	'ID' | 'URI' | 'DNA' | 'RATE' | 'CHASSIS' | 'PROCESS'
+;
+
+// allow import of multiple model files e.g. libraries
+Import:
+	{Import}
+	'import' importedNamespace=QualifiedNameWithWildcard
+;
+    
+// a qualified name                                                                                      
+QualifiedNameWithWildcard:
+	QualifiedName ('.*')?
+;
+
+QualifiedName:
+	ID ('.' ID)*
+;
