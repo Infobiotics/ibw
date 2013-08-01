@@ -14,20 +14,51 @@ Model:
 	
 // these are the model members
 ModelMember:
-	Definition | Import
+	Import | VariableDefinition | FunctionDefinition
 ;
 
-// a definition
-Definition:
-	{Definition}
+// a definition of a variable
+VariableDefinition:
+	{VariableDefinition}
 	'define' (type=VariableType)? name=ID
 	'{'
-		members+=DefinitionMember*
+		members+=VariableDefinitionMember*
 	'}'	
 ;
 
-// entries allowed inside definition
-DefinitionMember:
+// a definition of a function
+FunctionDefinition:
+	{FunctionDefinition}
+	'define' (type=VariableType)? name=ID
+	'('
+		parameters+=FunctionParameterMember*
+		parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*
+	')'
+	'{'
+		members+=FunctionDefinitionMember*
+	'}'	
+;
+
+FunctionParameterMember:
+	type=ID name=ID ':' scope=ParameterScope
+//	type=[VariableDefinition] name=ID ':' scope=ParameterScope // fix crossreferencing
+;
+
+ParameterScope:
+	'required' | 'returned'
+;
+
+FunctionDefinitionMember:
+	RuleDefinition
+;
+
+RuleDefinition:
+	{RuleDefinition}
+	'RULE' name=ID ':'
+;
+
+// entries allowed inside variabledefinition
+VariableDefinitionMember:
 	VariableDeclaration
 ;
 
@@ -38,7 +69,8 @@ VariableDeclaration:
 ;
 
 VariableType:
-	primitive=PrimitiveVariableType | reference=[Definition]
+	primitive=PrimitiveVariableType | reference=ID
+//	primitive=PrimitiveVariableType | reference=[VariableDefinition] // fix crossreferencing
 ;
 
 CollectionID:
@@ -52,12 +84,12 @@ PrimitiveVariableType:
 // allow import of multiple model files e.g. libraries
 Import:
 	{Import}
-	'import' importedNamespace = QualifiedNameWithWildcard
+	'import' importedNamespace=QualifiedNameWithWildcard
 ;
     
 // a qualified name                                                                                      
 QualifiedNameWithWildcard:
-	QualifiedName '.*'?
+	QualifiedName ('.*')?
 ;
 
 QualifiedName:
