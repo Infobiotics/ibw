@@ -210,7 +210,13 @@ public class IblSwitch<T> extends Switch<T>
       {
         ATGCDefinition atgcDefinition = (ATGCDefinition)theEObject;
         T result = caseATGCDefinition(atgcDefinition);
-        if (result == null) result = caseFunctionDefinitionMember(atgcDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROPERTY_DEFINITION:
+      {
+        PropertyDefinition propertyDefinition = (PropertyDefinition)theEObject;
+        T result = casePropertyDefinition(propertyDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -518,6 +524,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseATGCDefinition(ATGCDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyDefinition(PropertyDefinition object)
   {
     return null;
   }

@@ -666,16 +666,6 @@ ruleFunctionDefinitionMember returns [EObject current=null]
         $current = $this_DeviceDefinition_3.current; 
         afterParserOrEnumRuleCall();
     }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getFunctionDefinitionMemberAccess().getATGCDefinitionParserRuleCall_4()); 
-    }
-    this_ATGCDefinition_4=ruleATGCDefinition
-    { 
-        $current = $this_ATGCDefinition_4.current; 
-        afterParserOrEnumRuleCall();
-    }
 )
 ;
 
@@ -2100,33 +2090,6 @@ finally {
 
 
 
-
-// Entry rule entryRuleATGCDefinition
-entryRuleATGCDefinition returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getATGCDefinitionRule()); }
-	 iv_ruleATGCDefinition=ruleATGCDefinition 
-	 { $current=$iv_ruleATGCDefinition.current; } 
-	 EOF 
-;
-
-// Rule ATGCDefinition
-ruleATGCDefinition returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getATGCDefinitionAccess().getATGCDefinitionAction_0(),
-            $current);
-    }
-)	otherlv_1='ATGC' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getATGCDefinitionAccess().getATGCKeyword_1());
-    }
-)
-;
 
 
 

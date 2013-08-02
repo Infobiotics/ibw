@@ -87,5 +87,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//ModelMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ATGCDefinition" eSuperTypes="#//FunctionDefinitionMember"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCDefinition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDefinition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

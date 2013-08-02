@@ -20,6 +20,7 @@ import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
+import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
@@ -171,6 +172,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass atgcDefinitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass propertyDefinitionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -780,6 +788,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getPropertyDefinition()
+  {
+    return propertyDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPropertyDefinition_Name()
+  {
+    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public IblFactory getIblFactory()
   {
     return (IblFactory)getEFactoryInstance();
@@ -877,6 +905,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
     atgcDefinitionEClass = createEClass(ATGC_DEFINITION);
+
+    propertyDefinitionEClass = createEClass(PROPERTY_DEFINITION);
+    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__NAME);
   }
 
   /**
@@ -916,7 +947,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     importEClass.getESuperTypes().add(this.getModelMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -991,6 +1021,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atgcDefinitionEClass, ATGCDefinition.class, "ATGCDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(propertyDefinitionEClass, PropertyDefinition.class, "PropertyDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPropertyDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

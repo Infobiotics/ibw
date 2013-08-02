@@ -730,7 +730,35 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATGC_DEFINITION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 0;
+  int ATGC_DEFINITION_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl <em>Property Definition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyDefinition()
+   * @generated
+   */
+  int PROPERTY_DEFINITION = 19;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_DEFINITION__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Property Definition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_DEFINITION_FEATURE_COUNT = 1;
 
 
   /**
@@ -1309,6 +1337,27 @@ public interface IblPackage extends EPackage
   EClass getATGCDefinition();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PropertyDefinition <em>Property Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Property Definition</em>'.
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition
+   * @generated
+   */
+  EClass getPropertyDefinition();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getName()
+   * @see #getPropertyDefinition()
+   * @generated
+   */
+  EAttribute getPropertyDefinition_Name();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1800,6 +1849,24 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EClass ATGC_DEFINITION = eINSTANCE.getATGCDefinition();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl <em>Property Definition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyDefinition()
+     * @generated
+     */
+    EClass PROPERTY_DEFINITION = eINSTANCE.getPropertyDefinition();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY_DEFINITION__NAME = eINSTANCE.getPropertyDefinition_Name();
 
   }
 

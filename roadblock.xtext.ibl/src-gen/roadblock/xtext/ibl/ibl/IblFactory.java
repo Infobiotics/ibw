@@ -194,6 +194,15 @@ public interface IblFactory extends EFactory
   ATGCDefinition createATGCDefinition();
 
   /**
+   * Returns a new object of class '<em>Property Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Definition</em>'.
+   * @generated
+   */
+  PropertyDefinition createPropertyDefinition();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

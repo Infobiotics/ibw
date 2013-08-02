@@ -21,6 +21,7 @@ import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
+import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
@@ -41,8 +42,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case IblPackage.ATGC_DEFINITION:
-				if(context == grammarAccess.getATGCDefinitionRule() ||
-				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
+				if(context == grammarAccess.getATGCDefinitionRule()) {
 					sequence_ATGCDefinition(context, (ATGCDefinition) semanticObject); 
 					return; 
 				}
@@ -83,6 +83,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case IblPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.PROPERTY_DEFINITION:
+				if(context == grammarAccess.getPropertyDefinitionRule()) {
+					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
 					return; 
 				}
 				else break;
@@ -251,6 +257,22 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_PropertyDefinition(EObject context, PropertyDefinition semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY_DEFINITION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY_DEFINITION__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPropertyDefinitionAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

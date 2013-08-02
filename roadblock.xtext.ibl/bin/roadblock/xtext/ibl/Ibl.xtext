@@ -54,7 +54,8 @@ ParameterScope:
 ;
 
 FunctionDefinitionMember:
-	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition
+	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition 
+//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition | PropertyDefinition
 ;
 
 DeviceDefinition:
@@ -164,4 +165,9 @@ DecimalExp hidden():
 ATGCDefinition:
 	{ATGCDefinition}
 	'ATGC'
+;
+
+PropertyDefinition:
+	{PropertyDefinition}
+	'PROPERTY' name=ID ':' '['  ']'
 ;

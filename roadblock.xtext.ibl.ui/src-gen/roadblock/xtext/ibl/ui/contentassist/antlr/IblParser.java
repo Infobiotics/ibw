@@ -98,6 +98,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDecimalExpAccess().getGroup(), "rule__DecimalExp__Group__0");
 					put(grammarAccess.getDecimalExpAccess().getGroup_2(), "rule__DecimalExp__Group_2__0");
 					put(grammarAccess.getATGCDefinitionAccess().getGroup(), "rule__ATGCDefinition__Group__0");
+					put(grammarAccess.getPropertyDefinitionAccess().getGroup(), "rule__PropertyDefinition__Group__0");
 					put(grammarAccess.getModelAccess().getMembersAssignment_1(), "rule__Model__MembersAssignment_1");
 					put(grammarAccess.getVariableDefinitionAccess().getTypeAssignment_2(), "rule__VariableDefinition__TypeAssignment_2");
 					put(grammarAccess.getVariableDefinitionAccess().getNameAssignment_3(), "rule__VariableDefinition__NameAssignment_3");
@@ -145,6 +146,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRuleObjectAccess().getSubobjectsAssignment_1(), "rule__RuleObject__SubobjectsAssignment_1");
 					put(grammarAccess.getRuleObjectAccess().getSubobjectsAssignment_2_1(), "rule__RuleObject__SubobjectsAssignment_2_1");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_2(), "rule__Import__ImportedNamespaceAssignment_2");
+					put(grammarAccess.getPropertyDefinitionAccess().getNameAssignment_2(), "rule__PropertyDefinition__NameAssignment_2");
 				}
 			};
 		}

@@ -346,13 +346,13 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVariableAssignmentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cVariableDeclarationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDeviceDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cATGCDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
+		////	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition | PropertyDefinition
 		//FunctionDefinitionMember:
-		//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition;
+		//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition;
 		public ParserRule getRule() { return rule; }
 
-		//RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition
+		//RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//RuleDefinition
@@ -366,9 +366,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//DeviceDefinition
 		public RuleCall getDeviceDefinitionParserRuleCall_3() { return cDeviceDefinitionParserRuleCall_3; }
-
-		//ATGCDefinition
-		public RuleCall getATGCDefinitionParserRuleCall_4() { return cATGCDefinitionParserRuleCall_4; }
 	}
 
 	public class DeviceDefinitionElements extends AbstractParserRuleElementFinder {
@@ -1295,6 +1292,46 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"ATGC"
 		public Keyword getATGCKeyword_1() { return cATGCKeyword_1; }
 	}
+
+	public class PropertyDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PropertyDefinition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cPropertyDefinitionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cPROPERTYKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//PropertyDefinition:
+		//	{PropertyDefinition} "PROPERTY" name=ID ":" "[" "]";
+		public ParserRule getRule() { return rule; }
+
+		//{PropertyDefinition} "PROPERTY" name=ID ":" "[" "]"
+		public Group getGroup() { return cGroup; }
+
+		//{PropertyDefinition}
+		public Action getPropertyDefinitionAction_0() { return cPropertyDefinitionAction_0; }
+
+		//"PROPERTY"
+		public Keyword getPROPERTYKeyword_1() { return cPROPERTYKeyword_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+
+		//":"
+		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_4() { return cLeftSquareBracketKeyword_4; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -1325,6 +1362,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private DecimalElements pDecimal;
 	private DecimalExpElements pDecimalExp;
 	private ATGCDefinitionElements pATGCDefinition;
+	private PropertyDefinitionElements pPropertyDefinition;
 	
 	private final Grammar grammar;
 
@@ -1441,8 +1479,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		return getParameterScopeAccess().getRule();
 	}
 
+	////	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition | PropertyDefinition
 	//FunctionDefinitionMember:
-	//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition;
+	//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition;
 	public FunctionDefinitionMemberElements getFunctionDefinitionMemberAccess() {
 		return (pFunctionDefinitionMember != null) ? pFunctionDefinitionMember : (pFunctionDefinitionMember = new FunctionDefinitionMemberElements());
 	}
@@ -1665,6 +1704,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getATGCDefinitionRule() {
 		return getATGCDefinitionAccess().getRule();
+	}
+
+	//PropertyDefinition:
+	//	{PropertyDefinition} "PROPERTY" name=ID ":" "[" "]";
+	public PropertyDefinitionElements getPropertyDefinitionAccess() {
+		return (pPropertyDefinition != null) ? pPropertyDefinition : (pPropertyDefinition = new PropertyDefinitionElements());
+	}
+	
+	public ParserRule getPropertyDefinitionRule() {
+		return getPropertyDefinitionAccess().getRule();
 	}
 
 	//terminal ID:
