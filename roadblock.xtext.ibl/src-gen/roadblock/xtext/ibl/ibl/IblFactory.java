@@ -104,6 +104,33 @@ public interface IblFactory extends EFactory
   VariableType createVariableType();
 
   /**
+   * Returns a new object of class '<em>Variable Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Attribute</em>'.
+   * @generated
+   */
+  VariableAttribute createVariableAttribute();
+
+  /**
+   * Returns a new object of class '<em>Variable Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Assignment</em>'.
+   * @generated
+   */
+  VariableAssignment createVariableAssignment();
+
+  /**
+   * Returns a new object of class '<em>Variable Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Expression</em>'.
+   * @generated
+   */
+  VariableExpression createVariableExpression();
+
+  /**
    * Returns a new object of class '<em>Rule Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -37,6 +37,17 @@
     <genClasses ecoreClass="Ibl.ecore#//VariableType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableType/primitive"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableAttribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableAttribute/attribute"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableAssignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableAssignment/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableAssignment/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableExpression/members"/>
+    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/lhs"/>

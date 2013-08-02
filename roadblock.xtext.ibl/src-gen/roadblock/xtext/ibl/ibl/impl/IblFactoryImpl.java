@@ -73,6 +73,9 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
       case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case IblPackage.VARIABLE_TYPE: return createVariableType();
+      case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
+      case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
+      case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
       case IblPackage.IMPORT: return createImport();
@@ -178,6 +181,39 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     VariableTypeImpl variableType = new VariableTypeImpl();
     return variableType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableAttribute createVariableAttribute()
+  {
+    VariableAttributeImpl variableAttribute = new VariableAttributeImpl();
+    return variableAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableAssignment createVariableAssignment()
+  {
+    VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
+    return variableAssignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableExpression createVariableExpression()
+  {
+    VariableExpressionImpl variableExpression = new VariableExpressionImpl();
+    return variableExpression;
   }
 
   /**

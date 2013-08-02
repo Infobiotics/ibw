@@ -49,10 +49,14 @@ ParameterScope:
 ;
 
 FunctionDefinitionMember:
-	RuleDefinition
+	RuleDefinition | VariableAssignment
 ;
 
-// entries allowed inside variabledefinition
+///////////////
+// variables //
+///////////////
+
+// entries allowed inside variable definition
 VariableDefinitionMember:
 	VariableDeclaration
 ;
@@ -69,18 +73,41 @@ VariableType:
 //	primitive=PrimitiveVariableType | reference=[VariableDefinition] // fix crossreferencing
 ;
 
+VariableAttribute:
+	{VariableAttribute}
+	name=ID ('.' attribute=ID)?
+;
+
+VariableAssignment:
+	{VariableAssignment}
+	 variable=VariableAttribute '=' expression=VariableExpression
+;
+
+
+VariableExpression:
+	{VariableExpression}
+	members+=VariableAttribute (VariableExpressionOperator members+=VariableAttribute)*
+;
+
+VariableExpressionOperator:
+	'+' | '-' | '|'
+;
+
+PrimitiveVariableType:
+	'ID' | 'URI' | 'DNA' | 'CHASSIS' | 'PROCESS'
+;
+
 CollectionID:
 	'LIST' | 'SET'
 ;
 
-PrimitiveVariableType:
-	'ID' | 'URI' | 'DNA' | 'RATE' | 'CHASSIS' | 'PROCESS' | 'RULE'
-;
+///////////
+// rules //
+///////////
 
-// rules
 RuleDefinition:
 	{RuleDefinition}
-	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*) ('->'|'<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)
+	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|'<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
 ;
 
 RuleObject:

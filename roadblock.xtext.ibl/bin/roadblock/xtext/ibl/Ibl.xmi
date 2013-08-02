@@ -24,7 +24,7 @@
         <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//ModelMember"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
       </alternatives>
@@ -121,7 +121,10 @@
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//FunctionDefinitionMember"/>
       </type>
-      <alternatives xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+      </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="VariableDefinitionMember">
       <type metamodel="/0/@metamodelDeclarations.0">
@@ -151,7 +154,7 @@
         </elements>
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Assignment" feature="collection" operator="=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
           </elements>
           <elements xsi:type="xtext:Keyword" value="&lt;"/>
           <elements xsi:type="xtext:Assignment" feature="type" operator="=">
@@ -176,19 +179,81 @@
         </elements>
         <elements xsi:type="xtext:Assignment" feature="primitive" operator="=">
           <terminal xsi:type="xtext:Alternatives">
-            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
+            <elements xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
             <elements xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="CollectionID">
+    <rules xsi:type="xtext:ParserRule" name="VariableAttribute">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableAttribute"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableAttribute"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="."/>
+          <elements xsi:type="xtext:Assignment" feature="attribute" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="VariableAssignment">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableAssignment"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableAssignment"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="variable" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="="/>
+        <elements xsi:type="xtext:Assignment" feature="expression" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="VariableExpression">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableExpression"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Action">
+          <type metamodel="/0/@metamodelDeclarations.0">
+            <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableExpression"/>
+          </type>
+        </elements>
+        <elements xsi:type="xtext:Assignment" feature="members" operator="+=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+        </elements>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+          <elements xsi:type="xtext:Assignment" feature="members" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+          </elements>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="VariableExpressionOperator">
       <type metamodel="/1/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Keyword" value="LIST"/>
-        <elements xsi:type="xtext:Keyword" value="SET"/>
+        <elements xsi:type="xtext:Keyword" value="+"/>
+        <elements xsi:type="xtext:Keyword" value="-"/>
+        <elements xsi:type="xtext:Keyword" value="|"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="PrimitiveVariableType">
@@ -199,10 +264,17 @@
         <elements xsi:type="xtext:Keyword" value="ID"/>
         <elements xsi:type="xtext:Keyword" value="URI"/>
         <elements xsi:type="xtext:Keyword" value="DNA"/>
-        <elements xsi:type="xtext:Keyword" value="RATE"/>
         <elements xsi:type="xtext:Keyword" value="CHASSIS"/>
         <elements xsi:type="xtext:Keyword" value="PROCESS"/>
-        <elements xsi:type="xtext:Keyword" value="RULE"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="CollectionID">
+      <type metamodel="/1/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </type>
+      <alternatives xsi:type="xtext:Alternatives">
+        <elements xsi:type="xtext:Keyword" value="LIST"/>
+        <elements xsi:type="xtext:Keyword" value="SET"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="RuleDefinition">
@@ -220,14 +292,14 @@
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=":"/>
-        <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Assignment" feature="lhs" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="*">
             <elements xsi:type="xtext:Keyword" value="+"/>
             <elements xsi:type="xtext:Assignment" feature="lhs" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
             </elements>
           </elements>
         </elements>
@@ -235,14 +307,14 @@
           <elements xsi:type="xtext:Keyword" value="->"/>
           <elements xsi:type="xtext:Keyword" value="&lt;->"/>
         </elements>
-        <elements xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Assignment" feature="rhs" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
           </elements>
           <elements xsi:type="xtext:Group" cardinality="*">
             <elements xsi:type="xtext:Keyword" value="+"/>
             <elements xsi:type="xtext:Assignment" feature="rhs" operator="+=">
-              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
             </elements>
           </elements>
         </elements>
@@ -281,7 +353,7 @@
         </elements>
         <elements xsi:type="xtext:Keyword" value="import"/>
         <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
         </elements>
       </alternatives>
     </rules>
@@ -290,7 +362,7 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         <elements xsi:type="xtext:Keyword" cardinality="?" value=".*"/>
       </alternatives>
     </rules>

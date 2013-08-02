@@ -38,6 +38,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="VariableType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="primitive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" eSuperTypes="#//FunctionDefinitionMember">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableAttribute"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//VariableExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//VariableAttribute" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuleDefinition" eSuperTypes="#//FunctionDefinitionMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" upperBound="-1" eType="#//RuleObject"

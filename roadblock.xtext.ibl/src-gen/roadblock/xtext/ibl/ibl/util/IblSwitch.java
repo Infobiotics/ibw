@@ -138,6 +138,28 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.VARIABLE_ATTRIBUTE:
+      {
+        VariableAttribute variableAttribute = (VariableAttribute)theEObject;
+        T result = caseVariableAttribute(variableAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_ASSIGNMENT:
+      {
+        VariableAssignment variableAssignment = (VariableAssignment)theEObject;
+        T result = caseVariableAssignment(variableAssignment);
+        if (result == null) result = caseFunctionDefinitionMember(variableAssignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_EXPRESSION:
+      {
+        VariableExpression variableExpression = (VariableExpression)theEObject;
+        T result = caseVariableExpression(variableExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.RULE_DEFINITION:
       {
         RuleDefinition ruleDefinition = (RuleDefinition)theEObject;
@@ -305,6 +327,54 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableType(VariableType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableAttribute(VariableAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableAssignment(VariableAssignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableExpression(VariableExpression object)
   {
     return null;
   }

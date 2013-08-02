@@ -39,10 +39,12 @@ public class IblParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getModelMemberAccess().getAlternatives(), "rule__ModelMember__Alternatives");
 					put(grammarAccess.getParameterScopeAccess().getAlternatives(), "rule__ParameterScope__Alternatives");
+					put(grammarAccess.getFunctionDefinitionMemberAccess().getAlternatives(), "rule__FunctionDefinitionMember__Alternatives");
 					put(grammarAccess.getVariableDeclarationAccess().getAlternatives(), "rule__VariableDeclaration__Alternatives");
 					put(grammarAccess.getVariableTypeAccess().getPrimitiveAlternatives_1_0(), "rule__VariableType__PrimitiveAlternatives_1_0");
-					put(grammarAccess.getCollectionIDAccess().getAlternatives(), "rule__CollectionID__Alternatives");
+					put(grammarAccess.getVariableExpressionOperatorAccess().getAlternatives(), "rule__VariableExpressionOperator__Alternatives");
 					put(grammarAccess.getPrimitiveVariableTypeAccess().getAlternatives(), "rule__PrimitiveVariableType__Alternatives");
+					put(grammarAccess.getCollectionIDAccess().getAlternatives(), "rule__CollectionID__Alternatives");
 					put(grammarAccess.getRuleDefinitionAccess().getAlternatives_5(), "rule__RuleDefinition__Alternatives_5");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getVariableDefinitionAccess().getGroup(), "rule__VariableDefinition__Group__0");
@@ -53,6 +55,11 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableDeclarationAccess().getGroup_0_1(), "rule__VariableDeclaration__Group_0_1__0");
 					put(grammarAccess.getVariableDeclarationAccess().getGroup_1(), "rule__VariableDeclaration__Group_1__0");
 					put(grammarAccess.getVariableTypeAccess().getGroup(), "rule__VariableType__Group__0");
+					put(grammarAccess.getVariableAttributeAccess().getGroup(), "rule__VariableAttribute__Group__0");
+					put(grammarAccess.getVariableAttributeAccess().getGroup_2(), "rule__VariableAttribute__Group_2__0");
+					put(grammarAccess.getVariableAssignmentAccess().getGroup(), "rule__VariableAssignment__Group__0");
+					put(grammarAccess.getVariableExpressionAccess().getGroup(), "rule__VariableExpression__Group__0");
+					put(grammarAccess.getVariableExpressionAccess().getGroup_2(), "rule__VariableExpression__Group_2__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup(), "rule__RuleDefinition__Group__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup_4(), "rule__RuleDefinition__Group_4__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup_4_1(), "rule__RuleDefinition__Group_4_1__0");
@@ -83,6 +90,12 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableDeclarationAccess().getTypeAssignment_1_2(), "rule__VariableDeclaration__TypeAssignment_1_2");
 					put(grammarAccess.getVariableDeclarationAccess().getNameAssignment_1_4(), "rule__VariableDeclaration__NameAssignment_1_4");
 					put(grammarAccess.getVariableTypeAccess().getPrimitiveAssignment_1(), "rule__VariableType__PrimitiveAssignment_1");
+					put(grammarAccess.getVariableAttributeAccess().getNameAssignment_1(), "rule__VariableAttribute__NameAssignment_1");
+					put(grammarAccess.getVariableAttributeAccess().getAttributeAssignment_2_1(), "rule__VariableAttribute__AttributeAssignment_2_1");
+					put(grammarAccess.getVariableAssignmentAccess().getVariableAssignment_1(), "rule__VariableAssignment__VariableAssignment_1");
+					put(grammarAccess.getVariableAssignmentAccess().getExpressionAssignment_3(), "rule__VariableAssignment__ExpressionAssignment_3");
+					put(grammarAccess.getVariableExpressionAccess().getMembersAssignment_1(), "rule__VariableExpression__MembersAssignment_1");
+					put(grammarAccess.getVariableExpressionAccess().getMembersAssignment_2_1(), "rule__VariableExpression__MembersAssignment_2_1");
 					put(grammarAccess.getRuleDefinitionAccess().getNameAssignment_2(), "rule__RuleDefinition__NameAssignment_2");
 					put(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_0(), "rule__RuleDefinition__LhsAssignment_4_0");
 					put(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_1_1(), "rule__RuleDefinition__LhsAssignment_4_1_1");

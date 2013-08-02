@@ -20,8 +20,11 @@ import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.VariableAssignment;
+import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
+import roadblock.xtext.ibl.ibl.VariableExpression;
 import roadblock.xtext.ibl.ibl.VariableType;
 import roadblock.xtext.ibl.services.IblGrammarAccess;
 
@@ -72,6 +75,19 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.VARIABLE_ASSIGNMENT:
+				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
+				   context == grammarAccess.getVariableAssignmentRule()) {
+					sequence_VariableAssignment(context, (VariableAssignment) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.VARIABLE_ATTRIBUTE:
+				if(context == grammarAccess.getVariableAttributeRule()) {
+					sequence_VariableAttribute(context, (VariableAttribute) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.VARIABLE_DECLARATION:
 				if(context == grammarAccess.getVariableDeclarationRule() ||
 				   context == grammarAccess.getVariableDefinitionMemberRule()) {
@@ -83,6 +99,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				if(context == grammarAccess.getModelMemberRule() ||
 				   context == grammarAccess.getVariableDefinitionRule()) {
 					sequence_VariableDefinition(context, (VariableDefinition) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.VARIABLE_EXPRESSION:
+				if(context == grammarAccess.getVariableExpressionRule()) {
+					sequence_VariableExpression(context, (VariableExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -161,7 +183,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID lhs+=RuleObject lhs+=RuleObject* rhs+=RuleObject rhs+=RuleObject*)
+	 *     (name=ID (lhs+=RuleObject lhs+=RuleObject*)? (rhs+=RuleObject rhs+=RuleObject*)?)
 	 */
 	protected void sequence_RuleDefinition(EObject context, RuleDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -173,6 +195,34 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (subobjects+=ID subobjects+=ID*)
 	 */
 	protected void sequence_RuleObject(EObject context, RuleObject semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (variable=VariableAttribute expression=VariableExpression)
+	 */
+	protected void sequence_VariableAssignment(EObject context, VariableAssignment semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__VARIABLE));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__EXPRESSION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getVariableVariableAttributeParserRuleCall_1_0(), semanticObject.getVariable());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getExpressionVariableExpressionParserRuleCall_3_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID attribute=ID?)
+	 */
+	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -191,6 +241,15 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (type=VariableType? name=ID members+=VariableDefinitionMember*)
 	 */
 	protected void sequence_VariableDefinition(EObject context, VariableDefinition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (members+=VariableAttribute members+=VariableAttribute*)
+	 */
+	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

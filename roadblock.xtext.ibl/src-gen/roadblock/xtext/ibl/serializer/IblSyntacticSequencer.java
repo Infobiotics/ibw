@@ -28,9 +28,21 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if(ruleCall.getRule() == grammarAccess.getVariableExpressionOperatorRule())
+			return getVariableExpressionOperatorToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
+	/**
+	 * VariableExpressionOperator:
+	 * 	'+' | '-' | '|'
+	 * ;
+	 */
+	protected String getVariableExpressionOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "+";
+	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

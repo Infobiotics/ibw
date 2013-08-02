@@ -19,9 +19,12 @@ import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.VariableAssignment;
+import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
+import roadblock.xtext.ibl.ibl.VariableExpression;
 import roadblock.xtext.ibl.ibl.VariableType;
 
 /**
@@ -94,6 +97,27 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass variableTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableAssignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -424,6 +448,86 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getVariableAttribute()
+  {
+    return variableAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableAttribute_Name()
+  {
+    return (EAttribute)variableAttributeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableAttribute_Attribute()
+  {
+    return (EAttribute)variableAttributeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVariableAssignment()
+  {
+    return variableAssignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableAssignment_Variable()
+  {
+    return (EReference)variableAssignmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableAssignment_Expression()
+  {
+    return (EReference)variableAssignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVariableExpression()
+  {
+    return variableExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableExpression_Members()
+  {
+    return (EReference)variableExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRuleDefinition()
   {
     return ruleDefinitionEClass;
@@ -562,6 +666,17 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     variableTypeEClass = createEClass(VARIABLE_TYPE);
     createEAttribute(variableTypeEClass, VARIABLE_TYPE__PRIMITIVE);
 
+    variableAttributeEClass = createEClass(VARIABLE_ATTRIBUTE);
+    createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__NAME);
+    createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__ATTRIBUTE);
+
+    variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
+    createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VARIABLE);
+    createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__EXPRESSION);
+
+    variableExpressionEClass = createEClass(VARIABLE_EXPRESSION);
+    createEReference(variableExpressionEClass, VARIABLE_EXPRESSION__MEMBERS);
+
     ruleDefinitionEClass = createEClass(RULE_DEFINITION);
     createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
     createEReference(ruleDefinitionEClass, RULE_DEFINITION__LHS);
@@ -606,6 +721,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     importEClass.getESuperTypes().add(this.getModelMember());
 
@@ -642,6 +758,17 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(variableTypeEClass, VariableType.class, "VariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableType_Primitive(), ecorePackage.getEString(), "primitive", null, 0, 1, VariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableAttributeEClass, VariableAttribute.class, "VariableAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableAttribute_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableAssignmentEClass, VariableAssignment.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableAssignment_Variable(), this.getVariableAttribute(), null, "variable", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableAssignment_Expression(), this.getVariableExpression(), null, "expression", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableExpressionEClass, VariableExpression.class, "VariableExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableExpression_Members(), this.getVariableAttribute(), null, "members", null, 0, -1, VariableExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
