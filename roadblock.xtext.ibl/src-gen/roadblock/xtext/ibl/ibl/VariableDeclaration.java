@@ -11,6 +11,7 @@ package roadblock.xtext.ibl.ibl;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getQualifier <em>Qualifier</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getType <em>Type</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getCollection <em>Collection</em>}</li>
@@ -23,6 +24,32 @@ package roadblock.xtext.ibl.ibl;
  */
 public interface VariableDeclaration extends VariableDefinitionMember
 {
+  /**
+   * Returns the value of the '<em><b>Qualifier</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Qualifier</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Qualifier</em>' containment reference.
+   * @see #setQualifier(VariableQualifier)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDeclaration_Qualifier()
+   * @model containment="true"
+   * @generated
+   */
+  VariableQualifier getQualifier();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getQualifier <em>Qualifier</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Qualifier</em>' containment reference.
+   * @see #getQualifier()
+   * @generated
+   */
+  void setQualifier(VariableQualifier value);
+
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

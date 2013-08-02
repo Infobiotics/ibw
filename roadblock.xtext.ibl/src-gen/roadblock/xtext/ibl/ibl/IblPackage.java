@@ -332,7 +332,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT = 0;
+  int VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
@@ -345,13 +345,22 @@ public interface IblPackage extends EPackage
   int VARIABLE_DECLARATION = 8;
 
   /**
+   * The feature id for the '<em><b>Qualifier</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__QUALIFIER = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__TYPE = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 0;
+  int VARIABLE_DECLARATION__TYPE = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -360,7 +369,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__NAME = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 1;
+  int VARIABLE_DECLARATION__NAME = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Collection</b></em>' attribute.
@@ -369,7 +378,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__COLLECTION = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 2;
+  int VARIABLE_DECLARATION__COLLECTION = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Variable Declaration</em>' class.
@@ -378,7 +387,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION_FEATURE_COUNT = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 3;
+  int VARIABLE_DECLARATION_FEATURE_COUNT = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableTypeImpl <em>Variable Type</em>}' class.
@@ -409,6 +418,25 @@ public interface IblPackage extends EPackage
   int VARIABLE_TYPE_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableQualifierImpl <em>Variable Qualifier</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.VariableQualifierImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableQualifier()
+   * @generated
+   */
+  int VARIABLE_QUALIFIER = 10;
+
+  /**
+   * The number of structural features of the '<em>Variable Qualifier</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_QUALIFIER_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -416,7 +444,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
    * @generated
    */
-  int VARIABLE_ATTRIBUTE = 10;
+  int VARIABLE_ATTRIBUTE = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -453,7 +481,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignment()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT = 11;
+  int VARIABLE_ASSIGNMENT = 12;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -490,7 +518,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpression()
    * @generated
    */
-  int VARIABLE_EXPRESSION = 12;
+  int VARIABLE_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -518,7 +546,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleDefinition()
    * @generated
    */
-  int RULE_DEFINITION = 13;
+  int RULE_DEFINITION = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -564,7 +592,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
    * @generated
    */
-  int RULE_OBJECT = 14;
+  int RULE_OBJECT = 15;
 
   /**
    * The feature id for the '<em><b>Subobjects</b></em>' attribute list.
@@ -592,7 +620,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 15;
+  int IMPORT = 16;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -858,6 +886,17 @@ public interface IblPackage extends EPackage
   EClass getVariableDeclaration();
 
   /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getQualifier <em>Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Qualifier</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableDeclaration#getQualifier()
+   * @see #getVariableDeclaration()
+   * @generated
+   */
+  EReference getVariableDeclaration_Qualifier();
+
+  /**
    * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -910,6 +949,16 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EAttribute getVariableType_Primitive();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableQualifier <em>Variable Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Qualifier</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableQualifier
+   * @generated
+   */
+  EClass getVariableQualifier();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableAttribute <em>Variable Attribute</em>}'.
@@ -1307,6 +1356,14 @@ public interface IblPackage extends EPackage
     EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
 
     /**
+     * The meta object literal for the '<em><b>Qualifier</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_DECLARATION__QUALIFIER = eINSTANCE.getVariableDeclaration_Qualifier();
+
+    /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1347,6 +1404,16 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute VARIABLE_TYPE__PRIMITIVE = eINSTANCE.getVariableType_Primitive();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableQualifierImpl <em>Variable Qualifier</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.VariableQualifierImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableQualifier()
+     * @generated
+     */
+    EClass VARIABLE_QUALIFIER = eINSTANCE.getVariableQualifier();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.

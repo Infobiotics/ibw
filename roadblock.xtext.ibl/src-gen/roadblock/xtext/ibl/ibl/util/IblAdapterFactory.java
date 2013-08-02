@@ -125,6 +125,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createVariableTypeAdapter();
       }
       @Override
+      public Adapter caseVariableQualifier(VariableQualifier object)
+      {
+        return createVariableQualifierAdapter();
+      }
+      @Override
       public Adapter caseVariableAttribute(VariableAttribute object)
       {
         return createVariableAttributeAdapter();
@@ -322,6 +327,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createVariableTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableQualifier <em>Variable Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableQualifier
+   * @generated
+   */
+  public Adapter createVariableQualifierAdapter()
   {
     return null;
   }

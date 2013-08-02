@@ -26,6 +26,7 @@ import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
 import roadblock.xtext.ibl.ibl.VariableExpression;
+import roadblock.xtext.ibl.ibl.VariableQualifier;
 import roadblock.xtext.ibl.ibl.VariableType;
 
 /**
@@ -105,6 +106,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass variableTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableQualifierEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -446,7 +454,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableDeclaration_Type()
+  public EReference getVariableDeclaration_Qualifier()
   {
     return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(0);
   }
@@ -456,9 +464,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getVariableDeclaration_Type()
+  {
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getVariableDeclaration_Name()
   {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -468,7 +486,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    */
   public EAttribute getVariableDeclaration_Collection()
   {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -489,6 +507,16 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EAttribute getVariableType_Primitive()
   {
     return (EAttribute)variableTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVariableQualifier()
+  {
+    return variableQualifierEClass;
   }
 
   /**
@@ -712,12 +740,15 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     variableDefinitionMemberEClass = createEClass(VARIABLE_DEFINITION_MEMBER);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__QUALIFIER);
     createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__COLLECTION);
 
     variableTypeEClass = createEClass(VARIABLE_TYPE);
     createEAttribute(variableTypeEClass, VARIABLE_TYPE__PRIMITIVE);
+
+    variableQualifierEClass = createEClass(VARIABLE_QUALIFIER);
 
     variableAttributeEClass = createEClass(VARIABLE_ATTRIBUTE);
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__NAME);
@@ -773,6 +804,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
+    variableDefinitionMemberEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
@@ -810,12 +842,15 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(variableDefinitionMemberEClass, VariableDefinitionMember.class, "VariableDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableDeclaration_Qualifier(), this.getVariableQualifier(), null, "qualifier", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableDeclaration_Type(), this.getVariableType(), null, "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableTypeEClass, VariableType.class, "VariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableType_Primitive(), ecorePackage.getEString(), "primitive", null, 0, 1, VariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableQualifierEClass, VariableQualifier.class, "VariableQualifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableAttributeEClass, VariableAttribute.class, "VariableAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

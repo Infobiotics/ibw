@@ -127,6 +127,7 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableDefinitionMember variableDefinitionMember = (VariableDefinitionMember)theEObject;
         T result = caseVariableDefinitionMember(variableDefinitionMember);
+        if (result == null) result = caseFunctionDefinitionMember(variableDefinitionMember);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -135,6 +136,7 @@ public class IblSwitch<T> extends Switch<T>
         VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
         T result = caseVariableDeclaration(variableDeclaration);
         if (result == null) result = caseVariableDefinitionMember(variableDeclaration);
+        if (result == null) result = caseFunctionDefinitionMember(variableDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -142,6 +144,13 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableType variableType = (VariableType)theEObject;
         T result = caseVariableType(variableType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_QUALIFIER:
+      {
+        VariableQualifier variableQualifier = (VariableQualifier)theEObject;
+        T result = caseVariableQualifier(variableQualifier);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -350,6 +359,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableType(VariableType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Qualifier</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Qualifier</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableQualifier(VariableQualifier object)
   {
     return null;
   }

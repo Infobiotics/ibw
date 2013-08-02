@@ -26,6 +26,7 @@ import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableExpression;
+import roadblock.xtext.ibl.ibl.VariableQualifier;
 import roadblock.xtext.ibl.ibl.VariableType;
 import roadblock.xtext.ibl.services.IblGrammarAccess;
 
@@ -96,7 +97,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.VARIABLE_DECLARATION:
-				if(context == grammarAccess.getVariableDeclarationRule() ||
+				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
+				   context == grammarAccess.getVariableDeclarationRule() ||
 				   context == grammarAccess.getVariableDefinitionMemberRule()) {
 					sequence_VariableDeclaration(context, (VariableDeclaration) semanticObject); 
 					return; 
@@ -112,6 +114,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case IblPackage.VARIABLE_EXPRESSION:
 				if(context == grammarAccess.getVariableExpressionRule()) {
 					sequence_VariableExpression(context, (VariableExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.VARIABLE_QUALIFIER:
+				if(context == grammarAccess.getVariableQualifierRule()) {
+					sequence_VariableQualifier(context, (VariableQualifier) semanticObject); 
 					return; 
 				}
 				else break;
@@ -255,7 +263,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=VariableType name=ID)
+	 *     (qualifier=VariableQualifier? ((type=VariableType name=ID) | (collection=CollectionID type=VariableType name=ID)))
 	 */
 	protected void sequence_VariableDeclaration(EObject context, VariableDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -276,6 +284,15 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (members+=VariableAttribute members+=VariableAttribute*)
 	 */
 	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {VariableQualifier}
+	 */
+	protected void sequence_VariableQualifier(EObject context, VariableQualifier semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

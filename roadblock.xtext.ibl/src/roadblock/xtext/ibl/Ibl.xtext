@@ -50,11 +50,11 @@ FunctionParameterMember:
 ;
 
 ParameterScope:
-	'required' | 'returned'
+	'required' | 'returned' | 'optional'
 ;
 
 FunctionDefinitionMember:
-	RuleDefinition | VariableAssignment
+	RuleDefinition | VariableAssignment | VariableDefinitionMember
 ;
 
 ///////////////
@@ -68,8 +68,9 @@ VariableDefinitionMember:
 
 VariableDeclaration:
 	{VariableDeclaration}
-	(type=VariableType name=ID) |
-	(collection=CollectionID '<' type=VariableType '>' name=ID)
+	(qualifier=VariableQualifier)?
+	((type=VariableType name=ID) |
+	(collection=CollectionID '<' type=VariableType '>' name=ID))
 ;
 
 VariableType:
@@ -78,6 +79,10 @@ VariableType:
 //	primitive=PrimitiveVariableType | reference=[VariableDefinition] // fix crossreferencing
 ;
 
+VariableQualifier:
+	{VariableQualifier}
+	'observable'
+;
 VariableAttribute:
 	{VariableAttribute}
 	name=ID ('.' attribute=ID)?

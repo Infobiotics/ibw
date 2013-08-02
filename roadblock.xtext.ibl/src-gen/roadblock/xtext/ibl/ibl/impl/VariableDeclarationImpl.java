@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
+import roadblock.xtext.ibl.ibl.VariableQualifier;
 import roadblock.xtext.ibl.ibl.VariableType;
 
 /**
@@ -21,6 +22,7 @@ import roadblock.xtext.ibl.ibl.VariableType;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getQualifier <em>Qualifier</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getType <em>Type</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getCollection <em>Collection</em>}</li>
@@ -31,6 +33,16 @@ import roadblock.xtext.ibl.ibl.VariableType;
  */
 public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implements VariableDeclaration
 {
+  /**
+   * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getQualifier()
+   * @generated
+   * @ordered
+   */
+  protected VariableQualifier qualifier;
+
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -100,6 +112,54 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
   protected EClass eStaticClass()
   {
     return IblPackage.Literals.VARIABLE_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableQualifier getQualifier()
+  {
+    return qualifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetQualifier(VariableQualifier newQualifier, NotificationChain msgs)
+  {
+    VariableQualifier oldQualifier = qualifier;
+    qualifier = newQualifier;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__QUALIFIER, oldQualifier, newQualifier);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setQualifier(VariableQualifier newQualifier)
+  {
+    if (newQualifier != qualifier)
+    {
+      NotificationChain msgs = null;
+      if (qualifier != null)
+        msgs = ((InternalEObject)qualifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DECLARATION__QUALIFIER, null, msgs);
+      if (newQualifier != null)
+        msgs = ((InternalEObject)newQualifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DECLARATION__QUALIFIER, null, msgs);
+      msgs = basicSetQualifier(newQualifier, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__QUALIFIER, newQualifier, newQualifier));
   }
 
   /**
@@ -206,6 +266,8 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
   {
     switch (featureID)
     {
+      case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
+        return basicSetQualifier(null, msgs);
       case IblPackage.VARIABLE_DECLARATION__TYPE:
         return basicSetType(null, msgs);
     }
@@ -222,6 +284,8 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
   {
     switch (featureID)
     {
+      case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
+        return getQualifier();
       case IblPackage.VARIABLE_DECLARATION__TYPE:
         return getType();
       case IblPackage.VARIABLE_DECLARATION__NAME:
@@ -242,6 +306,9 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
   {
     switch (featureID)
     {
+      case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
+        setQualifier((VariableQualifier)newValue);
+        return;
       case IblPackage.VARIABLE_DECLARATION__TYPE:
         setType((VariableType)newValue);
         return;
@@ -265,6 +332,9 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
   {
     switch (featureID)
     {
+      case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
+        setQualifier((VariableQualifier)null);
+        return;
       case IblPackage.VARIABLE_DECLARATION__TYPE:
         setType((VariableType)null);
         return;
@@ -288,6 +358,8 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
   {
     switch (featureID)
     {
+      case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
+        return qualifier != null;
       case IblPackage.VARIABLE_DECLARATION__TYPE:
         return type != null;
       case IblPackage.VARIABLE_DECLARATION__NAME:

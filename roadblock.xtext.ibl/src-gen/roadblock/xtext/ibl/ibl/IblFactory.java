@@ -113,6 +113,15 @@ public interface IblFactory extends EFactory
   VariableType createVariableType();
 
   /**
+   * Returns a new object of class '<em>Variable Qualifier</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Qualifier</em>'.
+   * @generated
+   */
+  VariableQualifier createVariableQualifier();
+
+  /**
    * Returns a new object of class '<em>Variable Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
