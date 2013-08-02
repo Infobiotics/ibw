@@ -68,6 +68,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.MODEL_MEMBER: return createModelMember();
       case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
       case IblPackage.FUNCTION_DEFINITION: return createFunctionDefinition();
+      case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_DEFINITION_MEMBER: return createFunctionDefinitionMember();
       case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
@@ -126,6 +127,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     FunctionDefinitionImpl functionDefinition = new FunctionDefinitionImpl();
     return functionDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FunctionUseMember createFunctionUseMember()
+  {
+    FunctionUseMemberImpl functionUseMember = new FunctionUseMemberImpl();
+    return functionUseMember;
   }
 
   /**

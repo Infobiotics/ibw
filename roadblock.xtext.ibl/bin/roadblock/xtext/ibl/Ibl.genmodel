@@ -21,6 +21,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/members"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/uses"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//FunctionUseMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionUseMember/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionUseMember/name"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//FunctionParameterMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/type"/>

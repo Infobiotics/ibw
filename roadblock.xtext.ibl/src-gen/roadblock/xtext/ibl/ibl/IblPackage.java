@@ -196,13 +196,59 @@ public interface IblPackage extends EPackage
   int FUNCTION_DEFINITION__MEMBERS = MODEL_MEMBER_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Uses</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_DEFINITION__USES = MODEL_MEMBER_FEATURE_COUNT + 4;
+
+  /**
    * The number of structural features of the '<em>Function Definition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION_FEATURE_COUNT = MODEL_MEMBER_FEATURE_COUNT + 4;
+  int FUNCTION_DEFINITION_FEATURE_COUNT = MODEL_MEMBER_FEATURE_COUNT + 5;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionUseMemberImpl <em>Function Use Member</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.FunctionUseMemberImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionUseMember()
+   * @generated
+   */
+  int FUNCTION_USE_MEMBER = 4;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_USE_MEMBER__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_USE_MEMBER__NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Function Use Member</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_USE_MEMBER_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl <em>Function Parameter Member</em>}' class.
@@ -212,7 +258,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionParameterMember()
    * @generated
    */
-  int FUNCTION_PARAMETER_MEMBER = 4;
+  int FUNCTION_PARAMETER_MEMBER = 5;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -258,7 +304,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionDefinitionMember()
    * @generated
    */
-  int FUNCTION_DEFINITION_MEMBER = 5;
+  int FUNCTION_DEFINITION_MEMBER = 6;
 
   /**
    * The number of structural features of the '<em>Function Definition Member</em>' class.
@@ -277,7 +323,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinitionMember()
    * @generated
    */
-  int VARIABLE_DEFINITION_MEMBER = 6;
+  int VARIABLE_DEFINITION_MEMBER = 7;
 
   /**
    * The number of structural features of the '<em>Variable Definition Member</em>' class.
@@ -296,7 +342,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDeclaration()
    * @generated
    */
-  int VARIABLE_DECLARATION = 7;
+  int VARIABLE_DECLARATION = 8;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -342,7 +388,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableType()
    * @generated
    */
-  int VARIABLE_TYPE = 8;
+  int VARIABLE_TYPE = 9;
 
   /**
    * The feature id for the '<em><b>Primitive</b></em>' attribute.
@@ -370,7 +416,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
    * @generated
    */
-  int VARIABLE_ATTRIBUTE = 9;
+  int VARIABLE_ATTRIBUTE = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -407,7 +453,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignment()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT = 10;
+  int VARIABLE_ASSIGNMENT = 11;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -444,7 +490,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpression()
    * @generated
    */
-  int VARIABLE_EXPRESSION = 11;
+  int VARIABLE_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -472,7 +518,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleDefinition()
    * @generated
    */
-  int RULE_DEFINITION = 12;
+  int RULE_DEFINITION = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -518,7 +564,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
    * @generated
    */
-  int RULE_OBJECT = 13;
+  int RULE_OBJECT = 14;
 
   /**
    * The feature id for the '<em><b>Subobjects</b></em>' attribute list.
@@ -546,7 +592,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 14;
+  int IMPORT = 15;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -694,6 +740,49 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EReference getFunctionDefinition_Members();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getUses <em>Uses</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Uses</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionDefinition#getUses()
+   * @see #getFunctionDefinition()
+   * @generated
+   */
+  EReference getFunctionDefinition_Uses();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.FunctionUseMember <em>Function Use Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Use Member</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionUseMember
+   * @generated
+   */
+  EClass getFunctionUseMember();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionUseMember#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionUseMember#getType()
+   * @see #getFunctionUseMember()
+   * @generated
+   */
+  EAttribute getFunctionUseMember_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionUseMember#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionUseMember#getName()
+   * @see #getFunctionUseMember()
+   * @generated
+   */
+  EAttribute getFunctionUseMember_Name();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember <em>Function Parameter Member</em>}'.
@@ -1118,6 +1207,40 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EReference FUNCTION_DEFINITION__MEMBERS = eINSTANCE.getFunctionDefinition_Members();
+
+    /**
+     * The meta object literal for the '<em><b>Uses</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION_DEFINITION__USES = eINSTANCE.getFunctionDefinition_Uses();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionUseMemberImpl <em>Function Use Member</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.FunctionUseMemberImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionUseMember()
+     * @generated
+     */
+    EClass FUNCTION_USE_MEMBER = eINSTANCE.getFunctionUseMember();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_USE_MEMBER__TYPE = eINSTANCE.getFunctionUseMember_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_USE_MEMBER__NAME = eINSTANCE.getFunctionUseMember_Name();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl <em>Function Parameter Member</em>}' class.

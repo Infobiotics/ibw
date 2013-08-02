@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinitionMember;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
+import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableType;
 
@@ -34,6 +35,7 @@ import roadblock.xtext.ibl.ibl.VariableType;
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getMembers <em>Members</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getUses <em>Uses</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,6 +92,16 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * @ordered
    */
   protected EList<FunctionDefinitionMember> members;
+
+  /**
+   * The cached value of the '{@link #getUses() <em>Uses</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUses()
+   * @generated
+   * @ordered
+   */
+  protected EList<FunctionUseMember> uses;
 
   /**
    * <!-- begin-user-doc -->
@@ -216,6 +228,20 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<FunctionUseMember> getUses()
+  {
+    if (uses == null)
+    {
+      uses = new EObjectContainmentEList<FunctionUseMember>(FunctionUseMember.class, this, IblPackage.FUNCTION_DEFINITION__USES);
+    }
+    return uses;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -227,6 +253,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
         return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+      case IblPackage.FUNCTION_DEFINITION__USES:
+        return ((InternalEList<?>)getUses()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -249,6 +277,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         return getParameters();
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
         return getMembers();
+      case IblPackage.FUNCTION_DEFINITION__USES:
+        return getUses();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -278,6 +308,10 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         getMembers().clear();
         getMembers().addAll((Collection<? extends FunctionDefinitionMember>)newValue);
         return;
+      case IblPackage.FUNCTION_DEFINITION__USES:
+        getUses().clear();
+        getUses().addAll((Collection<? extends FunctionUseMember>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -304,6 +338,9 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
         getMembers().clear();
         return;
+      case IblPackage.FUNCTION_DEFINITION__USES:
+        getUses().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -326,6 +363,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         return parameters != null && !parameters.isEmpty();
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
         return members != null && !members.isEmpty();
+      case IblPackage.FUNCTION_DEFINITION__USES:
+        return uses != null && !uses.isEmpty();
     }
     return super.eIsSet(featureID);
   }

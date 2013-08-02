@@ -15,6 +15,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
+import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
@@ -46,6 +47,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case IblPackage.FUNCTION_PARAMETER_MEMBER:
 				if(context == grammarAccess.getFunctionParameterMemberRule()) {
 					sequence_FunctionParameterMember(context, (FunctionParameterMember) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.FUNCTION_USE_MEMBER:
+				if(context == grammarAccess.getFunctionUseMemberRule()) {
+					sequence_FunctionUseMember(context, (FunctionUseMember) semanticObject); 
 					return; 
 				}
 				else break;
@@ -123,10 +130,10 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         type=VariableType? 
 	 *         name=ID 
-	 *         parameters+=FunctionParameterMember* 
 	 *         parameters+=FunctionParameterMember 
 	 *         parameters+=FunctionParameterMember* 
-	 *         members+=FunctionDefinitionMember*
+	 *         members+=FunctionDefinitionMember* 
+	 *         (uses+=FunctionUseMember uses+=FunctionUseMember)?
 	 *     )
 	 */
 	protected void sequence_FunctionDefinition(EObject context, FunctionDefinition semanticObject) {
@@ -152,6 +159,25 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getFunctionParameterMemberAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getFunctionParameterMemberAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getFunctionParameterMemberAccess().getScopeParameterScopeParserRuleCall_3_0(), semanticObject.getScope());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (type=ID name=ID)
+	 */
+	protected void sequence_FunctionUseMember(EObject context, FunctionUseMember semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.FUNCTION_USE_MEMBER__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.FUNCTION_USE_MEMBER__TYPE));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.FUNCTION_USE_MEMBER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.FUNCTION_USE_MEMBER__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFunctionUseMemberAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFunctionUseMemberAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	

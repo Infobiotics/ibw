@@ -18,13 +18,11 @@ import roadblock.xtext.ibl.services.IblGrammarAccess;
 public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected IblGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_FunctionDefinition_USESKeyword_12_q;
 	protected AbstractElementAlias match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (IblGrammarAccess) access;
-		match_FunctionDefinition_USESKeyword_12_q = new TokenAlias(false, true, grammarAccess.getFunctionDefinitionAccess().getUSESKeyword_12());
 		match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getHyphenMinusGreaterThanSignKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getLessThanSignHyphenMinusGreaterThanSignKeyword_5_1()));
 	}
 	
@@ -52,22 +50,12 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_FunctionDefinition_USESKeyword_12_q.equals(syntax))
-				emit_FunctionDefinition_USESKeyword_12_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1.equals(syntax))
+			if(match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1.equals(syntax))
 				emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Syntax:
-	 *     'USES'?
-	 */
-	protected void emit_FunctionDefinition_USESKeyword_12_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * Syntax:
 	 *     '<->' | '->'

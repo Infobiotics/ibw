@@ -95,6 +95,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionDefinitionAdapter();
       }
       @Override
+      public Adapter caseFunctionUseMember(FunctionUseMember object)
+      {
+        return createFunctionUseMemberAdapter();
+      }
+      @Override
       public Adapter caseFunctionParameterMember(FunctionParameterMember object)
       {
         return createFunctionParameterMemberAdapter();
@@ -227,6 +232,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionUseMember <em>Function Use Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.FunctionUseMember
+   * @generated
+   */
+  public Adapter createFunctionUseMemberAdapter()
   {
     return null;
   }

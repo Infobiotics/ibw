@@ -102,6 +102,13 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.FUNCTION_USE_MEMBER:
+      {
+        FunctionUseMember functionUseMember = (FunctionUseMember)theEObject;
+        T result = caseFunctionUseMember(functionUseMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.FUNCTION_PARAMETER_MEMBER:
       {
         FunctionParameterMember functionParameterMember = (FunctionParameterMember)theEObject;
@@ -247,6 +254,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionDefinition(FunctionDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Use Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Use Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionUseMember(FunctionUseMember object)
   {
     return null;
   }

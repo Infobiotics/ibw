@@ -59,6 +59,15 @@ public interface IblFactory extends EFactory
   FunctionDefinition createFunctionDefinition();
 
   /**
+   * Returns a new object of class '<em>Function Use Member</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Use Member</em>'.
+   * @generated
+   */
+  FunctionUseMember createFunctionUseMember();
+
+  /**
    * Returns a new object of class '<em>Function Parameter Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
