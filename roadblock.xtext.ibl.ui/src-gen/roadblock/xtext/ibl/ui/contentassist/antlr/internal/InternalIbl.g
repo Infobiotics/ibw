@@ -1072,22 +1072,6 @@ rule__PrimitiveVariableType__Alternatives
 { after(grammarAccess.getPrimitiveVariableTypeAccess().getDNAKeyword_1()); }
 )
 
-    |(
-{ before(grammarAccess.getPrimitiveVariableTypeAccess().getCHASSISKeyword_2()); }
-
-	'CHASSIS' 
-
-{ after(grammarAccess.getPrimitiveVariableTypeAccess().getCHASSISKeyword_2()); }
-)
-
-    |(
-{ before(grammarAccess.getPrimitiveVariableTypeAccess().getPROCESSKeyword_3()); }
-
-	'PROCESS' 
-
-{ after(grammarAccess.getPrimitiveVariableTypeAccess().getPROCESSKeyword_3()); }
-)
-
 ;
 finally {
 	restoreStackSize(stackSize);

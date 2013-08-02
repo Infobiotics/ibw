@@ -112,7 +112,7 @@ VariableExpressionOperator:
 ;
 
 PrimitiveVariableType:
-	'ID' | 'DNA' | 'CHASSIS' | 'PROCESS'
+	'ID' | 'DNA'
 ;
 
 CollectionID:

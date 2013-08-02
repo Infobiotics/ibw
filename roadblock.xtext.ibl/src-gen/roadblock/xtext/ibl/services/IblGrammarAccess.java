@@ -882,14 +882,12 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cIDKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cDNAKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cCHASSISKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cPROCESSKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
 		//PrimitiveVariableType:
-		//	"ID" | "DNA" | "CHASSIS" | "PROCESS";
+		//	"ID" | "DNA";
 		public ParserRule getRule() { return rule; }
 
-		//"ID" | "DNA" | "CHASSIS" | "PROCESS"
+		//"ID" | "DNA"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"ID"
@@ -897,12 +895,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"DNA"
 		public Keyword getDNAKeyword_1() { return cDNAKeyword_1; }
-
-		//"CHASSIS"
-		public Keyword getCHASSISKeyword_2() { return cCHASSISKeyword_2; }
-
-		//"PROCESS"
-		public Keyword getPROCESSKeyword_3() { return cPROCESSKeyword_3; }
 	}
 
 	public class CollectionIDElements extends AbstractParserRuleElementFinder {
@@ -1531,7 +1523,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PrimitiveVariableType:
-	//	"ID" | "DNA" | "CHASSIS" | "PROCESS";
+	//	"ID" | "DNA";
 	public PrimitiveVariableTypeElements getPrimitiveVariableTypeAccess() {
 		return (pPrimitiveVariableType != null) ? pPrimitiveVariableType : (pPrimitiveVariableType = new PrimitiveVariableTypeElements());
 	}

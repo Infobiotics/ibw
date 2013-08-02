@@ -62,7 +62,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     '<->' | '->'
+	 *     '->' | '<->'
 	 */
 	protected void emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -70,7 +70,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     '.' | '~'
+	 *     '~' | '.'
 	 */
 	protected void emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

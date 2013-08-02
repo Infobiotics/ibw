@@ -386,8 +386,6 @@
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Keyword" value="ID"/>
         <elements xsi:type="xtext:Keyword" value="DNA"/>
-        <elements xsi:type="xtext:Keyword" value="CHASSIS"/>
-        <elements xsi:type="xtext:Keyword" value="PROCESS"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CollectionID">
