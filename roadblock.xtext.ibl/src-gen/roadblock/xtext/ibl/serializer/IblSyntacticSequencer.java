@@ -19,11 +19,13 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected IblGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1;
+	protected AbstractElementAlias match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (IblGrammarAccess) access;
 		match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getHyphenMinusGreaterThanSignKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getLessThanSignHyphenMinusGreaterThanSignKeyword_5_1()));
+		match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0_0()), new TokenAlias(false, false, grammarAccess.getVariableAttributeAccess().getTildeKeyword_2_0_1()));
 	}
 	
 	@Override
@@ -52,15 +54,25 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if(match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1.equals(syntax))
 				emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1.equals(syntax))
+				emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
 	/**
 	 * Syntax:
-	 *     '->' | '<->'
+	 *     '<->' | '->'
 	 */
 	protected void emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     '.' | '~'
+	 */
+	protected void emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

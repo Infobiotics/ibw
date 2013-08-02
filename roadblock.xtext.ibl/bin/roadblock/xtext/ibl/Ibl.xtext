@@ -54,7 +54,12 @@ ParameterScope:
 ;
 
 FunctionDefinitionMember:
-	RuleDefinition | VariableAssignment | VariableDeclaration
+	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition
+;
+
+DeviceDefinition:
+	{DeviceDefinition}
+	'DEVICE' name=ID '=' 'DEVICE' '(' (parts+=ID (',' parts+=ID)*) ')' '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')' '{' (members+=VariableDeclaration (',' members+=VariableDeclaration)*)? '}'
 ;
 
 ///////////////
@@ -88,7 +93,7 @@ VariableQualifier:
 ;
 VariableAttribute:
 	{VariableAttribute}
-	name=ID ('.' attribute=ID)?
+	name=ID (('.'|'~') attribute=ID)?
 ;
 
 VariableAssignment:

@@ -71,6 +71,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_DEFINITION_MEMBER: return createFunctionDefinitionMember();
+      case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
       case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
       case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case IblPackage.VARIABLE_TYPE: return createVariableType();
@@ -161,6 +162,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     FunctionDefinitionMemberImpl functionDefinitionMember = new FunctionDefinitionMemberImpl();
     return functionDefinitionMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeviceDefinition createDeviceDefinition()
+  {
+    DeviceDefinitionImpl deviceDefinition = new DeviceDefinitionImpl();
+    return deviceDefinition;
   }
 
   /**

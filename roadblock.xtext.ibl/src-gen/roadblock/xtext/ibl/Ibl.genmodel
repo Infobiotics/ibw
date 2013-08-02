@@ -33,6 +33,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/scope"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//FunctionDefinitionMember"/>
+    <genClasses ecoreClass="Ibl.ecore#//DeviceDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/members"/>
+    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionMember"/>
     <genClasses ecoreClass="Ibl.ecore#//VariableDeclaration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDeclaration/qualifier"/>

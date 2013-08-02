@@ -342,12 +342,13 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cVariableAssignmentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cVariableDeclarationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDeviceDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//FunctionDefinitionMember:
-		//	RuleDefinition | VariableAssignment | VariableDeclaration;
+		//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition;
 		public ParserRule getRule() { return rule; }
 
-		//RuleDefinition | VariableAssignment | VariableDeclaration
+		//RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//RuleDefinition
@@ -358,6 +359,157 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//VariableDeclaration
 		public RuleCall getVariableDeclarationParserRuleCall_2() { return cVariableDeclarationParserRuleCall_2; }
+
+		//DeviceDefinition
+		public RuleCall getDeviceDefinitionParserRuleCall_3() { return cDeviceDefinitionParserRuleCall_3; }
+	}
+
+	public class DeviceDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DeviceDefinition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cDeviceDefinitionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDEVICEKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cDEVICEKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Assignment cPartsAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
+		private final RuleCall cPartsIDTerminalRuleCall_6_0_0 = (RuleCall)cPartsAssignment_6_0.eContents().get(0);
+		private final Group cGroup_6_1 = (Group)cGroup_6.eContents().get(1);
+		private final Keyword cCommaKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
+		private final Assignment cPartsAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
+		private final RuleCall cPartsIDTerminalRuleCall_6_1_1_0 = (RuleCall)cPartsAssignment_6_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cLeftParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Assignment cParametersAssignment_9_0 = (Assignment)cGroup_9.eContents().get(0);
+		private final RuleCall cParametersVariableAssignmentParserRuleCall_9_0_0 = (RuleCall)cParametersAssignment_9_0.eContents().get(0);
+		private final Group cGroup_9_1 = (Group)cGroup_9.eContents().get(1);
+		private final Keyword cCommaKeyword_9_1_0 = (Keyword)cGroup_9_1.eContents().get(0);
+		private final Assignment cParametersAssignment_9_1_1 = (Assignment)cGroup_9_1.eContents().get(1);
+		private final RuleCall cParametersVariableAssignmentParserRuleCall_9_1_1_0 = (RuleCall)cParametersAssignment_9_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cLeftCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
+		private final Assignment cMembersAssignment_12_0 = (Assignment)cGroup_12.eContents().get(0);
+		private final RuleCall cMembersVariableDeclarationParserRuleCall_12_0_0 = (RuleCall)cMembersAssignment_12_0.eContents().get(0);
+		private final Group cGroup_12_1 = (Group)cGroup_12.eContents().get(1);
+		private final Keyword cCommaKeyword_12_1_0 = (Keyword)cGroup_12_1.eContents().get(0);
+		private final Assignment cMembersAssignment_12_1_1 = (Assignment)cGroup_12_1.eContents().get(1);
+		private final RuleCall cMembersVariableDeclarationParserRuleCall_12_1_1_0 = (RuleCall)cMembersAssignment_12_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		
+		//DeviceDefinition:
+		//	{DeviceDefinition} "DEVICE" name=ID "=" "DEVICE" "(" (parts+=ID ("," parts+=ID)*) ")" "("
+		//	(parameters+=VariableAssignment ("," parameters+=VariableAssignment)*)? ")" "{" (members+=VariableDeclaration (","
+		//	members+=VariableDeclaration)*)? "}";
+		public ParserRule getRule() { return rule; }
+
+		//{DeviceDefinition} "DEVICE" name=ID "=" "DEVICE" "(" (parts+=ID ("," parts+=ID)*) ")" "("
+		//(parameters+=VariableAssignment ("," parameters+=VariableAssignment)*)? ")" "{" (members+=VariableDeclaration (","
+		//members+=VariableDeclaration)*)? "}"
+		public Group getGroup() { return cGroup; }
+
+		//{DeviceDefinition}
+		public Action getDeviceDefinitionAction_0() { return cDeviceDefinitionAction_0; }
+
+		//"DEVICE"
+		public Keyword getDEVICEKeyword_1() { return cDEVICEKeyword_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+
+		//"DEVICE"
+		public Keyword getDEVICEKeyword_4() { return cDEVICEKeyword_4; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
+
+		//parts+=ID ("," parts+=ID)*
+		public Group getGroup_6() { return cGroup_6; }
+
+		//parts+=ID
+		public Assignment getPartsAssignment_6_0() { return cPartsAssignment_6_0; }
+
+		//ID
+		public RuleCall getPartsIDTerminalRuleCall_6_0_0() { return cPartsIDTerminalRuleCall_6_0_0; }
+
+		//("," parts+=ID)*
+		public Group getGroup_6_1() { return cGroup_6_1; }
+
+		//","
+		public Keyword getCommaKeyword_6_1_0() { return cCommaKeyword_6_1_0; }
+
+		//parts+=ID
+		public Assignment getPartsAssignment_6_1_1() { return cPartsAssignment_6_1_1; }
+
+		//ID
+		public RuleCall getPartsIDTerminalRuleCall_6_1_1_0() { return cPartsIDTerminalRuleCall_6_1_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_8() { return cLeftParenthesisKeyword_8; }
+
+		//(parameters+=VariableAssignment ("," parameters+=VariableAssignment)*)?
+		public Group getGroup_9() { return cGroup_9; }
+
+		//parameters+=VariableAssignment
+		public Assignment getParametersAssignment_9_0() { return cParametersAssignment_9_0; }
+
+		//VariableAssignment
+		public RuleCall getParametersVariableAssignmentParserRuleCall_9_0_0() { return cParametersVariableAssignmentParserRuleCall_9_0_0; }
+
+		//("," parameters+=VariableAssignment)*
+		public Group getGroup_9_1() { return cGroup_9_1; }
+
+		//","
+		public Keyword getCommaKeyword_9_1_0() { return cCommaKeyword_9_1_0; }
+
+		//parameters+=VariableAssignment
+		public Assignment getParametersAssignment_9_1_1() { return cParametersAssignment_9_1_1; }
+
+		//VariableAssignment
+		public RuleCall getParametersVariableAssignmentParserRuleCall_9_1_1_0() { return cParametersVariableAssignmentParserRuleCall_9_1_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_10() { return cRightParenthesisKeyword_10; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_11() { return cLeftCurlyBracketKeyword_11; }
+
+		//(members+=VariableDeclaration ("," members+=VariableDeclaration)*)?
+		public Group getGroup_12() { return cGroup_12; }
+
+		//members+=VariableDeclaration
+		public Assignment getMembersAssignment_12_0() { return cMembersAssignment_12_0; }
+
+		//VariableDeclaration
+		public RuleCall getMembersVariableDeclarationParserRuleCall_12_0_0() { return cMembersVariableDeclarationParserRuleCall_12_0_0; }
+
+		//("," members+=VariableDeclaration)*
+		public Group getGroup_12_1() { return cGroup_12_1; }
+
+		//","
+		public Keyword getCommaKeyword_12_1_0() { return cCommaKeyword_12_1_0; }
+
+		//members+=VariableDeclaration
+		public Assignment getMembersAssignment_12_1_1() { return cMembersAssignment_12_1_1; }
+
+		//VariableDeclaration
+		public RuleCall getMembersVariableDeclarationParserRuleCall_12_1_1_0() { return cMembersVariableDeclarationParserRuleCall_12_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 	}
 
 	public class VariableDefinitionMemberElements extends AbstractParserRuleElementFinder {
@@ -576,15 +728,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
+		private final Keyword cFullStopKeyword_2_0_0 = (Keyword)cAlternatives_2_0.eContents().get(0);
+		private final Keyword cTildeKeyword_2_0_1 = (Keyword)cAlternatives_2_0.eContents().get(1);
 		private final Assignment cAttributeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cAttributeIDTerminalRuleCall_2_1_0 = (RuleCall)cAttributeAssignment_2_1.eContents().get(0);
 		
 		//VariableAttribute:
-		//	{VariableAttribute} name=ID ("." attribute=ID)?;
+		//	{VariableAttribute} name=ID (("." | "~") attribute=ID)?;
 		public ParserRule getRule() { return rule; }
 
-		//{VariableAttribute} name=ID ("." attribute=ID)?
+		//{VariableAttribute} name=ID (("." | "~") attribute=ID)?
 		public Group getGroup() { return cGroup; }
 
 		//{VariableAttribute}
@@ -596,11 +750,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("." attribute=ID)?
+		//(("." | "~") attribute=ID)?
 		public Group getGroup_2() { return cGroup_2; }
 
+		//"." | "~"
+		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
+
 		//"."
-		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
+		public Keyword getFullStopKeyword_2_0_0() { return cFullStopKeyword_2_0_0; }
+
+		//"~"
+		public Keyword getTildeKeyword_2_0_1() { return cTildeKeyword_2_0_1; }
 
 		//attribute=ID
 		public Assignment getAttributeAssignment_2_1() { return cAttributeAssignment_2_1; }
@@ -989,6 +1149,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private FunctionParameterMemberElements pFunctionParameterMember;
 	private ParameterScopeElements pParameterScope;
 	private FunctionDefinitionMemberElements pFunctionDefinitionMember;
+	private DeviceDefinitionElements pDeviceDefinition;
 	private VariableDefinitionMemberElements pVariableDefinitionMember;
 	private VariableDeclarationElements pVariableDeclaration;
 	private VariableTypeElements pVariableType;
@@ -1121,13 +1282,25 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunctionDefinitionMember:
-	//	RuleDefinition | VariableAssignment | VariableDeclaration;
+	//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition;
 	public FunctionDefinitionMemberElements getFunctionDefinitionMemberAccess() {
 		return (pFunctionDefinitionMember != null) ? pFunctionDefinitionMember : (pFunctionDefinitionMember = new FunctionDefinitionMemberElements());
 	}
 	
 	public ParserRule getFunctionDefinitionMemberRule() {
 		return getFunctionDefinitionMemberAccess().getRule();
+	}
+
+	//DeviceDefinition:
+	//	{DeviceDefinition} "DEVICE" name=ID "=" "DEVICE" "(" (parts+=ID ("," parts+=ID)*) ")" "("
+	//	(parameters+=VariableAssignment ("," parameters+=VariableAssignment)*)? ")" "{" (members+=VariableDeclaration (","
+	//	members+=VariableDeclaration)*)? "}";
+	public DeviceDefinitionElements getDeviceDefinitionAccess() {
+		return (pDeviceDefinition != null) ? pDeviceDefinition : (pDeviceDefinition = new DeviceDefinitionElements());
+	}
+	
+	public ParserRule getDeviceDefinitionRule() {
+		return getDeviceDefinitionAccess().getRule();
 	}
 
 	/////////////////
@@ -1178,7 +1351,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//VariableAttribute:
-	//	{VariableAttribute} name=ID ("." attribute=ID)?;
+	//	{VariableAttribute} name=ID (("." | "~") attribute=ID)?;
 	public VariableAttributeElements getVariableAttributeAccess() {
 		return (pVariableAttribute != null) ? pVariableAttribute : (pVariableAttribute = new VariableAttributeElements());
 	}

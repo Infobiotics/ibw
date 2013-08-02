@@ -123,6 +123,14 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.DEVICE_DEFINITION:
+      {
+        DeviceDefinition deviceDefinition = (DeviceDefinition)theEObject;
+        T result = caseDeviceDefinition(deviceDefinition);
+        if (result == null) result = caseFunctionDefinitionMember(deviceDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.VARIABLE_DEFINITION_MEMBER:
       {
         VariableDefinitionMember variableDefinitionMember = (VariableDefinitionMember)theEObject;
@@ -310,6 +318,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionDefinitionMember(FunctionDefinitionMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Device Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Device Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeviceDefinition(DeviceDefinition object)
   {
     return null;
   }

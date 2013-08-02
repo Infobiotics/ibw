@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinitionMember;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
@@ -85,6 +86,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass functionDefinitionMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deviceDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -434,6 +442,56 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getDeviceDefinition()
+  {
+    return deviceDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeviceDefinition_Name()
+  {
+    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeviceDefinition_Parts()
+  {
+    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Parameters()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Members()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getVariableDefinitionMember()
   {
     return variableDefinitionMemberEClass;
@@ -757,6 +815,12 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     functionDefinitionMemberEClass = createEClass(FUNCTION_DEFINITION_MEMBER);
 
+    deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
+    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
+    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__PARTS);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARAMETERS);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
+
     variableDefinitionMemberEClass = createEClass(VARIABLE_DEFINITION_MEMBER);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
@@ -826,6 +890,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
@@ -860,6 +925,12 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getFunctionParameterMember_Scope(), ecorePackage.getEString(), "scope", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionDefinitionMemberEClass, FunctionDefinitionMember.class, "FunctionDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeviceDefinition_Parts(), ecorePackage.getEString(), "parts", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Members(), this.getVariableDeclaration(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDefinitionMemberEClass, VariableDefinitionMember.class, "VariableDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

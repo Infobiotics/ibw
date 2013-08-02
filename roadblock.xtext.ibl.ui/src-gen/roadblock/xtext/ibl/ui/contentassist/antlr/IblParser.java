@@ -42,6 +42,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionDefinitionMemberAccess().getAlternatives(), "rule__FunctionDefinitionMember__Alternatives");
 					put(grammarAccess.getVariableDeclarationAccess().getAlternatives_2(), "rule__VariableDeclaration__Alternatives_2");
 					put(grammarAccess.getVariableTypeAccess().getPrimitiveAlternatives_1_0(), "rule__VariableType__PrimitiveAlternatives_1_0");
+					put(grammarAccess.getVariableAttributeAccess().getAlternatives_2_0(), "rule__VariableAttribute__Alternatives_2_0");
 					put(grammarAccess.getVariableExpressionOperatorAccess().getAlternatives(), "rule__VariableExpressionOperator__Alternatives");
 					put(grammarAccess.getPrimitiveVariableTypeAccess().getAlternatives(), "rule__PrimitiveVariableType__Alternatives");
 					put(grammarAccess.getCollectionIDAccess().getAlternatives(), "rule__CollectionID__Alternatives");
@@ -54,6 +55,13 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionDefinitionAccess().getGroup_11_2(), "rule__FunctionDefinition__Group_11_2__0");
 					put(grammarAccess.getFunctionUseMemberAccess().getGroup(), "rule__FunctionUseMember__Group__0");
 					put(grammarAccess.getFunctionParameterMemberAccess().getGroup(), "rule__FunctionParameterMember__Group__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup(), "rule__DeviceDefinition__Group__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup_6(), "rule__DeviceDefinition__Group_6__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup_6_1(), "rule__DeviceDefinition__Group_6_1__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup_9(), "rule__DeviceDefinition__Group_9__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup_9_1(), "rule__DeviceDefinition__Group_9_1__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup_12(), "rule__DeviceDefinition__Group_12__0");
+					put(grammarAccess.getDeviceDefinitionAccess().getGroup_12_1(), "rule__DeviceDefinition__Group_12_1__0");
 					put(grammarAccess.getVariableDeclarationAccess().getGroup(), "rule__VariableDeclaration__Group__0");
 					put(grammarAccess.getVariableDeclarationAccess().getGroup_2_0(), "rule__VariableDeclaration__Group_2_0__0");
 					put(grammarAccess.getVariableDeclarationAccess().getGroup_2_1(), "rule__VariableDeclaration__Group_2_1__0");
@@ -94,6 +102,13 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAssignment_0(), "rule__FunctionParameterMember__TypeAssignment_0");
 					put(grammarAccess.getFunctionParameterMemberAccess().getNameAssignment_1(), "rule__FunctionParameterMember__NameAssignment_1");
 					put(grammarAccess.getFunctionParameterMemberAccess().getScopeAssignment_3(), "rule__FunctionParameterMember__ScopeAssignment_3");
+					put(grammarAccess.getDeviceDefinitionAccess().getNameAssignment_2(), "rule__DeviceDefinition__NameAssignment_2");
+					put(grammarAccess.getDeviceDefinitionAccess().getPartsAssignment_6_0(), "rule__DeviceDefinition__PartsAssignment_6_0");
+					put(grammarAccess.getDeviceDefinitionAccess().getPartsAssignment_6_1_1(), "rule__DeviceDefinition__PartsAssignment_6_1_1");
+					put(grammarAccess.getDeviceDefinitionAccess().getParametersAssignment_9_0(), "rule__DeviceDefinition__ParametersAssignment_9_0");
+					put(grammarAccess.getDeviceDefinitionAccess().getParametersAssignment_9_1_1(), "rule__DeviceDefinition__ParametersAssignment_9_1_1");
+					put(grammarAccess.getDeviceDefinitionAccess().getMembersAssignment_12_0(), "rule__DeviceDefinition__MembersAssignment_12_0");
+					put(grammarAccess.getDeviceDefinitionAccess().getMembersAssignment_12_1_1(), "rule__DeviceDefinition__MembersAssignment_12_1_1");
 					put(grammarAccess.getVariableDeclarationAccess().getQualifierAssignment_1(), "rule__VariableDeclaration__QualifierAssignment_1");
 					put(grammarAccess.getVariableDeclarationAccess().getTypeAssignment_2_0_0(), "rule__VariableDeclaration__TypeAssignment_2_0_0");
 					put(grammarAccess.getVariableDeclarationAccess().getNameAssignment_2_0_1(), "rule__VariableDeclaration__NameAssignment_2_0_1");

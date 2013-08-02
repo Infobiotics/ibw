@@ -13,6 +13,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
@@ -38,6 +39,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case IblPackage.DEVICE_DEFINITION:
+				if(context == grammarAccess.getDeviceDefinitionRule() ||
+				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
+					sequence_DeviceDefinition(context, (DeviceDefinition) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.FUNCTION_DEFINITION:
 				if(context == grammarAccess.getFunctionDefinitionRule() ||
 				   context == grammarAccess.getModelMemberRule()) {
@@ -132,6 +140,21 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         parts+=ID 
+	 *         parts+=ID* 
+	 *         (parameters+=VariableAssignment parameters+=VariableAssignment*)? 
+	 *         (members+=VariableDeclaration members+=VariableDeclaration*)?
+	 *     )
+	 */
+	protected void sequence_DeviceDefinition(EObject context, DeviceDefinition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Constraint:

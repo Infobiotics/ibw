@@ -86,6 +86,15 @@ public interface IblFactory extends EFactory
   FunctionDefinitionMember createFunctionDefinitionMember();
 
   /**
+   * Returns a new object of class '<em>Device Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Device Definition</em>'.
+   * @generated
+   */
+  DeviceDefinition createDeviceDefinition();
+
+  /**
    * Returns a new object of class '<em>Variable Definition Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

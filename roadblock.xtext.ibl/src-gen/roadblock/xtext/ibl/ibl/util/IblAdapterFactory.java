@@ -110,6 +110,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionDefinitionMemberAdapter();
       }
       @Override
+      public Adapter caseDeviceDefinition(DeviceDefinition object)
+      {
+        return createDeviceDefinitionAdapter();
+      }
+      @Override
       public Adapter caseVariableDefinitionMember(VariableDefinitionMember object)
       {
         return createVariableDefinitionMemberAdapter();
@@ -282,6 +287,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionDefinitionMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.DeviceDefinition
+   * @generated
+   */
+  public Adapter createDeviceDefinitionAdapter()
   {
     return null;
   }
