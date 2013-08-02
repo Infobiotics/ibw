@@ -32,7 +32,7 @@ FunctionDefinition:
 	'define' (type=VariableType)? name=ID
 	'('
 //		parameters+=FunctionParameterMember*
-		parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
 		members+=FunctionDefinitionMember*

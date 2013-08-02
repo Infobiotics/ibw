@@ -131,35 +131,36 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cParametersAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cParametersFunctionParameterMemberParserRuleCall_5_0 = (RuleCall)cParametersAssignment_5.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cCommaKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cParametersAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cParametersFunctionParameterMemberParserRuleCall_6_1_0 = (RuleCall)cParametersAssignment_6_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cMembersAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cMembersFunctionDefinitionMemberParserRuleCall_9_0 = (RuleCall)cMembersAssignment_9.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cUSESKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Assignment cUsesAssignment_11_1 = (Assignment)cGroup_11.eContents().get(1);
-		private final RuleCall cUsesFunctionUseMemberParserRuleCall_11_1_0 = (RuleCall)cUsesAssignment_11_1.eContents().get(0);
-		private final Group cGroup_11_2 = (Group)cGroup_11.eContents().get(2);
-		private final Keyword cCommaKeyword_11_2_0 = (Keyword)cGroup_11_2.eContents().get(0);
-		private final Assignment cUsesAssignment_11_2_1 = (Assignment)cGroup_11_2.eContents().get(1);
-		private final RuleCall cUsesFunctionUseMemberParserRuleCall_11_2_1_0 = (RuleCall)cUsesAssignment_11_2_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Assignment cParametersAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
+		private final RuleCall cParametersFunctionParameterMemberParserRuleCall_5_0_0 = (RuleCall)cParametersAssignment_5_0.eContents().get(0);
+		private final Group cGroup_5_1 = (Group)cGroup_5.eContents().get(1);
+		private final Keyword cCommaKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
+		private final Assignment cParametersAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cParametersFunctionParameterMemberParserRuleCall_5_1_1_0 = (RuleCall)cParametersAssignment_5_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cMembersAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cMembersFunctionDefinitionMemberParserRuleCall_8_0 = (RuleCall)cMembersAssignment_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cUSESKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cUsesAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cUsesFunctionUseMemberParserRuleCall_10_1_0 = (RuleCall)cUsesAssignment_10_1.eContents().get(0);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cCommaKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final Assignment cUsesAssignment_10_2_1 = (Assignment)cGroup_10_2.eContents().get(1);
+		private final RuleCall cUsesFunctionUseMemberParserRuleCall_10_2_1_0 = (RuleCall)cUsesAssignment_10_2_1.eContents().get(0);
 		
 		//// a definition of a function
 		//FunctionDefinition:
 		//	{FunctionDefinition} "define" type=VariableType? name=ID "(" //		parameters+=FunctionParameterMember*
-		//	parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)* ")" "{"
+		//	(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
 		//	members+=FunctionDefinitionMember* "}" ("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember))?;
 		public ParserRule getRule() { return rule; }
 
 		//{FunctionDefinition} "define" type=VariableType? name=ID "(" //		parameters+=FunctionParameterMember*
-		//parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)* ")" "{"
+		//(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
 		//members+=FunctionDefinitionMember* "}" ("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember))?
 		public Group getGroup() { return cGroup; }
 
@@ -184,63 +185,65 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_4() { return cLeftParenthesisKeyword_4; }
 
-		////		parameters+=FunctionParameterMember*
+		//(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)?
+		public Group getGroup_5() { return cGroup_5; }
+
 		//parameters+=FunctionParameterMember
-		public Assignment getParametersAssignment_5() { return cParametersAssignment_5; }
+		public Assignment getParametersAssignment_5_0() { return cParametersAssignment_5_0; }
 
 		//FunctionParameterMember
-		public RuleCall getParametersFunctionParameterMemberParserRuleCall_5_0() { return cParametersFunctionParameterMemberParserRuleCall_5_0; }
+		public RuleCall getParametersFunctionParameterMemberParserRuleCall_5_0_0() { return cParametersFunctionParameterMemberParserRuleCall_5_0_0; }
 
 		//("," parameters+=FunctionParameterMember)*
-		public Group getGroup_6() { return cGroup_6; }
+		public Group getGroup_5_1() { return cGroup_5_1; }
 
 		//","
-		public Keyword getCommaKeyword_6_0() { return cCommaKeyword_6_0; }
+		public Keyword getCommaKeyword_5_1_0() { return cCommaKeyword_5_1_0; }
 
 		//parameters+=FunctionParameterMember
-		public Assignment getParametersAssignment_6_1() { return cParametersAssignment_6_1; }
+		public Assignment getParametersAssignment_5_1_1() { return cParametersAssignment_5_1_1; }
 
 		//FunctionParameterMember
-		public RuleCall getParametersFunctionParameterMemberParserRuleCall_6_1_0() { return cParametersFunctionParameterMemberParserRuleCall_6_1_0; }
+		public RuleCall getParametersFunctionParameterMemberParserRuleCall_5_1_1_0() { return cParametersFunctionParameterMemberParserRuleCall_5_1_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
+		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
 
 		//members+=FunctionDefinitionMember*
-		public Assignment getMembersAssignment_9() { return cMembersAssignment_9; }
+		public Assignment getMembersAssignment_8() { return cMembersAssignment_8; }
 
 		//FunctionDefinitionMember
-		public RuleCall getMembersFunctionDefinitionMemberParserRuleCall_9_0() { return cMembersFunctionDefinitionMemberParserRuleCall_9_0; }
+		public RuleCall getMembersFunctionDefinitionMemberParserRuleCall_8_0() { return cMembersFunctionDefinitionMemberParserRuleCall_8_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 
 		//("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember))?
-		public Group getGroup_11() { return cGroup_11; }
+		public Group getGroup_10() { return cGroup_10; }
 
 		//"USES"
-		public Keyword getUSESKeyword_11_0() { return cUSESKeyword_11_0; }
+		public Keyword getUSESKeyword_10_0() { return cUSESKeyword_10_0; }
 
 		//uses+=FunctionUseMember
-		public Assignment getUsesAssignment_11_1() { return cUsesAssignment_11_1; }
+		public Assignment getUsesAssignment_10_1() { return cUsesAssignment_10_1; }
 
 		//FunctionUseMember
-		public RuleCall getUsesFunctionUseMemberParserRuleCall_11_1_0() { return cUsesFunctionUseMemberParserRuleCall_11_1_0; }
+		public RuleCall getUsesFunctionUseMemberParserRuleCall_10_1_0() { return cUsesFunctionUseMemberParserRuleCall_10_1_0; }
 
 		//"," uses+=FunctionUseMember
-		public Group getGroup_11_2() { return cGroup_11_2; }
+		public Group getGroup_10_2() { return cGroup_10_2; }
 
 		//","
-		public Keyword getCommaKeyword_11_2_0() { return cCommaKeyword_11_2_0; }
+		public Keyword getCommaKeyword_10_2_0() { return cCommaKeyword_10_2_0; }
 
 		//uses+=FunctionUseMember
-		public Assignment getUsesAssignment_11_2_1() { return cUsesAssignment_11_2_1; }
+		public Assignment getUsesAssignment_10_2_1() { return cUsesAssignment_10_2_1; }
 
 		//FunctionUseMember
-		public RuleCall getUsesFunctionUseMemberParserRuleCall_11_2_1_0() { return cUsesFunctionUseMemberParserRuleCall_11_2_1_0; }
+		public RuleCall getUsesFunctionUseMemberParserRuleCall_10_2_1_0() { return cUsesFunctionUseMemberParserRuleCall_10_2_1_0; }
 	}
 
 	public class FunctionUseMemberElements extends AbstractParserRuleElementFinder {
@@ -1372,7 +1375,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// a definition of a function
 	//FunctionDefinition:
 	//	{FunctionDefinition} "define" type=VariableType? name=ID "(" //		parameters+=FunctionParameterMember*
-	//	parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)* ")" "{"
+	//	(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
 	//	members+=FunctionDefinitionMember* "}" ("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember))?;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return (pFunctionDefinition != null) ? pFunctionDefinition : (pFunctionDefinition = new FunctionDefinitionElements());

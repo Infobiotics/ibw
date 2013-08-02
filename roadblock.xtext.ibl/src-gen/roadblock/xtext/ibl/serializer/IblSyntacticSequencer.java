@@ -62,7 +62,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     '->' | '<->'
+	 *     '<->' | '->'
 	 */
 	protected void emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

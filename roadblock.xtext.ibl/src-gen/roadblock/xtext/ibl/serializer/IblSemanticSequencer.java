@@ -161,8 +161,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         type=VariableType? 
 	 *         name=ID 
-	 *         parameters+=FunctionParameterMember 
-	 *         parameters+=FunctionParameterMember* 
+	 *         (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? 
 	 *         members+=FunctionDefinitionMember* 
 	 *         (uses+=FunctionUseMember uses+=FunctionUseMember)?
 	 *     )
