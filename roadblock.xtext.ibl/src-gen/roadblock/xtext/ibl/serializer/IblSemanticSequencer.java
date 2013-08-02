@@ -263,7 +263,11 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (qualifier=VariableQualifier? ((type=VariableType name=ID) | (collection=CollectionID type=VariableType name=ID)))
+	 *     (
+	 *         qualifier=VariableQualifier? 
+	 *         ((type=VariableType name=ID) | (collection=CollectionID type=VariableType name=ID)) 
+	 *         (constructor=ID (parameters+=VariableAssignment parameters+=VariableAssignment*)?)?
+	 *     )
 	 */
 	protected void sequence_VariableDeclaration(EObject context, VariableDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

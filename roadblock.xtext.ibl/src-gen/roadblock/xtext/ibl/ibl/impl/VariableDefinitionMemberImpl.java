@@ -4,6 +4,8 @@ package roadblock.xtext.ibl.ibl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
 
@@ -16,7 +18,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
  *
  * @generated
  */
-public class VariableDefinitionMemberImpl extends FunctionDefinitionMemberImpl implements VariableDefinitionMember
+public class VariableDefinitionMemberImpl extends MinimalEObjectImpl.Container implements VariableDefinitionMember
 {
   /**
    * <!-- begin-user-doc -->

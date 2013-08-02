@@ -21,9 +21,8 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'define'", "'{'", "'}'", "'('", "','", "')'", "'USES'", "':'", "'required'", "'returned'", "'optional'", "'<'", "'>'", "'observable'", "'.'", "'='", "'+'", "'-'", "'|'", "'ID'", "'URI'", "'DNA'", "'CHASSIS'", "'PROCESS'", "'LIST'", "'SET'", "'RULE'", "'->'", "'<->'", "'~'", "'import'", "'.*'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'define'", "'{'", "'}'", "'('", "','", "')'", "'USES'", "':'", "'required'", "'returned'", "'optional'", "'<'", "'>'", "'='", "'observable'", "'.'", "'+'", "'-'", "'|'", "'ID'", "'DNA'", "'CHASSIS'", "'PROCESS'", "'LIST'", "'SET'", "'RULE'", "'->'", "'<->'", "'~'", "'import'", "'.*'"
     };
-    public static final int T__42=42;
     public static final int RULE_ID=4;
     public static final int T__40=40;
     public static final int T__41=41;
@@ -172,7 +171,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==11||LA1_0==41) ) {
+                if ( (LA1_0==11||LA1_0==40) ) {
                     alt1=1;
                 }
 
@@ -445,7 +444,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( ((LA3_0>=30 && LA3_0<=34)) ) {
+            if ( ((LA3_0>=30 && LA3_0<=33)) ) {
                 alt3=1;
             }
             else if ( (LA3_0==RULE_ID) ) {
@@ -526,7 +525,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==RULE_ID||LA4_0==24||(LA4_0>=30 && LA4_0<=36)) ) {
+                if ( (LA4_0==RULE_ID||LA4_0==25||(LA4_0>=30 && LA4_0<=35)) ) {
                     alt4=1;
                 }
 
@@ -684,7 +683,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( ((LA5_0>=30 && LA5_0<=34)) ) {
+            if ( ((LA5_0>=30 && LA5_0<=33)) ) {
                 alt5=1;
             }
             else if ( (LA5_0==RULE_ID) ) {
@@ -863,7 +862,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==RULE_ID||LA7_0==24||(LA7_0>=30 && LA7_0<=37)) ) {
+                if ( (LA7_0==RULE_ID||LA7_0==25||(LA7_0>=30 && LA7_0<=36)) ) {
                     alt7=1;
                 }
 
@@ -1476,7 +1475,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionDefinitionMember"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:626:1: ruleFunctionDefinitionMember returns [EObject current=null] : (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDefinitionMember_2= ruleVariableDefinitionMember ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:626:1: ruleFunctionDefinitionMember returns [EObject current=null] : (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDeclaration_2= ruleVariableDeclaration ) ;
     public final EObject ruleFunctionDefinitionMember() throws RecognitionException {
         EObject current = null;
 
@@ -1484,19 +1483,19 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
         EObject this_VariableAssignment_1 = null;
 
-        EObject this_VariableDefinitionMember_2 = null;
+        EObject this_VariableDeclaration_2 = null;
 
 
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:629:28: ( (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDefinitionMember_2= ruleVariableDefinitionMember ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:630:1: (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDefinitionMember_2= ruleVariableDefinitionMember )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:629:28: ( (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDeclaration_2= ruleVariableDeclaration ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:630:1: (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDeclaration_2= ruleVariableDeclaration )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:630:1: (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDefinitionMember_2= ruleVariableDefinitionMember )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:630:1: (this_RuleDefinition_0= ruleRuleDefinition | this_VariableAssignment_1= ruleVariableAssignment | this_VariableDeclaration_2= ruleVariableDeclaration )
             int alt10=3;
             switch ( input.LA(1) ) {
-            case 37:
+            case 36:
                 {
                 alt10=1;
                 }
@@ -1505,11 +1504,11 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 {
                 int LA10_2 = input.LA(2);
 
-                if ( ((LA10_2>=25 && LA10_2<=26)) ) {
-                    alt10=2;
-                }
-                else if ( (LA10_2==RULE_ID) ) {
+                if ( (LA10_2==RULE_ID) ) {
                     alt10=3;
+                }
+                else if ( (LA10_2==24||LA10_2==26) ) {
+                    alt10=2;
                 }
                 else {
                     NoViableAltException nvae =
@@ -1519,14 +1518,13 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 }
                 }
                 break;
-            case 24:
+            case 25:
             case 30:
             case 31:
             case 32:
             case 33:
             case 34:
             case 35:
-            case 36:
                 {
                 alt10=3;
                 }
@@ -1576,18 +1574,18 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:651:5: this_VariableDefinitionMember_2= ruleVariableDefinitionMember
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:651:5: this_VariableDeclaration_2= ruleVariableDeclaration
                     {
                      
-                            newCompositeNode(grammarAccess.getFunctionDefinitionMemberAccess().getVariableDefinitionMemberParserRuleCall_2()); 
+                            newCompositeNode(grammarAccess.getFunctionDefinitionMemberAccess().getVariableDeclarationParserRuleCall_2()); 
                         
-                    pushFollow(FOLLOW_ruleVariableDefinitionMember_in_ruleFunctionDefinitionMember1341);
-                    this_VariableDefinitionMember_2=ruleVariableDefinitionMember();
+                    pushFollow(FOLLOW_ruleVariableDeclaration_in_ruleFunctionDefinitionMember1341);
+                    this_VariableDeclaration_2=ruleVariableDeclaration();
 
                     state._fsp--;
 
                      
-                            current = this_VariableDefinitionMember_2; 
+                            current = this_VariableDeclaration_2; 
                             afterParserOrEnumRuleCall();
                         
 
@@ -1729,7 +1727,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableDeclaration"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:706:1: ruleVariableDeclaration returns [EObject current=null] : ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:706:1: ruleVariableDeclaration returns [EObject current=null] : ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) (otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')' )? ) ;
     public final EObject ruleVariableDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -1737,6 +1735,11 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
         Token otherlv_5=null;
         Token otherlv_7=null;
         Token lv_name_8_0=null;
+        Token otherlv_9=null;
+        Token lv_constructor_10_0=null;
+        Token otherlv_11=null;
+        Token otherlv_13=null;
+        Token otherlv_15=null;
         EObject lv_qualifier_1_0 = null;
 
         EObject lv_type_2_0 = null;
@@ -1745,15 +1748,19 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
         EObject lv_type_6_0 = null;
 
+        EObject lv_parameters_12_0 = null;
+
+        EObject lv_parameters_14_0 = null;
+
 
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:709:28: ( ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:1: ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:709:28: ( ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) (otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')' )? ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:1: ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) (otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')' )? )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:1: ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:2: () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:1: ( () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) (otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')' )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:2: () ( (lv_qualifier_1_0= ruleVariableQualifier ) )? ( ( ( (lv_type_2_0= ruleVariableType ) ) ( (lv_name_3_0= RULE_ID ) ) ) | ( ( (lv_collection_4_0= ruleCollectionID ) ) otherlv_5= '<' ( (lv_type_6_0= ruleVariableType ) ) otherlv_7= '>' ( (lv_name_8_0= RULE_ID ) ) ) ) (otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')' )?
             {
             // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:710:2: ()
             // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:711:5: 
@@ -1770,7 +1777,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==24) ) {
+            if ( (LA11_0==25) ) {
                 alt11=1;
             }
             switch (alt11) {
@@ -1812,10 +1819,10 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==RULE_ID||(LA12_0>=30 && LA12_0<=34)) ) {
+            if ( (LA12_0==RULE_ID||(LA12_0>=30 && LA12_0<=33)) ) {
                 alt12=1;
             }
-            else if ( ((LA12_0>=35 && LA12_0<=36)) ) {
+            else if ( ((LA12_0>=34 && LA12_0<=35)) ) {
                 alt12=2;
             }
             else {
@@ -2005,6 +2012,168 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:833:4: (otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')' )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
+
+            if ( (LA15_0==24) ) {
+                alt15=1;
+            }
+            switch (alt15) {
+                case 1 :
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:833:6: otherlv_9= '=' ( (lv_constructor_10_0= RULE_ID ) ) otherlv_11= '(' ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )? otherlv_15= ')'
+                    {
+                    otherlv_9=(Token)match(input,24,FOLLOW_24_in_ruleVariableDeclaration1688); 
+
+                        	newLeafNode(otherlv_9, grammarAccess.getVariableDeclarationAccess().getEqualsSignKeyword_3_0());
+                        
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:837:1: ( (lv_constructor_10_0= RULE_ID ) )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:838:1: (lv_constructor_10_0= RULE_ID )
+                    {
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:838:1: (lv_constructor_10_0= RULE_ID )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:839:3: lv_constructor_10_0= RULE_ID
+                    {
+                    lv_constructor_10_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableDeclaration1705); 
+
+                    			newLeafNode(lv_constructor_10_0, grammarAccess.getVariableDeclarationAccess().getConstructorIDTerminalRuleCall_3_1_0()); 
+                    		
+
+                    	        if (current==null) {
+                    	            current = createModelElement(grammarAccess.getVariableDeclarationRule());
+                    	        }
+                           		setWithLastConsumed(
+                           			current, 
+                           			"constructor",
+                            		lv_constructor_10_0, 
+                            		"ID");
+                    	    
+
+                    }
+
+
+                    }
+
+                    otherlv_11=(Token)match(input,14,FOLLOW_14_in_ruleVariableDeclaration1722); 
+
+                        	newLeafNode(otherlv_11, grammarAccess.getVariableDeclarationAccess().getLeftParenthesisKeyword_3_2());
+                        
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:859:1: ( ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )* )?
+                    int alt14=2;
+                    int LA14_0 = input.LA(1);
+
+                    if ( (LA14_0==RULE_ID) ) {
+                        alt14=1;
+                    }
+                    switch (alt14) {
+                        case 1 :
+                            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:859:2: ( (lv_parameters_12_0= ruleVariableAssignment ) ) (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )*
+                            {
+                            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:859:2: ( (lv_parameters_12_0= ruleVariableAssignment ) )
+                            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:860:1: (lv_parameters_12_0= ruleVariableAssignment )
+                            {
+                            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:860:1: (lv_parameters_12_0= ruleVariableAssignment )
+                            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:861:3: lv_parameters_12_0= ruleVariableAssignment
+                            {
+                             
+                            	        newCompositeNode(grammarAccess.getVariableDeclarationAccess().getParametersVariableAssignmentParserRuleCall_3_3_0_0()); 
+                            	    
+                            pushFollow(FOLLOW_ruleVariableAssignment_in_ruleVariableDeclaration1744);
+                            lv_parameters_12_0=ruleVariableAssignment();
+
+                            state._fsp--;
+
+
+                            	        if (current==null) {
+                            	            current = createModelElementForParent(grammarAccess.getVariableDeclarationRule());
+                            	        }
+                                   		add(
+                                   			current, 
+                                   			"parameters",
+                                    		lv_parameters_12_0, 
+                                    		"VariableAssignment");
+                            	        afterParserOrEnumRuleCall();
+                            	    
+
+                            }
+
+
+                            }
+
+                            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:877:2: (otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) ) )*
+                            loop13:
+                            do {
+                                int alt13=2;
+                                int LA13_0 = input.LA(1);
+
+                                if ( (LA13_0==15) ) {
+                                    alt13=1;
+                                }
+
+
+                                switch (alt13) {
+                            	case 1 :
+                            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:877:4: otherlv_13= ',' ( (lv_parameters_14_0= ruleVariableAssignment ) )
+                            	    {
+                            	    otherlv_13=(Token)match(input,15,FOLLOW_15_in_ruleVariableDeclaration1757); 
+
+                            	        	newLeafNode(otherlv_13, grammarAccess.getVariableDeclarationAccess().getCommaKeyword_3_3_1_0());
+                            	        
+                            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:881:1: ( (lv_parameters_14_0= ruleVariableAssignment ) )
+                            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:882:1: (lv_parameters_14_0= ruleVariableAssignment )
+                            	    {
+                            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:882:1: (lv_parameters_14_0= ruleVariableAssignment )
+                            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:883:3: lv_parameters_14_0= ruleVariableAssignment
+                            	    {
+                            	     
+                            	    	        newCompositeNode(grammarAccess.getVariableDeclarationAccess().getParametersVariableAssignmentParserRuleCall_3_3_1_1_0()); 
+                            	    	    
+                            	    pushFollow(FOLLOW_ruleVariableAssignment_in_ruleVariableDeclaration1778);
+                            	    lv_parameters_14_0=ruleVariableAssignment();
+
+                            	    state._fsp--;
+
+
+                            	    	        if (current==null) {
+                            	    	            current = createModelElementForParent(grammarAccess.getVariableDeclarationRule());
+                            	    	        }
+                            	           		add(
+                            	           			current, 
+                            	           			"parameters",
+                            	            		lv_parameters_14_0, 
+                            	            		"VariableAssignment");
+                            	    	        afterParserOrEnumRuleCall();
+                            	    	    
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop13;
+                                }
+                            } while (true);
+
+
+                            }
+                            break;
+
+                    }
+
+                    otherlv_15=(Token)match(input,16,FOLLOW_16_in_ruleVariableDeclaration1794); 
+
+                        	newLeafNode(otherlv_15, grammarAccess.getVariableDeclarationAccess().getRightParenthesisKeyword_3_4());
+                        
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -2026,7 +2195,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVariableType"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:841:1: entryRuleVariableType returns [EObject current=null] : iv_ruleVariableType= ruleVariableType EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:911:1: entryRuleVariableType returns [EObject current=null] : iv_ruleVariableType= ruleVariableType EOF ;
     public final EObject entryRuleVariableType() throws RecognitionException {
         EObject current = null;
 
@@ -2034,17 +2203,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:842:2: (iv_ruleVariableType= ruleVariableType EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:843:2: iv_ruleVariableType= ruleVariableType EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:912:2: (iv_ruleVariableType= ruleVariableType EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:913:2: iv_ruleVariableType= ruleVariableType EOF
             {
              newCompositeNode(grammarAccess.getVariableTypeRule()); 
-            pushFollow(FOLLOW_ruleVariableType_in_entryRuleVariableType1711);
+            pushFollow(FOLLOW_ruleVariableType_in_entryRuleVariableType1832);
             iv_ruleVariableType=ruleVariableType();
 
             state._fsp--;
 
              current =iv_ruleVariableType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableType1721); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableType1842); 
 
             }
 
@@ -2062,7 +2231,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableType"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:850:1: ruleVariableType returns [EObject current=null] : ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:920:1: ruleVariableType returns [EObject current=null] : ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) ) ;
     public final EObject ruleVariableType() throws RecognitionException {
         EObject current = null;
 
@@ -2073,14 +2242,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:853:28: ( ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:854:1: ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:923:28: ( ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:924:1: ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:854:1: ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:854:2: () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:924:1: ( () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:924:2: () ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:854:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:855:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:924:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:925:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2090,36 +2259,36 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:860:2: ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:861:1: ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:930:2: ( ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:931:1: ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:861:1: ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:862:1: (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:931:1: ( (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:932:1: (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:862:1: (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID )
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:932:1: (lv_primitive_1_1= rulePrimitiveVariableType | lv_primitive_1_2= RULE_ID )
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( ((LA13_0>=30 && LA13_0<=34)) ) {
-                alt13=1;
+            if ( ((LA16_0>=30 && LA16_0<=33)) ) {
+                alt16=1;
             }
-            else if ( (LA13_0==RULE_ID) ) {
-                alt13=2;
+            else if ( (LA16_0==RULE_ID) ) {
+                alt16=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 13, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
-            switch (alt13) {
+            switch (alt16) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:863:3: lv_primitive_1_1= rulePrimitiveVariableType
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:933:3: lv_primitive_1_1= rulePrimitiveVariableType
                     {
                      
                     	        newCompositeNode(grammarAccess.getVariableTypeAccess().getPrimitivePrimitiveVariableTypeParserRuleCall_1_0_0()); 
                     	    
-                    pushFollow(FOLLOW_rulePrimitiveVariableType_in_ruleVariableType1778);
+                    pushFollow(FOLLOW_rulePrimitiveVariableType_in_ruleVariableType1899);
                     lv_primitive_1_1=rulePrimitiveVariableType();
 
                     state._fsp--;
@@ -2139,9 +2308,9 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:878:8: lv_primitive_1_2= RULE_ID
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:948:8: lv_primitive_1_2= RULE_ID
                     {
-                    lv_primitive_1_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableType1793); 
+                    lv_primitive_1_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableType1914); 
 
                     			newLeafNode(lv_primitive_1_2, grammarAccess.getVariableTypeAccess().getPrimitiveIDTerminalRuleCall_1_0_1()); 
                     		
@@ -2188,7 +2357,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVariableQualifier"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:904:1: entryRuleVariableQualifier returns [EObject current=null] : iv_ruleVariableQualifier= ruleVariableQualifier EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:974:1: entryRuleVariableQualifier returns [EObject current=null] : iv_ruleVariableQualifier= ruleVariableQualifier EOF ;
     public final EObject entryRuleVariableQualifier() throws RecognitionException {
         EObject current = null;
 
@@ -2196,17 +2365,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:905:2: (iv_ruleVariableQualifier= ruleVariableQualifier EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:906:2: iv_ruleVariableQualifier= ruleVariableQualifier EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:975:2: (iv_ruleVariableQualifier= ruleVariableQualifier EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:976:2: iv_ruleVariableQualifier= ruleVariableQualifier EOF
             {
              newCompositeNode(grammarAccess.getVariableQualifierRule()); 
-            pushFollow(FOLLOW_ruleVariableQualifier_in_entryRuleVariableQualifier1837);
+            pushFollow(FOLLOW_ruleVariableQualifier_in_entryRuleVariableQualifier1958);
             iv_ruleVariableQualifier=ruleVariableQualifier();
 
             state._fsp--;
 
              current =iv_ruleVariableQualifier; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableQualifier1847); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableQualifier1968); 
 
             }
 
@@ -2224,7 +2393,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableQualifier"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:913:1: ruleVariableQualifier returns [EObject current=null] : ( () otherlv_1= 'observable' ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:983:1: ruleVariableQualifier returns [EObject current=null] : ( () otherlv_1= 'observable' ) ;
     public final EObject ruleVariableQualifier() throws RecognitionException {
         EObject current = null;
 
@@ -2233,14 +2402,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:916:28: ( ( () otherlv_1= 'observable' ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:917:1: ( () otherlv_1= 'observable' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:986:28: ( ( () otherlv_1= 'observable' ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:987:1: ( () otherlv_1= 'observable' )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:917:1: ( () otherlv_1= 'observable' )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:917:2: () otherlv_1= 'observable'
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:987:1: ( () otherlv_1= 'observable' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:987:2: () otherlv_1= 'observable'
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:917:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:918:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:987:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:988:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2250,7 +2419,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,24,FOLLOW_24_in_ruleVariableQualifier1893); 
+            otherlv_1=(Token)match(input,25,FOLLOW_25_in_ruleVariableQualifier2014); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getVariableQualifierAccess().getObservableKeyword_1());
                 
@@ -2275,7 +2444,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVariableAttribute"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:935:1: entryRuleVariableAttribute returns [EObject current=null] : iv_ruleVariableAttribute= ruleVariableAttribute EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1005:1: entryRuleVariableAttribute returns [EObject current=null] : iv_ruleVariableAttribute= ruleVariableAttribute EOF ;
     public final EObject entryRuleVariableAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2283,17 +2452,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:936:2: (iv_ruleVariableAttribute= ruleVariableAttribute EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:937:2: iv_ruleVariableAttribute= ruleVariableAttribute EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1006:2: (iv_ruleVariableAttribute= ruleVariableAttribute EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1007:2: iv_ruleVariableAttribute= ruleVariableAttribute EOF
             {
              newCompositeNode(grammarAccess.getVariableAttributeRule()); 
-            pushFollow(FOLLOW_ruleVariableAttribute_in_entryRuleVariableAttribute1929);
+            pushFollow(FOLLOW_ruleVariableAttribute_in_entryRuleVariableAttribute2050);
             iv_ruleVariableAttribute=ruleVariableAttribute();
 
             state._fsp--;
 
              current =iv_ruleVariableAttribute; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableAttribute1939); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableAttribute2060); 
 
             }
 
@@ -2311,7 +2480,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableAttribute"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:944:1: ruleVariableAttribute returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1014:1: ruleVariableAttribute returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? ) ;
     public final EObject ruleVariableAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -2322,14 +2491,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:947:28: ( ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:948:1: ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1017:28: ( ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1018:1: ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:948:1: ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:948:2: () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )?
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1018:1: ( () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1018:2: () ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )?
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:948:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:949:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1018:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1019:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2339,13 +2508,13 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:954:2: ( (lv_name_1_0= RULE_ID ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:955:1: (lv_name_1_0= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1024:2: ( (lv_name_1_0= RULE_ID ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1025:1: (lv_name_1_0= RULE_ID )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:955:1: (lv_name_1_0= RULE_ID )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:956:3: lv_name_1_0= RULE_ID
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1025:1: (lv_name_1_0= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1026:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableAttribute1990); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableAttribute2111); 
 
             			newLeafNode(lv_name_1_0, grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
             		
@@ -2365,28 +2534,28 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:972:2: (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1042:2: (otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) ) )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA14_0==25) ) {
-                alt14=1;
+            if ( (LA17_0==26) ) {
+                alt17=1;
             }
-            switch (alt14) {
+            switch (alt17) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:972:4: otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1042:4: otherlv_2= '.' ( (lv_attribute_3_0= RULE_ID ) )
                     {
-                    otherlv_2=(Token)match(input,25,FOLLOW_25_in_ruleVariableAttribute2008); 
+                    otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleVariableAttribute2129); 
 
                         	newLeafNode(otherlv_2, grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0());
                         
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:976:1: ( (lv_attribute_3_0= RULE_ID ) )
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:977:1: (lv_attribute_3_0= RULE_ID )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1046:1: ( (lv_attribute_3_0= RULE_ID ) )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1047:1: (lv_attribute_3_0= RULE_ID )
                     {
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:977:1: (lv_attribute_3_0= RULE_ID )
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:978:3: lv_attribute_3_0= RULE_ID
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1047:1: (lv_attribute_3_0= RULE_ID )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1048:3: lv_attribute_3_0= RULE_ID
                     {
-                    lv_attribute_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableAttribute2025); 
+                    lv_attribute_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleVariableAttribute2146); 
 
                     			newLeafNode(lv_attribute_3_0, grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_2_1_0()); 
                     		
@@ -2433,7 +2602,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVariableAssignment"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1002:1: entryRuleVariableAssignment returns [EObject current=null] : iv_ruleVariableAssignment= ruleVariableAssignment EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1072:1: entryRuleVariableAssignment returns [EObject current=null] : iv_ruleVariableAssignment= ruleVariableAssignment EOF ;
     public final EObject entryRuleVariableAssignment() throws RecognitionException {
         EObject current = null;
 
@@ -2441,17 +2610,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1003:2: (iv_ruleVariableAssignment= ruleVariableAssignment EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1004:2: iv_ruleVariableAssignment= ruleVariableAssignment EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1073:2: (iv_ruleVariableAssignment= ruleVariableAssignment EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1074:2: iv_ruleVariableAssignment= ruleVariableAssignment EOF
             {
              newCompositeNode(grammarAccess.getVariableAssignmentRule()); 
-            pushFollow(FOLLOW_ruleVariableAssignment_in_entryRuleVariableAssignment2068);
+            pushFollow(FOLLOW_ruleVariableAssignment_in_entryRuleVariableAssignment2189);
             iv_ruleVariableAssignment=ruleVariableAssignment();
 
             state._fsp--;
 
              current =iv_ruleVariableAssignment; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableAssignment2078); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableAssignment2199); 
 
             }
 
@@ -2469,7 +2638,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableAssignment"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1011:1: ruleVariableAssignment returns [EObject current=null] : ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1081:1: ruleVariableAssignment returns [EObject current=null] : ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) ) ;
     public final EObject ruleVariableAssignment() throws RecognitionException {
         EObject current = null;
 
@@ -2482,14 +2651,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1014:28: ( ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1015:1: ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1084:28: ( ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1085:1: ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1015:1: ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1015:2: () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1085:1: ( () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1085:2: () ( (lv_variable_1_0= ruleVariableAttribute ) ) otherlv_2= '=' ( (lv_expression_3_0= ruleVariableExpression ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1015:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1016:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1085:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1086:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2499,16 +2668,16 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1021:2: ( (lv_variable_1_0= ruleVariableAttribute ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1022:1: (lv_variable_1_0= ruleVariableAttribute )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1091:2: ( (lv_variable_1_0= ruleVariableAttribute ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1092:1: (lv_variable_1_0= ruleVariableAttribute )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1022:1: (lv_variable_1_0= ruleVariableAttribute )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1023:3: lv_variable_1_0= ruleVariableAttribute
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1092:1: (lv_variable_1_0= ruleVariableAttribute )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1093:3: lv_variable_1_0= ruleVariableAttribute
             {
              
             	        newCompositeNode(grammarAccess.getVariableAssignmentAccess().getVariableVariableAttributeParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleVariableAttribute_in_ruleVariableAssignment2133);
+            pushFollow(FOLLOW_ruleVariableAttribute_in_ruleVariableAssignment2254);
             lv_variable_1_0=ruleVariableAttribute();
 
             state._fsp--;
@@ -2530,20 +2699,20 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleVariableAssignment2145); 
+            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleVariableAssignment2266); 
 
                 	newLeafNode(otherlv_2, grammarAccess.getVariableAssignmentAccess().getEqualsSignKeyword_2());
                 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1043:1: ( (lv_expression_3_0= ruleVariableExpression ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1044:1: (lv_expression_3_0= ruleVariableExpression )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1113:1: ( (lv_expression_3_0= ruleVariableExpression ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1114:1: (lv_expression_3_0= ruleVariableExpression )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1044:1: (lv_expression_3_0= ruleVariableExpression )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1045:3: lv_expression_3_0= ruleVariableExpression
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1114:1: (lv_expression_3_0= ruleVariableExpression )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1115:3: lv_expression_3_0= ruleVariableExpression
             {
              
             	        newCompositeNode(grammarAccess.getVariableAssignmentAccess().getExpressionVariableExpressionParserRuleCall_3_0()); 
             	    
-            pushFollow(FOLLOW_ruleVariableExpression_in_ruleVariableAssignment2166);
+            pushFollow(FOLLOW_ruleVariableExpression_in_ruleVariableAssignment2287);
             lv_expression_3_0=ruleVariableExpression();
 
             state._fsp--;
@@ -2586,7 +2755,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVariableExpression"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1069:1: entryRuleVariableExpression returns [EObject current=null] : iv_ruleVariableExpression= ruleVariableExpression EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1139:1: entryRuleVariableExpression returns [EObject current=null] : iv_ruleVariableExpression= ruleVariableExpression EOF ;
     public final EObject entryRuleVariableExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2594,17 +2763,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1070:2: (iv_ruleVariableExpression= ruleVariableExpression EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1071:2: iv_ruleVariableExpression= ruleVariableExpression EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1140:2: (iv_ruleVariableExpression= ruleVariableExpression EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1141:2: iv_ruleVariableExpression= ruleVariableExpression EOF
             {
              newCompositeNode(grammarAccess.getVariableExpressionRule()); 
-            pushFollow(FOLLOW_ruleVariableExpression_in_entryRuleVariableExpression2202);
+            pushFollow(FOLLOW_ruleVariableExpression_in_entryRuleVariableExpression2323);
             iv_ruleVariableExpression=ruleVariableExpression();
 
             state._fsp--;
 
              current =iv_ruleVariableExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableExpression2212); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableExpression2333); 
 
             }
 
@@ -2622,7 +2791,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableExpression"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1078:1: ruleVariableExpression returns [EObject current=null] : ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1148:1: ruleVariableExpression returns [EObject current=null] : ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* ) ;
     public final EObject ruleVariableExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2634,14 +2803,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1081:28: ( ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1082:1: ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1151:28: ( ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1152:1: ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1082:1: ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1082:2: () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )*
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1152:1: ( () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )* )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1152:2: () ( (lv_members_1_0= ruleVariableAttribute ) ) ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )*
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1082:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1083:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1152:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1153:5: 
             {
 
                     current = forceCreateModelElement(
@@ -2651,16 +2820,16 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1088:2: ( (lv_members_1_0= ruleVariableAttribute ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1089:1: (lv_members_1_0= ruleVariableAttribute )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1158:2: ( (lv_members_1_0= ruleVariableAttribute ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1159:1: (lv_members_1_0= ruleVariableAttribute )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1089:1: (lv_members_1_0= ruleVariableAttribute )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1090:3: lv_members_1_0= ruleVariableAttribute
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1159:1: (lv_members_1_0= ruleVariableAttribute )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1160:3: lv_members_1_0= ruleVariableAttribute
             {
              
             	        newCompositeNode(grammarAccess.getVariableExpressionAccess().getMembersVariableAttributeParserRuleCall_1_0()); 
             	    
-            pushFollow(FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2267);
+            pushFollow(FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2388);
             lv_members_1_0=ruleVariableAttribute();
 
             state._fsp--;
@@ -2682,25 +2851,25 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1106:2: ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )*
-            loop15:
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1176:2: ( ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) ) )*
+            loop18:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( ((LA15_0>=27 && LA15_0<=29)) ) {
-                    alt15=1;
+                if ( ((LA18_0>=27 && LA18_0<=29)) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt18) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1107:5: ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1177:5: ruleVariableExpressionOperator ( (lv_members_3_0= ruleVariableAttribute ) )
             	    {
             	     
             	            newCompositeNode(grammarAccess.getVariableExpressionAccess().getVariableExpressionOperatorParserRuleCall_2_0()); 
             	        
-            	    pushFollow(FOLLOW_ruleVariableExpressionOperator_in_ruleVariableExpression2284);
+            	    pushFollow(FOLLOW_ruleVariableExpressionOperator_in_ruleVariableExpression2405);
             	    ruleVariableExpressionOperator();
 
             	    state._fsp--;
@@ -2708,16 +2877,16 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             	     
             	            afterParserOrEnumRuleCall();
             	        
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1114:1: ( (lv_members_3_0= ruleVariableAttribute ) )
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1115:1: (lv_members_3_0= ruleVariableAttribute )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1184:1: ( (lv_members_3_0= ruleVariableAttribute ) )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1185:1: (lv_members_3_0= ruleVariableAttribute )
             	    {
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1115:1: (lv_members_3_0= ruleVariableAttribute )
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1116:3: lv_members_3_0= ruleVariableAttribute
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1185:1: (lv_members_3_0= ruleVariableAttribute )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1186:3: lv_members_3_0= ruleVariableAttribute
             	    {
             	     
             	    	        newCompositeNode(grammarAccess.getVariableExpressionAccess().getMembersVariableAttributeParserRuleCall_2_1_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2304);
+            	    pushFollow(FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2425);
             	    lv_members_3_0=ruleVariableAttribute();
 
             	    state._fsp--;
@@ -2744,7 +2913,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop18;
                 }
             } while (true);
 
@@ -2769,7 +2938,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVariableExpressionOperator"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1140:1: entryRuleVariableExpressionOperator returns [String current=null] : iv_ruleVariableExpressionOperator= ruleVariableExpressionOperator EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1210:1: entryRuleVariableExpressionOperator returns [String current=null] : iv_ruleVariableExpressionOperator= ruleVariableExpressionOperator EOF ;
     public final String entryRuleVariableExpressionOperator() throws RecognitionException {
         String current = null;
 
@@ -2777,17 +2946,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1141:2: (iv_ruleVariableExpressionOperator= ruleVariableExpressionOperator EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1142:2: iv_ruleVariableExpressionOperator= ruleVariableExpressionOperator EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1211:2: (iv_ruleVariableExpressionOperator= ruleVariableExpressionOperator EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1212:2: iv_ruleVariableExpressionOperator= ruleVariableExpressionOperator EOF
             {
              newCompositeNode(grammarAccess.getVariableExpressionOperatorRule()); 
-            pushFollow(FOLLOW_ruleVariableExpressionOperator_in_entryRuleVariableExpressionOperator2343);
+            pushFollow(FOLLOW_ruleVariableExpressionOperator_in_entryRuleVariableExpressionOperator2464);
             iv_ruleVariableExpressionOperator=ruleVariableExpressionOperator();
 
             state._fsp--;
 
              current =iv_ruleVariableExpressionOperator.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableExpressionOperator2354); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVariableExpressionOperator2475); 
 
             }
 
@@ -2805,7 +2974,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableExpressionOperator"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1149:1: ruleVariableExpressionOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '+' | kw= '-' | kw= '|' ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1219:1: ruleVariableExpressionOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '+' | kw= '-' | kw= '|' ) ;
     public final AntlrDatatypeRuleToken ruleVariableExpressionOperator() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2814,39 +2983,39 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1152:28: ( (kw= '+' | kw= '-' | kw= '|' ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1153:1: (kw= '+' | kw= '-' | kw= '|' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1222:28: ( (kw= '+' | kw= '-' | kw= '|' ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1223:1: (kw= '+' | kw= '-' | kw= '|' )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1153:1: (kw= '+' | kw= '-' | kw= '|' )
-            int alt16=3;
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1223:1: (kw= '+' | kw= '-' | kw= '|' )
+            int alt19=3;
             switch ( input.LA(1) ) {
             case 27:
                 {
-                alt16=1;
+                alt19=1;
                 }
                 break;
             case 28:
                 {
-                alt16=2;
+                alt19=2;
                 }
                 break;
             case 29:
                 {
-                alt16=3;
+                alt19=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt16) {
+            switch (alt19) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1154:2: kw= '+'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1224:2: kw= '+'
                     {
-                    kw=(Token)match(input,27,FOLLOW_27_in_ruleVariableExpressionOperator2392); 
+                    kw=(Token)match(input,27,FOLLOW_27_in_ruleVariableExpressionOperator2513); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getVariableExpressionOperatorAccess().getPlusSignKeyword_0()); 
@@ -2855,9 +3024,9 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1161:2: kw= '-'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1231:2: kw= '-'
                     {
-                    kw=(Token)match(input,28,FOLLOW_28_in_ruleVariableExpressionOperator2411); 
+                    kw=(Token)match(input,28,FOLLOW_28_in_ruleVariableExpressionOperator2532); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getVariableExpressionOperatorAccess().getHyphenMinusKeyword_1()); 
@@ -2866,9 +3035,9 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1168:2: kw= '|'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1238:2: kw= '|'
                     {
-                    kw=(Token)match(input,29,FOLLOW_29_in_ruleVariableExpressionOperator2430); 
+                    kw=(Token)match(input,29,FOLLOW_29_in_ruleVariableExpressionOperator2551); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getVariableExpressionOperatorAccess().getVerticalLineKeyword_2()); 
@@ -2897,7 +3066,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimitiveVariableType"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1181:1: entryRulePrimitiveVariableType returns [String current=null] : iv_rulePrimitiveVariableType= rulePrimitiveVariableType EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1251:1: entryRulePrimitiveVariableType returns [String current=null] : iv_rulePrimitiveVariableType= rulePrimitiveVariableType EOF ;
     public final String entryRulePrimitiveVariableType() throws RecognitionException {
         String current = null;
 
@@ -2905,17 +3074,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1182:2: (iv_rulePrimitiveVariableType= rulePrimitiveVariableType EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1183:2: iv_rulePrimitiveVariableType= rulePrimitiveVariableType EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1252:2: (iv_rulePrimitiveVariableType= rulePrimitiveVariableType EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1253:2: iv_rulePrimitiveVariableType= rulePrimitiveVariableType EOF
             {
              newCompositeNode(grammarAccess.getPrimitiveVariableTypeRule()); 
-            pushFollow(FOLLOW_rulePrimitiveVariableType_in_entryRulePrimitiveVariableType2471);
+            pushFollow(FOLLOW_rulePrimitiveVariableType_in_entryRulePrimitiveVariableType2592);
             iv_rulePrimitiveVariableType=rulePrimitiveVariableType();
 
             state._fsp--;
 
              current =iv_rulePrimitiveVariableType.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveVariableType2482); 
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrimitiveVariableType2603); 
 
             }
 
@@ -2933,7 +3102,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimitiveVariableType"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1190:1: rulePrimitiveVariableType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'ID' | kw= 'URI' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1260:1: rulePrimitiveVariableType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'ID' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' ) ;
     public final AntlrDatatypeRuleToken rulePrimitiveVariableType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -2942,49 +3111,44 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1193:28: ( (kw= 'ID' | kw= 'URI' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1194:1: (kw= 'ID' | kw= 'URI' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1263:28: ( (kw= 'ID' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1264:1: (kw= 'ID' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1194:1: (kw= 'ID' | kw= 'URI' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' )
-            int alt17=5;
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1264:1: (kw= 'ID' | kw= 'DNA' | kw= 'CHASSIS' | kw= 'PROCESS' )
+            int alt20=4;
             switch ( input.LA(1) ) {
             case 30:
                 {
-                alt17=1;
+                alt20=1;
                 }
                 break;
             case 31:
                 {
-                alt17=2;
+                alt20=2;
                 }
                 break;
             case 32:
                 {
-                alt17=3;
+                alt20=3;
                 }
                 break;
             case 33:
                 {
-                alt17=4;
-                }
-                break;
-            case 34:
-                {
-                alt17=5;
+                alt20=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt17) {
+            switch (alt20) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1195:2: kw= 'ID'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1265:2: kw= 'ID'
                     {
-                    kw=(Token)match(input,30,FOLLOW_30_in_rulePrimitiveVariableType2520); 
+                    kw=(Token)match(input,30,FOLLOW_30_in_rulePrimitiveVariableType2641); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getIDKeyword_0()); 
@@ -2993,45 +3157,34 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1202:2: kw= 'URI'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1272:2: kw= 'DNA'
                     {
-                    kw=(Token)match(input,31,FOLLOW_31_in_rulePrimitiveVariableType2539); 
+                    kw=(Token)match(input,31,FOLLOW_31_in_rulePrimitiveVariableType2660); 
 
                             current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getURIKeyword_1()); 
+                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getDNAKeyword_1()); 
                         
 
                     }
                     break;
                 case 3 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1209:2: kw= 'DNA'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1279:2: kw= 'CHASSIS'
                     {
-                    kw=(Token)match(input,32,FOLLOW_32_in_rulePrimitiveVariableType2558); 
+                    kw=(Token)match(input,32,FOLLOW_32_in_rulePrimitiveVariableType2679); 
 
                             current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getDNAKeyword_2()); 
+                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getCHASSISKeyword_2()); 
                         
 
                     }
                     break;
                 case 4 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1216:2: kw= 'CHASSIS'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1286:2: kw= 'PROCESS'
                     {
-                    kw=(Token)match(input,33,FOLLOW_33_in_rulePrimitiveVariableType2577); 
+                    kw=(Token)match(input,33,FOLLOW_33_in_rulePrimitiveVariableType2698); 
 
                             current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getCHASSISKeyword_3()); 
-                        
-
-                    }
-                    break;
-                case 5 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1223:2: kw= 'PROCESS'
-                    {
-                    kw=(Token)match(input,34,FOLLOW_34_in_rulePrimitiveVariableType2596); 
-
-                            current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getPROCESSKeyword_4()); 
+                            newLeafNode(kw, grammarAccess.getPrimitiveVariableTypeAccess().getPROCESSKeyword_3()); 
                         
 
                     }
@@ -3057,7 +3210,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCollectionID"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1236:1: entryRuleCollectionID returns [String current=null] : iv_ruleCollectionID= ruleCollectionID EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1299:1: entryRuleCollectionID returns [String current=null] : iv_ruleCollectionID= ruleCollectionID EOF ;
     public final String entryRuleCollectionID() throws RecognitionException {
         String current = null;
 
@@ -3065,17 +3218,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1237:2: (iv_ruleCollectionID= ruleCollectionID EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1238:2: iv_ruleCollectionID= ruleCollectionID EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1300:2: (iv_ruleCollectionID= ruleCollectionID EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1301:2: iv_ruleCollectionID= ruleCollectionID EOF
             {
              newCompositeNode(grammarAccess.getCollectionIDRule()); 
-            pushFollow(FOLLOW_ruleCollectionID_in_entryRuleCollectionID2637);
+            pushFollow(FOLLOW_ruleCollectionID_in_entryRuleCollectionID2739);
             iv_ruleCollectionID=ruleCollectionID();
 
             state._fsp--;
 
              current =iv_ruleCollectionID.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCollectionID2648); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCollectionID2750); 
 
             }
 
@@ -3093,7 +3246,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCollectionID"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1245:1: ruleCollectionID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'LIST' | kw= 'SET' ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1308:1: ruleCollectionID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'LIST' | kw= 'SET' ) ;
     public final AntlrDatatypeRuleToken ruleCollectionID() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3102,30 +3255,30 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1248:28: ( (kw= 'LIST' | kw= 'SET' ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1249:1: (kw= 'LIST' | kw= 'SET' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1311:28: ( (kw= 'LIST' | kw= 'SET' ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1312:1: (kw= 'LIST' | kw= 'SET' )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1249:1: (kw= 'LIST' | kw= 'SET' )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1312:1: (kw= 'LIST' | kw= 'SET' )
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA18_0==35) ) {
-                alt18=1;
+            if ( (LA21_0==34) ) {
+                alt21=1;
             }
-            else if ( (LA18_0==36) ) {
-                alt18=2;
+            else if ( (LA21_0==35) ) {
+                alt21=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
-            switch (alt18) {
+            switch (alt21) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1250:2: kw= 'LIST'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1313:2: kw= 'LIST'
                     {
-                    kw=(Token)match(input,35,FOLLOW_35_in_ruleCollectionID2686); 
+                    kw=(Token)match(input,34,FOLLOW_34_in_ruleCollectionID2788); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getCollectionIDAccess().getLISTKeyword_0()); 
@@ -3134,9 +3287,9 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1257:2: kw= 'SET'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1320:2: kw= 'SET'
                     {
-                    kw=(Token)match(input,36,FOLLOW_36_in_ruleCollectionID2705); 
+                    kw=(Token)match(input,35,FOLLOW_35_in_ruleCollectionID2807); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getCollectionIDAccess().getSETKeyword_1()); 
@@ -3165,7 +3318,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRuleDefinition"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1270:1: entryRuleRuleDefinition returns [EObject current=null] : iv_ruleRuleDefinition= ruleRuleDefinition EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1333:1: entryRuleRuleDefinition returns [EObject current=null] : iv_ruleRuleDefinition= ruleRuleDefinition EOF ;
     public final EObject entryRuleRuleDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3173,17 +3326,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1271:2: (iv_ruleRuleDefinition= ruleRuleDefinition EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1272:2: iv_ruleRuleDefinition= ruleRuleDefinition EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1334:2: (iv_ruleRuleDefinition= ruleRuleDefinition EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1335:2: iv_ruleRuleDefinition= ruleRuleDefinition EOF
             {
              newCompositeNode(grammarAccess.getRuleDefinitionRule()); 
-            pushFollow(FOLLOW_ruleRuleDefinition_in_entryRuleRuleDefinition2745);
+            pushFollow(FOLLOW_ruleRuleDefinition_in_entryRuleRuleDefinition2847);
             iv_ruleRuleDefinition=ruleRuleDefinition();
 
             state._fsp--;
 
              current =iv_ruleRuleDefinition; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRuleDefinition2755); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRuleDefinition2857); 
 
             }
 
@@ -3201,7 +3354,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRuleDefinition"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1279:1: ruleRuleDefinition returns [EObject current=null] : ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1342:1: ruleRuleDefinition returns [EObject current=null] : ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? ) ;
     public final EObject ruleRuleDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -3224,14 +3377,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1282:28: ( ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1283:1: ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1345:28: ( ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1346:1: ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1283:1: ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1283:2: () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )?
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1346:1: ( () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1346:2: () otherlv_1= 'RULE' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )? (otherlv_7= '->' | otherlv_8= '<->' ) ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )?
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1283:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1284:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1346:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1347:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3241,17 +3394,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,37,FOLLOW_37_in_ruleRuleDefinition2801); 
+            otherlv_1=(Token)match(input,36,FOLLOW_36_in_ruleRuleDefinition2903); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getRuleDefinitionAccess().getRULEKeyword_1());
                 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1293:1: ( (lv_name_2_0= RULE_ID ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1294:1: (lv_name_2_0= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1356:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1357:1: (lv_name_2_0= RULE_ID )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1294:1: (lv_name_2_0= RULE_ID )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1295:3: lv_name_2_0= RULE_ID
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1357:1: (lv_name_2_0= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1358:3: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuleDefinition2818); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuleDefinition2920); 
 
             			newLeafNode(lv_name_2_0, grammarAccess.getRuleDefinitionAccess().getNameIDTerminalRuleCall_2_0()); 
             		
@@ -3271,31 +3424,31 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,18,FOLLOW_18_in_ruleRuleDefinition2835); 
+            otherlv_3=(Token)match(input,18,FOLLOW_18_in_ruleRuleDefinition2937); 
 
                 	newLeafNode(otherlv_3, grammarAccess.getRuleDefinitionAccess().getColonKeyword_3());
                 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1315:1: ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1378:1: ( ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )* )?
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA20_0==RULE_ID) ) {
-                alt20=1;
+            if ( (LA23_0==RULE_ID) ) {
+                alt23=1;
             }
-            switch (alt20) {
+            switch (alt23) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1315:2: ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )*
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1378:2: ( (lv_lhs_4_0= ruleRuleObject ) ) (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )*
                     {
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1315:2: ( (lv_lhs_4_0= ruleRuleObject ) )
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1316:1: (lv_lhs_4_0= ruleRuleObject )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1378:2: ( (lv_lhs_4_0= ruleRuleObject ) )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1379:1: (lv_lhs_4_0= ruleRuleObject )
                     {
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1316:1: (lv_lhs_4_0= ruleRuleObject )
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1317:3: lv_lhs_4_0= ruleRuleObject
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1379:1: (lv_lhs_4_0= ruleRuleObject )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1380:3: lv_lhs_4_0= ruleRuleObject
                     {
                      
                     	        newCompositeNode(grammarAccess.getRuleDefinitionAccess().getLhsRuleObjectParserRuleCall_4_0_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition2857);
+                    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition2959);
                     lv_lhs_4_0=ruleRuleObject();
 
                     state._fsp--;
@@ -3317,35 +3470,35 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1333:2: (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )*
-                    loop19:
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1396:2: (otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) ) )*
+                    loop22:
                     do {
-                        int alt19=2;
-                        int LA19_0 = input.LA(1);
+                        int alt22=2;
+                        int LA22_0 = input.LA(1);
 
-                        if ( (LA19_0==27) ) {
-                            alt19=1;
+                        if ( (LA22_0==27) ) {
+                            alt22=1;
                         }
 
 
-                        switch (alt19) {
+                        switch (alt22) {
                     	case 1 :
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1333:4: otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1396:4: otherlv_5= '+' ( (lv_lhs_6_0= ruleRuleObject ) )
                     	    {
-                    	    otherlv_5=(Token)match(input,27,FOLLOW_27_in_ruleRuleDefinition2870); 
+                    	    otherlv_5=(Token)match(input,27,FOLLOW_27_in_ruleRuleDefinition2972); 
 
                     	        	newLeafNode(otherlv_5, grammarAccess.getRuleDefinitionAccess().getPlusSignKeyword_4_1_0());
                     	        
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1337:1: ( (lv_lhs_6_0= ruleRuleObject ) )
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1338:1: (lv_lhs_6_0= ruleRuleObject )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1400:1: ( (lv_lhs_6_0= ruleRuleObject ) )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1401:1: (lv_lhs_6_0= ruleRuleObject )
                     	    {
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1338:1: (lv_lhs_6_0= ruleRuleObject )
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1339:3: lv_lhs_6_0= ruleRuleObject
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1401:1: (lv_lhs_6_0= ruleRuleObject )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1402:3: lv_lhs_6_0= ruleRuleObject
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getRuleDefinitionAccess().getLhsRuleObjectParserRuleCall_4_1_1_0()); 
                     	    	    
-                    	    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition2891);
+                    	    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition2993);
                     	    lv_lhs_6_0=ruleRuleObject();
 
                     	    state._fsp--;
@@ -3372,7 +3525,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop19;
+                    	    break loop22;
                         }
                     } while (true);
 
@@ -3382,27 +3535,27 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1355:6: (otherlv_7= '->' | otherlv_8= '<->' )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1418:6: (otherlv_7= '->' | otherlv_8= '<->' )
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA21_0==38) ) {
-                alt21=1;
+            if ( (LA24_0==37) ) {
+                alt24=1;
             }
-            else if ( (LA21_0==39) ) {
-                alt21=2;
+            else if ( (LA24_0==38) ) {
+                alt24=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
             }
-            switch (alt21) {
+            switch (alt24) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1355:8: otherlv_7= '->'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1418:8: otherlv_7= '->'
                     {
-                    otherlv_7=(Token)match(input,38,FOLLOW_38_in_ruleRuleDefinition2908); 
+                    otherlv_7=(Token)match(input,37,FOLLOW_37_in_ruleRuleDefinition3010); 
 
                         	newLeafNode(otherlv_7, grammarAccess.getRuleDefinitionAccess().getHyphenMinusGreaterThanSignKeyword_5_0());
                         
@@ -3410,9 +3563,9 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1360:7: otherlv_8= '<->'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1423:7: otherlv_8= '<->'
                     {
-                    otherlv_8=(Token)match(input,39,FOLLOW_39_in_ruleRuleDefinition2926); 
+                    otherlv_8=(Token)match(input,38,FOLLOW_38_in_ruleRuleDefinition3028); 
 
                         	newLeafNode(otherlv_8, grammarAccess.getRuleDefinitionAccess().getLessThanSignHyphenMinusGreaterThanSignKeyword_5_1());
                         
@@ -3422,23 +3575,23 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1364:2: ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )?
-            int alt23=2;
-            alt23 = dfa23.predict(input);
-            switch (alt23) {
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1427:2: ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )?
+            int alt26=2;
+            alt26 = dfa26.predict(input);
+            switch (alt26) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1364:3: ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )*
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1427:3: ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )*
                     {
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1364:3: ( (lv_rhs_9_0= ruleRuleObject ) )
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1365:1: (lv_rhs_9_0= ruleRuleObject )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1427:3: ( (lv_rhs_9_0= ruleRuleObject ) )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1428:1: (lv_rhs_9_0= ruleRuleObject )
                     {
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1365:1: (lv_rhs_9_0= ruleRuleObject )
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1366:3: lv_rhs_9_0= ruleRuleObject
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1428:1: (lv_rhs_9_0= ruleRuleObject )
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1429:3: lv_rhs_9_0= ruleRuleObject
                     {
                      
                     	        newCompositeNode(grammarAccess.getRuleDefinitionAccess().getRhsRuleObjectParserRuleCall_6_0_0()); 
                     	    
-                    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition2949);
+                    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition3051);
                     lv_rhs_9_0=ruleRuleObject();
 
                     state._fsp--;
@@ -3460,35 +3613,35 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1382:2: (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )*
-                    loop22:
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1445:2: (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )*
+                    loop25:
                     do {
-                        int alt22=2;
-                        int LA22_0 = input.LA(1);
+                        int alt25=2;
+                        int LA25_0 = input.LA(1);
 
-                        if ( (LA22_0==27) ) {
-                            alt22=1;
+                        if ( (LA25_0==27) ) {
+                            alt25=1;
                         }
 
 
-                        switch (alt22) {
+                        switch (alt25) {
                     	case 1 :
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1382:4: otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1445:4: otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) )
                     	    {
-                    	    otherlv_10=(Token)match(input,27,FOLLOW_27_in_ruleRuleDefinition2962); 
+                    	    otherlv_10=(Token)match(input,27,FOLLOW_27_in_ruleRuleDefinition3064); 
 
                     	        	newLeafNode(otherlv_10, grammarAccess.getRuleDefinitionAccess().getPlusSignKeyword_6_1_0());
                     	        
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1386:1: ( (lv_rhs_11_0= ruleRuleObject ) )
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1387:1: (lv_rhs_11_0= ruleRuleObject )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1449:1: ( (lv_rhs_11_0= ruleRuleObject ) )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1450:1: (lv_rhs_11_0= ruleRuleObject )
                     	    {
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1387:1: (lv_rhs_11_0= ruleRuleObject )
-                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1388:3: lv_rhs_11_0= ruleRuleObject
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1450:1: (lv_rhs_11_0= ruleRuleObject )
+                    	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1451:3: lv_rhs_11_0= ruleRuleObject
                     	    {
                     	     
                     	    	        newCompositeNode(grammarAccess.getRuleDefinitionAccess().getRhsRuleObjectParserRuleCall_6_1_1_0()); 
                     	    	    
-                    	    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition2983);
+                    	    pushFollow(FOLLOW_ruleRuleObject_in_ruleRuleDefinition3085);
                     	    lv_rhs_11_0=ruleRuleObject();
 
                     	    state._fsp--;
@@ -3515,7 +3668,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop22;
+                    	    break loop25;
                         }
                     } while (true);
 
@@ -3546,7 +3699,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRuleObject"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1412:1: entryRuleRuleObject returns [EObject current=null] : iv_ruleRuleObject= ruleRuleObject EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1475:1: entryRuleRuleObject returns [EObject current=null] : iv_ruleRuleObject= ruleRuleObject EOF ;
     public final EObject entryRuleRuleObject() throws RecognitionException {
         EObject current = null;
 
@@ -3554,17 +3707,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1413:2: (iv_ruleRuleObject= ruleRuleObject EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1414:2: iv_ruleRuleObject= ruleRuleObject EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1476:2: (iv_ruleRuleObject= ruleRuleObject EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1477:2: iv_ruleRuleObject= ruleRuleObject EOF
             {
              newCompositeNode(grammarAccess.getRuleObjectRule()); 
-            pushFollow(FOLLOW_ruleRuleObject_in_entryRuleRuleObject3023);
+            pushFollow(FOLLOW_ruleRuleObject_in_entryRuleRuleObject3125);
             iv_ruleRuleObject=ruleRuleObject();
 
             state._fsp--;
 
              current =iv_ruleRuleObject; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRuleObject3033); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRuleObject3135); 
 
             }
 
@@ -3582,7 +3735,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRuleObject"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1421:1: ruleRuleObject returns [EObject current=null] : ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1484:1: ruleRuleObject returns [EObject current=null] : ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* ) ;
     public final EObject ruleRuleObject() throws RecognitionException {
         EObject current = null;
 
@@ -3593,14 +3746,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1424:28: ( ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1425:1: ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1487:28: ( ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1488:1: ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1425:1: ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1425:2: () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )*
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1488:1: ( () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )* )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1488:2: () ( (lv_subobjects_1_0= RULE_ID ) ) (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )*
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1425:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1426:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1488:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1489:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3610,13 +3763,13 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1431:2: ( (lv_subobjects_1_0= RULE_ID ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1432:1: (lv_subobjects_1_0= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1494:2: ( (lv_subobjects_1_0= RULE_ID ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1495:1: (lv_subobjects_1_0= RULE_ID )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1432:1: (lv_subobjects_1_0= RULE_ID )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1433:3: lv_subobjects_1_0= RULE_ID
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1495:1: (lv_subobjects_1_0= RULE_ID )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1496:3: lv_subobjects_1_0= RULE_ID
             {
-            lv_subobjects_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuleObject3084); 
+            lv_subobjects_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuleObject3186); 
 
             			newLeafNode(lv_subobjects_1_0, grammarAccess.getRuleObjectAccess().getSubobjectsIDTerminalRuleCall_1_0()); 
             		
@@ -3636,32 +3789,32 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1449:2: (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )*
-            loop24:
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1512:2: (otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) ) )*
+            loop27:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt27=2;
+                int LA27_0 = input.LA(1);
 
-                if ( (LA24_0==40) ) {
-                    alt24=1;
+                if ( (LA27_0==39) ) {
+                    alt27=1;
                 }
 
 
-                switch (alt24) {
+                switch (alt27) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1449:4: otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1512:4: otherlv_2= '~' ( (lv_subobjects_3_0= RULE_ID ) )
             	    {
-            	    otherlv_2=(Token)match(input,40,FOLLOW_40_in_ruleRuleObject3102); 
+            	    otherlv_2=(Token)match(input,39,FOLLOW_39_in_ruleRuleObject3204); 
 
             	        	newLeafNode(otherlv_2, grammarAccess.getRuleObjectAccess().getTildeKeyword_2_0());
             	        
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1453:1: ( (lv_subobjects_3_0= RULE_ID ) )
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1454:1: (lv_subobjects_3_0= RULE_ID )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1516:1: ( (lv_subobjects_3_0= RULE_ID ) )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1517:1: (lv_subobjects_3_0= RULE_ID )
             	    {
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1454:1: (lv_subobjects_3_0= RULE_ID )
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1455:3: lv_subobjects_3_0= RULE_ID
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1517:1: (lv_subobjects_3_0= RULE_ID )
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1518:3: lv_subobjects_3_0= RULE_ID
             	    {
-            	    lv_subobjects_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuleObject3119); 
+            	    lv_subobjects_3_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuleObject3221); 
 
             	    			newLeafNode(lv_subobjects_3_0, grammarAccess.getRuleObjectAccess().getSubobjectsIDTerminalRuleCall_2_1_0()); 
             	    		
@@ -3686,7 +3839,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop27;
                 }
             } while (true);
 
@@ -3711,7 +3864,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImport"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1479:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1542:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -3719,17 +3872,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1480:2: (iv_ruleImport= ruleImport EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1481:2: iv_ruleImport= ruleImport EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1543:2: (iv_ruleImport= ruleImport EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1544:2: iv_ruleImport= ruleImport EOF
             {
              newCompositeNode(grammarAccess.getImportRule()); 
-            pushFollow(FOLLOW_ruleImport_in_entryRuleImport3162);
+            pushFollow(FOLLOW_ruleImport_in_entryRuleImport3264);
             iv_ruleImport=ruleImport();
 
             state._fsp--;
 
              current =iv_ruleImport; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleImport3172); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleImport3274); 
 
             }
 
@@ -3747,7 +3900,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1488:1: ruleImport returns [EObject current=null] : ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1551:1: ruleImport returns [EObject current=null] : ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) ) ;
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
@@ -3758,14 +3911,14 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1491:28: ( ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1492:1: ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1554:28: ( ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1555:1: ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1492:1: ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1492:2: () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1555:1: ( () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1555:2: () otherlv_1= 'import' ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1492:2: ()
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1493:5: 
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1555:2: ()
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1556:5: 
             {
 
                     current = forceCreateModelElement(
@@ -3775,20 +3928,20 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleImport3218); 
+            otherlv_1=(Token)match(input,40,FOLLOW_40_in_ruleImport3320); 
 
                 	newLeafNode(otherlv_1, grammarAccess.getImportAccess().getImportKeyword_1());
                 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1502:1: ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1503:1: (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1565:1: ( (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1566:1: (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1503:1: (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1504:3: lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1566:1: (lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1567:3: lv_importedNamespace_2_0= ruleQualifiedNameWithWildcard
             {
              
             	        newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0()); 
             	    
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_ruleImport3239);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_ruleImport3341);
             lv_importedNamespace_2_0=ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -3831,7 +3984,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1528:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1591:1: entryRuleQualifiedNameWithWildcard returns [String current=null] : iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF ;
     public final String entryRuleQualifiedNameWithWildcard() throws RecognitionException {
         String current = null;
 
@@ -3839,17 +3992,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1529:2: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1530:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1592:2: (iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1593:2: iv_ruleQualifiedNameWithWildcard= ruleQualifiedNameWithWildcard EOF
             {
              newCompositeNode(grammarAccess.getQualifiedNameWithWildcardRule()); 
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard3276);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard3378);
             iv_ruleQualifiedNameWithWildcard=ruleQualifiedNameWithWildcard();
 
             state._fsp--;
 
              current =iv_ruleQualifiedNameWithWildcard.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard3287); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard3389); 
 
             }
 
@@ -3867,7 +4020,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1537:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1600:1: ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedNameWithWildcard() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3878,16 +4031,16 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1540:28: ( (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1541:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1603:28: ( (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1604:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1541:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1542:5: this_QualifiedName_0= ruleQualifiedName (kw= '.*' )?
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1604:1: (this_QualifiedName_0= ruleQualifiedName (kw= '.*' )? )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1605:5: this_QualifiedName_0= ruleQualifiedName (kw= '.*' )?
             {
              
                     newCompositeNode(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
                 
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard3334);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard3436);
             this_QualifiedName_0=ruleQualifiedName();
 
             state._fsp--;
@@ -3898,18 +4051,18 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
              
                     afterParserOrEnumRuleCall();
                 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1552:1: (kw= '.*' )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1615:1: (kw= '.*' )?
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( (LA25_0==42) ) {
-                alt25=1;
+            if ( (LA28_0==41) ) {
+                alt28=1;
             }
-            switch (alt25) {
+            switch (alt28) {
                 case 1 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1553:2: kw= '.*'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1616:2: kw= '.*'
                     {
-                    kw=(Token)match(input,42,FOLLOW_42_in_ruleQualifiedNameWithWildcard3353); 
+                    kw=(Token)match(input,41,FOLLOW_41_in_ruleQualifiedNameWithWildcard3455); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopAsteriskKeyword_1()); 
@@ -3941,7 +4094,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1566:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1629:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -3949,17 +4102,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1567:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1568:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1630:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1631:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
              newCompositeNode(grammarAccess.getQualifiedNameRule()); 
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName3396);
+            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName3498);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
 
              current =iv_ruleQualifiedName.getText(); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName3407); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName3509); 
 
             }
 
@@ -3977,7 +4130,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1575:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1638:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -3988,40 +4141,40 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1578:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1579:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1641:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1642:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1579:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1579:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1642:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1642:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName3447); 
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName3549); 
 
             		current.merge(this_ID_0);
                 
              
                 newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
                 
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1586:1: (kw= '.' this_ID_2= RULE_ID )*
-            loop26:
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1649:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop29:
             do {
-                int alt26=2;
-                int LA26_0 = input.LA(1);
+                int alt29=2;
+                int LA29_0 = input.LA(1);
 
-                if ( (LA26_0==25) ) {
-                    alt26=1;
+                if ( (LA29_0==26) ) {
+                    alt29=1;
                 }
 
 
-                switch (alt26) {
+                switch (alt29) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1587:2: kw= '.' this_ID_2= RULE_ID
+            	    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1650:2: kw= '.' this_ID_2= RULE_ID
             	    {
-            	    kw=(Token)match(input,25,FOLLOW_25_in_ruleQualifiedName3466); 
+            	    kw=(Token)match(input,26,FOLLOW_26_in_ruleQualifiedName3568); 
 
             	            current.merge(kw);
             	            newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             	        
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName3481); 
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName3583); 
 
             	    		current.merge(this_ID_2);
             	        
@@ -4033,7 +4186,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop26;
+            	    break loop29;
                 }
             } while (true);
 
@@ -4060,30 +4213,29 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     protected DFA2 dfa2 = new DFA2(this);
-    protected DFA23 dfa23 = new DFA23(this);
+    protected DFA26 dfa26 = new DFA26(this);
     static final String DFA2_eotS =
-        "\14\uffff";
+        "\13\uffff";
     static final String DFA2_eofS =
-        "\14\uffff";
+        "\13\uffff";
     static final String DFA2_minS =
-        "\1\13\1\uffff\7\4\1\14\2\uffff";
+        "\1\13\1\uffff\6\4\1\14\2\uffff";
     static final String DFA2_maxS =
-        "\1\51\1\uffff\1\42\5\4\2\16\2\uffff";
+        "\1\50\1\uffff\1\41\4\4\2\16\2\uffff";
     static final String DFA2_acceptS =
-        "\1\uffff\1\1\10\uffff\1\2\1\3";
+        "\1\uffff\1\1\7\uffff\1\2\1\3";
     static final String DFA2_specialS =
-        "\14\uffff}>";
+        "\13\uffff}>";
     static final String[] DFA2_transitionS = {
-            "\1\2\35\uffff\1\1",
+            "\1\2\34\uffff\1\1",
             "",
-            "\1\10\31\uffff\1\3\1\4\1\5\1\6\1\7",
-            "\1\11",
-            "\1\11",
-            "\1\11",
-            "\1\11",
-            "\1\11",
-            "\1\11\7\uffff\1\12\1\uffff\1\13",
-            "\1\12\1\uffff\1\13",
+            "\1\7\31\uffff\1\3\1\4\1\5\1\6",
+            "\1\10",
+            "\1\10",
+            "\1\10",
+            "\1\10",
+            "\1\10\7\uffff\1\11\1\uffff\1\12",
+            "\1\11\1\uffff\1\12",
             "",
             ""
     };
@@ -4121,66 +4273,70 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             return "125:1: (this_Import_0= ruleImport | this_VariableDefinition_1= ruleVariableDefinition | this_FunctionDefinition_2= ruleFunctionDefinition )";
         }
     }
-    static final String DFA23_eotS =
-        "\6\uffff";
-    static final String DFA23_eofS =
-        "\1\2\1\4\4\uffff";
-    static final String DFA23_minS =
-        "\2\4\1\uffff\1\4\1\uffff\1\4";
-    static final String DFA23_maxS =
-        "\1\45\1\50\1\uffff\1\45\1\uffff\1\45";
-    static final String DFA23_acceptS =
-        "\2\uffff\1\2\1\uffff\1\1\1\uffff";
-    static final String DFA23_specialS =
-        "\6\uffff}>";
-    static final String[] DFA23_transitionS = {
-            "\1\1\10\uffff\1\2\12\uffff\1\2\5\uffff\10\2",
-            "\1\3\10\uffff\1\4\12\uffff\1\4\2\2\1\4\2\uffff\10\4\2\uffff"+
-            "\1\4",
+    static final String DFA26_eotS =
+        "\12\uffff";
+    static final String DFA26_eofS =
+        "\1\2\1\3\10\uffff";
+    static final String DFA26_minS =
+        "\2\4\2\uffff\6\4";
+    static final String DFA26_maxS =
+        "\1\44\1\47\2\uffff\1\44\1\4\2\44\1\4\1\44";
+    static final String DFA26_acceptS =
+        "\2\uffff\1\2\1\1\6\uffff";
+    static final String DFA26_specialS =
+        "\12\uffff}>";
+    static final String[] DFA26_transitionS = {
+            "\1\1\10\uffff\1\2\13\uffff\1\2\4\uffff\7\2",
+            "\1\4\10\uffff\1\3\12\uffff\1\2\1\3\1\2\1\3\2\uffff\7\3\2\uffff"+
+            "\1\3",
             "",
-            "\1\5\10\uffff\1\2\12\uffff\1\2\2\4\3\uffff\10\2",
             "",
-            "\1\3\10\uffff\1\4\12\uffff\1\4\2\2\3\uffff\10\4"
+            "\1\6\10\uffff\1\2\12\uffff\1\5\1\2\1\3\3\uffff\7\2",
+            "\1\7",
+            "\1\4\10\uffff\1\3\12\uffff\1\10\1\3\1\2\3\uffff\7\3",
+            "\1\3\10\uffff\1\3\1\2\12\uffff\14\3",
+            "\1\11",
+            "\1\2\10\uffff\1\2\1\3\12\uffff\14\2"
     };
 
-    static final short[] DFA23_eot = DFA.unpackEncodedString(DFA23_eotS);
-    static final short[] DFA23_eof = DFA.unpackEncodedString(DFA23_eofS);
-    static final char[] DFA23_min = DFA.unpackEncodedStringToUnsignedChars(DFA23_minS);
-    static final char[] DFA23_max = DFA.unpackEncodedStringToUnsignedChars(DFA23_maxS);
-    static final short[] DFA23_accept = DFA.unpackEncodedString(DFA23_acceptS);
-    static final short[] DFA23_special = DFA.unpackEncodedString(DFA23_specialS);
-    static final short[][] DFA23_transition;
+    static final short[] DFA26_eot = DFA.unpackEncodedString(DFA26_eotS);
+    static final short[] DFA26_eof = DFA.unpackEncodedString(DFA26_eofS);
+    static final char[] DFA26_min = DFA.unpackEncodedStringToUnsignedChars(DFA26_minS);
+    static final char[] DFA26_max = DFA.unpackEncodedStringToUnsignedChars(DFA26_maxS);
+    static final short[] DFA26_accept = DFA.unpackEncodedString(DFA26_acceptS);
+    static final short[] DFA26_special = DFA.unpackEncodedString(DFA26_specialS);
+    static final short[][] DFA26_transition;
 
     static {
-        int numStates = DFA23_transitionS.length;
-        DFA23_transition = new short[numStates][];
+        int numStates = DFA26_transitionS.length;
+        DFA26_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA23_transition[i] = DFA.unpackEncodedString(DFA23_transitionS[i]);
+            DFA26_transition[i] = DFA.unpackEncodedString(DFA26_transitionS[i]);
         }
     }
 
-    class DFA23 extends DFA {
+    class DFA26 extends DFA {
 
-        public DFA23(BaseRecognizer recognizer) {
+        public DFA26(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 23;
-            this.eot = DFA23_eot;
-            this.eof = DFA23_eof;
-            this.min = DFA23_min;
-            this.max = DFA23_max;
-            this.accept = DFA23_accept;
-            this.special = DFA23_special;
-            this.transition = DFA23_transition;
+            this.decisionNumber = 26;
+            this.eot = DFA26_eot;
+            this.eof = DFA26_eof;
+            this.min = DFA26_min;
+            this.max = DFA26_max;
+            this.accept = DFA26_accept;
+            this.special = DFA26_special;
+            this.transition = DFA26_transition;
         }
         public String getDescription() {
-            return "1364:2: ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )?";
+            return "1427:2: ( ( (lv_rhs_9_0= ruleRuleObject ) ) (otherlv_10= '+' ( (lv_rhs_11_0= ruleRuleObject ) ) )* )?";
         }
     }
  
 
     public static final BitSet FOLLOW_ruleModel_in_entryRuleModel75 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModel85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelMember_in_ruleModel140 = new BitSet(new long[]{0x0000020000000802L});
+    public static final BitSet FOLLOW_ruleModelMember_in_ruleModel140 = new BitSet(new long[]{0x0000010000000802L});
     public static final BitSet FOLLOW_ruleModelMember_in_entryRuleModelMember177 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModelMember187 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_ruleModelMember234 = new BitSet(new long[]{0x0000000000000002L});
@@ -4188,15 +4344,15 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleFunctionDefinition_in_ruleModelMember288 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableDefinition_in_entryRuleVariableDefinition323 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableDefinition333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleVariableDefinition379 = new BitSet(new long[]{0x00000007C0000010L});
+    public static final BitSet FOLLOW_11_in_ruleVariableDefinition379 = new BitSet(new long[]{0x00000003C0000010L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleVariableDefinition400 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleVariableDefinition418 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleVariableDefinition435 = new BitSet(new long[]{0x0000001FC1002010L});
-    public static final BitSet FOLLOW_ruleVariableDefinitionMember_in_ruleVariableDefinition456 = new BitSet(new long[]{0x0000001FC1002010L});
+    public static final BitSet FOLLOW_12_in_ruleVariableDefinition435 = new BitSet(new long[]{0x0000000FC2002010L});
+    public static final BitSet FOLLOW_ruleVariableDefinitionMember_in_ruleVariableDefinition456 = new BitSet(new long[]{0x0000000FC2002010L});
     public static final BitSet FOLLOW_13_in_ruleVariableDefinition469 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFunctionDefinition_in_entryRuleFunctionDefinition505 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunctionDefinition515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleFunctionDefinition561 = new BitSet(new long[]{0x00000007C0000010L});
+    public static final BitSet FOLLOW_11_in_ruleFunctionDefinition561 = new BitSet(new long[]{0x00000003C0000010L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleFunctionDefinition582 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleFunctionDefinition600 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_14_in_ruleFunctionDefinition617 = new BitSet(new long[]{0x0000000000000010L});
@@ -4204,8 +4360,8 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_15_in_ruleFunctionDefinition651 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleFunctionParameterMember_in_ruleFunctionDefinition672 = new BitSet(new long[]{0x0000000000018000L});
     public static final BitSet FOLLOW_16_in_ruleFunctionDefinition686 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleFunctionDefinition698 = new BitSet(new long[]{0x0000003FC1002010L});
-    public static final BitSet FOLLOW_ruleFunctionDefinitionMember_in_ruleFunctionDefinition719 = new BitSet(new long[]{0x0000003FC1002010L});
+    public static final BitSet FOLLOW_12_in_ruleFunctionDefinition698 = new BitSet(new long[]{0x0000001FC2002010L});
+    public static final BitSet FOLLOW_ruleFunctionDefinitionMember_in_ruleFunctionDefinition719 = new BitSet(new long[]{0x0000001FC2002010L});
     public static final BitSet FOLLOW_13_in_ruleFunctionDefinition732 = new BitSet(new long[]{0x0000000000020002L});
     public static final BitSet FOLLOW_17_in_ruleFunctionDefinition745 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleFunctionUseMember_in_ruleFunctionDefinition766 = new BitSet(new long[]{0x0000000000008000L});
@@ -4230,88 +4386,94 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleFunctionDefinitionMember1240 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRuleDefinition_in_ruleFunctionDefinitionMember1287 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableAssignment_in_ruleFunctionDefinitionMember1314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableDefinitionMember_in_ruleFunctionDefinitionMember1341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableDeclaration_in_ruleFunctionDefinitionMember1341 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableDefinitionMember_in_entryRuleVariableDefinitionMember1376 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableDefinitionMember1386 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableDeclaration_in_ruleVariableDefinitionMember1432 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableDeclaration_in_entryRuleVariableDeclaration1466 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableDeclaration1476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableQualifier_in_ruleVariableDeclaration1531 = new BitSet(new long[]{0x0000001FC1000010L});
+    public static final BitSet FOLLOW_ruleVariableQualifier_in_ruleVariableDeclaration1531 = new BitSet(new long[]{0x0000000FC2000010L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleVariableDeclaration1555 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableDeclaration1572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableDeclaration1572 = new BitSet(new long[]{0x0000000001000002L});
     public static final BitSet FOLLOW_ruleCollectionID_in_ruleVariableDeclaration1606 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_ruleVariableDeclaration1618 = new BitSet(new long[]{0x00000007C0000010L});
+    public static final BitSet FOLLOW_22_in_ruleVariableDeclaration1618 = new BitSet(new long[]{0x00000003C0000010L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleVariableDeclaration1639 = new BitSet(new long[]{0x0000000000800000L});
     public static final BitSet FOLLOW_23_in_ruleVariableDeclaration1651 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableDeclaration1668 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableType_in_entryRuleVariableType1711 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVariableType1721 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveVariableType_in_ruleVariableType1778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableType1793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableQualifier_in_entryRuleVariableQualifier1837 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVariableQualifier1847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleVariableQualifier1893 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_entryRuleVariableAttribute1929 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVariableAttribute1939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableAttribute1990 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_25_in_ruleVariableAttribute2008 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableAttribute2025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAssignment_in_entryRuleVariableAssignment2068 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVariableAssignment2078 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_ruleVariableAssignment2133 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleVariableAssignment2145 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleVariableExpression_in_ruleVariableAssignment2166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableExpression_in_entryRuleVariableExpression2202 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVariableExpression2212 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2267 = new BitSet(new long[]{0x0000000038000002L});
-    public static final BitSet FOLLOW_ruleVariableExpressionOperator_in_ruleVariableExpression2284 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2304 = new BitSet(new long[]{0x0000000038000002L});
-    public static final BitSet FOLLOW_ruleVariableExpressionOperator_in_entryRuleVariableExpressionOperator2343 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVariableExpressionOperator2354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleVariableExpressionOperator2392 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleVariableExpressionOperator2411 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleVariableExpressionOperator2430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrimitiveVariableType_in_entryRulePrimitiveVariableType2471 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveVariableType2482 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rulePrimitiveVariableType2520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rulePrimitiveVariableType2539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_rulePrimitiveVariableType2558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_rulePrimitiveVariableType2577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rulePrimitiveVariableType2596 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCollectionID_in_entryRuleCollectionID2637 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCollectionID2648 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleCollectionID2686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleCollectionID2705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuleDefinition_in_entryRuleRuleDefinition2745 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRuleDefinition2755 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleRuleDefinition2801 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRuleDefinition2818 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleRuleDefinition2835 = new BitSet(new long[]{0x000000C000000010L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition2857 = new BitSet(new long[]{0x000000C008000000L});
-    public static final BitSet FOLLOW_27_in_ruleRuleDefinition2870 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition2891 = new BitSet(new long[]{0x000000C008000000L});
-    public static final BitSet FOLLOW_38_in_ruleRuleDefinition2908 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_39_in_ruleRuleDefinition2926 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition2949 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_27_in_ruleRuleDefinition2962 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition2983 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_entryRuleRuleObject3023 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRuleObject3033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRuleObject3084 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_40_in_ruleRuleObject3102 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRuleObject3119 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport3162 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleImport3172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ruleImport3218 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleImport3239 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard3276 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard3287 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard3334 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_42_in_ruleQualifiedNameWithWildcard3353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName3396 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName3407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName3447 = new BitSet(new long[]{0x0000000002000002L});
-    public static final BitSet FOLLOW_25_in_ruleQualifiedName3466 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName3481 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableDeclaration1668 = new BitSet(new long[]{0x0000000001000002L});
+    public static final BitSet FOLLOW_24_in_ruleVariableDeclaration1688 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableDeclaration1705 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleVariableDeclaration1722 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_ruleVariableAssignment_in_ruleVariableDeclaration1744 = new BitSet(new long[]{0x0000000000018000L});
+    public static final BitSet FOLLOW_15_in_ruleVariableDeclaration1757 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleVariableAssignment_in_ruleVariableDeclaration1778 = new BitSet(new long[]{0x0000000000018000L});
+    public static final BitSet FOLLOW_16_in_ruleVariableDeclaration1794 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableType_in_entryRuleVariableType1832 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVariableType1842 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveVariableType_in_ruleVariableType1899 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableType1914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableQualifier_in_entryRuleVariableQualifier1958 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVariableQualifier1968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ruleVariableQualifier2014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_entryRuleVariableAttribute2050 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVariableAttribute2060 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableAttribute2111 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleVariableAttribute2129 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleVariableAttribute2146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAssignment_in_entryRuleVariableAssignment2189 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVariableAssignment2199 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_ruleVariableAssignment2254 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleVariableAssignment2266 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleVariableExpression_in_ruleVariableAssignment2287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableExpression_in_entryRuleVariableExpression2323 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVariableExpression2333 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2388 = new BitSet(new long[]{0x0000000038000002L});
+    public static final BitSet FOLLOW_ruleVariableExpressionOperator_in_ruleVariableExpression2405 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_ruleVariableExpression2425 = new BitSet(new long[]{0x0000000038000002L});
+    public static final BitSet FOLLOW_ruleVariableExpressionOperator_in_entryRuleVariableExpressionOperator2464 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVariableExpressionOperator2475 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ruleVariableExpressionOperator2513 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleVariableExpressionOperator2532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleVariableExpressionOperator2551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrimitiveVariableType_in_entryRulePrimitiveVariableType2592 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrimitiveVariableType2603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_rulePrimitiveVariableType2641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rulePrimitiveVariableType2660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_rulePrimitiveVariableType2679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_rulePrimitiveVariableType2698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCollectionID_in_entryRuleCollectionID2739 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCollectionID2750 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleCollectionID2788 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleCollectionID2807 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuleDefinition_in_entryRuleRuleDefinition2847 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRuleDefinition2857 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_ruleRuleDefinition2903 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleRuleDefinition2920 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_ruleRuleDefinition2937 = new BitSet(new long[]{0x0000006000000010L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition2959 = new BitSet(new long[]{0x0000006008000000L});
+    public static final BitSet FOLLOW_27_in_ruleRuleDefinition2972 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition2993 = new BitSet(new long[]{0x0000006008000000L});
+    public static final BitSet FOLLOW_37_in_ruleRuleDefinition3010 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_38_in_ruleRuleDefinition3028 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition3051 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_27_in_ruleRuleDefinition3064 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_ruleRuleDefinition3085 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_entryRuleRuleObject3125 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRuleObject3135 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleRuleObject3186 = new BitSet(new long[]{0x0000008000000002L});
+    public static final BitSet FOLLOW_39_in_ruleRuleObject3204 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleRuleObject3221 = new BitSet(new long[]{0x0000008000000002L});
+    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport3264 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleImport3274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleImport3320 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleImport3341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard3378 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard3389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard3436 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_41_in_ruleQualifiedNameWithWildcard3455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName3498 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName3509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName3549 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleQualifiedName3568 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName3583 = new BitSet(new long[]{0x0000000004000002L});
 
 }

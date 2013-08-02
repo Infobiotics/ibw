@@ -332,7 +332,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 0;
+  int VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
@@ -351,7 +351,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__QUALIFIER = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 0;
+  int VARIABLE_DECLARATION__QUALIFIER = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -360,7 +360,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__TYPE = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 1;
+  int VARIABLE_DECLARATION__TYPE = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -369,7 +369,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__NAME = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 2;
+  int VARIABLE_DECLARATION__NAME = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Collection</b></em>' attribute.
@@ -378,7 +378,25 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION__COLLECTION = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 3;
+  int VARIABLE_DECLARATION__COLLECTION = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Constructor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__CONSTRUCTOR = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__PARAMETERS = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Variable Declaration</em>' class.
@@ -387,7 +405,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DECLARATION_FEATURE_COUNT = VARIABLE_DEFINITION_MEMBER_FEATURE_COUNT + 4;
+  int VARIABLE_DECLARATION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableTypeImpl <em>Variable Type</em>}' class.
@@ -930,6 +948,28 @@ public interface IblPackage extends EPackage
   EAttribute getVariableDeclaration_Collection();
 
   /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getConstructor <em>Constructor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Constructor</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableDeclaration#getConstructor()
+   * @see #getVariableDeclaration()
+   * @generated
+   */
+  EAttribute getVariableDeclaration_Constructor();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableDeclaration#getParameters()
+   * @see #getVariableDeclaration()
+   * @generated
+   */
+  EReference getVariableDeclaration_Parameters();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableType <em>Variable Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1386,6 +1426,22 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute VARIABLE_DECLARATION__COLLECTION = eINSTANCE.getVariableDeclaration_Collection();
+
+    /**
+     * The meta object literal for the '<em><b>Constructor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_DECLARATION__CONSTRUCTOR = eINSTANCE.getVariableDeclaration_Constructor();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_DECLARATION__PARAMETERS = eINSTANCE.getVariableDeclaration_Parameters();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableTypeImpl <em>Variable Type</em>}' class.

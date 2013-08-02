@@ -494,6 +494,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getVariableDeclaration_Constructor()
+  {
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableDeclaration_Parameters()
+  {
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getVariableType()
   {
     return variableTypeEClass;
@@ -744,6 +764,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__COLLECTION);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTRUCTOR);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__PARAMETERS);
 
     variableTypeEClass = createEClass(VARIABLE_TYPE);
     createEAttribute(variableTypeEClass, VARIABLE_TYPE__PRIMITIVE);
@@ -804,7 +826,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    variableDefinitionMemberEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
+    variableDeclarationEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
@@ -846,6 +868,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEReference(getVariableDeclaration_Type(), this.getVariableType(), null, "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDeclaration_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableTypeEClass, VariableType.class, "VariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableType_Primitive(), ecorePackage.getEString(), "primitive", null, 0, 1, VariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

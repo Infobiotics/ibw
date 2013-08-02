@@ -2,6 +2,7 @@
  */
 package roadblock.xtext.ibl.ibl;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +14,6 @@ package roadblock.xtext.ibl.ibl;
  * @model
  * @generated
  */
-public interface VariableDefinitionMember extends FunctionDefinitionMember
+public interface VariableDefinitionMember extends EObject
 {
 } // VariableDefinitionMember

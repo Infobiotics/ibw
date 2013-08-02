@@ -39,6 +39,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDeclaration/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDeclaration/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDeclaration/collection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDeclaration/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDeclaration/parameters"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableType/primitive"/>

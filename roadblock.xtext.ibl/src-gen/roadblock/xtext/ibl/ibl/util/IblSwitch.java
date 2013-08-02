@@ -127,7 +127,6 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableDefinitionMember variableDefinitionMember = (VariableDefinitionMember)theEObject;
         T result = caseVariableDefinitionMember(variableDefinitionMember);
-        if (result == null) result = caseFunctionDefinitionMember(variableDefinitionMember);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -135,8 +134,8 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
         T result = caseVariableDeclaration(variableDeclaration);
-        if (result == null) result = caseVariableDefinitionMember(variableDeclaration);
         if (result == null) result = caseFunctionDefinitionMember(variableDeclaration);
+        if (result == null) result = caseVariableDefinitionMember(variableDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

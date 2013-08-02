@@ -54,7 +54,7 @@ ParameterScope:
 ;
 
 FunctionDefinitionMember:
-	RuleDefinition | VariableAssignment | VariableDefinitionMember
+	RuleDefinition | VariableAssignment | VariableDeclaration
 ;
 
 ///////////////
@@ -71,6 +71,9 @@ VariableDeclaration:
 	(qualifier=VariableQualifier)?
 	((type=VariableType name=ID) |
 	(collection=CollectionID '<' type=VariableType '>' name=ID))
+	(
+		'=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
+	)?
 ;
 
 VariableType:
@@ -104,7 +107,7 @@ VariableExpressionOperator:
 ;
 
 PrimitiveVariableType:
-	'ID' | 'URI' | 'DNA' | 'CHASSIS' | 'PROCESS'
+	'ID' | 'DNA' | 'CHASSIS' | 'PROCESS'
 ;
 
 CollectionID:

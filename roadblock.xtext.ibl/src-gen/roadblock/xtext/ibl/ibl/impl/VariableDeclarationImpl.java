@@ -2,15 +2,23 @@
  */
 package roadblock.xtext.ibl.ibl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import roadblock.xtext.ibl.ibl.IblPackage;
+import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableQualifier;
 import roadblock.xtext.ibl.ibl.VariableType;
@@ -26,12 +34,14 @@ import roadblock.xtext.ibl.ibl.VariableType;
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getType <em>Type</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getCollection <em>Collection</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getConstructor <em>Constructor</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDeclarationImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implements VariableDeclaration
+public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implements VariableDeclaration
 {
   /**
    * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' containment reference.
@@ -92,6 +102,36 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
    * @ordered
    */
   protected String collection = COLLECTION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getConstructor() <em>Constructor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstructor()
+   * @generated
+   * @ordered
+   */
+  protected static final String CONSTRUCTOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getConstructor() <em>Constructor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstructor()
+   * @generated
+   * @ordered
+   */
+  protected String constructor = CONSTRUCTOR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameters()
+   * @generated
+   * @ordered
+   */
+  protected EList<VariableAssignment> parameters;
 
   /**
    * <!-- begin-user-doc -->
@@ -261,6 +301,43 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getConstructor()
+  {
+    return constructor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setConstructor(String newConstructor)
+  {
+    String oldConstructor = constructor;
+    constructor = newConstructor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__CONSTRUCTOR, oldConstructor, constructor));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<VariableAssignment> getParameters()
+  {
+    if (parameters == null)
+    {
+      parameters = new EObjectContainmentEList<VariableAssignment>(VariableAssignment.class, this, IblPackage.VARIABLE_DECLARATION__PARAMETERS);
+    }
+    return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -270,6 +347,8 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
         return basicSetQualifier(null, msgs);
       case IblPackage.VARIABLE_DECLARATION__TYPE:
         return basicSetType(null, msgs);
+      case IblPackage.VARIABLE_DECLARATION__PARAMETERS:
+        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -292,6 +371,10 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
         return getName();
       case IblPackage.VARIABLE_DECLARATION__COLLECTION:
         return getCollection();
+      case IblPackage.VARIABLE_DECLARATION__CONSTRUCTOR:
+        return getConstructor();
+      case IblPackage.VARIABLE_DECLARATION__PARAMETERS:
+        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -301,6 +384,7 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -317,6 +401,13 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
         return;
       case IblPackage.VARIABLE_DECLARATION__COLLECTION:
         setCollection((String)newValue);
+        return;
+      case IblPackage.VARIABLE_DECLARATION__CONSTRUCTOR:
+        setConstructor((String)newValue);
+        return;
+      case IblPackage.VARIABLE_DECLARATION__PARAMETERS:
+        getParameters().clear();
+        getParameters().addAll((Collection<? extends VariableAssignment>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -344,6 +435,12 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
       case IblPackage.VARIABLE_DECLARATION__COLLECTION:
         setCollection(COLLECTION_EDEFAULT);
         return;
+      case IblPackage.VARIABLE_DECLARATION__CONSTRUCTOR:
+        setConstructor(CONSTRUCTOR_EDEFAULT);
+        return;
+      case IblPackage.VARIABLE_DECLARATION__PARAMETERS:
+        getParameters().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -366,6 +463,10 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.VARIABLE_DECLARATION__COLLECTION:
         return COLLECTION_EDEFAULT == null ? collection != null : !COLLECTION_EDEFAULT.equals(collection);
+      case IblPackage.VARIABLE_DECLARATION__CONSTRUCTOR:
+        return CONSTRUCTOR_EDEFAULT == null ? constructor != null : !CONSTRUCTOR_EDEFAULT.equals(constructor);
+      case IblPackage.VARIABLE_DECLARATION__PARAMETERS:
+        return parameters != null && !parameters.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -385,6 +486,8 @@ public class VariableDeclarationImpl extends VariableDefinitionMemberImpl implem
     result.append(name);
     result.append(", collection: ");
     result.append(collection);
+    result.append(", constructor: ");
+    result.append(constructor);
     result.append(')');
     return result.toString();
   }

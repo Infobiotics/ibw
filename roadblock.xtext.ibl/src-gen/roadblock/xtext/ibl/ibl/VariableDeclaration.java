@@ -2,6 +2,7 @@
  */
 package roadblock.xtext.ibl.ibl;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +16,8 @@ package roadblock.xtext.ibl.ibl;
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getType <em>Type</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getCollection <em>Collection</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getConstructor <em>Constructor</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,7 +25,7 @@ package roadblock.xtext.ibl.ibl;
  * @model
  * @generated
  */
-public interface VariableDeclaration extends VariableDefinitionMember
+public interface VariableDeclaration extends FunctionDefinitionMember, VariableDefinitionMember
 {
   /**
    * Returns the value of the '<em><b>Qualifier</b></em>' containment reference.
@@ -127,5 +130,47 @@ public interface VariableDeclaration extends VariableDefinitionMember
    * @generated
    */
   void setCollection(String value);
+
+  /**
+   * Returns the value of the '<em><b>Constructor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Constructor</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Constructor</em>' attribute.
+   * @see #setConstructor(String)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDeclaration_Constructor()
+   * @model
+   * @generated
+   */
+  String getConstructor();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getConstructor <em>Constructor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Constructor</em>' attribute.
+   * @see #getConstructor()
+   * @generated
+   */
+  void setConstructor(String value);
+
+  /**
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.VariableAssignment}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Parameters</em>' containment reference list.
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDeclaration_Parameters()
+   * @model containment="true"
+   * @generated
+   */
+  EList<VariableAssignment> getParameters();
 
 } // VariableDeclaration
