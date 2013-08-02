@@ -74,5 +74,6 @@
     <genClasses ecoreClass="Ibl.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Import/importedNamespace"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ATGCDefinition"/>
   </genPackages>
 </genmodel:GenModel>

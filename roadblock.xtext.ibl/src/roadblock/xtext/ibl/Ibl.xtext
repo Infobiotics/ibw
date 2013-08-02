@@ -54,7 +54,7 @@ ParameterScope:
 ;
 
 FunctionDefinitionMember:
-	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition
+	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition
 ;
 
 DeviceDefinition:
@@ -159,4 +159,9 @@ Decimal hidden():
 
 DecimalExp hidden():
 	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
+;
+
+ATGCDefinition:
+	{ATGCDefinition}
+	'ATGC'
 ;

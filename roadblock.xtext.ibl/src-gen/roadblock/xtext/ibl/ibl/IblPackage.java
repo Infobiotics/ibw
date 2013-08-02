@@ -713,6 +713,25 @@ public interface IblPackage extends EPackage
    */
   int IMPORT_FEATURE_COUNT = MODEL_MEMBER_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ATGCDefinitionImpl <em>ATGC Definition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.ATGCDefinitionImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getATGCDefinition()
+   * @generated
+   */
+  int ATGC_DEFINITION = 18;
+
+  /**
+   * The number of structural features of the '<em>ATGC Definition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATGC_DEFINITION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 0;
+
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.Model <em>Model</em>}'.
@@ -1280,6 +1299,16 @@ public interface IblPackage extends EPackage
   EAttribute getImport_ImportedNamespace();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ATGCDefinition <em>ATGC Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>ATGC Definition</em>'.
+   * @see roadblock.xtext.ibl.ibl.ATGCDefinition
+   * @generated
+   */
+  EClass getATGCDefinition();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1761,6 +1790,16 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ATGCDefinitionImpl <em>ATGC Definition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ATGCDefinitionImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getATGCDefinition()
+     * @generated
+     */
+    EClass ATGC_DEFINITION = eINSTANCE.getATGCDefinition();
 
   }
 

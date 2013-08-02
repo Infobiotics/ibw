@@ -82,6 +82,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
       case IblPackage.IMPORT: return createImport();
+      case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -283,6 +284,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ATGCDefinition createATGCDefinition()
+  {
+    ATGCDefinitionImpl atgcDefinition = new ATGCDefinitionImpl();
+    return atgcDefinition;
   }
 
   /**

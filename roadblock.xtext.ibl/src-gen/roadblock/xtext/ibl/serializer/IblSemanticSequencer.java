@@ -13,6 +13,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEOb
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
@@ -39,6 +40,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case IblPackage.ATGC_DEFINITION:
+				if(context == grammarAccess.getATGCDefinitionRule() ||
+				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
+					sequence_ATGCDefinition(context, (ATGCDefinition) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.DEVICE_DEFINITION:
 				if(context == grammarAccess.getDeviceDefinitionRule() ||
 				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
@@ -140,6 +148,15 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     {ATGCDefinition}
+	 */
+	protected void sequence_ATGCDefinition(EObject context, ATGCDefinition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Constraint:

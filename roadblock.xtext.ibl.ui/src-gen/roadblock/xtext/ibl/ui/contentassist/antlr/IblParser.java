@@ -97,6 +97,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDecimalAccess().getGroup_2(), "rule__Decimal__Group_2__0");
 					put(grammarAccess.getDecimalExpAccess().getGroup(), "rule__DecimalExp__Group__0");
 					put(grammarAccess.getDecimalExpAccess().getGroup_2(), "rule__DecimalExp__Group_2__0");
+					put(grammarAccess.getATGCDefinitionAccess().getGroup(), "rule__ATGCDefinition__Group__0");
 					put(grammarAccess.getModelAccess().getMembersAssignment_1(), "rule__Model__MembersAssignment_1");
 					put(grammarAccess.getVariableDefinitionAccess().getTypeAssignment_2(), "rule__VariableDefinition__TypeAssignment_2");
 					put(grammarAccess.getVariableDefinitionAccess().getNameAssignment_3(), "rule__VariableDefinition__NameAssignment_3");

@@ -346,12 +346,13 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVariableAssignmentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cVariableDeclarationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cDeviceDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cATGCDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//FunctionDefinitionMember:
-		//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition;
+		//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition;
 		public ParserRule getRule() { return rule; }
 
-		//RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition
+		//RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//RuleDefinition
@@ -365,6 +366,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//DeviceDefinition
 		public RuleCall getDeviceDefinitionParserRuleCall_3() { return cDeviceDefinitionParserRuleCall_3; }
+
+		//ATGCDefinition
+		public RuleCall getATGCDefinitionParserRuleCall_4() { return cATGCDefinitionParserRuleCall_4; }
 	}
 
 	public class DeviceDefinitionElements extends AbstractParserRuleElementFinder {
@@ -1271,6 +1275,26 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall_5() { return cINTTerminalRuleCall_5; }
 	}
+
+	public class ATGCDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ATGCDefinition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cATGCDefinitionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cATGCKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//ATGCDefinition:
+		//	{ATGCDefinition} "ATGC";
+		public ParserRule getRule() { return rule; }
+
+		//{ATGCDefinition} "ATGC"
+		public Group getGroup() { return cGroup; }
+
+		//{ATGCDefinition}
+		public Action getATGCDefinitionAction_0() { return cATGCDefinitionAction_0; }
+
+		//"ATGC"
+		public Keyword getATGCKeyword_1() { return cATGCKeyword_1; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -1300,6 +1324,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private REALElements pREAL;
 	private DecimalElements pDecimal;
 	private DecimalExpElements pDecimalExp;
+	private ATGCDefinitionElements pATGCDefinition;
 	
 	private final Grammar grammar;
 
@@ -1417,7 +1442,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FunctionDefinitionMember:
-	//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition;
+	//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition;
 	public FunctionDefinitionMemberElements getFunctionDefinitionMemberAccess() {
 		return (pFunctionDefinitionMember != null) ? pFunctionDefinitionMember : (pFunctionDefinitionMember = new FunctionDefinitionMemberElements());
 	}
@@ -1630,6 +1655,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getDecimalExpRule() {
 		return getDecimalExpAccess().getRule();
+	}
+
+	//ATGCDefinition:
+	//	{ATGCDefinition} "ATGC";
+	public ATGCDefinitionElements getATGCDefinitionAccess() {
+		return (pATGCDefinition != null) ? pATGCDefinition : (pATGCDefinition = new ATGCDefinitionElements());
+	}
+	
+	public ParserRule getATGCDefinitionRule() {
+		return getATGCDefinitionAccess().getRule();
 	}
 
 	//terminal ID:

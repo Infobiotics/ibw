@@ -185,6 +185,15 @@ public interface IblFactory extends EFactory
   Import createImport();
 
   /**
+   * Returns a new object of class '<em>ATGC Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>ATGC Definition</em>'.
+   * @generated
+   */
+  ATGCDefinition createATGCDefinition();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

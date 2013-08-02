@@ -828,6 +828,34 @@ finally {
 
 
 
+// Entry rule entryRuleATGCDefinition
+entryRuleATGCDefinition 
+:
+{ before(grammarAccess.getATGCDefinitionRule()); }
+	 ruleATGCDefinition
+{ after(grammarAccess.getATGCDefinitionRule()); } 
+	 EOF 
+;
+
+// Rule ATGCDefinition
+ruleATGCDefinition
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getATGCDefinitionAccess().getGroup()); }
+(rule__ATGCDefinition__Group__0)
+{ after(grammarAccess.getATGCDefinitionAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 
 rule__ModelMember__Alternatives
     @init {
@@ -918,6 +946,12 @@ rule__FunctionDefinitionMember__Alternatives
 { before(grammarAccess.getFunctionDefinitionMemberAccess().getDeviceDefinitionParserRuleCall_3()); }
 	ruleDeviceDefinition
 { after(grammarAccess.getFunctionDefinitionMemberAccess().getDeviceDefinitionParserRuleCall_3()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionDefinitionMemberAccess().getATGCDefinitionParserRuleCall_4()); }
+	ruleATGCDefinition
+{ after(grammarAccess.getFunctionDefinitionMemberAccess().getATGCDefinitionParserRuleCall_4()); }
 )
 
 ;
@@ -5682,6 +5716,71 @@ rule__DecimalExp__Group_2__1__Impl
 { before(grammarAccess.getDecimalExpAccess().getINTTerminalRuleCall_2_1()); }
 	RULE_INT
 { after(grammarAccess.getDecimalExpAccess().getINTTerminalRuleCall_2_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__ATGCDefinition__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ATGCDefinition__Group__0__Impl
+	rule__ATGCDefinition__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ATGCDefinition__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getATGCDefinitionAccess().getATGCDefinitionAction_0()); }
+(
+
+)
+{ after(grammarAccess.getATGCDefinitionAccess().getATGCDefinitionAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__ATGCDefinition__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__ATGCDefinition__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ATGCDefinition__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getATGCDefinitionAccess().getATGCKeyword_1()); }
+
+	'ATGC' 
+
+{ after(grammarAccess.getATGCDefinitionAccess().getATGCKeyword_1()); }
 )
 
 ;
