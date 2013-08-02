@@ -403,7 +403,11 @@ ruleFunctionDefinition returns [EObject current=null]
     {
     	newLeafNode(otherlv_12, grammarAccess.getFunctionDefinitionAccess().getRightCurlyBracketKeyword_11());
     }
-)
+(	otherlv_13='USES' 
+    {
+    	newLeafNode(otherlv_13, grammarAccess.getFunctionDefinitionAccess().getUSESKeyword_12());
+    }
+)?)
 ;
 
 

@@ -144,17 +144,18 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMembersAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cMembersFunctionDefinitionMemberParserRuleCall_10_0 = (RuleCall)cMembersAssignment_10.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cUSESKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//// a definition of a function
 		//FunctionDefinition:
 		//	{FunctionDefinition} "define" type=VariableType? name=ID "(" parameters+=FunctionParameterMember*
 		//	parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)* ")" "{"
-		//	members+=FunctionDefinitionMember* "}";
+		//	members+=FunctionDefinitionMember* "}" "USES"?;
 		public ParserRule getRule() { return rule; }
 
 		//{FunctionDefinition} "define" type=VariableType? name=ID "(" parameters+=FunctionParameterMember*
 		//parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)* ")" "{"
-		//members+=FunctionDefinitionMember* "}"
+		//members+=FunctionDefinitionMember* "}" "USES"?
 		public Group getGroup() { return cGroup; }
 
 		//{FunctionDefinition}
@@ -216,6 +217,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+
+		//"USES"?
+		public Keyword getUSESKeyword_12() { return cUSESKeyword_12; }
 	}
 
 	public class FunctionParameterMemberElements extends AbstractParserRuleElementFinder {
@@ -937,7 +941,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//FunctionDefinition:
 	//	{FunctionDefinition} "define" type=VariableType? name=ID "(" parameters+=FunctionParameterMember*
 	//	parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)* ")" "{"
-	//	members+=FunctionDefinitionMember* "}";
+	//	members+=FunctionDefinitionMember* "}" "USES"?;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return (pFunctionDefinition != null) ? pFunctionDefinition : (pFunctionDefinition = new FunctionDefinitionElements());
 	}

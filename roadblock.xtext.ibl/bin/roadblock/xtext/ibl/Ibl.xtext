@@ -36,7 +36,8 @@ FunctionDefinition:
 	')'
 	'{'
 		members+=FunctionDefinitionMember*
-	'}'	
+	'}'
+	('USES')?
 ;
 
 FunctionParameterMember:

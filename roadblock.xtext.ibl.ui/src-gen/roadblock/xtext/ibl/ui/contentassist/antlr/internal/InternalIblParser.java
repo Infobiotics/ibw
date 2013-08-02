@@ -22,9 +22,10 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalIblParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'required'", "'returned'", "'+'", "'-'", "'|'", "'ID'", "'URI'", "'DNA'", "'CHASSIS'", "'PROCESS'", "'LIST'", "'SET'", "'->'", "'<->'", "'define'", "'{'", "'}'", "'('", "')'", "','", "':'", "'<'", "'>'", "'.'", "'='", "'RULE'", "'~'", "'import'", "'.*'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'required'", "'returned'", "'+'", "'-'", "'|'", "'ID'", "'URI'", "'DNA'", "'CHASSIS'", "'PROCESS'", "'LIST'", "'SET'", "'->'", "'<->'", "'define'", "'{'", "'}'", "'('", "')'", "'USES'", "','", "':'", "'<'", "'>'", "'.'", "'='", "'RULE'", "'~'", "'import'", "'.*'"
     };
     public static final int RULE_ID=4;
+    public static final int T__40=40;
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
@@ -1877,7 +1878,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==36) ) {
+            if ( (LA3_0==37) ) {
                 alt3=1;
             }
             else if ( (LA3_0==RULE_ID) ) {
@@ -2611,7 +2612,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==25||LA10_0==38) ) {
+                if ( (LA10_0==25||LA10_0==39) ) {
                     alt10=1;
                 }
 
@@ -3719,7 +3720,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
                     if ( (LA14_1==RULE_ID) ) {
                         int LA14_2 = input.LA(3);
 
-                        if ( (LA14_2==31) ) {
+                        if ( (LA14_2==32) ) {
                             int LA14_3 = input.LA(4);
 
                             if ( (LA14_3==11) ) {
@@ -3934,7 +3935,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
                 int alt15=2;
                 int LA15_0 = input.LA(1);
 
-                if ( (LA15_0==30) ) {
+                if ( (LA15_0==31) ) {
                     alt15=1;
                 }
 
@@ -4187,7 +4188,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
                 int alt16=2;
                 int LA16_0 = input.LA(1);
 
-                if ( (LA16_0==RULE_ID||LA16_0==36) ) {
+                if ( (LA16_0==RULE_ID||LA16_0==37) ) {
                     alt16=1;
                 }
 
@@ -4233,17 +4234,22 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__Group__11"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1522:1: rule__FunctionDefinition__Group__11 : rule__FunctionDefinition__Group__11__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1522:1: rule__FunctionDefinition__Group__11 : rule__FunctionDefinition__Group__11__Impl rule__FunctionDefinition__Group__12 ;
     public final void rule__FunctionDefinition__Group__11() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1526:1: ( rule__FunctionDefinition__Group__11__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1527:2: rule__FunctionDefinition__Group__11__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1526:1: ( rule__FunctionDefinition__Group__11__Impl rule__FunctionDefinition__Group__12 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1527:2: rule__FunctionDefinition__Group__11__Impl rule__FunctionDefinition__Group__12
             {
             pushFollow(FOLLOW_rule__FunctionDefinition__Group__11__Impl_in_rule__FunctionDefinition__Group__113133);
             rule__FunctionDefinition__Group__11__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__FunctionDefinition__Group__12_in_rule__FunctionDefinition__Group__113136);
+            rule__FunctionDefinition__Group__12();
 
             state._fsp--;
 
@@ -4266,20 +4272,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__Group__11__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1533:1: rule__FunctionDefinition__Group__11__Impl : ( '}' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1534:1: rule__FunctionDefinition__Group__11__Impl : ( '}' ) ;
     public final void rule__FunctionDefinition__Group__11__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1537:1: ( ( '}' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1538:1: ( '}' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1538:1: ( ( '}' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1539:1: ( '}' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1538:1: ( '}' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1539:1: '}'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1539:1: ( '}' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1540:1: '}'
             {
              before(grammarAccess.getFunctionDefinitionAccess().getRightCurlyBracketKeyword_11()); 
-            match(input,27,FOLLOW_27_in_rule__FunctionDefinition__Group__11__Impl3161); 
+            match(input,27,FOLLOW_27_in_rule__FunctionDefinition__Group__11__Impl3164); 
              after(grammarAccess.getFunctionDefinitionAccess().getRightCurlyBracketKeyword_11()); 
 
             }
@@ -4302,22 +4308,109 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__FunctionDefinition__Group__11__Impl"
 
 
+    // $ANTLR start "rule__FunctionDefinition__Group__12"
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1553:1: rule__FunctionDefinition__Group__12 : rule__FunctionDefinition__Group__12__Impl ;
+    public final void rule__FunctionDefinition__Group__12() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1557:1: ( rule__FunctionDefinition__Group__12__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1558:2: rule__FunctionDefinition__Group__12__Impl
+            {
+            pushFollow(FOLLOW_rule__FunctionDefinition__Group__12__Impl_in_rule__FunctionDefinition__Group__123195);
+            rule__FunctionDefinition__Group__12__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FunctionDefinition__Group__12"
+
+
+    // $ANTLR start "rule__FunctionDefinition__Group__12__Impl"
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1564:1: rule__FunctionDefinition__Group__12__Impl : ( ( 'USES' )? ) ;
+    public final void rule__FunctionDefinition__Group__12__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1568:1: ( ( ( 'USES' )? ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1569:1: ( ( 'USES' )? )
+            {
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1569:1: ( ( 'USES' )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1570:1: ( 'USES' )?
+            {
+             before(grammarAccess.getFunctionDefinitionAccess().getUSESKeyword_12()); 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1571:1: ( 'USES' )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
+
+            if ( (LA17_0==30) ) {
+                alt17=1;
+            }
+            switch (alt17) {
+                case 1 :
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1572:2: 'USES'
+                    {
+                    match(input,30,FOLLOW_30_in_rule__FunctionDefinition__Group__12__Impl3224); 
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getFunctionDefinitionAccess().getUSESKeyword_12()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__FunctionDefinition__Group__12__Impl"
+
+
     // $ANTLR start "rule__FunctionDefinition__Group_7__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1576:1: rule__FunctionDefinition__Group_7__0 : rule__FunctionDefinition__Group_7__0__Impl rule__FunctionDefinition__Group_7__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1609:1: rule__FunctionDefinition__Group_7__0 : rule__FunctionDefinition__Group_7__0__Impl rule__FunctionDefinition__Group_7__1 ;
     public final void rule__FunctionDefinition__Group_7__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1580:1: ( rule__FunctionDefinition__Group_7__0__Impl rule__FunctionDefinition__Group_7__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1581:2: rule__FunctionDefinition__Group_7__0__Impl rule__FunctionDefinition__Group_7__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1613:1: ( rule__FunctionDefinition__Group_7__0__Impl rule__FunctionDefinition__Group_7__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1614:2: rule__FunctionDefinition__Group_7__0__Impl rule__FunctionDefinition__Group_7__1
             {
-            pushFollow(FOLLOW_rule__FunctionDefinition__Group_7__0__Impl_in_rule__FunctionDefinition__Group_7__03216);
+            pushFollow(FOLLOW_rule__FunctionDefinition__Group_7__0__Impl_in_rule__FunctionDefinition__Group_7__03283);
             rule__FunctionDefinition__Group_7__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FunctionDefinition__Group_7__1_in_rule__FunctionDefinition__Group_7__03219);
+            pushFollow(FOLLOW_rule__FunctionDefinition__Group_7__1_in_rule__FunctionDefinition__Group_7__03286);
             rule__FunctionDefinition__Group_7__1();
 
             state._fsp--;
@@ -4341,20 +4434,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__Group_7__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1588:1: rule__FunctionDefinition__Group_7__0__Impl : ( ',' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1621:1: rule__FunctionDefinition__Group_7__0__Impl : ( ',' ) ;
     public final void rule__FunctionDefinition__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1592:1: ( ( ',' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1593:1: ( ',' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1625:1: ( ( ',' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1626:1: ( ',' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1593:1: ( ',' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1594:1: ','
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1626:1: ( ',' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1627:1: ','
             {
              before(grammarAccess.getFunctionDefinitionAccess().getCommaKeyword_7_0()); 
-            match(input,30,FOLLOW_30_in_rule__FunctionDefinition__Group_7__0__Impl3247); 
+            match(input,31,FOLLOW_31_in_rule__FunctionDefinition__Group_7__0__Impl3314); 
              after(grammarAccess.getFunctionDefinitionAccess().getCommaKeyword_7_0()); 
 
             }
@@ -4378,16 +4471,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__Group_7__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1607:1: rule__FunctionDefinition__Group_7__1 : rule__FunctionDefinition__Group_7__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1640:1: rule__FunctionDefinition__Group_7__1 : rule__FunctionDefinition__Group_7__1__Impl ;
     public final void rule__FunctionDefinition__Group_7__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1611:1: ( rule__FunctionDefinition__Group_7__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1612:2: rule__FunctionDefinition__Group_7__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1644:1: ( rule__FunctionDefinition__Group_7__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1645:2: rule__FunctionDefinition__Group_7__1__Impl
             {
-            pushFollow(FOLLOW_rule__FunctionDefinition__Group_7__1__Impl_in_rule__FunctionDefinition__Group_7__13278);
+            pushFollow(FOLLOW_rule__FunctionDefinition__Group_7__1__Impl_in_rule__FunctionDefinition__Group_7__13345);
             rule__FunctionDefinition__Group_7__1__Impl();
 
             state._fsp--;
@@ -4411,23 +4504,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__Group_7__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1618:1: rule__FunctionDefinition__Group_7__1__Impl : ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1651:1: rule__FunctionDefinition__Group_7__1__Impl : ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) ) ;
     public final void rule__FunctionDefinition__Group_7__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1622:1: ( ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1623:1: ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1655:1: ( ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1656:1: ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1623:1: ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1624:1: ( rule__FunctionDefinition__ParametersAssignment_7_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1656:1: ( ( rule__FunctionDefinition__ParametersAssignment_7_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1657:1: ( rule__FunctionDefinition__ParametersAssignment_7_1 )
             {
              before(grammarAccess.getFunctionDefinitionAccess().getParametersAssignment_7_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1625:1: ( rule__FunctionDefinition__ParametersAssignment_7_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1625:2: rule__FunctionDefinition__ParametersAssignment_7_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1658:1: ( rule__FunctionDefinition__ParametersAssignment_7_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1658:2: rule__FunctionDefinition__ParametersAssignment_7_1
             {
-            pushFollow(FOLLOW_rule__FunctionDefinition__ParametersAssignment_7_1_in_rule__FunctionDefinition__Group_7__1__Impl3305);
+            pushFollow(FOLLOW_rule__FunctionDefinition__ParametersAssignment_7_1_in_rule__FunctionDefinition__Group_7__1__Impl3372);
             rule__FunctionDefinition__ParametersAssignment_7_1();
 
             state._fsp--;
@@ -4458,21 +4551,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1639:1: rule__FunctionParameterMember__Group__0 : rule__FunctionParameterMember__Group__0__Impl rule__FunctionParameterMember__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1672:1: rule__FunctionParameterMember__Group__0 : rule__FunctionParameterMember__Group__0__Impl rule__FunctionParameterMember__Group__1 ;
     public final void rule__FunctionParameterMember__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1643:1: ( rule__FunctionParameterMember__Group__0__Impl rule__FunctionParameterMember__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1644:2: rule__FunctionParameterMember__Group__0__Impl rule__FunctionParameterMember__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1676:1: ( rule__FunctionParameterMember__Group__0__Impl rule__FunctionParameterMember__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1677:2: rule__FunctionParameterMember__Group__0__Impl rule__FunctionParameterMember__Group__1
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__0__Impl_in_rule__FunctionParameterMember__Group__03339);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__0__Impl_in_rule__FunctionParameterMember__Group__03406);
             rule__FunctionParameterMember__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__1_in_rule__FunctionParameterMember__Group__03342);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__1_in_rule__FunctionParameterMember__Group__03409);
             rule__FunctionParameterMember__Group__1();
 
             state._fsp--;
@@ -4496,23 +4589,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1651:1: rule__FunctionParameterMember__Group__0__Impl : ( ( rule__FunctionParameterMember__TypeAssignment_0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1684:1: rule__FunctionParameterMember__Group__0__Impl : ( ( rule__FunctionParameterMember__TypeAssignment_0 ) ) ;
     public final void rule__FunctionParameterMember__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1655:1: ( ( ( rule__FunctionParameterMember__TypeAssignment_0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1656:1: ( ( rule__FunctionParameterMember__TypeAssignment_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1688:1: ( ( ( rule__FunctionParameterMember__TypeAssignment_0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1689:1: ( ( rule__FunctionParameterMember__TypeAssignment_0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1656:1: ( ( rule__FunctionParameterMember__TypeAssignment_0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1657:1: ( rule__FunctionParameterMember__TypeAssignment_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1689:1: ( ( rule__FunctionParameterMember__TypeAssignment_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1690:1: ( rule__FunctionParameterMember__TypeAssignment_0 )
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getTypeAssignment_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1658:1: ( rule__FunctionParameterMember__TypeAssignment_0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1658:2: rule__FunctionParameterMember__TypeAssignment_0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1691:1: ( rule__FunctionParameterMember__TypeAssignment_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1691:2: rule__FunctionParameterMember__TypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__TypeAssignment_0_in_rule__FunctionParameterMember__Group__0__Impl3369);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__TypeAssignment_0_in_rule__FunctionParameterMember__Group__0__Impl3436);
             rule__FunctionParameterMember__TypeAssignment_0();
 
             state._fsp--;
@@ -4543,21 +4636,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1668:1: rule__FunctionParameterMember__Group__1 : rule__FunctionParameterMember__Group__1__Impl rule__FunctionParameterMember__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1701:1: rule__FunctionParameterMember__Group__1 : rule__FunctionParameterMember__Group__1__Impl rule__FunctionParameterMember__Group__2 ;
     public final void rule__FunctionParameterMember__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1672:1: ( rule__FunctionParameterMember__Group__1__Impl rule__FunctionParameterMember__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1673:2: rule__FunctionParameterMember__Group__1__Impl rule__FunctionParameterMember__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1705:1: ( rule__FunctionParameterMember__Group__1__Impl rule__FunctionParameterMember__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1706:2: rule__FunctionParameterMember__Group__1__Impl rule__FunctionParameterMember__Group__2
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__1__Impl_in_rule__FunctionParameterMember__Group__13399);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__1__Impl_in_rule__FunctionParameterMember__Group__13466);
             rule__FunctionParameterMember__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__2_in_rule__FunctionParameterMember__Group__13402);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__2_in_rule__FunctionParameterMember__Group__13469);
             rule__FunctionParameterMember__Group__2();
 
             state._fsp--;
@@ -4581,23 +4674,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1680:1: rule__FunctionParameterMember__Group__1__Impl : ( ( rule__FunctionParameterMember__NameAssignment_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1713:1: rule__FunctionParameterMember__Group__1__Impl : ( ( rule__FunctionParameterMember__NameAssignment_1 ) ) ;
     public final void rule__FunctionParameterMember__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1684:1: ( ( ( rule__FunctionParameterMember__NameAssignment_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1685:1: ( ( rule__FunctionParameterMember__NameAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1717:1: ( ( ( rule__FunctionParameterMember__NameAssignment_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1718:1: ( ( rule__FunctionParameterMember__NameAssignment_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1685:1: ( ( rule__FunctionParameterMember__NameAssignment_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1686:1: ( rule__FunctionParameterMember__NameAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1718:1: ( ( rule__FunctionParameterMember__NameAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1719:1: ( rule__FunctionParameterMember__NameAssignment_1 )
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getNameAssignment_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1687:1: ( rule__FunctionParameterMember__NameAssignment_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1687:2: rule__FunctionParameterMember__NameAssignment_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1720:1: ( rule__FunctionParameterMember__NameAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1720:2: rule__FunctionParameterMember__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__NameAssignment_1_in_rule__FunctionParameterMember__Group__1__Impl3429);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__NameAssignment_1_in_rule__FunctionParameterMember__Group__1__Impl3496);
             rule__FunctionParameterMember__NameAssignment_1();
 
             state._fsp--;
@@ -4628,21 +4721,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1697:1: rule__FunctionParameterMember__Group__2 : rule__FunctionParameterMember__Group__2__Impl rule__FunctionParameterMember__Group__3 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1730:1: rule__FunctionParameterMember__Group__2 : rule__FunctionParameterMember__Group__2__Impl rule__FunctionParameterMember__Group__3 ;
     public final void rule__FunctionParameterMember__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1701:1: ( rule__FunctionParameterMember__Group__2__Impl rule__FunctionParameterMember__Group__3 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1702:2: rule__FunctionParameterMember__Group__2__Impl rule__FunctionParameterMember__Group__3
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1734:1: ( rule__FunctionParameterMember__Group__2__Impl rule__FunctionParameterMember__Group__3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1735:2: rule__FunctionParameterMember__Group__2__Impl rule__FunctionParameterMember__Group__3
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__2__Impl_in_rule__FunctionParameterMember__Group__23459);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__2__Impl_in_rule__FunctionParameterMember__Group__23526);
             rule__FunctionParameterMember__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__3_in_rule__FunctionParameterMember__Group__23462);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__3_in_rule__FunctionParameterMember__Group__23529);
             rule__FunctionParameterMember__Group__3();
 
             state._fsp--;
@@ -4666,20 +4759,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1709:1: rule__FunctionParameterMember__Group__2__Impl : ( ':' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1742:1: rule__FunctionParameterMember__Group__2__Impl : ( ':' ) ;
     public final void rule__FunctionParameterMember__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1713:1: ( ( ':' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1714:1: ( ':' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1746:1: ( ( ':' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1747:1: ( ':' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1714:1: ( ':' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1715:1: ':'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1747:1: ( ':' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1748:1: ':'
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getColonKeyword_2()); 
-            match(input,31,FOLLOW_31_in_rule__FunctionParameterMember__Group__2__Impl3490); 
+            match(input,32,FOLLOW_32_in_rule__FunctionParameterMember__Group__2__Impl3557); 
              after(grammarAccess.getFunctionParameterMemberAccess().getColonKeyword_2()); 
 
             }
@@ -4703,16 +4796,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1728:1: rule__FunctionParameterMember__Group__3 : rule__FunctionParameterMember__Group__3__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1761:1: rule__FunctionParameterMember__Group__3 : rule__FunctionParameterMember__Group__3__Impl ;
     public final void rule__FunctionParameterMember__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1732:1: ( rule__FunctionParameterMember__Group__3__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1733:2: rule__FunctionParameterMember__Group__3__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1765:1: ( rule__FunctionParameterMember__Group__3__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1766:2: rule__FunctionParameterMember__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__3__Impl_in_rule__FunctionParameterMember__Group__33521);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__Group__3__Impl_in_rule__FunctionParameterMember__Group__33588);
             rule__FunctionParameterMember__Group__3__Impl();
 
             state._fsp--;
@@ -4736,23 +4829,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__Group__3__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1739:1: rule__FunctionParameterMember__Group__3__Impl : ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1772:1: rule__FunctionParameterMember__Group__3__Impl : ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) ) ;
     public final void rule__FunctionParameterMember__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1743:1: ( ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1744:1: ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1776:1: ( ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1777:1: ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1744:1: ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1745:1: ( rule__FunctionParameterMember__ScopeAssignment_3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1777:1: ( ( rule__FunctionParameterMember__ScopeAssignment_3 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1778:1: ( rule__FunctionParameterMember__ScopeAssignment_3 )
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getScopeAssignment_3()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1746:1: ( rule__FunctionParameterMember__ScopeAssignment_3 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1746:2: rule__FunctionParameterMember__ScopeAssignment_3
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1779:1: ( rule__FunctionParameterMember__ScopeAssignment_3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1779:2: rule__FunctionParameterMember__ScopeAssignment_3
             {
-            pushFollow(FOLLOW_rule__FunctionParameterMember__ScopeAssignment_3_in_rule__FunctionParameterMember__Group__3__Impl3548);
+            pushFollow(FOLLOW_rule__FunctionParameterMember__ScopeAssignment_3_in_rule__FunctionParameterMember__Group__3__Impl3615);
             rule__FunctionParameterMember__ScopeAssignment_3();
 
             state._fsp--;
@@ -4783,21 +4876,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1764:1: rule__VariableDeclaration__Group_0__0 : rule__VariableDeclaration__Group_0__0__Impl rule__VariableDeclaration__Group_0__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1797:1: rule__VariableDeclaration__Group_0__0 : rule__VariableDeclaration__Group_0__0__Impl rule__VariableDeclaration__Group_0__1 ;
     public final void rule__VariableDeclaration__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1768:1: ( rule__VariableDeclaration__Group_0__0__Impl rule__VariableDeclaration__Group_0__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1769:2: rule__VariableDeclaration__Group_0__0__Impl rule__VariableDeclaration__Group_0__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1801:1: ( rule__VariableDeclaration__Group_0__0__Impl rule__VariableDeclaration__Group_0__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1802:2: rule__VariableDeclaration__Group_0__0__Impl rule__VariableDeclaration__Group_0__1
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0__0__Impl_in_rule__VariableDeclaration__Group_0__03586);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0__0__Impl_in_rule__VariableDeclaration__Group_0__03653);
             rule__VariableDeclaration__Group_0__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0__1_in_rule__VariableDeclaration__Group_0__03589);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0__1_in_rule__VariableDeclaration__Group_0__03656);
             rule__VariableDeclaration__Group_0__1();
 
             state._fsp--;
@@ -4821,21 +4914,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1776:1: rule__VariableDeclaration__Group_0__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1809:1: rule__VariableDeclaration__Group_0__0__Impl : ( () ) ;
     public final void rule__VariableDeclaration__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1780:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1781:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1813:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1814:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1781:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1782:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1814:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1815:1: ()
             {
              before(grammarAccess.getVariableDeclarationAccess().getVariableDeclarationAction_0_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1783:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1785:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1816:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1818:1: 
             {
             }
 
@@ -4858,16 +4951,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1795:1: rule__VariableDeclaration__Group_0__1 : rule__VariableDeclaration__Group_0__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1828:1: rule__VariableDeclaration__Group_0__1 : rule__VariableDeclaration__Group_0__1__Impl ;
     public final void rule__VariableDeclaration__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1799:1: ( rule__VariableDeclaration__Group_0__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1800:2: rule__VariableDeclaration__Group_0__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1832:1: ( rule__VariableDeclaration__Group_0__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1833:2: rule__VariableDeclaration__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0__1__Impl_in_rule__VariableDeclaration__Group_0__13647);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0__1__Impl_in_rule__VariableDeclaration__Group_0__13714);
             rule__VariableDeclaration__Group_0__1__Impl();
 
             state._fsp--;
@@ -4891,23 +4984,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1806:1: rule__VariableDeclaration__Group_0__1__Impl : ( ( rule__VariableDeclaration__Group_0_1__0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1839:1: rule__VariableDeclaration__Group_0__1__Impl : ( ( rule__VariableDeclaration__Group_0_1__0 ) ) ;
     public final void rule__VariableDeclaration__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1810:1: ( ( ( rule__VariableDeclaration__Group_0_1__0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1811:1: ( ( rule__VariableDeclaration__Group_0_1__0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1843:1: ( ( ( rule__VariableDeclaration__Group_0_1__0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1844:1: ( ( rule__VariableDeclaration__Group_0_1__0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1811:1: ( ( rule__VariableDeclaration__Group_0_1__0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1812:1: ( rule__VariableDeclaration__Group_0_1__0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1844:1: ( ( rule__VariableDeclaration__Group_0_1__0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1845:1: ( rule__VariableDeclaration__Group_0_1__0 )
             {
              before(grammarAccess.getVariableDeclarationAccess().getGroup_0_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1813:1: ( rule__VariableDeclaration__Group_0_1__0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1813:2: rule__VariableDeclaration__Group_0_1__0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1846:1: ( rule__VariableDeclaration__Group_0_1__0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1846:2: rule__VariableDeclaration__Group_0_1__0
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__0_in_rule__VariableDeclaration__Group_0__1__Impl3674);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__0_in_rule__VariableDeclaration__Group_0__1__Impl3741);
             rule__VariableDeclaration__Group_0_1__0();
 
             state._fsp--;
@@ -4938,21 +5031,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0_1__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1827:1: rule__VariableDeclaration__Group_0_1__0 : rule__VariableDeclaration__Group_0_1__0__Impl rule__VariableDeclaration__Group_0_1__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1860:1: rule__VariableDeclaration__Group_0_1__0 : rule__VariableDeclaration__Group_0_1__0__Impl rule__VariableDeclaration__Group_0_1__1 ;
     public final void rule__VariableDeclaration__Group_0_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1831:1: ( rule__VariableDeclaration__Group_0_1__0__Impl rule__VariableDeclaration__Group_0_1__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1832:2: rule__VariableDeclaration__Group_0_1__0__Impl rule__VariableDeclaration__Group_0_1__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1864:1: ( rule__VariableDeclaration__Group_0_1__0__Impl rule__VariableDeclaration__Group_0_1__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1865:2: rule__VariableDeclaration__Group_0_1__0__Impl rule__VariableDeclaration__Group_0_1__1
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__0__Impl_in_rule__VariableDeclaration__Group_0_1__03708);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__0__Impl_in_rule__VariableDeclaration__Group_0_1__03775);
             rule__VariableDeclaration__Group_0_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__1_in_rule__VariableDeclaration__Group_0_1__03711);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__1_in_rule__VariableDeclaration__Group_0_1__03778);
             rule__VariableDeclaration__Group_0_1__1();
 
             state._fsp--;
@@ -4976,23 +5069,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0_1__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1839:1: rule__VariableDeclaration__Group_0_1__0__Impl : ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1872:1: rule__VariableDeclaration__Group_0_1__0__Impl : ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) ) ;
     public final void rule__VariableDeclaration__Group_0_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1843:1: ( ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1844:1: ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1876:1: ( ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1877:1: ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1844:1: ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1845:1: ( rule__VariableDeclaration__TypeAssignment_0_1_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1877:1: ( ( rule__VariableDeclaration__TypeAssignment_0_1_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1878:1: ( rule__VariableDeclaration__TypeAssignment_0_1_0 )
             {
              before(grammarAccess.getVariableDeclarationAccess().getTypeAssignment_0_1_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1846:1: ( rule__VariableDeclaration__TypeAssignment_0_1_0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1846:2: rule__VariableDeclaration__TypeAssignment_0_1_0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1879:1: ( rule__VariableDeclaration__TypeAssignment_0_1_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1879:2: rule__VariableDeclaration__TypeAssignment_0_1_0
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__TypeAssignment_0_1_0_in_rule__VariableDeclaration__Group_0_1__0__Impl3738);
+            pushFollow(FOLLOW_rule__VariableDeclaration__TypeAssignment_0_1_0_in_rule__VariableDeclaration__Group_0_1__0__Impl3805);
             rule__VariableDeclaration__TypeAssignment_0_1_0();
 
             state._fsp--;
@@ -5023,16 +5116,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0_1__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1856:1: rule__VariableDeclaration__Group_0_1__1 : rule__VariableDeclaration__Group_0_1__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1889:1: rule__VariableDeclaration__Group_0_1__1 : rule__VariableDeclaration__Group_0_1__1__Impl ;
     public final void rule__VariableDeclaration__Group_0_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1860:1: ( rule__VariableDeclaration__Group_0_1__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1861:2: rule__VariableDeclaration__Group_0_1__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1893:1: ( rule__VariableDeclaration__Group_0_1__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1894:2: rule__VariableDeclaration__Group_0_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__1__Impl_in_rule__VariableDeclaration__Group_0_1__13768);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_0_1__1__Impl_in_rule__VariableDeclaration__Group_0_1__13835);
             rule__VariableDeclaration__Group_0_1__1__Impl();
 
             state._fsp--;
@@ -5056,23 +5149,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_0_1__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1867:1: rule__VariableDeclaration__Group_0_1__1__Impl : ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1900:1: rule__VariableDeclaration__Group_0_1__1__Impl : ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) ) ;
     public final void rule__VariableDeclaration__Group_0_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1871:1: ( ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1872:1: ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1904:1: ( ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1905:1: ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1872:1: ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1873:1: ( rule__VariableDeclaration__NameAssignment_0_1_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1905:1: ( ( rule__VariableDeclaration__NameAssignment_0_1_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1906:1: ( rule__VariableDeclaration__NameAssignment_0_1_1 )
             {
              before(grammarAccess.getVariableDeclarationAccess().getNameAssignment_0_1_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1874:1: ( rule__VariableDeclaration__NameAssignment_0_1_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1874:2: rule__VariableDeclaration__NameAssignment_0_1_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1907:1: ( rule__VariableDeclaration__NameAssignment_0_1_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1907:2: rule__VariableDeclaration__NameAssignment_0_1_1
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__NameAssignment_0_1_1_in_rule__VariableDeclaration__Group_0_1__1__Impl3795);
+            pushFollow(FOLLOW_rule__VariableDeclaration__NameAssignment_0_1_1_in_rule__VariableDeclaration__Group_0_1__1__Impl3862);
             rule__VariableDeclaration__NameAssignment_0_1_1();
 
             state._fsp--;
@@ -5103,21 +5196,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1888:1: rule__VariableDeclaration__Group_1__0 : rule__VariableDeclaration__Group_1__0__Impl rule__VariableDeclaration__Group_1__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1921:1: rule__VariableDeclaration__Group_1__0 : rule__VariableDeclaration__Group_1__0__Impl rule__VariableDeclaration__Group_1__1 ;
     public final void rule__VariableDeclaration__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1892:1: ( rule__VariableDeclaration__Group_1__0__Impl rule__VariableDeclaration__Group_1__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1893:2: rule__VariableDeclaration__Group_1__0__Impl rule__VariableDeclaration__Group_1__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1925:1: ( rule__VariableDeclaration__Group_1__0__Impl rule__VariableDeclaration__Group_1__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1926:2: rule__VariableDeclaration__Group_1__0__Impl rule__VariableDeclaration__Group_1__1
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__0__Impl_in_rule__VariableDeclaration__Group_1__03829);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__0__Impl_in_rule__VariableDeclaration__Group_1__03896);
             rule__VariableDeclaration__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__1_in_rule__VariableDeclaration__Group_1__03832);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__1_in_rule__VariableDeclaration__Group_1__03899);
             rule__VariableDeclaration__Group_1__1();
 
             state._fsp--;
@@ -5141,23 +5234,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1900:1: rule__VariableDeclaration__Group_1__0__Impl : ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1933:1: rule__VariableDeclaration__Group_1__0__Impl : ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) ) ;
     public final void rule__VariableDeclaration__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1904:1: ( ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1905:1: ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1937:1: ( ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1938:1: ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1905:1: ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1906:1: ( rule__VariableDeclaration__CollectionAssignment_1_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1938:1: ( ( rule__VariableDeclaration__CollectionAssignment_1_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1939:1: ( rule__VariableDeclaration__CollectionAssignment_1_0 )
             {
              before(grammarAccess.getVariableDeclarationAccess().getCollectionAssignment_1_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1907:1: ( rule__VariableDeclaration__CollectionAssignment_1_0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1907:2: rule__VariableDeclaration__CollectionAssignment_1_0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1940:1: ( rule__VariableDeclaration__CollectionAssignment_1_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1940:2: rule__VariableDeclaration__CollectionAssignment_1_0
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__CollectionAssignment_1_0_in_rule__VariableDeclaration__Group_1__0__Impl3859);
+            pushFollow(FOLLOW_rule__VariableDeclaration__CollectionAssignment_1_0_in_rule__VariableDeclaration__Group_1__0__Impl3926);
             rule__VariableDeclaration__CollectionAssignment_1_0();
 
             state._fsp--;
@@ -5188,21 +5281,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1917:1: rule__VariableDeclaration__Group_1__1 : rule__VariableDeclaration__Group_1__1__Impl rule__VariableDeclaration__Group_1__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1950:1: rule__VariableDeclaration__Group_1__1 : rule__VariableDeclaration__Group_1__1__Impl rule__VariableDeclaration__Group_1__2 ;
     public final void rule__VariableDeclaration__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1921:1: ( rule__VariableDeclaration__Group_1__1__Impl rule__VariableDeclaration__Group_1__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1922:2: rule__VariableDeclaration__Group_1__1__Impl rule__VariableDeclaration__Group_1__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1954:1: ( rule__VariableDeclaration__Group_1__1__Impl rule__VariableDeclaration__Group_1__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1955:2: rule__VariableDeclaration__Group_1__1__Impl rule__VariableDeclaration__Group_1__2
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__1__Impl_in_rule__VariableDeclaration__Group_1__13889);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__1__Impl_in_rule__VariableDeclaration__Group_1__13956);
             rule__VariableDeclaration__Group_1__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__2_in_rule__VariableDeclaration__Group_1__13892);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__2_in_rule__VariableDeclaration__Group_1__13959);
             rule__VariableDeclaration__Group_1__2();
 
             state._fsp--;
@@ -5226,20 +5319,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1929:1: rule__VariableDeclaration__Group_1__1__Impl : ( '<' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1962:1: rule__VariableDeclaration__Group_1__1__Impl : ( '<' ) ;
     public final void rule__VariableDeclaration__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1933:1: ( ( '<' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1934:1: ( '<' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1966:1: ( ( '<' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1967:1: ( '<' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1934:1: ( '<' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1935:1: '<'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1967:1: ( '<' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1968:1: '<'
             {
              before(grammarAccess.getVariableDeclarationAccess().getLessThanSignKeyword_1_1()); 
-            match(input,32,FOLLOW_32_in_rule__VariableDeclaration__Group_1__1__Impl3920); 
+            match(input,33,FOLLOW_33_in_rule__VariableDeclaration__Group_1__1__Impl3987); 
              after(grammarAccess.getVariableDeclarationAccess().getLessThanSignKeyword_1_1()); 
 
             }
@@ -5263,21 +5356,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1948:1: rule__VariableDeclaration__Group_1__2 : rule__VariableDeclaration__Group_1__2__Impl rule__VariableDeclaration__Group_1__3 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1981:1: rule__VariableDeclaration__Group_1__2 : rule__VariableDeclaration__Group_1__2__Impl rule__VariableDeclaration__Group_1__3 ;
     public final void rule__VariableDeclaration__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1952:1: ( rule__VariableDeclaration__Group_1__2__Impl rule__VariableDeclaration__Group_1__3 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1953:2: rule__VariableDeclaration__Group_1__2__Impl rule__VariableDeclaration__Group_1__3
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1985:1: ( rule__VariableDeclaration__Group_1__2__Impl rule__VariableDeclaration__Group_1__3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1986:2: rule__VariableDeclaration__Group_1__2__Impl rule__VariableDeclaration__Group_1__3
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__2__Impl_in_rule__VariableDeclaration__Group_1__23951);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__2__Impl_in_rule__VariableDeclaration__Group_1__24018);
             rule__VariableDeclaration__Group_1__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__3_in_rule__VariableDeclaration__Group_1__23954);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__3_in_rule__VariableDeclaration__Group_1__24021);
             rule__VariableDeclaration__Group_1__3();
 
             state._fsp--;
@@ -5301,23 +5394,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1960:1: rule__VariableDeclaration__Group_1__2__Impl : ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1993:1: rule__VariableDeclaration__Group_1__2__Impl : ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) ) ;
     public final void rule__VariableDeclaration__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1964:1: ( ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1965:1: ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1997:1: ( ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1998:1: ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1965:1: ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1966:1: ( rule__VariableDeclaration__TypeAssignment_1_2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1998:1: ( ( rule__VariableDeclaration__TypeAssignment_1_2 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1999:1: ( rule__VariableDeclaration__TypeAssignment_1_2 )
             {
              before(grammarAccess.getVariableDeclarationAccess().getTypeAssignment_1_2()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1967:1: ( rule__VariableDeclaration__TypeAssignment_1_2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1967:2: rule__VariableDeclaration__TypeAssignment_1_2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2000:1: ( rule__VariableDeclaration__TypeAssignment_1_2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2000:2: rule__VariableDeclaration__TypeAssignment_1_2
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__TypeAssignment_1_2_in_rule__VariableDeclaration__Group_1__2__Impl3981);
+            pushFollow(FOLLOW_rule__VariableDeclaration__TypeAssignment_1_2_in_rule__VariableDeclaration__Group_1__2__Impl4048);
             rule__VariableDeclaration__TypeAssignment_1_2();
 
             state._fsp--;
@@ -5348,21 +5441,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1977:1: rule__VariableDeclaration__Group_1__3 : rule__VariableDeclaration__Group_1__3__Impl rule__VariableDeclaration__Group_1__4 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2010:1: rule__VariableDeclaration__Group_1__3 : rule__VariableDeclaration__Group_1__3__Impl rule__VariableDeclaration__Group_1__4 ;
     public final void rule__VariableDeclaration__Group_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1981:1: ( rule__VariableDeclaration__Group_1__3__Impl rule__VariableDeclaration__Group_1__4 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1982:2: rule__VariableDeclaration__Group_1__3__Impl rule__VariableDeclaration__Group_1__4
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2014:1: ( rule__VariableDeclaration__Group_1__3__Impl rule__VariableDeclaration__Group_1__4 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2015:2: rule__VariableDeclaration__Group_1__3__Impl rule__VariableDeclaration__Group_1__4
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__3__Impl_in_rule__VariableDeclaration__Group_1__34011);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__3__Impl_in_rule__VariableDeclaration__Group_1__34078);
             rule__VariableDeclaration__Group_1__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__4_in_rule__VariableDeclaration__Group_1__34014);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__4_in_rule__VariableDeclaration__Group_1__34081);
             rule__VariableDeclaration__Group_1__4();
 
             state._fsp--;
@@ -5386,20 +5479,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__3__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1989:1: rule__VariableDeclaration__Group_1__3__Impl : ( '>' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2022:1: rule__VariableDeclaration__Group_1__3__Impl : ( '>' ) ;
     public final void rule__VariableDeclaration__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1993:1: ( ( '>' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1994:1: ( '>' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2026:1: ( ( '>' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2027:1: ( '>' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1994:1: ( '>' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1995:1: '>'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2027:1: ( '>' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2028:1: '>'
             {
              before(grammarAccess.getVariableDeclarationAccess().getGreaterThanSignKeyword_1_3()); 
-            match(input,33,FOLLOW_33_in_rule__VariableDeclaration__Group_1__3__Impl4042); 
+            match(input,34,FOLLOW_34_in_rule__VariableDeclaration__Group_1__3__Impl4109); 
              after(grammarAccess.getVariableDeclarationAccess().getGreaterThanSignKeyword_1_3()); 
 
             }
@@ -5423,16 +5516,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__4"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2008:1: rule__VariableDeclaration__Group_1__4 : rule__VariableDeclaration__Group_1__4__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2041:1: rule__VariableDeclaration__Group_1__4 : rule__VariableDeclaration__Group_1__4__Impl ;
     public final void rule__VariableDeclaration__Group_1__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2012:1: ( rule__VariableDeclaration__Group_1__4__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2013:2: rule__VariableDeclaration__Group_1__4__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2045:1: ( rule__VariableDeclaration__Group_1__4__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2046:2: rule__VariableDeclaration__Group_1__4__Impl
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__4__Impl_in_rule__VariableDeclaration__Group_1__44073);
+            pushFollow(FOLLOW_rule__VariableDeclaration__Group_1__4__Impl_in_rule__VariableDeclaration__Group_1__44140);
             rule__VariableDeclaration__Group_1__4__Impl();
 
             state._fsp--;
@@ -5456,23 +5549,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__Group_1__4__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2019:1: rule__VariableDeclaration__Group_1__4__Impl : ( ( rule__VariableDeclaration__NameAssignment_1_4 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2052:1: rule__VariableDeclaration__Group_1__4__Impl : ( ( rule__VariableDeclaration__NameAssignment_1_4 ) ) ;
     public final void rule__VariableDeclaration__Group_1__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2023:1: ( ( ( rule__VariableDeclaration__NameAssignment_1_4 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2024:1: ( ( rule__VariableDeclaration__NameAssignment_1_4 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2056:1: ( ( ( rule__VariableDeclaration__NameAssignment_1_4 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2057:1: ( ( rule__VariableDeclaration__NameAssignment_1_4 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2024:1: ( ( rule__VariableDeclaration__NameAssignment_1_4 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2025:1: ( rule__VariableDeclaration__NameAssignment_1_4 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2057:1: ( ( rule__VariableDeclaration__NameAssignment_1_4 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2058:1: ( rule__VariableDeclaration__NameAssignment_1_4 )
             {
              before(grammarAccess.getVariableDeclarationAccess().getNameAssignment_1_4()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2026:1: ( rule__VariableDeclaration__NameAssignment_1_4 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2026:2: rule__VariableDeclaration__NameAssignment_1_4
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2059:1: ( rule__VariableDeclaration__NameAssignment_1_4 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2059:2: rule__VariableDeclaration__NameAssignment_1_4
             {
-            pushFollow(FOLLOW_rule__VariableDeclaration__NameAssignment_1_4_in_rule__VariableDeclaration__Group_1__4__Impl4100);
+            pushFollow(FOLLOW_rule__VariableDeclaration__NameAssignment_1_4_in_rule__VariableDeclaration__Group_1__4__Impl4167);
             rule__VariableDeclaration__NameAssignment_1_4();
 
             state._fsp--;
@@ -5503,21 +5596,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableType__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2046:1: rule__VariableType__Group__0 : rule__VariableType__Group__0__Impl rule__VariableType__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2079:1: rule__VariableType__Group__0 : rule__VariableType__Group__0__Impl rule__VariableType__Group__1 ;
     public final void rule__VariableType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2050:1: ( rule__VariableType__Group__0__Impl rule__VariableType__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2051:2: rule__VariableType__Group__0__Impl rule__VariableType__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2083:1: ( rule__VariableType__Group__0__Impl rule__VariableType__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2084:2: rule__VariableType__Group__0__Impl rule__VariableType__Group__1
             {
-            pushFollow(FOLLOW_rule__VariableType__Group__0__Impl_in_rule__VariableType__Group__04140);
+            pushFollow(FOLLOW_rule__VariableType__Group__0__Impl_in_rule__VariableType__Group__04207);
             rule__VariableType__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableType__Group__1_in_rule__VariableType__Group__04143);
+            pushFollow(FOLLOW_rule__VariableType__Group__1_in_rule__VariableType__Group__04210);
             rule__VariableType__Group__1();
 
             state._fsp--;
@@ -5541,21 +5634,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableType__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2058:1: rule__VariableType__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2091:1: rule__VariableType__Group__0__Impl : ( () ) ;
     public final void rule__VariableType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2062:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2063:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2095:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2096:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2063:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2064:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2096:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2097:1: ()
             {
              before(grammarAccess.getVariableTypeAccess().getVariableTypeAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2065:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2067:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2098:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2100:1: 
             {
             }
 
@@ -5578,16 +5671,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableType__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2077:1: rule__VariableType__Group__1 : rule__VariableType__Group__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2110:1: rule__VariableType__Group__1 : rule__VariableType__Group__1__Impl ;
     public final void rule__VariableType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2081:1: ( rule__VariableType__Group__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2082:2: rule__VariableType__Group__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2114:1: ( rule__VariableType__Group__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2115:2: rule__VariableType__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__VariableType__Group__1__Impl_in_rule__VariableType__Group__14201);
+            pushFollow(FOLLOW_rule__VariableType__Group__1__Impl_in_rule__VariableType__Group__14268);
             rule__VariableType__Group__1__Impl();
 
             state._fsp--;
@@ -5611,23 +5704,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableType__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2088:1: rule__VariableType__Group__1__Impl : ( ( rule__VariableType__PrimitiveAssignment_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2121:1: rule__VariableType__Group__1__Impl : ( ( rule__VariableType__PrimitiveAssignment_1 ) ) ;
     public final void rule__VariableType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2092:1: ( ( ( rule__VariableType__PrimitiveAssignment_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2093:1: ( ( rule__VariableType__PrimitiveAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2125:1: ( ( ( rule__VariableType__PrimitiveAssignment_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2126:1: ( ( rule__VariableType__PrimitiveAssignment_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2093:1: ( ( rule__VariableType__PrimitiveAssignment_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2094:1: ( rule__VariableType__PrimitiveAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2126:1: ( ( rule__VariableType__PrimitiveAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2127:1: ( rule__VariableType__PrimitiveAssignment_1 )
             {
              before(grammarAccess.getVariableTypeAccess().getPrimitiveAssignment_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2095:1: ( rule__VariableType__PrimitiveAssignment_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2095:2: rule__VariableType__PrimitiveAssignment_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2128:1: ( rule__VariableType__PrimitiveAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2128:2: rule__VariableType__PrimitiveAssignment_1
             {
-            pushFollow(FOLLOW_rule__VariableType__PrimitiveAssignment_1_in_rule__VariableType__Group__1__Impl4228);
+            pushFollow(FOLLOW_rule__VariableType__PrimitiveAssignment_1_in_rule__VariableType__Group__1__Impl4295);
             rule__VariableType__PrimitiveAssignment_1();
 
             state._fsp--;
@@ -5658,21 +5751,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2109:1: rule__VariableAttribute__Group__0 : rule__VariableAttribute__Group__0__Impl rule__VariableAttribute__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2142:1: rule__VariableAttribute__Group__0 : rule__VariableAttribute__Group__0__Impl rule__VariableAttribute__Group__1 ;
     public final void rule__VariableAttribute__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2113:1: ( rule__VariableAttribute__Group__0__Impl rule__VariableAttribute__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2114:2: rule__VariableAttribute__Group__0__Impl rule__VariableAttribute__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2146:1: ( rule__VariableAttribute__Group__0__Impl rule__VariableAttribute__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2147:2: rule__VariableAttribute__Group__0__Impl rule__VariableAttribute__Group__1
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__Group__0__Impl_in_rule__VariableAttribute__Group__04262);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group__0__Impl_in_rule__VariableAttribute__Group__04329);
             rule__VariableAttribute__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableAttribute__Group__1_in_rule__VariableAttribute__Group__04265);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group__1_in_rule__VariableAttribute__Group__04332);
             rule__VariableAttribute__Group__1();
 
             state._fsp--;
@@ -5696,21 +5789,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2121:1: rule__VariableAttribute__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2154:1: rule__VariableAttribute__Group__0__Impl : ( () ) ;
     public final void rule__VariableAttribute__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2125:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2126:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2158:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2159:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2126:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2127:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2159:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2160:1: ()
             {
              before(grammarAccess.getVariableAttributeAccess().getVariableAttributeAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2128:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2130:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2161:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2163:1: 
             {
             }
 
@@ -5733,21 +5826,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2140:1: rule__VariableAttribute__Group__1 : rule__VariableAttribute__Group__1__Impl rule__VariableAttribute__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2173:1: rule__VariableAttribute__Group__1 : rule__VariableAttribute__Group__1__Impl rule__VariableAttribute__Group__2 ;
     public final void rule__VariableAttribute__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2144:1: ( rule__VariableAttribute__Group__1__Impl rule__VariableAttribute__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2145:2: rule__VariableAttribute__Group__1__Impl rule__VariableAttribute__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2177:1: ( rule__VariableAttribute__Group__1__Impl rule__VariableAttribute__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2178:2: rule__VariableAttribute__Group__1__Impl rule__VariableAttribute__Group__2
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__Group__1__Impl_in_rule__VariableAttribute__Group__14323);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group__1__Impl_in_rule__VariableAttribute__Group__14390);
             rule__VariableAttribute__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableAttribute__Group__2_in_rule__VariableAttribute__Group__14326);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group__2_in_rule__VariableAttribute__Group__14393);
             rule__VariableAttribute__Group__2();
 
             state._fsp--;
@@ -5771,23 +5864,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2152:1: rule__VariableAttribute__Group__1__Impl : ( ( rule__VariableAttribute__NameAssignment_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2185:1: rule__VariableAttribute__Group__1__Impl : ( ( rule__VariableAttribute__NameAssignment_1 ) ) ;
     public final void rule__VariableAttribute__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2156:1: ( ( ( rule__VariableAttribute__NameAssignment_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2157:1: ( ( rule__VariableAttribute__NameAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2189:1: ( ( ( rule__VariableAttribute__NameAssignment_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2190:1: ( ( rule__VariableAttribute__NameAssignment_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2157:1: ( ( rule__VariableAttribute__NameAssignment_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2158:1: ( rule__VariableAttribute__NameAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2190:1: ( ( rule__VariableAttribute__NameAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2191:1: ( rule__VariableAttribute__NameAssignment_1 )
             {
              before(grammarAccess.getVariableAttributeAccess().getNameAssignment_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2159:1: ( rule__VariableAttribute__NameAssignment_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2159:2: rule__VariableAttribute__NameAssignment_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2192:1: ( rule__VariableAttribute__NameAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2192:2: rule__VariableAttribute__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__NameAssignment_1_in_rule__VariableAttribute__Group__1__Impl4353);
+            pushFollow(FOLLOW_rule__VariableAttribute__NameAssignment_1_in_rule__VariableAttribute__Group__1__Impl4420);
             rule__VariableAttribute__NameAssignment_1();
 
             state._fsp--;
@@ -5818,16 +5911,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2169:1: rule__VariableAttribute__Group__2 : rule__VariableAttribute__Group__2__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2202:1: rule__VariableAttribute__Group__2 : rule__VariableAttribute__Group__2__Impl ;
     public final void rule__VariableAttribute__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2173:1: ( rule__VariableAttribute__Group__2__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2174:2: rule__VariableAttribute__Group__2__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2206:1: ( rule__VariableAttribute__Group__2__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2207:2: rule__VariableAttribute__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__Group__2__Impl_in_rule__VariableAttribute__Group__24383);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group__2__Impl_in_rule__VariableAttribute__Group__24450);
             rule__VariableAttribute__Group__2__Impl();
 
             state._fsp--;
@@ -5851,31 +5944,31 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2180:1: rule__VariableAttribute__Group__2__Impl : ( ( rule__VariableAttribute__Group_2__0 )? ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2213:1: rule__VariableAttribute__Group__2__Impl : ( ( rule__VariableAttribute__Group_2__0 )? ) ;
     public final void rule__VariableAttribute__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2184:1: ( ( ( rule__VariableAttribute__Group_2__0 )? ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2185:1: ( ( rule__VariableAttribute__Group_2__0 )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2217:1: ( ( ( rule__VariableAttribute__Group_2__0 )? ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2218:1: ( ( rule__VariableAttribute__Group_2__0 )? )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2185:1: ( ( rule__VariableAttribute__Group_2__0 )? )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2186:1: ( rule__VariableAttribute__Group_2__0 )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2218:1: ( ( rule__VariableAttribute__Group_2__0 )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2219:1: ( rule__VariableAttribute__Group_2__0 )?
             {
              before(grammarAccess.getVariableAttributeAccess().getGroup_2()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2187:1: ( rule__VariableAttribute__Group_2__0 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2220:1: ( rule__VariableAttribute__Group_2__0 )?
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==34) ) {
-                alt17=1;
+            if ( (LA18_0==35) ) {
+                alt18=1;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2187:2: rule__VariableAttribute__Group_2__0
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2220:2: rule__VariableAttribute__Group_2__0
                     {
-                    pushFollow(FOLLOW_rule__VariableAttribute__Group_2__0_in_rule__VariableAttribute__Group__2__Impl4410);
+                    pushFollow(FOLLOW_rule__VariableAttribute__Group_2__0_in_rule__VariableAttribute__Group__2__Impl4477);
                     rule__VariableAttribute__Group_2__0();
 
                     state._fsp--;
@@ -5909,21 +6002,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group_2__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2203:1: rule__VariableAttribute__Group_2__0 : rule__VariableAttribute__Group_2__0__Impl rule__VariableAttribute__Group_2__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2236:1: rule__VariableAttribute__Group_2__0 : rule__VariableAttribute__Group_2__0__Impl rule__VariableAttribute__Group_2__1 ;
     public final void rule__VariableAttribute__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2207:1: ( rule__VariableAttribute__Group_2__0__Impl rule__VariableAttribute__Group_2__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2208:2: rule__VariableAttribute__Group_2__0__Impl rule__VariableAttribute__Group_2__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2240:1: ( rule__VariableAttribute__Group_2__0__Impl rule__VariableAttribute__Group_2__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2241:2: rule__VariableAttribute__Group_2__0__Impl rule__VariableAttribute__Group_2__1
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__Group_2__0__Impl_in_rule__VariableAttribute__Group_2__04447);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group_2__0__Impl_in_rule__VariableAttribute__Group_2__04514);
             rule__VariableAttribute__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableAttribute__Group_2__1_in_rule__VariableAttribute__Group_2__04450);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group_2__1_in_rule__VariableAttribute__Group_2__04517);
             rule__VariableAttribute__Group_2__1();
 
             state._fsp--;
@@ -5947,20 +6040,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group_2__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2215:1: rule__VariableAttribute__Group_2__0__Impl : ( '.' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2248:1: rule__VariableAttribute__Group_2__0__Impl : ( '.' ) ;
     public final void rule__VariableAttribute__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2219:1: ( ( '.' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2220:1: ( '.' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2252:1: ( ( '.' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2253:1: ( '.' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2220:1: ( '.' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2221:1: '.'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2253:1: ( '.' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2254:1: '.'
             {
              before(grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0()); 
-            match(input,34,FOLLOW_34_in_rule__VariableAttribute__Group_2__0__Impl4478); 
+            match(input,35,FOLLOW_35_in_rule__VariableAttribute__Group_2__0__Impl4545); 
              after(grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0()); 
 
             }
@@ -5984,16 +6077,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group_2__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2234:1: rule__VariableAttribute__Group_2__1 : rule__VariableAttribute__Group_2__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2267:1: rule__VariableAttribute__Group_2__1 : rule__VariableAttribute__Group_2__1__Impl ;
     public final void rule__VariableAttribute__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2238:1: ( rule__VariableAttribute__Group_2__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2239:2: rule__VariableAttribute__Group_2__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2271:1: ( rule__VariableAttribute__Group_2__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2272:2: rule__VariableAttribute__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__Group_2__1__Impl_in_rule__VariableAttribute__Group_2__14509);
+            pushFollow(FOLLOW_rule__VariableAttribute__Group_2__1__Impl_in_rule__VariableAttribute__Group_2__14576);
             rule__VariableAttribute__Group_2__1__Impl();
 
             state._fsp--;
@@ -6017,23 +6110,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__Group_2__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2245:1: rule__VariableAttribute__Group_2__1__Impl : ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2278:1: rule__VariableAttribute__Group_2__1__Impl : ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) ) ;
     public final void rule__VariableAttribute__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2249:1: ( ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2250:1: ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2282:1: ( ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2283:1: ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2250:1: ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2251:1: ( rule__VariableAttribute__AttributeAssignment_2_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2283:1: ( ( rule__VariableAttribute__AttributeAssignment_2_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2284:1: ( rule__VariableAttribute__AttributeAssignment_2_1 )
             {
              before(grammarAccess.getVariableAttributeAccess().getAttributeAssignment_2_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2252:1: ( rule__VariableAttribute__AttributeAssignment_2_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2252:2: rule__VariableAttribute__AttributeAssignment_2_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2285:1: ( rule__VariableAttribute__AttributeAssignment_2_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2285:2: rule__VariableAttribute__AttributeAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__VariableAttribute__AttributeAssignment_2_1_in_rule__VariableAttribute__Group_2__1__Impl4536);
+            pushFollow(FOLLOW_rule__VariableAttribute__AttributeAssignment_2_1_in_rule__VariableAttribute__Group_2__1__Impl4603);
             rule__VariableAttribute__AttributeAssignment_2_1();
 
             state._fsp--;
@@ -6064,21 +6157,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2266:1: rule__VariableAssignment__Group__0 : rule__VariableAssignment__Group__0__Impl rule__VariableAssignment__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2299:1: rule__VariableAssignment__Group__0 : rule__VariableAssignment__Group__0__Impl rule__VariableAssignment__Group__1 ;
     public final void rule__VariableAssignment__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2270:1: ( rule__VariableAssignment__Group__0__Impl rule__VariableAssignment__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2271:2: rule__VariableAssignment__Group__0__Impl rule__VariableAssignment__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2303:1: ( rule__VariableAssignment__Group__0__Impl rule__VariableAssignment__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2304:2: rule__VariableAssignment__Group__0__Impl rule__VariableAssignment__Group__1
             {
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__0__Impl_in_rule__VariableAssignment__Group__04570);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__0__Impl_in_rule__VariableAssignment__Group__04637);
             rule__VariableAssignment__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__1_in_rule__VariableAssignment__Group__04573);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__1_in_rule__VariableAssignment__Group__04640);
             rule__VariableAssignment__Group__1();
 
             state._fsp--;
@@ -6102,21 +6195,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2278:1: rule__VariableAssignment__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2311:1: rule__VariableAssignment__Group__0__Impl : ( () ) ;
     public final void rule__VariableAssignment__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2282:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2283:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2315:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2316:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2283:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2284:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2316:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2317:1: ()
             {
              before(grammarAccess.getVariableAssignmentAccess().getVariableAssignmentAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2285:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2287:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2318:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2320:1: 
             {
             }
 
@@ -6139,21 +6232,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2297:1: rule__VariableAssignment__Group__1 : rule__VariableAssignment__Group__1__Impl rule__VariableAssignment__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2330:1: rule__VariableAssignment__Group__1 : rule__VariableAssignment__Group__1__Impl rule__VariableAssignment__Group__2 ;
     public final void rule__VariableAssignment__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2301:1: ( rule__VariableAssignment__Group__1__Impl rule__VariableAssignment__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2302:2: rule__VariableAssignment__Group__1__Impl rule__VariableAssignment__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2334:1: ( rule__VariableAssignment__Group__1__Impl rule__VariableAssignment__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2335:2: rule__VariableAssignment__Group__1__Impl rule__VariableAssignment__Group__2
             {
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__1__Impl_in_rule__VariableAssignment__Group__14631);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__1__Impl_in_rule__VariableAssignment__Group__14698);
             rule__VariableAssignment__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__2_in_rule__VariableAssignment__Group__14634);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__2_in_rule__VariableAssignment__Group__14701);
             rule__VariableAssignment__Group__2();
 
             state._fsp--;
@@ -6177,23 +6270,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2309:1: rule__VariableAssignment__Group__1__Impl : ( ( rule__VariableAssignment__VariableAssignment_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2342:1: rule__VariableAssignment__Group__1__Impl : ( ( rule__VariableAssignment__VariableAssignment_1 ) ) ;
     public final void rule__VariableAssignment__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2313:1: ( ( ( rule__VariableAssignment__VariableAssignment_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2314:1: ( ( rule__VariableAssignment__VariableAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2346:1: ( ( ( rule__VariableAssignment__VariableAssignment_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2347:1: ( ( rule__VariableAssignment__VariableAssignment_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2314:1: ( ( rule__VariableAssignment__VariableAssignment_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2315:1: ( rule__VariableAssignment__VariableAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2347:1: ( ( rule__VariableAssignment__VariableAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2348:1: ( rule__VariableAssignment__VariableAssignment_1 )
             {
              before(grammarAccess.getVariableAssignmentAccess().getVariableAssignment_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2316:1: ( rule__VariableAssignment__VariableAssignment_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2316:2: rule__VariableAssignment__VariableAssignment_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2349:1: ( rule__VariableAssignment__VariableAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2349:2: rule__VariableAssignment__VariableAssignment_1
             {
-            pushFollow(FOLLOW_rule__VariableAssignment__VariableAssignment_1_in_rule__VariableAssignment__Group__1__Impl4661);
+            pushFollow(FOLLOW_rule__VariableAssignment__VariableAssignment_1_in_rule__VariableAssignment__Group__1__Impl4728);
             rule__VariableAssignment__VariableAssignment_1();
 
             state._fsp--;
@@ -6224,21 +6317,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2326:1: rule__VariableAssignment__Group__2 : rule__VariableAssignment__Group__2__Impl rule__VariableAssignment__Group__3 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2359:1: rule__VariableAssignment__Group__2 : rule__VariableAssignment__Group__2__Impl rule__VariableAssignment__Group__3 ;
     public final void rule__VariableAssignment__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2330:1: ( rule__VariableAssignment__Group__2__Impl rule__VariableAssignment__Group__3 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2331:2: rule__VariableAssignment__Group__2__Impl rule__VariableAssignment__Group__3
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2363:1: ( rule__VariableAssignment__Group__2__Impl rule__VariableAssignment__Group__3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2364:2: rule__VariableAssignment__Group__2__Impl rule__VariableAssignment__Group__3
             {
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__2__Impl_in_rule__VariableAssignment__Group__24691);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__2__Impl_in_rule__VariableAssignment__Group__24758);
             rule__VariableAssignment__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__3_in_rule__VariableAssignment__Group__24694);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__3_in_rule__VariableAssignment__Group__24761);
             rule__VariableAssignment__Group__3();
 
             state._fsp--;
@@ -6262,20 +6355,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2338:1: rule__VariableAssignment__Group__2__Impl : ( '=' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2371:1: rule__VariableAssignment__Group__2__Impl : ( '=' ) ;
     public final void rule__VariableAssignment__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2342:1: ( ( '=' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2343:1: ( '=' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2375:1: ( ( '=' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2376:1: ( '=' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2343:1: ( '=' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2344:1: '='
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2376:1: ( '=' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2377:1: '='
             {
              before(grammarAccess.getVariableAssignmentAccess().getEqualsSignKeyword_2()); 
-            match(input,35,FOLLOW_35_in_rule__VariableAssignment__Group__2__Impl4722); 
+            match(input,36,FOLLOW_36_in_rule__VariableAssignment__Group__2__Impl4789); 
              after(grammarAccess.getVariableAssignmentAccess().getEqualsSignKeyword_2()); 
 
             }
@@ -6299,16 +6392,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2357:1: rule__VariableAssignment__Group__3 : rule__VariableAssignment__Group__3__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2390:1: rule__VariableAssignment__Group__3 : rule__VariableAssignment__Group__3__Impl ;
     public final void rule__VariableAssignment__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2361:1: ( rule__VariableAssignment__Group__3__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2362:2: rule__VariableAssignment__Group__3__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2394:1: ( rule__VariableAssignment__Group__3__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2395:2: rule__VariableAssignment__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__VariableAssignment__Group__3__Impl_in_rule__VariableAssignment__Group__34753);
+            pushFollow(FOLLOW_rule__VariableAssignment__Group__3__Impl_in_rule__VariableAssignment__Group__34820);
             rule__VariableAssignment__Group__3__Impl();
 
             state._fsp--;
@@ -6332,23 +6425,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__Group__3__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2368:1: rule__VariableAssignment__Group__3__Impl : ( ( rule__VariableAssignment__ExpressionAssignment_3 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2401:1: rule__VariableAssignment__Group__3__Impl : ( ( rule__VariableAssignment__ExpressionAssignment_3 ) ) ;
     public final void rule__VariableAssignment__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2372:1: ( ( ( rule__VariableAssignment__ExpressionAssignment_3 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2373:1: ( ( rule__VariableAssignment__ExpressionAssignment_3 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2405:1: ( ( ( rule__VariableAssignment__ExpressionAssignment_3 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2406:1: ( ( rule__VariableAssignment__ExpressionAssignment_3 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2373:1: ( ( rule__VariableAssignment__ExpressionAssignment_3 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2374:1: ( rule__VariableAssignment__ExpressionAssignment_3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2406:1: ( ( rule__VariableAssignment__ExpressionAssignment_3 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2407:1: ( rule__VariableAssignment__ExpressionAssignment_3 )
             {
              before(grammarAccess.getVariableAssignmentAccess().getExpressionAssignment_3()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2375:1: ( rule__VariableAssignment__ExpressionAssignment_3 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2375:2: rule__VariableAssignment__ExpressionAssignment_3
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2408:1: ( rule__VariableAssignment__ExpressionAssignment_3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2408:2: rule__VariableAssignment__ExpressionAssignment_3
             {
-            pushFollow(FOLLOW_rule__VariableAssignment__ExpressionAssignment_3_in_rule__VariableAssignment__Group__3__Impl4780);
+            pushFollow(FOLLOW_rule__VariableAssignment__ExpressionAssignment_3_in_rule__VariableAssignment__Group__3__Impl4847);
             rule__VariableAssignment__ExpressionAssignment_3();
 
             state._fsp--;
@@ -6379,21 +6472,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2393:1: rule__VariableExpression__Group__0 : rule__VariableExpression__Group__0__Impl rule__VariableExpression__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2426:1: rule__VariableExpression__Group__0 : rule__VariableExpression__Group__0__Impl rule__VariableExpression__Group__1 ;
     public final void rule__VariableExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2397:1: ( rule__VariableExpression__Group__0__Impl rule__VariableExpression__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2398:2: rule__VariableExpression__Group__0__Impl rule__VariableExpression__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2430:1: ( rule__VariableExpression__Group__0__Impl rule__VariableExpression__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2431:2: rule__VariableExpression__Group__0__Impl rule__VariableExpression__Group__1
             {
-            pushFollow(FOLLOW_rule__VariableExpression__Group__0__Impl_in_rule__VariableExpression__Group__04818);
+            pushFollow(FOLLOW_rule__VariableExpression__Group__0__Impl_in_rule__VariableExpression__Group__04885);
             rule__VariableExpression__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableExpression__Group__1_in_rule__VariableExpression__Group__04821);
+            pushFollow(FOLLOW_rule__VariableExpression__Group__1_in_rule__VariableExpression__Group__04888);
             rule__VariableExpression__Group__1();
 
             state._fsp--;
@@ -6417,21 +6510,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2405:1: rule__VariableExpression__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2438:1: rule__VariableExpression__Group__0__Impl : ( () ) ;
     public final void rule__VariableExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2409:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2410:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2442:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2443:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2410:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2411:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2443:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2444:1: ()
             {
              before(grammarAccess.getVariableExpressionAccess().getVariableExpressionAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2412:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2414:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2445:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2447:1: 
             {
             }
 
@@ -6454,21 +6547,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2424:1: rule__VariableExpression__Group__1 : rule__VariableExpression__Group__1__Impl rule__VariableExpression__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2457:1: rule__VariableExpression__Group__1 : rule__VariableExpression__Group__1__Impl rule__VariableExpression__Group__2 ;
     public final void rule__VariableExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2428:1: ( rule__VariableExpression__Group__1__Impl rule__VariableExpression__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2429:2: rule__VariableExpression__Group__1__Impl rule__VariableExpression__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2461:1: ( rule__VariableExpression__Group__1__Impl rule__VariableExpression__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2462:2: rule__VariableExpression__Group__1__Impl rule__VariableExpression__Group__2
             {
-            pushFollow(FOLLOW_rule__VariableExpression__Group__1__Impl_in_rule__VariableExpression__Group__14879);
+            pushFollow(FOLLOW_rule__VariableExpression__Group__1__Impl_in_rule__VariableExpression__Group__14946);
             rule__VariableExpression__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableExpression__Group__2_in_rule__VariableExpression__Group__14882);
+            pushFollow(FOLLOW_rule__VariableExpression__Group__2_in_rule__VariableExpression__Group__14949);
             rule__VariableExpression__Group__2();
 
             state._fsp--;
@@ -6492,23 +6585,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2436:1: rule__VariableExpression__Group__1__Impl : ( ( rule__VariableExpression__MembersAssignment_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2469:1: rule__VariableExpression__Group__1__Impl : ( ( rule__VariableExpression__MembersAssignment_1 ) ) ;
     public final void rule__VariableExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2440:1: ( ( ( rule__VariableExpression__MembersAssignment_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2441:1: ( ( rule__VariableExpression__MembersAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2473:1: ( ( ( rule__VariableExpression__MembersAssignment_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2474:1: ( ( rule__VariableExpression__MembersAssignment_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2441:1: ( ( rule__VariableExpression__MembersAssignment_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2442:1: ( rule__VariableExpression__MembersAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2474:1: ( ( rule__VariableExpression__MembersAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2475:1: ( rule__VariableExpression__MembersAssignment_1 )
             {
              before(grammarAccess.getVariableExpressionAccess().getMembersAssignment_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2443:1: ( rule__VariableExpression__MembersAssignment_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2443:2: rule__VariableExpression__MembersAssignment_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2476:1: ( rule__VariableExpression__MembersAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2476:2: rule__VariableExpression__MembersAssignment_1
             {
-            pushFollow(FOLLOW_rule__VariableExpression__MembersAssignment_1_in_rule__VariableExpression__Group__1__Impl4909);
+            pushFollow(FOLLOW_rule__VariableExpression__MembersAssignment_1_in_rule__VariableExpression__Group__1__Impl4976);
             rule__VariableExpression__MembersAssignment_1();
 
             state._fsp--;
@@ -6539,16 +6632,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2453:1: rule__VariableExpression__Group__2 : rule__VariableExpression__Group__2__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2486:1: rule__VariableExpression__Group__2 : rule__VariableExpression__Group__2__Impl ;
     public final void rule__VariableExpression__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2457:1: ( rule__VariableExpression__Group__2__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2458:2: rule__VariableExpression__Group__2__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2490:1: ( rule__VariableExpression__Group__2__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2491:2: rule__VariableExpression__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__VariableExpression__Group__2__Impl_in_rule__VariableExpression__Group__24939);
+            pushFollow(FOLLOW_rule__VariableExpression__Group__2__Impl_in_rule__VariableExpression__Group__25006);
             rule__VariableExpression__Group__2__Impl();
 
             state._fsp--;
@@ -6572,35 +6665,35 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2464:1: rule__VariableExpression__Group__2__Impl : ( ( rule__VariableExpression__Group_2__0 )* ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2497:1: rule__VariableExpression__Group__2__Impl : ( ( rule__VariableExpression__Group_2__0 )* ) ;
     public final void rule__VariableExpression__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2468:1: ( ( ( rule__VariableExpression__Group_2__0 )* ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2469:1: ( ( rule__VariableExpression__Group_2__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2501:1: ( ( ( rule__VariableExpression__Group_2__0 )* ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2502:1: ( ( rule__VariableExpression__Group_2__0 )* )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2469:1: ( ( rule__VariableExpression__Group_2__0 )* )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2470:1: ( rule__VariableExpression__Group_2__0 )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2502:1: ( ( rule__VariableExpression__Group_2__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2503:1: ( rule__VariableExpression__Group_2__0 )*
             {
              before(grammarAccess.getVariableExpressionAccess().getGroup_2()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2471:1: ( rule__VariableExpression__Group_2__0 )*
-            loop18:
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2504:1: ( rule__VariableExpression__Group_2__0 )*
+            loop19:
             do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( ((LA18_0>=13 && LA18_0<=15)) ) {
-                    alt18=1;
+                if ( ((LA19_0>=13 && LA19_0<=15)) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt18) {
+                switch (alt19) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2471:2: rule__VariableExpression__Group_2__0
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2504:2: rule__VariableExpression__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__VariableExpression__Group_2__0_in_rule__VariableExpression__Group__2__Impl4966);
+            	    pushFollow(FOLLOW_rule__VariableExpression__Group_2__0_in_rule__VariableExpression__Group__2__Impl5033);
             	    rule__VariableExpression__Group_2__0();
 
             	    state._fsp--;
@@ -6610,7 +6703,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop19;
                 }
             } while (true);
 
@@ -6637,21 +6730,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group_2__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2487:1: rule__VariableExpression__Group_2__0 : rule__VariableExpression__Group_2__0__Impl rule__VariableExpression__Group_2__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2520:1: rule__VariableExpression__Group_2__0 : rule__VariableExpression__Group_2__0__Impl rule__VariableExpression__Group_2__1 ;
     public final void rule__VariableExpression__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2491:1: ( rule__VariableExpression__Group_2__0__Impl rule__VariableExpression__Group_2__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2492:2: rule__VariableExpression__Group_2__0__Impl rule__VariableExpression__Group_2__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2524:1: ( rule__VariableExpression__Group_2__0__Impl rule__VariableExpression__Group_2__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2525:2: rule__VariableExpression__Group_2__0__Impl rule__VariableExpression__Group_2__1
             {
-            pushFollow(FOLLOW_rule__VariableExpression__Group_2__0__Impl_in_rule__VariableExpression__Group_2__05003);
+            pushFollow(FOLLOW_rule__VariableExpression__Group_2__0__Impl_in_rule__VariableExpression__Group_2__05070);
             rule__VariableExpression__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__VariableExpression__Group_2__1_in_rule__VariableExpression__Group_2__05006);
+            pushFollow(FOLLOW_rule__VariableExpression__Group_2__1_in_rule__VariableExpression__Group_2__05073);
             rule__VariableExpression__Group_2__1();
 
             state._fsp--;
@@ -6675,20 +6768,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group_2__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2499:1: rule__VariableExpression__Group_2__0__Impl : ( ruleVariableExpressionOperator ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2532:1: rule__VariableExpression__Group_2__0__Impl : ( ruleVariableExpressionOperator ) ;
     public final void rule__VariableExpression__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2503:1: ( ( ruleVariableExpressionOperator ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2504:1: ( ruleVariableExpressionOperator )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2536:1: ( ( ruleVariableExpressionOperator ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2537:1: ( ruleVariableExpressionOperator )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2504:1: ( ruleVariableExpressionOperator )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2505:1: ruleVariableExpressionOperator
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2537:1: ( ruleVariableExpressionOperator )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2538:1: ruleVariableExpressionOperator
             {
              before(grammarAccess.getVariableExpressionAccess().getVariableExpressionOperatorParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleVariableExpressionOperator_in_rule__VariableExpression__Group_2__0__Impl5033);
+            pushFollow(FOLLOW_ruleVariableExpressionOperator_in_rule__VariableExpression__Group_2__0__Impl5100);
             ruleVariableExpressionOperator();
 
             state._fsp--;
@@ -6716,16 +6809,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group_2__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2516:1: rule__VariableExpression__Group_2__1 : rule__VariableExpression__Group_2__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2549:1: rule__VariableExpression__Group_2__1 : rule__VariableExpression__Group_2__1__Impl ;
     public final void rule__VariableExpression__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2520:1: ( rule__VariableExpression__Group_2__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2521:2: rule__VariableExpression__Group_2__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2553:1: ( rule__VariableExpression__Group_2__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2554:2: rule__VariableExpression__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__VariableExpression__Group_2__1__Impl_in_rule__VariableExpression__Group_2__15062);
+            pushFollow(FOLLOW_rule__VariableExpression__Group_2__1__Impl_in_rule__VariableExpression__Group_2__15129);
             rule__VariableExpression__Group_2__1__Impl();
 
             state._fsp--;
@@ -6749,23 +6842,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__Group_2__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2527:1: rule__VariableExpression__Group_2__1__Impl : ( ( rule__VariableExpression__MembersAssignment_2_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2560:1: rule__VariableExpression__Group_2__1__Impl : ( ( rule__VariableExpression__MembersAssignment_2_1 ) ) ;
     public final void rule__VariableExpression__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2531:1: ( ( ( rule__VariableExpression__MembersAssignment_2_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2532:1: ( ( rule__VariableExpression__MembersAssignment_2_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2564:1: ( ( ( rule__VariableExpression__MembersAssignment_2_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2565:1: ( ( rule__VariableExpression__MembersAssignment_2_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2532:1: ( ( rule__VariableExpression__MembersAssignment_2_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2533:1: ( rule__VariableExpression__MembersAssignment_2_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2565:1: ( ( rule__VariableExpression__MembersAssignment_2_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2566:1: ( rule__VariableExpression__MembersAssignment_2_1 )
             {
              before(grammarAccess.getVariableExpressionAccess().getMembersAssignment_2_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2534:1: ( rule__VariableExpression__MembersAssignment_2_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2534:2: rule__VariableExpression__MembersAssignment_2_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2567:1: ( rule__VariableExpression__MembersAssignment_2_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2567:2: rule__VariableExpression__MembersAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__VariableExpression__MembersAssignment_2_1_in_rule__VariableExpression__Group_2__1__Impl5089);
+            pushFollow(FOLLOW_rule__VariableExpression__MembersAssignment_2_1_in_rule__VariableExpression__Group_2__1__Impl5156);
             rule__VariableExpression__MembersAssignment_2_1();
 
             state._fsp--;
@@ -6796,21 +6889,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2548:1: rule__RuleDefinition__Group__0 : rule__RuleDefinition__Group__0__Impl rule__RuleDefinition__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2581:1: rule__RuleDefinition__Group__0 : rule__RuleDefinition__Group__0__Impl rule__RuleDefinition__Group__1 ;
     public final void rule__RuleDefinition__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2552:1: ( rule__RuleDefinition__Group__0__Impl rule__RuleDefinition__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2553:2: rule__RuleDefinition__Group__0__Impl rule__RuleDefinition__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2585:1: ( rule__RuleDefinition__Group__0__Impl rule__RuleDefinition__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2586:2: rule__RuleDefinition__Group__0__Impl rule__RuleDefinition__Group__1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__0__Impl_in_rule__RuleDefinition__Group__05123);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__0__Impl_in_rule__RuleDefinition__Group__05190);
             rule__RuleDefinition__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__1_in_rule__RuleDefinition__Group__05126);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__1_in_rule__RuleDefinition__Group__05193);
             rule__RuleDefinition__Group__1();
 
             state._fsp--;
@@ -6834,21 +6927,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2560:1: rule__RuleDefinition__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2593:1: rule__RuleDefinition__Group__0__Impl : ( () ) ;
     public final void rule__RuleDefinition__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2564:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2565:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2597:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2598:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2565:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2566:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2598:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2599:1: ()
             {
              before(grammarAccess.getRuleDefinitionAccess().getRuleDefinitionAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2567:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2569:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2600:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2602:1: 
             {
             }
 
@@ -6871,21 +6964,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2579:1: rule__RuleDefinition__Group__1 : rule__RuleDefinition__Group__1__Impl rule__RuleDefinition__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2612:1: rule__RuleDefinition__Group__1 : rule__RuleDefinition__Group__1__Impl rule__RuleDefinition__Group__2 ;
     public final void rule__RuleDefinition__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2583:1: ( rule__RuleDefinition__Group__1__Impl rule__RuleDefinition__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2584:2: rule__RuleDefinition__Group__1__Impl rule__RuleDefinition__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2616:1: ( rule__RuleDefinition__Group__1__Impl rule__RuleDefinition__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2617:2: rule__RuleDefinition__Group__1__Impl rule__RuleDefinition__Group__2
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__1__Impl_in_rule__RuleDefinition__Group__15184);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__1__Impl_in_rule__RuleDefinition__Group__15251);
             rule__RuleDefinition__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__2_in_rule__RuleDefinition__Group__15187);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__2_in_rule__RuleDefinition__Group__15254);
             rule__RuleDefinition__Group__2();
 
             state._fsp--;
@@ -6909,20 +7002,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2591:1: rule__RuleDefinition__Group__1__Impl : ( 'RULE' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2624:1: rule__RuleDefinition__Group__1__Impl : ( 'RULE' ) ;
     public final void rule__RuleDefinition__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2595:1: ( ( 'RULE' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2596:1: ( 'RULE' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2628:1: ( ( 'RULE' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2629:1: ( 'RULE' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2596:1: ( 'RULE' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2597:1: 'RULE'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2629:1: ( 'RULE' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2630:1: 'RULE'
             {
              before(grammarAccess.getRuleDefinitionAccess().getRULEKeyword_1()); 
-            match(input,36,FOLLOW_36_in_rule__RuleDefinition__Group__1__Impl5215); 
+            match(input,37,FOLLOW_37_in_rule__RuleDefinition__Group__1__Impl5282); 
              after(grammarAccess.getRuleDefinitionAccess().getRULEKeyword_1()); 
 
             }
@@ -6946,21 +7039,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2610:1: rule__RuleDefinition__Group__2 : rule__RuleDefinition__Group__2__Impl rule__RuleDefinition__Group__3 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2643:1: rule__RuleDefinition__Group__2 : rule__RuleDefinition__Group__2__Impl rule__RuleDefinition__Group__3 ;
     public final void rule__RuleDefinition__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2614:1: ( rule__RuleDefinition__Group__2__Impl rule__RuleDefinition__Group__3 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2615:2: rule__RuleDefinition__Group__2__Impl rule__RuleDefinition__Group__3
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2647:1: ( rule__RuleDefinition__Group__2__Impl rule__RuleDefinition__Group__3 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2648:2: rule__RuleDefinition__Group__2__Impl rule__RuleDefinition__Group__3
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__2__Impl_in_rule__RuleDefinition__Group__25246);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__2__Impl_in_rule__RuleDefinition__Group__25313);
             rule__RuleDefinition__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__3_in_rule__RuleDefinition__Group__25249);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__3_in_rule__RuleDefinition__Group__25316);
             rule__RuleDefinition__Group__3();
 
             state._fsp--;
@@ -6984,23 +7077,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2622:1: rule__RuleDefinition__Group__2__Impl : ( ( rule__RuleDefinition__NameAssignment_2 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2655:1: rule__RuleDefinition__Group__2__Impl : ( ( rule__RuleDefinition__NameAssignment_2 ) ) ;
     public final void rule__RuleDefinition__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2626:1: ( ( ( rule__RuleDefinition__NameAssignment_2 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2627:1: ( ( rule__RuleDefinition__NameAssignment_2 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2659:1: ( ( ( rule__RuleDefinition__NameAssignment_2 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2660:1: ( ( rule__RuleDefinition__NameAssignment_2 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2627:1: ( ( rule__RuleDefinition__NameAssignment_2 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2628:1: ( rule__RuleDefinition__NameAssignment_2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2660:1: ( ( rule__RuleDefinition__NameAssignment_2 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2661:1: ( rule__RuleDefinition__NameAssignment_2 )
             {
              before(grammarAccess.getRuleDefinitionAccess().getNameAssignment_2()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2629:1: ( rule__RuleDefinition__NameAssignment_2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2629:2: rule__RuleDefinition__NameAssignment_2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2662:1: ( rule__RuleDefinition__NameAssignment_2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2662:2: rule__RuleDefinition__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__NameAssignment_2_in_rule__RuleDefinition__Group__2__Impl5276);
+            pushFollow(FOLLOW_rule__RuleDefinition__NameAssignment_2_in_rule__RuleDefinition__Group__2__Impl5343);
             rule__RuleDefinition__NameAssignment_2();
 
             state._fsp--;
@@ -7031,21 +7124,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2639:1: rule__RuleDefinition__Group__3 : rule__RuleDefinition__Group__3__Impl rule__RuleDefinition__Group__4 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2672:1: rule__RuleDefinition__Group__3 : rule__RuleDefinition__Group__3__Impl rule__RuleDefinition__Group__4 ;
     public final void rule__RuleDefinition__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2643:1: ( rule__RuleDefinition__Group__3__Impl rule__RuleDefinition__Group__4 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2644:2: rule__RuleDefinition__Group__3__Impl rule__RuleDefinition__Group__4
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2676:1: ( rule__RuleDefinition__Group__3__Impl rule__RuleDefinition__Group__4 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2677:2: rule__RuleDefinition__Group__3__Impl rule__RuleDefinition__Group__4
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__3__Impl_in_rule__RuleDefinition__Group__35306);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__3__Impl_in_rule__RuleDefinition__Group__35373);
             rule__RuleDefinition__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__4_in_rule__RuleDefinition__Group__35309);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__4_in_rule__RuleDefinition__Group__35376);
             rule__RuleDefinition__Group__4();
 
             state._fsp--;
@@ -7069,20 +7162,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__3__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2651:1: rule__RuleDefinition__Group__3__Impl : ( ':' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2684:1: rule__RuleDefinition__Group__3__Impl : ( ':' ) ;
     public final void rule__RuleDefinition__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2655:1: ( ( ':' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2656:1: ( ':' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2688:1: ( ( ':' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2689:1: ( ':' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2656:1: ( ':' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2657:1: ':'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2689:1: ( ':' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2690:1: ':'
             {
              before(grammarAccess.getRuleDefinitionAccess().getColonKeyword_3()); 
-            match(input,31,FOLLOW_31_in_rule__RuleDefinition__Group__3__Impl5337); 
+            match(input,32,FOLLOW_32_in_rule__RuleDefinition__Group__3__Impl5404); 
              after(grammarAccess.getRuleDefinitionAccess().getColonKeyword_3()); 
 
             }
@@ -7106,21 +7199,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__4"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2670:1: rule__RuleDefinition__Group__4 : rule__RuleDefinition__Group__4__Impl rule__RuleDefinition__Group__5 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2703:1: rule__RuleDefinition__Group__4 : rule__RuleDefinition__Group__4__Impl rule__RuleDefinition__Group__5 ;
     public final void rule__RuleDefinition__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2674:1: ( rule__RuleDefinition__Group__4__Impl rule__RuleDefinition__Group__5 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2675:2: rule__RuleDefinition__Group__4__Impl rule__RuleDefinition__Group__5
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2707:1: ( rule__RuleDefinition__Group__4__Impl rule__RuleDefinition__Group__5 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2708:2: rule__RuleDefinition__Group__4__Impl rule__RuleDefinition__Group__5
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__4__Impl_in_rule__RuleDefinition__Group__45368);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__4__Impl_in_rule__RuleDefinition__Group__45435);
             rule__RuleDefinition__Group__4__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__5_in_rule__RuleDefinition__Group__45371);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__5_in_rule__RuleDefinition__Group__45438);
             rule__RuleDefinition__Group__5();
 
             state._fsp--;
@@ -7144,31 +7237,31 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__4__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2682:1: rule__RuleDefinition__Group__4__Impl : ( ( rule__RuleDefinition__Group_4__0 )? ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2715:1: rule__RuleDefinition__Group__4__Impl : ( ( rule__RuleDefinition__Group_4__0 )? ) ;
     public final void rule__RuleDefinition__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2686:1: ( ( ( rule__RuleDefinition__Group_4__0 )? ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2687:1: ( ( rule__RuleDefinition__Group_4__0 )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2719:1: ( ( ( rule__RuleDefinition__Group_4__0 )? ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2720:1: ( ( rule__RuleDefinition__Group_4__0 )? )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2687:1: ( ( rule__RuleDefinition__Group_4__0 )? )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2688:1: ( rule__RuleDefinition__Group_4__0 )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2720:1: ( ( rule__RuleDefinition__Group_4__0 )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2721:1: ( rule__RuleDefinition__Group_4__0 )?
             {
              before(grammarAccess.getRuleDefinitionAccess().getGroup_4()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2689:1: ( rule__RuleDefinition__Group_4__0 )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2722:1: ( rule__RuleDefinition__Group_4__0 )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0==RULE_ID) ) {
-                alt19=1;
+            if ( (LA20_0==RULE_ID) ) {
+                alt20=1;
             }
-            switch (alt19) {
+            switch (alt20) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2689:2: rule__RuleDefinition__Group_4__0
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2722:2: rule__RuleDefinition__Group_4__0
                     {
-                    pushFollow(FOLLOW_rule__RuleDefinition__Group_4__0_in_rule__RuleDefinition__Group__4__Impl5398);
+                    pushFollow(FOLLOW_rule__RuleDefinition__Group_4__0_in_rule__RuleDefinition__Group__4__Impl5465);
                     rule__RuleDefinition__Group_4__0();
 
                     state._fsp--;
@@ -7202,21 +7295,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__5"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2699:1: rule__RuleDefinition__Group__5 : rule__RuleDefinition__Group__5__Impl rule__RuleDefinition__Group__6 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2732:1: rule__RuleDefinition__Group__5 : rule__RuleDefinition__Group__5__Impl rule__RuleDefinition__Group__6 ;
     public final void rule__RuleDefinition__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2703:1: ( rule__RuleDefinition__Group__5__Impl rule__RuleDefinition__Group__6 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2704:2: rule__RuleDefinition__Group__5__Impl rule__RuleDefinition__Group__6
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2736:1: ( rule__RuleDefinition__Group__5__Impl rule__RuleDefinition__Group__6 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2737:2: rule__RuleDefinition__Group__5__Impl rule__RuleDefinition__Group__6
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__5__Impl_in_rule__RuleDefinition__Group__55429);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__5__Impl_in_rule__RuleDefinition__Group__55496);
             rule__RuleDefinition__Group__5__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__6_in_rule__RuleDefinition__Group__55432);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__6_in_rule__RuleDefinition__Group__55499);
             rule__RuleDefinition__Group__6();
 
             state._fsp--;
@@ -7240,23 +7333,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__5__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2711:1: rule__RuleDefinition__Group__5__Impl : ( ( rule__RuleDefinition__Alternatives_5 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2744:1: rule__RuleDefinition__Group__5__Impl : ( ( rule__RuleDefinition__Alternatives_5 ) ) ;
     public final void rule__RuleDefinition__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2715:1: ( ( ( rule__RuleDefinition__Alternatives_5 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2716:1: ( ( rule__RuleDefinition__Alternatives_5 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2748:1: ( ( ( rule__RuleDefinition__Alternatives_5 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2749:1: ( ( rule__RuleDefinition__Alternatives_5 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2716:1: ( ( rule__RuleDefinition__Alternatives_5 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2717:1: ( rule__RuleDefinition__Alternatives_5 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2749:1: ( ( rule__RuleDefinition__Alternatives_5 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2750:1: ( rule__RuleDefinition__Alternatives_5 )
             {
              before(grammarAccess.getRuleDefinitionAccess().getAlternatives_5()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2718:1: ( rule__RuleDefinition__Alternatives_5 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2718:2: rule__RuleDefinition__Alternatives_5
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2751:1: ( rule__RuleDefinition__Alternatives_5 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2751:2: rule__RuleDefinition__Alternatives_5
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Alternatives_5_in_rule__RuleDefinition__Group__5__Impl5459);
+            pushFollow(FOLLOW_rule__RuleDefinition__Alternatives_5_in_rule__RuleDefinition__Group__5__Impl5526);
             rule__RuleDefinition__Alternatives_5();
 
             state._fsp--;
@@ -7287,16 +7380,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__6"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2728:1: rule__RuleDefinition__Group__6 : rule__RuleDefinition__Group__6__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2761:1: rule__RuleDefinition__Group__6 : rule__RuleDefinition__Group__6__Impl ;
     public final void rule__RuleDefinition__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2732:1: ( rule__RuleDefinition__Group__6__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2733:2: rule__RuleDefinition__Group__6__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2765:1: ( rule__RuleDefinition__Group__6__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2766:2: rule__RuleDefinition__Group__6__Impl
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group__6__Impl_in_rule__RuleDefinition__Group__65489);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group__6__Impl_in_rule__RuleDefinition__Group__65556);
             rule__RuleDefinition__Group__6__Impl();
 
             state._fsp--;
@@ -7320,35 +7413,35 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group__6__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2739:1: rule__RuleDefinition__Group__6__Impl : ( ( rule__RuleDefinition__Group_6__0 )? ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2772:1: rule__RuleDefinition__Group__6__Impl : ( ( rule__RuleDefinition__Group_6__0 )? ) ;
     public final void rule__RuleDefinition__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2743:1: ( ( ( rule__RuleDefinition__Group_6__0 )? ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2744:1: ( ( rule__RuleDefinition__Group_6__0 )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2776:1: ( ( ( rule__RuleDefinition__Group_6__0 )? ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2777:1: ( ( rule__RuleDefinition__Group_6__0 )? )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2744:1: ( ( rule__RuleDefinition__Group_6__0 )? )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2745:1: ( rule__RuleDefinition__Group_6__0 )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2777:1: ( ( rule__RuleDefinition__Group_6__0 )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2778:1: ( rule__RuleDefinition__Group_6__0 )?
             {
              before(grammarAccess.getRuleDefinitionAccess().getGroup_6()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2746:1: ( rule__RuleDefinition__Group_6__0 )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2779:1: ( rule__RuleDefinition__Group_6__0 )?
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA20_0==RULE_ID) ) {
-                int LA20_1 = input.LA(2);
+            if ( (LA21_0==RULE_ID) ) {
+                int LA21_1 = input.LA(2);
 
-                if ( (LA20_1==EOF||LA20_1==RULE_ID||LA20_1==13||LA20_1==27||(LA20_1>=36 && LA20_1<=37)) ) {
-                    alt20=1;
+                if ( (LA21_1==EOF||LA21_1==RULE_ID||LA21_1==13||LA21_1==27||(LA21_1>=37 && LA21_1<=38)) ) {
+                    alt21=1;
                 }
             }
-            switch (alt20) {
+            switch (alt21) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2746:2: rule__RuleDefinition__Group_6__0
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2779:2: rule__RuleDefinition__Group_6__0
                     {
-                    pushFollow(FOLLOW_rule__RuleDefinition__Group_6__0_in_rule__RuleDefinition__Group__6__Impl5516);
+                    pushFollow(FOLLOW_rule__RuleDefinition__Group_6__0_in_rule__RuleDefinition__Group__6__Impl5583);
                     rule__RuleDefinition__Group_6__0();
 
                     state._fsp--;
@@ -7382,21 +7475,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2770:1: rule__RuleDefinition__Group_4__0 : rule__RuleDefinition__Group_4__0__Impl rule__RuleDefinition__Group_4__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2803:1: rule__RuleDefinition__Group_4__0 : rule__RuleDefinition__Group_4__0__Impl rule__RuleDefinition__Group_4__1 ;
     public final void rule__RuleDefinition__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2774:1: ( rule__RuleDefinition__Group_4__0__Impl rule__RuleDefinition__Group_4__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2775:2: rule__RuleDefinition__Group_4__0__Impl rule__RuleDefinition__Group_4__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2807:1: ( rule__RuleDefinition__Group_4__0__Impl rule__RuleDefinition__Group_4__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2808:2: rule__RuleDefinition__Group_4__0__Impl rule__RuleDefinition__Group_4__1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_4__0__Impl_in_rule__RuleDefinition__Group_4__05561);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_4__0__Impl_in_rule__RuleDefinition__Group_4__05628);
             rule__RuleDefinition__Group_4__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_4__1_in_rule__RuleDefinition__Group_4__05564);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_4__1_in_rule__RuleDefinition__Group_4__05631);
             rule__RuleDefinition__Group_4__1();
 
             state._fsp--;
@@ -7420,23 +7513,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2782:1: rule__RuleDefinition__Group_4__0__Impl : ( ( rule__RuleDefinition__LhsAssignment_4_0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2815:1: rule__RuleDefinition__Group_4__0__Impl : ( ( rule__RuleDefinition__LhsAssignment_4_0 ) ) ;
     public final void rule__RuleDefinition__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2786:1: ( ( ( rule__RuleDefinition__LhsAssignment_4_0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2787:1: ( ( rule__RuleDefinition__LhsAssignment_4_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2819:1: ( ( ( rule__RuleDefinition__LhsAssignment_4_0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2820:1: ( ( rule__RuleDefinition__LhsAssignment_4_0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2787:1: ( ( rule__RuleDefinition__LhsAssignment_4_0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2788:1: ( rule__RuleDefinition__LhsAssignment_4_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2820:1: ( ( rule__RuleDefinition__LhsAssignment_4_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2821:1: ( rule__RuleDefinition__LhsAssignment_4_0 )
             {
              before(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2789:1: ( rule__RuleDefinition__LhsAssignment_4_0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2789:2: rule__RuleDefinition__LhsAssignment_4_0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2822:1: ( rule__RuleDefinition__LhsAssignment_4_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2822:2: rule__RuleDefinition__LhsAssignment_4_0
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__LhsAssignment_4_0_in_rule__RuleDefinition__Group_4__0__Impl5591);
+            pushFollow(FOLLOW_rule__RuleDefinition__LhsAssignment_4_0_in_rule__RuleDefinition__Group_4__0__Impl5658);
             rule__RuleDefinition__LhsAssignment_4_0();
 
             state._fsp--;
@@ -7467,16 +7560,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2799:1: rule__RuleDefinition__Group_4__1 : rule__RuleDefinition__Group_4__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2832:1: rule__RuleDefinition__Group_4__1 : rule__RuleDefinition__Group_4__1__Impl ;
     public final void rule__RuleDefinition__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2803:1: ( rule__RuleDefinition__Group_4__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2804:2: rule__RuleDefinition__Group_4__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2836:1: ( rule__RuleDefinition__Group_4__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2837:2: rule__RuleDefinition__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_4__1__Impl_in_rule__RuleDefinition__Group_4__15621);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_4__1__Impl_in_rule__RuleDefinition__Group_4__15688);
             rule__RuleDefinition__Group_4__1__Impl();
 
             state._fsp--;
@@ -7500,35 +7593,35 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2810:1: rule__RuleDefinition__Group_4__1__Impl : ( ( rule__RuleDefinition__Group_4_1__0 )* ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2843:1: rule__RuleDefinition__Group_4__1__Impl : ( ( rule__RuleDefinition__Group_4_1__0 )* ) ;
     public final void rule__RuleDefinition__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2814:1: ( ( ( rule__RuleDefinition__Group_4_1__0 )* ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2815:1: ( ( rule__RuleDefinition__Group_4_1__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2847:1: ( ( ( rule__RuleDefinition__Group_4_1__0 )* ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2848:1: ( ( rule__RuleDefinition__Group_4_1__0 )* )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2815:1: ( ( rule__RuleDefinition__Group_4_1__0 )* )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2816:1: ( rule__RuleDefinition__Group_4_1__0 )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2848:1: ( ( rule__RuleDefinition__Group_4_1__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2849:1: ( rule__RuleDefinition__Group_4_1__0 )*
             {
              before(grammarAccess.getRuleDefinitionAccess().getGroup_4_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2817:1: ( rule__RuleDefinition__Group_4_1__0 )*
-            loop21:
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2850:1: ( rule__RuleDefinition__Group_4_1__0 )*
+            loop22:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA21_0==13) ) {
-                    alt21=1;
+                if ( (LA22_0==13) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt22) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2817:2: rule__RuleDefinition__Group_4_1__0
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2850:2: rule__RuleDefinition__Group_4_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__0_in_rule__RuleDefinition__Group_4__1__Impl5648);
+            	    pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__0_in_rule__RuleDefinition__Group_4__1__Impl5715);
             	    rule__RuleDefinition__Group_4_1__0();
 
             	    state._fsp--;
@@ -7538,7 +7631,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop21;
+            	    break loop22;
                 }
             } while (true);
 
@@ -7565,21 +7658,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4_1__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2831:1: rule__RuleDefinition__Group_4_1__0 : rule__RuleDefinition__Group_4_1__0__Impl rule__RuleDefinition__Group_4_1__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2864:1: rule__RuleDefinition__Group_4_1__0 : rule__RuleDefinition__Group_4_1__0__Impl rule__RuleDefinition__Group_4_1__1 ;
     public final void rule__RuleDefinition__Group_4_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2835:1: ( rule__RuleDefinition__Group_4_1__0__Impl rule__RuleDefinition__Group_4_1__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2836:2: rule__RuleDefinition__Group_4_1__0__Impl rule__RuleDefinition__Group_4_1__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2868:1: ( rule__RuleDefinition__Group_4_1__0__Impl rule__RuleDefinition__Group_4_1__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2869:2: rule__RuleDefinition__Group_4_1__0__Impl rule__RuleDefinition__Group_4_1__1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__0__Impl_in_rule__RuleDefinition__Group_4_1__05683);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__0__Impl_in_rule__RuleDefinition__Group_4_1__05750);
             rule__RuleDefinition__Group_4_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__1_in_rule__RuleDefinition__Group_4_1__05686);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__1_in_rule__RuleDefinition__Group_4_1__05753);
             rule__RuleDefinition__Group_4_1__1();
 
             state._fsp--;
@@ -7603,20 +7696,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4_1__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2843:1: rule__RuleDefinition__Group_4_1__0__Impl : ( '+' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2876:1: rule__RuleDefinition__Group_4_1__0__Impl : ( '+' ) ;
     public final void rule__RuleDefinition__Group_4_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2847:1: ( ( '+' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2848:1: ( '+' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2880:1: ( ( '+' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2881:1: ( '+' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2848:1: ( '+' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2849:1: '+'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2881:1: ( '+' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2882:1: '+'
             {
              before(grammarAccess.getRuleDefinitionAccess().getPlusSignKeyword_4_1_0()); 
-            match(input,13,FOLLOW_13_in_rule__RuleDefinition__Group_4_1__0__Impl5714); 
+            match(input,13,FOLLOW_13_in_rule__RuleDefinition__Group_4_1__0__Impl5781); 
              after(grammarAccess.getRuleDefinitionAccess().getPlusSignKeyword_4_1_0()); 
 
             }
@@ -7640,16 +7733,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4_1__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2862:1: rule__RuleDefinition__Group_4_1__1 : rule__RuleDefinition__Group_4_1__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2895:1: rule__RuleDefinition__Group_4_1__1 : rule__RuleDefinition__Group_4_1__1__Impl ;
     public final void rule__RuleDefinition__Group_4_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2866:1: ( rule__RuleDefinition__Group_4_1__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2867:2: rule__RuleDefinition__Group_4_1__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2899:1: ( rule__RuleDefinition__Group_4_1__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2900:2: rule__RuleDefinition__Group_4_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__1__Impl_in_rule__RuleDefinition__Group_4_1__15745);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_4_1__1__Impl_in_rule__RuleDefinition__Group_4_1__15812);
             rule__RuleDefinition__Group_4_1__1__Impl();
 
             state._fsp--;
@@ -7673,23 +7766,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_4_1__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2873:1: rule__RuleDefinition__Group_4_1__1__Impl : ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2906:1: rule__RuleDefinition__Group_4_1__1__Impl : ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) ) ;
     public final void rule__RuleDefinition__Group_4_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2877:1: ( ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2878:1: ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2910:1: ( ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2911:1: ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2878:1: ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2879:1: ( rule__RuleDefinition__LhsAssignment_4_1_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2911:1: ( ( rule__RuleDefinition__LhsAssignment_4_1_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2912:1: ( rule__RuleDefinition__LhsAssignment_4_1_1 )
             {
              before(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_1_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2880:1: ( rule__RuleDefinition__LhsAssignment_4_1_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2880:2: rule__RuleDefinition__LhsAssignment_4_1_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2913:1: ( rule__RuleDefinition__LhsAssignment_4_1_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2913:2: rule__RuleDefinition__LhsAssignment_4_1_1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__LhsAssignment_4_1_1_in_rule__RuleDefinition__Group_4_1__1__Impl5772);
+            pushFollow(FOLLOW_rule__RuleDefinition__LhsAssignment_4_1_1_in_rule__RuleDefinition__Group_4_1__1__Impl5839);
             rule__RuleDefinition__LhsAssignment_4_1_1();
 
             state._fsp--;
@@ -7720,21 +7813,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2894:1: rule__RuleDefinition__Group_6__0 : rule__RuleDefinition__Group_6__0__Impl rule__RuleDefinition__Group_6__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2927:1: rule__RuleDefinition__Group_6__0 : rule__RuleDefinition__Group_6__0__Impl rule__RuleDefinition__Group_6__1 ;
     public final void rule__RuleDefinition__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2898:1: ( rule__RuleDefinition__Group_6__0__Impl rule__RuleDefinition__Group_6__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2899:2: rule__RuleDefinition__Group_6__0__Impl rule__RuleDefinition__Group_6__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2931:1: ( rule__RuleDefinition__Group_6__0__Impl rule__RuleDefinition__Group_6__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2932:2: rule__RuleDefinition__Group_6__0__Impl rule__RuleDefinition__Group_6__1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_6__0__Impl_in_rule__RuleDefinition__Group_6__05806);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_6__0__Impl_in_rule__RuleDefinition__Group_6__05873);
             rule__RuleDefinition__Group_6__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_6__1_in_rule__RuleDefinition__Group_6__05809);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_6__1_in_rule__RuleDefinition__Group_6__05876);
             rule__RuleDefinition__Group_6__1();
 
             state._fsp--;
@@ -7758,23 +7851,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2906:1: rule__RuleDefinition__Group_6__0__Impl : ( ( rule__RuleDefinition__RhsAssignment_6_0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2939:1: rule__RuleDefinition__Group_6__0__Impl : ( ( rule__RuleDefinition__RhsAssignment_6_0 ) ) ;
     public final void rule__RuleDefinition__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2910:1: ( ( ( rule__RuleDefinition__RhsAssignment_6_0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2911:1: ( ( rule__RuleDefinition__RhsAssignment_6_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2943:1: ( ( ( rule__RuleDefinition__RhsAssignment_6_0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2944:1: ( ( rule__RuleDefinition__RhsAssignment_6_0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2911:1: ( ( rule__RuleDefinition__RhsAssignment_6_0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2912:1: ( rule__RuleDefinition__RhsAssignment_6_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2944:1: ( ( rule__RuleDefinition__RhsAssignment_6_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2945:1: ( rule__RuleDefinition__RhsAssignment_6_0 )
             {
              before(grammarAccess.getRuleDefinitionAccess().getRhsAssignment_6_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2913:1: ( rule__RuleDefinition__RhsAssignment_6_0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2913:2: rule__RuleDefinition__RhsAssignment_6_0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2946:1: ( rule__RuleDefinition__RhsAssignment_6_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2946:2: rule__RuleDefinition__RhsAssignment_6_0
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__RhsAssignment_6_0_in_rule__RuleDefinition__Group_6__0__Impl5836);
+            pushFollow(FOLLOW_rule__RuleDefinition__RhsAssignment_6_0_in_rule__RuleDefinition__Group_6__0__Impl5903);
             rule__RuleDefinition__RhsAssignment_6_0();
 
             state._fsp--;
@@ -7805,16 +7898,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2923:1: rule__RuleDefinition__Group_6__1 : rule__RuleDefinition__Group_6__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2956:1: rule__RuleDefinition__Group_6__1 : rule__RuleDefinition__Group_6__1__Impl ;
     public final void rule__RuleDefinition__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2927:1: ( rule__RuleDefinition__Group_6__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2928:2: rule__RuleDefinition__Group_6__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2960:1: ( rule__RuleDefinition__Group_6__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2961:2: rule__RuleDefinition__Group_6__1__Impl
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_6__1__Impl_in_rule__RuleDefinition__Group_6__15866);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_6__1__Impl_in_rule__RuleDefinition__Group_6__15933);
             rule__RuleDefinition__Group_6__1__Impl();
 
             state._fsp--;
@@ -7838,35 +7931,35 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2934:1: rule__RuleDefinition__Group_6__1__Impl : ( ( rule__RuleDefinition__Group_6_1__0 )* ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2967:1: rule__RuleDefinition__Group_6__1__Impl : ( ( rule__RuleDefinition__Group_6_1__0 )* ) ;
     public final void rule__RuleDefinition__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2938:1: ( ( ( rule__RuleDefinition__Group_6_1__0 )* ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2939:1: ( ( rule__RuleDefinition__Group_6_1__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2971:1: ( ( ( rule__RuleDefinition__Group_6_1__0 )* ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2972:1: ( ( rule__RuleDefinition__Group_6_1__0 )* )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2939:1: ( ( rule__RuleDefinition__Group_6_1__0 )* )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2940:1: ( rule__RuleDefinition__Group_6_1__0 )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2972:1: ( ( rule__RuleDefinition__Group_6_1__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2973:1: ( rule__RuleDefinition__Group_6_1__0 )*
             {
              before(grammarAccess.getRuleDefinitionAccess().getGroup_6_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2941:1: ( rule__RuleDefinition__Group_6_1__0 )*
-            loop22:
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2974:1: ( rule__RuleDefinition__Group_6_1__0 )*
+            loop23:
             do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( (LA22_0==13) ) {
-                    alt22=1;
+                if ( (LA23_0==13) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt22) {
+                switch (alt23) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2941:2: rule__RuleDefinition__Group_6_1__0
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2974:2: rule__RuleDefinition__Group_6_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__0_in_rule__RuleDefinition__Group_6__1__Impl5893);
+            	    pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__0_in_rule__RuleDefinition__Group_6__1__Impl5960);
             	    rule__RuleDefinition__Group_6_1__0();
 
             	    state._fsp--;
@@ -7876,7 +7969,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop22;
+            	    break loop23;
                 }
             } while (true);
 
@@ -7903,21 +7996,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6_1__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2955:1: rule__RuleDefinition__Group_6_1__0 : rule__RuleDefinition__Group_6_1__0__Impl rule__RuleDefinition__Group_6_1__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2988:1: rule__RuleDefinition__Group_6_1__0 : rule__RuleDefinition__Group_6_1__0__Impl rule__RuleDefinition__Group_6_1__1 ;
     public final void rule__RuleDefinition__Group_6_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2959:1: ( rule__RuleDefinition__Group_6_1__0__Impl rule__RuleDefinition__Group_6_1__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2960:2: rule__RuleDefinition__Group_6_1__0__Impl rule__RuleDefinition__Group_6_1__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2992:1: ( rule__RuleDefinition__Group_6_1__0__Impl rule__RuleDefinition__Group_6_1__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2993:2: rule__RuleDefinition__Group_6_1__0__Impl rule__RuleDefinition__Group_6_1__1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__0__Impl_in_rule__RuleDefinition__Group_6_1__05928);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__0__Impl_in_rule__RuleDefinition__Group_6_1__05995);
             rule__RuleDefinition__Group_6_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__1_in_rule__RuleDefinition__Group_6_1__05931);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__1_in_rule__RuleDefinition__Group_6_1__05998);
             rule__RuleDefinition__Group_6_1__1();
 
             state._fsp--;
@@ -7941,20 +8034,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6_1__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2967:1: rule__RuleDefinition__Group_6_1__0__Impl : ( '+' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3000:1: rule__RuleDefinition__Group_6_1__0__Impl : ( '+' ) ;
     public final void rule__RuleDefinition__Group_6_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2971:1: ( ( '+' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2972:1: ( '+' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3004:1: ( ( '+' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3005:1: ( '+' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2972:1: ( '+' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2973:1: '+'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3005:1: ( '+' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3006:1: '+'
             {
              before(grammarAccess.getRuleDefinitionAccess().getPlusSignKeyword_6_1_0()); 
-            match(input,13,FOLLOW_13_in_rule__RuleDefinition__Group_6_1__0__Impl5959); 
+            match(input,13,FOLLOW_13_in_rule__RuleDefinition__Group_6_1__0__Impl6026); 
              after(grammarAccess.getRuleDefinitionAccess().getPlusSignKeyword_6_1_0()); 
 
             }
@@ -7978,16 +8071,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6_1__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2986:1: rule__RuleDefinition__Group_6_1__1 : rule__RuleDefinition__Group_6_1__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3019:1: rule__RuleDefinition__Group_6_1__1 : rule__RuleDefinition__Group_6_1__1__Impl ;
     public final void rule__RuleDefinition__Group_6_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2990:1: ( rule__RuleDefinition__Group_6_1__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2991:2: rule__RuleDefinition__Group_6_1__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3023:1: ( rule__RuleDefinition__Group_6_1__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3024:2: rule__RuleDefinition__Group_6_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__1__Impl_in_rule__RuleDefinition__Group_6_1__15990);
+            pushFollow(FOLLOW_rule__RuleDefinition__Group_6_1__1__Impl_in_rule__RuleDefinition__Group_6_1__16057);
             rule__RuleDefinition__Group_6_1__1__Impl();
 
             state._fsp--;
@@ -8011,23 +8104,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__Group_6_1__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:2997:1: rule__RuleDefinition__Group_6_1__1__Impl : ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3030:1: rule__RuleDefinition__Group_6_1__1__Impl : ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) ) ;
     public final void rule__RuleDefinition__Group_6_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3001:1: ( ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3002:1: ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3034:1: ( ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3035:1: ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3002:1: ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3003:1: ( rule__RuleDefinition__RhsAssignment_6_1_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3035:1: ( ( rule__RuleDefinition__RhsAssignment_6_1_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3036:1: ( rule__RuleDefinition__RhsAssignment_6_1_1 )
             {
              before(grammarAccess.getRuleDefinitionAccess().getRhsAssignment_6_1_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3004:1: ( rule__RuleDefinition__RhsAssignment_6_1_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3004:2: rule__RuleDefinition__RhsAssignment_6_1_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3037:1: ( rule__RuleDefinition__RhsAssignment_6_1_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3037:2: rule__RuleDefinition__RhsAssignment_6_1_1
             {
-            pushFollow(FOLLOW_rule__RuleDefinition__RhsAssignment_6_1_1_in_rule__RuleDefinition__Group_6_1__1__Impl6017);
+            pushFollow(FOLLOW_rule__RuleDefinition__RhsAssignment_6_1_1_in_rule__RuleDefinition__Group_6_1__1__Impl6084);
             rule__RuleDefinition__RhsAssignment_6_1_1();
 
             state._fsp--;
@@ -8058,21 +8151,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3018:1: rule__RuleObject__Group__0 : rule__RuleObject__Group__0__Impl rule__RuleObject__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3051:1: rule__RuleObject__Group__0 : rule__RuleObject__Group__0__Impl rule__RuleObject__Group__1 ;
     public final void rule__RuleObject__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3022:1: ( rule__RuleObject__Group__0__Impl rule__RuleObject__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3023:2: rule__RuleObject__Group__0__Impl rule__RuleObject__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3055:1: ( rule__RuleObject__Group__0__Impl rule__RuleObject__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3056:2: rule__RuleObject__Group__0__Impl rule__RuleObject__Group__1
             {
-            pushFollow(FOLLOW_rule__RuleObject__Group__0__Impl_in_rule__RuleObject__Group__06051);
+            pushFollow(FOLLOW_rule__RuleObject__Group__0__Impl_in_rule__RuleObject__Group__06118);
             rule__RuleObject__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleObject__Group__1_in_rule__RuleObject__Group__06054);
+            pushFollow(FOLLOW_rule__RuleObject__Group__1_in_rule__RuleObject__Group__06121);
             rule__RuleObject__Group__1();
 
             state._fsp--;
@@ -8096,21 +8189,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3030:1: rule__RuleObject__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3063:1: rule__RuleObject__Group__0__Impl : ( () ) ;
     public final void rule__RuleObject__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3034:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3035:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3067:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3068:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3035:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3036:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3068:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3069:1: ()
             {
              before(grammarAccess.getRuleObjectAccess().getRuleObjectAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3037:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3039:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3070:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3072:1: 
             {
             }
 
@@ -8133,21 +8226,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3049:1: rule__RuleObject__Group__1 : rule__RuleObject__Group__1__Impl rule__RuleObject__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3082:1: rule__RuleObject__Group__1 : rule__RuleObject__Group__1__Impl rule__RuleObject__Group__2 ;
     public final void rule__RuleObject__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3053:1: ( rule__RuleObject__Group__1__Impl rule__RuleObject__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3054:2: rule__RuleObject__Group__1__Impl rule__RuleObject__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3086:1: ( rule__RuleObject__Group__1__Impl rule__RuleObject__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3087:2: rule__RuleObject__Group__1__Impl rule__RuleObject__Group__2
             {
-            pushFollow(FOLLOW_rule__RuleObject__Group__1__Impl_in_rule__RuleObject__Group__16112);
+            pushFollow(FOLLOW_rule__RuleObject__Group__1__Impl_in_rule__RuleObject__Group__16179);
             rule__RuleObject__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleObject__Group__2_in_rule__RuleObject__Group__16115);
+            pushFollow(FOLLOW_rule__RuleObject__Group__2_in_rule__RuleObject__Group__16182);
             rule__RuleObject__Group__2();
 
             state._fsp--;
@@ -8171,23 +8264,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3061:1: rule__RuleObject__Group__1__Impl : ( ( rule__RuleObject__SubobjectsAssignment_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3094:1: rule__RuleObject__Group__1__Impl : ( ( rule__RuleObject__SubobjectsAssignment_1 ) ) ;
     public final void rule__RuleObject__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3065:1: ( ( ( rule__RuleObject__SubobjectsAssignment_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3066:1: ( ( rule__RuleObject__SubobjectsAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3098:1: ( ( ( rule__RuleObject__SubobjectsAssignment_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3099:1: ( ( rule__RuleObject__SubobjectsAssignment_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3066:1: ( ( rule__RuleObject__SubobjectsAssignment_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3067:1: ( rule__RuleObject__SubobjectsAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3099:1: ( ( rule__RuleObject__SubobjectsAssignment_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3100:1: ( rule__RuleObject__SubobjectsAssignment_1 )
             {
              before(grammarAccess.getRuleObjectAccess().getSubobjectsAssignment_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3068:1: ( rule__RuleObject__SubobjectsAssignment_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3068:2: rule__RuleObject__SubobjectsAssignment_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3101:1: ( rule__RuleObject__SubobjectsAssignment_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3101:2: rule__RuleObject__SubobjectsAssignment_1
             {
-            pushFollow(FOLLOW_rule__RuleObject__SubobjectsAssignment_1_in_rule__RuleObject__Group__1__Impl6142);
+            pushFollow(FOLLOW_rule__RuleObject__SubobjectsAssignment_1_in_rule__RuleObject__Group__1__Impl6209);
             rule__RuleObject__SubobjectsAssignment_1();
 
             state._fsp--;
@@ -8218,16 +8311,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3078:1: rule__RuleObject__Group__2 : rule__RuleObject__Group__2__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3111:1: rule__RuleObject__Group__2 : rule__RuleObject__Group__2__Impl ;
     public final void rule__RuleObject__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3082:1: ( rule__RuleObject__Group__2__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3083:2: rule__RuleObject__Group__2__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3115:1: ( rule__RuleObject__Group__2__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3116:2: rule__RuleObject__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__RuleObject__Group__2__Impl_in_rule__RuleObject__Group__26172);
+            pushFollow(FOLLOW_rule__RuleObject__Group__2__Impl_in_rule__RuleObject__Group__26239);
             rule__RuleObject__Group__2__Impl();
 
             state._fsp--;
@@ -8251,35 +8344,35 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3089:1: rule__RuleObject__Group__2__Impl : ( ( rule__RuleObject__Group_2__0 )* ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3122:1: rule__RuleObject__Group__2__Impl : ( ( rule__RuleObject__Group_2__0 )* ) ;
     public final void rule__RuleObject__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3093:1: ( ( ( rule__RuleObject__Group_2__0 )* ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3094:1: ( ( rule__RuleObject__Group_2__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3126:1: ( ( ( rule__RuleObject__Group_2__0 )* ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3127:1: ( ( rule__RuleObject__Group_2__0 )* )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3094:1: ( ( rule__RuleObject__Group_2__0 )* )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3095:1: ( rule__RuleObject__Group_2__0 )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3127:1: ( ( rule__RuleObject__Group_2__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3128:1: ( rule__RuleObject__Group_2__0 )*
             {
              before(grammarAccess.getRuleObjectAccess().getGroup_2()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3096:1: ( rule__RuleObject__Group_2__0 )*
-            loop23:
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3129:1: ( rule__RuleObject__Group_2__0 )*
+            loop24:
             do {
-                int alt23=2;
-                int LA23_0 = input.LA(1);
+                int alt24=2;
+                int LA24_0 = input.LA(1);
 
-                if ( (LA23_0==37) ) {
-                    alt23=1;
+                if ( (LA24_0==38) ) {
+                    alt24=1;
                 }
 
 
-                switch (alt23) {
+                switch (alt24) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3096:2: rule__RuleObject__Group_2__0
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3129:2: rule__RuleObject__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__RuleObject__Group_2__0_in_rule__RuleObject__Group__2__Impl6199);
+            	    pushFollow(FOLLOW_rule__RuleObject__Group_2__0_in_rule__RuleObject__Group__2__Impl6266);
             	    rule__RuleObject__Group_2__0();
 
             	    state._fsp--;
@@ -8289,7 +8382,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop23;
+            	    break loop24;
                 }
             } while (true);
 
@@ -8316,21 +8409,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group_2__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3112:1: rule__RuleObject__Group_2__0 : rule__RuleObject__Group_2__0__Impl rule__RuleObject__Group_2__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3145:1: rule__RuleObject__Group_2__0 : rule__RuleObject__Group_2__0__Impl rule__RuleObject__Group_2__1 ;
     public final void rule__RuleObject__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3116:1: ( rule__RuleObject__Group_2__0__Impl rule__RuleObject__Group_2__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3117:2: rule__RuleObject__Group_2__0__Impl rule__RuleObject__Group_2__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3149:1: ( rule__RuleObject__Group_2__0__Impl rule__RuleObject__Group_2__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3150:2: rule__RuleObject__Group_2__0__Impl rule__RuleObject__Group_2__1
             {
-            pushFollow(FOLLOW_rule__RuleObject__Group_2__0__Impl_in_rule__RuleObject__Group_2__06236);
+            pushFollow(FOLLOW_rule__RuleObject__Group_2__0__Impl_in_rule__RuleObject__Group_2__06303);
             rule__RuleObject__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RuleObject__Group_2__1_in_rule__RuleObject__Group_2__06239);
+            pushFollow(FOLLOW_rule__RuleObject__Group_2__1_in_rule__RuleObject__Group_2__06306);
             rule__RuleObject__Group_2__1();
 
             state._fsp--;
@@ -8354,20 +8447,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group_2__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3124:1: rule__RuleObject__Group_2__0__Impl : ( '~' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3157:1: rule__RuleObject__Group_2__0__Impl : ( '~' ) ;
     public final void rule__RuleObject__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3128:1: ( ( '~' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3129:1: ( '~' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3161:1: ( ( '~' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3162:1: ( '~' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3129:1: ( '~' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3130:1: '~'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3162:1: ( '~' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3163:1: '~'
             {
              before(grammarAccess.getRuleObjectAccess().getTildeKeyword_2_0()); 
-            match(input,37,FOLLOW_37_in_rule__RuleObject__Group_2__0__Impl6267); 
+            match(input,38,FOLLOW_38_in_rule__RuleObject__Group_2__0__Impl6334); 
              after(grammarAccess.getRuleObjectAccess().getTildeKeyword_2_0()); 
 
             }
@@ -8391,16 +8484,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group_2__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3143:1: rule__RuleObject__Group_2__1 : rule__RuleObject__Group_2__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3176:1: rule__RuleObject__Group_2__1 : rule__RuleObject__Group_2__1__Impl ;
     public final void rule__RuleObject__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3147:1: ( rule__RuleObject__Group_2__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3148:2: rule__RuleObject__Group_2__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3180:1: ( rule__RuleObject__Group_2__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3181:2: rule__RuleObject__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__RuleObject__Group_2__1__Impl_in_rule__RuleObject__Group_2__16298);
+            pushFollow(FOLLOW_rule__RuleObject__Group_2__1__Impl_in_rule__RuleObject__Group_2__16365);
             rule__RuleObject__Group_2__1__Impl();
 
             state._fsp--;
@@ -8424,23 +8517,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__Group_2__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3154:1: rule__RuleObject__Group_2__1__Impl : ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3187:1: rule__RuleObject__Group_2__1__Impl : ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) ) ;
     public final void rule__RuleObject__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3158:1: ( ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3159:1: ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3191:1: ( ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3192:1: ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3159:1: ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3160:1: ( rule__RuleObject__SubobjectsAssignment_2_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3192:1: ( ( rule__RuleObject__SubobjectsAssignment_2_1 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3193:1: ( rule__RuleObject__SubobjectsAssignment_2_1 )
             {
              before(grammarAccess.getRuleObjectAccess().getSubobjectsAssignment_2_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3161:1: ( rule__RuleObject__SubobjectsAssignment_2_1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3161:2: rule__RuleObject__SubobjectsAssignment_2_1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3194:1: ( rule__RuleObject__SubobjectsAssignment_2_1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3194:2: rule__RuleObject__SubobjectsAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__RuleObject__SubobjectsAssignment_2_1_in_rule__RuleObject__Group_2__1__Impl6325);
+            pushFollow(FOLLOW_rule__RuleObject__SubobjectsAssignment_2_1_in_rule__RuleObject__Group_2__1__Impl6392);
             rule__RuleObject__SubobjectsAssignment_2_1();
 
             state._fsp--;
@@ -8471,21 +8564,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3175:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3208:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3179:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3180:2: rule__Import__Group__0__Impl rule__Import__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3212:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3213:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
-            pushFollow(FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__06359);
+            pushFollow(FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__06426);
             rule__Import__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Import__Group__1_in_rule__Import__Group__06362);
+            pushFollow(FOLLOW_rule__Import__Group__1_in_rule__Import__Group__06429);
             rule__Import__Group__1();
 
             state._fsp--;
@@ -8509,21 +8602,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3187:1: rule__Import__Group__0__Impl : ( () ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3220:1: rule__Import__Group__0__Impl : ( () ) ;
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3191:1: ( ( () ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3192:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3224:1: ( ( () ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3225:1: ( () )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3192:1: ( () )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3193:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3225:1: ( () )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3226:1: ()
             {
              before(grammarAccess.getImportAccess().getImportAction_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3194:1: ()
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3196:1: 
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3227:1: ()
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3229:1: 
             {
             }
 
@@ -8546,21 +8639,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3206:1: rule__Import__Group__1 : rule__Import__Group__1__Impl rule__Import__Group__2 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3239:1: rule__Import__Group__1 : rule__Import__Group__1__Impl rule__Import__Group__2 ;
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3210:1: ( rule__Import__Group__1__Impl rule__Import__Group__2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3211:2: rule__Import__Group__1__Impl rule__Import__Group__2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3243:1: ( rule__Import__Group__1__Impl rule__Import__Group__2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3244:2: rule__Import__Group__1__Impl rule__Import__Group__2
             {
-            pushFollow(FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__16420);
+            pushFollow(FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__16487);
             rule__Import__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Import__Group__2_in_rule__Import__Group__16423);
+            pushFollow(FOLLOW_rule__Import__Group__2_in_rule__Import__Group__16490);
             rule__Import__Group__2();
 
             state._fsp--;
@@ -8584,20 +8677,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3218:1: rule__Import__Group__1__Impl : ( 'import' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3251:1: rule__Import__Group__1__Impl : ( 'import' ) ;
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3222:1: ( ( 'import' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3223:1: ( 'import' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3255:1: ( ( 'import' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3256:1: ( 'import' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3223:1: ( 'import' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3224:1: 'import'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3256:1: ( 'import' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3257:1: 'import'
             {
              before(grammarAccess.getImportAccess().getImportKeyword_1()); 
-            match(input,38,FOLLOW_38_in_rule__Import__Group__1__Impl6451); 
+            match(input,39,FOLLOW_39_in_rule__Import__Group__1__Impl6518); 
              after(grammarAccess.getImportAccess().getImportKeyword_1()); 
 
             }
@@ -8621,16 +8714,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__Group__2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3237:1: rule__Import__Group__2 : rule__Import__Group__2__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3270:1: rule__Import__Group__2 : rule__Import__Group__2__Impl ;
     public final void rule__Import__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3241:1: ( rule__Import__Group__2__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3242:2: rule__Import__Group__2__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3274:1: ( rule__Import__Group__2__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3275:2: rule__Import__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Import__Group__2__Impl_in_rule__Import__Group__26482);
+            pushFollow(FOLLOW_rule__Import__Group__2__Impl_in_rule__Import__Group__26549);
             rule__Import__Group__2__Impl();
 
             state._fsp--;
@@ -8654,23 +8747,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__Group__2__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3248:1: rule__Import__Group__2__Impl : ( ( rule__Import__ImportedNamespaceAssignment_2 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3281:1: rule__Import__Group__2__Impl : ( ( rule__Import__ImportedNamespaceAssignment_2 ) ) ;
     public final void rule__Import__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3252:1: ( ( ( rule__Import__ImportedNamespaceAssignment_2 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3253:1: ( ( rule__Import__ImportedNamespaceAssignment_2 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3285:1: ( ( ( rule__Import__ImportedNamespaceAssignment_2 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3286:1: ( ( rule__Import__ImportedNamespaceAssignment_2 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3253:1: ( ( rule__Import__ImportedNamespaceAssignment_2 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3254:1: ( rule__Import__ImportedNamespaceAssignment_2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3286:1: ( ( rule__Import__ImportedNamespaceAssignment_2 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3287:1: ( rule__Import__ImportedNamespaceAssignment_2 )
             {
              before(grammarAccess.getImportAccess().getImportedNamespaceAssignment_2()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3255:1: ( rule__Import__ImportedNamespaceAssignment_2 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3255:2: rule__Import__ImportedNamespaceAssignment_2
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3288:1: ( rule__Import__ImportedNamespaceAssignment_2 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3288:2: rule__Import__ImportedNamespaceAssignment_2
             {
-            pushFollow(FOLLOW_rule__Import__ImportedNamespaceAssignment_2_in_rule__Import__Group__2__Impl6509);
+            pushFollow(FOLLOW_rule__Import__ImportedNamespaceAssignment_2_in_rule__Import__Group__2__Impl6576);
             rule__Import__ImportedNamespaceAssignment_2();
 
             state._fsp--;
@@ -8701,21 +8794,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3271:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3304:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
     public final void rule__QualifiedNameWithWildcard__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3275:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3276:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3308:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3309:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__06545);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__06612);
             rule__QualifiedNameWithWildcard__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__06548);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__06615);
             rule__QualifiedNameWithWildcard__Group__1();
 
             state._fsp--;
@@ -8739,20 +8832,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3283:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3316:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
     public final void rule__QualifiedNameWithWildcard__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3287:1: ( ( ruleQualifiedName ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3288:1: ( ruleQualifiedName )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3320:1: ( ( ruleQualifiedName ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3321:1: ( ruleQualifiedName )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3288:1: ( ruleQualifiedName )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3289:1: ruleQualifiedName
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3321:1: ( ruleQualifiedName )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3322:1: ruleQualifiedName
             {
              before(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl6575);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl6642);
             ruleQualifiedName();
 
             state._fsp--;
@@ -8780,16 +8873,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3300:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3333:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
     public final void rule__QualifiedNameWithWildcard__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3304:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3305:2: rule__QualifiedNameWithWildcard__Group__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3337:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3338:2: rule__QualifiedNameWithWildcard__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__16604);
+            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__16671);
             rule__QualifiedNameWithWildcard__Group__1__Impl();
 
             state._fsp--;
@@ -8813,31 +8906,31 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3311:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( '.*' )? ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3344:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( '.*' )? ) ;
     public final void rule__QualifiedNameWithWildcard__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3315:1: ( ( ( '.*' )? ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3316:1: ( ( '.*' )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3348:1: ( ( ( '.*' )? ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3349:1: ( ( '.*' )? )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3316:1: ( ( '.*' )? )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3317:1: ( '.*' )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3349:1: ( ( '.*' )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3350:1: ( '.*' )?
             {
              before(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopAsteriskKeyword_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3318:1: ( '.*' )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3351:1: ( '.*' )?
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==39) ) {
-                alt24=1;
+            if ( (LA25_0==40) ) {
+                alt25=1;
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3319:2: '.*'
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3352:2: '.*'
                     {
-                    match(input,39,FOLLOW_39_in_rule__QualifiedNameWithWildcard__Group__1__Impl6633); 
+                    match(input,40,FOLLOW_40_in_rule__QualifiedNameWithWildcard__Group__1__Impl6700); 
 
                     }
                     break;
@@ -8867,21 +8960,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3334:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3367:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3338:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3339:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3371:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3372:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__06670);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__06737);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__06673);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__06740);
             rule__QualifiedName__Group__1();
 
             state._fsp--;
@@ -8905,20 +8998,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3346:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3379:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3350:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3351:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3383:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3384:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3351:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3352:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3384:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3385:1: RULE_ID
             {
              before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl6700); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl6767); 
              after(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
 
             }
@@ -8942,16 +9035,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3363:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3396:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3367:1: ( rule__QualifiedName__Group__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3368:2: rule__QualifiedName__Group__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3400:1: ( rule__QualifiedName__Group__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3401:2: rule__QualifiedName__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__16729);
+            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__16796);
             rule__QualifiedName__Group__1__Impl();
 
             state._fsp--;
@@ -8975,35 +9068,35 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3374:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3407:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3378:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3379:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3411:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3412:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3379:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3380:1: ( rule__QualifiedName__Group_1__0 )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3412:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3413:1: ( rule__QualifiedName__Group_1__0 )*
             {
              before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3381:1: ( rule__QualifiedName__Group_1__0 )*
-            loop25:
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3414:1: ( rule__QualifiedName__Group_1__0 )*
+            loop26:
             do {
-                int alt25=2;
-                int LA25_0 = input.LA(1);
+                int alt26=2;
+                int LA26_0 = input.LA(1);
 
-                if ( (LA25_0==34) ) {
-                    alt25=1;
+                if ( (LA26_0==35) ) {
+                    alt26=1;
                 }
 
 
-                switch (alt25) {
+                switch (alt26) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3381:2: rule__QualifiedName__Group_1__0
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3414:2: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl6756);
+            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl6823);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -9013,7 +9106,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop25;
+            	    break loop26;
                 }
             } while (true);
 
@@ -9040,21 +9133,21 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3395:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3428:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3399:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3400:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3432:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3433:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__06791);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__06858);
             rule__QualifiedName__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__06794);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__06861);
             rule__QualifiedName__Group_1__1();
 
             state._fsp--;
@@ -9078,20 +9171,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3407:1: rule__QualifiedName__Group_1__0__Impl : ( '.' ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3440:1: rule__QualifiedName__Group_1__0__Impl : ( '.' ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3411:1: ( ( '.' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3412:1: ( '.' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3444:1: ( ( '.' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3445:1: ( '.' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3412:1: ( '.' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3413:1: '.'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3445:1: ( '.' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3446:1: '.'
             {
              before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
-            match(input,34,FOLLOW_34_in_rule__QualifiedName__Group_1__0__Impl6822); 
+            match(input,35,FOLLOW_35_in_rule__QualifiedName__Group_1__0__Impl6889); 
              after(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
 
             }
@@ -9115,16 +9208,16 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3426:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3459:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3430:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3431:2: rule__QualifiedName__Group_1__1__Impl
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3463:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3464:2: rule__QualifiedName__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__16853);
+            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__16920);
             rule__QualifiedName__Group_1__1__Impl();
 
             state._fsp--;
@@ -9148,20 +9241,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3437:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3470:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3441:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3442:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3474:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3475:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3442:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3443:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3475:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3476:1: RULE_ID
             {
              before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl6880); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl6947); 
              after(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
 
             }
@@ -9185,20 +9278,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Model__MembersAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3459:1: rule__Model__MembersAssignment_1 : ( ruleModelMember ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3492:1: rule__Model__MembersAssignment_1 : ( ruleModelMember ) ;
     public final void rule__Model__MembersAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3463:1: ( ( ruleModelMember ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3464:1: ( ruleModelMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3496:1: ( ( ruleModelMember ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3497:1: ( ruleModelMember )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3464:1: ( ruleModelMember )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3465:1: ruleModelMember
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3497:1: ( ruleModelMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3498:1: ruleModelMember
             {
              before(grammarAccess.getModelAccess().getMembersModelMemberParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleModelMember_in_rule__Model__MembersAssignment_16918);
+            pushFollow(FOLLOW_ruleModelMember_in_rule__Model__MembersAssignment_16985);
             ruleModelMember();
 
             state._fsp--;
@@ -9226,20 +9319,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDefinition__TypeAssignment_2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3474:1: rule__VariableDefinition__TypeAssignment_2 : ( ruleVariableType ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3507:1: rule__VariableDefinition__TypeAssignment_2 : ( ruleVariableType ) ;
     public final void rule__VariableDefinition__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3478:1: ( ( ruleVariableType ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3479:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3511:1: ( ( ruleVariableType ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3512:1: ( ruleVariableType )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3479:1: ( ruleVariableType )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3480:1: ruleVariableType
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3512:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3513:1: ruleVariableType
             {
              before(grammarAccess.getVariableDefinitionAccess().getTypeVariableTypeParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleVariableType_in_rule__VariableDefinition__TypeAssignment_26949);
+            pushFollow(FOLLOW_ruleVariableType_in_rule__VariableDefinition__TypeAssignment_27016);
             ruleVariableType();
 
             state._fsp--;
@@ -9267,20 +9360,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDefinition__NameAssignment_3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3489:1: rule__VariableDefinition__NameAssignment_3 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3522:1: rule__VariableDefinition__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__VariableDefinition__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3493:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3494:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3526:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3527:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3494:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3495:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3527:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3528:1: RULE_ID
             {
              before(grammarAccess.getVariableDefinitionAccess().getNameIDTerminalRuleCall_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableDefinition__NameAssignment_36980); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableDefinition__NameAssignment_37047); 
              after(grammarAccess.getVariableDefinitionAccess().getNameIDTerminalRuleCall_3_0()); 
 
             }
@@ -9304,20 +9397,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDefinition__MembersAssignment_5"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3504:1: rule__VariableDefinition__MembersAssignment_5 : ( ruleVariableDefinitionMember ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3537:1: rule__VariableDefinition__MembersAssignment_5 : ( ruleVariableDefinitionMember ) ;
     public final void rule__VariableDefinition__MembersAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3508:1: ( ( ruleVariableDefinitionMember ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3509:1: ( ruleVariableDefinitionMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3541:1: ( ( ruleVariableDefinitionMember ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3542:1: ( ruleVariableDefinitionMember )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3509:1: ( ruleVariableDefinitionMember )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3510:1: ruleVariableDefinitionMember
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3542:1: ( ruleVariableDefinitionMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3543:1: ruleVariableDefinitionMember
             {
              before(grammarAccess.getVariableDefinitionAccess().getMembersVariableDefinitionMemberParserRuleCall_5_0()); 
-            pushFollow(FOLLOW_ruleVariableDefinitionMember_in_rule__VariableDefinition__MembersAssignment_57011);
+            pushFollow(FOLLOW_ruleVariableDefinitionMember_in_rule__VariableDefinition__MembersAssignment_57078);
             ruleVariableDefinitionMember();
 
             state._fsp--;
@@ -9345,20 +9438,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__TypeAssignment_2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3519:1: rule__FunctionDefinition__TypeAssignment_2 : ( ruleVariableType ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3552:1: rule__FunctionDefinition__TypeAssignment_2 : ( ruleVariableType ) ;
     public final void rule__FunctionDefinition__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3523:1: ( ( ruleVariableType ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3524:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3556:1: ( ( ruleVariableType ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3557:1: ( ruleVariableType )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3524:1: ( ruleVariableType )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3525:1: ruleVariableType
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3557:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3558:1: ruleVariableType
             {
              before(grammarAccess.getFunctionDefinitionAccess().getTypeVariableTypeParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleVariableType_in_rule__FunctionDefinition__TypeAssignment_27042);
+            pushFollow(FOLLOW_ruleVariableType_in_rule__FunctionDefinition__TypeAssignment_27109);
             ruleVariableType();
 
             state._fsp--;
@@ -9386,20 +9479,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__NameAssignment_3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3534:1: rule__FunctionDefinition__NameAssignment_3 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3567:1: rule__FunctionDefinition__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__FunctionDefinition__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3538:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3539:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3571:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3572:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3539:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3540:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3572:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3573:1: RULE_ID
             {
              before(grammarAccess.getFunctionDefinitionAccess().getNameIDTerminalRuleCall_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunctionDefinition__NameAssignment_37073); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunctionDefinition__NameAssignment_37140); 
              after(grammarAccess.getFunctionDefinitionAccess().getNameIDTerminalRuleCall_3_0()); 
 
             }
@@ -9423,20 +9516,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__ParametersAssignment_5"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3549:1: rule__FunctionDefinition__ParametersAssignment_5 : ( ruleFunctionParameterMember ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3582:1: rule__FunctionDefinition__ParametersAssignment_5 : ( ruleFunctionParameterMember ) ;
     public final void rule__FunctionDefinition__ParametersAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3553:1: ( ( ruleFunctionParameterMember ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3554:1: ( ruleFunctionParameterMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3586:1: ( ( ruleFunctionParameterMember ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3587:1: ( ruleFunctionParameterMember )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3554:1: ( ruleFunctionParameterMember )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3555:1: ruleFunctionParameterMember
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3587:1: ( ruleFunctionParameterMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3588:1: ruleFunctionParameterMember
             {
              before(grammarAccess.getFunctionDefinitionAccess().getParametersFunctionParameterMemberParserRuleCall_5_0()); 
-            pushFollow(FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_57104);
+            pushFollow(FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_57171);
             ruleFunctionParameterMember();
 
             state._fsp--;
@@ -9464,20 +9557,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__ParametersAssignment_6"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3564:1: rule__FunctionDefinition__ParametersAssignment_6 : ( ruleFunctionParameterMember ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3597:1: rule__FunctionDefinition__ParametersAssignment_6 : ( ruleFunctionParameterMember ) ;
     public final void rule__FunctionDefinition__ParametersAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3568:1: ( ( ruleFunctionParameterMember ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3569:1: ( ruleFunctionParameterMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3601:1: ( ( ruleFunctionParameterMember ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3602:1: ( ruleFunctionParameterMember )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3569:1: ( ruleFunctionParameterMember )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3570:1: ruleFunctionParameterMember
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3602:1: ( ruleFunctionParameterMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3603:1: ruleFunctionParameterMember
             {
              before(grammarAccess.getFunctionDefinitionAccess().getParametersFunctionParameterMemberParserRuleCall_6_0()); 
-            pushFollow(FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_67135);
+            pushFollow(FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_67202);
             ruleFunctionParameterMember();
 
             state._fsp--;
@@ -9505,20 +9598,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__ParametersAssignment_7_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3579:1: rule__FunctionDefinition__ParametersAssignment_7_1 : ( ruleFunctionParameterMember ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3612:1: rule__FunctionDefinition__ParametersAssignment_7_1 : ( ruleFunctionParameterMember ) ;
     public final void rule__FunctionDefinition__ParametersAssignment_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3583:1: ( ( ruleFunctionParameterMember ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3584:1: ( ruleFunctionParameterMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3616:1: ( ( ruleFunctionParameterMember ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3617:1: ( ruleFunctionParameterMember )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3584:1: ( ruleFunctionParameterMember )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3585:1: ruleFunctionParameterMember
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3617:1: ( ruleFunctionParameterMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3618:1: ruleFunctionParameterMember
             {
              before(grammarAccess.getFunctionDefinitionAccess().getParametersFunctionParameterMemberParserRuleCall_7_1_0()); 
-            pushFollow(FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_7_17166);
+            pushFollow(FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_7_17233);
             ruleFunctionParameterMember();
 
             state._fsp--;
@@ -9546,20 +9639,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionDefinition__MembersAssignment_10"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3594:1: rule__FunctionDefinition__MembersAssignment_10 : ( ruleFunctionDefinitionMember ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3627:1: rule__FunctionDefinition__MembersAssignment_10 : ( ruleFunctionDefinitionMember ) ;
     public final void rule__FunctionDefinition__MembersAssignment_10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3598:1: ( ( ruleFunctionDefinitionMember ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3599:1: ( ruleFunctionDefinitionMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3631:1: ( ( ruleFunctionDefinitionMember ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3632:1: ( ruleFunctionDefinitionMember )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3599:1: ( ruleFunctionDefinitionMember )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3600:1: ruleFunctionDefinitionMember
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3632:1: ( ruleFunctionDefinitionMember )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3633:1: ruleFunctionDefinitionMember
             {
              before(grammarAccess.getFunctionDefinitionAccess().getMembersFunctionDefinitionMemberParserRuleCall_10_0()); 
-            pushFollow(FOLLOW_ruleFunctionDefinitionMember_in_rule__FunctionDefinition__MembersAssignment_107197);
+            pushFollow(FOLLOW_ruleFunctionDefinitionMember_in_rule__FunctionDefinition__MembersAssignment_107264);
             ruleFunctionDefinitionMember();
 
             state._fsp--;
@@ -9587,20 +9680,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__TypeAssignment_0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3609:1: rule__FunctionParameterMember__TypeAssignment_0 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3642:1: rule__FunctionParameterMember__TypeAssignment_0 : ( RULE_ID ) ;
     public final void rule__FunctionParameterMember__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3613:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3614:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3646:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3647:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3614:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3615:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3647:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3648:1: RULE_ID
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getTypeIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunctionParameterMember__TypeAssignment_07228); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunctionParameterMember__TypeAssignment_07295); 
              after(grammarAccess.getFunctionParameterMemberAccess().getTypeIDTerminalRuleCall_0_0()); 
 
             }
@@ -9624,20 +9717,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__NameAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3624:1: rule__FunctionParameterMember__NameAssignment_1 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3657:1: rule__FunctionParameterMember__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__FunctionParameterMember__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3628:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3629:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3661:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3662:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3629:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3630:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3662:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3663:1: RULE_ID
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunctionParameterMember__NameAssignment_17259); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunctionParameterMember__NameAssignment_17326); 
              after(grammarAccess.getFunctionParameterMemberAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -9661,20 +9754,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterMember__ScopeAssignment_3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3639:1: rule__FunctionParameterMember__ScopeAssignment_3 : ( ruleParameterScope ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3672:1: rule__FunctionParameterMember__ScopeAssignment_3 : ( ruleParameterScope ) ;
     public final void rule__FunctionParameterMember__ScopeAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3643:1: ( ( ruleParameterScope ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3644:1: ( ruleParameterScope )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3676:1: ( ( ruleParameterScope ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3677:1: ( ruleParameterScope )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3644:1: ( ruleParameterScope )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3645:1: ruleParameterScope
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3677:1: ( ruleParameterScope )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3678:1: ruleParameterScope
             {
              before(grammarAccess.getFunctionParameterMemberAccess().getScopeParameterScopeParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleParameterScope_in_rule__FunctionParameterMember__ScopeAssignment_37290);
+            pushFollow(FOLLOW_ruleParameterScope_in_rule__FunctionParameterMember__ScopeAssignment_37357);
             ruleParameterScope();
 
             state._fsp--;
@@ -9702,20 +9795,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__TypeAssignment_0_1_0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3654:1: rule__VariableDeclaration__TypeAssignment_0_1_0 : ( ruleVariableType ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3687:1: rule__VariableDeclaration__TypeAssignment_0_1_0 : ( ruleVariableType ) ;
     public final void rule__VariableDeclaration__TypeAssignment_0_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3658:1: ( ( ruleVariableType ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3659:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3691:1: ( ( ruleVariableType ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3692:1: ( ruleVariableType )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3659:1: ( ruleVariableType )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3660:1: ruleVariableType
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3692:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3693:1: ruleVariableType
             {
              before(grammarAccess.getVariableDeclarationAccess().getTypeVariableTypeParserRuleCall_0_1_0_0()); 
-            pushFollow(FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_0_1_07321);
+            pushFollow(FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_0_1_07388);
             ruleVariableType();
 
             state._fsp--;
@@ -9743,20 +9836,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__NameAssignment_0_1_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3669:1: rule__VariableDeclaration__NameAssignment_0_1_1 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3702:1: rule__VariableDeclaration__NameAssignment_0_1_1 : ( RULE_ID ) ;
     public final void rule__VariableDeclaration__NameAssignment_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3673:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3674:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3706:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3707:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3674:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3675:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3707:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3708:1: RULE_ID
             {
              before(grammarAccess.getVariableDeclarationAccess().getNameIDTerminalRuleCall_0_1_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_0_1_17352); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_0_1_17419); 
              after(grammarAccess.getVariableDeclarationAccess().getNameIDTerminalRuleCall_0_1_1_0()); 
 
             }
@@ -9780,20 +9873,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__CollectionAssignment_1_0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3684:1: rule__VariableDeclaration__CollectionAssignment_1_0 : ( ruleCollectionID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3717:1: rule__VariableDeclaration__CollectionAssignment_1_0 : ( ruleCollectionID ) ;
     public final void rule__VariableDeclaration__CollectionAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3688:1: ( ( ruleCollectionID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3689:1: ( ruleCollectionID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3721:1: ( ( ruleCollectionID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3722:1: ( ruleCollectionID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3689:1: ( ruleCollectionID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3690:1: ruleCollectionID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3722:1: ( ruleCollectionID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3723:1: ruleCollectionID
             {
              before(grammarAccess.getVariableDeclarationAccess().getCollectionCollectionIDParserRuleCall_1_0_0()); 
-            pushFollow(FOLLOW_ruleCollectionID_in_rule__VariableDeclaration__CollectionAssignment_1_07383);
+            pushFollow(FOLLOW_ruleCollectionID_in_rule__VariableDeclaration__CollectionAssignment_1_07450);
             ruleCollectionID();
 
             state._fsp--;
@@ -9821,20 +9914,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__TypeAssignment_1_2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3699:1: rule__VariableDeclaration__TypeAssignment_1_2 : ( ruleVariableType ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3732:1: rule__VariableDeclaration__TypeAssignment_1_2 : ( ruleVariableType ) ;
     public final void rule__VariableDeclaration__TypeAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3703:1: ( ( ruleVariableType ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3704:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3736:1: ( ( ruleVariableType ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3737:1: ( ruleVariableType )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3704:1: ( ruleVariableType )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3705:1: ruleVariableType
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3737:1: ( ruleVariableType )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3738:1: ruleVariableType
             {
              before(grammarAccess.getVariableDeclarationAccess().getTypeVariableTypeParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_1_27414);
+            pushFollow(FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_1_27481);
             ruleVariableType();
 
             state._fsp--;
@@ -9862,20 +9955,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableDeclaration__NameAssignment_1_4"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3714:1: rule__VariableDeclaration__NameAssignment_1_4 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3747:1: rule__VariableDeclaration__NameAssignment_1_4 : ( RULE_ID ) ;
     public final void rule__VariableDeclaration__NameAssignment_1_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3718:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3719:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3751:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3752:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3719:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3720:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3752:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3753:1: RULE_ID
             {
              before(grammarAccess.getVariableDeclarationAccess().getNameIDTerminalRuleCall_1_4_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_1_47445); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_1_47512); 
              after(grammarAccess.getVariableDeclarationAccess().getNameIDTerminalRuleCall_1_4_0()); 
 
             }
@@ -9899,23 +9992,23 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableType__PrimitiveAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3729:1: rule__VariableType__PrimitiveAssignment_1 : ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3762:1: rule__VariableType__PrimitiveAssignment_1 : ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) ) ;
     public final void rule__VariableType__PrimitiveAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3733:1: ( ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3734:1: ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3766:1: ( ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3767:1: ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3734:1: ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3735:1: ( rule__VariableType__PrimitiveAlternatives_1_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3767:1: ( ( rule__VariableType__PrimitiveAlternatives_1_0 ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3768:1: ( rule__VariableType__PrimitiveAlternatives_1_0 )
             {
              before(grammarAccess.getVariableTypeAccess().getPrimitiveAlternatives_1_0()); 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3736:1: ( rule__VariableType__PrimitiveAlternatives_1_0 )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3736:2: rule__VariableType__PrimitiveAlternatives_1_0
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3769:1: ( rule__VariableType__PrimitiveAlternatives_1_0 )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3769:2: rule__VariableType__PrimitiveAlternatives_1_0
             {
-            pushFollow(FOLLOW_rule__VariableType__PrimitiveAlternatives_1_0_in_rule__VariableType__PrimitiveAssignment_17476);
+            pushFollow(FOLLOW_rule__VariableType__PrimitiveAlternatives_1_0_in_rule__VariableType__PrimitiveAssignment_17543);
             rule__VariableType__PrimitiveAlternatives_1_0();
 
             state._fsp--;
@@ -9946,20 +10039,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__NameAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3745:1: rule__VariableAttribute__NameAssignment_1 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3778:1: rule__VariableAttribute__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__VariableAttribute__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3749:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3750:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3782:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3783:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3750:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3751:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3783:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3784:1: RULE_ID
             {
              before(grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableAttribute__NameAssignment_17509); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableAttribute__NameAssignment_17576); 
              after(grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -9983,20 +10076,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAttribute__AttributeAssignment_2_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3760:1: rule__VariableAttribute__AttributeAssignment_2_1 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3793:1: rule__VariableAttribute__AttributeAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__VariableAttribute__AttributeAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3764:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3765:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3797:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3798:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3765:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3766:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3798:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3799:1: RULE_ID
             {
              before(grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_2_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableAttribute__AttributeAssignment_2_17540); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__VariableAttribute__AttributeAssignment_2_17607); 
              after(grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_2_1_0()); 
 
             }
@@ -10020,20 +10113,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__VariableAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3775:1: rule__VariableAssignment__VariableAssignment_1 : ( ruleVariableAttribute ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3808:1: rule__VariableAssignment__VariableAssignment_1 : ( ruleVariableAttribute ) ;
     public final void rule__VariableAssignment__VariableAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3779:1: ( ( ruleVariableAttribute ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3780:1: ( ruleVariableAttribute )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3812:1: ( ( ruleVariableAttribute ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3813:1: ( ruleVariableAttribute )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3780:1: ( ruleVariableAttribute )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3781:1: ruleVariableAttribute
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3813:1: ( ruleVariableAttribute )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3814:1: ruleVariableAttribute
             {
              before(grammarAccess.getVariableAssignmentAccess().getVariableVariableAttributeParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleVariableAttribute_in_rule__VariableAssignment__VariableAssignment_17571);
+            pushFollow(FOLLOW_ruleVariableAttribute_in_rule__VariableAssignment__VariableAssignment_17638);
             ruleVariableAttribute();
 
             state._fsp--;
@@ -10061,20 +10154,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableAssignment__ExpressionAssignment_3"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3790:1: rule__VariableAssignment__ExpressionAssignment_3 : ( ruleVariableExpression ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3823:1: rule__VariableAssignment__ExpressionAssignment_3 : ( ruleVariableExpression ) ;
     public final void rule__VariableAssignment__ExpressionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3794:1: ( ( ruleVariableExpression ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3795:1: ( ruleVariableExpression )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3827:1: ( ( ruleVariableExpression ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3828:1: ( ruleVariableExpression )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3795:1: ( ruleVariableExpression )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3796:1: ruleVariableExpression
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3828:1: ( ruleVariableExpression )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3829:1: ruleVariableExpression
             {
              before(grammarAccess.getVariableAssignmentAccess().getExpressionVariableExpressionParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleVariableExpression_in_rule__VariableAssignment__ExpressionAssignment_37602);
+            pushFollow(FOLLOW_ruleVariableExpression_in_rule__VariableAssignment__ExpressionAssignment_37669);
             ruleVariableExpression();
 
             state._fsp--;
@@ -10102,20 +10195,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__MembersAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3805:1: rule__VariableExpression__MembersAssignment_1 : ( ruleVariableAttribute ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3838:1: rule__VariableExpression__MembersAssignment_1 : ( ruleVariableAttribute ) ;
     public final void rule__VariableExpression__MembersAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3809:1: ( ( ruleVariableAttribute ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3810:1: ( ruleVariableAttribute )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3842:1: ( ( ruleVariableAttribute ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3843:1: ( ruleVariableAttribute )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3810:1: ( ruleVariableAttribute )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3811:1: ruleVariableAttribute
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3843:1: ( ruleVariableAttribute )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3844:1: ruleVariableAttribute
             {
              before(grammarAccess.getVariableExpressionAccess().getMembersVariableAttributeParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_17633);
+            pushFollow(FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_17700);
             ruleVariableAttribute();
 
             state._fsp--;
@@ -10143,20 +10236,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__VariableExpression__MembersAssignment_2_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3820:1: rule__VariableExpression__MembersAssignment_2_1 : ( ruleVariableAttribute ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3853:1: rule__VariableExpression__MembersAssignment_2_1 : ( ruleVariableAttribute ) ;
     public final void rule__VariableExpression__MembersAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3824:1: ( ( ruleVariableAttribute ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3825:1: ( ruleVariableAttribute )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3857:1: ( ( ruleVariableAttribute ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3858:1: ( ruleVariableAttribute )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3825:1: ( ruleVariableAttribute )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3826:1: ruleVariableAttribute
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3858:1: ( ruleVariableAttribute )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3859:1: ruleVariableAttribute
             {
              before(grammarAccess.getVariableExpressionAccess().getMembersVariableAttributeParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_2_17664);
+            pushFollow(FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_2_17731);
             ruleVariableAttribute();
 
             state._fsp--;
@@ -10184,20 +10277,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__NameAssignment_2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3835:1: rule__RuleDefinition__NameAssignment_2 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3868:1: rule__RuleDefinition__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__RuleDefinition__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3839:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3840:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3872:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3873:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3840:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3841:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3873:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3874:1: RULE_ID
             {
              before(grammarAccess.getRuleDefinitionAccess().getNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RuleDefinition__NameAssignment_27695); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RuleDefinition__NameAssignment_27762); 
              after(grammarAccess.getRuleDefinitionAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -10221,20 +10314,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__LhsAssignment_4_0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3850:1: rule__RuleDefinition__LhsAssignment_4_0 : ( ruleRuleObject ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3883:1: rule__RuleDefinition__LhsAssignment_4_0 : ( ruleRuleObject ) ;
     public final void rule__RuleDefinition__LhsAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3854:1: ( ( ruleRuleObject ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3855:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3887:1: ( ( ruleRuleObject ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3888:1: ( ruleRuleObject )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3855:1: ( ruleRuleObject )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3856:1: ruleRuleObject
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3888:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3889:1: ruleRuleObject
             {
              before(grammarAccess.getRuleDefinitionAccess().getLhsRuleObjectParserRuleCall_4_0_0()); 
-            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_07726);
+            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_07793);
             ruleRuleObject();
 
             state._fsp--;
@@ -10262,20 +10355,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__LhsAssignment_4_1_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3865:1: rule__RuleDefinition__LhsAssignment_4_1_1 : ( ruleRuleObject ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3898:1: rule__RuleDefinition__LhsAssignment_4_1_1 : ( ruleRuleObject ) ;
     public final void rule__RuleDefinition__LhsAssignment_4_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3869:1: ( ( ruleRuleObject ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3870:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3902:1: ( ( ruleRuleObject ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3903:1: ( ruleRuleObject )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3870:1: ( ruleRuleObject )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3871:1: ruleRuleObject
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3903:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3904:1: ruleRuleObject
             {
              before(grammarAccess.getRuleDefinitionAccess().getLhsRuleObjectParserRuleCall_4_1_1_0()); 
-            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_1_17757);
+            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_1_17824);
             ruleRuleObject();
 
             state._fsp--;
@@ -10303,20 +10396,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__RhsAssignment_6_0"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3880:1: rule__RuleDefinition__RhsAssignment_6_0 : ( ruleRuleObject ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3913:1: rule__RuleDefinition__RhsAssignment_6_0 : ( ruleRuleObject ) ;
     public final void rule__RuleDefinition__RhsAssignment_6_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3884:1: ( ( ruleRuleObject ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3885:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3917:1: ( ( ruleRuleObject ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3918:1: ( ruleRuleObject )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3885:1: ( ruleRuleObject )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3886:1: ruleRuleObject
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3918:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3919:1: ruleRuleObject
             {
              before(grammarAccess.getRuleDefinitionAccess().getRhsRuleObjectParserRuleCall_6_0_0()); 
-            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_07788);
+            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_07855);
             ruleRuleObject();
 
             state._fsp--;
@@ -10344,20 +10437,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleDefinition__RhsAssignment_6_1_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3895:1: rule__RuleDefinition__RhsAssignment_6_1_1 : ( ruleRuleObject ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3928:1: rule__RuleDefinition__RhsAssignment_6_1_1 : ( ruleRuleObject ) ;
     public final void rule__RuleDefinition__RhsAssignment_6_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3899:1: ( ( ruleRuleObject ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3900:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3932:1: ( ( ruleRuleObject ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3933:1: ( ruleRuleObject )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3900:1: ( ruleRuleObject )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3901:1: ruleRuleObject
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3933:1: ( ruleRuleObject )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3934:1: ruleRuleObject
             {
              before(grammarAccess.getRuleDefinitionAccess().getRhsRuleObjectParserRuleCall_6_1_1_0()); 
-            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_1_17819);
+            pushFollow(FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_1_17886);
             ruleRuleObject();
 
             state._fsp--;
@@ -10385,20 +10478,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__SubobjectsAssignment_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3910:1: rule__RuleObject__SubobjectsAssignment_1 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3943:1: rule__RuleObject__SubobjectsAssignment_1 : ( RULE_ID ) ;
     public final void rule__RuleObject__SubobjectsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3914:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3915:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3947:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3948:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3915:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3916:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3948:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3949:1: RULE_ID
             {
              before(grammarAccess.getRuleObjectAccess().getSubobjectsIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_17850); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_17917); 
              after(grammarAccess.getRuleObjectAccess().getSubobjectsIDTerminalRuleCall_1_0()); 
 
             }
@@ -10422,20 +10515,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RuleObject__SubobjectsAssignment_2_1"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3925:1: rule__RuleObject__SubobjectsAssignment_2_1 : ( RULE_ID ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3958:1: rule__RuleObject__SubobjectsAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__RuleObject__SubobjectsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3929:1: ( ( RULE_ID ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3930:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3962:1: ( ( RULE_ID ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3963:1: ( RULE_ID )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3930:1: ( RULE_ID )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3931:1: RULE_ID
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3963:1: ( RULE_ID )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3964:1: RULE_ID
             {
              before(grammarAccess.getRuleObjectAccess().getSubobjectsIDTerminalRuleCall_2_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_2_17881); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_2_17948); 
              after(grammarAccess.getRuleObjectAccess().getSubobjectsIDTerminalRuleCall_2_1_0()); 
 
             }
@@ -10459,20 +10552,20 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_2"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3940:1: rule__Import__ImportedNamespaceAssignment_2 : ( ruleQualifiedNameWithWildcard ) ;
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3973:1: rule__Import__ImportedNamespaceAssignment_2 : ( ruleQualifiedNameWithWildcard ) ;
     public final void rule__Import__ImportedNamespaceAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3944:1: ( ( ruleQualifiedNameWithWildcard ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3945:1: ( ruleQualifiedNameWithWildcard )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3977:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3978:1: ( ruleQualifiedNameWithWildcard )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3945:1: ( ruleQualifiedNameWithWildcard )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3946:1: ruleQualifiedNameWithWildcard
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3978:1: ( ruleQualifiedNameWithWildcard )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:3979:1: ruleQualifiedNameWithWildcard
             {
              before(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_27912);
+            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_27979);
             ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -10509,13 +10602,13 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
     static final String DFA1_minS =
         "\1\31\1\uffff\7\4\1\32\2\uffff";
     static final String DFA1_maxS =
-        "\1\46\1\uffff\1\24\5\4\2\34\2\uffff";
+        "\1\47\1\uffff\1\24\5\4\2\34\2\uffff";
     static final String DFA1_acceptS =
-        "\1\uffff\1\1\10\uffff\1\2\1\3";
+        "\1\uffff\1\1\10\uffff\1\3\1\2";
     static final String DFA1_specialS =
         "\14\uffff}>";
     static final String[] DFA1_transitionS = {
-            "\1\2\14\uffff\1\1",
+            "\1\2\15\uffff\1\1",
             "",
             "\1\10\13\uffff\1\3\1\4\1\5\1\6\1\7",
             "\1\11",
@@ -10523,8 +10616,8 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
             "\1\11",
             "\1\11",
             "\1\11",
-            "\1\11\25\uffff\1\12\1\uffff\1\13",
-            "\1\12\1\uffff\1\13",
+            "\1\11\25\uffff\1\13\1\uffff\1\12",
+            "\1\13\1\uffff\1\12",
             "",
             ""
     };
@@ -10650,10 +10743,10 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_22_in_rule__CollectionID__Alternatives1810 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_23_in_rule__RuleDefinition__Alternatives_51845 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_24_in_rule__RuleDefinition__Alternatives_51865 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__01897 = new BitSet(new long[]{0x0000004002000000L});
+    public static final BitSet FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__01897 = new BitSet(new long[]{0x0000008002000000L});
     public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__01900 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__11958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__MembersAssignment_1_in_rule__Model__Group__1__Impl1985 = new BitSet(new long[]{0x0000004002000002L});
+    public static final BitSet FOLLOW_rule__Model__MembersAssignment_1_in_rule__Model__Group__1__Impl1985 = new BitSet(new long[]{0x0000008002000002L});
     public static final BitSet FOLLOW_rule__VariableDefinition__Group__0__Impl_in_rule__VariableDefinition__Group__02020 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_rule__VariableDefinition__Group__1_in_rule__VariableDefinition__Group__02023 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__VariableDefinition__Group__1__Impl_in_rule__VariableDefinition__Group__12081 = new BitSet(new long[]{0x00000000001F0010L});
@@ -10673,7 +10766,7 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__VariableDefinition__MembersAssignment_5_in_rule__VariableDefinition__Group__5__Impl2356 = new BitSet(new long[]{0x00000000007F0012L});
     public static final BitSet FOLLOW_rule__VariableDefinition__Group__6__Impl_in_rule__VariableDefinition__Group__62387 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_27_in_rule__VariableDefinition__Group__6__Impl2415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__0__Impl_in_rule__FunctionDefinition__Group__02460 = new BitSet(new long[]{0x0000004002000000L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__0__Impl_in_rule__FunctionDefinition__Group__02460 = new BitSet(new long[]{0x0000008002000000L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__1_in_rule__FunctionDefinition__Group__02463 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__1__Impl_in_rule__FunctionDefinition__Group__12521 = new BitSet(new long[]{0x00000000001F0010L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__2_in_rule__FunctionDefinition__Group__12524 = new BitSet(new long[]{0x0000000000000002L});
@@ -10690,205 +10783,208 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__5__Impl_in_rule__FunctionDefinition__Group__52766 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__6_in_rule__FunctionDefinition__Group__52769 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__ParametersAssignment_5_in_rule__FunctionDefinition__Group__5__Impl2796 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__6__Impl_in_rule__FunctionDefinition__Group__62827 = new BitSet(new long[]{0x0000000060000000L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__6__Impl_in_rule__FunctionDefinition__Group__62827 = new BitSet(new long[]{0x00000000A0000000L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__7_in_rule__FunctionDefinition__Group__62830 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__ParametersAssignment_6_in_rule__FunctionDefinition__Group__6__Impl2857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__7__Impl_in_rule__FunctionDefinition__Group__72887 = new BitSet(new long[]{0x0000000060000000L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__7__Impl_in_rule__FunctionDefinition__Group__72887 = new BitSet(new long[]{0x00000000A0000000L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__8_in_rule__FunctionDefinition__Group__72890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__0_in_rule__FunctionDefinition__Group__7__Impl2917 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__0_in_rule__FunctionDefinition__Group__7__Impl2917 = new BitSet(new long[]{0x0000000080000002L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__8__Impl_in_rule__FunctionDefinition__Group__82948 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__9_in_rule__FunctionDefinition__Group__82951 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_29_in_rule__FunctionDefinition__Group__8__Impl2979 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__9__Impl_in_rule__FunctionDefinition__Group__93010 = new BitSet(new long[]{0x0000001008000010L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__9__Impl_in_rule__FunctionDefinition__Group__93010 = new BitSet(new long[]{0x0000002008000010L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__10_in_rule__FunctionDefinition__Group__93013 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_rule__FunctionDefinition__Group__9__Impl3041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__10__Impl_in_rule__FunctionDefinition__Group__103072 = new BitSet(new long[]{0x0000001008000010L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__10__Impl_in_rule__FunctionDefinition__Group__103072 = new BitSet(new long[]{0x0000002008000010L});
     public static final BitSet FOLLOW_rule__FunctionDefinition__Group__11_in_rule__FunctionDefinition__Group__103075 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__MembersAssignment_10_in_rule__FunctionDefinition__Group__10__Impl3102 = new BitSet(new long[]{0x0000001000000012L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__11__Impl_in_rule__FunctionDefinition__Group__113133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__FunctionDefinition__Group__11__Impl3161 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__0__Impl_in_rule__FunctionDefinition__Group_7__03216 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__1_in_rule__FunctionDefinition__Group_7__03219 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rule__FunctionDefinition__Group_7__0__Impl3247 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__1__Impl_in_rule__FunctionDefinition__Group_7__13278 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionDefinition__ParametersAssignment_7_1_in_rule__FunctionDefinition__Group_7__1__Impl3305 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__0__Impl_in_rule__FunctionParameterMember__Group__03339 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__1_in_rule__FunctionParameterMember__Group__03342 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__TypeAssignment_0_in_rule__FunctionParameterMember__Group__0__Impl3369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__1__Impl_in_rule__FunctionParameterMember__Group__13399 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__2_in_rule__FunctionParameterMember__Group__13402 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__NameAssignment_1_in_rule__FunctionParameterMember__Group__1__Impl3429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__2__Impl_in_rule__FunctionParameterMember__Group__23459 = new BitSet(new long[]{0x0000000000001800L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__3_in_rule__FunctionParameterMember__Group__23462 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__FunctionParameterMember__Group__2__Impl3490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__3__Impl_in_rule__FunctionParameterMember__Group__33521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunctionParameterMember__ScopeAssignment_3_in_rule__FunctionParameterMember__Group__3__Impl3548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0__0__Impl_in_rule__VariableDeclaration__Group_0__03586 = new BitSet(new long[]{0x00000000001F0010L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0__1_in_rule__VariableDeclaration__Group_0__03589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0__1__Impl_in_rule__VariableDeclaration__Group_0__13647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__0_in_rule__VariableDeclaration__Group_0__1__Impl3674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__0__Impl_in_rule__VariableDeclaration__Group_0_1__03708 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__1_in_rule__VariableDeclaration__Group_0_1__03711 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__TypeAssignment_0_1_0_in_rule__VariableDeclaration__Group_0_1__0__Impl3738 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__1__Impl_in_rule__VariableDeclaration__Group_0_1__13768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__NameAssignment_0_1_1_in_rule__VariableDeclaration__Group_0_1__1__Impl3795 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__0__Impl_in_rule__VariableDeclaration__Group_1__03829 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__1_in_rule__VariableDeclaration__Group_1__03832 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__CollectionAssignment_1_0_in_rule__VariableDeclaration__Group_1__0__Impl3859 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__1__Impl_in_rule__VariableDeclaration__Group_1__13889 = new BitSet(new long[]{0x00000000001F0010L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__2_in_rule__VariableDeclaration__Group_1__13892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_rule__VariableDeclaration__Group_1__1__Impl3920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__2__Impl_in_rule__VariableDeclaration__Group_1__23951 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__3_in_rule__VariableDeclaration__Group_1__23954 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__TypeAssignment_1_2_in_rule__VariableDeclaration__Group_1__2__Impl3981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__3__Impl_in_rule__VariableDeclaration__Group_1__34011 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__4_in_rule__VariableDeclaration__Group_1__34014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_rule__VariableDeclaration__Group_1__3__Impl4042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__4__Impl_in_rule__VariableDeclaration__Group_1__44073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableDeclaration__NameAssignment_1_4_in_rule__VariableDeclaration__Group_1__4__Impl4100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableType__Group__0__Impl_in_rule__VariableType__Group__04140 = new BitSet(new long[]{0x00000000001F0010L});
-    public static final BitSet FOLLOW_rule__VariableType__Group__1_in_rule__VariableType__Group__04143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableType__Group__1__Impl_in_rule__VariableType__Group__14201 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableType__PrimitiveAssignment_1_in_rule__VariableType__Group__1__Impl4228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group__0__Impl_in_rule__VariableAttribute__Group__04262 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group__1_in_rule__VariableAttribute__Group__04265 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group__1__Impl_in_rule__VariableAttribute__Group__14323 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group__2_in_rule__VariableAttribute__Group__14326 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__NameAssignment_1_in_rule__VariableAttribute__Group__1__Impl4353 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group__2__Impl_in_rule__VariableAttribute__Group__24383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__0_in_rule__VariableAttribute__Group__2__Impl4410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__0__Impl_in_rule__VariableAttribute__Group_2__04447 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__1_in_rule__VariableAttribute__Group_2__04450 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__VariableAttribute__Group_2__0__Impl4478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__1__Impl_in_rule__VariableAttribute__Group_2__14509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAttribute__AttributeAssignment_2_1_in_rule__VariableAttribute__Group_2__1__Impl4536 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__0__Impl_in_rule__VariableAssignment__Group__04570 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__1_in_rule__VariableAssignment__Group__04573 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__1__Impl_in_rule__VariableAssignment__Group__14631 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__2_in_rule__VariableAssignment__Group__14634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__VariableAssignment_1_in_rule__VariableAssignment__Group__1__Impl4661 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__2__Impl_in_rule__VariableAssignment__Group__24691 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__3_in_rule__VariableAssignment__Group__24694 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__VariableAssignment__Group__2__Impl4722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__Group__3__Impl_in_rule__VariableAssignment__Group__34753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableAssignment__ExpressionAssignment_3_in_rule__VariableAssignment__Group__3__Impl4780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group__0__Impl_in_rule__VariableExpression__Group__04818 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group__1_in_rule__VariableExpression__Group__04821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group__1__Impl_in_rule__VariableExpression__Group__14879 = new BitSet(new long[]{0x000000000000E000L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group__2_in_rule__VariableExpression__Group__14882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__MembersAssignment_1_in_rule__VariableExpression__Group__1__Impl4909 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group__2__Impl_in_rule__VariableExpression__Group__24939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__0_in_rule__VariableExpression__Group__2__Impl4966 = new BitSet(new long[]{0x000000000000E002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__0__Impl_in_rule__VariableExpression__Group_2__05003 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__1_in_rule__VariableExpression__Group_2__05006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableExpressionOperator_in_rule__VariableExpression__Group_2__0__Impl5033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__1__Impl_in_rule__VariableExpression__Group_2__15062 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableExpression__MembersAssignment_2_1_in_rule__VariableExpression__Group_2__1__Impl5089 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__0__Impl_in_rule__RuleDefinition__Group__05123 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__1_in_rule__RuleDefinition__Group__05126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__1__Impl_in_rule__RuleDefinition__Group__15184 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__2_in_rule__RuleDefinition__Group__15187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_rule__RuleDefinition__Group__1__Impl5215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__2__Impl_in_rule__RuleDefinition__Group__25246 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__3_in_rule__RuleDefinition__Group__25249 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__NameAssignment_2_in_rule__RuleDefinition__Group__2__Impl5276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__3__Impl_in_rule__RuleDefinition__Group__35306 = new BitSet(new long[]{0x0000000001800010L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__4_in_rule__RuleDefinition__Group__35309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__RuleDefinition__Group__3__Impl5337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__4__Impl_in_rule__RuleDefinition__Group__45368 = new BitSet(new long[]{0x0000000001800010L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__5_in_rule__RuleDefinition__Group__45371 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__0_in_rule__RuleDefinition__Group__4__Impl5398 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__5__Impl_in_rule__RuleDefinition__Group__55429 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__6_in_rule__RuleDefinition__Group__55432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Alternatives_5_in_rule__RuleDefinition__Group__5__Impl5459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group__6__Impl_in_rule__RuleDefinition__Group__65489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__0_in_rule__RuleDefinition__Group__6__Impl5516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__0__Impl_in_rule__RuleDefinition__Group_4__05561 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__1_in_rule__RuleDefinition__Group_4__05564 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__LhsAssignment_4_0_in_rule__RuleDefinition__Group_4__0__Impl5591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__1__Impl_in_rule__RuleDefinition__Group_4__15621 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__0_in_rule__RuleDefinition__Group_4__1__Impl5648 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__0__Impl_in_rule__RuleDefinition__Group_4_1__05683 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__1_in_rule__RuleDefinition__Group_4_1__05686 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__RuleDefinition__Group_4_1__0__Impl5714 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__1__Impl_in_rule__RuleDefinition__Group_4_1__15745 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__LhsAssignment_4_1_1_in_rule__RuleDefinition__Group_4_1__1__Impl5772 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__0__Impl_in_rule__RuleDefinition__Group_6__05806 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__1_in_rule__RuleDefinition__Group_6__05809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__RhsAssignment_6_0_in_rule__RuleDefinition__Group_6__0__Impl5836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__1__Impl_in_rule__RuleDefinition__Group_6__15866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__0_in_rule__RuleDefinition__Group_6__1__Impl5893 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__0__Impl_in_rule__RuleDefinition__Group_6_1__05928 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__1_in_rule__RuleDefinition__Group_6_1__05931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__RuleDefinition__Group_6_1__0__Impl5959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__1__Impl_in_rule__RuleDefinition__Group_6_1__15990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleDefinition__RhsAssignment_6_1_1_in_rule__RuleDefinition__Group_6_1__1__Impl6017 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group__0__Impl_in_rule__RuleObject__Group__06051 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group__1_in_rule__RuleObject__Group__06054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group__1__Impl_in_rule__RuleObject__Group__16112 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group__2_in_rule__RuleObject__Group__16115 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__SubobjectsAssignment_1_in_rule__RuleObject__Group__1__Impl6142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group__2__Impl_in_rule__RuleObject__Group__26172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group_2__0_in_rule__RuleObject__Group__2__Impl6199 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group_2__0__Impl_in_rule__RuleObject__Group_2__06236 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group_2__1_in_rule__RuleObject__Group_2__06239 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__RuleObject__Group_2__0__Impl6267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__Group_2__1__Impl_in_rule__RuleObject__Group_2__16298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RuleObject__SubobjectsAssignment_2_1_in_rule__RuleObject__Group_2__1__Impl6325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__06359 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__06362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__16420 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Import__Group__2_in_rule__Import__Group__16423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__Import__Group__1__Impl6451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__2__Impl_in_rule__Import__Group__26482 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__ImportedNamespaceAssignment_2_in_rule__Import__Group__2__Impl6509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__06545 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__06548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl6575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__16604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_rule__QualifiedNameWithWildcard__Group__1__Impl6633 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__06670 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__06673 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl6700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__16729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl6756 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__06791 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__06794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__QualifiedName__Group_1__0__Impl6822 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__16853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl6880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelMember_in_rule__Model__MembersAssignment_16918 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableType_in_rule__VariableDefinition__TypeAssignment_26949 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableDefinition__NameAssignment_36980 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableDefinitionMember_in_rule__VariableDefinition__MembersAssignment_57011 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableType_in_rule__FunctionDefinition__TypeAssignment_27042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__FunctionDefinition__NameAssignment_37073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_57104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_67135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_7_17166 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunctionDefinitionMember_in_rule__FunctionDefinition__MembersAssignment_107197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__FunctionParameterMember__TypeAssignment_07228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__FunctionParameterMember__NameAssignment_17259 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterScope_in_rule__FunctionParameterMember__ScopeAssignment_37290 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_0_1_07321 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_0_1_17352 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCollectionID_in_rule__VariableDeclaration__CollectionAssignment_1_07383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_1_27414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_1_47445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__VariableType__PrimitiveAlternatives_1_0_in_rule__VariableType__PrimitiveAssignment_17476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableAttribute__NameAssignment_17509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableAttribute__AttributeAssignment_2_17540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_rule__VariableAssignment__VariableAssignment_17571 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableExpression_in_rule__VariableAssignment__ExpressionAssignment_37602 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_17633 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_2_17664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__RuleDefinition__NameAssignment_27695 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_07726 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_1_17757 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_07788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_1_17819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_17850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_2_17881 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_27912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__MembersAssignment_10_in_rule__FunctionDefinition__Group__10__Impl3102 = new BitSet(new long[]{0x0000002000000012L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__11__Impl_in_rule__FunctionDefinition__Group__113133 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__12_in_rule__FunctionDefinition__Group__113136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__FunctionDefinition__Group__11__Impl3164 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group__12__Impl_in_rule__FunctionDefinition__Group__123195 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_rule__FunctionDefinition__Group__12__Impl3224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__0__Impl_in_rule__FunctionDefinition__Group_7__03283 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__1_in_rule__FunctionDefinition__Group_7__03286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rule__FunctionDefinition__Group_7__0__Impl3314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__Group_7__1__Impl_in_rule__FunctionDefinition__Group_7__13345 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionDefinition__ParametersAssignment_7_1_in_rule__FunctionDefinition__Group_7__1__Impl3372 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__0__Impl_in_rule__FunctionParameterMember__Group__03406 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__1_in_rule__FunctionParameterMember__Group__03409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__TypeAssignment_0_in_rule__FunctionParameterMember__Group__0__Impl3436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__1__Impl_in_rule__FunctionParameterMember__Group__13466 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__2_in_rule__FunctionParameterMember__Group__13469 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__NameAssignment_1_in_rule__FunctionParameterMember__Group__1__Impl3496 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__2__Impl_in_rule__FunctionParameterMember__Group__23526 = new BitSet(new long[]{0x0000000000001800L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__3_in_rule__FunctionParameterMember__Group__23529 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_rule__FunctionParameterMember__Group__2__Impl3557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__Group__3__Impl_in_rule__FunctionParameterMember__Group__33588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunctionParameterMember__ScopeAssignment_3_in_rule__FunctionParameterMember__Group__3__Impl3615 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0__0__Impl_in_rule__VariableDeclaration__Group_0__03653 = new BitSet(new long[]{0x00000000001F0010L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0__1_in_rule__VariableDeclaration__Group_0__03656 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0__1__Impl_in_rule__VariableDeclaration__Group_0__13714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__0_in_rule__VariableDeclaration__Group_0__1__Impl3741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__0__Impl_in_rule__VariableDeclaration__Group_0_1__03775 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__1_in_rule__VariableDeclaration__Group_0_1__03778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__TypeAssignment_0_1_0_in_rule__VariableDeclaration__Group_0_1__0__Impl3805 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_0_1__1__Impl_in_rule__VariableDeclaration__Group_0_1__13835 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__NameAssignment_0_1_1_in_rule__VariableDeclaration__Group_0_1__1__Impl3862 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__0__Impl_in_rule__VariableDeclaration__Group_1__03896 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__1_in_rule__VariableDeclaration__Group_1__03899 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__CollectionAssignment_1_0_in_rule__VariableDeclaration__Group_1__0__Impl3926 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__1__Impl_in_rule__VariableDeclaration__Group_1__13956 = new BitSet(new long[]{0x00000000001F0010L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__2_in_rule__VariableDeclaration__Group_1__13959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_rule__VariableDeclaration__Group_1__1__Impl3987 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__2__Impl_in_rule__VariableDeclaration__Group_1__24018 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__3_in_rule__VariableDeclaration__Group_1__24021 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__TypeAssignment_1_2_in_rule__VariableDeclaration__Group_1__2__Impl4048 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__3__Impl_in_rule__VariableDeclaration__Group_1__34078 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__4_in_rule__VariableDeclaration__Group_1__34081 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_rule__VariableDeclaration__Group_1__3__Impl4109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__Group_1__4__Impl_in_rule__VariableDeclaration__Group_1__44140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableDeclaration__NameAssignment_1_4_in_rule__VariableDeclaration__Group_1__4__Impl4167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableType__Group__0__Impl_in_rule__VariableType__Group__04207 = new BitSet(new long[]{0x00000000001F0010L});
+    public static final BitSet FOLLOW_rule__VariableType__Group__1_in_rule__VariableType__Group__04210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableType__Group__1__Impl_in_rule__VariableType__Group__14268 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableType__PrimitiveAssignment_1_in_rule__VariableType__Group__1__Impl4295 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group__0__Impl_in_rule__VariableAttribute__Group__04329 = new BitSet(new long[]{0x0000002000000010L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group__1_in_rule__VariableAttribute__Group__04332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group__1__Impl_in_rule__VariableAttribute__Group__14390 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group__2_in_rule__VariableAttribute__Group__14393 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__NameAssignment_1_in_rule__VariableAttribute__Group__1__Impl4420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group__2__Impl_in_rule__VariableAttribute__Group__24450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__0_in_rule__VariableAttribute__Group__2__Impl4477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__0__Impl_in_rule__VariableAttribute__Group_2__04514 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__1_in_rule__VariableAttribute__Group_2__04517 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__VariableAttribute__Group_2__0__Impl4545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__Group_2__1__Impl_in_rule__VariableAttribute__Group_2__14576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAttribute__AttributeAssignment_2_1_in_rule__VariableAttribute__Group_2__1__Impl4603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__0__Impl_in_rule__VariableAssignment__Group__04637 = new BitSet(new long[]{0x0000002000000010L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__1_in_rule__VariableAssignment__Group__04640 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__1__Impl_in_rule__VariableAssignment__Group__14698 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__2_in_rule__VariableAssignment__Group__14701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__VariableAssignment_1_in_rule__VariableAssignment__Group__1__Impl4728 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__2__Impl_in_rule__VariableAssignment__Group__24758 = new BitSet(new long[]{0x0000002000000010L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__3_in_rule__VariableAssignment__Group__24761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_rule__VariableAssignment__Group__2__Impl4789 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__Group__3__Impl_in_rule__VariableAssignment__Group__34820 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableAssignment__ExpressionAssignment_3_in_rule__VariableAssignment__Group__3__Impl4847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group__0__Impl_in_rule__VariableExpression__Group__04885 = new BitSet(new long[]{0x0000002000000010L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group__1_in_rule__VariableExpression__Group__04888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group__1__Impl_in_rule__VariableExpression__Group__14946 = new BitSet(new long[]{0x000000000000E000L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group__2_in_rule__VariableExpression__Group__14949 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__MembersAssignment_1_in_rule__VariableExpression__Group__1__Impl4976 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group__2__Impl_in_rule__VariableExpression__Group__25006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__0_in_rule__VariableExpression__Group__2__Impl5033 = new BitSet(new long[]{0x000000000000E002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__0__Impl_in_rule__VariableExpression__Group_2__05070 = new BitSet(new long[]{0x0000002000000010L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__1_in_rule__VariableExpression__Group_2__05073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableExpressionOperator_in_rule__VariableExpression__Group_2__0__Impl5100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__Group_2__1__Impl_in_rule__VariableExpression__Group_2__15129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableExpression__MembersAssignment_2_1_in_rule__VariableExpression__Group_2__1__Impl5156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__0__Impl_in_rule__RuleDefinition__Group__05190 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__1_in_rule__RuleDefinition__Group__05193 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__1__Impl_in_rule__RuleDefinition__Group__15251 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__2_in_rule__RuleDefinition__Group__15254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_rule__RuleDefinition__Group__1__Impl5282 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__2__Impl_in_rule__RuleDefinition__Group__25313 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__3_in_rule__RuleDefinition__Group__25316 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__NameAssignment_2_in_rule__RuleDefinition__Group__2__Impl5343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__3__Impl_in_rule__RuleDefinition__Group__35373 = new BitSet(new long[]{0x0000000001800010L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__4_in_rule__RuleDefinition__Group__35376 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_rule__RuleDefinition__Group__3__Impl5404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__4__Impl_in_rule__RuleDefinition__Group__45435 = new BitSet(new long[]{0x0000000001800010L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__5_in_rule__RuleDefinition__Group__45438 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__0_in_rule__RuleDefinition__Group__4__Impl5465 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__5__Impl_in_rule__RuleDefinition__Group__55496 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__6_in_rule__RuleDefinition__Group__55499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Alternatives_5_in_rule__RuleDefinition__Group__5__Impl5526 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group__6__Impl_in_rule__RuleDefinition__Group__65556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__0_in_rule__RuleDefinition__Group__6__Impl5583 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__0__Impl_in_rule__RuleDefinition__Group_4__05628 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__1_in_rule__RuleDefinition__Group_4__05631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__LhsAssignment_4_0_in_rule__RuleDefinition__Group_4__0__Impl5658 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4__1__Impl_in_rule__RuleDefinition__Group_4__15688 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__0_in_rule__RuleDefinition__Group_4__1__Impl5715 = new BitSet(new long[]{0x0000000000002002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__0__Impl_in_rule__RuleDefinition__Group_4_1__05750 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__1_in_rule__RuleDefinition__Group_4_1__05753 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__RuleDefinition__Group_4_1__0__Impl5781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_4_1__1__Impl_in_rule__RuleDefinition__Group_4_1__15812 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__LhsAssignment_4_1_1_in_rule__RuleDefinition__Group_4_1__1__Impl5839 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__0__Impl_in_rule__RuleDefinition__Group_6__05873 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__1_in_rule__RuleDefinition__Group_6__05876 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__RhsAssignment_6_0_in_rule__RuleDefinition__Group_6__0__Impl5903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6__1__Impl_in_rule__RuleDefinition__Group_6__15933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__0_in_rule__RuleDefinition__Group_6__1__Impl5960 = new BitSet(new long[]{0x0000000000002002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__0__Impl_in_rule__RuleDefinition__Group_6_1__05995 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__1_in_rule__RuleDefinition__Group_6_1__05998 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__RuleDefinition__Group_6_1__0__Impl6026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__Group_6_1__1__Impl_in_rule__RuleDefinition__Group_6_1__16057 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleDefinition__RhsAssignment_6_1_1_in_rule__RuleDefinition__Group_6_1__1__Impl6084 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group__0__Impl_in_rule__RuleObject__Group__06118 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group__1_in_rule__RuleObject__Group__06121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group__1__Impl_in_rule__RuleObject__Group__16179 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group__2_in_rule__RuleObject__Group__16182 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__SubobjectsAssignment_1_in_rule__RuleObject__Group__1__Impl6209 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group__2__Impl_in_rule__RuleObject__Group__26239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group_2__0_in_rule__RuleObject__Group__2__Impl6266 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group_2__0__Impl_in_rule__RuleObject__Group_2__06303 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group_2__1_in_rule__RuleObject__Group_2__06306 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_rule__RuleObject__Group_2__0__Impl6334 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__Group_2__1__Impl_in_rule__RuleObject__Group_2__16365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RuleObject__SubobjectsAssignment_2_1_in_rule__RuleObject__Group_2__1__Impl6392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__06426 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__06429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__16487 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Import__Group__2_in_rule__Import__Group__16490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_rule__Import__Group__1__Impl6518 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__Group__2__Impl_in_rule__Import__Group__26549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Import__ImportedNamespaceAssignment_2_in_rule__Import__Group__2__Impl6576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__06612 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__06615 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl6642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__16671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_rule__QualifiedNameWithWildcard__Group__1__Impl6700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__06737 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__06740 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl6767 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__16796 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl6823 = new BitSet(new long[]{0x0000000800000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__06858 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__06861 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_rule__QualifiedName__Group_1__0__Impl6889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__16920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl6947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelMember_in_rule__Model__MembersAssignment_16985 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableType_in_rule__VariableDefinition__TypeAssignment_27016 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableDefinition__NameAssignment_37047 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableDefinitionMember_in_rule__VariableDefinition__MembersAssignment_57078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableType_in_rule__FunctionDefinition__TypeAssignment_27109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FunctionDefinition__NameAssignment_37140 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_57171 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_67202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunctionParameterMember_in_rule__FunctionDefinition__ParametersAssignment_7_17233 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunctionDefinitionMember_in_rule__FunctionDefinition__MembersAssignment_107264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FunctionParameterMember__TypeAssignment_07295 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FunctionParameterMember__NameAssignment_17326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterScope_in_rule__FunctionParameterMember__ScopeAssignment_37357 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_0_1_07388 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_0_1_17419 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCollectionID_in_rule__VariableDeclaration__CollectionAssignment_1_07450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableType_in_rule__VariableDeclaration__TypeAssignment_1_27481 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableDeclaration__NameAssignment_1_47512 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__VariableType__PrimitiveAlternatives_1_0_in_rule__VariableType__PrimitiveAssignment_17543 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableAttribute__NameAssignment_17576 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__VariableAttribute__AttributeAssignment_2_17607 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_rule__VariableAssignment__VariableAssignment_17638 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableExpression_in_rule__VariableAssignment__ExpressionAssignment_37669 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_17700 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVariableAttribute_in_rule__VariableExpression__MembersAssignment_2_17731 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__RuleDefinition__NameAssignment_27762 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_07793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__LhsAssignment_4_1_17824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_07855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuleObject_in_rule__RuleDefinition__RhsAssignment_6_1_17886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_17917 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__RuleObject__SubobjectsAssignment_2_17948 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_27979 = new BitSet(new long[]{0x0000000000000002L});
 
 }

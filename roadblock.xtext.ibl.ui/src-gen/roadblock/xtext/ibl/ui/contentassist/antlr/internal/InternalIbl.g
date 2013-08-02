@@ -1525,6 +1525,7 @@ rule__FunctionDefinition__Group__11
     }
 :
 	rule__FunctionDefinition__Group__11__Impl
+	rule__FunctionDefinition__Group__12
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1547,6 +1548,38 @@ rule__FunctionDefinition__Group__11__Impl
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__FunctionDefinition__Group__12
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__FunctionDefinition__Group__12__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FunctionDefinition__Group__12__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getFunctionDefinitionAccess().getUSESKeyword_12()); }
+(
+	'USES' 
+)?
+{ after(grammarAccess.getFunctionDefinitionAccess().getUSESKeyword_12()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
