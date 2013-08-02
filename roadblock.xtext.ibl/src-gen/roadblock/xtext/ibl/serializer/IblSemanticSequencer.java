@@ -277,7 +277,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID attribute=ID?)
+	 *     ((name=ID | name=REAL) attribute=ID?)
 	 */
 	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

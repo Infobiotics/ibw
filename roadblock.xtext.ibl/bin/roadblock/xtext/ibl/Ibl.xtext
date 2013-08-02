@@ -91,16 +91,16 @@ VariableQualifier:
 	{VariableQualifier}
 	'observable'
 ;
-VariableAttribute:
-	{VariableAttribute}
-	name=ID (('.'|'~') attribute=ID)?
-;
 
 VariableAssignment:
 	{VariableAssignment}
 	 variable=VariableAttribute '=' expression=VariableExpression
 ;
 
+VariableAttribute:
+	{VariableAttribute}
+	name=(ID|REAL) (('.'|'~') attribute=ID)?
+;
 
 VariableExpression:
 	{VariableExpression}
@@ -146,4 +146,17 @@ QualifiedNameWithWildcard:
 
 QualifiedName:
 	ID ('.' ID)*
+;
+
+// real numbers
+REAL:
+	Decimal|DecimalExp
+;
+
+Decimal hidden():
+	('+'|'-')?  INT ('.' INT)?
+;
+
+DecimalExp hidden():
+	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
 ;

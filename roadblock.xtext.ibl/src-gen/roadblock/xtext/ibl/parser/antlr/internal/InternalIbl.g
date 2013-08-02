@@ -1212,78 +1212,6 @@ ruleVariableQualifier returns [EObject current=null]
 
 
 
-// Entry rule entryRuleVariableAttribute
-entryRuleVariableAttribute returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getVariableAttributeRule()); }
-	 iv_ruleVariableAttribute=ruleVariableAttribute 
-	 { $current=$iv_ruleVariableAttribute.current; } 
-	 EOF 
-;
-
-// Rule VariableAttribute
-ruleVariableAttribute returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getVariableAttributeAccess().getVariableAttributeAction_0(),
-            $current);
-    }
-)(
-(
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getVariableAttributeRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ID");
-	    }
-
-)
-)((	otherlv_2='.' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0_0());
-    }
-
-    |	otherlv_3='~' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getVariableAttributeAccess().getTildeKeyword_2_0_1());
-    }
-)(
-(
-		lv_attribute_4_0=RULE_ID
-		{
-			newLeafNode(lv_attribute_4_0, grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_2_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getVariableAttributeRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"attribute",
-        		lv_attribute_4_0, 
-        		"ID");
-	    }
-
-)
-))?)
-;
-
-
-
-
-
 // Entry rule entryRuleVariableAssignment
 entryRuleVariableAssignment returns [EObject current=null] 
 	:
@@ -1345,6 +1273,96 @@ ruleVariableAssignment returns [EObject current=null]
 
 )
 ))
+;
+
+
+
+
+
+// Entry rule entryRuleVariableAttribute
+entryRuleVariableAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getVariableAttributeRule()); }
+	 iv_ruleVariableAttribute=ruleVariableAttribute 
+	 { $current=$iv_ruleVariableAttribute.current; } 
+	 EOF 
+;
+
+// Rule VariableAttribute
+ruleVariableAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getVariableAttributeAccess().getVariableAttributeAction_0(),
+            $current);
+    }
+)(
+(
+(
+		lv_name_1_1=RULE_ID
+		{
+			newLeafNode(lv_name_1_1, grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getVariableAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_1, 
+        		"ID");
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getVariableAttributeAccess().getNameREALParserRuleCall_1_0_1()); 
+	    }
+		lv_name_1_2=ruleREAL		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getVariableAttributeRule());
+	        }
+       		set(
+       			$current, 
+       			"name",
+        		lv_name_1_2, 
+        		"REAL");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+
+)
+)((	otherlv_2='.' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0_0());
+    }
+
+    |	otherlv_3='~' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getVariableAttributeAccess().getTildeKeyword_2_0_1());
+    }
+)(
+(
+		lv_attribute_4_0=RULE_ID
+		{
+			newLeafNode(lv_attribute_4_0, grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getVariableAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"attribute",
+        		lv_attribute_4_0, 
+        		"ID");
+	    }
+
+)
+))?)
 ;
 
 
@@ -1877,6 +1895,211 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
     }
 )*)
     ;
+
+
+
+
+
+// Entry rule entryRuleREAL
+entryRuleREAL returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getREALRule()); } 
+	 iv_ruleREAL=ruleREAL 
+	 { $current=$iv_ruleREAL.current.getText(); }  
+	 EOF 
+;
+
+// Rule REAL
+ruleREAL returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getREALAccess().getDecimalParserRuleCall_0()); 
+    }
+    this_Decimal_0=ruleDecimal    {
+		$current.merge(this_Decimal_0);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getREALAccess().getDecimalExpParserRuleCall_1()); 
+    }
+    this_DecimalExp_1=ruleDecimalExp    {
+		$current.merge(this_DecimalExp_1);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+)
+    ;
+
+
+
+
+
+// Entry rule entryRuleDecimal
+entryRuleDecimal returns [String current=null] 
+	@init { 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+	}
+	:
+	{ newCompositeNode(grammarAccess.getDecimalRule()); } 
+	 iv_ruleDecimal=ruleDecimal 
+	 { $current=$iv_ruleDecimal.current.getText(); }  
+	 EOF 
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+// Rule Decimal
+ruleDecimal returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+    }
+    @after { leaveRule(); }:
+((
+	kw='+' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalAccess().getPlusSignKeyword_0_0()); 
+    }
+
+    |
+	kw='-' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalAccess().getHyphenMinusKeyword_0_1()); 
+    }
+)?    this_INT_2=RULE_INT    {
+		$current.merge(this_INT_2);
+    }
+
+    { 
+    newLeafNode(this_INT_2, grammarAccess.getDecimalAccess().getINTTerminalRuleCall_1()); 
+    }
+(
+	kw='.' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalAccess().getFullStopKeyword_2_0()); 
+    }
+    this_INT_4=RULE_INT    {
+		$current.merge(this_INT_4);
+    }
+
+    { 
+    newLeafNode(this_INT_4, grammarAccess.getDecimalAccess().getINTTerminalRuleCall_2_1()); 
+    }
+)?)
+    ;
+finally {
+	myHiddenTokenState.restore();
+}
+
+
+
+
+
+// Entry rule entryRuleDecimalExp
+entryRuleDecimalExp returns [String current=null] 
+	@init { 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+	}
+	:
+	{ newCompositeNode(grammarAccess.getDecimalExpRule()); } 
+	 iv_ruleDecimalExp=ruleDecimalExp 
+	 { $current=$iv_ruleDecimalExp.current.getText(); }  
+	 EOF 
+;
+finally {
+	myHiddenTokenState.restore();
+}
+
+// Rule DecimalExp
+ruleDecimalExp returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens();
+    }
+    @after { leaveRule(); }:
+((
+	kw='+' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getPlusSignKeyword_0_0()); 
+    }
+
+    |
+	kw='-' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getHyphenMinusKeyword_0_1()); 
+    }
+)?    this_INT_2=RULE_INT    {
+		$current.merge(this_INT_2);
+    }
+
+    { 
+    newLeafNode(this_INT_2, grammarAccess.getDecimalExpAccess().getINTTerminalRuleCall_1()); 
+    }
+(
+	kw='.' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getFullStopKeyword_2_0()); 
+    }
+    this_INT_4=RULE_INT    {
+		$current.merge(this_INT_4);
+    }
+
+    { 
+    newLeafNode(this_INT_4, grammarAccess.getDecimalExpAccess().getINTTerminalRuleCall_2_1()); 
+    }
+)?(
+	kw='E' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getEKeyword_3_0()); 
+    }
+
+    |
+	kw='e' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getEKeyword_3_1()); 
+    }
+)(
+	kw='+' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getPlusSignKeyword_4_0()); 
+    }
+
+    |
+	kw='-' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getDecimalExpAccess().getHyphenMinusKeyword_4_1()); 
+    }
+)?    this_INT_9=RULE_INT    {
+		$current.merge(this_INT_9);
+    }
+
+    { 
+    newLeafNode(this_INT_9, grammarAccess.getDecimalExpAccess().getINTTerminalRuleCall_5()); 
+    }
+)
+    ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 
 

@@ -131,15 +131,6 @@ public interface IblFactory extends EFactory
   VariableQualifier createVariableQualifier();
 
   /**
-   * Returns a new object of class '<em>Variable Attribute</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Attribute</em>'.
-   * @generated
-   */
-  VariableAttribute createVariableAttribute();
-
-  /**
    * Returns a new object of class '<em>Variable Assignment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -147,6 +138,15 @@ public interface IblFactory extends EFactory
    * @generated
    */
   VariableAssignment createVariableAssignment();
+
+  /**
+   * Returns a new object of class '<em>Variable Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Attribute</em>'.
+   * @generated
+   */
+  VariableAttribute createVariableAttribute();
 
   /**
    * Returns a new object of class '<em>Variable Expression</em>'.

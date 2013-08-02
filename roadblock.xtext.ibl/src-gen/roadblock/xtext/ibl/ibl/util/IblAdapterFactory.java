@@ -135,14 +135,14 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createVariableQualifierAdapter();
       }
       @Override
-      public Adapter caseVariableAttribute(VariableAttribute object)
-      {
-        return createVariableAttributeAdapter();
-      }
-      @Override
       public Adapter caseVariableAssignment(VariableAssignment object)
       {
         return createVariableAssignmentAdapter();
+      }
+      @Override
+      public Adapter caseVariableAttribute(VariableAttribute object)
+      {
+        return createVariableAttributeAdapter();
       }
       @Override
       public Adapter caseVariableExpression(VariableExpression object)
@@ -367,21 +367,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableAttribute <em>Variable Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.VariableAttribute
-   * @generated
-   */
-  public Adapter createVariableAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableAssignment <em>Variable Assignment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -392,6 +377,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createVariableAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableAttribute <em>Variable Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableAttribute
+   * @generated
+   */
+  public Adapter createVariableAttributeAdapter()
   {
     return null;
   }

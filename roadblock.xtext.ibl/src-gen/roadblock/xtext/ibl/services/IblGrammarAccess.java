@@ -721,54 +721,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getObservableKeyword_1() { return cObservableKeyword_1; }
 	}
 
-	public class VariableAttributeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableAttribute");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cVariableAttributeAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
-		private final Keyword cFullStopKeyword_2_0_0 = (Keyword)cAlternatives_2_0.eContents().get(0);
-		private final Keyword cTildeKeyword_2_0_1 = (Keyword)cAlternatives_2_0.eContents().get(1);
-		private final Assignment cAttributeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cAttributeIDTerminalRuleCall_2_1_0 = (RuleCall)cAttributeAssignment_2_1.eContents().get(0);
-		
-		//VariableAttribute:
-		//	{VariableAttribute} name=ID (("." | "~") attribute=ID)?;
-		public ParserRule getRule() { return rule; }
-
-		//{VariableAttribute} name=ID (("." | "~") attribute=ID)?
-		public Group getGroup() { return cGroup; }
-
-		//{VariableAttribute}
-		public Action getVariableAttributeAction_0() { return cVariableAttributeAction_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//(("." | "~") attribute=ID)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"." | "~"
-		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
-
-		//"."
-		public Keyword getFullStopKeyword_2_0_0() { return cFullStopKeyword_2_0_0; }
-
-		//"~"
-		public Keyword getTildeKeyword_2_0_1() { return cTildeKeyword_2_0_1; }
-
-		//attribute=ID
-		public Assignment getAttributeAssignment_2_1() { return cAttributeAssignment_2_1; }
-
-		//ID
-		public RuleCall getAttributeIDTerminalRuleCall_2_1_0() { return cAttributeIDTerminalRuleCall_2_1_0; }
-	}
-
 	public class VariableAssignmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableAssignment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -803,6 +755,62 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//VariableExpression
 		public RuleCall getExpressionVariableExpressionParserRuleCall_3_0() { return cExpressionVariableExpressionParserRuleCall_3_0; }
+	}
+
+	public class VariableAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariableAttributeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cNameAlternatives_1_0 = (Alternatives)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0_0 = (RuleCall)cNameAlternatives_1_0.eContents().get(0);
+		private final RuleCall cNameREALParserRuleCall_1_0_1 = (RuleCall)cNameAlternatives_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
+		private final Keyword cFullStopKeyword_2_0_0 = (Keyword)cAlternatives_2_0.eContents().get(0);
+		private final Keyword cTildeKeyword_2_0_1 = (Keyword)cAlternatives_2_0.eContents().get(1);
+		private final Assignment cAttributeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cAttributeIDTerminalRuleCall_2_1_0 = (RuleCall)cAttributeAssignment_2_1.eContents().get(0);
+		
+		//VariableAttribute:
+		//	{VariableAttribute} name=(ID | REAL) (("." | "~") attribute=ID)?;
+		public ParserRule getRule() { return rule; }
+
+		//{VariableAttribute} name=(ID | REAL) (("." | "~") attribute=ID)?
+		public Group getGroup() { return cGroup; }
+
+		//{VariableAttribute}
+		public Action getVariableAttributeAction_0() { return cVariableAttributeAction_0; }
+
+		//name=(ID | REAL)
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID | REAL
+		public Alternatives getNameAlternatives_1_0() { return cNameAlternatives_1_0; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0_0() { return cNameIDTerminalRuleCall_1_0_0; }
+
+		//REAL
+		public RuleCall getNameREALParserRuleCall_1_0_1() { return cNameREALParserRuleCall_1_0_1; }
+
+		//(("." | "~") attribute=ID)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"." | "~"
+		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_2_0_0() { return cFullStopKeyword_2_0_0; }
+
+		//"~"
+		public Keyword getTildeKeyword_2_0_1() { return cTildeKeyword_2_0_1; }
+
+		//attribute=ID
+		public Assignment getAttributeAssignment_2_1() { return cAttributeAssignment_2_1; }
+
+		//ID
+		public RuleCall getAttributeIDTerminalRuleCall_2_1_0() { return cAttributeIDTerminalRuleCall_2_1_0; }
 	}
 
 	public class VariableExpressionElements extends AbstractParserRuleElementFinder {
@@ -1139,6 +1147,135 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
+
+	public class REALElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "REAL");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cDecimalParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cDecimalExpParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//// real numbers
+		//REAL:
+		//	Decimal | DecimalExp;
+		public ParserRule getRule() { return rule; }
+
+		//Decimal | DecimalExp
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Decimal
+		public RuleCall getDecimalParserRuleCall_0() { return cDecimalParserRuleCall_0; }
+
+		//DecimalExp
+		public RuleCall getDecimalExpParserRuleCall_1() { return cDecimalExpParserRuleCall_1; }
+	}
+
+	public class DecimalElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Decimal");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cPlusSignKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		
+		//Decimal hidden():
+		//	("+" | "-")? INT ("." INT)?;
+		public ParserRule getRule() { return rule; }
+
+		//("+" | "-")? INT ("." INT)?
+		public Group getGroup() { return cGroup; }
+
+		//("+" | "-")?
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//"+"
+		public Keyword getPlusSignKeyword_0_0() { return cPlusSignKeyword_0_0; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_0_1() { return cHyphenMinusKeyword_0_1; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+
+		//("." INT)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"."
+		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_2_1() { return cINTTerminalRuleCall_2_1; }
+	}
+
+	public class DecimalExpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DecimalExp");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cPlusSignKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cFullStopKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Keyword cEKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
+		private final Keyword cEKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Keyword cPlusSignKeyword_4_0 = (Keyword)cAlternatives_4.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_4_1 = (Keyword)cAlternatives_4.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
+		
+		//DecimalExp hidden():
+		//	("+" | "-")? INT ("." INT)? ("E" | "e") ("+" | "-")? INT;
+		public ParserRule getRule() { return rule; }
+
+		//("+" | "-")? INT ("." INT)? ("E" | "e") ("+" | "-")? INT
+		public Group getGroup() { return cGroup; }
+
+		//("+" | "-")?
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//"+"
+		public Keyword getPlusSignKeyword_0_0() { return cPlusSignKeyword_0_0; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_0_1() { return cHyphenMinusKeyword_0_1; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+
+		//("." INT)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"."
+		public Keyword getFullStopKeyword_2_0() { return cFullStopKeyword_2_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_2_1() { return cINTTerminalRuleCall_2_1; }
+
+		//"E" | "e"
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+
+		//"E"
+		public Keyword getEKeyword_3_0() { return cEKeyword_3_0; }
+
+		//"e"
+		public Keyword getEKeyword_3_1() { return cEKeyword_3_1; }
+
+		//("+" | "-")?
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+
+		//"+"
+		public Keyword getPlusSignKeyword_4_0() { return cPlusSignKeyword_4_0; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_4_1() { return cHyphenMinusKeyword_4_1; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_5() { return cINTTerminalRuleCall_5; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -1154,8 +1291,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private VariableDeclarationElements pVariableDeclaration;
 	private VariableTypeElements pVariableType;
 	private VariableQualifierElements pVariableQualifier;
-	private VariableAttributeElements pVariableAttribute;
 	private VariableAssignmentElements pVariableAssignment;
+	private VariableAttributeElements pVariableAttribute;
 	private VariableExpressionElements pVariableExpression;
 	private VariableExpressionOperatorElements pVariableExpressionOperator;
 	private PrimitiveVariableTypeElements pPrimitiveVariableType;
@@ -1165,6 +1302,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private ImportElements pImport;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private QualifiedNameElements pQualifiedName;
+	private REALElements pREAL;
+	private DecimalElements pDecimal;
+	private DecimalExpElements pDecimalExp;
 	
 	private final Grammar grammar;
 
@@ -1350,16 +1490,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		return getVariableQualifierAccess().getRule();
 	}
 
-	//VariableAttribute:
-	//	{VariableAttribute} name=ID (("." | "~") attribute=ID)?;
-	public VariableAttributeElements getVariableAttributeAccess() {
-		return (pVariableAttribute != null) ? pVariableAttribute : (pVariableAttribute = new VariableAttributeElements());
-	}
-	
-	public ParserRule getVariableAttributeRule() {
-		return getVariableAttributeAccess().getRule();
-	}
-
 	//VariableAssignment:
 	//	{VariableAssignment} variable=VariableAttribute "=" expression=VariableExpression;
 	public VariableAssignmentElements getVariableAssignmentAccess() {
@@ -1368,6 +1498,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getVariableAssignmentRule() {
 		return getVariableAssignmentAccess().getRule();
+	}
+
+	//VariableAttribute:
+	//	{VariableAttribute} name=(ID | REAL) (("." | "~") attribute=ID)?;
+	public VariableAttributeElements getVariableAttributeAccess() {
+		return (pVariableAttribute != null) ? pVariableAttribute : (pVariableAttribute = new VariableAttributeElements());
+	}
+	
+	public ParserRule getVariableAttributeRule() {
+		return getVariableAttributeAccess().getRule();
 	}
 
 	//VariableExpression:
@@ -1464,6 +1604,37 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
+	}
+
+	//// real numbers
+	//REAL:
+	//	Decimal | DecimalExp;
+	public REALElements getREALAccess() {
+		return (pREAL != null) ? pREAL : (pREAL = new REALElements());
+	}
+	
+	public ParserRule getREALRule() {
+		return getREALAccess().getRule();
+	}
+
+	//Decimal hidden():
+	//	("+" | "-")? INT ("." INT)?;
+	public DecimalElements getDecimalAccess() {
+		return (pDecimal != null) ? pDecimal : (pDecimal = new DecimalElements());
+	}
+	
+	public ParserRule getDecimalRule() {
+		return getDecimalAccess().getRule();
+	}
+
+	//DecimalExp hidden():
+	//	("+" | "-")? INT ("." INT)? ("E" | "e") ("+" | "-")? INT;
+	public DecimalExpElements getDecimalExpAccess() {
+		return (pDecimalExp != null) ? pDecimalExp : (pDecimalExp = new DecimalExpElements());
+	}
+	
+	public ParserRule getDecimalExpRule() {
+		return getDecimalExpAccess().getRule();
 	}
 
 	//terminal ID:

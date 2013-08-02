@@ -76,8 +76,8 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case IblPackage.VARIABLE_TYPE: return createVariableType();
       case IblPackage.VARIABLE_QUALIFIER: return createVariableQualifier();
-      case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
       case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
+      case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
@@ -224,10 +224,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableAttribute createVariableAttribute()
+  public VariableAssignment createVariableAssignment()
   {
-    VariableAttributeImpl variableAttribute = new VariableAttributeImpl();
-    return variableAttribute;
+    VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
+    return variableAssignment;
   }
 
   /**
@@ -235,10 +235,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableAssignment createVariableAssignment()
+  public VariableAttribute createVariableAttribute()
   {
-    VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
-    return variableAssignment;
+    VariableAttributeImpl variableAttribute = new VariableAttributeImpl();
+    return variableAttribute;
   }
 
   /**

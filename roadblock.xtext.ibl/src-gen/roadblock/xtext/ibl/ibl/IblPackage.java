@@ -510,43 +510,6 @@ public interface IblPackage extends EPackage
   int VARIABLE_QUALIFIER_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
-   * @generated
-   */
-  int VARIABLE_ATTRIBUTE = 12;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_ATTRIBUTE__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Attribute</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_ATTRIBUTE__ATTRIBUTE = 1;
-
-  /**
-   * The number of structural features of the '<em>Variable Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_ATTRIBUTE_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -554,7 +517,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignment()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT = 13;
+  int VARIABLE_ASSIGNMENT = 12;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -582,6 +545,43 @@ public interface IblPackage extends EPackage
    * @ordered
    */
   int VARIABLE_ASSIGNMENT_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
+   * @generated
+   */
+  int VARIABLE_ATTRIBUTE = 13;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ATTRIBUTE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ATTRIBUTE__ATTRIBUTE = 1;
+
+  /**
+   * The number of structural features of the '<em>Variable Attribute</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ATTRIBUTE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableExpressionImpl <em>Variable Expression</em>}' class.
@@ -1110,38 +1110,6 @@ public interface IblPackage extends EPackage
   EClass getVariableQualifier();
 
   /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableAttribute <em>Variable Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Variable Attribute</em>'.
-   * @see roadblock.xtext.ibl.ibl.VariableAttribute
-   * @generated
-   */
-  EClass getVariableAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see roadblock.xtext.ibl.ibl.VariableAttribute#getName()
-   * @see #getVariableAttribute()
-   * @generated
-   */
-  EAttribute getVariableAttribute_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getAttribute <em>Attribute</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Attribute</em>'.
-   * @see roadblock.xtext.ibl.ibl.VariableAttribute#getAttribute()
-   * @see #getVariableAttribute()
-   * @generated
-   */
-  EAttribute getVariableAttribute_Attribute();
-
-  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableAssignment <em>Variable Assignment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1172,6 +1140,38 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EReference getVariableAssignment_Expression();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableAttribute <em>Variable Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Attribute</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableAttribute
+   * @generated
+   */
+  EClass getVariableAttribute();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableAttribute#getName()
+   * @see #getVariableAttribute()
+   * @generated
+   */
+  EAttribute getVariableAttribute_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getAttribute <em>Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Attribute</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableAttribute#getAttribute()
+   * @see #getVariableAttribute()
+   * @generated
+   */
+  EAttribute getVariableAttribute_Attribute();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableExpression <em>Variable Expression</em>}'.
@@ -1623,32 +1623,6 @@ public interface IblPackage extends EPackage
     EClass VARIABLE_QUALIFIER = eINSTANCE.getVariableQualifier();
 
     /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
-     * @generated
-     */
-    EClass VARIABLE_ATTRIBUTE = eINSTANCE.getVariableAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE_ATTRIBUTE__NAME = eINSTANCE.getVariableAttribute_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE_ATTRIBUTE__ATTRIBUTE = eINSTANCE.getVariableAttribute_Attribute();
-
-    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1673,6 +1647,32 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EReference VARIABLE_ASSIGNMENT__EXPRESSION = eINSTANCE.getVariableAssignment_Expression();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
+     * @generated
+     */
+    EClass VARIABLE_ATTRIBUTE = eINSTANCE.getVariableAttribute();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_ATTRIBUTE__NAME = eINSTANCE.getVariableAttribute_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_ATTRIBUTE__ATTRIBUTE = eINSTANCE.getVariableAttribute_Attribute();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableExpressionImpl <em>Variable Expression</em>}' class.
