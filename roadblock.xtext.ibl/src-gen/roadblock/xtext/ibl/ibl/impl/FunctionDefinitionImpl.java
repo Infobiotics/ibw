@@ -22,7 +22,6 @@ import roadblock.xtext.ibl.ibl.FunctionDefinitionMember;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
-import roadblock.xtext.ibl.ibl.VariableType;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,14 +43,24 @@ import roadblock.xtext.ibl.ibl.VariableType;
 public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionDefinition
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected VariableType type;
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -129,7 +138,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableType getType()
+  public String getType()
   {
     return type;
   }
@@ -139,37 +148,12 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(VariableType newType, NotificationChain msgs)
+  public void setType(String newType)
   {
-    VariableType oldType = type;
+    String oldType = type;
     type = newType;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(VariableType newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__TYPE, oldType, type));
   }
 
   /**
@@ -247,8 +231,6 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        return basicSetType(null, msgs);
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -295,7 +277,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     switch (featureID)
     {
       case IblPackage.FUNCTION_DEFINITION__TYPE:
-        setType((VariableType)newValue);
+        setType((String)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
         setName((String)newValue);
@@ -327,7 +309,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     switch (featureID)
     {
       case IblPackage.FUNCTION_DEFINITION__TYPE:
-        setType((VariableType)null);
+        setType(TYPE_EDEFAULT);
         return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
@@ -356,7 +338,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     switch (featureID)
     {
       case IblPackage.FUNCTION_DEFINITION__TYPE:
-        return type != null;
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.FUNCTION_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
@@ -380,7 +362,9 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (type: ");
+    result.append(type);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

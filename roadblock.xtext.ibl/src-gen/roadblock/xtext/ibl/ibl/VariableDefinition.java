@@ -25,30 +25,30 @@ import org.eclipse.emf.common.util.EList;
 public interface VariableDefinition extends ModelMember
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(VariableType)
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDefinition_Type()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  VariableType getType();
+  String getType();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @param value the new value of the '<em>Type</em>' attribute.
    * @see #getType()
    * @generated
    */
-  void setType(VariableType value);
+  void setType(String value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

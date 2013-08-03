@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
-import roadblock.xtext.ibl.ibl.VariableQualifier;
-import roadblock.xtext.ibl.ibl.VariableType;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,24 +42,44 @@ import roadblock.xtext.ibl.ibl.VariableType;
 public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implements VariableDeclaration
 {
   /**
-   * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' containment reference.
+   * The default value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getQualifier()
    * @generated
    * @ordered
    */
-  protected VariableQualifier qualifier;
+  protected static final String QUALIFIER_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getQualifier()
+   * @generated
+   * @ordered
+   */
+  protected String qualifier = QUALIFIER_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected VariableType type;
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -159,7 +177,7 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableQualifier getQualifier()
+  public String getQualifier()
   {
     return qualifier;
   }
@@ -169,16 +187,12 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetQualifier(VariableQualifier newQualifier, NotificationChain msgs)
+  public void setQualifier(String newQualifier)
   {
-    VariableQualifier oldQualifier = qualifier;
+    String oldQualifier = qualifier;
     qualifier = newQualifier;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__QUALIFIER, oldQualifier, newQualifier);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__QUALIFIER, oldQualifier, qualifier));
   }
 
   /**
@@ -186,28 +200,7 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setQualifier(VariableQualifier newQualifier)
-  {
-    if (newQualifier != qualifier)
-    {
-      NotificationChain msgs = null;
-      if (qualifier != null)
-        msgs = ((InternalEObject)qualifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DECLARATION__QUALIFIER, null, msgs);
-      if (newQualifier != null)
-        msgs = ((InternalEObject)newQualifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DECLARATION__QUALIFIER, null, msgs);
-      msgs = basicSetQualifier(newQualifier, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__QUALIFIER, newQualifier, newQualifier));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableType getType()
+  public String getType()
   {
     return type;
   }
@@ -217,37 +210,12 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(VariableType newType, NotificationChain msgs)
+  public void setType(String newType)
   {
-    VariableType oldType = type;
+    String oldType = type;
     type = newType;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(VariableType newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DECLARATION__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DECLARATION__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DECLARATION__TYPE, oldType, type));
   }
 
   /**
@@ -343,10 +311,6 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
   {
     switch (featureID)
     {
-      case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
-        return basicSetQualifier(null, msgs);
-      case IblPackage.VARIABLE_DECLARATION__TYPE:
-        return basicSetType(null, msgs);
       case IblPackage.VARIABLE_DECLARATION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
     }
@@ -391,10 +355,10 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
     switch (featureID)
     {
       case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
-        setQualifier((VariableQualifier)newValue);
+        setQualifier((String)newValue);
         return;
       case IblPackage.VARIABLE_DECLARATION__TYPE:
-        setType((VariableType)newValue);
+        setType((String)newValue);
         return;
       case IblPackage.VARIABLE_DECLARATION__NAME:
         setName((String)newValue);
@@ -424,10 +388,10 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
     switch (featureID)
     {
       case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
-        setQualifier((VariableQualifier)null);
+        setQualifier(QUALIFIER_EDEFAULT);
         return;
       case IblPackage.VARIABLE_DECLARATION__TYPE:
-        setType((VariableType)null);
+        setType(TYPE_EDEFAULT);
         return;
       case IblPackage.VARIABLE_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
@@ -456,9 +420,9 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
     switch (featureID)
     {
       case IblPackage.VARIABLE_DECLARATION__QUALIFIER:
-        return qualifier != null;
+        return QUALIFIER_EDEFAULT == null ? qualifier != null : !QUALIFIER_EDEFAULT.equals(qualifier);
       case IblPackage.VARIABLE_DECLARATION__TYPE:
-        return type != null;
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.VARIABLE_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.VARIABLE_DECLARATION__COLLECTION:
@@ -482,7 +446,11 @@ public class VariableDeclarationImpl extends FunctionDefinitionMemberImpl implem
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (qualifier: ");
+    result.append(qualifier);
+    result.append(", type: ");
+    result.append(type);
+    result.append(", name: ");
     result.append(name);
     result.append(", collection: ");
     result.append(collection);

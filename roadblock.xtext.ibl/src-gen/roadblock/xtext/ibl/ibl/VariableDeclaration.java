@@ -28,56 +28,56 @@ import org.eclipse.emf.common.util.EList;
 public interface VariableDeclaration extends FunctionDefinitionMember, VariableDefinitionMember
 {
   /**
-   * Returns the value of the '<em><b>Qualifier</b></em>' containment reference.
+   * Returns the value of the '<em><b>Qualifier</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Qualifier</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Qualifier</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Qualifier</em>' containment reference.
-   * @see #setQualifier(VariableQualifier)
+   * @return the value of the '<em>Qualifier</em>' attribute.
+   * @see #setQualifier(String)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDeclaration_Qualifier()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  VariableQualifier getQualifier();
+  String getQualifier();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getQualifier <em>Qualifier</em>}' containment reference.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getQualifier <em>Qualifier</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Qualifier</em>' containment reference.
+   * @param value the new value of the '<em>Qualifier</em>' attribute.
    * @see #getQualifier()
    * @generated
    */
-  void setQualifier(VariableQualifier value);
+  void setQualifier(String value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(VariableType)
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDeclaration_Type()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  VariableType getType();
+  String getType();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDeclaration#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @param value the new value of the '<em>Type</em>' attribute.
    * @see #getType()
    * @generated
    */
-  void setType(VariableType value);
+  void setType(String value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

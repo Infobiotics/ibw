@@ -41,6 +41,15 @@ public interface IblFactory extends EFactory
   ModelMember createModelMember();
 
   /**
+   * Returns a new object of class '<em>Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import</em>'.
+   * @generated
+   */
+  Import createImport();
+
+  /**
    * Returns a new object of class '<em>Variable Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -57,15 +66,6 @@ public interface IblFactory extends EFactory
    * @generated
    */
   FunctionDefinition createFunctionDefinition();
-
-  /**
-   * Returns a new object of class '<em>Function Use Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Use Member</em>'.
-   * @generated
-   */
-  FunctionUseMember createFunctionUseMember();
 
   /**
    * Returns a new object of class '<em>Function Parameter Member</em>'.
@@ -86,13 +86,13 @@ public interface IblFactory extends EFactory
   FunctionDefinitionMember createFunctionDefinitionMember();
 
   /**
-   * Returns a new object of class '<em>Device Definition</em>'.
+   * Returns a new object of class '<em>Function Use Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Device Definition</em>'.
+   * @return a new object of class '<em>Function Use Member</em>'.
    * @generated
    */
-  DeviceDefinition createDeviceDefinition();
+  FunctionUseMember createFunctionUseMember();
 
   /**
    * Returns a new object of class '<em>Variable Definition Member</em>'.
@@ -111,24 +111,6 @@ public interface IblFactory extends EFactory
    * @generated
    */
   VariableDeclaration createVariableDeclaration();
-
-  /**
-   * Returns a new object of class '<em>Variable Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Type</em>'.
-   * @generated
-   */
-  VariableType createVariableType();
-
-  /**
-   * Returns a new object of class '<em>Variable Qualifier</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Qualifier</em>'.
-   * @generated
-   */
-  VariableQualifier createVariableQualifier();
 
   /**
    * Returns a new object of class '<em>Variable Assignment</em>'.
@@ -176,13 +158,13 @@ public interface IblFactory extends EFactory
   RuleObject createRuleObject();
 
   /**
-   * Returns a new object of class '<em>Import</em>'.
+   * Returns a new object of class '<em>Device Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import</em>'.
+   * @return a new object of class '<em>Device Definition</em>'.
    * @generated
    */
-  Import createImport();
+  DeviceDefinition createDeviceDefinition();
 
   /**
    * Returns a new object of class '<em>ATGC Definition</em>'.

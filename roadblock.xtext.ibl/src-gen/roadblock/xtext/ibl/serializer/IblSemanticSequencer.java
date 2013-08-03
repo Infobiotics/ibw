@@ -29,8 +29,6 @@ import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableExpression;
-import roadblock.xtext.ibl.ibl.VariableQualifier;
-import roadblock.xtext.ibl.ibl.VariableType;
 import roadblock.xtext.ibl.services.IblGrammarAccess;
 
 @SuppressWarnings("all")
@@ -42,7 +40,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case IblPackage.ATGC_DEFINITION:
-				if(context == grammarAccess.getATGCDefinitionRule()) {
+				if(context == grammarAccess.getATGCDefinitionRule() ||
+				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
 					sequence_ATGCDefinition(context, (ATGCDefinition) semanticObject); 
 					return; 
 				}
@@ -87,7 +86,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.PROPERTY_DEFINITION:
-				if(context == grammarAccess.getPropertyDefinitionRule()) {
+				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
+				   context == grammarAccess.getPropertyDefinitionRule()) {
 					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
 					return; 
 				}
@@ -139,25 +139,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.VARIABLE_QUALIFIER:
-				if(context == grammarAccess.getVariableQualifierRule()) {
-					sequence_VariableQualifier(context, (VariableQualifier) semanticObject); 
-					return; 
-				}
-				else break;
-			case IblPackage.VARIABLE_TYPE:
-				if(context == grammarAccess.getVariableTypeRule()) {
-					sequence_VariableType(context, (VariableType) semanticObject); 
-					return; 
-				}
-				else break;
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
 	
 	/**
 	 * Constraint:
-	 *     {ATGCDefinition}
+	 *     (command=ID arguments+=ID arguments+=ID*)
 	 */
 	protected void sequence_ATGCDefinition(EObject context, ATGCDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -182,11 +170,11 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         type=VariableType? 
+	 *         type=ID? 
 	 *         name=ID 
 	 *         (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? 
 	 *         members+=FunctionDefinitionMember* 
-	 *         (uses+=FunctionUseMember uses+=FunctionUseMember)?
+	 *         (uses+=FunctionUseMember uses+=FunctionUseMember*)?
 	 *     )
 	 */
 	protected void sequence_FunctionDefinition(EObject context, FunctionDefinition semanticObject) {
@@ -262,16 +250,19 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID arguments=STRING)
 	 */
 	protected void sequence_PropertyDefinition(EObject context, PropertyDefinition semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY_DEFINITION__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY_DEFINITION__NAME));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY_DEFINITION__ARGUMENTS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY_DEFINITION__ARGUMENTS));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyDefinitionAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPropertyDefinitionAccess().getNameIDTerminalRuleCall_0_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPropertyDefinitionAccess().getArgumentsSTRINGTerminalRuleCall_0_4_0(), semanticObject.getArguments());
 		feeder.finish();
 	}
 	
@@ -326,7 +317,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         qualifier=VariableQualifier? 
-	 *         ((type=VariableType name=ID) | (collection=CollectionID type=VariableType name=ID)) 
+	 *         ((type=ID name=ID) | (collection=CollectionID type=ID name=ID)) 
 	 *         (constructor=ID (parameters+=VariableAssignment parameters+=VariableAssignment*)?)?
 	 *     )
 	 */
@@ -337,7 +328,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=VariableType? name=ID members+=VariableDefinitionMember*)
+	 *     (type=ID? name=ID members+=VariableDefinitionMember*)
 	 */
 	protected void sequence_VariableDefinition(EObject context, VariableDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -349,24 +340,6 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (members+=VariableAttribute members+=VariableAttribute*)
 	 */
 	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {VariableQualifier}
-	 */
-	protected void sequence_VariableQualifier(EObject context, VariableQualifier semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (primitive=PrimitiveVariableType | primitive=ID)
-	 */
-	protected void sequence_VariableType(EObject context, VariableType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

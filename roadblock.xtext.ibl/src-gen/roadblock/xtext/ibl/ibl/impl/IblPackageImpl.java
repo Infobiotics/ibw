@@ -29,8 +29,6 @@ import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
 import roadblock.xtext.ibl.ibl.VariableExpression;
-import roadblock.xtext.ibl.ibl.VariableQualifier;
-import roadblock.xtext.ibl.ibl.VariableType;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,6 +57,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass importEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass variableDefinitionEClass = null;
 
   /**
@@ -67,13 +72,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass functionDefinitionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass functionUseMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -94,7 +92,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass deviceDefinitionEClass = null;
+  private EClass functionUseMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,20 +107,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass variableDeclarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableQualifierEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -164,7 +148,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importEClass = null;
+  private EClass deviceDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -278,6 +262,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getImport()
+  {
+    return importEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getImport_ImportedNamespace()
+  {
+    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getVariableDefinition()
   {
     return variableDefinitionEClass;
@@ -288,9 +292,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableDefinition_Type()
+  public EAttribute getVariableDefinition_Type()
   {
-    return (EReference)variableDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -328,9 +332,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunctionDefinition_Type()
+  public EAttribute getFunctionDefinition_Type()
   {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -371,36 +375,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EReference getFunctionDefinition_Uses()
   {
     return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFunctionUseMember()
-  {
-    return functionUseMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFunctionUseMember_Type()
-  {
-    return (EAttribute)functionUseMemberEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFunctionUseMember_Name()
-  {
-    return (EAttribute)functionUseMemberEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -458,9 +432,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDeviceDefinition()
+  public EClass getFunctionUseMember()
   {
-    return deviceDefinitionEClass;
+    return functionUseMemberEClass;
   }
 
   /**
@@ -468,9 +442,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDeviceDefinition_Name()
+  public EAttribute getFunctionUseMember_Type()
   {
-    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)functionUseMemberEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -478,29 +452,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDeviceDefinition_Parts()
+  public EAttribute getFunctionUseMember_Name()
   {
-    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeviceDefinition_Parameters()
-  {
-    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeviceDefinition_Members()
-  {
-    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)functionUseMemberEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -528,9 +482,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableDeclaration_Qualifier()
+  public EAttribute getVariableDeclaration_Qualifier()
   {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -538,9 +492,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableDeclaration_Type()
+  public EAttribute getVariableDeclaration_Type()
   {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -581,36 +535,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EReference getVariableDeclaration_Parameters()
   {
     return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableType()
-  {
-    return variableTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableType_Primitive()
-  {
-    return (EAttribute)variableTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableQualifier()
-  {
-    return variableQualifierEClass;
   }
 
   /**
@@ -758,9 +682,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getImport()
+  public EClass getDeviceDefinition()
   {
-    return importEClass;
+    return deviceDefinitionEClass;
   }
 
   /**
@@ -768,9 +692,39 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImport_ImportedNamespace()
+  public EAttribute getDeviceDefinition_Name()
   {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeviceDefinition_Parts()
+  {
+    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Parameters()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Members()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -781,6 +735,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EClass getATGCDefinition()
   {
     return atgcDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getATGCDefinition_Command()
+  {
+    return (EAttribute)atgcDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getATGCDefinition_Arguments()
+  {
+    return (EAttribute)atgcDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -801,6 +775,16 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EAttribute getPropertyDefinition_Name()
   {
     return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPropertyDefinition_Arguments()
+  {
+    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -838,21 +822,20 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     modelMemberEClass = createEClass(MODEL_MEMBER);
 
+    importEClass = createEClass(IMPORT);
+    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
+
     variableDefinitionEClass = createEClass(VARIABLE_DEFINITION);
-    createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__TYPE);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__TYPE);
     createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__NAME);
     createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__MEMBERS);
 
     functionDefinitionEClass = createEClass(FUNCTION_DEFINITION);
-    createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__TYPE);
+    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__TYPE);
     createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__NAME);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__PARAMETERS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__MEMBERS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__USES);
-
-    functionUseMemberEClass = createEClass(FUNCTION_USE_MEMBER);
-    createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__TYPE);
-    createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__NAME);
 
     functionParameterMemberEClass = createEClass(FUNCTION_PARAMETER_MEMBER);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__TYPE);
@@ -861,26 +844,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     functionDefinitionMemberEClass = createEClass(FUNCTION_DEFINITION_MEMBER);
 
-    deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
-    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
-    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__PARTS);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARAMETERS);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
+    functionUseMemberEClass = createEClass(FUNCTION_USE_MEMBER);
+    createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__TYPE);
+    createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__NAME);
 
     variableDefinitionMemberEClass = createEClass(VARIABLE_DEFINITION_MEMBER);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
-    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__QUALIFIER);
-    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__QUALIFIER);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__COLLECTION);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTRUCTOR);
     createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__PARAMETERS);
-
-    variableTypeEClass = createEClass(VARIABLE_TYPE);
-    createEAttribute(variableTypeEClass, VARIABLE_TYPE__PRIMITIVE);
-
-    variableQualifierEClass = createEClass(VARIABLE_QUALIFIER);
 
     variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
     createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VARIABLE);
@@ -901,13 +877,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     ruleObjectEClass = createEClass(RULE_OBJECT);
     createEAttribute(ruleObjectEClass, RULE_OBJECT__SUBOBJECTS);
 
-    importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
+    deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
+    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
+    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__PARTS);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARAMETERS);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
 
     atgcDefinitionEClass = createEClass(ATGC_DEFINITION);
+    createEAttribute(atgcDefinitionEClass, ATGC_DEFINITION__COMMAND);
+    createEAttribute(atgcDefinitionEClass, ATGC_DEFINITION__ARGUMENTS);
 
     propertyDefinitionEClass = createEClass(PROPERTY_DEFINITION);
     createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__NAME);
+    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__ARGUMENTS);
   }
 
   /**
@@ -939,14 +921,16 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    importEClass.getESuperTypes().add(this.getModelMember());
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    importEClass.getESuperTypes().add(this.getModelMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -954,21 +938,20 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(modelMemberEClass, ModelMember.class, "ModelMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(variableDefinitionEClass, VariableDefinition.class, "VariableDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariableDefinition_Type(), this.getVariableType(), null, "type", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableDefinition_Members(), this.getVariableDefinitionMember(), null, "members", null, 0, -1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFunctionDefinition_Type(), this.getVariableType(), null, "type", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Members(), this.getFunctionDefinitionMember(), null, "members", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Uses(), this.getFunctionUseMember(), null, "uses", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(functionUseMemberEClass, FunctionUseMember.class, "FunctionUseMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionParameterMemberEClass, FunctionParameterMember.class, "FunctionParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -977,26 +960,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(functionDefinitionMemberEClass, FunctionDefinitionMember.class, "FunctionDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDeviceDefinition_Parts(), ecorePackage.getEString(), "parts", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Members(), this.getVariableDeclaration(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(functionUseMemberEClass, FunctionUseMember.class, "FunctionUseMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDefinitionMemberEClass, VariableDefinitionMember.class, "VariableDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariableDeclaration_Qualifier(), this.getVariableQualifier(), null, "qualifier", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableDeclaration_Type(), this.getVariableType(), null, "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableDeclaration_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableTypeEClass, VariableType.class, "VariableType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableType_Primitive(), ecorePackage.getEString(), "primitive", null, 0, 1, VariableType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableQualifierEClass, VariableQualifier.class, "VariableQualifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableAssignmentEClass, VariableAssignment.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getVariableAssignment_Variable(), this.getVariableAttribute(), null, "variable", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1017,13 +993,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(ruleObjectEClass, RuleObject.class, "RuleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRuleObject_Subobjects(), ecorePackage.getEString(), "subobjects", null, 0, -1, RuleObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeviceDefinition_Parts(), ecorePackage.getEString(), "parts", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Members(), this.getVariableDeclaration(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atgcDefinitionEClass, ATGCDefinition.class, "ATGCDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getATGCDefinition_Command(), ecorePackage.getEString(), "command", null, 0, 1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getATGCDefinition_Arguments(), ecorePackage.getEString(), "arguments", null, 0, -1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyDefinitionEClass, PropertyDefinition.class, "PropertyDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPropertyDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPropertyDefinition_Arguments(), ecorePackage.getEString(), "arguments", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

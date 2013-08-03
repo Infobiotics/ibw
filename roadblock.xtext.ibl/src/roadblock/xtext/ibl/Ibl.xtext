@@ -6,61 +6,86 @@ grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
 
 generate ibl "http://www.xtext.roadblock/ibl/Ibl"
 
-// a model is composed of model members
+/////////////////////
+// top level rules //
+/////////////////////
+
+// a model is composed of top level model members
 Model:
 	{Model}
 	members+=ModelMember*
 ;
 	
-// these are the model members
+// model members are an import statement, variable definition or function definition
 ModelMember:
 	Import | VariableDefinition | FunctionDefinition
 ;
 
-// a definition of a variable
+//////////////////////
+// import statement //
+//////////////////////
+
+Import:
+	{Import}
+	'import' importedNamespace=QualifiedNameWithWildcard
+;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.*')?
+;
+
+QualifiedName:
+	ID ('.' ID)*
+;
+
+// a variable definition
 VariableDefinition:
 	{VariableDefinition}
-	'define' (type=VariableType)? name=ID
+	'define' (type=ID)? name=ID
 	'{'
 		members+=VariableDefinitionMember*
 	'}'	
 ;
 
-// a definition of a function
+// a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' (type=VariableType)? name=ID
+	'define' (type=ID)? name=ID
 	'('
-//		parameters+=FunctionParameterMember*
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
 		members+=FunctionDefinitionMember*
 	'}'
-	('USES' uses+=FunctionUseMember (',' uses+=FunctionUseMember))?
+	(
+	'USES'
+		uses+=FunctionUseMember (',' uses+=FunctionUseMember)*
+	)?
 ;
 
-FunctionUseMember:
-	type=ID name=ID
-;
+///////////////
+// functions //
+///////////////
 
+// function parameter member
 FunctionParameterMember:
 	type=ID name=ID ':' scope=ParameterScope
-//	type=[VariableDefinition] name=ID ':' scope=ParameterScope // fix crossreferencing
 ;
 
+// allowed scope of function parameters
 ParameterScope:
 	'required' | 'returned' | 'optional'
 ;
 
+// function definition member
 FunctionDefinitionMember:
-	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition 
-//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition | PropertyDefinition
+	RuleDefinition | DeviceDefinition | VariableAssignment | VariableDeclaration | ATGCDefinition | PropertyDefinition
+//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition
 ;
 
-DeviceDefinition:
-	{DeviceDefinition}
-	'DEVICE' name=ID '=' 'DEVICE' '(' (parts+=ID (',' parts+=ID)*) ')' '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')' '{' (members+=VariableDeclaration (',' members+=VariableDeclaration)*)? '}'
+// function use member
+FunctionUseMember:
+	type=ID name=ID
 ;
 
 ///////////////
@@ -72,25 +97,23 @@ VariableDefinitionMember:
 	VariableDeclaration
 ;
 
+// a declaration of a variable
 VariableDeclaration:
 	{VariableDeclaration}
 	(qualifier=VariableQualifier)?
-	((type=VariableType name=ID) |
-	(collection=CollectionID '<' type=VariableType '>' name=ID))
+	((type=ID name=ID) |
+	(collection=CollectionID '<' type=ID '>' name=ID))
 	(
 		'=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
 	)?
 ;
 
-VariableType:
-	{VariableType}
-	primitive=(PrimitiveVariableType | ID)
-//	primitive=PrimitiveVariableType | reference=[VariableDefinition] // fix crossreferencing
+VariableQualifier:
+	'observable'
 ;
 
-VariableQualifier:
-	{VariableQualifier}
-	'observable'
+CollectionID:
+	'LIST' | 'SET'
 ;
 
 VariableAssignment:
@@ -112,44 +135,57 @@ VariableExpressionOperator:
 	'+' | '-' | '|'
 ;
 
-PrimitiveVariableType:
-	'ID' | 'DNA'
-;
-
-CollectionID:
-	'LIST' | 'SET'
-;
-
 ///////////
 // rules //
 ///////////
 
+// rule definition
 RuleDefinition:
 	{RuleDefinition}
 	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|'<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
 ;
 
+// left or right hand side of rule
 RuleObject:
 	{RuleObject}
 	subobjects+=ID ('~' subobjects+=ID)*
 ;
 
-// allow import of multiple model files e.g. libraries
-Import:
-	{Import}
-	'import' importedNamespace=QualifiedNameWithWildcard
-;
-    
-// a qualified name                                                                                      
-QualifiedNameWithWildcard:
-	QualifiedName ('.*')?
+/////////////
+// devices //
+/////////////
+
+// device definition
+DeviceDefinition:
+	{DeviceDefinition}
+	'DEVICE' name=ID '=' 'DEVICE' '(' (parts+=ID (',' parts+=ID)*) ')' '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')' '{' (members+=VariableDeclaration (',' members+=VariableDeclaration)*)? '}'
 ;
 
-QualifiedName:
-	ID ('.' ID)*
+////////////////
+// atgc rules //
+////////////////
+
+ATGCDefinition:
+	{ATGCDefinition}
+	'ATGC' command=ID ':' arguments+=ID (',' arguments+=ID)*
 ;
 
-// real numbers
+/////////////////////////
+// model checker rules //
+/////////////////////////
+
+PropertyDefinition:
+	{PropertyDefinition}
+	'PROPERTY' name=ID ':' arguments=STRING |
+	'VERIFY' arguments=STRING
+;
+
+/////////////////
+// basic types //
+/////////////////
+
+// a real number
+
 REAL:
 	Decimal|DecimalExp
 ;
@@ -162,12 +198,3 @@ DecimalExp hidden():
 	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
 ;
 
-ATGCDefinition:
-	{ATGCDefinition}
-	'ATGC'
-;
-
-PropertyDefinition:
-	{PropertyDefinition}
-	'PROPERTY' name=ID ':' '['  ']'
-;

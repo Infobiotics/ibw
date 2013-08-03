@@ -66,22 +66,20 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
     {
       case IblPackage.MODEL: return createModel();
       case IblPackage.MODEL_MEMBER: return createModelMember();
+      case IblPackage.IMPORT: return createImport();
       case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
       case IblPackage.FUNCTION_DEFINITION: return createFunctionDefinition();
-      case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_DEFINITION_MEMBER: return createFunctionDefinitionMember();
-      case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
+      case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
       case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
       case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
-      case IblPackage.VARIABLE_TYPE: return createVariableType();
-      case IblPackage.VARIABLE_QUALIFIER: return createVariableQualifier();
       case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
       case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
-      case IblPackage.IMPORT: return createImport();
+      case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
       default:
@@ -116,6 +114,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Import createImport()
+  {
+    ImportImpl import_ = new ImportImpl();
+    return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public VariableDefinition createVariableDefinition()
   {
     VariableDefinitionImpl variableDefinition = new VariableDefinitionImpl();
@@ -131,17 +140,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     FunctionDefinitionImpl functionDefinition = new FunctionDefinitionImpl();
     return functionDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FunctionUseMember createFunctionUseMember()
-  {
-    FunctionUseMemberImpl functionUseMember = new FunctionUseMemberImpl();
-    return functionUseMember;
   }
 
   /**
@@ -171,10 +169,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DeviceDefinition createDeviceDefinition()
+  public FunctionUseMember createFunctionUseMember()
   {
-    DeviceDefinitionImpl deviceDefinition = new DeviceDefinitionImpl();
-    return deviceDefinition;
+    FunctionUseMemberImpl functionUseMember = new FunctionUseMemberImpl();
+    return functionUseMember;
   }
 
   /**
@@ -197,28 +195,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
     return variableDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableType createVariableType()
-  {
-    VariableTypeImpl variableType = new VariableTypeImpl();
-    return variableType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableQualifier createVariableQualifier()
-  {
-    VariableQualifierImpl variableQualifier = new VariableQualifierImpl();
-    return variableQualifier;
   }
 
   /**
@@ -281,10 +257,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Import createImport()
+  public DeviceDefinition createDeviceDefinition()
   {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
+    DeviceDefinitionImpl deviceDefinition = new DeviceDefinitionImpl();
+    return deviceDefinition;
   }
 
   /**

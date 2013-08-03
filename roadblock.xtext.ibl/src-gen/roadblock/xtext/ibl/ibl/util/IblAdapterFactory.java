@@ -85,6 +85,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createModelMemberAdapter();
       }
       @Override
+      public Adapter caseImport(Import object)
+      {
+        return createImportAdapter();
+      }
+      @Override
       public Adapter caseVariableDefinition(VariableDefinition object)
       {
         return createVariableDefinitionAdapter();
@@ -93,11 +98,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFunctionDefinition(FunctionDefinition object)
       {
         return createFunctionDefinitionAdapter();
-      }
-      @Override
-      public Adapter caseFunctionUseMember(FunctionUseMember object)
-      {
-        return createFunctionUseMemberAdapter();
       }
       @Override
       public Adapter caseFunctionParameterMember(FunctionParameterMember object)
@@ -110,9 +110,9 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionDefinitionMemberAdapter();
       }
       @Override
-      public Adapter caseDeviceDefinition(DeviceDefinition object)
+      public Adapter caseFunctionUseMember(FunctionUseMember object)
       {
-        return createDeviceDefinitionAdapter();
+        return createFunctionUseMemberAdapter();
       }
       @Override
       public Adapter caseVariableDefinitionMember(VariableDefinitionMember object)
@@ -123,16 +123,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseVariableDeclaration(VariableDeclaration object)
       {
         return createVariableDeclarationAdapter();
-      }
-      @Override
-      public Adapter caseVariableType(VariableType object)
-      {
-        return createVariableTypeAdapter();
-      }
-      @Override
-      public Adapter caseVariableQualifier(VariableQualifier object)
-      {
-        return createVariableQualifierAdapter();
       }
       @Override
       public Adapter caseVariableAssignment(VariableAssignment object)
@@ -160,9 +150,9 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createRuleObjectAdapter();
       }
       @Override
-      public Adapter caseImport(Import object)
+      public Adapter caseDeviceDefinition(DeviceDefinition object)
       {
-        return createImportAdapter();
+        return createDeviceDefinitionAdapter();
       }
       @Override
       public Adapter caseATGCDefinition(ATGCDefinition object)
@@ -227,6 +217,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.Import <em>Import</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.Import
+   * @generated
+   */
+  public Adapter createImportAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinition <em>Variable Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -252,21 +257,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionUseMember <em>Function Use Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.FunctionUseMember
-   * @generated
-   */
-  public Adapter createFunctionUseMemberAdapter()
   {
     return null;
   }
@@ -302,16 +292,16 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionUseMember <em>Function Use Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.DeviceDefinition
+   * @see roadblock.xtext.ibl.ibl.FunctionUseMember
    * @generated
    */
-  public Adapter createDeviceDefinitionAdapter()
+  public Adapter createFunctionUseMemberAdapter()
   {
     return null;
   }
@@ -342,36 +332,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createVariableDeclarationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableType <em>Variable Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.VariableType
-   * @generated
-   */
-  public Adapter createVariableTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableQualifier <em>Variable Qualifier</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.VariableQualifier
-   * @generated
-   */
-  public Adapter createVariableQualifierAdapter()
   {
     return null;
   }
@@ -452,16 +412,16 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.Import <em>Import</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.Import
+   * @see roadblock.xtext.ibl.ibl.DeviceDefinition
    * @generated
    */
-  public Adapter createImportAdapter()
+  public Adapter createDeviceDefinitionAdapter()
   {
     return null;
   }
