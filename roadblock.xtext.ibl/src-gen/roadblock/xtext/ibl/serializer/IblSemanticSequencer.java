@@ -294,7 +294,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((lowerBound=REAL upperBounds=REAL (operator=PropertyRelationalOperator probability=REAL)?)?)
+	 *     ((lowerBound=REAL upperBounds=REAL (operator=RelationalOperator probability=REAL)?)?)
 	 */
 	protected void sequence_PropertyCondition(EObject context, PropertyCondition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -322,7 +322,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=ID operator=PropertyOperator rhs=Quantity)
+	 *     (lhs=ID operator=RelationalOperator rhs=Quantity)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
 		if(errorAcceptor != null) {
@@ -336,7 +336,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getPropertyAccess().getLhsIDTerminalRuleCall_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getPropertyAccess().getOperatorPropertyOperatorParserRuleCall_2_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getPropertyAccess().getOperatorRelationalOperatorParserRuleCall_2_0(), semanticObject.getOperator());
 		feeder.accept(grammarAccess.getPropertyAccess().getRhsQuantityParserRuleCall_3_0(), semanticObject.getRhs());
 		feeder.finish();
 	}
@@ -440,7 +440,10 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (property+=Property property+=Property* condition=PropertyCondition)
+	 *     (
+	 *         (property+=Property property+=Property* condition=PropertyCondition) | 
+	 *         (name=ID time=REAL (operator=RelationalOperator concentration=Quantity)?)
+	 *     )
 	 */
 	protected void sequence_VerificationStatement(EObject context, VerificationStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

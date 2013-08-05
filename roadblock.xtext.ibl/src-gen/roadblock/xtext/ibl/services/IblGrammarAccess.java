@@ -1309,135 +1309,143 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class VerificationStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VerificationStatement");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cVerificationStatementAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cVERIFYKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Group cGroup_0_2 = (Group)cGroup_0.eContents().get(2);
-		private final Keyword cLeftSquareBracketKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
-		private final Assignment cPropertyAssignment_0_2_1 = (Assignment)cGroup_0_2.eContents().get(1);
-		private final RuleCall cPropertyPropertyParserRuleCall_0_2_1_0 = (RuleCall)cPropertyAssignment_0_2_1.eContents().get(0);
-		private final Group cGroup_0_2_2 = (Group)cGroup_0_2.eContents().get(2);
-		private final RuleCall cPropertyLogicalOperatorParserRuleCall_0_2_2_0 = (RuleCall)cGroup_0_2_2.eContents().get(0);
-		private final Assignment cPropertyAssignment_0_2_2_1 = (Assignment)cGroup_0_2_2.eContents().get(1);
-		private final RuleCall cPropertyPropertyParserRuleCall_0_2_2_1_0 = (RuleCall)cPropertyAssignment_0_2_2_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_0_2_3 = (Keyword)cGroup_0_2.eContents().get(3);
-		private final Assignment cConditionAssignment_0_2_4 = (Assignment)cGroup_0_2.eContents().get(4);
-		private final RuleCall cConditionPropertyConditionParserRuleCall_0_2_4_0 = (RuleCall)cConditionAssignment_0_2_4.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cEXPECTEDKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
-		private final Keyword cATTIMEINSTANTKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cTimeAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cTimeREALParserRuleCall_1_3_0 = (RuleCall)cTimeAssignment_1_3.eContents().get(0);
-		private final Keyword cISKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		private final Alternatives cAlternatives_1_5 = (Alternatives)cGroup_1.eContents().get(5);
-		private final Group cGroup_1_5_0 = (Group)cAlternatives_1_5.eContents().get(0);
-		private final Assignment cOperatorAssignment_1_5_0_0 = (Assignment)cGroup_1_5_0.eContents().get(0);
-		private final RuleCall cOperatorPropertyRelationalOperatorParserRuleCall_1_5_0_0_0 = (RuleCall)cOperatorAssignment_1_5_0_0.eContents().get(0);
-		private final Assignment cConcentrationAssignment_1_5_0_1 = (Assignment)cGroup_1_5_0.eContents().get(1);
-		private final RuleCall cConcentrationQuantityParserRuleCall_1_5_0_1_0 = (RuleCall)cConcentrationAssignment_1_5_0_1.eContents().get(0);
-		private final Keyword cQuestionMarkKeyword_1_5_1 = (Keyword)cAlternatives_1_5.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVerificationStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cVERIFYKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Assignment cPropertyAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final RuleCall cPropertyPropertyParserRuleCall_2_0_1_0 = (RuleCall)cPropertyAssignment_2_0_1.eContents().get(0);
+		private final Group cGroup_2_0_2 = (Group)cGroup_2_0.eContents().get(2);
+		private final RuleCall cPropertyLogicalOperatorParserRuleCall_2_0_2_0 = (RuleCall)cGroup_2_0_2.eContents().get(0);
+		private final Assignment cPropertyAssignment_2_0_2_1 = (Assignment)cGroup_2_0_2.eContents().get(1);
+		private final RuleCall cPropertyPropertyParserRuleCall_2_0_2_1_0 = (RuleCall)cPropertyAssignment_2_0_2_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_0_3 = (Keyword)cGroup_2_0.eContents().get(3);
+		private final Assignment cConditionAssignment_2_0_4 = (Assignment)cGroup_2_0.eContents().get(4);
+		private final RuleCall cConditionPropertyConditionParserRuleCall_2_0_4_0 = (RuleCall)cConditionAssignment_2_0_4.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cEXPECTEDKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
+		private final Assignment cNameAssignment_2_1_2 = (Assignment)cGroup_2_1.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_1_2_0 = (RuleCall)cNameAssignment_2_1_2.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_1_3 = (Keyword)cGroup_2_1.eContents().get(3);
+		private final Keyword cATTIMEINSTANTKeyword_2_1_4 = (Keyword)cGroup_2_1.eContents().get(4);
+		private final Assignment cTimeAssignment_2_1_5 = (Assignment)cGroup_2_1.eContents().get(5);
+		private final RuleCall cTimeREALParserRuleCall_2_1_5_0 = (RuleCall)cTimeAssignment_2_1_5.eContents().get(0);
+		private final Keyword cISKeyword_2_1_6 = (Keyword)cGroup_2_1.eContents().get(6);
+		private final Alternatives cAlternatives_2_1_7 = (Alternatives)cGroup_2_1.eContents().get(7);
+		private final Group cGroup_2_1_7_0 = (Group)cAlternatives_2_1_7.eContents().get(0);
+		private final Assignment cOperatorAssignment_2_1_7_0_0 = (Assignment)cGroup_2_1_7_0.eContents().get(0);
+		private final RuleCall cOperatorRelationalOperatorParserRuleCall_2_1_7_0_0_0 = (RuleCall)cOperatorAssignment_2_1_7_0_0.eContents().get(0);
+		private final Assignment cConcentrationAssignment_2_1_7_0_1 = (Assignment)cGroup_2_1_7_0.eContents().get(1);
+		private final RuleCall cConcentrationQuantityParserRuleCall_2_1_7_0_1_0 = (RuleCall)cConcentrationAssignment_2_1_7_0_1.eContents().get(0);
+		private final Keyword cQuestionMarkKeyword_2_1_7_1 = (Keyword)cAlternatives_2_1_7.eContents().get(1);
 		
 		//VerificationStatement:
 		//	{VerificationStatement} "VERIFY" ("[" property+=Property (PropertyLogicalOperator property+=Property)* "]"
-		//	condition=PropertyCondition) | "EXPECTED" name=ID "AT TIME INSTANT" time=REAL "IS"
-		//	(operator=PropertyRelationalOperator concentration=Quantity | "?");
+		//	condition=PropertyCondition | "EXPECTED" "[" name=ID "]" "AT TIME INSTANT" time=REAL "IS" (operator=RelationalOperator
+		//	concentration=Quantity | "?"));
 		public ParserRule getRule() { return rule; }
 
 		//{VerificationStatement} "VERIFY" ("[" property+=Property (PropertyLogicalOperator property+=Property)* "]"
-		//condition=PropertyCondition) | "EXPECTED" name=ID "AT TIME INSTANT" time=REAL "IS" (operator=PropertyRelationalOperator
-		//concentration=Quantity | "?")
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//{VerificationStatement} "VERIFY" ("[" property+=Property (PropertyLogicalOperator property+=Property)* "]"
-		//condition=PropertyCondition)
-		public Group getGroup_0() { return cGroup_0; }
+		//condition=PropertyCondition | "EXPECTED" "[" name=ID "]" "AT TIME INSTANT" time=REAL "IS" (operator=RelationalOperator
+		//concentration=Quantity | "?"))
+		public Group getGroup() { return cGroup; }
 
 		//{VerificationStatement}
-		public Action getVerificationStatementAction_0_0() { return cVerificationStatementAction_0_0; }
+		public Action getVerificationStatementAction_0() { return cVerificationStatementAction_0; }
 
 		//"VERIFY"
-		public Keyword getVERIFYKeyword_0_1() { return cVERIFYKeyword_0_1; }
+		public Keyword getVERIFYKeyword_1() { return cVERIFYKeyword_1; }
+
+		//"[" property+=Property (PropertyLogicalOperator property+=Property)* "]" condition=PropertyCondition | "EXPECTED" "["
+		//name=ID "]" "AT TIME INSTANT" time=REAL "IS" (operator=RelationalOperator concentration=Quantity | "?")
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//"[" property+=Property (PropertyLogicalOperator property+=Property)* "]" condition=PropertyCondition
-		public Group getGroup_0_2() { return cGroup_0_2; }
+		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//"["
-		public Keyword getLeftSquareBracketKeyword_0_2_0() { return cLeftSquareBracketKeyword_0_2_0; }
+		public Keyword getLeftSquareBracketKeyword_2_0_0() { return cLeftSquareBracketKeyword_2_0_0; }
 
 		//property+=Property
-		public Assignment getPropertyAssignment_0_2_1() { return cPropertyAssignment_0_2_1; }
+		public Assignment getPropertyAssignment_2_0_1() { return cPropertyAssignment_2_0_1; }
 
 		//Property
-		public RuleCall getPropertyPropertyParserRuleCall_0_2_1_0() { return cPropertyPropertyParserRuleCall_0_2_1_0; }
+		public RuleCall getPropertyPropertyParserRuleCall_2_0_1_0() { return cPropertyPropertyParserRuleCall_2_0_1_0; }
 
 		//(PropertyLogicalOperator property+=Property)*
-		public Group getGroup_0_2_2() { return cGroup_0_2_2; }
+		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 
 		//PropertyLogicalOperator
-		public RuleCall getPropertyLogicalOperatorParserRuleCall_0_2_2_0() { return cPropertyLogicalOperatorParserRuleCall_0_2_2_0; }
+		public RuleCall getPropertyLogicalOperatorParserRuleCall_2_0_2_0() { return cPropertyLogicalOperatorParserRuleCall_2_0_2_0; }
 
 		//property+=Property
-		public Assignment getPropertyAssignment_0_2_2_1() { return cPropertyAssignment_0_2_2_1; }
+		public Assignment getPropertyAssignment_2_0_2_1() { return cPropertyAssignment_2_0_2_1; }
 
 		//Property
-		public RuleCall getPropertyPropertyParserRuleCall_0_2_2_1_0() { return cPropertyPropertyParserRuleCall_0_2_2_1_0; }
+		public RuleCall getPropertyPropertyParserRuleCall_2_0_2_1_0() { return cPropertyPropertyParserRuleCall_2_0_2_1_0; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_0_2_3() { return cRightSquareBracketKeyword_0_2_3; }
+		public Keyword getRightSquareBracketKeyword_2_0_3() { return cRightSquareBracketKeyword_2_0_3; }
 
 		//condition=PropertyCondition
-		public Assignment getConditionAssignment_0_2_4() { return cConditionAssignment_0_2_4; }
+		public Assignment getConditionAssignment_2_0_4() { return cConditionAssignment_2_0_4; }
 
 		//PropertyCondition
-		public RuleCall getConditionPropertyConditionParserRuleCall_0_2_4_0() { return cConditionPropertyConditionParserRuleCall_0_2_4_0; }
+		public RuleCall getConditionPropertyConditionParserRuleCall_2_0_4_0() { return cConditionPropertyConditionParserRuleCall_2_0_4_0; }
 
-		//"EXPECTED" name=ID "AT TIME INSTANT" time=REAL "IS" (operator=PropertyRelationalOperator concentration=Quantity | "?")
-		public Group getGroup_1() { return cGroup_1; }
+		//"EXPECTED" "[" name=ID "]" "AT TIME INSTANT" time=REAL "IS" (operator=RelationalOperator concentration=Quantity | "?")
+		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//"EXPECTED"
-		public Keyword getEXPECTEDKeyword_1_0() { return cEXPECTEDKeyword_1_0; }
+		public Keyword getEXPECTEDKeyword_2_1_0() { return cEXPECTEDKeyword_2_1_0; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_2_1_1() { return cLeftSquareBracketKeyword_2_1_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
+		public Assignment getNameAssignment_2_1_2() { return cNameAssignment_2_1_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_1_2_0() { return cNameIDTerminalRuleCall_2_1_2_0; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
 
 		//"AT TIME INSTANT"
-		public Keyword getATTIMEINSTANTKeyword_1_2() { return cATTIMEINSTANTKeyword_1_2; }
+		public Keyword getATTIMEINSTANTKeyword_2_1_4() { return cATTIMEINSTANTKeyword_2_1_4; }
 
 		//time=REAL
-		public Assignment getTimeAssignment_1_3() { return cTimeAssignment_1_3; }
+		public Assignment getTimeAssignment_2_1_5() { return cTimeAssignment_2_1_5; }
 
 		//REAL
-		public RuleCall getTimeREALParserRuleCall_1_3_0() { return cTimeREALParserRuleCall_1_3_0; }
+		public RuleCall getTimeREALParserRuleCall_2_1_5_0() { return cTimeREALParserRuleCall_2_1_5_0; }
 
 		//"IS"
-		public Keyword getISKeyword_1_4() { return cISKeyword_1_4; }
+		public Keyword getISKeyword_2_1_6() { return cISKeyword_2_1_6; }
 
-		//operator=PropertyRelationalOperator concentration=Quantity | "?"
-		public Alternatives getAlternatives_1_5() { return cAlternatives_1_5; }
+		//operator=RelationalOperator concentration=Quantity | "?"
+		public Alternatives getAlternatives_2_1_7() { return cAlternatives_2_1_7; }
 
-		//operator=PropertyRelationalOperator concentration=Quantity
-		public Group getGroup_1_5_0() { return cGroup_1_5_0; }
+		//operator=RelationalOperator concentration=Quantity
+		public Group getGroup_2_1_7_0() { return cGroup_2_1_7_0; }
 
-		//operator=PropertyRelationalOperator
-		public Assignment getOperatorAssignment_1_5_0_0() { return cOperatorAssignment_1_5_0_0; }
+		//operator=RelationalOperator
+		public Assignment getOperatorAssignment_2_1_7_0_0() { return cOperatorAssignment_2_1_7_0_0; }
 
-		//PropertyRelationalOperator
-		public RuleCall getOperatorPropertyRelationalOperatorParserRuleCall_1_5_0_0_0() { return cOperatorPropertyRelationalOperatorParserRuleCall_1_5_0_0_0; }
+		//RelationalOperator
+		public RuleCall getOperatorRelationalOperatorParserRuleCall_2_1_7_0_0_0() { return cOperatorRelationalOperatorParserRuleCall_2_1_7_0_0_0; }
 
 		//concentration=Quantity
-		public Assignment getConcentrationAssignment_1_5_0_1() { return cConcentrationAssignment_1_5_0_1; }
+		public Assignment getConcentrationAssignment_2_1_7_0_1() { return cConcentrationAssignment_2_1_7_0_1; }
 
 		//Quantity
-		public RuleCall getConcentrationQuantityParserRuleCall_1_5_0_1_0() { return cConcentrationQuantityParserRuleCall_1_5_0_1_0; }
+		public RuleCall getConcentrationQuantityParserRuleCall_2_1_7_0_1_0() { return cConcentrationQuantityParserRuleCall_2_1_7_0_1_0; }
 
 		//"?"
-		public Keyword getQuestionMarkKeyword_1_5_1() { return cQuestionMarkKeyword_1_5_1; }
+		public Keyword getQuestionMarkKeyword_2_1_7_1() { return cQuestionMarkKeyword_2_1_7_1; }
 	}
 
 	public class PropertyElements extends AbstractParserRuleElementFinder {
@@ -1447,15 +1455,15 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cLhsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cLhsIDTerminalRuleCall_1_0 = (RuleCall)cLhsAssignment_1.eContents().get(0);
 		private final Assignment cOperatorAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOperatorPropertyOperatorParserRuleCall_2_0 = (RuleCall)cOperatorAssignment_2.eContents().get(0);
+		private final RuleCall cOperatorRelationalOperatorParserRuleCall_2_0 = (RuleCall)cOperatorAssignment_2.eContents().get(0);
 		private final Assignment cRhsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cRhsQuantityParserRuleCall_3_0 = (RuleCall)cRhsAssignment_3.eContents().get(0);
 		
 		//Property:
-		//	{Property} lhs=ID operator=PropertyOperator rhs=Quantity;
+		//	{Property} lhs=ID operator=RelationalOperator rhs=Quantity;
 		public ParserRule getRule() { return rule; }
 
-		//{Property} lhs=ID operator=PropertyOperator rhs=Quantity
+		//{Property} lhs=ID operator=RelationalOperator rhs=Quantity
 		public Group getGroup() { return cGroup; }
 
 		//{Property}
@@ -1467,49 +1475,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getLhsIDTerminalRuleCall_1_0() { return cLhsIDTerminalRuleCall_1_0; }
 
-		//operator=PropertyOperator
+		//operator=RelationalOperator
 		public Assignment getOperatorAssignment_2() { return cOperatorAssignment_2; }
 
-		//PropertyOperator
-		public RuleCall getOperatorPropertyOperatorParserRuleCall_2_0() { return cOperatorPropertyOperatorParserRuleCall_2_0; }
+		//RelationalOperator
+		public RuleCall getOperatorRelationalOperatorParserRuleCall_2_0() { return cOperatorRelationalOperatorParserRuleCall_2_0; }
 
 		//rhs=Quantity
 		public Assignment getRhsAssignment_3() { return cRhsAssignment_3; }
 
 		//Quantity
 		public RuleCall getRhsQuantityParserRuleCall_3_0() { return cRhsQuantityParserRuleCall_3_0; }
-	}
-
-	public class PropertyOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PropertyOperator");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cLessThanSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cLessThanSignEqualsSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		
-		//PropertyOperator:
-		//	"<" | ">" | "=" | "<=" | ">=";
-		public ParserRule getRule() { return rule; }
-
-		//"<" | ">" | "=" | "<=" | ">="
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_0() { return cLessThanSignKeyword_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_1() { return cGreaterThanSignKeyword_1; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
-
-		//"<="
-		public Keyword getLessThanSignEqualsSignKeyword_3() { return cLessThanSignEqualsSignKeyword_3; }
-
-		//">="
-		public Keyword getGreaterThanSignEqualsSignKeyword_4() { return cGreaterThanSignEqualsSignKeyword_4; }
 	}
 
 	public class PropertyLogicalOperatorElements extends AbstractParserRuleElementFinder {
@@ -1554,18 +1530,18 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives_2_6_1 = (Alternatives)cGroup_2_6.eContents().get(1);
 		private final Group cGroup_2_6_1_0 = (Group)cAlternatives_2_6_1.eContents().get(0);
 		private final Assignment cOperatorAssignment_2_6_1_0_0 = (Assignment)cGroup_2_6_1_0.eContents().get(0);
-		private final RuleCall cOperatorPropertyRelationalOperatorParserRuleCall_2_6_1_0_0_0 = (RuleCall)cOperatorAssignment_2_6_1_0_0.eContents().get(0);
+		private final RuleCall cOperatorRelationalOperatorParserRuleCall_2_6_1_0_0_0 = (RuleCall)cOperatorAssignment_2_6_1_0_0.eContents().get(0);
 		private final Assignment cProbabilityAssignment_2_6_1_0_1 = (Assignment)cGroup_2_6_1_0.eContents().get(1);
 		private final RuleCall cProbabilityREALParserRuleCall_2_6_1_0_1_0 = (RuleCall)cProbabilityAssignment_2_6_1_0_1.eContents().get(0);
 		private final Keyword cQuestionMarkKeyword_2_6_1_1 = (Keyword)cAlternatives_2_6_1.eContents().get(1);
 		
 		//PropertyCondition:
 		//	{PropertyCondition} ("WILL HOLD" | "NEVER HOLDS" | "ALWAYS HOLDS") ("WITHIN TIME BOUND" "[" lowerBound=REAL ","
-		//	upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=PropertyRelationalOperator probability=REAL | "?"))?)?;
+		//	upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)?;
 		public ParserRule getRule() { return rule; }
 
 		//{PropertyCondition} ("WILL HOLD" | "NEVER HOLDS" | "ALWAYS HOLDS") ("WITHIN TIME BOUND" "[" lowerBound=REAL ","
-		//upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=PropertyRelationalOperator probability=REAL | "?"))?)?
+		//upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)?
 		public Group getGroup() { return cGroup; }
 
 		//{PropertyCondition}
@@ -1583,8 +1559,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"ALWAYS HOLDS"
 		public Keyword getALWAYSHOLDSKeyword_1_2() { return cALWAYSHOLDSKeyword_1_2; }
 
-		//("WITHIN TIME BOUND" "[" lowerBound=REAL "," upperBounds=REAL "]" ("WITH PROBABILITY BOUND"
-		//(operator=PropertyRelationalOperator probability=REAL | "?"))?)?
+		//("WITHIN TIME BOUND" "[" lowerBound=REAL "," upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator
+		//probability=REAL | "?"))?)?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//"WITHIN TIME BOUND"
@@ -1611,23 +1587,23 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"]"
 		public Keyword getRightSquareBracketKeyword_2_5() { return cRightSquareBracketKeyword_2_5; }
 
-		//("WITH PROBABILITY BOUND" (operator=PropertyRelationalOperator probability=REAL | "?"))?
+		//("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?
 		public Group getGroup_2_6() { return cGroup_2_6; }
 
 		//"WITH PROBABILITY BOUND"
 		public Keyword getWITHPROBABILITYBOUNDKeyword_2_6_0() { return cWITHPROBABILITYBOUNDKeyword_2_6_0; }
 
-		//operator=PropertyRelationalOperator probability=REAL | "?"
+		//operator=RelationalOperator probability=REAL | "?"
 		public Alternatives getAlternatives_2_6_1() { return cAlternatives_2_6_1; }
 
-		//operator=PropertyRelationalOperator probability=REAL
+		//operator=RelationalOperator probability=REAL
 		public Group getGroup_2_6_1_0() { return cGroup_2_6_1_0; }
 
-		//operator=PropertyRelationalOperator
+		//operator=RelationalOperator
 		public Assignment getOperatorAssignment_2_6_1_0_0() { return cOperatorAssignment_2_6_1_0_0; }
 
-		//PropertyRelationalOperator
-		public RuleCall getOperatorPropertyRelationalOperatorParserRuleCall_2_6_1_0_0_0() { return cOperatorPropertyRelationalOperatorParserRuleCall_2_6_1_0_0_0; }
+		//RelationalOperator
+		public RuleCall getOperatorRelationalOperatorParserRuleCall_2_6_1_0_0_0() { return cOperatorRelationalOperatorParserRuleCall_2_6_1_0_0_0; }
 
 		//probability=REAL
 		public Assignment getProbabilityAssignment_2_6_1_0_1() { return cProbabilityAssignment_2_6_1_0_1; }
@@ -1637,38 +1613,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"?"
 		public Keyword getQuestionMarkKeyword_2_6_1_1() { return cQuestionMarkKeyword_2_6_1_1; }
-	}
-
-	public class PropertyRelationalOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PropertyRelationalOperator");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cLessThanSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cLessThanSignEqualsSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		
-		//PropertyRelationalOperator:
-		//	"<" | ">" | "=" | "<=" | ">=";
-		public ParserRule getRule() { return rule; }
-
-		//"<" | ">" | "=" | "<=" | ">="
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"<"
-		public Keyword getLessThanSignKeyword_0() { return cLessThanSignKeyword_0; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_1() { return cGreaterThanSignKeyword_1; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
-
-		//"<="
-		public Keyword getLessThanSignEqualsSignKeyword_3() { return cLessThanSignEqualsSignKeyword_3; }
-
-		//">="
-		public Keyword getGreaterThanSignEqualsSignKeyword_4() { return cGreaterThanSignEqualsSignKeyword_4; }
 	}
 
 	public class QuantityElements extends AbstractParserRuleElementFinder {
@@ -1834,6 +1778,43 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall_5() { return cINTTerminalRuleCall_5; }
 	}
+
+	public class RelationalOperatorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RelationalOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cEqualsSignEqualsSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cExclamationMarkEqualsSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cLessThanSignKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cGreaterThanSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cLessThanSignEqualsSignKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cGreaterThanSignEqualsSignKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		
+		//// operators
+		//RelationalOperator:
+		//	"==" | "!=" | "<" | ">" | "<=" | ">=";
+		public ParserRule getRule() { return rule; }
+
+		//"==" | "!=" | "<" | ">" | "<=" | ">="
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"=="
+		public Keyword getEqualsSignEqualsSignKeyword_0() { return cEqualsSignEqualsSignKeyword_0; }
+
+		//"!="
+		public Keyword getExclamationMarkEqualsSignKeyword_1() { return cExclamationMarkEqualsSignKeyword_1; }
+
+		//"<"
+		public Keyword getLessThanSignKeyword_2() { return cLessThanSignKeyword_2; }
+
+		//">"
+		public Keyword getGreaterThanSignKeyword_3() { return cGreaterThanSignKeyword_3; }
+
+		//"<="
+		public Keyword getLessThanSignEqualsSignKeyword_4() { return cLessThanSignEqualsSignKeyword_4; }
+
+		//">="
+		public Keyword getGreaterThanSignEqualsSignKeyword_5() { return cGreaterThanSignEqualsSignKeyword_5; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -1865,14 +1846,13 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private PropertyStatementElements pPropertyStatement;
 	private VerificationStatementElements pVerificationStatement;
 	private PropertyElements pProperty;
-	private PropertyOperatorElements pPropertyOperator;
 	private PropertyLogicalOperatorElements pPropertyLogicalOperator;
 	private PropertyConditionElements pPropertyCondition;
-	private PropertyRelationalOperatorElements pPropertyRelationalOperator;
 	private QuantityElements pQuantity;
 	private REALElements pREAL;
 	private DecimalElements pDecimal;
 	private DecimalExpElements pDecimalExp;
+	private RelationalOperatorElements pRelationalOperator;
 	
 	private final Grammar grammar;
 
@@ -2231,8 +2211,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//VerificationStatement:
 	//	{VerificationStatement} "VERIFY" ("[" property+=Property (PropertyLogicalOperator property+=Property)* "]"
-	//	condition=PropertyCondition) | "EXPECTED" name=ID "AT TIME INSTANT" time=REAL "IS"
-	//	(operator=PropertyRelationalOperator concentration=Quantity | "?");
+	//	condition=PropertyCondition | "EXPECTED" "[" name=ID "]" "AT TIME INSTANT" time=REAL "IS" (operator=RelationalOperator
+	//	concentration=Quantity | "?"));
 	public VerificationStatementElements getVerificationStatementAccess() {
 		return (pVerificationStatement != null) ? pVerificationStatement : (pVerificationStatement = new VerificationStatementElements());
 	}
@@ -2242,23 +2222,13 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	{Property} lhs=ID operator=PropertyOperator rhs=Quantity;
+	//	{Property} lhs=ID operator=RelationalOperator rhs=Quantity;
 	public PropertyElements getPropertyAccess() {
 		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
 	}
 	
 	public ParserRule getPropertyRule() {
 		return getPropertyAccess().getRule();
-	}
-
-	//PropertyOperator:
-	//	"<" | ">" | "=" | "<=" | ">=";
-	public PropertyOperatorElements getPropertyOperatorAccess() {
-		return (pPropertyOperator != null) ? pPropertyOperator : (pPropertyOperator = new PropertyOperatorElements());
-	}
-	
-	public ParserRule getPropertyOperatorRule() {
-		return getPropertyOperatorAccess().getRule();
 	}
 
 	//PropertyLogicalOperator:
@@ -2273,23 +2243,13 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PropertyCondition:
 	//	{PropertyCondition} ("WILL HOLD" | "NEVER HOLDS" | "ALWAYS HOLDS") ("WITHIN TIME BOUND" "[" lowerBound=REAL ","
-	//	upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=PropertyRelationalOperator probability=REAL | "?"))?)?;
+	//	upperBounds=REAL "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)?;
 	public PropertyConditionElements getPropertyConditionAccess() {
 		return (pPropertyCondition != null) ? pPropertyCondition : (pPropertyCondition = new PropertyConditionElements());
 	}
 	
 	public ParserRule getPropertyConditionRule() {
 		return getPropertyConditionAccess().getRule();
-	}
-
-	//PropertyRelationalOperator:
-	//	"<" | ">" | "=" | "<=" | ">=";
-	public PropertyRelationalOperatorElements getPropertyRelationalOperatorAccess() {
-		return (pPropertyRelationalOperator != null) ? pPropertyRelationalOperator : (pPropertyRelationalOperator = new PropertyRelationalOperatorElements());
-	}
-	
-	public ParserRule getPropertyRelationalOperatorRule() {
-		return getPropertyRelationalOperatorAccess().getRule();
 	}
 
 	//Quantity:
@@ -2334,6 +2294,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getDecimalExpRule() {
 		return getDecimalExpAccess().getRule();
+	}
+
+	//// operators
+	//RelationalOperator:
+	//	"==" | "!=" | "<" | ">" | "<=" | ">=";
+	public RelationalOperatorElements getRelationalOperatorAccess() {
+		return (pRelationalOperator != null) ? pRelationalOperator : (pRelationalOperator = new RelationalOperatorElements());
+	}
+	
+	public ParserRule getRelationalOperatorRule() {
+		return getRelationalOperatorAccess().getRule();
 	}
 
 	//terminal ID:

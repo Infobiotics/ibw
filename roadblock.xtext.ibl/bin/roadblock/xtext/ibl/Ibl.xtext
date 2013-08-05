@@ -208,21 +208,17 @@ PropertyStatement:
 VerificationStatement:
 	{VerificationStatement}
 	'VERIFY'
-	(
+	((
 		'[' property+=Property (PropertyLogicalOperator property+=Property)* ']' condition=PropertyCondition	
 	) | 
 	(
-		'EXPECTED' '[' name=ID ']' 'AT TIME INSTANT' time=REAL 'IS' ((operator=PropertyRelationalOperator concentration=Quantity) | '?')
-	)
+		'EXPECTED' '[' name=ID ']' 'AT TIME INSTANT' time=REAL 'IS' ((operator=RelationalOperator concentration=Quantity) | '?')
+	))
 ;
 
 Property:
 	{Property}
-	lhs=ID operator=PropertyOperator rhs=Quantity
-;
-
-PropertyOperator:
-	'<' | '>' | '=' | '<=' | '>='
+	lhs=ID operator=RelationalOperator rhs=Quantity
 ;
 
 PropertyLogicalOperator:
@@ -239,13 +235,9 @@ PropertyCondition:
 	(
 	'WITHIN TIME BOUND' '[' lowerBound=REAL ',' upperBounds=REAL ']'
 		(
-		'WITH PROBABILITY BOUND' ((operator=PropertyRelationalOperator probability=REAL) | '?') 
+		'WITH PROBABILITY BOUND' ((operator=RelationalOperator probability=REAL) | '?') 
 		)?
 	)?	 
-;
-
-PropertyRelationalOperator:
-	'<' | '>' | '=' | '<=' | '>='
 ;
 
 Quantity:
@@ -269,5 +261,10 @@ Decimal hidden():
 
 DecimalExp hidden():
 	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
+;
+
+// relational operators
+RelationalOperator:
+	'==' | '!=' | '<' | '>' | '<=' | '>='
 ;
 
