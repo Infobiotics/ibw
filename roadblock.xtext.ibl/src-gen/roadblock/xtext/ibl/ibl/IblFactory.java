@@ -158,6 +158,15 @@ public interface IblFactory extends EFactory
   RuleObject createRuleObject();
 
   /**
+   * Returns a new object of class '<em>Process Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Declaration</em>'.
+   * @generated
+   */
+  ProcessDeclaration createProcessDeclaration();
+
+  /**
    * Returns a new object of class '<em>Device Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -165,6 +174,15 @@ public interface IblFactory extends EFactory
    * @generated
    */
   DeviceDefinition createDeviceDefinition();
+
+  /**
+   * Returns a new object of class '<em>Device Members</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Device Members</em>'.
+   * @generated
+   */
+  DeviceMembers createDeviceMembers();
 
   /**
    * Returns a new object of class '<em>ATGC Definition</em>'.
@@ -183,6 +201,51 @@ public interface IblFactory extends EFactory
    * @generated
    */
   PropertyDefinition createPropertyDefinition();
+
+  /**
+   * Returns a new object of class '<em>Property Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Statement</em>'.
+   * @generated
+   */
+  PropertyStatement createPropertyStatement();
+
+  /**
+   * Returns a new object of class '<em>Verification Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Verification Statement</em>'.
+   * @generated
+   */
+  VerificationStatement createVerificationStatement();
+
+  /**
+   * Returns a new object of class '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property</em>'.
+   * @generated
+   */
+  Property createProperty();
+
+  /**
+   * Returns a new object of class '<em>Property Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Condition</em>'.
+   * @generated
+   */
+  PropertyCondition createPropertyCondition();
+
+  /**
+   * Returns a new object of class '<em>Quantity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Quantity</em>'.
+   * @generated
+   */
+  Quantity createQuantity();
 
   /**
    * Returns the package supported by this factory.

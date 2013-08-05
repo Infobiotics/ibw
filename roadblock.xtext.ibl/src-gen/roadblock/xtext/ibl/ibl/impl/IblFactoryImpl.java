@@ -79,9 +79,16 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
+      case IblPackage.PROCESS_DECLARATION: return createProcessDeclaration();
       case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
+      case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
+      case IblPackage.PROPERTY_STATEMENT: return createPropertyStatement();
+      case IblPackage.VERIFICATION_STATEMENT: return createVerificationStatement();
+      case IblPackage.PROPERTY: return createProperty();
+      case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
+      case IblPackage.QUANTITY: return createQuantity();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -257,10 +264,32 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ProcessDeclaration createProcessDeclaration()
+  {
+    ProcessDeclarationImpl processDeclaration = new ProcessDeclarationImpl();
+    return processDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public DeviceDefinition createDeviceDefinition()
   {
     DeviceDefinitionImpl deviceDefinition = new DeviceDefinitionImpl();
     return deviceDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeviceMembers createDeviceMembers()
+  {
+    DeviceMembersImpl deviceMembers = new DeviceMembersImpl();
+    return deviceMembers;
   }
 
   /**
@@ -283,6 +312,61 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     PropertyDefinitionImpl propertyDefinition = new PropertyDefinitionImpl();
     return propertyDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyStatement createPropertyStatement()
+  {
+    PropertyStatementImpl propertyStatement = new PropertyStatementImpl();
+    return propertyStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VerificationStatement createVerificationStatement()
+  {
+    VerificationStatementImpl verificationStatement = new VerificationStatementImpl();
+    return verificationStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property createProperty()
+  {
+    PropertyImpl property = new PropertyImpl();
+    return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyCondition createPropertyCondition()
+  {
+    PropertyConditionImpl propertyCondition = new PropertyConditionImpl();
+    return propertyCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Quantity createQuantity()
+  {
+    QuantityImpl quantity = new QuantityImpl();
+    return quantity;
   }
 
   /**

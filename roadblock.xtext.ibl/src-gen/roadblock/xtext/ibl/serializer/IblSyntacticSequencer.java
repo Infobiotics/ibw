@@ -8,6 +8,7 @@ import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -18,21 +19,38 @@ import roadblock.xtext.ibl.services.IblGrammarAccess;
 public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected IblGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0;
+	protected AbstractElementAlias match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q;
 	protected AbstractElementAlias match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1;
 	protected AbstractElementAlias match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (IblGrammarAccess) access;
+		match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getALWAYSHOLDSKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getNEVERHOLDSKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWILLHOLDKeyword_1_0()));
+		match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWITHPROBABILITYBOUNDKeyword_2_6_0()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getQuestionMarkKeyword_2_6_1_1()));
 		match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getHyphenMinusGreaterThanSignKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getLessThanSignHyphenMinusGreaterThanSignKeyword_5_1()));
 		match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0_0()), new TokenAlias(false, false, grammarAccess.getVariableAttributeAccess().getTildeKeyword_2_0_1()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getVariableExpressionOperatorRule())
+		if(ruleCall.getRule() == grammarAccess.getPropertyLogicalOperatorRule())
+			return getPropertyLogicalOperatorToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getVariableExpressionOperatorRule())
 			return getVariableExpressionOperatorToken(semanticObject, ruleCall, node);
 		return "";
+	}
+	
+	/**
+	 * PropertyLogicalOperator:
+	 * 	'&' | '|'
+	 * ;
+	 */
+	protected String getPropertyLogicalOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "&";
 	}
 	
 	/**
@@ -52,7 +70,11 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1.equals(syntax))
+			if(match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0.equals(syntax))
+				emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q.equals(syntax))
+				emit_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1.equals(syntax))
 				emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1.equals(syntax))
 				emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -62,7 +84,23 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     '->' | '<->'
+	 *     'NEVER HOLDS' | 'ALWAYS HOLDS' | 'WILL HOLD'
+	 */
+	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('WITH PROBABILITY BOUND' '?')?
+	 */
+	protected void emit_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     '<->' | '->'
 	 */
 	protected void emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -70,7 +108,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     '~' | '.'
+	 *     '.' | '~'
 	 */
 	protected void emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

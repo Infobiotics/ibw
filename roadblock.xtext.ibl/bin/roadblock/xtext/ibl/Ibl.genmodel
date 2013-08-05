@@ -64,19 +64,48 @@
     <genClasses ecoreClass="Ibl.ecore#//RuleObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleObject/subobjects"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessDeclaration/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessDeclaration/parameters"/>
+    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//DeviceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/parts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/members"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//DeviceMembers">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceMembers/name"/>
+    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//ATGCDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ATGCDefinition/command"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ATGCDefinition/arguments"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//PropertyDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyDefinition/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyDefinition/arguments"/>
+    <genClasses ecoreClass="Ibl.ecore#//PropertyDefinition"/>
+    <genClasses ecoreClass="Ibl.ecore#//PropertyStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyStatement/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VerificationStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VerificationStatement/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VerificationStatement/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VerificationStatement/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VerificationStatement/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VerificationStatement/concentration"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Property/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Property/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//Property/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//PropertyCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/upperBounds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/probability"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//Quantity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/units"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

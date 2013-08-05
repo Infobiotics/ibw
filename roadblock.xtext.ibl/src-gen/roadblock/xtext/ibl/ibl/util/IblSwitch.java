@@ -184,11 +184,26 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.PROCESS_DECLARATION:
+      {
+        ProcessDeclaration processDeclaration = (ProcessDeclaration)theEObject;
+        T result = caseProcessDeclaration(processDeclaration);
+        if (result == null) result = caseDeviceMembers(processDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.DEVICE_DEFINITION:
       {
         DeviceDefinition deviceDefinition = (DeviceDefinition)theEObject;
         T result = caseDeviceDefinition(deviceDefinition);
         if (result == null) result = caseFunctionDefinitionMember(deviceDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.DEVICE_MEMBERS:
+      {
+        DeviceMembers deviceMembers = (DeviceMembers)theEObject;
+        T result = caseDeviceMembers(deviceMembers);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -205,6 +220,48 @@ public class IblSwitch<T> extends Switch<T>
         PropertyDefinition propertyDefinition = (PropertyDefinition)theEObject;
         T result = casePropertyDefinition(propertyDefinition);
         if (result == null) result = caseFunctionDefinitionMember(propertyDefinition);
+        if (result == null) result = caseDeviceMembers(propertyDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROPERTY_STATEMENT:
+      {
+        PropertyStatement propertyStatement = (PropertyStatement)theEObject;
+        T result = casePropertyStatement(propertyStatement);
+        if (result == null) result = casePropertyDefinition(propertyStatement);
+        if (result == null) result = caseFunctionDefinitionMember(propertyStatement);
+        if (result == null) result = caseDeviceMembers(propertyStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VERIFICATION_STATEMENT:
+      {
+        VerificationStatement verificationStatement = (VerificationStatement)theEObject;
+        T result = caseVerificationStatement(verificationStatement);
+        if (result == null) result = casePropertyDefinition(verificationStatement);
+        if (result == null) result = caseFunctionDefinitionMember(verificationStatement);
+        if (result == null) result = caseDeviceMembers(verificationStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROPERTY:
+      {
+        Property property = (Property)theEObject;
+        T result = caseProperty(property);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROPERTY_CONDITION:
+      {
+        PropertyCondition propertyCondition = (PropertyCondition)theEObject;
+        T result = casePropertyCondition(propertyCondition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.QUANTITY:
+      {
+        Quantity quantity = (Quantity)theEObject;
+        T result = caseQuantity(quantity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -453,6 +510,22 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessDeclaration(ProcessDeclaration object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Device Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -464,6 +537,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDeviceDefinition(DeviceDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Device Members</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Device Members</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeviceMembers(DeviceMembers object)
   {
     return null;
   }
@@ -496,6 +585,86 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePropertyDefinition(PropertyDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyStatement(PropertyStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Verification Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Verification Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVerificationStatement(VerificationStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProperty(Property object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Condition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Condition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyCondition(PropertyCondition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Quantity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Quantity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQuantity(Quantity object)
   {
     return null;
   }

@@ -151,6 +151,15 @@ RuleObject:
 	subobjects+=ID ('~' subobjects+=ID)*
 ;
 
+///////////////
+// processes //
+///////////////
+
+ProcessDeclaration:
+	{ProcessDeclaration}
+	'PROCESS' name=ID '=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
+;
+
 /////////////
 // devices //
 /////////////
@@ -158,7 +167,20 @@ RuleObject:
 // device definition
 DeviceDefinition:
 	{DeviceDefinition}
-	'DEVICE' name=ID '=' 'DEVICE' '(' (parts+=ID (',' parts+=ID)*) ')' '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')' '{' (members+=VariableDeclaration (',' members+=VariableDeclaration)*)? '}'
+	'DEVICE' name=ID '=' 'DEVICE'
+	'('
+		(parts+=ID (',' parts+=ID)*)
+	')'
+	'('
+		(parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)?
+	')'
+	'{'
+		(members+=DeviceMembers*)
+	'}'
+;
+
+DeviceMembers:
+	ProcessDeclaration | PropertyDefinition
 ;
 
 ////////////////
@@ -175,9 +197,60 @@ ATGCDefinition:
 /////////////////////////
 
 PropertyDefinition:
-	{PropertyDefinition}
-	'PROPERTY' name=ID ':' arguments=STRING |
-	'VERIFY' arguments=STRING
+	PropertyStatement |	VerificationStatement
+;
+
+PropertyStatement:
+	{PropertyStatement}
+	'PROPERTY' name=ID ':' arguments=STRING	
+;
+
+VerificationStatement:
+	{VerificationStatement}
+	'VERIFY'
+	(
+		'[' property+=Property (PropertyLogicalOperator property+=Property)* ']' condition=PropertyCondition	
+	) | 
+	(
+		'EXPECTED' '[' name=ID ']' 'AT TIME INSTANT' time=REAL 'IS' ((operator=PropertyRelationalOperator concentration=Quantity) | '?')
+	)
+;
+
+Property:
+	{Property}
+	lhs=ID operator=PropertyOperator rhs=Quantity
+;
+
+PropertyOperator:
+	'<' | '>' | '=' | '<=' | '>='
+;
+
+PropertyLogicalOperator:
+	'&' | '|'
+;
+
+PropertyCondition:
+	{PropertyCondition}
+	(
+	'WILL HOLD' |
+	'NEVER HOLDS' |
+	'ALWAYS HOLDS'
+	)
+	(
+	'WITHIN TIME BOUND' '[' lowerBound=REAL ',' upperBounds=REAL ']'
+		(
+		'WITH PROBABILITY BOUND' ((operator=PropertyRelationalOperator probability=REAL) | '?') 
+		)?
+	)?	 
+;
+
+PropertyRelationalOperator:
+	'<' | '>' | '=' | '<=' | '>='
+;
+
+Quantity:
+	{Quantity}
+	value=REAL units=ID
 ;
 
 /////////////////

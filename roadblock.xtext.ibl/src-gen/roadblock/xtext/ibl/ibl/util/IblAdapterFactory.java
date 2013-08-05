@@ -150,9 +150,19 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createRuleObjectAdapter();
       }
       @Override
+      public Adapter caseProcessDeclaration(ProcessDeclaration object)
+      {
+        return createProcessDeclarationAdapter();
+      }
+      @Override
       public Adapter caseDeviceDefinition(DeviceDefinition object)
       {
         return createDeviceDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseDeviceMembers(DeviceMembers object)
+      {
+        return createDeviceMembersAdapter();
       }
       @Override
       public Adapter caseATGCDefinition(ATGCDefinition object)
@@ -163,6 +173,31 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter casePropertyDefinition(PropertyDefinition object)
       {
         return createPropertyDefinitionAdapter();
+      }
+      @Override
+      public Adapter casePropertyStatement(PropertyStatement object)
+      {
+        return createPropertyStatementAdapter();
+      }
+      @Override
+      public Adapter caseVerificationStatement(VerificationStatement object)
+      {
+        return createVerificationStatementAdapter();
+      }
+      @Override
+      public Adapter caseProperty(Property object)
+      {
+        return createPropertyAdapter();
+      }
+      @Override
+      public Adapter casePropertyCondition(PropertyCondition object)
+      {
+        return createPropertyConditionAdapter();
+      }
+      @Override
+      public Adapter caseQuantity(Quantity object)
+      {
+        return createQuantityAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -412,6 +447,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessDeclaration <em>Process Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessDeclaration
+   * @generated
+   */
+  public Adapter createProcessDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -422,6 +472,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDeviceDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceMembers <em>Device Members</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.DeviceMembers
+   * @generated
+   */
+  public Adapter createDeviceMembersAdapter()
   {
     return null;
   }
@@ -452,6 +517,81 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropertyDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PropertyStatement <em>Property Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.PropertyStatement
+   * @generated
+   */
+  public Adapter createPropertyStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VerificationStatement <em>Verification Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VerificationStatement
+   * @generated
+   */
+  public Adapter createVerificationStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.Property <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.Property
+   * @generated
+   */
+  public Adapter createPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PropertyCondition <em>Property Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.PropertyCondition
+   * @generated
+   */
+  public Adapter createPropertyConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.Quantity <em>Quantity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.Quantity
+   * @generated
+   */
+  public Adapter createQuantityAdapter()
   {
     return null;
   }
