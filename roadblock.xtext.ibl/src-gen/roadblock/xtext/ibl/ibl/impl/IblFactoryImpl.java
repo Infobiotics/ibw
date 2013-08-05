@@ -84,8 +84,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
-      case IblPackage.PROPERTY_STATEMENT: return createPropertyStatement();
-      case IblPackage.VERIFICATION_STATEMENT: return createVerificationStatement();
       case IblPackage.PROPERTY: return createProperty();
       case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
       case IblPackage.QUANTITY: return createQuantity();
@@ -312,28 +310,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     PropertyDefinitionImpl propertyDefinition = new PropertyDefinitionImpl();
     return propertyDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PropertyStatement createPropertyStatement()
-  {
-    PropertyStatementImpl propertyStatement = new PropertyStatementImpl();
-    return propertyStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VerificationStatement createVerificationStatement()
-  {
-    VerificationStatementImpl verificationStatement = new VerificationStatementImpl();
-    return verificationStatement;
   }
 
   /**

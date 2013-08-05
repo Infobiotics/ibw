@@ -30,14 +30,6 @@ Import:
 	'import' importedNamespace=QualifiedNameWithWildcard
 ;
 
-QualifiedNameWithWildcard:
-	QualifiedName ('.*')?
-;
-
-QualifiedName:
-	ID ('.' ID)*
-;
-
 // a variable definition
 VariableDefinition:
 	{VariableDefinition}
@@ -258,5 +250,14 @@ RelationalOperator:
 // boolean operator
 BooleanOperator:
 	'&' | '|'
+;
+
+// qualified name
+QualifiedNameWithWildcard:
+	QualifiedName ('.*')?
+;
+
+QualifiedName:
+	ID ('.' ID)*
 ;
 

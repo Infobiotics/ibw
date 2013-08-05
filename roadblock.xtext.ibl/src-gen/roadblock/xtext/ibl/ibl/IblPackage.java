@@ -797,78 +797,13 @@ public interface IblPackage extends EPackage
   int PROPERTY_DEFINITION__NAME = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Property Definition</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_DEFINITION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyStatementImpl <em>Property Statement</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.PropertyStatementImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyStatement()
-   * @generated
-   */
-  int PROPERTY_STATEMENT = 20;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_STATEMENT__NAME = PROPERTY_DEFINITION__NAME;
-
-  /**
-   * The feature id for the '<em><b>Arguments</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_STATEMENT__ARGUMENTS = PROPERTY_DEFINITION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Property Statement</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_STATEMENT_FEATURE_COUNT = PROPERTY_DEFINITION_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VerificationStatementImpl <em>Verification Statement</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.VerificationStatementImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVerificationStatement()
-   * @generated
-   */
-  int VERIFICATION_STATEMENT = 21;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERIFICATION_STATEMENT__NAME = PROPERTY_DEFINITION__NAME;
-
-  /**
    * The feature id for the '<em><b>Property</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VERIFICATION_STATEMENT__PROPERTY = PROPERTY_DEFINITION_FEATURE_COUNT + 0;
+  int PROPERTY_DEFINITION__PROPERTY = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -877,7 +812,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERIFICATION_STATEMENT__CONDITION = PROPERTY_DEFINITION_FEATURE_COUNT + 1;
+  int PROPERTY_DEFINITION__CONDITION = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -886,7 +821,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERIFICATION_STATEMENT__TIME = PROPERTY_DEFINITION_FEATURE_COUNT + 2;
+  int PROPERTY_DEFINITION__TIME = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -895,7 +830,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERIFICATION_STATEMENT__OPERATOR = PROPERTY_DEFINITION_FEATURE_COUNT + 3;
+  int PROPERTY_DEFINITION__OPERATOR = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Concentration</b></em>' containment reference.
@@ -904,16 +839,16 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERIFICATION_STATEMENT__CONCENTRATION = PROPERTY_DEFINITION_FEATURE_COUNT + 4;
+  int PROPERTY_DEFINITION__CONCENTRATION = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 5;
 
   /**
-   * The number of structural features of the '<em>Verification Statement</em>' class.
+   * The number of structural features of the '<em>Property Definition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VERIFICATION_STATEMENT_FEATURE_COUNT = PROPERTY_DEFINITION_FEATURE_COUNT + 5;
+  int PROPERTY_DEFINITION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyImpl <em>Property</em>}' class.
@@ -923,7 +858,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 22;
+  int PROPERTY = 20;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' attribute.
@@ -969,7 +904,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyCondition()
    * @generated
    */
-  int PROPERTY_CONDITION = 23;
+  int PROPERTY_CONDITION = 21;
 
   /**
    * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -1024,7 +959,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getQuantity()
    * @generated
    */
-  int QUANTITY = 24;
+  int QUANTITY = 22;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1684,90 +1619,59 @@ public interface IblPackage extends EPackage
   EClass getPropertyDefinition();
 
   /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PropertyStatement <em>Property Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Property Statement</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyStatement
-   * @generated
-   */
-  EClass getPropertyStatement();
-
-  /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyStatement#getArguments <em>Arguments</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Arguments</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyStatement#getArguments()
-   * @see #getPropertyStatement()
-   * @generated
-   */
-  EAttribute getPropertyStatement_Arguments();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VerificationStatement <em>Verification Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Verification Statement</em>'.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement
-   * @generated
-   */
-  EClass getVerificationStatement();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.VerificationStatement#getProperty <em>Property</em>}'.
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Property</em>'.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement#getProperty()
-   * @see #getVerificationStatement()
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getProperty()
+   * @see #getPropertyDefinition()
    * @generated
    */
-  EReference getVerificationStatement_Property();
+  EReference getPropertyDefinition_Property();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VerificationStatement#getCondition <em>Condition</em>}'.
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getCondition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Condition</em>'.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement#getCondition()
-   * @see #getVerificationStatement()
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getCondition()
+   * @see #getPropertyDefinition()
    * @generated
    */
-  EReference getVerificationStatement_Condition();
+  EReference getPropertyDefinition_Condition();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VerificationStatement#getTime <em>Time</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getTime <em>Time</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Time</em>'.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement#getTime()
-   * @see #getVerificationStatement()
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getTime()
+   * @see #getPropertyDefinition()
    * @generated
    */
-  EAttribute getVerificationStatement_Time();
+  EAttribute getPropertyDefinition_Time();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VerificationStatement#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement#getOperator()
-   * @see #getVerificationStatement()
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getOperator()
+   * @see #getPropertyDefinition()
    * @generated
    */
-  EAttribute getVerificationStatement_Operator();
+  EAttribute getPropertyDefinition_Operator();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VerificationStatement#getConcentration <em>Concentration</em>}'.
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getConcentration <em>Concentration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Concentration</em>'.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement#getConcentration()
-   * @see #getVerificationStatement()
+   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getConcentration()
+   * @see #getPropertyDefinition()
    * @generated
    */
-  EReference getVerificationStatement_Concentration();
+  EReference getPropertyDefinition_Concentration();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.Property <em>Property</em>}'.
@@ -2434,40 +2338,12 @@ public interface IblPackage extends EPackage
     EClass PROPERTY_DEFINITION = eINSTANCE.getPropertyDefinition();
 
     /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyStatementImpl <em>Property Statement</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.PropertyStatementImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyStatement()
-     * @generated
-     */
-    EClass PROPERTY_STATEMENT = eINSTANCE.getPropertyStatement();
-
-    /**
-     * The meta object literal for the '<em><b>Arguments</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROPERTY_STATEMENT__ARGUMENTS = eINSTANCE.getPropertyStatement_Arguments();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VerificationStatementImpl <em>Verification Statement</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.VerificationStatementImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVerificationStatement()
-     * @generated
-     */
-    EClass VERIFICATION_STATEMENT = eINSTANCE.getVerificationStatement();
-
-    /**
      * The meta object literal for the '<em><b>Property</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VERIFICATION_STATEMENT__PROPERTY = eINSTANCE.getVerificationStatement_Property();
+    EReference PROPERTY_DEFINITION__PROPERTY = eINSTANCE.getPropertyDefinition_Property();
 
     /**
      * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
@@ -2475,7 +2351,7 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VERIFICATION_STATEMENT__CONDITION = eINSTANCE.getVerificationStatement_Condition();
+    EReference PROPERTY_DEFINITION__CONDITION = eINSTANCE.getPropertyDefinition_Condition();
 
     /**
      * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
@@ -2483,7 +2359,7 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VERIFICATION_STATEMENT__TIME = eINSTANCE.getVerificationStatement_Time();
+    EAttribute PROPERTY_DEFINITION__TIME = eINSTANCE.getPropertyDefinition_Time();
 
     /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -2491,7 +2367,7 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VERIFICATION_STATEMENT__OPERATOR = eINSTANCE.getVerificationStatement_Operator();
+    EAttribute PROPERTY_DEFINITION__OPERATOR = eINSTANCE.getPropertyDefinition_Operator();
 
     /**
      * The meta object literal for the '<em><b>Concentration</b></em>' containment reference feature.
@@ -2499,7 +2375,7 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VERIFICATION_STATEMENT__CONCENTRATION = eINSTANCE.getVerificationStatement_Concentration();
+    EReference PROPERTY_DEFINITION__CONCENTRATION = eINSTANCE.getPropertyDefinition_Concentration();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyImpl <em>Property</em>}' class.

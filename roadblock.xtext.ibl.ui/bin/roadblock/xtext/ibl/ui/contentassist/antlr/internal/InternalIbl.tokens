@@ -10,7 +10,6 @@ T__22=22
 RULE_ANY_OTHER=10
 T__21=21
 T__20=20
-T__60=60
 T__55=55
 T__56=56
 T__19=19
@@ -55,16 +54,16 @@ T__37=37
 T__38=38
 T__39=39
 RULE_WS=9
-'>='=36
+'>='=35
 '~'=18
-'=='=31
-'>'=34
-'e'=30
+'=='=30
+'>'=33
+'e'=29
 'define'=39
 '+'=19
 '<->'=23
 '.'=17
-'WILL HOLD'=26
+'WILL HOLD'=25
 'required'=12
 'import'=37
 'observable'=11
@@ -77,31 +76,30 @@ RULE_WS=9
 '('=42
 ':'=46
 '-'=20
-'WITHIN TIME BOUND'=59
+'WITHIN TIME BOUND'=58
 ','=44
-']'=55
+']'=54
 '|'=21
-'IS'=58
+'IS'=57
 '.*'=38
-'VERIFY'=53
+'VERIFY'=52
 'DEVICE'=50
 '='=47
 ')'=43
 'PROCESS'=49
 '->'=22
 'SET'=16
-'NEVER HOLDS'=27
+'NEVER HOLDS'=26
 '}'=41
-'PROPERTY'=52
 'optional'=14
-'<='=35
-'WITH PROBABILITY BOUND'=60
-'!='=32
+'<='=34
+'WITH PROBABILITY BOUND'=59
+'!='=31
 'USES'=45
-'<'=33
-'['=54
-'ALWAYS HOLDS'=28
-'E'=29
-'AT TIME INSTANT'=57
-'&'=25
-'EXPECTED'=56
+'<'=32
+'['=53
+'ALWAYS HOLDS'=27
+'E'=28
+'AT TIME INSTANT'=56
+'&'=36
+'EXPECTED'=55

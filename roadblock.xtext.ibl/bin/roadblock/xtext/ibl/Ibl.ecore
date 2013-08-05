@@ -92,11 +92,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyDefinition" eSuperTypes="#//FunctionDefinitionMember #//DeviceMembers"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyStatement" eSuperTypes="#//PropertyDefinition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VerificationStatement" eSuperTypes="#//PropertyDefinition">
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDefinition" eSuperTypes="#//FunctionDefinitionMember #//DeviceMembers">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" upperBound="-1"
         eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//PropertyCondition"

@@ -24,7 +24,7 @@ import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ProcessDeclaration;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
-import roadblock.xtext.ibl.ibl.PropertyStatement;
+import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
@@ -33,7 +33,6 @@ import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableExpression;
-import roadblock.xtext.ibl.ibl.VerificationStatement;
 import roadblock.xtext.ibl.services.IblGrammarAccess;
 
 @SuppressWarnings("all")
@@ -109,12 +108,11 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.PROPERTY_STATEMENT:
+			case IblPackage.PROPERTY_DEFINITION:
 				if(context == grammarAccess.getDeviceMembersRule() ||
 				   context == grammarAccess.getFunctionDefinitionMemberRule() ||
-				   context == grammarAccess.getPropertyDefinitionRule() ||
-				   context == grammarAccess.getPropertyStatementRule()) {
-					sequence_PropertyStatement(context, (PropertyStatement) semanticObject); 
+				   context == grammarAccess.getPropertyDefinitionRule()) {
+					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
 					return; 
 				}
 				else break;
@@ -168,15 +166,6 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case IblPackage.VARIABLE_EXPRESSION:
 				if(context == grammarAccess.getVariableExpressionRule()) {
 					sequence_VariableExpression(context, (VariableExpression) semanticObject); 
-					return; 
-				}
-				else break;
-			case IblPackage.VERIFICATION_STATEMENT:
-				if(context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getFunctionDefinitionMemberRule() ||
-				   context == grammarAccess.getPropertyDefinitionRule() ||
-				   context == grammarAccess.getVerificationStatementRule()) {
-					sequence_VerificationStatement(context, (VerificationStatement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -303,20 +292,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID arguments=STRING)
+	 *     (
+	 *         (property+=Property property+=Property* condition=PropertyCondition) | 
+	 *         (name=ID time=REAL (operator=RelationalOperator concentration=Quantity)?)
+	 *     )
 	 */
-	protected void sequence_PropertyStatement(EObject context, PropertyStatement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.DEVICE_MEMBERS__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.DEVICE_MEMBERS__NAME));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY_STATEMENT__ARGUMENTS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY_STATEMENT__ARGUMENTS));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyStatementAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getPropertyStatementAccess().getArgumentsSTRINGTerminalRuleCall_4_0(), semanticObject.getArguments());
-		feeder.finish();
+	protected void sequence_PropertyDefinition(EObject context, PropertyDefinition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -434,18 +416,6 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (members+=VariableAttribute members+=VariableAttribute*)
 	 */
 	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         (property+=Property property+=Property* condition=PropertyCondition) | 
-	 *         (name=ID time=REAL (operator=RelationalOperator concentration=Quantity)?)
-	 *     )
-	 */
-	protected void sequence_VerificationStatement(EObject context, VerificationStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

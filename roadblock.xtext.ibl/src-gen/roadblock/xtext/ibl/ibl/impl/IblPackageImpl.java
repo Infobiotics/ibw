@@ -25,7 +25,6 @@ import roadblock.xtext.ibl.ibl.ProcessDeclaration;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
-import roadblock.xtext.ibl.ibl.PropertyStatement;
 import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
@@ -35,7 +34,6 @@ import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
 import roadblock.xtext.ibl.ibl.VariableExpression;
-import roadblock.xtext.ibl.ibl.VerificationStatement;
 
 /**
  * <!-- begin-user-doc -->
@@ -184,20 +182,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass propertyDefinitionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass propertyStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass verificationStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -878,9 +862,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPropertyStatement()
+  public EReference getPropertyDefinition_Property()
   {
-    return propertyStatementEClass;
+    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -888,9 +872,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyStatement_Arguments()
+  public EReference getPropertyDefinition_Condition()
   {
-    return (EAttribute)propertyStatementEClass.getEStructuralFeatures().get(0);
+    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -898,9 +882,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVerificationStatement()
+  public EAttribute getPropertyDefinition_Time()
   {
-    return verificationStatementEClass;
+    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -908,9 +892,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVerificationStatement_Property()
+  public EAttribute getPropertyDefinition_Operator()
   {
-    return (EReference)verificationStatementEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -918,39 +902,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVerificationStatement_Condition()
+  public EReference getPropertyDefinition_Concentration()
   {
-    return (EReference)verificationStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVerificationStatement_Time()
-  {
-    return (EAttribute)verificationStatementEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVerificationStatement_Operator()
-  {
-    return (EAttribute)verificationStatementEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getVerificationStatement_Concentration()
-  {
-    return (EReference)verificationStatementEClass.getEStructuralFeatures().get(4);
+    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1181,16 +1135,11 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(atgcDefinitionEClass, ATGC_DEFINITION__ARGUMENTS);
 
     propertyDefinitionEClass = createEClass(PROPERTY_DEFINITION);
-
-    propertyStatementEClass = createEClass(PROPERTY_STATEMENT);
-    createEAttribute(propertyStatementEClass, PROPERTY_STATEMENT__ARGUMENTS);
-
-    verificationStatementEClass = createEClass(VERIFICATION_STATEMENT);
-    createEReference(verificationStatementEClass, VERIFICATION_STATEMENT__PROPERTY);
-    createEReference(verificationStatementEClass, VERIFICATION_STATEMENT__CONDITION);
-    createEAttribute(verificationStatementEClass, VERIFICATION_STATEMENT__TIME);
-    createEAttribute(verificationStatementEClass, VERIFICATION_STATEMENT__OPERATOR);
-    createEReference(verificationStatementEClass, VERIFICATION_STATEMENT__CONCENTRATION);
+    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__PROPERTY);
+    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__CONDITION);
+    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__TIME);
+    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__OPERATOR);
+    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__CONCENTRATION);
 
     propertyEClass = createEClass(PROPERTY);
     createEAttribute(propertyEClass, PROPERTY__LHS);
@@ -1249,8 +1198,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     atgcDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
-    propertyStatementEClass.getESuperTypes().add(this.getPropertyDefinition());
-    verificationStatementEClass.getESuperTypes().add(this.getPropertyDefinition());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1331,16 +1278,11 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getATGCDefinition_Arguments(), ecorePackage.getEString(), "arguments", null, 0, -1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyDefinitionEClass, PropertyDefinition.class, "PropertyDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(propertyStatementEClass, PropertyStatement.class, "PropertyStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPropertyStatement_Arguments(), ecorePackage.getEString(), "arguments", null, 0, 1, PropertyStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(verificationStatementEClass, VerificationStatement.class, "VerificationStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVerificationStatement_Property(), this.getProperty(), null, "property", null, 0, -1, VerificationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVerificationStatement_Condition(), this.getPropertyCondition(), null, "condition", null, 0, 1, VerificationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVerificationStatement_Time(), ecorePackage.getEString(), "time", null, 0, 1, VerificationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVerificationStatement_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, VerificationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVerificationStatement_Concentration(), this.getQuantity(), null, "concentration", null, 0, 1, VerificationStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyDefinition_Property(), this.getProperty(), null, "property", null, 0, -1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyDefinition_Condition(), this.getPropertyCondition(), null, "condition", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPropertyDefinition_Time(), ecorePackage.getEString(), "time", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPropertyDefinition_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyDefinition_Concentration(), this.getQuantity(), null, "concentration", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProperty_Lhs(), ecorePackage.getEString(), "lhs", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

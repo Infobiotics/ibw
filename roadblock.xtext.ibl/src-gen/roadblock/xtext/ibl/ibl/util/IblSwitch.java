@@ -224,26 +224,6 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.PROPERTY_STATEMENT:
-      {
-        PropertyStatement propertyStatement = (PropertyStatement)theEObject;
-        T result = casePropertyStatement(propertyStatement);
-        if (result == null) result = casePropertyDefinition(propertyStatement);
-        if (result == null) result = caseFunctionDefinitionMember(propertyStatement);
-        if (result == null) result = caseDeviceMembers(propertyStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.VERIFICATION_STATEMENT:
-      {
-        VerificationStatement verificationStatement = (VerificationStatement)theEObject;
-        T result = caseVerificationStatement(verificationStatement);
-        if (result == null) result = casePropertyDefinition(verificationStatement);
-        if (result == null) result = caseFunctionDefinitionMember(verificationStatement);
-        if (result == null) result = caseDeviceMembers(verificationStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case IblPackage.PROPERTY:
       {
         Property property = (Property)theEObject;
@@ -585,38 +565,6 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePropertyDefinition(PropertyDefinition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePropertyStatement(PropertyStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Verification Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Verification Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVerificationStatement(VerificationStatement object)
   {
     return null;
   }

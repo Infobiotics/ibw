@@ -175,16 +175,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createPropertyDefinitionAdapter();
       }
       @Override
-      public Adapter casePropertyStatement(PropertyStatement object)
-      {
-        return createPropertyStatementAdapter();
-      }
-      @Override
-      public Adapter caseVerificationStatement(VerificationStatement object)
-      {
-        return createVerificationStatementAdapter();
-      }
-      @Override
       public Adapter caseProperty(Property object)
       {
         return createPropertyAdapter();
@@ -517,36 +507,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropertyDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PropertyStatement <em>Property Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.PropertyStatement
-   * @generated
-   */
-  public Adapter createPropertyStatementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VerificationStatement <em>Verification Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.VerificationStatement
-   * @generated
-   */
-  public Adapter createVerificationStatementAdapter()
   {
     return null;
   }

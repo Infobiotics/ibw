@@ -203,24 +203,6 @@ public interface IblFactory extends EFactory
   PropertyDefinition createPropertyDefinition();
 
   /**
-   * Returns a new object of class '<em>Property Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Statement</em>'.
-   * @generated
-   */
-  PropertyStatement createPropertyStatement();
-
-  /**
-   * Returns a new object of class '<em>Verification Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Verification Statement</em>'.
-   * @generated
-   */
-  VerificationStatement createVerificationStatement();
-
-  /**
    * Returns a new object of class '<em>Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

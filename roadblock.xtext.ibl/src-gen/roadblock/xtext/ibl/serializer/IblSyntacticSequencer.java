@@ -35,19 +35,19 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if(ruleCall.getRule() == grammarAccess.getPropertyLogicalOperatorRule())
-			return getPropertyLogicalOperatorToken(semanticObject, ruleCall, node);
+		if(ruleCall.getRule() == grammarAccess.getBooleanOperatorRule())
+			return getBooleanOperatorToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getVariableExpressionOperatorRule())
 			return getVariableExpressionOperatorToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
 	/**
-	 * PropertyLogicalOperator:
+	 * BooleanOperator:
 	 * 	'&' | '|'
 	 * ;
 	 */
-	protected String getPropertyLogicalOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getBooleanOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "&";
@@ -84,7 +84,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'ALWAYS HOLDS' | 'WILL HOLD' | 'NEVER HOLDS'
+	 *     'NEVER HOLDS' | 'WILL HOLD' | 'ALWAYS HOLDS'
 	 */
 	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -100,7 +100,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     '<->' | '->'
+	 *     '->' | '<->'
 	 */
 	protected void emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -108,7 +108,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     '.' | '~'
+	 *     '~' | '.'
 	 */
 	protected void emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

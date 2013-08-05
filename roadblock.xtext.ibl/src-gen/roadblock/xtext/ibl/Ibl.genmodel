@@ -81,16 +81,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ATGCDefinition/command"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ATGCDefinition/arguments"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//PropertyDefinition"/>
-    <genClasses ecoreClass="Ibl.ecore#//PropertyStatement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyStatement/arguments"/>
-    </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//VerificationStatement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VerificationStatement/property"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VerificationStatement/condition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VerificationStatement/time"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VerificationStatement/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VerificationStatement/concentration"/>
+    <genClasses ecoreClass="Ibl.ecore#//PropertyDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyDefinition/time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyDefinition/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/concentration"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Property/lhs"/>
