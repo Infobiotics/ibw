@@ -197,19 +197,10 @@ ATGCDefinition:
 /////////////////////////
 
 PropertyDefinition:
-	PropertyStatement |	VerificationStatement
-;
-
-PropertyStatement:
-	{PropertyStatement}
-	'PROPERTY' name=ID ':' arguments=STRING	
-;
-
-VerificationStatement:
-	{VerificationStatement}
+	{PropertyDefinition}
 	'VERIFY'
 	((
-		'[' property+=Property (PropertyLogicalOperator property+=Property)* ']' condition=PropertyCondition	
+		'[' property+=Property (BooleanOperator property+=Property)* ']' condition=PropertyCondition	
 	) | 
 	(
 		'EXPECTED' '[' name=ID ']' 'AT TIME INSTANT' time=REAL 'IS' ((operator=RelationalOperator concentration=Quantity) | '?')
@@ -219,10 +210,6 @@ VerificationStatement:
 Property:
 	{Property}
 	lhs=ID operator=RelationalOperator rhs=Quantity
-;
-
-PropertyLogicalOperator:
-	'&' | '|'
 ;
 
 PropertyCondition:
@@ -240,17 +227,11 @@ PropertyCondition:
 	)?	 
 ;
 
-Quantity:
-	{Quantity}
-	value=REAL units=ID
-;
-
 /////////////////
 // basic types //
 /////////////////
 
 // a real number
-
 REAL:
 	Decimal|DecimalExp
 ;
@@ -263,8 +244,19 @@ DecimalExp hidden():
 	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
 ;
 
+// a quantity with units
+Quantity:
+	{Quantity}
+	value=REAL units=ID
+;
+
 // relational operators
 RelationalOperator:
 	'==' | '!=' | '<' | '>' | '<=' | '>='
+;
+
+// boolean operator
+BooleanOperator:
+	'&' | '|'
 ;
 
