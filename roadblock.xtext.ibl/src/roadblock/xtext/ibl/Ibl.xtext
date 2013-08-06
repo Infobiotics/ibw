@@ -97,8 +97,11 @@ VariableComplex:
 	components+=Variable ('~' components+=Variable)+ 
 ; 
 
-
-
+// a variable attribute
+VariableAttribute:
+	{VariableAttribute}
+	name=(ID|REAL) (('.'|'~') attribute=ID)?
+;
 
 
 // entries allowed inside variable definition
@@ -128,11 +131,6 @@ CollectionID:
 VariableAssignment:
 	{VariableAssignment}
 	 variable=VariableAttribute '=' expression=VariableExpression
-;
-
-VariableAttribute:
-	{VariableAttribute}
-	name=(ID|REAL) (('.'|'~') attribute=ID)?
 ;
 
 VariableExpression:

@@ -3,13 +3,7 @@ package roadblock.xtext.ibl.ui.outline
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider$IStyledLabelProvider
 import roadblock.xtext.ibl.ibl.VariableComplex
 
-/**
- * Customization of the default outline structure.
- *
- * see http://www.eclipse.org/Xtext/documentation.html#outline
- */
 class IblOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider {
-
 	override Object _text(Object modelElement) {
 		// custom outline labels
 		switch modelElement {

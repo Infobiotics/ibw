@@ -32,7 +32,7 @@ define PROCESS ConstitutiveProteinExpression (
 	R5.rate = RATE.translationRate
 
 	RULE R6 : protein1 ->
-		R6.rate = protein1.degradationRate | RATE.proteinDegradationRate
+	R6.rate = protein1.degradationRate | RATE.proteinDegradationRate
 } USES RIBOSOME ribosome, RNA rnaP
 
 define PROCESS RegulatedProteinExpression (

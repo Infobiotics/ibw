@@ -14,7 +14,7 @@ import library01
 // define lattice site //
 /////////////////////////
 
-define LATTICESITE site() {
+define SITE site() {
 	MOLECULE SA = MOLECULE(displayID = SA, degradationRate = 1, concentration = 100)
 
 	CELL myCell = SASensorCell(consumed = SA)

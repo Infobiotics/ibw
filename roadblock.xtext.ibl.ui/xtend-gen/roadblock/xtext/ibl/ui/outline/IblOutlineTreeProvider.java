@@ -4,11 +4,6 @@ import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelP
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import roadblock.xtext.ibl.ibl.VariableComplex;
 
-/**
- * Customization of the default outline structure.
- * 
- * see http://www.eclipse.org/Xtext/documentation.html#outline
- */
 @SuppressWarnings("all")
 public class IblOutlineTreeProvider extends DefaultOutlineTreeProvider {
   public Object _text(final Object modelElement) {
