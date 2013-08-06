@@ -21,7 +21,6 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected IblGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0;
 	protected AbstractElementAlias match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q;
-	protected AbstractElementAlias match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1;
 	protected AbstractElementAlias match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1;
 	
 	@Inject
@@ -29,7 +28,6 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 		grammarAccess = (IblGrammarAccess) access;
 		match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getALWAYSHOLDSKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getNEVERHOLDSKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWILLHOLDKeyword_1_0()));
 		match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWITHPROBABILITYBOUNDKeyword_2_6_0()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getQuestionMarkKeyword_2_6_1_1()));
-		match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getHyphenMinusGreaterThanSignKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getRuleDefinitionAccess().getLessThanSignHyphenMinusGreaterThanSignKeyword_5_1()));
 		match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getVariableAttributeAccess().getFullStopKeyword_2_0_0()), new TokenAlias(false, false, grammarAccess.getVariableAttributeAccess().getTildeKeyword_2_0_1()));
 	}
 	
@@ -74,8 +72,6 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q.equals(syntax))
 				emit_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1.equals(syntax))
-				emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1.equals(syntax))
 				emit_VariableAttribute_FullStopKeyword_2_0_0_or_TildeKeyword_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -84,7 +80,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'NEVER HOLDS' | 'WILL HOLD' | 'ALWAYS HOLDS'
+	 *     'WILL HOLD' | 'NEVER HOLDS' | 'ALWAYS HOLDS'
 	 */
 	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -95,14 +91,6 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('WITH PROBABILITY BOUND' '?')?
 	 */
 	protected void emit_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     '->' | '<->'
-	 */
-	protected void emit_RuleDefinition_HyphenMinusGreaterThanSignKeyword_5_0_or_LessThanSignHyphenMinusGreaterThanSignKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

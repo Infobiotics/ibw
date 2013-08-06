@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
+import roadblock.xtext.ibl.ibl.EString;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinitionMember;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
@@ -21,15 +22,20 @@ import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
-import roadblock.xtext.ibl.ibl.ProcessDeclaration;
+import roadblock.xtext.ibl.ibl.ProcessCall;
+import roadblock.xtext.ibl.ibl.ProcessDefinition;
+import roadblock.xtext.ibl.ibl.ProcessDefinitionMember;
+import roadblock.xtext.ibl.ibl.ProcessParameterMember;
+import roadblock.xtext.ibl.ibl.ProcessUseMember;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
-import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.Variable;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
+import roadblock.xtext.ibl.ibl.VariableComplex;
 import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
@@ -104,6 +110,20 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass variableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eStringEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass variableDefinitionMemberEClass = null;
 
   /**
@@ -146,14 +166,35 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ruleObjectEClass = null;
+  private EClass processDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass processDeclarationEClass = null;
+  private EClass processParameterMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processDefinitionMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processUseMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processCallEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -203,6 +244,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass quantityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableComplexEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -502,6 +550,36 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getVariable()
+  {
+    return variableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariable_Name()
+  {
+    return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEString()
+  {
+    return eStringEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getVariableDefinitionMember()
   {
     return variableDefinitionMemberEClass;
@@ -692,9 +770,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getRuleDefinition_Reversible()
+  {
+    return (EAttribute)ruleDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getRuleDefinition_Rhs()
   {
-    return (EReference)ruleDefinitionEClass.getEStructuralFeatures().get(2);
+    return (EReference)ruleDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -702,9 +790,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRuleObject()
+  public EClass getProcessDefinition()
   {
-    return ruleObjectEClass;
+    return processDefinitionEClass;
   }
 
   /**
@@ -712,9 +800,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRuleObject_Subobjects()
+  public EAttribute getProcessDefinition_Name()
   {
-    return (EAttribute)ruleObjectEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)processDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -722,9 +810,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProcessDeclaration()
+  public EReference getProcessDefinition_Parameters()
   {
-    return processDeclarationEClass;
+    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -732,9 +820,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProcessDeclaration_Constructor()
+  public EReference getProcessDefinition_Members()
   {
-    return (EAttribute)processDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -742,9 +830,119 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProcessDeclaration_Parameters()
+  public EReference getProcessDefinition_Uses()
   {
-    return (EReference)processDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessParameterMember()
+  {
+    return processParameterMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessParameterMember_Type()
+  {
+    return (EAttribute)processParameterMemberEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessParameterMember_Name()
+  {
+    return (EAttribute)processParameterMemberEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessParameterMember_Scope()
+  {
+    return (EAttribute)processParameterMemberEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessDefinitionMember()
+  {
+    return processDefinitionMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessUseMember()
+  {
+    return processUseMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessUseMember_Type()
+  {
+    return (EAttribute)processUseMemberEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessUseMember_Name()
+  {
+    return (EAttribute)processUseMemberEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessCall()
+  {
+    return processCallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessCall_Constructor()
+  {
+    return (EAttribute)processCallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessCall_Parameters()
+  {
+    return (EReference)processCallEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1032,6 +1230,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getVariableComplex()
+  {
+    return variableComplexEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableComplex_Components()
+  {
+    return (EReference)variableComplexEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public IblFactory getIblFactory()
   {
     return (IblFactory)getEFactoryInstance();
@@ -1088,6 +1306,11 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__TYPE);
     createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__NAME);
 
+    variableEClass = createEClass(VARIABLE);
+    createEAttribute(variableEClass, VARIABLE__NAME);
+
+    eStringEClass = createEClass(ESTRING);
+
     variableDefinitionMemberEClass = createEClass(VARIABLE_DEFINITION_MEMBER);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
@@ -1112,14 +1335,29 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     ruleDefinitionEClass = createEClass(RULE_DEFINITION);
     createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
     createEReference(ruleDefinitionEClass, RULE_DEFINITION__LHS);
+    createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__REVERSIBLE);
     createEReference(ruleDefinitionEClass, RULE_DEFINITION__RHS);
 
-    ruleObjectEClass = createEClass(RULE_OBJECT);
-    createEAttribute(ruleObjectEClass, RULE_OBJECT__SUBOBJECTS);
+    processDefinitionEClass = createEClass(PROCESS_DEFINITION);
+    createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__NAME);
+    createEReference(processDefinitionEClass, PROCESS_DEFINITION__PARAMETERS);
+    createEReference(processDefinitionEClass, PROCESS_DEFINITION__MEMBERS);
+    createEReference(processDefinitionEClass, PROCESS_DEFINITION__USES);
 
-    processDeclarationEClass = createEClass(PROCESS_DECLARATION);
-    createEAttribute(processDeclarationEClass, PROCESS_DECLARATION__CONSTRUCTOR);
-    createEReference(processDeclarationEClass, PROCESS_DECLARATION__PARAMETERS);
+    processParameterMemberEClass = createEClass(PROCESS_PARAMETER_MEMBER);
+    createEAttribute(processParameterMemberEClass, PROCESS_PARAMETER_MEMBER__TYPE);
+    createEAttribute(processParameterMemberEClass, PROCESS_PARAMETER_MEMBER__NAME);
+    createEAttribute(processParameterMemberEClass, PROCESS_PARAMETER_MEMBER__SCOPE);
+
+    processDefinitionMemberEClass = createEClass(PROCESS_DEFINITION_MEMBER);
+
+    processUseMemberEClass = createEClass(PROCESS_USE_MEMBER);
+    createEAttribute(processUseMemberEClass, PROCESS_USE_MEMBER__TYPE);
+    createEAttribute(processUseMemberEClass, PROCESS_USE_MEMBER__NAME);
+
+    processCallEClass = createEClass(PROCESS_CALL);
+    createEAttribute(processCallEClass, PROCESS_CALL__CONSTRUCTOR);
+    createEReference(processCallEClass, PROCESS_CALL__PARAMETERS);
 
     deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
     createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
@@ -1155,6 +1393,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     quantityEClass = createEClass(QUANTITY);
     createEAttribute(quantityEClass, QUANTITY__VALUE);
     createEAttribute(quantityEClass, QUANTITY__UNITS);
+
+    variableComplexEClass = createEClass(VARIABLE_COMPLEX);
+    createEReference(variableComplexEClass, VARIABLE_COMPLEX__COMPONENTS);
   }
 
   /**
@@ -1188,16 +1429,20 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     importEClass.getESuperTypes().add(this.getModelMember());
     variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
+    variableEClass.getESuperTypes().add(this.getEString());
     variableDeclarationEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getProcessDefinitionMember());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    processDeclarationEClass.getESuperTypes().add(this.getDeviceMembers());
+    ruleDefinitionEClass.getESuperTypes().add(this.getProcessDefinitionMember());
+    processDefinitionEClass.getESuperTypes().add(this.getModelMember());
+    processCallEClass.getESuperTypes().add(this.getDeviceMembers());
     deviceDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     atgcDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
+    variableComplexEClass.getESuperTypes().add(this.getEString());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1231,6 +1476,11 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getFunctionUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eStringEClass, EString.class, "EString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(variableDefinitionMemberEClass, VariableDefinitionMember.class, "VariableDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1254,15 +1504,30 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleDefinition_Lhs(), this.getRuleObject(), null, "lhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleDefinition_Rhs(), this.getRuleObject(), null, "rhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Lhs(), this.getEString(), null, "lhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRuleDefinition_Reversible(), ecorePackage.getEBoolean(), "reversible", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Rhs(), this.getEString(), null, "rhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ruleObjectEClass, RuleObject.class, "RuleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRuleObject_Subobjects(), ecorePackage.getEString(), "subobjects", null, 0, -1, RuleObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProcessDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessDefinition_Parameters(), this.getProcessParameterMember(), null, "parameters", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessDefinition_Members(), this.getProcessDefinitionMember(), null, "members", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessDefinition_Uses(), this.getProcessUseMember(), null, "uses", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(processDeclarationEClass, ProcessDeclaration.class, "ProcessDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessDeclaration_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ProcessDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessDeclaration_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, ProcessDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(processParameterMemberEClass, ProcessParameterMember.class, "ProcessParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProcessParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProcessParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProcessParameterMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProcessParameterMember_Scope(), ecorePackage.getEString(), "scope", null, 0, 1, ProcessParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processDefinitionMemberEClass, ProcessDefinitionMember.class, "ProcessDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(processUseMemberEClass, ProcessUseMember.class, "ProcessUseMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProcessUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProcessUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProcessUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processCallEClass, ProcessCall.class, "ProcessCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProcessCall_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ProcessCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessCall_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, ProcessCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1298,6 +1563,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(quantityEClass, Quantity.class, "Quantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getQuantity_Value(), ecorePackage.getEString(), "value", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuantity_Units(), ecorePackage.getEString(), "units", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableComplexEClass, VariableComplex.class, "VariableComplex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableComplex_Components(), this.getVariable(), null, "components", null, 0, -1, VariableComplex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

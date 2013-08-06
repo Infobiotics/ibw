@@ -335,11 +335,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:23:7: ( '<->' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:23:9: '<->'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:23:7: ( '?' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:23:9: '?'
             {
-            match("<->"); 
-
+            match('?'); 
 
             }
 
@@ -356,10 +355,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:24:7: ( '?' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:24:9: '?'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:24:7: ( 'WILL HOLD' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:24:9: 'WILL HOLD'
             {
-            match('?'); 
+            match("WILL HOLD"); 
+
 
             }
 
@@ -376,10 +376,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:25:7: ( 'WILL HOLD' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:25:9: 'WILL HOLD'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:25:7: ( 'NEVER HOLDS' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:25:9: 'NEVER HOLDS'
             {
-            match("WILL HOLD"); 
+            match("NEVER HOLDS"); 
 
 
             }
@@ -397,10 +397,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:26:7: ( 'NEVER HOLDS' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:26:9: 'NEVER HOLDS'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:26:7: ( 'ALWAYS HOLDS' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:26:9: 'ALWAYS HOLDS'
             {
-            match("NEVER HOLDS"); 
+            match("ALWAYS HOLDS"); 
 
 
             }
@@ -418,11 +418,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:27:7: ( 'ALWAYS HOLDS' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:27:9: 'ALWAYS HOLDS'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:27:7: ( 'E' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:27:9: 'E'
             {
-            match("ALWAYS HOLDS"); 
-
+            match('E'); 
 
             }
 
@@ -439,10 +438,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:28:7: ( 'E' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:28:9: 'E'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:28:7: ( 'e' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:28:9: 'e'
             {
-            match('E'); 
+            match('e'); 
 
             }
 
@@ -459,10 +458,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:29:7: ( 'e' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:29:9: 'e'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:29:7: ( '==' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:29:9: '=='
             {
-            match('e'); 
+            match("=="); 
+
 
             }
 
@@ -479,10 +479,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:30:7: ( '==' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:30:9: '=='
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:30:7: ( '!=' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:30:9: '!='
             {
-            match("=="); 
+            match("!="); 
 
 
             }
@@ -500,11 +500,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:31:7: ( '!=' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:31:9: '!='
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:31:7: ( '<' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:31:9: '<'
             {
-            match("!="); 
-
+            match('<'); 
 
             }
 
@@ -521,10 +520,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:32:7: ( '<' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:32:9: '<'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:32:7: ( '>' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:32:9: '>'
             {
-            match('<'); 
+            match('>'); 
 
             }
 
@@ -541,10 +540,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:33:7: ( '>' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:33:9: '>'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:33:7: ( '<=' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:33:9: '<='
             {
-            match('>'); 
+            match("<="); 
+
 
             }
 
@@ -561,10 +561,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:34:7: ( '<=' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:34:9: '<='
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:34:7: ( '>=' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:34:9: '>='
             {
-            match("<="); 
+            match(">="); 
 
 
             }
@@ -582,11 +582,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:35:7: ( '>=' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:35:9: '>='
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:35:7: ( '&' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:35:9: '&'
             {
-            match(">="); 
-
+            match('&'); 
 
             }
 
@@ -603,10 +602,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:36:7: ( '&' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:36:9: '&'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:36:7: ( 'import' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:36:9: 'import'
             {
-            match('&'); 
+            match("import"); 
+
 
             }
 
@@ -623,10 +623,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:37:7: ( 'import' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:37:9: 'import'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:37:7: ( 'define' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:37:9: 'define'
             {
-            match("import"); 
+            match("define"); 
 
 
             }
@@ -644,11 +644,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:38:7: ( '.*' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:38:9: '.*'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:38:7: ( '{' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:38:9: '{'
             {
-            match(".*"); 
-
+            match('{'); 
 
             }
 
@@ -665,11 +664,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:39:7: ( 'define' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:39:9: 'define'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:39:7: ( '}' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:39:9: '}'
             {
-            match("define"); 
-
+            match('}'); 
 
             }
 
@@ -686,10 +684,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:40:7: ( '{' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:40:9: '{'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:40:7: ( ':' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:40:9: ':'
             {
-            match('{'); 
+            match(':'); 
 
             }
 
@@ -706,10 +704,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:41:7: ( '}' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:41:9: '}'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:41:7: ( '=' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:41:9: '='
             {
-            match('}'); 
+            match('='); 
 
             }
 
@@ -786,10 +784,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:45:7: ( 'USES' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:45:9: 'USES'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:45:7: ( 'RULE' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:45:9: 'RULE'
             {
-            match("USES"); 
+            match("RULE"); 
 
 
             }
@@ -807,10 +805,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:46:7: ( ':' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:46:9: ':'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:46:7: ( 'PROCESS' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:46:9: 'PROCESS'
             {
-            match(':'); 
+            match("PROCESS"); 
+
 
             }
 
@@ -827,10 +826,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:47:7: ( '=' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:47:9: '='
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:47:7: ( 'USES' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:47:9: 'USES'
             {
-            match('='); 
+            match("USES"); 
+
 
             }
 
@@ -847,10 +847,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:48:7: ( 'RULE' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:48:9: 'RULE'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:48:7: ( 'DEVICE' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:48:9: 'DEVICE'
             {
-            match("RULE"); 
+            match("DEVICE"); 
 
 
             }
@@ -868,10 +868,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:49:7: ( 'PROCESS' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:49:9: 'PROCESS'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:49:7: ( 'ATGC' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:49:9: 'ATGC'
             {
-            match("PROCESS"); 
+            match("ATGC"); 
 
 
             }
@@ -889,10 +889,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:50:7: ( 'DEVICE' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:50:9: 'DEVICE'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:50:7: ( 'VERIFY' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:50:9: 'VERIFY'
             {
-            match("DEVICE"); 
+            match("VERIFY"); 
 
 
             }
@@ -910,11 +910,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:51:7: ( 'ATGC' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:51:9: 'ATGC'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:51:7: ( '[' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:51:9: '['
             {
-            match("ATGC"); 
-
+            match('['); 
 
             }
 
@@ -931,11 +930,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:52:7: ( 'VERIFY' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:52:9: 'VERIFY'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:52:7: ( ']' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:52:9: ']'
             {
-            match("VERIFY"); 
-
+            match(']'); 
 
             }
 
@@ -952,10 +950,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:53:7: ( '[' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:53:9: '['
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:53:7: ( 'EXPECTED' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:53:9: 'EXPECTED'
             {
-            match('['); 
+            match("EXPECTED"); 
+
 
             }
 
@@ -972,10 +971,11 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:54:7: ( ']' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:54:9: ']'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:54:7: ( 'AT TIME INSTANT' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:54:9: 'AT TIME INSTANT'
             {
-            match(']'); 
+            match("AT TIME INSTANT"); 
+
 
             }
 
@@ -992,10 +992,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:55:7: ( 'EXPECTED' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:55:9: 'EXPECTED'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:55:7: ( 'IS' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:55:9: 'IS'
             {
-            match("EXPECTED"); 
+            match("IS"); 
 
 
             }
@@ -1013,10 +1013,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:56:7: ( 'AT TIME INSTANT' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:56:9: 'AT TIME INSTANT'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:56:7: ( 'WITHIN TIME BOUND' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:56:9: 'WITHIN TIME BOUND'
             {
-            match("AT TIME INSTANT"); 
+            match("WITHIN TIME BOUND"); 
 
 
             }
@@ -1034,10 +1034,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:57:7: ( 'IS' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:57:9: 'IS'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:57:7: ( 'WITH PROBABILITY BOUND' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:57:9: 'WITH PROBABILITY BOUND'
             {
-            match("IS"); 
+            match("WITH PROBABILITY BOUND"); 
 
 
             }
@@ -1055,10 +1055,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:58:7: ( 'WITHIN TIME BOUND' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:58:9: 'WITHIN TIME BOUND'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:58:7: ( '.*' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:58:9: '.*'
             {
-            match("WITHIN TIME BOUND"); 
+            match(".*"); 
 
 
             }
@@ -1076,10 +1076,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:59:7: ( 'WITH PROBABILITY BOUND' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:59:9: 'WITH PROBABILITY BOUND'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:59:7: ( '<->' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:59:9: '<->'
             {
-            match("WITH PROBABILITY BOUND"); 
+            match("<->"); 
 
 
             }
@@ -1097,10 +1097,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8769:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8769:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9449:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9449:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8769:11: ( '^' )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9449:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1109,7 +1109,7 @@ public class InternalIblLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8769:11: '^'
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9449:11: '^'
                     {
                     match('^'); 
 
@@ -1127,7 +1127,7 @@ public class InternalIblLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8769:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9449:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -1176,10 +1176,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8771:10: ( ( '0' .. '9' )+ )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8771:12: ( '0' .. '9' )+
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9451:10: ( ( '0' .. '9' )+ )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9451:12: ( '0' .. '9' )+
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8771:12: ( '0' .. '9' )+
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9451:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1193,7 +1193,7 @@ public class InternalIblLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8771:13: '0' .. '9'
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9451:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1225,10 +1225,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1246,10 +1246,10 @@ public class InternalIblLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -1265,7 +1265,7 @@ public class InternalIblLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -1281,7 +1281,7 @@ public class InternalIblLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1306,10 +1306,10 @@ public class InternalIblLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1325,7 +1325,7 @@ public class InternalIblLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -1341,7 +1341,7 @@ public class InternalIblLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8773:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9453:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1384,12 +1384,12 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8775:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8775:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9455:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9455:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8775:24: ( options {greedy=false; } : . )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9455:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1414,7 +1414,7 @@ public class InternalIblLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8775:52: .
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9455:52: .
             	    {
             	    matchAny(); 
 
@@ -1444,12 +1444,12 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1462,7 +1462,7 @@ public class InternalIblLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1482,7 +1482,7 @@ public class InternalIblLexer extends Lexer {
                 }
             } while (true);
 
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:40: ( ( '\\r' )? '\\n' )?
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1491,9 +1491,9 @@ public class InternalIblLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:41: ( '\\r' )? '\\n'
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:41: ( '\\r' )? '\\n'
                     {
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:41: ( '\\r' )?
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1502,7 +1502,7 @@ public class InternalIblLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8777:41: '\\r'
+                            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9457:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1534,10 +1534,10 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8779:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8779:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9459:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9459:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8779:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9459:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1591,8 +1591,8 @@ public class InternalIblLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8781:16: ( . )
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:8781:18: .
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9461:16: ( . )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:9461:18: .
             {
             matchAny(); 
 
@@ -2011,65 +2011,65 @@ public class InternalIblLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\4\57\1\64\2\uffff\1\70\1\uffff\1\74\1\uffff\3\57\1\103"+
-        "\1\104\1\106\1\54\1\111\1\uffff\2\57\5\uffff\1\57\1\uffff\4\57\2"+
-        "\uffff\1\57\1\54\2\uffff\3\54\2\uffff\2\57\1\uffff\3\57\13\uffff"+
-        "\5\57\10\uffff\2\57\5\uffff\1\57\1\uffff\4\57\2\uffff\1\164\5\uffff"+
-        "\5\57\1\172\5\57\1\uffff\10\57\1\uffff\4\57\1\u008c\1\uffff\4\57"+
-        "\1\u0092\3\57\1\u0096\1\u0097\7\57\2\uffff\1\57\1\uffff\2\57\1\uffff"+
-        "\3\57\2\uffff\10\57\1\uffff\2\57\1\u00af\1\u00b0\1\57\1\u00b2\1"+
-        "\u00b3\4\57\2\uffff\1\57\2\uffff\1\u00b9\2\uffff\1\57\1\u00bb\1"+
-        "\u00bc\1\u00bd\1\u00be\1\uffff\1\57\4\uffff\1\u00c0\1\uffff";
+        "\1\uffff\4\57\1\64\2\uffff\1\70\2\uffff\3\57\1\100\1\101\1\103\1"+
+        "\54\1\107\1\111\1\uffff\2\57\6\uffff\5\57\2\uffff\1\57\1\54\2\uffff"+
+        "\3\54\2\uffff\2\57\1\uffff\3\57\10\uffff\5\57\13\uffff\2\57\6\uffff"+
+        "\5\57\2\uffff\1\164\5\uffff\5\57\1\172\5\57\1\uffff\10\57\1\uffff"+
+        "\4\57\1\u008c\1\uffff\4\57\1\u0092\3\57\1\u0096\1\57\1\u0098\6\57"+
+        "\2\uffff\1\57\1\uffff\2\57\1\uffff\3\57\1\uffff\1\57\1\uffff\7\57"+
+        "\1\uffff\2\57\1\u00af\1\u00b0\1\57\1\u00b2\1\u00b3\4\57\2\uffff"+
+        "\1\57\2\uffff\1\u00b9\2\uffff\1\57\1\u00bb\1\u00bc\1\u00bd\1\u00be"+
+        "\1\uffff\1\57\4\uffff\1\u00c0\1\uffff";
     static final String DFA12_eofS =
         "\u00c1\uffff";
     static final String DFA12_minS =
-        "\1\0\1\142\1\145\1\111\1\105\1\52\2\uffff\1\76\1\uffff\1\55\1\uffff"+
-        "\1\111\1\105\1\114\2\60\3\75\1\uffff\1\155\1\145\5\uffff\1\123\1"+
-        "\uffff\1\125\1\122\2\105\2\uffff\1\123\1\101\2\uffff\2\0\1\52\2"+
-        "\uffff\1\163\1\164\1\uffff\1\161\1\123\1\124\13\uffff\1\114\1\126"+
-        "\1\127\1\40\1\120\10\uffff\1\160\1\146\5\uffff\1\105\1\uffff\1\114"+
-        "\1\117\1\126\1\122\2\uffff\1\60\5\uffff\1\145\1\151\2\165\1\124"+
-        "\1\60\1\114\1\110\1\105\1\101\1\103\1\uffff\1\105\1\157\1\151\1"+
-        "\123\1\105\1\103\2\111\1\uffff\1\162\1\157\1\151\1\162\1\60\1\uffff"+
-        "\2\40\1\122\1\131\1\60\1\103\1\162\1\156\2\60\1\105\1\103\1\106"+
-        "\1\166\1\156\1\162\1\156\2\uffff\1\116\1\uffff\1\40\1\123\1\uffff"+
-        "\1\124\1\164\1\145\2\uffff\1\123\1\105\1\131\2\141\2\145\1\40\1"+
-        "\uffff\1\40\1\105\2\60\1\123\2\60\1\142\1\154\2\144\2\uffff\1\104"+
-        "\2\uffff\1\60\2\uffff\1\154\4\60\1\uffff\1\145\4\uffff\1\60\1\uffff";
+        "\1\0\1\142\1\145\1\111\1\105\1\52\2\uffff\1\76\2\uffff\1\111\1\105"+
+        "\1\114\2\60\2\75\1\55\1\75\1\uffff\1\155\1\145\6\uffff\1\125\1\122"+
+        "\1\123\2\105\2\uffff\1\123\1\101\2\uffff\2\0\1\52\2\uffff\1\163"+
+        "\1\164\1\uffff\1\161\1\123\1\124\10\uffff\1\114\1\126\1\127\1\40"+
+        "\1\120\13\uffff\1\160\1\146\6\uffff\1\114\1\117\1\105\1\126\1\122"+
+        "\2\uffff\1\60\5\uffff\1\145\1\151\2\165\1\124\1\60\1\114\1\110\1"+
+        "\105\1\101\1\103\1\uffff\1\105\1\157\1\151\1\105\1\103\1\123\2\111"+
+        "\1\uffff\1\162\1\157\1\151\1\162\1\60\1\uffff\2\40\1\122\1\131\1"+
+        "\60\1\103\1\162\1\156\1\60\1\105\1\60\1\103\1\106\1\166\1\156\1"+
+        "\162\1\156\2\uffff\1\116\1\uffff\1\40\1\123\1\uffff\1\124\1\164"+
+        "\1\145\1\uffff\1\123\1\uffff\1\105\1\131\2\141\2\145\1\40\1\uffff"+
+        "\1\40\1\105\2\60\1\123\2\60\1\142\1\154\2\144\2\uffff\1\104\2\uffff"+
+        "\1\60\2\uffff\1\154\4\60\1\uffff\1\145\4\uffff\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\160\1\145\1\111\1\105\1\52\2\uffff\1\76\1\uffff\1\75"+
-        "\1\uffff\1\111\1\105\1\124\2\172\3\75\1\uffff\1\155\1\145\5\uffff"+
-        "\1\123\1\uffff\1\125\1\122\2\105\2\uffff\1\123\1\172\2\uffff\2\uffff"+
-        "\1\57\2\uffff\1\163\1\164\1\uffff\1\164\1\123\1\124\13\uffff\1\124"+
-        "\1\126\1\127\1\107\1\120\10\uffff\1\160\1\146\5\uffff\1\105\1\uffff"+
-        "\1\114\1\117\1\126\1\122\2\uffff\1\172\5\uffff\1\145\1\151\2\165"+
-        "\1\124\1\172\1\114\1\110\1\105\1\101\1\103\1\uffff\1\105\1\157\1"+
-        "\151\1\123\1\105\1\103\2\111\1\uffff\1\162\1\157\1\151\1\162\1\172"+
-        "\1\uffff\1\40\1\111\1\122\1\131\1\172\1\103\1\162\1\156\2\172\1"+
-        "\105\1\103\1\106\1\166\1\156\1\162\1\156\2\uffff\1\116\1\uffff\1"+
-        "\40\1\123\1\uffff\1\124\1\164\1\145\2\uffff\1\123\1\105\1\131\2"+
-        "\141\2\145\1\40\1\uffff\1\40\1\105\2\172\1\123\2\172\1\142\1\154"+
-        "\2\144\2\uffff\1\104\2\uffff\1\172\2\uffff\1\154\4\172\1\uffff\1"+
-        "\145\4\uffff\1\172\1\uffff";
+        "\1\uffff\1\160\1\145\1\111\1\105\1\52\2\uffff\1\76\2\uffff\1\111"+
+        "\1\105\1\124\2\172\4\75\1\uffff\1\155\1\145\6\uffff\1\125\1\122"+
+        "\1\123\2\105\2\uffff\1\123\1\172\2\uffff\2\uffff\1\57\2\uffff\1"+
+        "\163\1\164\1\uffff\1\164\1\123\1\124\10\uffff\1\124\1\126\1\127"+
+        "\1\107\1\120\13\uffff\1\160\1\146\6\uffff\1\114\1\117\1\105\1\126"+
+        "\1\122\2\uffff\1\172\5\uffff\1\145\1\151\2\165\1\124\1\172\1\114"+
+        "\1\110\1\105\1\101\1\103\1\uffff\1\105\1\157\1\151\1\105\1\103\1"+
+        "\123\2\111\1\uffff\1\162\1\157\1\151\1\162\1\172\1\uffff\1\40\1"+
+        "\111\1\122\1\131\1\172\1\103\1\162\1\156\1\172\1\105\1\172\1\103"+
+        "\1\106\1\166\1\156\1\162\1\156\2\uffff\1\116\1\uffff\1\40\1\123"+
+        "\1\uffff\1\124\1\164\1\145\1\uffff\1\123\1\uffff\1\105\1\131\2\141"+
+        "\2\145\1\40\1\uffff\1\40\1\105\2\172\1\123\2\172\1\142\1\154\2\144"+
+        "\2\uffff\1\104\2\uffff\1\172\2\uffff\1\154\4\172\1\uffff\1\145\4"+
+        "\uffff\1\172\1\uffff";
     static final String DFA12_acceptS =
-        "\6\uffff\1\10\1\11\1\uffff\1\13\1\uffff\1\16\10\uffff\1\32\2\uffff"+
-        "\1\36\1\37\1\40\1\41\1\42\1\uffff\1\44\4\uffff\1\53\1\54\2\uffff"+
-        "\1\62\1\63\3\uffff\1\67\1\70\2\uffff\1\62\3\uffff\1\34\1\7\1\10"+
-        "\1\11\1\14\1\12\1\13\1\15\1\30\1\26\1\16\5\uffff\1\22\1\23\1\24"+
-        "\1\45\1\25\1\31\1\27\1\32\2\uffff\1\36\1\37\1\40\1\41\1\42\1\uffff"+
-        "\1\44\4\uffff\1\53\1\54\1\uffff\1\63\1\64\1\65\1\66\1\67\13\uffff"+
-        "\1\56\10\uffff\1\57\5\uffff\1\6\21\uffff\1\5\1\17\1\uffff\1\61\2"+
-        "\uffff\1\51\3\uffff\1\43\1\46\10\uffff\1\20\13\uffff\1\60\1\21\1"+
-        "\uffff\1\33\1\35\1\uffff\1\50\1\52\5\uffff\1\47\1\uffff\1\4\1\2"+
-        "\1\3\1\55\1\uffff\1\1";
+        "\6\uffff\1\10\1\11\1\uffff\1\13\1\15\11\uffff\1\31\2\uffff\1\34"+
+        "\1\35\1\36\1\40\1\41\1\42\5\uffff\1\51\1\52\2\uffff\1\62\1\63\3"+
+        "\uffff\1\67\1\70\2\uffff\1\62\3\uffff\1\60\1\7\1\10\1\11\1\14\1"+
+        "\12\1\13\1\15\5\uffff\1\21\1\22\1\23\1\37\1\24\1\27\1\61\1\25\1"+
+        "\30\1\26\1\31\2\uffff\1\34\1\35\1\36\1\40\1\41\1\42\5\uffff\1\51"+
+        "\1\52\1\uffff\1\63\1\64\1\65\1\66\1\67\13\uffff\1\54\10\uffff\1"+
+        "\55\5\uffff\1\6\21\uffff\1\5\1\16\1\uffff\1\57\2\uffff\1\47\3\uffff"+
+        "\1\43\1\uffff\1\45\7\uffff\1\17\13\uffff\1\56\1\20\1\uffff\1\32"+
+        "\1\33\1\uffff\1\46\1\50\5\uffff\1\44\1\uffff\1\4\1\2\1\3\1\53\1"+
+        "\uffff\1\1";
     static final String DFA12_specialS =
         "\1\2\47\uffff\1\1\1\0\u0097\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\54\2\53\2\54\1\53\22\54\1\53\1\22\1\50\3\54\1\24\1\51\1"+
-            "\31\1\32\1\54\1\7\1\33\1\10\1\5\1\52\12\47\1\35\1\54\1\12\1"+
-            "\21\1\23\1\13\1\54\1\16\2\46\1\40\1\17\3\46\1\44\2\46\1\3\1"+
-            "\46\1\15\1\46\1\37\1\46\1\36\1\4\1\46\1\34\1\41\1\14\3\46\1"+
-            "\42\1\54\1\43\1\45\1\46\1\54\3\46\1\26\1\20\3\46\1\25\5\46\1"+
+            "\11\54\2\53\2\54\1\53\22\54\1\53\1\21\1\50\3\54\1\24\1\51\1"+
+            "\32\1\33\1\54\1\7\1\34\1\10\1\5\1\52\12\47\1\31\1\54\1\22\1"+
+            "\20\1\23\1\12\1\54\1\15\2\46\1\40\1\16\3\46\1\44\2\46\1\3\1"+
+            "\46\1\14\1\46\1\36\1\46\1\35\1\4\1\46\1\37\1\41\1\13\3\46\1"+
+            "\42\1\54\1\43\1\45\1\46\1\54\3\46\1\26\1\17\3\46\1\25\5\46\1"+
             "\1\2\46\1\2\10\46\1\27\1\11\1\30\1\6\uff81\54",
             "\1\55\15\uffff\1\56",
             "\1\60",
@@ -2080,15 +2080,15 @@ public class InternalIblLexer extends Lexer {
             "",
             "\1\67",
             "",
-            "\1\72\17\uffff\1\73",
             "",
-            "\1\76",
-            "\1\77",
-            "\1\100\7\uffff\1\101",
-            "\12\57\7\uffff\27\57\1\102\2\57\4\uffff\1\57\1\uffff\32\57",
+            "\1\73",
+            "\1\74",
+            "\1\75\7\uffff\1\76",
+            "\12\57\7\uffff\27\57\1\77\2\57\4\uffff\1\57\1\uffff\32\57",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\105",
-            "\1\107",
+            "\1\102",
+            "\1\104",
+            "\1\106\17\uffff\1\105",
             "\1\110",
             "",
             "\1\113",
@@ -2098,8 +2098,8 @@ public class InternalIblLexer extends Lexer {
             "",
             "",
             "",
-            "\1\122",
             "",
+            "\1\123",
             "\1\124",
             "\1\125",
             "\1\126",
@@ -2129,14 +2129,14 @@ public class InternalIblLexer extends Lexer {
             "",
             "",
             "",
-            "",
-            "",
-            "",
             "\1\146\7\uffff\1\147",
             "\1\150",
             "\1\151",
             "\1\153\46\uffff\1\152",
             "\1\154",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -2152,8 +2152,8 @@ public class InternalIblLexer extends Lexer {
             "",
             "",
             "",
-            "\1\157",
             "",
+            "\1\157",
             "\1\160",
             "\1\161",
             "\1\162",
@@ -2202,8 +2202,8 @@ public class InternalIblLexer extends Lexer {
             "\1\u0094",
             "\1\u0095",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "\1\u0097",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u0098",
             "\1\u0099",
             "\1\u009a",
             "\1\u009b",
@@ -2221,8 +2221,8 @@ public class InternalIblLexer extends Lexer {
             "\1\u00a3",
             "\1\u00a4",
             "",
-            "",
             "\1\u00a5",
+            "",
             "\1\u00a6",
             "\1\u00a7",
             "\1\u00a8",
@@ -2343,23 +2343,23 @@ public class InternalIblLexer extends Lexer {
 
                         else if ( (LA12_0=='|') ) {s = 9;}
 
-                        else if ( (LA12_0=='<') ) {s = 10;}
+                        else if ( (LA12_0=='?') ) {s = 10;}
 
-                        else if ( (LA12_0=='?') ) {s = 11;}
+                        else if ( (LA12_0=='W') ) {s = 11;}
 
-                        else if ( (LA12_0=='W') ) {s = 12;}
+                        else if ( (LA12_0=='N') ) {s = 12;}
 
-                        else if ( (LA12_0=='N') ) {s = 13;}
+                        else if ( (LA12_0=='A') ) {s = 13;}
 
-                        else if ( (LA12_0=='A') ) {s = 14;}
+                        else if ( (LA12_0=='E') ) {s = 14;}
 
-                        else if ( (LA12_0=='E') ) {s = 15;}
+                        else if ( (LA12_0=='e') ) {s = 15;}
 
-                        else if ( (LA12_0=='e') ) {s = 16;}
+                        else if ( (LA12_0=='=') ) {s = 16;}
 
-                        else if ( (LA12_0=='=') ) {s = 17;}
+                        else if ( (LA12_0=='!') ) {s = 17;}
 
-                        else if ( (LA12_0=='!') ) {s = 18;}
+                        else if ( (LA12_0=='<') ) {s = 18;}
 
                         else if ( (LA12_0=='>') ) {s = 19;}
 
@@ -2373,19 +2373,19 @@ public class InternalIblLexer extends Lexer {
 
                         else if ( (LA12_0=='}') ) {s = 24;}
 
-                        else if ( (LA12_0=='(') ) {s = 25;}
+                        else if ( (LA12_0==':') ) {s = 25;}
 
-                        else if ( (LA12_0==')') ) {s = 26;}
+                        else if ( (LA12_0=='(') ) {s = 26;}
 
-                        else if ( (LA12_0==',') ) {s = 27;}
+                        else if ( (LA12_0==')') ) {s = 27;}
 
-                        else if ( (LA12_0=='U') ) {s = 28;}
+                        else if ( (LA12_0==',') ) {s = 28;}
 
-                        else if ( (LA12_0==':') ) {s = 29;}
+                        else if ( (LA12_0=='R') ) {s = 29;}
 
-                        else if ( (LA12_0=='R') ) {s = 30;}
+                        else if ( (LA12_0=='P') ) {s = 30;}
 
-                        else if ( (LA12_0=='P') ) {s = 31;}
+                        else if ( (LA12_0=='U') ) {s = 31;}
 
                         else if ( (LA12_0=='D') ) {s = 32;}
 

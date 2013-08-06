@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#isReversible <em>Reversible</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.RuleDefinition#getRhs <em>Rhs</em>}</li>
  * </ul>
  * </p>
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface RuleDefinition extends FunctionDefinitionMember
+public interface RuleDefinition extends FunctionDefinitionMember, ProcessDefinitionMember
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -52,7 +53,7 @@ public interface RuleDefinition extends FunctionDefinitionMember
 
   /**
    * Returns the value of the '<em><b>Lhs</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.RuleObject}.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.EString}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Lhs</em>' containment reference list isn't clear,
@@ -64,11 +65,37 @@ public interface RuleDefinition extends FunctionDefinitionMember
    * @model containment="true"
    * @generated
    */
-  EList<RuleObject> getLhs();
+  EList<EString> getLhs();
+
+  /**
+   * Returns the value of the '<em><b>Reversible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Reversible</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Reversible</em>' attribute.
+   * @see #setReversible(boolean)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getRuleDefinition_Reversible()
+   * @model
+   * @generated
+   */
+  boolean isReversible();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.RuleDefinition#isReversible <em>Reversible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reversible</em>' attribute.
+   * @see #isReversible()
+   * @generated
+   */
+  void setReversible(boolean value);
 
   /**
    * Returns the value of the '<em><b>Rhs</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.RuleObject}.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.EString}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Rhs</em>' containment reference list isn't clear,
@@ -80,6 +107,6 @@ public interface RuleDefinition extends FunctionDefinitionMember
    * @model containment="true"
    * @generated
    */
-  EList<RuleObject> getRhs();
+  EList<EString> getRhs();
 
 } // RuleDefinition

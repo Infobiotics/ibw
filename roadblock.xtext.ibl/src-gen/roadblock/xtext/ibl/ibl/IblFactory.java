@@ -95,6 +95,24 @@ public interface IblFactory extends EFactory
   FunctionUseMember createFunctionUseMember();
 
   /**
+   * Returns a new object of class '<em>Variable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable</em>'.
+   * @generated
+   */
+  Variable createVariable();
+
+  /**
+   * Returns a new object of class '<em>EString</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>EString</em>'.
+   * @generated
+   */
+  EString createEString();
+
+  /**
    * Returns a new object of class '<em>Variable Definition Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -149,22 +167,49 @@ public interface IblFactory extends EFactory
   RuleDefinition createRuleDefinition();
 
   /**
-   * Returns a new object of class '<em>Rule Object</em>'.
+   * Returns a new object of class '<em>Process Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Object</em>'.
+   * @return a new object of class '<em>Process Definition</em>'.
    * @generated
    */
-  RuleObject createRuleObject();
+  ProcessDefinition createProcessDefinition();
 
   /**
-   * Returns a new object of class '<em>Process Declaration</em>'.
+   * Returns a new object of class '<em>Process Parameter Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Declaration</em>'.
+   * @return a new object of class '<em>Process Parameter Member</em>'.
    * @generated
    */
-  ProcessDeclaration createProcessDeclaration();
+  ProcessParameterMember createProcessParameterMember();
+
+  /**
+   * Returns a new object of class '<em>Process Definition Member</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Definition Member</em>'.
+   * @generated
+   */
+  ProcessDefinitionMember createProcessDefinitionMember();
+
+  /**
+   * Returns a new object of class '<em>Process Use Member</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Use Member</em>'.
+   * @generated
+   */
+  ProcessUseMember createProcessUseMember();
+
+  /**
+   * Returns a new object of class '<em>Process Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Call</em>'.
+   * @generated
+   */
+  ProcessCall createProcessCall();
 
   /**
    * Returns a new object of class '<em>Device Definition</em>'.
@@ -228,6 +273,15 @@ public interface IblFactory extends EFactory
    * @generated
    */
   Quantity createQuantity();
+
+  /**
+   * Returns a new object of class '<em>Variable Complex</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Complex</em>'.
+   * @generated
+   */
+  VariableComplex createVariableComplex();
 
   /**
    * Returns the package supported by this factory.

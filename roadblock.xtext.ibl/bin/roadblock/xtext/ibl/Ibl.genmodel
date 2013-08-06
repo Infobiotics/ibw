@@ -36,6 +36,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionUseMember/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionUseMember/name"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Variable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//EString"/>
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionMember"/>
     <genClasses ecoreClass="Ibl.ecore#//VariableDeclaration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDeclaration/qualifier"/>
@@ -59,14 +63,28 @@
     <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/reversible"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/rhs"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//RuleObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleObject/subobjects"/>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessDefinition/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessDefinition/members"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessDefinition/uses"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//ProcessDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessDeclaration/constructor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessDeclaration/parameters"/>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessParameterMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessParameterMember/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessParameterMember/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessParameterMember/scope"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessDefinitionMember"/>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessUseMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessUseMember/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessUseMember/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProcessCall/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessCall/parameters"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//DeviceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/name"/>
@@ -102,6 +120,9 @@
     <genClasses ecoreClass="Ibl.ecore#//Quantity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/units"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableComplex">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableComplex/components"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -54,52 +54,52 @@ T__37=37
 T__38=38
 T__39=39
 RULE_WS=9
-'>='=58
-'~'=31
-'=='=55
-'>'=26
-'e'=54
-'define'=14
-'+'=32
-'<->'=37
-'.'=13
-'WILL HOLD'=48
+'>='=57
+'~'=19
+'=='=54
+'>'=21
+'e'=53
+'define'=12
+'<->'=35
+'+'=30
+'.'=29
+'WILL HOLD'=47
 'import'=11
-'required'=22
-'observable'=28
-'{'=15
-'RULE'=35
-'LIST'=29
-'?'=47
-'ATGC'=40
-'('=17
-':'=21
-'returned'=23
-'-'=33
-'WITHIN TIME BOUND'=51
-','=18
-']'=43
-'|'=34
-'IS'=46
-'.*'=12
-'VERIFY'=41
-'DEVICE'=39
-'='=27
-')'=19
-'PROCESS'=38
-'->'=36
-'SET'=30
-'NEVER HOLDS'=49
-'}'=16
-'optional'=24
-'<='=57
-'WITH PROBABILITY BOUND'=52
-'!='=56
-'USES'=20
-'<'=25
-'['=42
-'ALWAYS HOLDS'=50
-'E'=53
-'AT TIME INSTANT'=45
-'EXPECTED'=44
-'&'=59
+'required'=16
+'observable'=26
+'{'=13
+'RULE'=33
+'LIST'=27
+'?'=46
+'ATGC'=39
+':'=15
+'returned'=17
+'('=23
+'-'=31
+'WITHIN TIME BOUND'=50
+','=24
+']'=42
+'|'=32
+'IS'=45
+'VERIFY'=40
+'.*'=59
+'DEVICE'=38
+'='=22
+')'=25
+'PROCESS'=36
+'->'=34
+'SET'=28
+'NEVER HOLDS'=48
+'}'=14
+'optional'=18
+'<='=56
+'WITH PROBABILITY BOUND'=51
+'!='=55
+'USES'=37
+'<'=20
+'['=41
+'ALWAYS HOLDS'=49
+'E'=52
+'AT TIME INSTANT'=44
+'EXPECTED'=43
+'&'=58

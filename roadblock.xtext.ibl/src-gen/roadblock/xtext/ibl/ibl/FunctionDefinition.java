@@ -4,6 +4,8 @@ package roadblock.xtext.ibl.ibl;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Function Definition</b></em>'.
@@ -24,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface FunctionDefinition extends ModelMember
+public interface FunctionDefinition extends EObject
 {
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.

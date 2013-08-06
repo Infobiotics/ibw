@@ -51,24 +51,26 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cImportParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cFunctionDefinitionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cProcessDefinitionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// model members are an import statement, variable definition or function definition
-		//ModelMember:
-		//	Import | VariableDefinition | FunctionDefinition;
+		//ModelMember: //	Import | VariableDefinition | FunctionDefinition
+		//	Import | VariableDefinition | ProcessDefinition;
 		public ParserRule getRule() { return rule; }
 
-		//Import | VariableDefinition | FunctionDefinition
+		////	Import | VariableDefinition | FunctionDefinition
+		//Import | VariableDefinition | ProcessDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		////	Import | VariableDefinition | FunctionDefinition
 		//Import
 		public RuleCall getImportParserRuleCall_0() { return cImportParserRuleCall_0; }
 
 		//VariableDefinition
 		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
 
-		//FunctionDefinition
-		public RuleCall getFunctionDefinitionParserRuleCall_2() { return cFunctionDefinitionParserRuleCall_2; }
+		//ProcessDefinition
+		public RuleCall getProcessDefinitionParserRuleCall_2() { return cProcessDefinitionParserRuleCall_2; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -100,54 +102,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//QualifiedNameWithWildcard
 		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0; }
-	}
-
-	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Keyword cFullStopAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		
-		//QualifiedNameWithWildcard:
-		//	QualifiedName ".*"?;
-		public ParserRule getRule() { return rule; }
-
-		//QualifiedName ".*"?
-		public Group getGroup() { return cGroup; }
-
-		//QualifiedName
-		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
-
-		//".*"?
-		public Keyword getFullStopAsteriskKeyword_1() { return cFullStopAsteriskKeyword_1; }
-	}
-
-	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		
-		//QualifiedName:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
-
-		//ID ("." ID)*
-		public Group getGroup() { return cGroup; }
-
-		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
-
-		//("." ID)*
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
-
-		//ID
-		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 
 	public class VariableDefinitionElements extends AbstractParserRuleElementFinder {
@@ -464,13 +418,79 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 	}
 
-	public class VariableDefinitionMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableDefinitionMember");
-		private final RuleCall cVariableDeclarationParserRuleCall = (RuleCall)rule.eContents().get(1);
+	public class VariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Variable");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		/////////////////
 		//// variables //
 		/////////////////
+		//// a variable
+		//Variable:
+		//	{Variable} name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//{Variable} name=ID
+		public Group getGroup() { return cGroup; }
+
+		//{Variable}
+		public Action getVariableAction_0() { return cVariableAction_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+
+	public class VariableComplexElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableComplex");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariableComplexAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cComponentsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cComponentsVariableParserRuleCall_1_0 = (RuleCall)cComponentsAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cTildeKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cComponentsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cComponentsVariableParserRuleCall_2_1_0 = (RuleCall)cComponentsAssignment_2_1.eContents().get(0);
+		
+		//// a variable complex
+		//VariableComplex returns EString:
+		//	{VariableComplex} components+=Variable ("~" components+=Variable)+;
+		public ParserRule getRule() { return rule; }
+
+		//{VariableComplex} components+=Variable ("~" components+=Variable)+
+		public Group getGroup() { return cGroup; }
+
+		//{VariableComplex}
+		public Action getVariableComplexAction_0() { return cVariableComplexAction_0; }
+
+		//components+=Variable
+		public Assignment getComponentsAssignment_1() { return cComponentsAssignment_1; }
+
+		//Variable
+		public RuleCall getComponentsVariableParserRuleCall_1_0() { return cComponentsVariableParserRuleCall_1_0; }
+
+		//("~" components+=Variable)+
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"~"
+		public Keyword getTildeKeyword_2_0() { return cTildeKeyword_2_0; }
+
+		//components+=Variable
+		public Assignment getComponentsAssignment_2_1() { return cComponentsAssignment_2_1; }
+
+		//Variable
+		public RuleCall getComponentsVariableParserRuleCall_2_1_0() { return cComponentsVariableParserRuleCall_2_1_0; }
+	}
+
+	public class VariableDefinitionMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableDefinitionMember");
+		private final RuleCall cVariableDeclarationParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
 		//// entries allowed inside variable definition
 		//VariableDefinitionMember:
 		//	VariableDeclaration;
@@ -824,7 +844,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLhsRuleObjectParserRuleCall_4_1_1_0 = (RuleCall)cLhsAssignment_4_1_1.eContents().get(0);
 		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_5_0 = (Keyword)cAlternatives_5.eContents().get(0);
-		private final Keyword cLessThanSignHyphenMinusGreaterThanSignKeyword_5_1 = (Keyword)cAlternatives_5.eContents().get(1);
+		private final Assignment cReversibleAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
+		private final Keyword cReversibleLessThanSignHyphenMinusGreaterThanSignKeyword_5_1_0 = (Keyword)cReversibleAssignment_5_1.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Assignment cRhsAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
 		private final RuleCall cRhsRuleObjectParserRuleCall_6_0_0 = (RuleCall)cRhsAssignment_6_0.eContents().get(0);
@@ -838,12 +859,12 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		/////////////
 		//// rule definition
 		//RuleDefinition:
-		//	{RuleDefinition} "RULE" name=ID ":" (lhs+=RuleObject ("+" lhs+=RuleObject)*)? ("->" | "<->") (rhs+=RuleObject ("+"
-		//	rhs+=RuleObject)*)?;
+		//	{RuleDefinition} "RULE" name=ID ":" (lhs+=RuleObject ("+" lhs+=RuleObject)*)? ("->" | reversible?="<->")
+		//	(rhs+=RuleObject ("+" rhs+=RuleObject)*)?;
 		public ParserRule getRule() { return rule; }
 
-		//{RuleDefinition} "RULE" name=ID ":" (lhs+=RuleObject ("+" lhs+=RuleObject)*)? ("->" | "<->") (rhs+=RuleObject ("+"
-		//rhs+=RuleObject)*)?
+		//{RuleDefinition} "RULE" name=ID ":" (lhs+=RuleObject ("+" lhs+=RuleObject)*)? ("->" | reversible?="<->")
+		//(rhs+=RuleObject ("+" rhs+=RuleObject)*)?
 		public Group getGroup() { return cGroup; }
 
 		//{RuleDefinition}
@@ -882,14 +903,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//RuleObject
 		public RuleCall getLhsRuleObjectParserRuleCall_4_1_1_0() { return cLhsRuleObjectParserRuleCall_4_1_1_0; }
 
-		//"->" | "<->"
+		//"->" | reversible?="<->"
 		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 
 		//"->"
 		public Keyword getHyphenMinusGreaterThanSignKeyword_5_0() { return cHyphenMinusGreaterThanSignKeyword_5_0; }
 
+		//reversible?="<->"
+		public Assignment getReversibleAssignment_5_1() { return cReversibleAssignment_5_1; }
+
 		//"<->"
-		public Keyword getLessThanSignHyphenMinusGreaterThanSignKeyword_5_1() { return cLessThanSignHyphenMinusGreaterThanSignKeyword_5_1; }
+		public Keyword getReversibleLessThanSignHyphenMinusGreaterThanSignKeyword_5_1_0() { return cReversibleLessThanSignHyphenMinusGreaterThanSignKeyword_5_1_0; }
 
 		//(rhs+=RuleObject ("+" rhs+=RuleObject)*)?
 		public Group getGroup_6() { return cGroup_6; }
@@ -915,49 +939,283 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class RuleObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RuleObject");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cRuleObjectAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cSubobjectsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cSubobjectsIDTerminalRuleCall_1_0 = (RuleCall)cSubobjectsAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cTildeKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cSubobjectsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cSubobjectsIDTerminalRuleCall_2_1_0 = (RuleCall)cSubobjectsAssignment_2_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cVariableParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cVariableComplexParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//// left or right hand side of rule
-		//RuleObject:
-		//	{RuleObject} subobjects+=ID ("~" subobjects+=ID)*;
+		//RuleObject returns EString:
+		//	Variable | VariableComplex;
 		public ParserRule getRule() { return rule; }
 
-		//{RuleObject} subobjects+=ID ("~" subobjects+=ID)*
-		public Group getGroup() { return cGroup; }
+		//Variable | VariableComplex
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{RuleObject}
-		public Action getRuleObjectAction_0() { return cRuleObjectAction_0; }
+		//Variable
+		public RuleCall getVariableParserRuleCall_0() { return cVariableParserRuleCall_0; }
 
-		//subobjects+=ID
-		public Assignment getSubobjectsAssignment_1() { return cSubobjectsAssignment_1; }
-
-		//ID
-		public RuleCall getSubobjectsIDTerminalRuleCall_1_0() { return cSubobjectsIDTerminalRuleCall_1_0; }
-
-		//("~" subobjects+=ID)*
-		public Group getGroup_2() { return cGroup_2; }
-
-		//"~"
-		public Keyword getTildeKeyword_2_0() { return cTildeKeyword_2_0; }
-
-		//subobjects+=ID
-		public Assignment getSubobjectsAssignment_2_1() { return cSubobjectsAssignment_2_1; }
-
-		//ID
-		public RuleCall getSubobjectsIDTerminalRuleCall_2_1_0() { return cSubobjectsIDTerminalRuleCall_2_1_0; }
+		//VariableComplex
+		public RuleCall getVariableComplexParserRuleCall_1() { return cVariableComplexParserRuleCall_1; }
 	}
 
-	public class ProcessDeclarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessDeclaration");
+	public class ProcessDefinitionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cProcessDeclarationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cProcessDefinitionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDefineKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPROCESSKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Assignment cParametersAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
+		private final RuleCall cParametersProcessParameterMemberParserRuleCall_5_0_0 = (RuleCall)cParametersAssignment_5_0.eContents().get(0);
+		private final Group cGroup_5_1 = (Group)cGroup_5.eContents().get(1);
+		private final Keyword cCommaKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
+		private final Assignment cParametersAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cParametersProcessParameterMemberParserRuleCall_5_1_1_0 = (RuleCall)cParametersAssignment_5_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cMembersAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cMembersProcessDefinitionMemberParserRuleCall_8_0 = (RuleCall)cMembersAssignment_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cUSESKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Assignment cUsesAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
+		private final RuleCall cUsesProcessUseMemberParserRuleCall_10_1_0 = (RuleCall)cUsesAssignment_10_1.eContents().get(0);
+		private final Group cGroup_10_2 = (Group)cGroup_10.eContents().get(2);
+		private final Keyword cCommaKeyword_10_2_0 = (Keyword)cGroup_10_2.eContents().get(0);
+		private final Assignment cUsesAssignment_10_2_1 = (Assignment)cGroup_10_2.eContents().get(1);
+		private final RuleCall cUsesProcessUseMemberParserRuleCall_10_2_1_0 = (RuleCall)cUsesAssignment_10_2_1.eContents().get(0);
+		
+		/////////////////
+		//// processes //
+		/////////////////
+		//// processes are collections of rules
+		//// a process definition
+		//ProcessDefinition:
+		//	{ProcessDefinition} "define" "PROCESS" name=ID "(" // process parameters
+		//	(parameters+=ProcessParameterMember ("," parameters+=ProcessParameterMember)*)? ")" "{" // process rules
+		//	members+=ProcessDefinitionMember* "}" ("USES" // process 
+		//	uses+=ProcessUseMember ("," uses+=ProcessUseMember)*)?;
+		public ParserRule getRule() { return rule; }
+
+		//{ProcessDefinition} "define" "PROCESS" name=ID "(" // process parameters
+		//(parameters+=ProcessParameterMember ("," parameters+=ProcessParameterMember)*)? ")" "{" // process rules
+		//members+=ProcessDefinitionMember* "}" ("USES" // process 
+		//uses+=ProcessUseMember ("," uses+=ProcessUseMember)*)?
+		public Group getGroup() { return cGroup; }
+
+		//{ProcessDefinition}
+		public Action getProcessDefinitionAction_0() { return cProcessDefinitionAction_0; }
+
+		//"define"
+		public Keyword getDefineKeyword_1() { return cDefineKeyword_1; }
+
+		//"PROCESS"
+		public Keyword getPROCESSKeyword_2() { return cPROCESSKeyword_2; }
+
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_4() { return cLeftParenthesisKeyword_4; }
+
+		//(parameters+=ProcessParameterMember ("," parameters+=ProcessParameterMember)*)?
+		public Group getGroup_5() { return cGroup_5; }
+
+		//parameters+=ProcessParameterMember
+		public Assignment getParametersAssignment_5_0() { return cParametersAssignment_5_0; }
+
+		//ProcessParameterMember
+		public RuleCall getParametersProcessParameterMemberParserRuleCall_5_0_0() { return cParametersProcessParameterMemberParserRuleCall_5_0_0; }
+
+		//("," parameters+=ProcessParameterMember)*
+		public Group getGroup_5_1() { return cGroup_5_1; }
+
+		//","
+		public Keyword getCommaKeyword_5_1_0() { return cCommaKeyword_5_1_0; }
+
+		//parameters+=ProcessParameterMember
+		public Assignment getParametersAssignment_5_1_1() { return cParametersAssignment_5_1_1; }
+
+		//ProcessParameterMember
+		public RuleCall getParametersProcessParameterMemberParserRuleCall_5_1_1_0() { return cParametersProcessParameterMemberParserRuleCall_5_1_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
+
+		//// process rules
+		//members+=ProcessDefinitionMember*
+		public Assignment getMembersAssignment_8() { return cMembersAssignment_8; }
+
+		//ProcessDefinitionMember
+		public RuleCall getMembersProcessDefinitionMemberParserRuleCall_8_0() { return cMembersProcessDefinitionMemberParserRuleCall_8_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+
+		//("USES" // process 
+		//uses+=ProcessUseMember ("," uses+=ProcessUseMember)*)?
+		public Group getGroup_10() { return cGroup_10; }
+
+		//"USES"
+		public Keyword getUSESKeyword_10_0() { return cUSESKeyword_10_0; }
+
+		//// process 
+		//uses+=ProcessUseMember
+		public Assignment getUsesAssignment_10_1() { return cUsesAssignment_10_1; }
+
+		//ProcessUseMember
+		public RuleCall getUsesProcessUseMemberParserRuleCall_10_1_0() { return cUsesProcessUseMemberParserRuleCall_10_1_0; }
+
+		//("," uses+=ProcessUseMember)*
+		public Group getGroup_10_2() { return cGroup_10_2; }
+
+		//","
+		public Keyword getCommaKeyword_10_2_0() { return cCommaKeyword_10_2_0; }
+
+		//uses+=ProcessUseMember
+		public Assignment getUsesAssignment_10_2_1() { return cUsesAssignment_10_2_1; }
+
+		//ProcessUseMember
+		public RuleCall getUsesProcessUseMemberParserRuleCall_10_2_1_0() { return cUsesProcessUseMemberParserRuleCall_10_2_1_0; }
+	}
+
+	public class ProcessParameterMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessParameterMember");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cProcessParameterMemberAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cScopeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cScopeProcessParameterScopeParserRuleCall_4_0 = (RuleCall)cScopeAssignment_4.eContents().get(0);
+		
+		//// process parameter member
+		//ProcessParameterMember:
+		//	{ProcessParameterMember} type=ID name=ID ":" scope=ProcessParameterScope;
+		public ParserRule getRule() { return rule; }
+
+		//{ProcessParameterMember} type=ID name=ID ":" scope=ProcessParameterScope
+		public Group getGroup() { return cGroup; }
+
+		//{ProcessParameterMember}
+		public Action getProcessParameterMemberAction_0() { return cProcessParameterMemberAction_0; }
+
+		//type=ID
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+
+		//":"
+		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+
+		//scope=ProcessParameterScope
+		public Assignment getScopeAssignment_4() { return cScopeAssignment_4; }
+
+		//ProcessParameterScope
+		public RuleCall getScopeProcessParameterScopeParserRuleCall_4_0() { return cScopeProcessParameterScopeParserRuleCall_4_0; }
+	}
+
+	public class ProcessParameterScopeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessParameterScope");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cRequiredKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cReturnedKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cOptionalKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		
+		//// allowed scope of process parameters
+		//ProcessParameterScope:
+		//	"required" | "returned" | "optional";
+		public ParserRule getRule() { return rule; }
+
+		//"required" | "returned" | "optional"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"required"
+		public Keyword getRequiredKeyword_0() { return cRequiredKeyword_0; }
+
+		//"returned"
+		public Keyword getReturnedKeyword_1() { return cReturnedKeyword_1; }
+
+		//"optional"
+		public Keyword getOptionalKeyword_2() { return cOptionalKeyword_2; }
+	}
+
+	public class ProcessDefinitionMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessDefinitionMember");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cVariableAssignmentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//// process definition member
+		//ProcessDefinitionMember:
+		//	RuleDefinition | VariableAssignment;
+		public ParserRule getRule() { return rule; }
+
+		//RuleDefinition | VariableAssignment
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//RuleDefinition
+		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
+
+		//VariableAssignment
+		public RuleCall getVariableAssignmentParserRuleCall_1() { return cVariableAssignmentParserRuleCall_1; }
+	}
+
+	public class ProcessUseMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessUseMember");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cProcessUseMemberAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeIDTerminalRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//// process use member
+		//ProcessUseMember:
+		//	{ProcessUseMember} type=ID name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//{ProcessUseMember} type=ID name=ID
+		public Group getGroup() { return cGroup; }
+
+		//{ProcessUseMember}
+		public Action getProcessUseMemberAction_0() { return cProcessUseMemberAction_0; }
+
+		//type=ID
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//ID
+		public RuleCall getTypeIDTerminalRuleCall_1_0() { return cTypeIDTerminalRuleCall_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+	}
+
+	public class ProcessCallElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessCall");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cProcessCallAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cPROCESSKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
@@ -974,20 +1232,18 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParametersVariableAssignmentParserRuleCall_6_1_1_0 = (RuleCall)cParametersAssignment_6_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		/////////////////
-		//// processes //
-		/////////////////
-		//ProcessDeclaration:
-		//	{ProcessDeclaration} "PROCESS" name=ID "=" constructor=ID "(" (parameters+=VariableAssignment (","
+		//// a process call
+		//ProcessCall:
+		//	{ProcessCall} "PROCESS" name=ID "=" constructor=ID "(" (parameters+=VariableAssignment (","
 		//	parameters+=VariableAssignment)*)? ")";
 		public ParserRule getRule() { return rule; }
 
-		//{ProcessDeclaration} "PROCESS" name=ID "=" constructor=ID "(" (parameters+=VariableAssignment (","
+		//{ProcessCall} "PROCESS" name=ID "=" constructor=ID "(" (parameters+=VariableAssignment (","
 		//parameters+=VariableAssignment)*)? ")"
 		public Group getGroup() { return cGroup; }
 
-		//{ProcessDeclaration}
-		public Action getProcessDeclarationAction_0() { return cProcessDeclarationAction_0; }
+		//{ProcessCall}
+		public Action getProcessCallAction_0() { return cProcessCallAction_0; }
 
 		//"PROCESS"
 		public Keyword getPROCESSKeyword_1() { return cPROCESSKeyword_1; }
@@ -1168,18 +1424,18 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	public class DeviceMembersElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DeviceMembers");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cProcessDeclarationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cProcessCallParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cPropertyDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//DeviceMembers:
-		//	ProcessDeclaration | PropertyDefinition;
+		//	ProcessCall | PropertyDefinition;
 		public ParserRule getRule() { return rule; }
 
-		//ProcessDeclaration | PropertyDefinition
+		//ProcessCall | PropertyDefinition
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//ProcessDeclaration
-		public RuleCall getProcessDeclarationParserRuleCall_0() { return cProcessDeclarationParserRuleCall_0; }
+		//ProcessCall
+		public RuleCall getProcessCallParserRuleCall_0() { return cProcessCallParserRuleCall_0; }
 
 		//PropertyDefinition
 		public RuleCall getPropertyDefinitionParserRuleCall_1() { return cPropertyDefinitionParserRuleCall_1; }
@@ -1757,19 +2013,68 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"|"
 		public Keyword getVerticalLineKeyword_1() { return cVerticalLineKeyword_1; }
 	}
+
+	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//// qualified name
+		//QualifiedNameWithWildcard:
+		//	QualifiedName ".*"?;
+		public ParserRule getRule() { return rule; }
+
+		//QualifiedName ".*"?
+		public Group getGroup() { return cGroup; }
+
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
+
+		//".*"?
+		public Keyword getFullStopAsteriskKeyword_1() { return cFullStopAsteriskKeyword_1; }
+	}
+
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedName:
+		//	ID ("." ID)*;
+		public ParserRule getRule() { return rule; }
+
+		//ID ("." ID)*
+		public Group getGroup() { return cGroup; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//("." ID)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
 	
 	
 	private ModelElements pModel;
 	private ModelMemberElements pModelMember;
 	private ImportElements pImport;
-	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
-	private QualifiedNameElements pQualifiedName;
 	private VariableDefinitionElements pVariableDefinition;
 	private FunctionDefinitionElements pFunctionDefinition;
 	private FunctionParameterMemberElements pFunctionParameterMember;
 	private ParameterScopeElements pParameterScope;
 	private FunctionDefinitionMemberElements pFunctionDefinitionMember;
 	private FunctionUseMemberElements pFunctionUseMember;
+	private VariableElements pVariable;
+	private VariableComplexElements pVariableComplex;
 	private VariableDefinitionMemberElements pVariableDefinitionMember;
 	private VariableDeclarationElements pVariableDeclaration;
 	private VariableQualifierElements pVariableQualifier;
@@ -1780,7 +2085,12 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private VariableExpressionOperatorElements pVariableExpressionOperator;
 	private RuleDefinitionElements pRuleDefinition;
 	private RuleObjectElements pRuleObject;
-	private ProcessDeclarationElements pProcessDeclaration;
+	private ProcessDefinitionElements pProcessDefinition;
+	private ProcessParameterMemberElements pProcessParameterMember;
+	private ProcessParameterScopeElements pProcessParameterScope;
+	private ProcessDefinitionMemberElements pProcessDefinitionMember;
+	private ProcessUseMemberElements pProcessUseMember;
+	private ProcessCallElements pProcessCall;
 	private DeviceDefinitionElements pDeviceDefinition;
 	private DeviceMembersElements pDeviceMembers;
 	private ATGCDefinitionElements pATGCDefinition;
@@ -1793,6 +2103,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private QuantityElements pQuantity;
 	private RelationalOperatorElements pRelationalOperator;
 	private BooleanOperatorElements pBooleanOperator;
+	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
+	private QualifiedNameElements pQualifiedName;
 	
 	private final Grammar grammar;
 
@@ -1847,8 +2159,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// model members are an import statement, variable definition or function definition
-	//ModelMember:
-	//	Import | VariableDefinition | FunctionDefinition;
+	//ModelMember: //	Import | VariableDefinition | FunctionDefinition
+	//	Import | VariableDefinition | ProcessDefinition;
 	public ModelMemberElements getModelMemberAccess() {
 		return (pModelMember != null) ? pModelMember : (pModelMember = new ModelMemberElements());
 	}
@@ -1868,26 +2180,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getImportRule() {
 		return getImportAccess().getRule();
-	}
-
-	//QualifiedNameWithWildcard:
-	//	QualifiedName ".*"?;
-	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
-		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
-	}
-	
-	public ParserRule getQualifiedNameWithWildcardRule() {
-		return getQualifiedNameWithWildcardAccess().getRule();
-	}
-
-	//QualifiedName:
-	//	ID ("." ID)*;
-	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
-	}
-	
-	public ParserRule getQualifiedNameRule() {
-		return getQualifiedNameAccess().getRule();
 	}
 
 	//// a variable definition
@@ -1965,6 +2257,28 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	/////////////////
 	//// variables //
 	/////////////////
+	//// a variable
+	//Variable:
+	//	{Variable} name=ID;
+	public VariableElements getVariableAccess() {
+		return (pVariable != null) ? pVariable : (pVariable = new VariableElements());
+	}
+	
+	public ParserRule getVariableRule() {
+		return getVariableAccess().getRule();
+	}
+
+	//// a variable complex
+	//VariableComplex returns EString:
+	//	{VariableComplex} components+=Variable ("~" components+=Variable)+;
+	public VariableComplexElements getVariableComplexAccess() {
+		return (pVariableComplex != null) ? pVariableComplex : (pVariableComplex = new VariableComplexElements());
+	}
+	
+	public ParserRule getVariableComplexRule() {
+		return getVariableComplexAccess().getRule();
+	}
+
 	//// entries allowed inside variable definition
 	//VariableDefinitionMember:
 	//	VariableDeclaration;
@@ -2053,8 +2367,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	/////////////
 	//// rule definition
 	//RuleDefinition:
-	//	{RuleDefinition} "RULE" name=ID ":" (lhs+=RuleObject ("+" lhs+=RuleObject)*)? ("->" | "<->") (rhs+=RuleObject ("+"
-	//	rhs+=RuleObject)*)?;
+	//	{RuleDefinition} "RULE" name=ID ":" (lhs+=RuleObject ("+" lhs+=RuleObject)*)? ("->" | reversible?="<->")
+	//	(rhs+=RuleObject ("+" rhs+=RuleObject)*)?;
 	public RuleDefinitionElements getRuleDefinitionAccess() {
 		return (pRuleDefinition != null) ? pRuleDefinition : (pRuleDefinition = new RuleDefinitionElements());
 	}
@@ -2064,8 +2378,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// left or right hand side of rule
-	//RuleObject:
-	//	{RuleObject} subobjects+=ID ("~" subobjects+=ID)*;
+	//RuleObject returns EString:
+	//	Variable | VariableComplex;
 	public RuleObjectElements getRuleObjectAccess() {
 		return (pRuleObject != null) ? pRuleObject : (pRuleObject = new RuleObjectElements());
 	}
@@ -2077,15 +2391,75 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	/////////////////
 	//// processes //
 	/////////////////
-	//ProcessDeclaration:
-	//	{ProcessDeclaration} "PROCESS" name=ID "=" constructor=ID "(" (parameters+=VariableAssignment (","
-	//	parameters+=VariableAssignment)*)? ")";
-	public ProcessDeclarationElements getProcessDeclarationAccess() {
-		return (pProcessDeclaration != null) ? pProcessDeclaration : (pProcessDeclaration = new ProcessDeclarationElements());
+	//// processes are collections of rules
+	//// a process definition
+	//ProcessDefinition:
+	//	{ProcessDefinition} "define" "PROCESS" name=ID "(" // process parameters
+	//	(parameters+=ProcessParameterMember ("," parameters+=ProcessParameterMember)*)? ")" "{" // process rules
+	//	members+=ProcessDefinitionMember* "}" ("USES" // process 
+	//	uses+=ProcessUseMember ("," uses+=ProcessUseMember)*)?;
+	public ProcessDefinitionElements getProcessDefinitionAccess() {
+		return (pProcessDefinition != null) ? pProcessDefinition : (pProcessDefinition = new ProcessDefinitionElements());
 	}
 	
-	public ParserRule getProcessDeclarationRule() {
-		return getProcessDeclarationAccess().getRule();
+	public ParserRule getProcessDefinitionRule() {
+		return getProcessDefinitionAccess().getRule();
+	}
+
+	//// process parameter member
+	//ProcessParameterMember:
+	//	{ProcessParameterMember} type=ID name=ID ":" scope=ProcessParameterScope;
+	public ProcessParameterMemberElements getProcessParameterMemberAccess() {
+		return (pProcessParameterMember != null) ? pProcessParameterMember : (pProcessParameterMember = new ProcessParameterMemberElements());
+	}
+	
+	public ParserRule getProcessParameterMemberRule() {
+		return getProcessParameterMemberAccess().getRule();
+	}
+
+	//// allowed scope of process parameters
+	//ProcessParameterScope:
+	//	"required" | "returned" | "optional";
+	public ProcessParameterScopeElements getProcessParameterScopeAccess() {
+		return (pProcessParameterScope != null) ? pProcessParameterScope : (pProcessParameterScope = new ProcessParameterScopeElements());
+	}
+	
+	public ParserRule getProcessParameterScopeRule() {
+		return getProcessParameterScopeAccess().getRule();
+	}
+
+	//// process definition member
+	//ProcessDefinitionMember:
+	//	RuleDefinition | VariableAssignment;
+	public ProcessDefinitionMemberElements getProcessDefinitionMemberAccess() {
+		return (pProcessDefinitionMember != null) ? pProcessDefinitionMember : (pProcessDefinitionMember = new ProcessDefinitionMemberElements());
+	}
+	
+	public ParserRule getProcessDefinitionMemberRule() {
+		return getProcessDefinitionMemberAccess().getRule();
+	}
+
+	//// process use member
+	//ProcessUseMember:
+	//	{ProcessUseMember} type=ID name=ID;
+	public ProcessUseMemberElements getProcessUseMemberAccess() {
+		return (pProcessUseMember != null) ? pProcessUseMember : (pProcessUseMember = new ProcessUseMemberElements());
+	}
+	
+	public ParserRule getProcessUseMemberRule() {
+		return getProcessUseMemberAccess().getRule();
+	}
+
+	//// a process call
+	//ProcessCall:
+	//	{ProcessCall} "PROCESS" name=ID "=" constructor=ID "(" (parameters+=VariableAssignment (","
+	//	parameters+=VariableAssignment)*)? ")";
+	public ProcessCallElements getProcessCallAccess() {
+		return (pProcessCall != null) ? pProcessCall : (pProcessCall = new ProcessCallElements());
+	}
+	
+	public ParserRule getProcessCallRule() {
+		return getProcessCallAccess().getRule();
 	}
 
 	///////////////
@@ -2104,7 +2478,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//DeviceMembers:
-	//	ProcessDeclaration | PropertyDefinition;
+	//	ProcessCall | PropertyDefinition;
 	public DeviceMembersElements getDeviceMembersAccess() {
 		return (pDeviceMembers != null) ? pDeviceMembers : (pDeviceMembers = new DeviceMembersElements());
 	}
@@ -2227,6 +2601,27 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getBooleanOperatorRule() {
 		return getBooleanOperatorAccess().getRule();
+	}
+
+	//// qualified name
+	//QualifiedNameWithWildcard:
+	//	QualifiedName ".*"?;
+	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
+		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
+	}
+	
+	public ParserRule getQualifiedNameWithWildcardRule() {
+		return getQualifiedNameWithWildcardAccess().getRule();
+	}
+
+	//QualifiedName:
+	//	ID ("." ID)*;
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
 	}
 
 	//terminal ID:

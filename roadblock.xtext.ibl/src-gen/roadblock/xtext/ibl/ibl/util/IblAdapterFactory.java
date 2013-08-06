@@ -115,6 +115,16 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionUseMemberAdapter();
       }
       @Override
+      public Adapter caseVariable(Variable object)
+      {
+        return createVariableAdapter();
+      }
+      @Override
+      public Adapter caseEString(EString object)
+      {
+        return createEStringAdapter();
+      }
+      @Override
       public Adapter caseVariableDefinitionMember(VariableDefinitionMember object)
       {
         return createVariableDefinitionMemberAdapter();
@@ -145,14 +155,29 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createRuleDefinitionAdapter();
       }
       @Override
-      public Adapter caseRuleObject(RuleObject object)
+      public Adapter caseProcessDefinition(ProcessDefinition object)
       {
-        return createRuleObjectAdapter();
+        return createProcessDefinitionAdapter();
       }
       @Override
-      public Adapter caseProcessDeclaration(ProcessDeclaration object)
+      public Adapter caseProcessParameterMember(ProcessParameterMember object)
       {
-        return createProcessDeclarationAdapter();
+        return createProcessParameterMemberAdapter();
+      }
+      @Override
+      public Adapter caseProcessDefinitionMember(ProcessDefinitionMember object)
+      {
+        return createProcessDefinitionMemberAdapter();
+      }
+      @Override
+      public Adapter caseProcessUseMember(ProcessUseMember object)
+      {
+        return createProcessUseMemberAdapter();
+      }
+      @Override
+      public Adapter caseProcessCall(ProcessCall object)
+      {
+        return createProcessCallAdapter();
       }
       @Override
       public Adapter caseDeviceDefinition(DeviceDefinition object)
@@ -188,6 +213,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseQuantity(Quantity object)
       {
         return createQuantityAdapter();
+      }
+      @Override
+      public Adapter caseVariableComplex(VariableComplex object)
+      {
+        return createVariableComplexAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -332,6 +362,36 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.Variable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.Variable
+   * @generated
+   */
+  public Adapter createVariableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.EString <em>EString</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.EString
+   * @generated
+   */
+  public Adapter createEStringAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionMember <em>Variable Definition Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -422,31 +482,76 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RuleObject <em>Rule Object</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessDefinition <em>Process Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.RuleObject
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinition
    * @generated
    */
-  public Adapter createRuleObjectAdapter()
+  public Adapter createProcessDefinitionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessDeclaration <em>Process Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessParameterMember <em>Process Parameter Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.ProcessDeclaration
+   * @see roadblock.xtext.ibl.ibl.ProcessParameterMember
    * @generated
    */
-  public Adapter createProcessDeclarationAdapter()
+  public Adapter createProcessParameterMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessDefinitionMember <em>Process Definition Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinitionMember
+   * @generated
+   */
+  public Adapter createProcessDefinitionMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessUseMember <em>Process Use Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessUseMember
+   * @generated
+   */
+  public Adapter createProcessUseMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessCall <em>Process Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessCall
+   * @generated
+   */
+  public Adapter createProcessCallAdapter()
   {
     return null;
   }
@@ -552,6 +657,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQuantityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableComplex <em>Variable Complex</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableComplex
+   * @generated
+   */
+  public Adapter createVariableComplexAdapter()
   {
     return null;
   }

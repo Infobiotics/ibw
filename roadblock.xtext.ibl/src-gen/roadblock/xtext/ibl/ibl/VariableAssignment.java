@@ -20,7 +20,7 @@ package roadblock.xtext.ibl.ibl;
  * @model
  * @generated
  */
-public interface VariableAssignment extends FunctionDefinitionMember
+public interface VariableAssignment extends FunctionDefinitionMember, ProcessDefinitionMember
 {
   /**
    * Returns the value of the '<em><b>Variable</b></em>' containment reference.

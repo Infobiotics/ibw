@@ -72,14 +72,19 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_DEFINITION_MEMBER: return createFunctionDefinitionMember();
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
+      case IblPackage.VARIABLE: return createVariable();
+      case IblPackage.ESTRING: return createEString();
       case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
       case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
       case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
-      case IblPackage.RULE_OBJECT: return createRuleObject();
-      case IblPackage.PROCESS_DECLARATION: return createProcessDeclaration();
+      case IblPackage.PROCESS_DEFINITION: return createProcessDefinition();
+      case IblPackage.PROCESS_PARAMETER_MEMBER: return createProcessParameterMember();
+      case IblPackage.PROCESS_DEFINITION_MEMBER: return createProcessDefinitionMember();
+      case IblPackage.PROCESS_USE_MEMBER: return createProcessUseMember();
+      case IblPackage.PROCESS_CALL: return createProcessCall();
       case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
       case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
@@ -87,6 +92,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.PROPERTY: return createProperty();
       case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
       case IblPackage.QUANTITY: return createQuantity();
+      case IblPackage.VARIABLE_COMPLEX: return createVariableComplex();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -185,6 +191,28 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Variable createVariable()
+  {
+    VariableImpl variable = new VariableImpl();
+    return variable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EString createEString()
+  {
+    EStringImpl eString = new EStringImpl();
+    return eString;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public VariableDefinitionMember createVariableDefinitionMember()
   {
     VariableDefinitionMemberImpl variableDefinitionMember = new VariableDefinitionMemberImpl();
@@ -251,10 +279,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RuleObject createRuleObject()
+  public ProcessDefinition createProcessDefinition()
   {
-    RuleObjectImpl ruleObject = new RuleObjectImpl();
-    return ruleObject;
+    ProcessDefinitionImpl processDefinition = new ProcessDefinitionImpl();
+    return processDefinition;
   }
 
   /**
@@ -262,10 +290,43 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessDeclaration createProcessDeclaration()
+  public ProcessParameterMember createProcessParameterMember()
   {
-    ProcessDeclarationImpl processDeclaration = new ProcessDeclarationImpl();
-    return processDeclaration;
+    ProcessParameterMemberImpl processParameterMember = new ProcessParameterMemberImpl();
+    return processParameterMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessDefinitionMember createProcessDefinitionMember()
+  {
+    ProcessDefinitionMemberImpl processDefinitionMember = new ProcessDefinitionMemberImpl();
+    return processDefinitionMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessUseMember createProcessUseMember()
+  {
+    ProcessUseMemberImpl processUseMember = new ProcessUseMemberImpl();
+    return processUseMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessCall createProcessCall()
+  {
+    ProcessCallImpl processCall = new ProcessCallImpl();
+    return processCall;
   }
 
   /**
@@ -343,6 +404,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     QuantityImpl quantity = new QuantityImpl();
     return quantity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableComplex createVariableComplex()
+  {
+    VariableComplexImpl variableComplex = new VariableComplexImpl();
+    return variableComplex;
   }
 
   /**

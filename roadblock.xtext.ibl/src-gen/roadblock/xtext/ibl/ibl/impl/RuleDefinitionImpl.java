@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import roadblock.xtext.ibl.ibl.EString;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
-import roadblock.xtext.ibl.ibl.RuleObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +30,7 @@ import roadblock.xtext.ibl.ibl.RuleObject;
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#getLhs <em>Lhs</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#isReversible <em>Reversible</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl#getRhs <em>Rhs</em>}</li>
  * </ul>
  * </p>
@@ -66,7 +67,27 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * @generated
    * @ordered
    */
-  protected EList<RuleObject> lhs;
+  protected EList<EString> lhs;
+
+  /**
+   * The default value of the '{@link #isReversible() <em>Reversible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isReversible()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean REVERSIBLE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isReversible() <em>Reversible</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isReversible()
+   * @generated
+   * @ordered
+   */
+  protected boolean reversible = REVERSIBLE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference list.
@@ -76,7 +97,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * @generated
    * @ordered
    */
-  protected EList<RuleObject> rhs;
+  protected EList<EString> rhs;
 
   /**
    * <!-- begin-user-doc -->
@@ -127,11 +148,11 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RuleObject> getLhs()
+  public EList<EString> getLhs()
   {
     if (lhs == null)
     {
-      lhs = new EObjectContainmentEList<RuleObject>(RuleObject.class, this, IblPackage.RULE_DEFINITION__LHS);
+      lhs = new EObjectContainmentEList<EString>(EString.class, this, IblPackage.RULE_DEFINITION__LHS);
     }
     return lhs;
   }
@@ -141,11 +162,34 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RuleObject> getRhs()
+  public boolean isReversible()
+  {
+    return reversible;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReversible(boolean newReversible)
+  {
+    boolean oldReversible = reversible;
+    reversible = newReversible;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__REVERSIBLE, oldReversible, reversible));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<EString> getRhs()
   {
     if (rhs == null)
     {
-      rhs = new EObjectContainmentEList<RuleObject>(RuleObject.class, this, IblPackage.RULE_DEFINITION__RHS);
+      rhs = new EObjectContainmentEList<EString>(EString.class, this, IblPackage.RULE_DEFINITION__RHS);
     }
     return rhs;
   }
@@ -182,6 +226,8 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
         return getName();
       case IblPackage.RULE_DEFINITION__LHS:
         return getLhs();
+      case IblPackage.RULE_DEFINITION__REVERSIBLE:
+        return isReversible();
       case IblPackage.RULE_DEFINITION__RHS:
         return getRhs();
     }
@@ -204,11 +250,14 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
         return;
       case IblPackage.RULE_DEFINITION__LHS:
         getLhs().clear();
-        getLhs().addAll((Collection<? extends RuleObject>)newValue);
+        getLhs().addAll((Collection<? extends EString>)newValue);
+        return;
+      case IblPackage.RULE_DEFINITION__REVERSIBLE:
+        setReversible((Boolean)newValue);
         return;
       case IblPackage.RULE_DEFINITION__RHS:
         getRhs().clear();
-        getRhs().addAll((Collection<? extends RuleObject>)newValue);
+        getRhs().addAll((Collection<? extends EString>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -229,6 +278,9 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
         return;
       case IblPackage.RULE_DEFINITION__LHS:
         getLhs().clear();
+        return;
+      case IblPackage.RULE_DEFINITION__REVERSIBLE:
+        setReversible(REVERSIBLE_EDEFAULT);
         return;
       case IblPackage.RULE_DEFINITION__RHS:
         getRhs().clear();
@@ -251,6 +303,8 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.RULE_DEFINITION__LHS:
         return lhs != null && !lhs.isEmpty();
+      case IblPackage.RULE_DEFINITION__REVERSIBLE:
+        return reversible != REVERSIBLE_EDEFAULT;
       case IblPackage.RULE_DEFINITION__RHS:
         return rhs != null && !rhs.isEmpty();
     }
@@ -270,6 +324,8 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", reversible: ");
+    result.append(reversible);
     result.append(')');
     return result.toString();
   }

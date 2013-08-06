@@ -18,7 +18,8 @@ Model:
 	
 // model members are an import statement, variable definition or function definition
 ModelMember:
-	Import | VariableDefinition | FunctionDefinition
+//	Import | VariableDefinition | FunctionDefinition
+	Import | VariableDefinition | ProcessDefinition
 ;
 
 //////////////////////
@@ -84,6 +85,22 @@ FunctionUseMember:
 // variables //
 ///////////////
 
+// a variable
+Variable:
+	{Variable}
+	name=ID
+;
+
+// a variable complex
+VariableComplex:
+	{VariableComplex}
+	components+=Variable ('~' components+=Variable)+ 
+; 
+
+
+
+
+
 // entries allowed inside variable definition
 VariableDefinitionMember:
 	VariableDeclaration
@@ -134,21 +151,65 @@ VariableExpressionOperator:
 // rule definition
 RuleDefinition:
 	{RuleDefinition}
-	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|'<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
+	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|reversible?='<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
 ;
 
 // left or right hand side of rule
-RuleObject:
-	{RuleObject}
-	subobjects+=ID ('~' subobjects+=ID)*
+RuleObject returns EString:
+	Variable | VariableComplex 
 ;
+
 
 ///////////////
 // processes //
 ///////////////
 
-ProcessDeclaration:
-	{ProcessDeclaration}
+// processes are collections of rules
+
+// a process definition
+ProcessDefinition:
+	{ProcessDefinition}
+	'define' 'PROCESS' name=ID
+	'('
+		// process parameters
+		(parameters+=ProcessParameterMember (',' parameters+=ProcessParameterMember)*)?
+	')'
+	'{'
+		// process rules
+		members+=ProcessDefinitionMember*
+	'}'
+	(
+	'USES'
+		// process 
+		uses+=ProcessUseMember (',' uses+=ProcessUseMember)*
+	)?
+;
+
+// process parameter member
+ProcessParameterMember:
+	{ProcessParameterMember}
+	type=ID name=ID ':' scope=ProcessParameterScope
+;
+
+// allowed scope of process parameters
+ProcessParameterScope:
+	'required' | 'returned' | 'optional'
+;
+
+// process definition member
+ProcessDefinitionMember:
+	RuleDefinition | VariableAssignment
+;
+
+// process use member
+ProcessUseMember:
+	{ProcessUseMember}
+	type=ID name=ID
+;
+
+// a process call
+ProcessCall:
+	{ProcessCall}
 	'PROCESS' name=ID '=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
 ;
 
@@ -172,7 +233,7 @@ DeviceDefinition:
 ;
 
 DeviceMembers:
-	ProcessDeclaration | PropertyDefinition
+	ProcessCall | PropertyDefinition
 ;
 
 ////////////////

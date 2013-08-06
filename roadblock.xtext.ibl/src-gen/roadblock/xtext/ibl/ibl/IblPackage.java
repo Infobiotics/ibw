@@ -194,7 +194,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__TYPE = MODEL_MEMBER_FEATURE_COUNT + 0;
+  int FUNCTION_DEFINITION__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -203,7 +203,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__NAME = MODEL_MEMBER_FEATURE_COUNT + 1;
+  int FUNCTION_DEFINITION__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -212,7 +212,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__PARAMETERS = MODEL_MEMBER_FEATURE_COUNT + 2;
+  int FUNCTION_DEFINITION__PARAMETERS = 2;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -221,7 +221,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__MEMBERS = MODEL_MEMBER_FEATURE_COUNT + 3;
+  int FUNCTION_DEFINITION__MEMBERS = 3;
 
   /**
    * The feature id for the '<em><b>Uses</b></em>' containment reference list.
@@ -230,7 +230,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__USES = MODEL_MEMBER_FEATURE_COUNT + 4;
+  int FUNCTION_DEFINITION__USES = 4;
 
   /**
    * The number of structural features of the '<em>Function Definition</em>' class.
@@ -239,7 +239,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION_FEATURE_COUNT = MODEL_MEMBER_FEATURE_COUNT + 5;
+  int FUNCTION_DEFINITION_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl <em>Function Parameter Member</em>}' class.
@@ -344,6 +344,53 @@ public interface IblPackage extends EPackage
   int FUNCTION_USE_MEMBER_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.EStringImpl <em>EString</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.EStringImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getEString()
+   * @generated
+   */
+  int ESTRING = 9;
+
+  /**
+   * The number of structural features of the '<em>EString</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ESTRING_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableImpl <em>Variable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.VariableImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariable()
+   * @generated
+   */
+  int VARIABLE = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE__NAME = ESTRING_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Variable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_FEATURE_COUNT = ESTRING_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionMemberImpl <em>Variable Definition Member</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -351,7 +398,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinitionMember()
    * @generated
    */
-  int VARIABLE_DEFINITION_MEMBER = 8;
+  int VARIABLE_DEFINITION_MEMBER = 10;
 
   /**
    * The number of structural features of the '<em>Variable Definition Member</em>' class.
@@ -370,7 +417,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDeclaration()
    * @generated
    */
-  int VARIABLE_DECLARATION = 9;
+  int VARIABLE_DECLARATION = 11;
 
   /**
    * The feature id for the '<em><b>Qualifier</b></em>' attribute.
@@ -443,7 +490,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignment()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT = 10;
+  int VARIABLE_ASSIGNMENT = 12;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -480,7 +527,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
    * @generated
    */
-  int VARIABLE_ATTRIBUTE = 11;
+  int VARIABLE_ATTRIBUTE = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -517,7 +564,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpression()
    * @generated
    */
-  int VARIABLE_EXPRESSION = 12;
+  int VARIABLE_EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -545,7 +592,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleDefinition()
    * @generated
    */
-  int RULE_DEFINITION = 13;
+  int RULE_DEFINITION = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -566,13 +613,22 @@ public interface IblPackage extends EPackage
   int RULE_DEFINITION__LHS = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Reversible</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE_DEFINITION__REVERSIBLE = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Rhs</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION__RHS = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 2;
+  int RULE_DEFINITION__RHS = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Rule Definition</em>' class.
@@ -581,35 +637,164 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 3;
+  int RULE_DEFINITION_FEATURE_COUNT = FUNCTION_DEFINITION_MEMBER_FEATURE_COUNT + 4;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RuleObjectImpl <em>Rule Object</em>}' class.
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessDefinitionImpl <em>Process Definition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.RuleObjectImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
+   * @see roadblock.xtext.ibl.ibl.impl.ProcessDefinitionImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessDefinition()
    * @generated
    */
-  int RULE_OBJECT = 14;
+  int PROCESS_DEFINITION = 16;
 
   /**
-   * The feature id for the '<em><b>Subobjects</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_OBJECT__SUBOBJECTS = 0;
-
-  /**
-   * The number of structural features of the '<em>Rule Object</em>' class.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_OBJECT_FEATURE_COUNT = 1;
+  int PROCESS_DEFINITION__NAME = MODEL_MEMBER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_DEFINITION__PARAMETERS = MODEL_MEMBER_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Members</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_DEFINITION__MEMBERS = MODEL_MEMBER_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Uses</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_DEFINITION__USES = MODEL_MEMBER_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Process Definition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_DEFINITION_FEATURE_COUNT = MODEL_MEMBER_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessParameterMemberImpl <em>Process Parameter Member</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.ProcessParameterMemberImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessParameterMember()
+   * @generated
+   */
+  int PROCESS_PARAMETER_MEMBER = 17;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_PARAMETER_MEMBER__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_PARAMETER_MEMBER__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Scope</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_PARAMETER_MEMBER__SCOPE = 2;
+
+  /**
+   * The number of structural features of the '<em>Process Parameter Member</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_PARAMETER_MEMBER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessDefinitionMemberImpl <em>Process Definition Member</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.ProcessDefinitionMemberImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessDefinitionMember()
+   * @generated
+   */
+  int PROCESS_DEFINITION_MEMBER = 18;
+
+  /**
+   * The number of structural features of the '<em>Process Definition Member</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_DEFINITION_MEMBER_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessUseMemberImpl <em>Process Use Member</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.ProcessUseMemberImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessUseMember()
+   * @generated
+   */
+  int PROCESS_USE_MEMBER = 19;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_USE_MEMBER__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_USE_MEMBER__NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Process Use Member</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_USE_MEMBER_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.DeviceMembersImpl <em>Device Members</em>}' class.
@@ -619,7 +804,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getDeviceMembers()
    * @generated
    */
-  int DEVICE_MEMBERS = 17;
+  int DEVICE_MEMBERS = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -640,14 +825,14 @@ public interface IblPackage extends EPackage
   int DEVICE_MEMBERS_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessDeclarationImpl <em>Process Declaration</em>}' class.
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessCallImpl <em>Process Call</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.ProcessDeclarationImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessDeclaration()
+   * @see roadblock.xtext.ibl.ibl.impl.ProcessCallImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessCall()
    * @generated
    */
-  int PROCESS_DECLARATION = 15;
+  int PROCESS_CALL = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -656,7 +841,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_DECLARATION__NAME = DEVICE_MEMBERS__NAME;
+  int PROCESS_CALL__NAME = DEVICE_MEMBERS__NAME;
 
   /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
@@ -665,7 +850,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_DECLARATION__CONSTRUCTOR = DEVICE_MEMBERS_FEATURE_COUNT + 0;
+  int PROCESS_CALL__CONSTRUCTOR = DEVICE_MEMBERS_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -674,16 +859,16 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_DECLARATION__PARAMETERS = DEVICE_MEMBERS_FEATURE_COUNT + 1;
+  int PROCESS_CALL__PARAMETERS = DEVICE_MEMBERS_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Process Declaration</em>' class.
+   * The number of structural features of the '<em>Process Call</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROCESS_DECLARATION_FEATURE_COUNT = DEVICE_MEMBERS_FEATURE_COUNT + 2;
+  int PROCESS_CALL_FEATURE_COUNT = DEVICE_MEMBERS_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl <em>Device Definition</em>}' class.
@@ -693,7 +878,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getDeviceDefinition()
    * @generated
    */
-  int DEVICE_DEFINITION = 16;
+  int DEVICE_DEFINITION = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -748,7 +933,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getATGCDefinition()
    * @generated
    */
-  int ATGC_DEFINITION = 18;
+  int ATGC_DEFINITION = 23;
 
   /**
    * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -785,7 +970,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyDefinition()
    * @generated
    */
-  int PROPERTY_DEFINITION = 19;
+  int PROPERTY_DEFINITION = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -858,7 +1043,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 20;
+  int PROPERTY = 25;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' attribute.
@@ -904,7 +1089,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyCondition()
    * @generated
    */
-  int PROPERTY_CONDITION = 21;
+  int PROPERTY_CONDITION = 26;
 
   /**
    * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -959,7 +1144,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getQuantity()
    * @generated
    */
-  int QUANTITY = 22;
+  int QUANTITY = 27;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -987,6 +1172,34 @@ public interface IblPackage extends EPackage
    * @ordered
    */
   int QUANTITY_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableComplexImpl <em>Variable Complex</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.VariableComplexImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableComplex()
+   * @generated
+   */
+  int VARIABLE_COMPLEX = 28;
+
+  /**
+   * The feature id for the '<em><b>Components</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_COMPLEX__COMPONENTS = ESTRING_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Variable Complex</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_COMPLEX_FEATURE_COUNT = ESTRING_FEATURE_COUNT + 1;
 
 
   /**
@@ -1235,6 +1448,37 @@ public interface IblPackage extends EPackage
   EAttribute getFunctionUseMember_Name();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.Variable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable</em>'.
+   * @see roadblock.xtext.ibl.ibl.Variable
+   * @generated
+   */
+  EClass getVariable();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.Variable#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.Variable#getName()
+   * @see #getVariable()
+   * @generated
+   */
+  EAttribute getVariable_Name();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.EString <em>EString</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>EString</em>'.
+   * @see roadblock.xtext.ibl.ibl.EString
+   * @generated
+   */
+  EClass getEString();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionMember <em>Variable Definition Member</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1438,6 +1682,17 @@ public interface IblPackage extends EPackage
   EReference getRuleDefinition_Lhs();
 
   /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RuleDefinition#isReversible <em>Reversible</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Reversible</em>'.
+   * @see roadblock.xtext.ibl.ibl.RuleDefinition#isReversible()
+   * @see #getRuleDefinition()
+   * @generated
+   */
+  EAttribute getRuleDefinition_Reversible();
+
+  /**
    * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.RuleDefinition#getRhs <em>Rhs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1449,57 +1704,175 @@ public interface IblPackage extends EPackage
   EReference getRuleDefinition_Rhs();
 
   /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.RuleObject <em>Rule Object</em>}'.
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessDefinition <em>Process Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rule Object</em>'.
-   * @see roadblock.xtext.ibl.ibl.RuleObject
+   * @return the meta object for class '<em>Process Definition</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinition
    * @generated
    */
-  EClass getRuleObject();
+  EClass getProcessDefinition();
 
   /**
-   * Returns the meta object for the attribute list '{@link roadblock.xtext.ibl.ibl.RuleObject#getSubobjects <em>Subobjects</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessDefinition#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Subobjects</em>'.
-   * @see roadblock.xtext.ibl.ibl.RuleObject#getSubobjects()
-   * @see #getRuleObject()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinition#getName()
+   * @see #getProcessDefinition()
    * @generated
    */
-  EAttribute getRuleObject_Subobjects();
+  EAttribute getProcessDefinition_Name();
 
   /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessDeclaration <em>Process Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Process Declaration</em>'.
-   * @see roadblock.xtext.ibl.ibl.ProcessDeclaration
-   * @generated
-   */
-  EClass getProcessDeclaration();
-
-  /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessDeclaration#getConstructor <em>Constructor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Constructor</em>'.
-   * @see roadblock.xtext.ibl.ibl.ProcessDeclaration#getConstructor()
-   * @see #getProcessDeclaration()
-   * @generated
-   */
-  EAttribute getProcessDeclaration_Constructor();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessDeclaration#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessDefinition#getParameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.ProcessDeclaration#getParameters()
-   * @see #getProcessDeclaration()
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinition#getParameters()
+   * @see #getProcessDefinition()
    * @generated
    */
-  EReference getProcessDeclaration_Parameters();
+  EReference getProcessDefinition_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessDefinition#getMembers <em>Members</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Members</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinition#getMembers()
+   * @see #getProcessDefinition()
+   * @generated
+   */
+  EReference getProcessDefinition_Members();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessDefinition#getUses <em>Uses</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Uses</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinition#getUses()
+   * @see #getProcessDefinition()
+   * @generated
+   */
+  EReference getProcessDefinition_Uses();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessParameterMember <em>Process Parameter Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Process Parameter Member</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessParameterMember
+   * @generated
+   */
+  EClass getProcessParameterMember();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessParameterMember#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessParameterMember#getType()
+   * @see #getProcessParameterMember()
+   * @generated
+   */
+  EAttribute getProcessParameterMember_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessParameterMember#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessParameterMember#getName()
+   * @see #getProcessParameterMember()
+   * @generated
+   */
+  EAttribute getProcessParameterMember_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessParameterMember#getScope <em>Scope</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Scope</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessParameterMember#getScope()
+   * @see #getProcessParameterMember()
+   * @generated
+   */
+  EAttribute getProcessParameterMember_Scope();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessDefinitionMember <em>Process Definition Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Process Definition Member</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessDefinitionMember
+   * @generated
+   */
+  EClass getProcessDefinitionMember();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessUseMember <em>Process Use Member</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Process Use Member</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessUseMember
+   * @generated
+   */
+  EClass getProcessUseMember();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessUseMember#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessUseMember#getType()
+   * @see #getProcessUseMember()
+   * @generated
+   */
+  EAttribute getProcessUseMember_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessUseMember#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessUseMember#getName()
+   * @see #getProcessUseMember()
+   * @generated
+   */
+  EAttribute getProcessUseMember_Name();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessCall <em>Process Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Process Call</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessCall
+   * @generated
+   */
+  EClass getProcessCall();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProcessCall#getConstructor <em>Constructor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Constructor</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessCall#getConstructor()
+   * @see #getProcessCall()
+   * @generated
+   */
+  EAttribute getProcessCall_Constructor();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessCall#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProcessCall#getParameters()
+   * @see #getProcessCall()
+   * @generated
+   */
+  EReference getProcessCall_Parameters();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
@@ -1803,6 +2176,27 @@ public interface IblPackage extends EPackage
   EAttribute getQuantity_Units();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableComplex <em>Variable Complex</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Complex</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableComplex
+   * @generated
+   */
+  EClass getVariableComplex();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.VariableComplex#getComponents <em>Components</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Components</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableComplex#getComponents()
+   * @see #getVariableComplex()
+   * @generated
+   */
+  EReference getVariableComplex_Components();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2026,6 +2420,34 @@ public interface IblPackage extends EPackage
     EAttribute FUNCTION_USE_MEMBER__NAME = eINSTANCE.getFunctionUseMember_Name();
 
     /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableImpl <em>Variable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.VariableImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariable()
+     * @generated
+     */
+    EClass VARIABLE = eINSTANCE.getVariable();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.EStringImpl <em>EString</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.EStringImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getEString()
+     * @generated
+     */
+    EClass ESTRING = eINSTANCE.getEString();
+
+    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionMemberImpl <em>Variable Definition Member</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2190,6 +2612,14 @@ public interface IblPackage extends EPackage
     EReference RULE_DEFINITION__LHS = eINSTANCE.getRuleDefinition_Lhs();
 
     /**
+     * The meta object literal for the '<em><b>Reversible</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RULE_DEFINITION__REVERSIBLE = eINSTANCE.getRuleDefinition_Reversible();
+
+    /**
      * The meta object literal for the '<em><b>Rhs</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2198,40 +2628,22 @@ public interface IblPackage extends EPackage
     EReference RULE_DEFINITION__RHS = eINSTANCE.getRuleDefinition_Rhs();
 
     /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.RuleObjectImpl <em>Rule Object</em>}' class.
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessDefinitionImpl <em>Process Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.RuleObjectImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
+     * @see roadblock.xtext.ibl.ibl.impl.ProcessDefinitionImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessDefinition()
      * @generated
      */
-    EClass RULE_OBJECT = eINSTANCE.getRuleObject();
+    EClass PROCESS_DEFINITION = eINSTANCE.getProcessDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Subobjects</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute RULE_OBJECT__SUBOBJECTS = eINSTANCE.getRuleObject_Subobjects();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessDeclarationImpl <em>Process Declaration</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.ProcessDeclarationImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessDeclaration()
-     * @generated
-     */
-    EClass PROCESS_DECLARATION = eINSTANCE.getProcessDeclaration();
-
-    /**
-     * The meta object literal for the '<em><b>Constructor</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROCESS_DECLARATION__CONSTRUCTOR = eINSTANCE.getProcessDeclaration_Constructor();
+    EAttribute PROCESS_DEFINITION__NAME = eINSTANCE.getProcessDefinition_Name();
 
     /**
      * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -2239,7 +2651,119 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROCESS_DECLARATION__PARAMETERS = eINSTANCE.getProcessDeclaration_Parameters();
+    EReference PROCESS_DEFINITION__PARAMETERS = eINSTANCE.getProcessDefinition_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROCESS_DEFINITION__MEMBERS = eINSTANCE.getProcessDefinition_Members();
+
+    /**
+     * The meta object literal for the '<em><b>Uses</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROCESS_DEFINITION__USES = eINSTANCE.getProcessDefinition_Uses();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessParameterMemberImpl <em>Process Parameter Member</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ProcessParameterMemberImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessParameterMember()
+     * @generated
+     */
+    EClass PROCESS_PARAMETER_MEMBER = eINSTANCE.getProcessParameterMember();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROCESS_PARAMETER_MEMBER__TYPE = eINSTANCE.getProcessParameterMember_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROCESS_PARAMETER_MEMBER__NAME = eINSTANCE.getProcessParameterMember_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Scope</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROCESS_PARAMETER_MEMBER__SCOPE = eINSTANCE.getProcessParameterMember_Scope();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessDefinitionMemberImpl <em>Process Definition Member</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ProcessDefinitionMemberImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessDefinitionMember()
+     * @generated
+     */
+    EClass PROCESS_DEFINITION_MEMBER = eINSTANCE.getProcessDefinitionMember();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessUseMemberImpl <em>Process Use Member</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ProcessUseMemberImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessUseMember()
+     * @generated
+     */
+    EClass PROCESS_USE_MEMBER = eINSTANCE.getProcessUseMember();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROCESS_USE_MEMBER__TYPE = eINSTANCE.getProcessUseMember_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROCESS_USE_MEMBER__NAME = eINSTANCE.getProcessUseMember_Name();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessCallImpl <em>Process Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ProcessCallImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessCall()
+     * @generated
+     */
+    EClass PROCESS_CALL = eINSTANCE.getProcessCall();
+
+    /**
+     * The meta object literal for the '<em><b>Constructor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROCESS_CALL__CONSTRUCTOR = eINSTANCE.getProcessCall_Constructor();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROCESS_CALL__PARAMETERS = eINSTANCE.getProcessCall_Parameters();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl <em>Device Definition</em>}' class.
@@ -2478,6 +3002,24 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute QUANTITY__UNITS = eINSTANCE.getQuantity_Units();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableComplexImpl <em>Variable Complex</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.VariableComplexImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableComplex()
+     * @generated
+     */
+    EClass VARIABLE_COMPLEX = eINSTANCE.getVariableComplex();
+
+    /**
+     * The meta object literal for the '<em><b>Components</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_COMPLEX__COMPONENTS = eINSTANCE.getVariableComplex_Components();
 
   }
 
