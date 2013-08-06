@@ -1,0 +1,91 @@
+///////////////////
+// example01.ibl //
+///////////////////
+
+// jamie twycross, 2013
+
+/////////////////////////////////
+// import objects from library //
+/////////////////////////////////
+
+import library01
+
+/////////////////////////
+// define lattice site //
+/////////////////////////
+
+define LATTICESITE site() {
+	MOLECULE SA = MOLECULE(displayID = SA, degradationRate = 1, concentration = 100)
+
+	CELL myCell = SASensorCell(consumed = SA)
+}
+
+/////////////////
+// define cell //
+/////////////////
+
+define CELL SASensorCell(consumed SA:required) {
+	// define molecular elements
+	observable RIBOSOME ribosome
+	observable RNA rnaP
+
+	CHASSIS chassis = CHASSIS(organism = ecoli)
+
+	PROMOTER PnahR = PROMOTER(URI = biobricksURI)
+	PROTEIN NahR = PROTEIN(URI = dbURI)
+
+	PROMOTER Psal = PROMOTER(URI = biofabURI)
+	GENE xylS2 = GENE(sequence = ATTGTGT)
+	PROTEIN XylS2 = PROTEIN()
+
+	GENE nahR = GENE(URI = biofabURI)
+	PROMOTER Pm = PROMOTER(sequence = ATTGTGT)
+	GENE rFP = GENE(sequence = TTGTGTG)
+	PROTEIN RFP = PROTEIN()
+
+	INTEGER plasmidNumber = Integer(value = 500)
+
+	// devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
+	DEVICE D1 = DEVICE(PnahR,nahR)(produced = NahR){
+		PROCESS process1 = ConstitutiveProteinExpression(promoter = PnahR, gene = nahR, protein = NahR)
+	}
+
+	DEVICE D2 = DEVICE(Psal,xylS2)(consumed = SA~NahR, produced = XylS2){
+		PROCESS process1 = RegulatedProteinExpression(regulator = SA~NahR, promoter = Psal, gene = xylS2, protein = XylS2)
+		// properties should be allowed for device and cell levels
+		VERIFY [ Xysl2 > 0 uM ] WILL HOLD
+	}
+
+	DEVICE D3 = DEVICE(Pm,rFP)(consumed = XylS2, produced = RFP){
+		PROCESS process1 = RegulatedProteinExpression(regulator = XylS2, promoter = Pm, gene = rFP, protein = RFP)
+		VERIFY [RFP > 50 uM & RFP < 100 uM] WILL HOLD		
+ 	}
+
+	// additional rules
+	RULE R1 : SA + NahR <-> SA~NahR
+		R1.forwardRate = 1  // add units
+		R1.reverseRate = 1  // add units
+
+	RULE R2 : OUTSIDE -> SA // consumption rate of SA from outside the cell
+		R2.rate = 1  // add units
+
+	// atgc rules
+	ATGC ARRANGE : nahR, PnahR, Psal
+
+	// model checker rules
+	// HERE ARE SOME MODALITIES WE NEED TO CONSIDER IN THE FIRST INSTANCE
+	VERIFY [SA > 0 molecules] WILL HOLD
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100,200]
+	// Probability bounds could be any relational operator <,>,=,<=,>= as well as ?
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100,200] WITH PROBABILITY BOUND <= 0.9
+	VERIFY [SA == 0 molecules] NEVER HOLDS
+	VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100,200]
+	VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100,200] WITH PROBABILITY BOUND ?
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100,200]
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100,200] WITH PROBABILITY BOUND ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 IS ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 IS > 1 M
+	// We do not need to refer to outputs or inputs of devices generically. WE can simply write the species name.
+	// We do not need to use keywords e.g. Concentration, instead we write units in the queries.
+}

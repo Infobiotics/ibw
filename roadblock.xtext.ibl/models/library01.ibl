@@ -1,0 +1,121 @@
+//////////////////////////////
+// library of basic objects //
+//////////////////////////////
+
+// jamie twycross, 2013
+
+//////////////////////
+// a generic object //
+//////////////////////
+
+define OBJECT {
+	ID displayID // display name of object
+	LIST<URI> uri // resource identifiers 
+}
+
+//////////////////
+// synbio parts //
+//////////////////
+
+// a generic synbio part
+define OBJECT PART {
+	DNA sequence // dna sequence 
+}
+
+// a synbio promoter part
+define PART PROMOTER {
+	RATE bindingRate // rate of binding of promoter !!!
+}
+
+// a synbio coding sequence part
+define PART CDS {
+	RATE transcriptionRate // gene transcription rate
+	RATE translationRate // gene translation rate
+}
+
+/////////////////////
+// molecular parts //
+/////////////////////
+
+// a molecule
+define OBJECT MOLECULE {
+}
+
+// a protein
+define MOLECULE PROTEIN {
+	RATE degradationRate // degradation rate
+}
+
+// a molecular complex
+define MOLECULE COMPLEX {
+	SET<MOLECULE> complex // members of complex
+}
+
+///////////
+// cells //
+///////////
+
+// a cell
+define OBJECT CELL {
+	CHASSIS chassis // chassis type
+}
+
+///////////////
+// processes //
+///////////////
+
+define PROCESS ConstitutiveProteinExpression (
+	PROMOTER promoter: required,
+	GENE gene1: required,
+	PROTEIN protein1: returned
+) 
+{
+	RULE R1 : promoter <-> promoter + gene1~rnaP
+		R1.forwardRate = promoter.bindingRate | RATE.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+		R1.reverseRate = RATE.unbindingRate
+
+	RULE R2 : gene1~rnaP -> mrna1
+		R2.rate = RATE.transcriptionRate
+
+	RULE R3 : mrna1 ->
+		R3.rate = RATE.rnaDegratationRate
+
+	RULE R4 : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+		R4.associationConstant = RATE.ribosomeBinding
+
+	RULE R5 : mrna1~ribosome -> protein1
+		R5.rate = RATE.translationRate
+
+	RULE R6 : protein1 ->
+		R6.rate = protein1.degradationRate | RATE.proteinDegradationRate
+} USES RIBOSOME ribosome, RNA rnaP
+
+define PROCESS RegulatedProteinExpression (
+	MOLECULE regulator:required,
+	PROMOTER promoter:required,
+	GENE gene:required,
+	PROTEIN protein:returned,
+	RATE rates:optional
+)
+{
+	RULE R1 : regulator + promoter <-> regulator~promoter
+		R1.rate = promoter.bindingRate | RATE.bindingRate
+
+	RULE R2 : regulator~promoter -> regulator~promoter + rna~gene~RNAP
+		R2.rate = promoter.transcriptionRate
+
+	RULE R3 : rna~gene~RNAP -> rna~gene
+		R3.rate = RATE.transcriptionRate
+
+	RULE R4 : rna~gene ->
+		R4.rate =  rates.degradationRate | RATE.RNADegradationRate
+
+	RULE R5 : rna~gene -> rna~gene + gene~ribosome
+		R5.rate = Rate.translationRate1
+
+	RULE R6 : gene~ribosome -> protein
+		R6.rate = Rate.translationRate2
+
+	RULE R7 : protein ->
+		R7.rate = protein.degradationRate | RATE.proteinDegradationRate
+} USES RIBOSOME ribosome, RNA rnaP

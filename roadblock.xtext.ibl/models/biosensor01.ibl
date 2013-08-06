@@ -1,0 +1,192 @@
+// 05/08/2013 Warwick
+//
+// compounds are denoted with ~: SA~NahR. When order matters, use -: SA-NahR
+// RATE is a constant with default rates
+// in rules, | means orElse and is read from left to right
+// OUTSIDE, INSIDE in rules are used for denoting molecules diffusing out and in of the container.
+// For devices, a molecule that is consumed or produced never stays in the device so there is no use for OUTSIDE and INSIDE. But rules in Containers like cells and environment require them if some of the same molecule diffuse in or out.
+// missing: environment (kind of container) and geometry
+
+
+// Part: type (promoter etc.), DNA sequence etc.
+// RULE: object transformation 
+// Process: collection of rules
+// Device: collection of processes, rules + genetic parts
+// System: collection of processes, rules, devices
+// Plasmid: collection of systems, process, rules and devices
+// Cell: collection of processes, rules, devices and cell-related properties (e.g. plasmidNumber)
+
+define PROCESS ConstitutiveProteinExpression(
+	PROMOTER promoter,
+	GENE gene,
+	PROTEIN protein
+	){
+
+	RULE R1 : promoter <-> promoter + gene~rnaP
+		R1.forwardRate = promoter.bindingRate | GLOBALRATE.bindingRate // get binding rate from promoter's properties if available, or from constant GLOBALRATE.
+		R1.reverseRate = GLOBALRATE.unbindingRate
+
+	RULE R2 : gene~rnaP -> mrna
+		R2.rate = GLOBALRATE.transcriptionRate
+
+	RULE R3 : mrna ->
+		R3.rate = GLOBALRATE.rnaDegradationRate
+
+	RULE R4 : mrna + ribosome <-> mrna~ribosome // mrna binds to ribosome
+		R4.associationConstant = GLOBALRATE.ribosomeBinding
+
+	RULE R5 : mrna~ribosome -> protein
+		R5.rate = GLOBALRATE.translationRate
+
+	RULE R6 : protein ->
+		R6.rate = protein1.degradationRate | GLOBALRATE.proteinDegradationRate
+
+	PROPERTY P1 : [Concentration(protein) > 0] WILL EVENTUALLY HOLD
+} USES RIBOSOME ribosome, RNA rnaP
+
+define PROCESS UpRegulatedProteinExpression(
+	MOLECULE regulator,
+	PROMOTER promoter,
+	GENE gene,
+	PROTEIN protein,
+	optional RATE rates){ // example of an optional rate variable to override molecule's properties or GLOBALRATE's.
+
+	// promoter binding regulator
+	RULE R1 : regulator + promoter <-> regulator~promoter
+		R1.rate = rates.bindingRate | promoter.bindingRate | GLOBALRATE.bindingRate
+
+	RULE R2 : regulator~promoter -> regulator~promoter + gene~rnaP
+		R2.rate = promoter.transcriptionRate
+	
+	RULE R3 : gene~rnaP -> mrna
+		R3.rate = GLOBALRATE.transcriptionRate
+
+	RULE R4 : mrna ->
+		R4.rate = GLOBALRATE.rnaDegradationRate
+
+	RULE R5 : mrna + ribosome <-> mrna~ribosome // mrna binds to ribosome
+		R5.associationConstant = GLOBALRATE.ribosomeBinding
+
+	RULE R6 : mrna~ribosome -> protein
+		R6.rate = GLOBALRATE.translationRate
+
+	RULE R7 : protein ->
+		R7.rate = protein1.degradationRate | GLOBALRATE.proteinDegradationRate
+
+} USES RIBOSOME ribosome, RNA rnaP
+
+define PROCESS DownRegulatedProteinExpression(
+	MOLECULE regulator,
+	PROMOTER promoter,
+	GENE gene,
+	PROTEIN protein){
+
+	// Starts like constitutive promoter
+
+	RULE R1 : promoter <-> promoter + gene~rnaP
+		R1.forwardRate = promoter.bindingRate | RATE.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+		R1.reverseRate = GLOBALRATE.unbindingRate
+
+	RULE R2 : gene~rnaP -> mrna
+		R2.rate = GLOBALRATE.transcriptionRate
+
+	RULE R3 : mrna ->
+		R3.rate = GLOBALRATE.rnaDegradationRate
+
+	RULE R4 : mrna + ribosome <-> mrna~ribosome // mrna binds to ribosome
+		R4.associationConstant = GLOBALRATE.ribosomeBinding
+
+	RULE R5 : mrna~ribosome -> protein
+		R5.rate = GLOBALRATE.translationRate
+
+	RULE R6 : protein ->
+		R6.rate = protein1.degradationRate | GLOBALRATE.proteinDegradationRate
+
+	// added: sequester promoter with regulator
+	RULE R7 : promoter + regulator <-> promoter~regulator
+
+} USES RIBOSOME ribosome, RNA rnaP
+
+
+
+MOLECULE SA = MOLECULE(displayID='SA', degradationRate = 1 min-1)
+
+// defining the cell
+// A cell is a collection of devices, molecules and rules
+// it has 1 list of arguments: molecules diffusing in and out
+//
+
+define CELL SASensorCell(consumed = SA){
+	
+	// overridding defaults of cell properties
+	chassis = "e.coli"	
+	plasmidNumber = 500 
+	volume = 0.5 um3
+
+	
+	// Defining molecular elements
+
+	observable RIBOSOME ribosome
+	observable RNA rnaP
+
+	PROMOTER PnahR = PROMOTER(URI = 'biobricks://...')
+	GENE nahR = GENE(URI = 'biofab://...')
+	PROTEIN NahR = PROTEIN(URI = 'db://..)
+
+	PROMOTER Psal = PROMOTER(URI = 'biofab://...')
+	GENE xylS2 = GENE(sequence = 'AAATGTGC...')
+	PROTEIN XylS2 = PROTEIN()
+
+	PROMOTER Pm = PROMOTER(sequence = 'ATTGTGT')
+	GENE rFP = GENE(sequence = 'TTGTGTG...')
+	PROTEIN RFP = PROTEIN()
+
+	// Devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
+
+	DEVICE D1 = DEVICE(PnahR,nahR)(produced = NahR){
+		PROCESS process1 = ConstitutiveProteinExpression(promoter = PnahR, gene = nahR, protein = NahR)
+	}
+
+	DEVICE D2 = DEVICE(Psal,xylS2)(consumed = SA~NahR, produced = XylS2){
+		PROCESS process1 = RegulatedProteinExpression(regulator = SA~NahR, promoter = Psal, gene = xylS2, protein = XylS2)
+
+	DEVICE D3 = DEVICE(Pm,rFP)(consumed = XylS2, produced = RFP){
+		PROCESS process1 = RegulatedProteinExpression(regulator = XylS2, promoter = Pm, gene = rFP, protein = RFP)
+ 	}
+
+	RULE R1 : SA + NahR <-> SA~NahR
+		R1.forwardRate = 1 min-1
+		R1.reverseRate = 1 min-1
+
+	RULE R2 : OUTSIDE -> SA // consumption rate of SA from outside the cell
+		R2.rate = 1 min-1
+
+	ATGC ARRANGE nahR PnahR Psal
+
+
+	// HERE ARE SOME MODALITIES WE NEED TO CONSIDER IN THE FIRST INSTANCE 
+	VERIFY [SA > 0 molecules] WILL HOLD
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100,200]
+	// Probability bounds could be any relational operator <,>,=,<=,>= as well as ?
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100,200] WITH A PROBABLITY BOUND <=0.9 
+	VERIFY [SA = 0 molecules] NEVER HOLDS
+	VERIFY [SA = 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100,200]
+	VERIFY [SA = 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100,200] WITH A PROBABLITY BOUND ?
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100,200]
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100,200] WITH A PROBABLITY BOUND ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 IS ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 IS >1M.
+	// We do not need to refer to outputs or inputs of devices generically. WE can simply write the species name.
+	// We do not need to use keywords e.g. Concentration, instead we write units in the queries. 
+	}
+
+LATTICESITE site {
+	CELL myCell = SASensorCell
+	MOLECULE SA
+	SA.Concentration = 100 uM
+
+	VERIFY [myCell.Concentration(Xysl2) > 0] WILL EVENTUALLY HOLD
+	VERIFY myCell.P1
+}
+
