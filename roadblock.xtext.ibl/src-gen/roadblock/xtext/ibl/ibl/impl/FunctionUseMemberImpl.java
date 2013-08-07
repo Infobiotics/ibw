@@ -3,14 +3,17 @@
 package roadblock.xtext.ibl.ibl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
+import roadblock.xtext.ibl.ibl.VariableName;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,24 +52,14 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
   protected String type = TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected VariableName name;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,7 +110,7 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public VariableName getName()
   {
     return name;
   }
@@ -127,12 +120,53 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public NotificationChain basicSetName(VariableName newName, NotificationChain msgs)
   {
-    String oldName = name;
+    VariableName oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_USE_MEMBER__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_USE_MEMBER__NAME, oldName, newName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(VariableName newName)
+  {
+    if (newName != name)
+    {
+      NotificationChain msgs = null;
+      if (name != null)
+        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_USE_MEMBER__NAME, null, msgs);
+      if (newName != null)
+        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_USE_MEMBER__NAME, null, msgs);
+      msgs = basicSetName(newName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_USE_MEMBER__NAME, newName, newName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case IblPackage.FUNCTION_USE_MEMBER__NAME:
+        return basicSetName(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -167,7 +201,7 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
         setType((String)newValue);
         return;
       case IblPackage.FUNCTION_USE_MEMBER__NAME:
-        setName((String)newValue);
+        setName((VariableName)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,7 +221,7 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
         setType(TYPE_EDEFAULT);
         return;
       case IblPackage.FUNCTION_USE_MEMBER__NAME:
-        setName(NAME_EDEFAULT);
+        setName((VariableName)null);
         return;
     }
     super.eUnset(featureID);
@@ -206,7 +240,7 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
       case IblPackage.FUNCTION_USE_MEMBER__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.FUNCTION_USE_MEMBER__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        return name != null;
     }
     return super.eIsSet(featureID);
   }
@@ -224,8 +258,6 @@ public class FunctionUseMemberImpl extends MinimalEObjectImpl.Container implemen
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (type: ");
     result.append(type);
-    result.append(", name: ");
-    result.append(name);
     result.append(')');
     return result.toString();
   }

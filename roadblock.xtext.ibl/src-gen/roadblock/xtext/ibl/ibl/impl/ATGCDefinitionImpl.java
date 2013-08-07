@@ -31,7 +31,7 @@ import roadblock.xtext.ibl.ibl.IblPackage;
  *
  * @generated
  */
-public class ATGCDefinitionImpl extends FunctionDefinitionMemberImpl implements ATGCDefinition
+public class ATGCDefinitionImpl extends FunctionBodyMemberImpl implements ATGCDefinition
 {
   /**
    * The default value of the '{@link #getCommand() <em>Command</em>}' attribute.

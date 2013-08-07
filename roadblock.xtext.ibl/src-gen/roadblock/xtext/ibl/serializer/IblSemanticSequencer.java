@@ -21,22 +21,19 @@ import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.Model;
-import roadblock.xtext.ibl.ibl.ProcessCall;
-import roadblock.xtext.ibl.ibl.ProcessDefinition;
-import roadblock.xtext.ibl.ibl.ProcessParameterMember;
-import roadblock.xtext.ibl.ibl.ProcessUseMember;
+import roadblock.xtext.ibl.ibl.ParameterAssignment;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
+import roadblock.xtext.ibl.ibl.REAL;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
-import roadblock.xtext.ibl.ibl.Variable;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableComplex;
-import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableExpression;
+import roadblock.xtext.ibl.ibl.VariableName;
 import roadblock.xtext.ibl.services.IblGrammarAccess;
 
 @SuppressWarnings("all")
@@ -49,20 +46,21 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case IblPackage.ATGC_DEFINITION:
 				if(context == grammarAccess.getATGCDefinitionRule() ||
-				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
+				   context == grammarAccess.getFunctionBodyMemberRule()) {
 					sequence_ATGCDefinition(context, (ATGCDefinition) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.DEVICE_DEFINITION:
 				if(context == grammarAccess.getDeviceDefinitionRule() ||
-				   context == grammarAccess.getFunctionDefinitionMemberRule()) {
+				   context == grammarAccess.getFunctionBodyMemberRule()) {
 					sequence_DeviceDefinition(context, (DeviceDefinition) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.FUNCTION_DEFINITION:
-				if(context == grammarAccess.getFunctionDefinitionRule()) {
+				if(context == grammarAccess.getFunctionDefinitionRule() ||
+				   context == grammarAccess.getModelMemberRule()) {
 					sequence_FunctionDefinition(context, (FunctionDefinition) semanticObject); 
 					return; 
 				}
@@ -80,9 +78,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.IMPORT:
-				if(context == grammarAccess.getImportRule() ||
+				if(context == grammarAccess.getImportStatementRule() ||
 				   context == grammarAccess.getModelMemberRule()) {
-					sequence_Import(context, (Import) semanticObject); 
+					sequence_ImportStatement(context, (Import) semanticObject); 
 					return; 
 				}
 				else break;
@@ -92,29 +90,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.PROCESS_CALL:
-				if(context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getProcessCallRule()) {
-					sequence_ProcessCall(context, (ProcessCall) semanticObject); 
-					return; 
-				}
-				else break;
-			case IblPackage.PROCESS_DEFINITION:
-				if(context == grammarAccess.getModelMemberRule() ||
-				   context == grammarAccess.getProcessDefinitionRule()) {
-					sequence_ProcessDefinition(context, (ProcessDefinition) semanticObject); 
-					return; 
-				}
-				else break;
-			case IblPackage.PROCESS_PARAMETER_MEMBER:
-				if(context == grammarAccess.getProcessParameterMemberRule()) {
-					sequence_ProcessParameterMember(context, (ProcessParameterMember) semanticObject); 
-					return; 
-				}
-				else break;
-			case IblPackage.PROCESS_USE_MEMBER:
-				if(context == grammarAccess.getProcessUseMemberRule()) {
-					sequence_ProcessUseMember(context, (ProcessUseMember) semanticObject); 
+			case IblPackage.PARAMETER_ASSIGNMENT:
+				if(context == grammarAccess.getParameterAssignmentRule()) {
+					sequence_ParameterAssignment(context, (ParameterAssignment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -132,7 +110,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				else break;
 			case IblPackage.PROPERTY_DEFINITION:
 				if(context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getFunctionDefinitionMemberRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getPropertyDefinitionRule()) {
 					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
 					return; 
@@ -144,24 +122,21 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.REAL:
+				if(context == grammarAccess.getREALRule()) {
+					sequence_REAL(context, (REAL) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.RULE_DEFINITION:
-				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
-				   context == grammarAccess.getProcessDefinitionMemberRule() ||
+				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getRuleDefinitionRule()) {
 					sequence_RuleDefinition(context, (RuleDefinition) semanticObject); 
 					return; 
 				}
 				else break;
-			case IblPackage.VARIABLE:
-				if(context == grammarAccess.getRuleObjectRule() ||
-				   context == grammarAccess.getVariableRule()) {
-					sequence_Variable(context, (Variable) semanticObject); 
-					return; 
-				}
-				else break;
 			case IblPackage.VARIABLE_ASSIGNMENT:
-				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
-				   context == grammarAccess.getProcessDefinitionMemberRule() ||
+				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getVariableAssignmentRule()) {
 					sequence_VariableAssignment(context, (VariableAssignment) semanticObject); 
 					return; 
@@ -180,16 +155,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.VARIABLE_DECLARATION:
-				if(context == grammarAccess.getFunctionDefinitionMemberRule() ||
-				   context == grammarAccess.getVariableDeclarationRule() ||
-				   context == grammarAccess.getVariableDefinitionMemberRule()) {
-					sequence_VariableDeclaration(context, (VariableDeclaration) semanticObject); 
-					return; 
-				}
-				else break;
 			case IblPackage.VARIABLE_DEFINITION:
-				if(context == grammarAccess.getModelMemberRule() ||
+				if(context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getVariableDefinitionRule()) {
 					sequence_VariableDefinition(context, (VariableDefinition) semanticObject); 
 					return; 
@@ -198,6 +166,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case IblPackage.VARIABLE_EXPRESSION:
 				if(context == grammarAccess.getVariableExpressionRule()) {
 					sequence_VariableExpression(context, (VariableExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.VARIABLE_NAME:
+				if(context == grammarAccess.getRuleObjectRule() ||
+				   context == grammarAccess.getVariableNameRule()) {
+					sequence_VariableName(context, (VariableName) semanticObject); 
 					return; 
 				}
 				else break;
@@ -216,7 +191,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID parts+=ID parts+=ID* (parameters+=VariableAssignment parameters+=VariableAssignment*)? members+=DeviceMembers*)
+	 *     (name=ID parts+=ID parts+=ID* (parameters+=ParameterAssignment parameters+=ParameterAssignment*)? members+=DeviceMembers*)
 	 */
 	protected void sequence_DeviceDefinition(EObject context, DeviceDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -226,10 +201,10 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         type=ID? 
-	 *         name=ID 
+	 *         type=FunctionType 
+	 *         name=VariableName 
 	 *         (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? 
-	 *         members+=FunctionDefinitionMember* 
+	 *         members+=FunctionBodyMember* 
 	 *         (uses+=FunctionUseMember uses+=FunctionUseMember*)?
 	 *     )
 	 */
@@ -240,29 +215,16 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=ID name=ID scope=ParameterScope)
+	 *     (type=VariableType name=VariableName scope=FunctionParameterScope?)
 	 */
 	protected void sequence_FunctionParameterMember(EObject context, FunctionParameterMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.FUNCTION_PARAMETER_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.FUNCTION_PARAMETER_MEMBER__TYPE));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.FUNCTION_PARAMETER_MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.FUNCTION_PARAMETER_MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.FUNCTION_PARAMETER_MEMBER__SCOPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.FUNCTION_PARAMETER_MEMBER__SCOPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunctionParameterMemberAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getFunctionParameterMemberAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getFunctionParameterMemberAccess().getScopeParameterScopeParserRuleCall_3_0(), semanticObject.getScope());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (type=ID name=ID)
+	 *     (type=VariableType name=VariableName)
 	 */
 	protected void sequence_FunctionUseMember(EObject context, FunctionUseMember semanticObject) {
 		if(errorAcceptor != null) {
@@ -273,8 +235,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunctionUseMemberAccess().getTypeIDTerminalRuleCall_0_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getFunctionUseMemberAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFunctionUseMemberAccess().getTypeVariableTypeParserRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFunctionUseMemberAccess().getNameVariableNameParserRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -283,14 +245,14 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     importedNamespace=QualifiedNameWithWildcard
 	 */
-	protected void sequence_Import(EObject context, Import semanticObject) {
+	protected void sequence_ImportStatement(EObject context, Import semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.IMPORT__IMPORTED_NAMESPACE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0(), semanticObject.getImportedNamespace());
+		feeder.accept(grammarAccess.getImportStatementAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0(), semanticObject.getImportedNamespace());
 		feeder.finish();
 	}
 	
@@ -306,65 +268,10 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID constructor=ID (parameters+=VariableAssignment parameters+=VariableAssignment*)?)
+	 *     (name=ID (value=VariableName | value=VariableComplex | value=REAL))
 	 */
-	protected void sequence_ProcessCall(EObject context, ProcessCall semanticObject) {
+	protected void sequence_ParameterAssignment(EObject context, ParameterAssignment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (parameters+=ProcessParameterMember parameters+=ProcessParameterMember*)? 
-	 *         members+=ProcessDefinitionMember* 
-	 *         (uses+=ProcessUseMember uses+=ProcessUseMember*)?
-	 *     )
-	 */
-	protected void sequence_ProcessDefinition(EObject context, ProcessDefinition semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=ID name=ID scope=ProcessParameterScope)
-	 */
-	protected void sequence_ProcessParameterMember(EObject context, ProcessParameterMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROCESS_PARAMETER_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROCESS_PARAMETER_MEMBER__TYPE));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROCESS_PARAMETER_MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROCESS_PARAMETER_MEMBER__NAME));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROCESS_PARAMETER_MEMBER__SCOPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROCESS_PARAMETER_MEMBER__SCOPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getProcessParameterMemberAccess().getTypeIDTerminalRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getProcessParameterMemberAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getProcessParameterMemberAccess().getScopeProcessParameterScopeParserRuleCall_4_0(), semanticObject.getScope());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=ID name=ID)
-	 */
-	protected void sequence_ProcessUseMember(EObject context, ProcessUseMember semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROCESS_USE_MEMBER__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROCESS_USE_MEMBER__TYPE));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROCESS_USE_MEMBER__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROCESS_USE_MEMBER__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getProcessUseMemberAccess().getTypeIDTerminalRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getProcessUseMemberAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
 	}
 	
 	
@@ -432,7 +339,16 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (lhs+=RuleObject lhs+=RuleObject*)? reversible?='<->'? (rhs+=RuleObject rhs+=RuleObject*)?)
+	 *     {REAL}
+	 */
+	protected void sequence_REAL(EObject context, REAL semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName (lhs+=RuleObject lhs+=RuleObject*)? reversible?='<->'? (rhs+=RuleObject rhs+=RuleObject*)?)
 	 */
 	protected void sequence_RuleDefinition(EObject context, RuleDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -441,35 +357,35 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (variable=VariableAttribute expression=VariableExpression)
+	 *     ((variable=VariableName | variable=VariableAttribute) expression=VariableExpression)
 	 */
 	protected void sequence_VariableAssignment(EObject context, VariableAssignment semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__VARIABLE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__VARIABLE));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__EXPRESSION));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getVariableVariableAttributeParserRuleCall_1_0(), semanticObject.getVariable());
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getExpressionVariableExpressionParserRuleCall_3_0(), semanticObject.getExpression());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ((name=ID | name=REAL) attribute=ID?)
-	 */
-	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (components+=Variable components+=Variable+)
+	 *     (name=ID attribute=ID)
+	 */
+	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__NAME));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__ATTRIBUTE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__ATTRIBUTE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_3_0(), semanticObject.getAttribute());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (components+=ID components+=ID+)
 	 */
 	protected void sequence_VariableComplex(EObject context, VariableComplex semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -480,18 +396,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         qualifier=VariableQualifier? 
-	 *         ((type=ID name=ID) | (collection=CollectionID type=ID name=ID)) 
-	 *         (constructor=ID (parameters+=VariableAssignment parameters+=VariableAssignment*)?)?
+	 *         ((type=VariableType name=ID) | (collection=CollectionID type=VariableType name=ID)) 
+	 *         ((constructor=VariableType | constructor=ID) (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?
 	 *     )
-	 */
-	protected void sequence_VariableDeclaration(EObject context, VariableDeclaration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=ID? name=ID members+=VariableDefinitionMember*)
 	 */
 	protected void sequence_VariableDefinition(EObject context, VariableDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -500,7 +407,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (members+=VariableAttribute members+=VariableAttribute*)
+	 *     ((members+=VariableAttribute | members+=VariableName | members+=REAL) (members+=VariableAttribute | members+=VariableName | members+=REAL)*)
 	 */
 	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -509,16 +416,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     {VariableName}
 	 */
-	protected void sequence_Variable(EObject context, Variable semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getVariableAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+	protected void sequence_VariableName(EObject context, VariableName semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

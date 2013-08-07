@@ -26,56 +26,56 @@ import org.eclipse.emf.ecore.EObject;
 public interface PropertyCondition extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
+   * Returns the value of the '<em><b>Lower Bound</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Lower Bound</em>' attribute isn't clear,
+   * If the meaning of the '<em>Lower Bound</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Lower Bound</em>' attribute.
-   * @see #setLowerBound(String)
+   * @return the value of the '<em>Lower Bound</em>' containment reference.
+   * @see #setLowerBound(REAL)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_LowerBound()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getLowerBound();
+  REAL getLowerBound();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getLowerBound <em>Lower Bound</em>}' attribute.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getLowerBound <em>Lower Bound</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Lower Bound</em>' attribute.
+   * @param value the new value of the '<em>Lower Bound</em>' containment reference.
    * @see #getLowerBound()
    * @generated
    */
-  void setLowerBound(String value);
+  void setLowerBound(REAL value);
 
   /**
-   * Returns the value of the '<em><b>Upper Bounds</b></em>' attribute.
+   * Returns the value of the '<em><b>Upper Bounds</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Upper Bounds</em>' attribute isn't clear,
+   * If the meaning of the '<em>Upper Bounds</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Upper Bounds</em>' attribute.
-   * @see #setUpperBounds(String)
+   * @return the value of the '<em>Upper Bounds</em>' containment reference.
+   * @see #setUpperBounds(REAL)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_UpperBounds()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getUpperBounds();
+  REAL getUpperBounds();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getUpperBounds <em>Upper Bounds</em>}' attribute.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getUpperBounds <em>Upper Bounds</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Upper Bounds</em>' attribute.
+   * @param value the new value of the '<em>Upper Bounds</em>' containment reference.
    * @see #getUpperBounds()
    * @generated
    */
-  void setUpperBounds(String value);
+  void setUpperBounds(REAL value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
@@ -104,29 +104,29 @@ public interface PropertyCondition extends EObject
   void setOperator(String value);
 
   /**
-   * Returns the value of the '<em><b>Probability</b></em>' attribute.
+   * Returns the value of the '<em><b>Probability</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Probability</em>' attribute isn't clear,
+   * If the meaning of the '<em>Probability</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Probability</em>' attribute.
-   * @see #setProbability(String)
+   * @return the value of the '<em>Probability</em>' containment reference.
+   * @see #setProbability(REAL)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_Probability()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getProbability();
+  REAL getProbability();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}' attribute.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Probability</em>' attribute.
+   * @param value the new value of the '<em>Probability</em>' containment reference.
    * @see #getProbability()
    * @generated
    */
-  void setProbability(String value);
+  void setProbability(REAL value);
 
 } // PropertyCondition

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ATGCDefinition extends FunctionDefinitionMember
+public interface ATGCDefinition extends FunctionBodyMember
 {
   /**
    * Returns the value of the '<em><b>Command</b></em>' attribute.

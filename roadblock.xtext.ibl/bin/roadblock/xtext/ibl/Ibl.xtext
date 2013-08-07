@@ -18,37 +18,40 @@ Model:
 	
 // model members are an import statement, variable definition or function definition
 ModelMember:
-//	Import | VariableDefinition | FunctionDefinition
-	Import | VariableDefinition | ProcessDefinition
+	ImportStatement | FunctionDefinition
 ;
 
 //////////////////////
 // import statement //
 //////////////////////
 
-Import:
+ImportStatement:
 	{Import}
 	'import' importedNamespace=QualifiedNameWithWildcard
 ;
 
-// a variable definition
-VariableDefinition:
-	{VariableDefinition}
-	'define' (type=ID)? name=ID
-	'{'
-		members+=VariableDefinitionMember*
-	'}'	
-;
+//// a variable definition
+//VariableDefinition:
+//	{VariableDefinition}
+//	'define' (type=ID)? name=ID
+//	'{'
+//		members+=VariableDefinitionMember*
+//	'}'	
+//;
+//
+///////////////
+// functions //
+///////////////
 
 // a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' (type=ID)? name=ID
+	'define' type=FunctionType name=VariableName
 	'('
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=FunctionDefinitionMember*
+		members+=FunctionBodyMember*
 	'}'
 	(
 	'USES'
@@ -56,29 +59,29 @@ FunctionDefinition:
 	)?
 ;
 
-///////////////
-// functions //
-///////////////
+// function types
+FunctionType:
+	'PROCESS' | 'SITE' | 'CELL'
+;
 
 // function parameter member
 FunctionParameterMember:
-	type=ID name=ID ':' scope=ParameterScope
+	type=VariableType name=VariableName (':' scope=FunctionParameterScope)?
 ;
 
 // allowed scope of function parameters
-ParameterScope:
+FunctionParameterScope:
 	'required' | 'returned' | 'optional'
 ;
 
-// function definition member
-FunctionDefinitionMember:
-	RuleDefinition | DeviceDefinition | VariableAssignment | VariableDeclaration | ATGCDefinition | PropertyDefinition
-//	RuleDefinition | VariableAssignment | VariableDeclaration | DeviceDefinition | ATGCDefinition
+// function definition body member
+FunctionBodyMember:
+	RuleDefinition | DeviceDefinition | VariableAssignment | VariableDefinition | ATGCDefinition | PropertyDefinition
 ;
 
 // function use member
 FunctionUseMember:
-	type=ID name=ID
+	type=VariableType name=VariableName
 ;
 
 ///////////////
@@ -86,42 +89,50 @@ FunctionUseMember:
 ///////////////
 
 // a variable
-Variable:
-	{Variable}
-	name=ID
+VariableName:
+	{VariableName}
+	ID
 ;
 
 // a variable complex
 VariableComplex:
 	{VariableComplex}
-	components+=Variable ('~' components+=Variable)+ 
+	components+=ID ('~' components+=ID)+ 
 ; 
 
 // a variable attribute
 VariableAttribute:
 	{VariableAttribute}
-	name=(ID|REAL) (('.'|'~') attribute=ID)?
+	name=ID '.' attribute=ID
+//	name=(ID|REAL) (('.'|'~') attribute=ID)?
 ;
-
 
 // entries allowed inside variable definition
-VariableDefinitionMember:
-	VariableDeclaration
-;
+//VariableDefinitionMember:
+//	VariableDeclaration
+//;
 
 // a declaration of a variable
-VariableDeclaration:
-	{VariableDeclaration}
+VariableDefinition:
+	{VariableDefinition}
 	(qualifier=VariableQualifier)?
-	((type=ID name=ID) |
-	(collection=CollectionID '<' type=ID '>' name=ID))
+	((type=VariableType name=ID) |
+	(collection=CollectionID '<' type=VariableType '>' name=ID))
 	(
-		'=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
+		'=' constructor=(VariableType | ID) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
+;
+
+ParameterAssignment:
+	name=ID '=' value=(VariableName | VariableComplex | REAL)
 ;
 
 VariableQualifier:
 	'observable'
+;
+
+VariableType:
+	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS'
 ;
 
 CollectionID:
@@ -130,12 +141,12 @@ CollectionID:
 
 VariableAssignment:
 	{VariableAssignment}
-	 variable=VariableAttribute '=' expression=VariableExpression
+	 variable=(VariableName | VariableAttribute) '=' expression=VariableExpression
 ;
 
 VariableExpression:
 	{VariableExpression}
-	members+=VariableAttribute (VariableExpressionOperator members+=VariableAttribute)*
+	members+=(VariableAttribute | VariableName | REAL) (VariableExpressionOperator members+=(VariableAttribute | VariableName | REAL))*
 ;
 
 VariableExpressionOperator:
@@ -149,67 +160,67 @@ VariableExpressionOperator:
 // rule definition
 RuleDefinition:
 	{RuleDefinition}
-	'RULE' name=ID ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|reversible?='<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
+	'RULE' name=VariableName ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|reversible?='<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
 ;
 
 // left or right hand side of rule
-RuleObject returns EString:
-	Variable | VariableComplex 
+RuleObject:
+	VariableName | VariableComplex 
 ;
-
 
 ///////////////
 // processes //
 ///////////////
 
-// processes are collections of rules
-
-// a process definition
-ProcessDefinition:
-	{ProcessDefinition}
-	'define' 'PROCESS' name=ID
-	'('
-		// process parameters
-		(parameters+=ProcessParameterMember (',' parameters+=ProcessParameterMember)*)?
-	')'
-	'{'
-		// process rules
-		members+=ProcessDefinitionMember*
-	'}'
-	(
-	'USES'
-		// process 
-		uses+=ProcessUseMember (',' uses+=ProcessUseMember)*
-	)?
-;
-
-// process parameter member
-ProcessParameterMember:
-	{ProcessParameterMember}
-	type=ID name=ID ':' scope=ProcessParameterScope
-;
-
-// allowed scope of process parameters
-ProcessParameterScope:
-	'required' | 'returned' | 'optional'
-;
-
-// process definition member
-ProcessDefinitionMember:
-	RuleDefinition | VariableAssignment
-;
-
-// process use member
-ProcessUseMember:
-	{ProcessUseMember}
-	type=ID name=ID
-;
-
-// a process call
-ProcessCall:
-	{ProcessCall}
-	'PROCESS' name=ID '=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
-;
+//// processes are collections of rules
+//
+//// a process definition
+//ProcessDefinition:
+//	{ProcessDefinition}
+//	'define' 'PROCESS' name=ID
+//	'('
+//		// process parameters
+//		(parameters+=ProcessParameterMember (',' parameters+=ProcessParameterMember)*)?
+//	')'
+//	'{'
+//		// process rules
+//		members+=ProcessDefinitionMember*
+//	'}'
+//	(
+//	'USES'
+//		// process 
+//		uses+=ProcessUseMember (',' uses+=ProcessUseMember)*
+//	)?
+//;
+//
+//// process parameter member
+//ProcessParameterMember:
+//	{ProcessParameterMember}
+//	type=ID name=ID ':' scope=ProcessParameterScope
+//;
+//
+//// allowed scope of process parameters
+//ProcessParameterScope:
+//	'required' | 'returned' | 'optional'
+//;
+//
+//// process definition member
+//ProcessDefinitionMember:
+//	RuleDefinition | VariableAssignment
+//;
+//
+//// process use member
+//ProcessUseMember:
+//	{ProcessUseMember}
+//	type=ID name=ID
+//;
+//
+//// a process call
+//ProcessCall:
+//	{ProcessCall}
+//	'PROCESS' name=ID '=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
+//;
+//
 
 /////////////
 // devices //
@@ -223,7 +234,7 @@ DeviceDefinition:
 		(parts+=ID (',' parts+=ID)*)
 	')'
 	'('
-		(parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)?
+		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
 	')'
 	'{'
 		(members+=DeviceMembers*)
@@ -231,7 +242,7 @@ DeviceDefinition:
 ;
 
 DeviceMembers:
-	ProcessCall | PropertyDefinition
+	VariableDefinition | PropertyDefinition
 ;
 
 ////////////////
@@ -284,6 +295,7 @@ PropertyCondition:
 
 // a real number
 REAL:
+	{REAL}
 	Decimal|DecimalExp
 ;
 

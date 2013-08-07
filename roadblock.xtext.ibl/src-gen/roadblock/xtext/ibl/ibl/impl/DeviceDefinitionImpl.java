@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
 import roadblock.xtext.ibl.ibl.IblPackage;
-import roadblock.xtext.ibl.ibl.VariableAssignment;
+import roadblock.xtext.ibl.ibl.ParameterAssignment;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ import roadblock.xtext.ibl.ibl.VariableAssignment;
  *
  * @generated
  */
-public class DeviceDefinitionImpl extends FunctionDefinitionMemberImpl implements DeviceDefinition
+public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements DeviceDefinition
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -79,7 +79,7 @@ public class DeviceDefinitionImpl extends FunctionDefinitionMemberImpl implement
    * @generated
    * @ordered
    */
-  protected EList<VariableAssignment> parameters;
+  protected EList<ParameterAssignment> parameters;
 
   /**
    * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
@@ -154,11 +154,11 @@ public class DeviceDefinitionImpl extends FunctionDefinitionMemberImpl implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<VariableAssignment> getParameters()
+  public EList<ParameterAssignment> getParameters()
   {
     if (parameters == null)
     {
-      parameters = new EObjectContainmentEList<VariableAssignment>(VariableAssignment.class, this, IblPackage.DEVICE_DEFINITION__PARAMETERS);
+      parameters = new EObjectContainmentEList<ParameterAssignment>(ParameterAssignment.class, this, IblPackage.DEVICE_DEFINITION__PARAMETERS);
     }
     return parameters;
   }
@@ -237,7 +237,7 @@ public class DeviceDefinitionImpl extends FunctionDefinitionMemberImpl implement
         return;
       case IblPackage.DEVICE_DEFINITION__PARAMETERS:
         getParameters().clear();
-        getParameters().addAll((Collection<? extends VariableAssignment>)newValue);
+        getParameters().addAll((Collection<? extends ParameterAssignment>)newValue);
         return;
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
         getMembers().clear();

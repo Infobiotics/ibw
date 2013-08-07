@@ -12,34 +12,29 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
-import roadblock.xtext.ibl.ibl.EString;
+import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
-import roadblock.xtext.ibl.ibl.FunctionDefinitionMember;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblFactory;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
+import roadblock.xtext.ibl.ibl.ImportStatement;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
-import roadblock.xtext.ibl.ibl.ProcessCall;
-import roadblock.xtext.ibl.ibl.ProcessDefinition;
-import roadblock.xtext.ibl.ibl.ProcessDefinitionMember;
-import roadblock.xtext.ibl.ibl.ProcessParameterMember;
-import roadblock.xtext.ibl.ibl.ProcessUseMember;
+import roadblock.xtext.ibl.ibl.ParameterAssignment;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
-import roadblock.xtext.ibl.ibl.Variable;
+import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableComplex;
-import roadblock.xtext.ibl.ibl.VariableDeclaration;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
-import roadblock.xtext.ibl.ibl.VariableDefinitionMember;
 import roadblock.xtext.ibl.ibl.VariableExpression;
+import roadblock.xtext.ibl.ibl.VariableName;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,14 +63,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableDefinitionEClass = null;
+  private EClass importStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -96,7 +84,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionDefinitionMemberEClass = null;
+  private EClass functionBodyMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -110,35 +98,14 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass variableEClass = null;
+  private EClass variableNameEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass eStringEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableDefinitionMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableDeclarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableAssignmentEClass = null;
+  private EClass variableComplexEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -146,6 +113,27 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass variableAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableDefinitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterAssignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableAssignmentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -166,35 +154,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass processDefinitionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass processParameterMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass processDefinitionMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass processUseMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass processCallEClass = null;
+  private EClass ruleObjectEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -243,6 +203,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass realEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass quantityEClass = null;
 
   /**
@@ -250,7 +217,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass variableComplexEClass = null;
+  private EClass importEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -350,59 +317,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getImport()
+  public EClass getImportStatement()
   {
-    return importEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getImport_ImportedNamespace()
-  {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableDefinition()
-  {
-    return variableDefinitionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDefinition_Type()
-  {
-    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDefinition_Name()
-  {
-    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getVariableDefinition_Members()
-  {
-    return (EReference)variableDefinitionEClass.getEStructuralFeatures().get(2);
+    return importStatementEClass;
   }
 
   /**
@@ -430,9 +347,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionDefinition_Name()
+  public EReference getFunctionDefinition_Name()
   {
-    return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -490,9 +407,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionParameterMember_Name()
+  public EReference getFunctionParameterMember_Name()
   {
-    return (EAttribute)functionParameterMemberEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionParameterMemberEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -510,9 +427,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunctionDefinitionMember()
+  public EClass getFunctionBodyMember()
   {
-    return functionDefinitionMemberEClass;
+    return functionBodyMemberEClass;
   }
 
   /**
@@ -540,9 +457,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionUseMember_Name()
+  public EReference getFunctionUseMember_Name()
   {
-    return (EAttribute)functionUseMemberEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionUseMemberEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -550,9 +467,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVariable()
+  public EClass getVariableName()
   {
-    return variableEClass;
+    return variableNameEClass;
   }
 
   /**
@@ -560,9 +477,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariable_Name()
+  public EClass getVariableComplex()
   {
-    return (EAttribute)variableEClass.getEStructuralFeatures().get(0);
+    return variableComplexEClass;
   }
 
   /**
@@ -570,119 +487,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEString()
+  public EAttribute getVariableComplex_Components()
   {
-    return eStringEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableDefinitionMember()
-  {
-    return variableDefinitionMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableDeclaration()
-  {
-    return variableDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Qualifier()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Type()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Name()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Collection()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Constructor()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getVariableDeclaration_Parameters()
-  {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableAssignment()
-  {
-    return variableAssignmentEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getVariableAssignment_Variable()
-  {
-    return (EReference)variableAssignmentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getVariableAssignment_Expression()
-  {
-    return (EReference)variableAssignmentEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableComplexEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -720,6 +527,136 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getVariableDefinition()
+  {
+    return variableDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableDefinition_Qualifier()
+  {
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableDefinition_Type()
+  {
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableDefinition_Name()
+  {
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableDefinition_Collection()
+  {
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableDefinition_Constructor()
+  {
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableDefinition_Parameters()
+  {
+    return (EReference)variableDefinitionEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameterAssignment()
+  {
+    return parameterAssignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameterAssignment_Name()
+  {
+    return (EAttribute)parameterAssignmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameterAssignment_Value()
+  {
+    return (EReference)parameterAssignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVariableAssignment()
+  {
+    return variableAssignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableAssignment_Variable()
+  {
+    return (EReference)variableAssignmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableAssignment_Expression()
+  {
+    return (EReference)variableAssignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getVariableExpression()
   {
     return variableExpressionEClass;
@@ -750,9 +687,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRuleDefinition_Name()
+  public EReference getRuleDefinition_Name()
   {
-    return (EAttribute)ruleDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)ruleDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -790,159 +727,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProcessDefinition()
+  public EClass getRuleObject()
   {
-    return processDefinitionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessDefinition_Name()
-  {
-    return (EAttribute)processDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessDefinition_Parameters()
-  {
-    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessDefinition_Members()
-  {
-    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessDefinition_Uses()
-  {
-    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessParameterMember()
-  {
-    return processParameterMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessParameterMember_Type()
-  {
-    return (EAttribute)processParameterMemberEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessParameterMember_Name()
-  {
-    return (EAttribute)processParameterMemberEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessParameterMember_Scope()
-  {
-    return (EAttribute)processParameterMemberEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessDefinitionMember()
-  {
-    return processDefinitionMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessUseMember()
-  {
-    return processUseMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessUseMember_Type()
-  {
-    return (EAttribute)processUseMemberEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessUseMember_Name()
-  {
-    return (EAttribute)processUseMemberEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessCall()
-  {
-    return processCallEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessCall_Constructor()
-  {
-    return (EAttribute)processCallEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessCall_Parameters()
-  {
-    return (EReference)processCallEClass.getEStructuralFeatures().get(1);
+    return ruleObjectEClass;
   }
 
   /**
@@ -1010,16 +797,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDeviceMembers_Name()
-  {
-    return (EAttribute)deviceMembersEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getATGCDefinition()
   {
     return atgcDefinitionEClass;
@@ -1080,7 +857,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyDefinition_Time()
+  public EAttribute getPropertyDefinition_Name()
   {
     return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(2);
   }
@@ -1090,9 +867,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getPropertyDefinition_Time()
+  {
+    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getPropertyDefinition_Operator()
   {
-    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1102,7 +889,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    */
   public EReference getPropertyDefinition_Concentration()
   {
-    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(4);
+    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1160,9 +947,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyCondition_LowerBound()
+  public EReference getPropertyCondition_LowerBound()
   {
-    return (EAttribute)propertyConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)propertyConditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1170,9 +957,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyCondition_UpperBounds()
+  public EReference getPropertyCondition_UpperBounds()
   {
-    return (EAttribute)propertyConditionEClass.getEStructuralFeatures().get(1);
+    return (EReference)propertyConditionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1190,9 +977,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyCondition_Probability()
+  public EReference getPropertyCondition_Probability()
   {
-    return (EAttribute)propertyConditionEClass.getEStructuralFeatures().get(3);
+    return (EReference)propertyConditionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getREAL()
+  {
+    return realEClass;
   }
 
   /**
@@ -1210,9 +1007,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getQuantity_Value()
+  public EReference getQuantity_Value()
   {
-    return (EAttribute)quantityEClass.getEStructuralFeatures().get(0);
+    return (EReference)quantityEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1230,9 +1027,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVariableComplex()
+  public EClass getImport()
   {
-    return variableComplexEClass;
+    return importEClass;
   }
 
   /**
@@ -1240,9 +1037,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableComplex_Components()
+  public EAttribute getImport_ImportedNamespace()
   {
-    return (EReference)variableComplexEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1280,84 +1077,61 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     modelMemberEClass = createEClass(MODEL_MEMBER);
 
-    importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
-
-    variableDefinitionEClass = createEClass(VARIABLE_DEFINITION);
-    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__TYPE);
-    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__NAME);
-    createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__MEMBERS);
+    importStatementEClass = createEClass(IMPORT_STATEMENT);
 
     functionDefinitionEClass = createEClass(FUNCTION_DEFINITION);
     createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__TYPE);
-    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__NAME);
+    createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__NAME);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__PARAMETERS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__MEMBERS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__USES);
 
     functionParameterMemberEClass = createEClass(FUNCTION_PARAMETER_MEMBER);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__TYPE);
-    createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__NAME);
+    createEReference(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__NAME);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__SCOPE);
 
-    functionDefinitionMemberEClass = createEClass(FUNCTION_DEFINITION_MEMBER);
+    functionBodyMemberEClass = createEClass(FUNCTION_BODY_MEMBER);
 
     functionUseMemberEClass = createEClass(FUNCTION_USE_MEMBER);
     createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__TYPE);
-    createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__NAME);
+    createEReference(functionUseMemberEClass, FUNCTION_USE_MEMBER__NAME);
 
-    variableEClass = createEClass(VARIABLE);
-    createEAttribute(variableEClass, VARIABLE__NAME);
+    variableNameEClass = createEClass(VARIABLE_NAME);
 
-    eStringEClass = createEClass(ESTRING);
-
-    variableDefinitionMemberEClass = createEClass(VARIABLE_DEFINITION_MEMBER);
-
-    variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__QUALIFIER);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__COLLECTION);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTRUCTOR);
-    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__PARAMETERS);
-
-    variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
-    createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VARIABLE);
-    createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__EXPRESSION);
+    variableComplexEClass = createEClass(VARIABLE_COMPLEX);
+    createEAttribute(variableComplexEClass, VARIABLE_COMPLEX__COMPONENTS);
 
     variableAttributeEClass = createEClass(VARIABLE_ATTRIBUTE);
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__NAME);
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__ATTRIBUTE);
 
+    variableDefinitionEClass = createEClass(VARIABLE_DEFINITION);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__QUALIFIER);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__TYPE);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__NAME);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__COLLECTION);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__CONSTRUCTOR);
+    createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__PARAMETERS);
+
+    parameterAssignmentEClass = createEClass(PARAMETER_ASSIGNMENT);
+    createEAttribute(parameterAssignmentEClass, PARAMETER_ASSIGNMENT__NAME);
+    createEReference(parameterAssignmentEClass, PARAMETER_ASSIGNMENT__VALUE);
+
+    variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
+    createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VARIABLE);
+    createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__EXPRESSION);
+
     variableExpressionEClass = createEClass(VARIABLE_EXPRESSION);
     createEReference(variableExpressionEClass, VARIABLE_EXPRESSION__MEMBERS);
 
     ruleDefinitionEClass = createEClass(RULE_DEFINITION);
-    createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
+    createEReference(ruleDefinitionEClass, RULE_DEFINITION__NAME);
     createEReference(ruleDefinitionEClass, RULE_DEFINITION__LHS);
     createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__REVERSIBLE);
     createEReference(ruleDefinitionEClass, RULE_DEFINITION__RHS);
 
-    processDefinitionEClass = createEClass(PROCESS_DEFINITION);
-    createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__NAME);
-    createEReference(processDefinitionEClass, PROCESS_DEFINITION__PARAMETERS);
-    createEReference(processDefinitionEClass, PROCESS_DEFINITION__MEMBERS);
-    createEReference(processDefinitionEClass, PROCESS_DEFINITION__USES);
-
-    processParameterMemberEClass = createEClass(PROCESS_PARAMETER_MEMBER);
-    createEAttribute(processParameterMemberEClass, PROCESS_PARAMETER_MEMBER__TYPE);
-    createEAttribute(processParameterMemberEClass, PROCESS_PARAMETER_MEMBER__NAME);
-    createEAttribute(processParameterMemberEClass, PROCESS_PARAMETER_MEMBER__SCOPE);
-
-    processDefinitionMemberEClass = createEClass(PROCESS_DEFINITION_MEMBER);
-
-    processUseMemberEClass = createEClass(PROCESS_USE_MEMBER);
-    createEAttribute(processUseMemberEClass, PROCESS_USE_MEMBER__TYPE);
-    createEAttribute(processUseMemberEClass, PROCESS_USE_MEMBER__NAME);
-
-    processCallEClass = createEClass(PROCESS_CALL);
-    createEAttribute(processCallEClass, PROCESS_CALL__CONSTRUCTOR);
-    createEReference(processCallEClass, PROCESS_CALL__PARAMETERS);
+    ruleObjectEClass = createEClass(RULE_OBJECT);
 
     deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
     createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
@@ -1366,7 +1140,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
 
     deviceMembersEClass = createEClass(DEVICE_MEMBERS);
-    createEAttribute(deviceMembersEClass, DEVICE_MEMBERS__NAME);
 
     atgcDefinitionEClass = createEClass(ATGC_DEFINITION);
     createEAttribute(atgcDefinitionEClass, ATGC_DEFINITION__COMMAND);
@@ -1375,7 +1148,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     propertyDefinitionEClass = createEClass(PROPERTY_DEFINITION);
     createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__PROPERTY);
     createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__CONDITION);
-    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__TIME);
+    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__NAME);
+    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__TIME);
     createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__OPERATOR);
     createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__CONCENTRATION);
 
@@ -1385,17 +1159,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEReference(propertyEClass, PROPERTY__RHS);
 
     propertyConditionEClass = createEClass(PROPERTY_CONDITION);
-    createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__LOWER_BOUND);
-    createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__UPPER_BOUNDS);
+    createEReference(propertyConditionEClass, PROPERTY_CONDITION__LOWER_BOUND);
+    createEReference(propertyConditionEClass, PROPERTY_CONDITION__UPPER_BOUNDS);
     createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__OPERATOR);
-    createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__PROBABILITY);
+    createEReference(propertyConditionEClass, PROPERTY_CONDITION__PROBABILITY);
+
+    realEClass = createEClass(REAL);
 
     quantityEClass = createEClass(QUANTITY);
-    createEAttribute(quantityEClass, QUANTITY__VALUE);
+    createEReference(quantityEClass, QUANTITY__VALUE);
     createEAttribute(quantityEClass, QUANTITY__UNITS);
 
-    variableComplexEClass = createEClass(VARIABLE_COMPLEX);
-    createEReference(variableComplexEClass, VARIABLE_COMPLEX__COMPONENTS);
+    importEClass = createEClass(IMPORT);
+    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
   }
 
   /**
@@ -1427,22 +1203,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    importEClass.getESuperTypes().add(this.getModelMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    variableEClass.getESuperTypes().add(this.getEString());
-    variableDeclarationEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    variableDeclarationEClass.getESuperTypes().add(this.getVariableDefinitionMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getProcessDefinitionMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getProcessDefinitionMember());
-    processDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    processCallEClass.getESuperTypes().add(this.getDeviceMembers());
-    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
-    propertyDefinitionEClass.getESuperTypes().add(this.getFunctionDefinitionMember());
+    importStatementEClass.getESuperTypes().add(this.getModelMember());
+    functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
+    variableNameEClass.getESuperTypes().add(this.getRuleObject());
+    variableComplexEClass.getESuperTypes().add(this.getRuleObject());
+    variableDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
+    variableAssignmentEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
-    variableComplexEClass.getESuperTypes().add(this.getEString());
+    importEClass.getESuperTypes().add(this.getImportStatement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1450,93 +1223,69 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(modelMemberEClass, ModelMember.class, "ModelMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableDefinitionEClass, VariableDefinition.class, "VariableDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableDefinition_Members(), this.getVariableDefinitionMember(), null, "members", null, 0, -1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(importStatementEClass, ImportStatement.class, "ImportStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDefinition_Name(), this.getVariableName(), null, "name", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionDefinition_Members(), this.getFunctionDefinitionMember(), null, "members", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDefinition_Members(), this.getFunctionBodyMember(), null, "members", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Uses(), this.getFunctionUseMember(), null, "uses", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionParameterMemberEClass, FunctionParameterMember.class, "FunctionParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionParameterMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionParameterMember_Name(), this.getVariableName(), null, "name", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionParameterMember_Scope(), ecorePackage.getEString(), "scope", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionDefinitionMemberEClass, FunctionDefinitionMember.class, "FunctionDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(functionBodyMemberEClass, FunctionBodyMember.class, "FunctionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(functionUseMemberEClass, FunctionUseMember.class, "FunctionUseMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionUseMember_Name(), this.getVariableName(), null, "name", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableNameEClass, VariableName.class, "VariableName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(eStringEClass, EString.class, "EString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(variableDefinitionMemberEClass, VariableDefinitionMember.class, "VariableDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableDeclaration_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableDeclaration_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableAssignmentEClass, VariableAssignment.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariableAssignment_Variable(), this.getVariableAttribute(), null, "variable", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableAssignment_Expression(), this.getVariableExpression(), null, "expression", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableComplexEClass, VariableComplex.class, "VariableComplex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableComplex_Components(), ecorePackage.getEString(), "components", null, 0, -1, VariableComplex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableAttributeEClass, VariableAttribute.class, "VariableAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableAttribute_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(variableDefinitionEClass, VariableDefinition.class, "VariableDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableDefinition_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDefinition_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDefinition_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDefinition_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterAssignmentEClass, ParameterAssignment.class, "ParameterAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParameterAssignment_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParameterAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterAssignment_Value(), ecorePackage.getEObject(), null, "value", null, 0, 1, ParameterAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableAssignmentEClass, VariableAssignment.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableAssignment_Variable(), ecorePackage.getEObject(), null, "variable", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableAssignment_Expression(), this.getVariableExpression(), null, "expression", null, 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(variableExpressionEClass, VariableExpression.class, "VariableExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariableExpression_Members(), this.getVariableAttribute(), null, "members", null, 0, -1, VariableExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableExpression_Members(), ecorePackage.getEObject(), null, "members", null, 0, -1, VariableExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleDefinition_Lhs(), this.getEString(), null, "lhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Name(), this.getVariableName(), null, "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Lhs(), this.getRuleObject(), null, "lhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRuleDefinition_Reversible(), ecorePackage.getEBoolean(), "reversible", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleDefinition_Rhs(), this.getEString(), null, "rhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRuleDefinition_Rhs(), this.getRuleObject(), null, "rhs", null, 0, -1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessDefinition_Parameters(), this.getProcessParameterMember(), null, "parameters", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessDefinition_Members(), this.getProcessDefinitionMember(), null, "members", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessDefinition_Uses(), this.getProcessUseMember(), null, "uses", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(processParameterMemberEClass, ProcessParameterMember.class, "ProcessParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProcessParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProcessParameterMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProcessParameterMember_Scope(), ecorePackage.getEString(), "scope", null, 0, 1, ProcessParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(processDefinitionMemberEClass, ProcessDefinitionMember.class, "ProcessDefinitionMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(processUseMemberEClass, ProcessUseMember.class, "ProcessUseMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, ProcessUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProcessUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(processCallEClass, ProcessCall.class, "ProcessCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessCall_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ProcessCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessCall_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, ProcessCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(ruleObjectEClass, RuleObject.class, "RuleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeviceDefinition_Parts(), ecorePackage.getEString(), "parts", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Parameters(), this.getVariableAssignment(), null, "parameters", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeviceDefinition_Members(), this.getDeviceMembers(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deviceMembersEClass, DeviceMembers.class, "DeviceMembers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDeviceMembers_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceMembers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(atgcDefinitionEClass, ATGCDefinition.class, "ATGCDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getATGCDefinition_Command(), ecorePackage.getEString(), "command", null, 0, 1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1545,7 +1294,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(propertyDefinitionEClass, PropertyDefinition.class, "PropertyDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPropertyDefinition_Property(), this.getProperty(), null, "property", null, 0, -1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPropertyDefinition_Condition(), this.getPropertyCondition(), null, "condition", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyDefinition_Time(), ecorePackage.getEString(), "time", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPropertyDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyDefinition_Time(), this.getREAL(), null, "time", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPropertyDefinition_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPropertyDefinition_Concentration(), this.getQuantity(), null, "concentration", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1555,17 +1305,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEReference(getProperty_Rhs(), this.getQuantity(), null, "rhs", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyConditionEClass, PropertyCondition.class, "PropertyCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPropertyCondition_LowerBound(), ecorePackage.getEString(), "lowerBound", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyCondition_UpperBounds(), ecorePackage.getEString(), "upperBounds", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyCondition_LowerBound(), this.getREAL(), null, "lowerBound", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyCondition_UpperBounds(), this.getREAL(), null, "upperBounds", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPropertyCondition_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyCondition_Probability(), ecorePackage.getEString(), "probability", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyCondition_Probability(), this.getREAL(), null, "probability", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(realEClass, roadblock.xtext.ibl.ibl.REAL.class, "REAL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(quantityEClass, Quantity.class, "Quantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getQuantity_Value(), ecorePackage.getEString(), "value", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuantity_Value(), this.getREAL(), null, "value", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuantity_Units(), ecorePackage.getEString(), "units", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(variableComplexEClass, VariableComplex.class, "VariableComplex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getVariableComplex_Components(), this.getVariable(), null, "components", null, 0, -1, VariableComplex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

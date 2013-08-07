@@ -41,22 +41,13 @@ public interface IblFactory extends EFactory
   ModelMember createModelMember();
 
   /**
-   * Returns a new object of class '<em>Import</em>'.
+   * Returns a new object of class '<em>Import Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import</em>'.
+   * @return a new object of class '<em>Import Statement</em>'.
    * @generated
    */
-  Import createImport();
-
-  /**
-   * Returns a new object of class '<em>Variable Definition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Definition</em>'.
-   * @generated
-   */
-  VariableDefinition createVariableDefinition();
+  ImportStatement createImportStatement();
 
   /**
    * Returns a new object of class '<em>Function Definition</em>'.
@@ -77,13 +68,13 @@ public interface IblFactory extends EFactory
   FunctionParameterMember createFunctionParameterMember();
 
   /**
-   * Returns a new object of class '<em>Function Definition Member</em>'.
+   * Returns a new object of class '<em>Function Body Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Definition Member</em>'.
+   * @return a new object of class '<em>Function Body Member</em>'.
    * @generated
    */
-  FunctionDefinitionMember createFunctionDefinitionMember();
+  FunctionBodyMember createFunctionBodyMember();
 
   /**
    * Returns a new object of class '<em>Function Use Member</em>'.
@@ -95,49 +86,22 @@ public interface IblFactory extends EFactory
   FunctionUseMember createFunctionUseMember();
 
   /**
-   * Returns a new object of class '<em>Variable</em>'.
+   * Returns a new object of class '<em>Variable Name</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable</em>'.
+   * @return a new object of class '<em>Variable Name</em>'.
    * @generated
    */
-  Variable createVariable();
+  VariableName createVariableName();
 
   /**
-   * Returns a new object of class '<em>EString</em>'.
+   * Returns a new object of class '<em>Variable Complex</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>EString</em>'.
+   * @return a new object of class '<em>Variable Complex</em>'.
    * @generated
    */
-  EString createEString();
-
-  /**
-   * Returns a new object of class '<em>Variable Definition Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Definition Member</em>'.
-   * @generated
-   */
-  VariableDefinitionMember createVariableDefinitionMember();
-
-  /**
-   * Returns a new object of class '<em>Variable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Declaration</em>'.
-   * @generated
-   */
-  VariableDeclaration createVariableDeclaration();
-
-  /**
-   * Returns a new object of class '<em>Variable Assignment</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Assignment</em>'.
-   * @generated
-   */
-  VariableAssignment createVariableAssignment();
+  VariableComplex createVariableComplex();
 
   /**
    * Returns a new object of class '<em>Variable Attribute</em>'.
@@ -147,6 +111,33 @@ public interface IblFactory extends EFactory
    * @generated
    */
   VariableAttribute createVariableAttribute();
+
+  /**
+   * Returns a new object of class '<em>Variable Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Definition</em>'.
+   * @generated
+   */
+  VariableDefinition createVariableDefinition();
+
+  /**
+   * Returns a new object of class '<em>Parameter Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Assignment</em>'.
+   * @generated
+   */
+  ParameterAssignment createParameterAssignment();
+
+  /**
+   * Returns a new object of class '<em>Variable Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Assignment</em>'.
+   * @generated
+   */
+  VariableAssignment createVariableAssignment();
 
   /**
    * Returns a new object of class '<em>Variable Expression</em>'.
@@ -167,49 +158,13 @@ public interface IblFactory extends EFactory
   RuleDefinition createRuleDefinition();
 
   /**
-   * Returns a new object of class '<em>Process Definition</em>'.
+   * Returns a new object of class '<em>Rule Object</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Definition</em>'.
+   * @return a new object of class '<em>Rule Object</em>'.
    * @generated
    */
-  ProcessDefinition createProcessDefinition();
-
-  /**
-   * Returns a new object of class '<em>Process Parameter Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Parameter Member</em>'.
-   * @generated
-   */
-  ProcessParameterMember createProcessParameterMember();
-
-  /**
-   * Returns a new object of class '<em>Process Definition Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Definition Member</em>'.
-   * @generated
-   */
-  ProcessDefinitionMember createProcessDefinitionMember();
-
-  /**
-   * Returns a new object of class '<em>Process Use Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Use Member</em>'.
-   * @generated
-   */
-  ProcessUseMember createProcessUseMember();
-
-  /**
-   * Returns a new object of class '<em>Process Call</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Call</em>'.
-   * @generated
-   */
-  ProcessCall createProcessCall();
+  RuleObject createRuleObject();
 
   /**
    * Returns a new object of class '<em>Device Definition</em>'.
@@ -266,6 +221,15 @@ public interface IblFactory extends EFactory
   PropertyCondition createPropertyCondition();
 
   /**
+   * Returns a new object of class '<em>REAL</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>REAL</em>'.
+   * @generated
+   */
+  REAL createREAL();
+
+  /**
    * Returns a new object of class '<em>Quantity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -275,13 +239,13 @@ public interface IblFactory extends EFactory
   Quantity createQuantity();
 
   /**
-   * Returns a new object of class '<em>Variable Complex</em>'.
+   * Returns a new object of class '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Complex</em>'.
+   * @return a new object of class '<em>Import</em>'.
    * @generated
    */
-  VariableComplex createVariableComplex();
+  Import createImport();
 
   /**
    * Returns the package supported by this factory.

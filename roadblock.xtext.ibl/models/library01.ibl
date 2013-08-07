@@ -9,30 +9,30 @@
 ///////////////
 
 define PROCESS ConstitutiveProteinExpression (
-	PROMOTER promoter: required,
-	GENE gene1: required,
-	PROTEIN protein1: returned,
+	PROMOTER promoter:required,
+	GENE gene1:required,
+	PROTEIN protein1:returned,
 	RATE rates:optional
 ) 
 {
 	RULE R1 : promoter <-> promoter + gene1~rnaP
-	R1.forwardRate = promoter.bindingRate | RATE.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
-	R1.reverseRate = RATE.unbindingRate
+	R1.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+	R1.reverseRate = rates.unbindingRate
 
 	RULE R2 : gene1~rnaP -> mrna1
-	R2.rate = RATE.transcriptionRate
+	R2.rate = rates.transcriptionRate
 
 	RULE R3 : mrna1 ->
-	R3.rate = RATE.rnaDegratationRate
+	R3.rate = rates.rnaDegratationRate
 
 	RULE R4 : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
-	R4.associationConstant = RATE.ribosomeBinding
+	R4.associationConstant = rates.ribosomeBinding
 
 	RULE R5 : mrna1~ribosome -> protein1
-	R5.rate = RATE.translationRate
+	R5.rate = rates.translationRate
 
 	RULE R6 : protein1 ->
-	R6.rate = protein1.degradationRate | RATE.proteinDegradationRate
+	R6.rate = protein1.degradationRate | rates.proteinDegradationRate
 } USES RIBOSOME ribosome, RNA rnaP
 
 define PROCESS RegulatedProteinExpression (
@@ -53,7 +53,7 @@ define PROCESS RegulatedProteinExpression (
 	R3.rate = rate.transcriptionRate
 
 	RULE R4 : rna~gene ->
-	R4.rate = rates.degradationRate | RATE.RNADegradationRate
+	R4.rate = rates.degradationRate | rates.RNADegradationRate
 
 	RULE R5 : rna~gene -> rna~gene + gene~ribosome
 	R5.rate = rate.translationRate1
@@ -62,5 +62,5 @@ define PROCESS RegulatedProteinExpression (
 	R6.rate = rate.translationRate2
 
 	RULE R7 : protein ->
-	R7.rate = protein.degradationRate | RATE.proteinDegradationRate
+	R7.rate = protein.degradationRate | rates.proteinDegradationRate
 } USES RIBOSOME ribosome, RNA rnaP

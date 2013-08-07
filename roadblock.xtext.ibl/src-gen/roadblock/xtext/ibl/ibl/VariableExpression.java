@@ -26,7 +26,7 @@ public interface VariableExpression extends EObject
 {
   /**
    * Returns the value of the '<em><b>Members</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.VariableAttribute}.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Members</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface VariableExpression extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<VariableAttribute> getMembers();
+  EList<EObject> getMembers();
 
 } // VariableExpression

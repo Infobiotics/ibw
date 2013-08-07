@@ -23,37 +23,37 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface RuleDefinition extends FunctionDefinitionMember, ProcessDefinitionMember
+public interface RuleDefinition extends FunctionBodyMember
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
+   * @return the value of the '<em>Name</em>' containment reference.
+   * @see #setName(VariableName)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getRuleDefinition_Name()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getName();
+  VariableName getName();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.RuleDefinition#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.RuleDefinition#getName <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
+   * @param value the new value of the '<em>Name</em>' containment reference.
    * @see #getName()
    * @generated
    */
-  void setName(String value);
+  void setName(VariableName value);
 
   /**
    * Returns the value of the '<em><b>Lhs</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.EString}.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.RuleObject}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Lhs</em>' containment reference list isn't clear,
@@ -65,7 +65,7 @@ public interface RuleDefinition extends FunctionDefinitionMember, ProcessDefinit
    * @model containment="true"
    * @generated
    */
-  EList<EString> getLhs();
+  EList<RuleObject> getLhs();
 
   /**
    * Returns the value of the '<em><b>Reversible</b></em>' attribute.
@@ -95,7 +95,7 @@ public interface RuleDefinition extends FunctionDefinitionMember, ProcessDefinit
 
   /**
    * Returns the value of the '<em><b>Rhs</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.EString}.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.RuleObject}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Rhs</em>' containment reference list isn't clear,
@@ -107,6 +107,6 @@ public interface RuleDefinition extends FunctionDefinitionMember, ProcessDefinit
    * @model containment="true"
    * @generated
    */
-  EList<EString> getRhs();
+  EList<RuleObject> getRhs();
 
 } // RuleDefinition

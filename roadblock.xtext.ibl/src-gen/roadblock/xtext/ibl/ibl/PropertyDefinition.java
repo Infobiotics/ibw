@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getProperty <em>Property</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getCondition <em>Condition</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getTime <em>Time</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getConcentration <em>Concentration</em>}</li>
@@ -24,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface PropertyDefinition extends FunctionDefinitionMember, DeviceMembers
+public interface PropertyDefinition extends FunctionBodyMember, DeviceMembers
 {
   /**
    * Returns the value of the '<em><b>Property</b></em>' containment reference list.
@@ -69,30 +70,56 @@ public interface PropertyDefinition extends FunctionDefinitionMember, DeviceMemb
   void setCondition(PropertyCondition value);
 
   /**
-   * Returns the value of the '<em><b>Time</b></em>' attribute.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Time</em>' attribute isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Time</em>' attribute.
-   * @see #setTime(String)
-   * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyDefinition_Time()
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyDefinition_Name()
    * @model
    * @generated
    */
-  String getTime();
+  String getName();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getTime <em>Time</em>}' attribute.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Time</em>' attribute.
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Time</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Time</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Time</em>' containment reference.
+   * @see #setTime(REAL)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyDefinition_Time()
+   * @model containment="true"
+   * @generated
+   */
+  REAL getTime();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getTime <em>Time</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Time</em>' containment reference.
    * @see #getTime()
    * @generated
    */
-  void setTime(String value);
+  void setTime(REAL value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.

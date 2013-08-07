@@ -17,9 +17,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import roadblock.xtext.ibl.ibl.EString;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.VariableName;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,27 +38,17 @@ import roadblock.xtext.ibl.ibl.RuleDefinition;
  *
  * @generated
  */
-public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements RuleDefinition
+public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDefinition
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected VariableName name;
 
   /**
    * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference list.
@@ -67,7 +58,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * @generated
    * @ordered
    */
-  protected EList<EString> lhs;
+  protected EList<RuleObject> lhs;
 
   /**
    * The default value of the '{@link #isReversible() <em>Reversible</em>}' attribute.
@@ -97,7 +88,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * @generated
    * @ordered
    */
-  protected EList<EString> rhs;
+  protected EList<RuleObject> rhs;
 
   /**
    * <!-- begin-user-doc -->
@@ -125,7 +116,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public VariableName getName()
   {
     return name;
   }
@@ -135,12 +126,16 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public NotificationChain basicSetName(VariableName newName, NotificationChain msgs)
   {
-    String oldName = name;
+    VariableName oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__NAME, oldName, newName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -148,11 +143,32 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EString> getLhs()
+  public void setName(VariableName newName)
+  {
+    if (newName != name)
+    {
+      NotificationChain msgs = null;
+      if (name != null)
+        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE_DEFINITION__NAME, null, msgs);
+      if (newName != null)
+        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE_DEFINITION__NAME, null, msgs);
+      msgs = basicSetName(newName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__NAME, newName, newName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<RuleObject> getLhs()
   {
     if (lhs == null)
     {
-      lhs = new EObjectContainmentEList<EString>(EString.class, this, IblPackage.RULE_DEFINITION__LHS);
+      lhs = new EObjectContainmentEList<RuleObject>(RuleObject.class, this, IblPackage.RULE_DEFINITION__LHS);
     }
     return lhs;
   }
@@ -185,11 +201,11 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EString> getRhs()
+  public EList<RuleObject> getRhs()
   {
     if (rhs == null)
     {
-      rhs = new EObjectContainmentEList<EString>(EString.class, this, IblPackage.RULE_DEFINITION__RHS);
+      rhs = new EObjectContainmentEList<RuleObject>(RuleObject.class, this, IblPackage.RULE_DEFINITION__RHS);
     }
     return rhs;
   }
@@ -204,6 +220,8 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
   {
     switch (featureID)
     {
+      case IblPackage.RULE_DEFINITION__NAME:
+        return basicSetName(null, msgs);
       case IblPackage.RULE_DEFINITION__LHS:
         return ((InternalEList<?>)getLhs()).basicRemove(otherEnd, msgs);
       case IblPackage.RULE_DEFINITION__RHS:
@@ -246,18 +264,18 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     switch (featureID)
     {
       case IblPackage.RULE_DEFINITION__NAME:
-        setName((String)newValue);
+        setName((VariableName)newValue);
         return;
       case IblPackage.RULE_DEFINITION__LHS:
         getLhs().clear();
-        getLhs().addAll((Collection<? extends EString>)newValue);
+        getLhs().addAll((Collection<? extends RuleObject>)newValue);
         return;
       case IblPackage.RULE_DEFINITION__REVERSIBLE:
         setReversible((Boolean)newValue);
         return;
       case IblPackage.RULE_DEFINITION__RHS:
         getRhs().clear();
-        getRhs().addAll((Collection<? extends EString>)newValue);
+        getRhs().addAll((Collection<? extends RuleObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -274,7 +292,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     switch (featureID)
     {
       case IblPackage.RULE_DEFINITION__NAME:
-        setName(NAME_EDEFAULT);
+        setName((VariableName)null);
         return;
       case IblPackage.RULE_DEFINITION__LHS:
         getLhs().clear();
@@ -300,7 +318,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     switch (featureID)
     {
       case IblPackage.RULE_DEFINITION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        return name != null;
       case IblPackage.RULE_DEFINITION__LHS:
         return lhs != null && !lhs.isEmpty();
       case IblPackage.RULE_DEFINITION__REVERSIBLE:
@@ -322,9 +340,7 @@ public class RuleDefinitionImpl extends FunctionDefinitionMemberImpl implements 
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", reversible: ");
+    result.append(" (reversible: ");
     result.append(reversible);
     result.append(')');
     return result.toString();

@@ -19,7 +19,7 @@ package roadblock.xtext.ibl.ibl;
  * @model
  * @generated
  */
-public interface Import extends ModelMember
+public interface Import extends ImportStatement
 {
   /**
    * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.

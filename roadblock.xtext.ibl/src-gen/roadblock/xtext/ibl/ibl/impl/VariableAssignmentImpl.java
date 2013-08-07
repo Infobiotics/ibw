@@ -6,13 +6,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
-import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableExpression;
 
 /**
@@ -29,7 +29,7 @@ import roadblock.xtext.ibl.ibl.VariableExpression;
  *
  * @generated
  */
-public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl implements VariableAssignment
+public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements VariableAssignment
 {
   /**
    * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
@@ -39,7 +39,7 @@ public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl impleme
    * @generated
    * @ordered
    */
-  protected VariableAttribute variable;
+  protected EObject variable;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -77,7 +77,7 @@ public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableAttribute getVariable()
+  public EObject getVariable()
   {
     return variable;
   }
@@ -87,9 +87,9 @@ public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVariable(VariableAttribute newVariable, NotificationChain msgs)
+  public NotificationChain basicSetVariable(EObject newVariable, NotificationChain msgs)
   {
-    VariableAttribute oldVariable = variable;
+    EObject oldVariable = variable;
     variable = newVariable;
     if (eNotificationRequired())
     {
@@ -104,7 +104,7 @@ public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVariable(VariableAttribute newVariable)
+  public void setVariable(EObject newVariable)
   {
     if (newVariable != variable)
     {
@@ -215,7 +215,7 @@ public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl impleme
     switch (featureID)
     {
       case IblPackage.VARIABLE_ASSIGNMENT__VARIABLE:
-        setVariable((VariableAttribute)newValue);
+        setVariable((EObject)newValue);
         return;
       case IblPackage.VARIABLE_ASSIGNMENT__EXPRESSION:
         setExpression((VariableExpression)newValue);
@@ -235,7 +235,7 @@ public class VariableAssignmentImpl extends FunctionDefinitionMemberImpl impleme
     switch (featureID)
     {
       case IblPackage.VARIABLE_ASSIGNMENT__VARIABLE:
-        setVariable((VariableAttribute)null);
+        setVariable((EObject)null);
         return;
       case IblPackage.VARIABLE_ASSIGNMENT__EXPRESSION:
         setExpression((VariableExpression)null);

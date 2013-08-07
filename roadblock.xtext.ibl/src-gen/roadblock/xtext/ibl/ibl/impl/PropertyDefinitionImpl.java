@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import roadblock.xtext.ibl.ibl.DeviceMembers;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
+import roadblock.xtext.ibl.ibl.REAL;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,9 +31,9 @@ import roadblock.xtext.ibl.ibl.Quantity;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getTime <em>Time</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl#getConcentration <em>Concentration</em>}</li>
@@ -42,28 +42,8 @@ import roadblock.xtext.ibl.ibl.Quantity;
  *
  * @generated
  */
-public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl implements PropertyDefinition
+public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements PropertyDefinition
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -85,24 +65,34 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
   protected PropertyCondition condition;
 
   /**
-   * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTime()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String TIME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTime() <em>Time</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTime() <em>Time</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTime()
    * @generated
    * @ordered
    */
-  protected String time = TIME_EDEFAULT;
+  protected REAL time;
 
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -153,29 +143,6 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
   protected EClass eStaticClass()
   {
     return IblPackage.Literals.PROPERTY_DEFINITION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_DEFINITION__NAME, oldName, name));
   }
 
   /**
@@ -245,7 +212,30 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTime()
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_DEFINITION__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public REAL getTime()
   {
     return time;
   }
@@ -255,12 +245,37 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTime(String newTime)
+  public NotificationChain basicSetTime(REAL newTime, NotificationChain msgs)
   {
-    String oldTime = time;
+    REAL oldTime = time;
     time = newTime;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_DEFINITION__TIME, oldTime, time));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_DEFINITION__TIME, oldTime, newTime);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTime(REAL newTime)
+  {
+    if (newTime != time)
+    {
+      NotificationChain msgs = null;
+      if (time != null)
+        msgs = ((InternalEObject)time).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROPERTY_DEFINITION__TIME, null, msgs);
+      if (newTime != null)
+        msgs = ((InternalEObject)newTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROPERTY_DEFINITION__TIME, null, msgs);
+      msgs = basicSetTime(newTime, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_DEFINITION__TIME, newTime, newTime));
   }
 
   /**
@@ -348,6 +363,8 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
         return ((InternalEList<?>)getProperty()).basicRemove(otherEnd, msgs);
       case IblPackage.PROPERTY_DEFINITION__CONDITION:
         return basicSetCondition(null, msgs);
+      case IblPackage.PROPERTY_DEFINITION__TIME:
+        return basicSetTime(null, msgs);
       case IblPackage.PROPERTY_DEFINITION__CONCENTRATION:
         return basicSetConcentration(null, msgs);
     }
@@ -364,12 +381,12 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
   {
     switch (featureID)
     {
-      case IblPackage.PROPERTY_DEFINITION__NAME:
-        return getName();
       case IblPackage.PROPERTY_DEFINITION__PROPERTY:
         return getProperty();
       case IblPackage.PROPERTY_DEFINITION__CONDITION:
         return getCondition();
+      case IblPackage.PROPERTY_DEFINITION__NAME:
+        return getName();
       case IblPackage.PROPERTY_DEFINITION__TIME:
         return getTime();
       case IblPackage.PROPERTY_DEFINITION__OPERATOR:
@@ -391,9 +408,6 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
   {
     switch (featureID)
     {
-      case IblPackage.PROPERTY_DEFINITION__NAME:
-        setName((String)newValue);
-        return;
       case IblPackage.PROPERTY_DEFINITION__PROPERTY:
         getProperty().clear();
         getProperty().addAll((Collection<? extends Property>)newValue);
@@ -401,8 +415,11 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
       case IblPackage.PROPERTY_DEFINITION__CONDITION:
         setCondition((PropertyCondition)newValue);
         return;
+      case IblPackage.PROPERTY_DEFINITION__NAME:
+        setName((String)newValue);
+        return;
       case IblPackage.PROPERTY_DEFINITION__TIME:
-        setTime((String)newValue);
+        setTime((REAL)newValue);
         return;
       case IblPackage.PROPERTY_DEFINITION__OPERATOR:
         setOperator((String)newValue);
@@ -424,17 +441,17 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
   {
     switch (featureID)
     {
-      case IblPackage.PROPERTY_DEFINITION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case IblPackage.PROPERTY_DEFINITION__PROPERTY:
         getProperty().clear();
         return;
       case IblPackage.PROPERTY_DEFINITION__CONDITION:
         setCondition((PropertyCondition)null);
         return;
+      case IblPackage.PROPERTY_DEFINITION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case IblPackage.PROPERTY_DEFINITION__TIME:
-        setTime(TIME_EDEFAULT);
+        setTime((REAL)null);
         return;
       case IblPackage.PROPERTY_DEFINITION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
@@ -456,58 +473,20 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
   {
     switch (featureID)
     {
-      case IblPackage.PROPERTY_DEFINITION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.PROPERTY_DEFINITION__PROPERTY:
         return property != null && !property.isEmpty();
       case IblPackage.PROPERTY_DEFINITION__CONDITION:
         return condition != null;
+      case IblPackage.PROPERTY_DEFINITION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.PROPERTY_DEFINITION__TIME:
-        return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
+        return time != null;
       case IblPackage.PROPERTY_DEFINITION__OPERATOR:
         return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
       case IblPackage.PROPERTY_DEFINITION__CONCENTRATION:
         return concentration != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == DeviceMembers.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case IblPackage.PROPERTY_DEFINITION__NAME: return IblPackage.DEVICE_MEMBERS__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == DeviceMembers.class)
-    {
-      switch (baseFeatureID)
-      {
-        case IblPackage.DEVICE_MEMBERS__NAME: return IblPackage.PROPERTY_DEFINITION__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**
@@ -523,8 +502,6 @@ public class PropertyDefinitionImpl extends FunctionDefinitionMemberImpl impleme
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", time: ");
-    result.append(time);
     result.append(", operator: ");
     result.append(operator);
     result.append(')');

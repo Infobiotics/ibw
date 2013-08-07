@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DeviceDefinition extends FunctionDefinitionMember
+public interface DeviceDefinition extends FunctionBodyMember
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -69,7 +69,7 @@ public interface DeviceDefinition extends FunctionDefinitionMember
 
   /**
    * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.VariableAssignment}.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.ParameterAssignment}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
@@ -81,7 +81,7 @@ public interface DeviceDefinition extends FunctionDefinitionMember
    * @model containment="true"
    * @generated
    */
-  EList<VariableAssignment> getParameters();
+  EList<ParameterAssignment> getParameters();
 
   /**
    * Returns the value of the '<em><b>Members</b></em>' containment reference list.

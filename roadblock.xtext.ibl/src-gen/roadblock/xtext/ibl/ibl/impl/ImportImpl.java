@@ -24,7 +24,7 @@ import roadblock.xtext.ibl.ibl.Import;
  *
  * @generated
  */
-public class ImportImpl extends ModelMemberImpl implements Import
+public class ImportImpl extends ImportStatementImpl implements Import
 {
   /**
    * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.

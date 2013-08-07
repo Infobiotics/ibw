@@ -13,16 +13,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
-import roadblock.xtext.ibl.ibl.FunctionDefinitionMember;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
+import roadblock.xtext.ibl.ibl.VariableName;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ import roadblock.xtext.ibl.ibl.IblPackage;
  *
  * @generated
  */
-public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container implements FunctionDefinition
+public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionDefinition
 {
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -64,24 +64,14 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
   protected String type = TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected VariableName name;
 
   /**
    * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -101,7 +91,7 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected EList<FunctionDefinitionMember> members;
+  protected EList<FunctionBodyMember> members;
 
   /**
    * The cached value of the '{@link #getUses() <em>Uses</em>}' containment reference list.
@@ -162,7 +152,7 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public VariableName getName()
   {
     return name;
   }
@@ -172,12 +162,37 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public NotificationChain basicSetName(VariableName newName, NotificationChain msgs)
   {
-    String oldName = name;
+    VariableName oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, oldName, newName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(VariableName newName)
+  {
+    if (newName != name)
+    {
+      NotificationChain msgs = null;
+      if (name != null)
+        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__NAME, null, msgs);
+      if (newName != null)
+        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__NAME, null, msgs);
+      msgs = basicSetName(newName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, newName, newName));
   }
 
   /**
@@ -199,11 +214,11 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<FunctionDefinitionMember> getMembers()
+  public EList<FunctionBodyMember> getMembers()
   {
     if (members == null)
     {
-      members = new EObjectContainmentEList<FunctionDefinitionMember>(FunctionDefinitionMember.class, this, IblPackage.FUNCTION_DEFINITION__MEMBERS);
+      members = new EObjectContainmentEList<FunctionBodyMember>(FunctionBodyMember.class, this, IblPackage.FUNCTION_DEFINITION__MEMBERS);
     }
     return members;
   }
@@ -232,6 +247,8 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
   {
     switch (featureID)
     {
+      case IblPackage.FUNCTION_DEFINITION__NAME:
+        return basicSetName(null, msgs);
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -281,7 +298,7 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
         setType((String)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
-        setName((String)newValue);
+        setName((VariableName)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -289,7 +306,7 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
         return;
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
         getMembers().clear();
-        getMembers().addAll((Collection<? extends FunctionDefinitionMember>)newValue);
+        getMembers().addAll((Collection<? extends FunctionBodyMember>)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__USES:
         getUses().clear();
@@ -313,7 +330,7 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
         setType(TYPE_EDEFAULT);
         return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
-        setName(NAME_EDEFAULT);
+        setName((VariableName)null);
         return;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -341,7 +358,7 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
       case IblPackage.FUNCTION_DEFINITION__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.FUNCTION_DEFINITION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        return name != null;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -365,8 +382,6 @@ public class FunctionDefinitionImpl extends MinimalEObjectImpl.Container impleme
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (type: ");
     result.append(type);
-    result.append(", name: ");
-    result.append(name);
     result.append(')');
     return result.toString();
   }

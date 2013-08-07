@@ -24,12 +24,13 @@ define SITE site() {
 // define cell //
 /////////////////
 
-define CELL SASensorCell(consumed SA:required) {
+define CELL SASensorCell(MOLECULE SA:required) {
 	// define molecular elements
 	observable RIBOSOME ribosome
 	observable RNA rnaP
 
-	CHASSIS chassis = CHASSIS(organism = ecoli)
+// ??JT - how do we specify chassis types 
+//	CHASSIS chassis = CHASSIS(organism = ecoli)
 
 	PROMOTER PnahR = PROMOTER(URI = biobricksURI)
 	PROTEIN NahR = PROTEIN(URI = dbURI)

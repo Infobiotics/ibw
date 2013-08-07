@@ -86,19 +86,11 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.IMPORT:
+      case IblPackage.IMPORT_STATEMENT:
       {
-        Import import_ = (Import)theEObject;
-        T result = caseImport(import_);
-        if (result == null) result = caseModelMember(import_);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.VARIABLE_DEFINITION:
-      {
-        VariableDefinition variableDefinition = (VariableDefinition)theEObject;
-        T result = caseVariableDefinition(variableDefinition);
-        if (result == null) result = caseModelMember(variableDefinition);
+        ImportStatement importStatement = (ImportStatement)theEObject;
+        T result = caseImportStatement(importStatement);
+        if (result == null) result = caseModelMember(importStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -106,6 +98,7 @@ public class IblSwitch<T> extends Switch<T>
       {
         FunctionDefinition functionDefinition = (FunctionDefinition)theEObject;
         T result = caseFunctionDefinition(functionDefinition);
+        if (result == null) result = caseModelMember(functionDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -116,10 +109,10 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.FUNCTION_DEFINITION_MEMBER:
+      case IblPackage.FUNCTION_BODY_MEMBER:
       {
-        FunctionDefinitionMember functionDefinitionMember = (FunctionDefinitionMember)theEObject;
-        T result = caseFunctionDefinitionMember(functionDefinitionMember);
+        FunctionBodyMember functionBodyMember = (FunctionBodyMember)theEObject;
+        T result = caseFunctionBodyMember(functionBodyMember);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -130,43 +123,19 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.VARIABLE:
+      case IblPackage.VARIABLE_NAME:
       {
-        Variable variable = (Variable)theEObject;
-        T result = caseVariable(variable);
-        if (result == null) result = caseEString(variable);
+        VariableName variableName = (VariableName)theEObject;
+        T result = caseVariableName(variableName);
+        if (result == null) result = caseRuleObject(variableName);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.ESTRING:
+      case IblPackage.VARIABLE_COMPLEX:
       {
-        EString eString = (EString)theEObject;
-        T result = caseEString(eString);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.VARIABLE_DEFINITION_MEMBER:
-      {
-        VariableDefinitionMember variableDefinitionMember = (VariableDefinitionMember)theEObject;
-        T result = caseVariableDefinitionMember(variableDefinitionMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.VARIABLE_DECLARATION:
-      {
-        VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
-        T result = caseVariableDeclaration(variableDeclaration);
-        if (result == null) result = caseFunctionDefinitionMember(variableDeclaration);
-        if (result == null) result = caseVariableDefinitionMember(variableDeclaration);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.VARIABLE_ASSIGNMENT:
-      {
-        VariableAssignment variableAssignment = (VariableAssignment)theEObject;
-        T result = caseVariableAssignment(variableAssignment);
-        if (result == null) result = caseFunctionDefinitionMember(variableAssignment);
-        if (result == null) result = caseProcessDefinitionMember(variableAssignment);
+        VariableComplex variableComplex = (VariableComplex)theEObject;
+        T result = caseVariableComplex(variableComplex);
+        if (result == null) result = caseRuleObject(variableComplex);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -174,6 +143,30 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableAttribute variableAttribute = (VariableAttribute)theEObject;
         T result = caseVariableAttribute(variableAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_DEFINITION:
+      {
+        VariableDefinition variableDefinition = (VariableDefinition)theEObject;
+        T result = caseVariableDefinition(variableDefinition);
+        if (result == null) result = caseFunctionBodyMember(variableDefinition);
+        if (result == null) result = caseDeviceMembers(variableDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PARAMETER_ASSIGNMENT:
+      {
+        ParameterAssignment parameterAssignment = (ParameterAssignment)theEObject;
+        T result = caseParameterAssignment(parameterAssignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_ASSIGNMENT:
+      {
+        VariableAssignment variableAssignment = (VariableAssignment)theEObject;
+        T result = caseVariableAssignment(variableAssignment);
+        if (result == null) result = caseFunctionBodyMember(variableAssignment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -188,45 +181,14 @@ public class IblSwitch<T> extends Switch<T>
       {
         RuleDefinition ruleDefinition = (RuleDefinition)theEObject;
         T result = caseRuleDefinition(ruleDefinition);
-        if (result == null) result = caseFunctionDefinitionMember(ruleDefinition);
-        if (result == null) result = caseProcessDefinitionMember(ruleDefinition);
+        if (result == null) result = caseFunctionBodyMember(ruleDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.PROCESS_DEFINITION:
+      case IblPackage.RULE_OBJECT:
       {
-        ProcessDefinition processDefinition = (ProcessDefinition)theEObject;
-        T result = caseProcessDefinition(processDefinition);
-        if (result == null) result = caseModelMember(processDefinition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.PROCESS_PARAMETER_MEMBER:
-      {
-        ProcessParameterMember processParameterMember = (ProcessParameterMember)theEObject;
-        T result = caseProcessParameterMember(processParameterMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.PROCESS_DEFINITION_MEMBER:
-      {
-        ProcessDefinitionMember processDefinitionMember = (ProcessDefinitionMember)theEObject;
-        T result = caseProcessDefinitionMember(processDefinitionMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.PROCESS_USE_MEMBER:
-      {
-        ProcessUseMember processUseMember = (ProcessUseMember)theEObject;
-        T result = caseProcessUseMember(processUseMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.PROCESS_CALL:
-      {
-        ProcessCall processCall = (ProcessCall)theEObject;
-        T result = caseProcessCall(processCall);
-        if (result == null) result = caseDeviceMembers(processCall);
+        RuleObject ruleObject = (RuleObject)theEObject;
+        T result = caseRuleObject(ruleObject);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -234,7 +196,7 @@ public class IblSwitch<T> extends Switch<T>
       {
         DeviceDefinition deviceDefinition = (DeviceDefinition)theEObject;
         T result = caseDeviceDefinition(deviceDefinition);
-        if (result == null) result = caseFunctionDefinitionMember(deviceDefinition);
+        if (result == null) result = caseFunctionBodyMember(deviceDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -249,7 +211,7 @@ public class IblSwitch<T> extends Switch<T>
       {
         ATGCDefinition atgcDefinition = (ATGCDefinition)theEObject;
         T result = caseATGCDefinition(atgcDefinition);
-        if (result == null) result = caseFunctionDefinitionMember(atgcDefinition);
+        if (result == null) result = caseFunctionBodyMember(atgcDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -257,7 +219,7 @@ public class IblSwitch<T> extends Switch<T>
       {
         PropertyDefinition propertyDefinition = (PropertyDefinition)theEObject;
         T result = casePropertyDefinition(propertyDefinition);
-        if (result == null) result = caseFunctionDefinitionMember(propertyDefinition);
+        if (result == null) result = caseFunctionBodyMember(propertyDefinition);
         if (result == null) result = caseDeviceMembers(propertyDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -276,6 +238,13 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.REAL:
+      {
+        REAL real = (REAL)theEObject;
+        T result = caseREAL(real);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.QUANTITY:
       {
         Quantity quantity = (Quantity)theEObject;
@@ -283,11 +252,12 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.VARIABLE_COMPLEX:
+      case IblPackage.IMPORT:
       {
-        VariableComplex variableComplex = (VariableComplex)theEObject;
-        T result = caseVariableComplex(variableComplex);
-        if (result == null) result = caseEString(variableComplex);
+        Import import_ = (Import)theEObject;
+        T result = caseImport(import_);
+        if (result == null) result = caseImportStatement(import_);
+        if (result == null) result = caseModelMember(import_);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -328,33 +298,17 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Import Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Import Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImport(Import object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Definition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Definition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableDefinition(VariableDefinition object)
+  public T caseImportStatement(ImportStatement object)
   {
     return null;
   }
@@ -392,17 +346,17 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Function Definition Member</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Function Body Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Function Definition Member</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Function Body Member</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFunctionDefinitionMember(FunctionDefinitionMember object)
+  public T caseFunctionBodyMember(FunctionBodyMember object)
   {
     return null;
   }
@@ -424,81 +378,33 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Variable Name</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Variable Name</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseVariable(Variable object)
+  public T caseVariableName(VariableName object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EString</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Variable Complex</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>EString</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Variable Complex</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEString(EString object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Definition Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Definition Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableDefinitionMember(VariableDefinitionMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableDeclaration(VariableDeclaration object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableAssignment(VariableAssignment object)
+  public T caseVariableComplex(VariableComplex object)
   {
     return null;
   }
@@ -515,6 +421,54 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableAttribute(VariableAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDefinition(VariableDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Assignment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterAssignment(ParameterAssignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableAssignment(VariableAssignment object)
   {
     return null;
   }
@@ -552,81 +506,17 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Definition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Rule Object</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Definition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Rule Object</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProcessDefinition(ProcessDefinition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Parameter Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Parameter Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessParameterMember(ProcessParameterMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Definition Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Definition Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessDefinitionMember(ProcessDefinitionMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Use Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Use Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessUseMember(ProcessUseMember object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Call</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Call</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessCall(ProcessCall object)
+  public T caseRuleObject(RuleObject object)
   {
     return null;
   }
@@ -728,6 +618,22 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>REAL</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>REAL</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseREAL(REAL object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Quantity</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -744,17 +650,17 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Complex</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Complex</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseVariableComplex(VariableComplex object)
+  public T caseImport(Import object)
   {
     return null;
   }

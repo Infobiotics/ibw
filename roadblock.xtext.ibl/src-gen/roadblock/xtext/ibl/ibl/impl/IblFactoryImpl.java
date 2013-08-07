@@ -66,33 +66,29 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
     {
       case IblPackage.MODEL: return createModel();
       case IblPackage.MODEL_MEMBER: return createModelMember();
-      case IblPackage.IMPORT: return createImport();
-      case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
+      case IblPackage.IMPORT_STATEMENT: return createImportStatement();
       case IblPackage.FUNCTION_DEFINITION: return createFunctionDefinition();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
-      case IblPackage.FUNCTION_DEFINITION_MEMBER: return createFunctionDefinitionMember();
+      case IblPackage.FUNCTION_BODY_MEMBER: return createFunctionBodyMember();
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
-      case IblPackage.VARIABLE: return createVariable();
-      case IblPackage.ESTRING: return createEString();
-      case IblPackage.VARIABLE_DEFINITION_MEMBER: return createVariableDefinitionMember();
-      case IblPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
-      case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
+      case IblPackage.VARIABLE_NAME: return createVariableName();
+      case IblPackage.VARIABLE_COMPLEX: return createVariableComplex();
       case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
+      case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
+      case IblPackage.PARAMETER_ASSIGNMENT: return createParameterAssignment();
+      case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
-      case IblPackage.PROCESS_DEFINITION: return createProcessDefinition();
-      case IblPackage.PROCESS_PARAMETER_MEMBER: return createProcessParameterMember();
-      case IblPackage.PROCESS_DEFINITION_MEMBER: return createProcessDefinitionMember();
-      case IblPackage.PROCESS_USE_MEMBER: return createProcessUseMember();
-      case IblPackage.PROCESS_CALL: return createProcessCall();
+      case IblPackage.RULE_OBJECT: return createRuleObject();
       case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
       case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
       case IblPackage.PROPERTY: return createProperty();
       case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
+      case IblPackage.REAL: return createREAL();
       case IblPackage.QUANTITY: return createQuantity();
-      case IblPackage.VARIABLE_COMPLEX: return createVariableComplex();
+      case IblPackage.IMPORT: return createImport();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -125,21 +121,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Import createImport()
+  public ImportStatement createImportStatement()
   {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableDefinition createVariableDefinition()
-  {
-    VariableDefinitionImpl variableDefinition = new VariableDefinitionImpl();
-    return variableDefinition;
+    ImportStatementImpl importStatement = new ImportStatementImpl();
+    return importStatement;
   }
 
   /**
@@ -169,10 +154,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionDefinitionMember createFunctionDefinitionMember()
+  public FunctionBodyMember createFunctionBodyMember()
   {
-    FunctionDefinitionMemberImpl functionDefinitionMember = new FunctionDefinitionMemberImpl();
-    return functionDefinitionMember;
+    FunctionBodyMemberImpl functionBodyMember = new FunctionBodyMemberImpl();
+    return functionBodyMember;
   }
 
   /**
@@ -191,10 +176,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable createVariable()
+  public VariableName createVariableName()
   {
-    VariableImpl variable = new VariableImpl();
-    return variable;
+    VariableNameImpl variableName = new VariableNameImpl();
+    return variableName;
   }
 
   /**
@@ -202,43 +187,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EString createEString()
+  public VariableComplex createVariableComplex()
   {
-    EStringImpl eString = new EStringImpl();
-    return eString;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableDefinitionMember createVariableDefinitionMember()
-  {
-    VariableDefinitionMemberImpl variableDefinitionMember = new VariableDefinitionMemberImpl();
-    return variableDefinitionMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableDeclaration createVariableDeclaration()
-  {
-    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
-    return variableDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableAssignment createVariableAssignment()
-  {
-    VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
-    return variableAssignment;
+    VariableComplexImpl variableComplex = new VariableComplexImpl();
+    return variableComplex;
   }
 
   /**
@@ -250,6 +202,39 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     VariableAttributeImpl variableAttribute = new VariableAttributeImpl();
     return variableAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDefinition createVariableDefinition()
+  {
+    VariableDefinitionImpl variableDefinition = new VariableDefinitionImpl();
+    return variableDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterAssignment createParameterAssignment()
+  {
+    ParameterAssignmentImpl parameterAssignment = new ParameterAssignmentImpl();
+    return parameterAssignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableAssignment createVariableAssignment()
+  {
+    VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
+    return variableAssignment;
   }
 
   /**
@@ -279,54 +264,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessDefinition createProcessDefinition()
+  public RuleObject createRuleObject()
   {
-    ProcessDefinitionImpl processDefinition = new ProcessDefinitionImpl();
-    return processDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessParameterMember createProcessParameterMember()
-  {
-    ProcessParameterMemberImpl processParameterMember = new ProcessParameterMemberImpl();
-    return processParameterMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessDefinitionMember createProcessDefinitionMember()
-  {
-    ProcessDefinitionMemberImpl processDefinitionMember = new ProcessDefinitionMemberImpl();
-    return processDefinitionMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessUseMember createProcessUseMember()
-  {
-    ProcessUseMemberImpl processUseMember = new ProcessUseMemberImpl();
-    return processUseMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessCall createProcessCall()
-  {
-    ProcessCallImpl processCall = new ProcessCallImpl();
-    return processCall;
+    RuleObjectImpl ruleObject = new RuleObjectImpl();
+    return ruleObject;
   }
 
   /**
@@ -400,6 +341,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public REAL createREAL()
+  {
+    REALImpl real = new REALImpl();
+    return real;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Quantity createQuantity()
   {
     QuantityImpl quantity = new QuantityImpl();
@@ -411,10 +363,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableComplex createVariableComplex()
+  public Import createImport()
   {
-    VariableComplexImpl variableComplex = new VariableComplexImpl();
-    return variableComplex;
+    ImportImpl import_ = new ImportImpl();
+    return import_;
   }
 
   /**
