@@ -14,22 +14,21 @@
     <genClasses ecoreClass="Ibl.ecore#//ImportStatement"/>
     <genClasses ecoreClass="Ibl.ecore#//FunctionDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/members"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/uses"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//FunctionParameterMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionParameterMember/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/scope"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//FunctionBodyMember"/>
     <genClasses ecoreClass="Ibl.ecore#//FunctionUseMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionUseMember/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionUseMember/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionUseMember/name"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//VariableName"/>
     <genClasses ecoreClass="Ibl.ecore#//VariableComplex">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableComplex/components"/>
     </genClasses>
@@ -53,11 +52,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableAssignment/variable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableAssignment/expression"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableAssignmentObject"/>
     <genClasses ecoreClass="Ibl.ecore#//VariableExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableExpression/members"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableExpressionObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableExpressionObject/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableExpressionObject/quantity"/>
+    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/lhs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/reversible"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RuleDefinition/rhs"/>
@@ -91,11 +95,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/lowerBound"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/upperBounds"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/probability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/probability"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//REAL"/>
     <genClasses ecoreClass="Ibl.ecore#//Quantity">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//Quantity/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/units"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//Import">

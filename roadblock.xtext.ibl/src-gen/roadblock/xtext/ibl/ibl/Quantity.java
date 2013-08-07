@@ -24,30 +24,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Quantity extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(REAL)
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getQuantity_Value()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  REAL getValue();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.Quantity#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.Quantity#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @param value the new value of the '<em>Value</em>' attribute.
    * @see #getValue()
    * @generated
    */
-  void setValue(REAL value);
+  void setValue(String value);
 
   /**
    * Returns the value of the '<em><b>Units</b></em>' attribute.

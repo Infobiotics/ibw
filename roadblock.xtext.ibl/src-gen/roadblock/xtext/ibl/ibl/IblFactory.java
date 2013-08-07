@@ -86,15 +86,6 @@ public interface IblFactory extends EFactory
   FunctionUseMember createFunctionUseMember();
 
   /**
-   * Returns a new object of class '<em>Variable Name</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Name</em>'.
-   * @generated
-   */
-  VariableName createVariableName();
-
-  /**
    * Returns a new object of class '<em>Variable Complex</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -140,6 +131,15 @@ public interface IblFactory extends EFactory
   VariableAssignment createVariableAssignment();
 
   /**
+   * Returns a new object of class '<em>Variable Assignment Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Assignment Object</em>'.
+   * @generated
+   */
+  VariableAssignmentObject createVariableAssignmentObject();
+
+  /**
    * Returns a new object of class '<em>Variable Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -147,6 +147,15 @@ public interface IblFactory extends EFactory
    * @generated
    */
   VariableExpression createVariableExpression();
+
+  /**
+   * Returns a new object of class '<em>Variable Expression Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Expression Object</em>'.
+   * @generated
+   */
+  VariableExpressionObject createVariableExpressionObject();
 
   /**
    * Returns a new object of class '<em>Rule Definition</em>'.
@@ -219,15 +228,6 @@ public interface IblFactory extends EFactory
    * @generated
    */
   PropertyCondition createPropertyCondition();
-
-  /**
-   * Returns a new object of class '<em>REAL</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>REAL</em>'.
-   * @generated
-   */
-  REAL createREAL();
 
   /**
    * Returns a new object of class '<em>Quantity</em>'.

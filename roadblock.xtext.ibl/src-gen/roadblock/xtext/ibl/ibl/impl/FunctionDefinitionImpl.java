@@ -22,7 +22,6 @@ import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
-import roadblock.xtext.ibl.ibl.VariableName;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,14 +63,24 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   protected String type = TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected VariableName name;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -152,7 +161,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableName getName()
+  public String getName()
   {
     return name;
   }
@@ -162,37 +171,12 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetName(VariableName newName, NotificationChain msgs)
+  public void setName(String newName)
   {
-    VariableName oldName = name;
+    String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, oldName, newName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(VariableName newName)
-  {
-    if (newName != name)
-    {
-      NotificationChain msgs = null;
-      if (name != null)
-        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__NAME, null, msgs);
-      if (newName != null)
-        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__NAME, null, msgs);
-      msgs = basicSetName(newName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, newName, newName));
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, oldName, name));
   }
 
   /**
@@ -247,8 +231,6 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__NAME:
-        return basicSetName(null, msgs);
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -298,7 +280,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         setType((String)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
-        setName((VariableName)newValue);
+        setName((String)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -330,7 +312,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         setType(TYPE_EDEFAULT);
         return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
-        setName((VariableName)null);
+        setName(NAME_EDEFAULT);
         return;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -358,7 +340,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
       case IblPackage.FUNCTION_DEFINITION__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.FUNCTION_DEFINITION__NAME:
-        return name != null;
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -382,6 +364,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (type: ");
     result.append(type);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

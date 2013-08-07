@@ -33,14 +33,10 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if(ruleCall.getRule() == grammarAccess.getBooleanOperatorRule())
 			return getBooleanOperatorToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getDecimalRule())
-			return getDecimalToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getDecimalExpRule())
-			return getDecimalExpToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getIDRule())
-			return getIDToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getVariableExpressionOperatorRule())
 			return getVariableExpressionOperatorToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getVariableNameRule())
+			return getVariableNameToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -56,37 +52,6 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	}
 	
 	/**
-	 * Decimal hidden():
-	 * 	('+'|'-')?  INT ('.' INT)?
-	 * ;
-	 */
-	protected String getDecimalToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * DecimalExp hidden():
-	 * 	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
-	 * ;
-	 */
-	protected String getDecimalExpToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "E";
-	}
-	
-	/**
-	 * terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-	 */
-	protected String getIDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
 	 * VariableExpressionOperator:
 	 * 	'+' | '-' | '|'
 	 * ;
@@ -95,6 +60,17 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 		if (node != null)
 			return getTokenText(node);
 		return "+";
+	}
+	
+	/**
+	 * VariableName:
+	 * 	ID
+	 * ;
+	 */
+	protected String getVariableNameToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "";
 	}
 	
 	@Override
@@ -113,7 +89,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'WILL HOLD' | 'NEVER HOLDS' | 'ALWAYS HOLDS'
+	 *     'WILL HOLD' | 'ALWAYS HOLDS' | 'NEVER HOLDS'
 	 */
 	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

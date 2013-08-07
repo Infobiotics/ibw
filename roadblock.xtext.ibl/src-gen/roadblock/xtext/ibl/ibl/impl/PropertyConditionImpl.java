@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
-import roadblock.xtext.ibl.ibl.REAL;
+import roadblock.xtext.ibl.ibl.Quantity;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected REAL lowerBound;
+  protected Quantity lowerBound;
 
   /**
    * The cached value of the '{@link #getUpperBounds() <em>Upper Bounds</em>}' containment reference.
@@ -51,7 +51,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected REAL upperBounds;
+  protected Quantity upperBounds;
 
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -74,14 +74,24 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
   protected String operator = OPERATOR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getProbability() <em>Probability</em>}' containment reference.
+   * The default value of the '{@link #getProbability() <em>Probability</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getProbability()
    * @generated
    * @ordered
    */
-  protected REAL probability;
+  protected static final String PROBABILITY_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getProbability() <em>Probability</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProbability()
+   * @generated
+   * @ordered
+   */
+  protected String probability = PROBABILITY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,7 +119,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public REAL getLowerBound()
+  public Quantity getLowerBound()
   {
     return lowerBound;
   }
@@ -119,9 +129,9 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLowerBound(REAL newLowerBound, NotificationChain msgs)
+  public NotificationChain basicSetLowerBound(Quantity newLowerBound, NotificationChain msgs)
   {
-    REAL oldLowerBound = lowerBound;
+    Quantity oldLowerBound = lowerBound;
     lowerBound = newLowerBound;
     if (eNotificationRequired())
     {
@@ -136,7 +146,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLowerBound(REAL newLowerBound)
+  public void setLowerBound(Quantity newLowerBound)
   {
     if (newLowerBound != lowerBound)
     {
@@ -157,7 +167,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public REAL getUpperBounds()
+  public Quantity getUpperBounds()
   {
     return upperBounds;
   }
@@ -167,9 +177,9 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetUpperBounds(REAL newUpperBounds, NotificationChain msgs)
+  public NotificationChain basicSetUpperBounds(Quantity newUpperBounds, NotificationChain msgs)
   {
-    REAL oldUpperBounds = upperBounds;
+    Quantity oldUpperBounds = upperBounds;
     upperBounds = newUpperBounds;
     if (eNotificationRequired())
     {
@@ -184,7 +194,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUpperBounds(REAL newUpperBounds)
+  public void setUpperBounds(Quantity newUpperBounds)
   {
     if (newUpperBounds != upperBounds)
     {
@@ -228,7 +238,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public REAL getProbability()
+  public String getProbability()
   {
     return probability;
   }
@@ -238,37 +248,12 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetProbability(REAL newProbability, NotificationChain msgs)
+  public void setProbability(String newProbability)
   {
-    REAL oldProbability = probability;
+    String oldProbability = probability;
     probability = newProbability;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_CONDITION__PROBABILITY, oldProbability, newProbability);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setProbability(REAL newProbability)
-  {
-    if (newProbability != probability)
-    {
-      NotificationChain msgs = null;
-      if (probability != null)
-        msgs = ((InternalEObject)probability).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROPERTY_CONDITION__PROBABILITY, null, msgs);
-      if (newProbability != null)
-        msgs = ((InternalEObject)newProbability).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROPERTY_CONDITION__PROBABILITY, null, msgs);
-      msgs = basicSetProbability(newProbability, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_CONDITION__PROBABILITY, newProbability, newProbability));
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_CONDITION__PROBABILITY, oldProbability, probability));
   }
 
   /**
@@ -285,8 +270,6 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
         return basicSetLowerBound(null, msgs);
       case IblPackage.PROPERTY_CONDITION__UPPER_BOUNDS:
         return basicSetUpperBounds(null, msgs);
-      case IblPackage.PROPERTY_CONDITION__PROBABILITY:
-        return basicSetProbability(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -324,16 +307,16 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case IblPackage.PROPERTY_CONDITION__LOWER_BOUND:
-        setLowerBound((REAL)newValue);
+        setLowerBound((Quantity)newValue);
         return;
       case IblPackage.PROPERTY_CONDITION__UPPER_BOUNDS:
-        setUpperBounds((REAL)newValue);
+        setUpperBounds((Quantity)newValue);
         return;
       case IblPackage.PROPERTY_CONDITION__OPERATOR:
         setOperator((String)newValue);
         return;
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
-        setProbability((REAL)newValue);
+        setProbability((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -350,16 +333,16 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case IblPackage.PROPERTY_CONDITION__LOWER_BOUND:
-        setLowerBound((REAL)null);
+        setLowerBound((Quantity)null);
         return;
       case IblPackage.PROPERTY_CONDITION__UPPER_BOUNDS:
-        setUpperBounds((REAL)null);
+        setUpperBounds((Quantity)null);
         return;
       case IblPackage.PROPERTY_CONDITION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
         return;
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
-        setProbability((REAL)null);
+        setProbability(PROBABILITY_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -382,7 +365,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
       case IblPackage.PROPERTY_CONDITION__OPERATOR:
         return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
-        return probability != null;
+        return PROBABILITY_EDEFAULT == null ? probability != null : !PROBABILITY_EDEFAULT.equals(probability);
     }
     return super.eIsSet(featureID);
   }
@@ -400,6 +383,8 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (operator: ");
     result.append(operator);
+    result.append(", probability: ");
+    result.append(probability);
     result.append(')');
     return result.toString();
   }

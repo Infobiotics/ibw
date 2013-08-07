@@ -6,13 +6,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
+import roadblock.xtext.ibl.ibl.VariableAssignmentObject;
 import roadblock.xtext.ibl.ibl.VariableExpression;
 
 /**
@@ -39,7 +39,7 @@ public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements Va
    * @generated
    * @ordered
    */
-  protected EObject variable;
+  protected VariableAssignmentObject variable;
 
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
@@ -77,7 +77,7 @@ public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements Va
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getVariable()
+  public VariableAssignmentObject getVariable()
   {
     return variable;
   }
@@ -87,9 +87,9 @@ public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements Va
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVariable(EObject newVariable, NotificationChain msgs)
+  public NotificationChain basicSetVariable(VariableAssignmentObject newVariable, NotificationChain msgs)
   {
-    EObject oldVariable = variable;
+    VariableAssignmentObject oldVariable = variable;
     variable = newVariable;
     if (eNotificationRequired())
     {
@@ -104,7 +104,7 @@ public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements Va
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVariable(EObject newVariable)
+  public void setVariable(VariableAssignmentObject newVariable)
   {
     if (newVariable != variable)
     {
@@ -215,7 +215,7 @@ public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements Va
     switch (featureID)
     {
       case IblPackage.VARIABLE_ASSIGNMENT__VARIABLE:
-        setVariable((EObject)newValue);
+        setVariable((VariableAssignmentObject)newValue);
         return;
       case IblPackage.VARIABLE_ASSIGNMENT__EXPRESSION:
         setExpression((VariableExpression)newValue);
@@ -235,7 +235,7 @@ public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements Va
     switch (featureID)
     {
       case IblPackage.VARIABLE_ASSIGNMENT__VARIABLE:
-        setVariable((EObject)null);
+        setVariable((VariableAssignmentObject)null);
         return;
       case IblPackage.VARIABLE_ASSIGNMENT__EXPRESSION:
         setExpression((VariableExpression)null);

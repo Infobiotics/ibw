@@ -15,7 +15,7 @@ import library01
 /////////////////////////
 
 define SITE site() {
-	MOLECULE SA = MOLECULE(displayID = SA, degradationRate = 1, concentration = 100)
+	MOLECULE SA = MOLECULE(displayID = SA, degradationRate = 1 s^-1, concentration = 100 uM)
 
 	CELL myCell = SASensorCell(consumed = SA)
 }
@@ -44,7 +44,7 @@ define CELL SASensorCell(MOLECULE SA:required) {
 	GENE rFP = GENE(sequence = TTGTGTG)
 	PROTEIN RFP = PROTEIN()
 
-	INTEGER plasmidNumber = Integer(value = 500)
+	INTEGER plasmidNumber = INTEGER(value = 500)
 
 	// devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
 	DEVICE D1 = DEVICE(PnahR,nahR)(produced = NahR){
@@ -64,11 +64,11 @@ define CELL SASensorCell(MOLECULE SA:required) {
 
 	// additional rules
 	RULE R1 : SA + NahR <-> SA~NahR
-		R1.forwardRate = 1  // add units
-		R1.reverseRate = 1  // add units
+	R1.forwardRate = 1 s^-1
+	R1.reverseRate = 1 s^-1
 
 	RULE R2 : OUTSIDE -> SA // consumption rate of SA from outside the cell
-		R2.rate = 1  // add units
+	R2.rate = 1 min^-1
 
 	// atgc rules
 	ATGC ARRANGE : nahR, PnahR, Psal
@@ -76,17 +76,17 @@ define CELL SASensorCell(MOLECULE SA:required) {
 	// model checker rules
 	// HERE ARE SOME MODALITIES WE NEED TO CONSIDER IN THE FIRST INSTANCE
 	VERIFY [SA > 0 molecules] WILL HOLD
-	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100,200]
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s]
 	// Probability bounds could be any relational operator <,>,=,<=,>= as well as ?
-	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100,200] WITH PROBABILITY BOUND <= 0.9
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND <= 0.9
 	VERIFY [SA == 0 molecules] NEVER HOLDS
-	VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100,200]
-	VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100,200] WITH PROBABILITY BOUND ?
+	VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins]
+	VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins] WITH PROBABILITY BOUND ?
 	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS
-	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100,200]
-	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100,200] WITH PROBABILITY BOUND ?
-	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 IS ?
-	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 IS > 1 M
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s]
+	VERIFY [SA >= 50 uM & SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 s IS ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 min IS > 1 M
 	// We do not need to refer to outputs or inputs of devices generically. WE can simply write the species name.
 	// We do not need to use keywords e.g. Concentration, instead we write units in the queries.
 }

@@ -3,17 +3,14 @@
 package roadblock.xtext.ibl.ibl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Quantity;
-import roadblock.xtext.ibl.ibl.REAL;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,14 +29,24 @@ import roadblock.xtext.ibl.ibl.REAL;
 public class QuantityImpl extends MinimalEObjectImpl.Container implements Quantity
 {
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValue()
    * @generated
    * @ordered
    */
-  protected REAL value;
+  protected static final String VALUE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getUnits() <em>Units</em>}' attribute.
@@ -87,7 +94,7 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
    * <!-- end-user-doc -->
    * @generated
    */
-  public REAL getValue()
+  public String getValue()
   {
     return value;
   }
@@ -97,37 +104,12 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(REAL newValue, NotificationChain msgs)
+  public void setValue(String newValue)
   {
-    REAL oldValue = value;
+    String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.QUANTITY__VALUE, oldValue, newValue);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValue(REAL newValue)
-  {
-    if (newValue != value)
-    {
-      NotificationChain msgs = null;
-      if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.QUANTITY__VALUE, null, msgs);
-      if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.QUANTITY__VALUE, null, msgs);
-      msgs = basicSetValue(newValue, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.QUANTITY__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.QUANTITY__VALUE, oldValue, value));
   }
 
   /**
@@ -159,22 +141,6 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case IblPackage.QUANTITY__VALUE:
-        return basicSetValue(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -198,7 +164,7 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
     switch (featureID)
     {
       case IblPackage.QUANTITY__VALUE:
-        setValue((REAL)newValue);
+        setValue((String)newValue);
         return;
       case IblPackage.QUANTITY__UNITS:
         setUnits((String)newValue);
@@ -218,7 +184,7 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
     switch (featureID)
     {
       case IblPackage.QUANTITY__VALUE:
-        setValue((REAL)null);
+        setValue(VALUE_EDEFAULT);
         return;
       case IblPackage.QUANTITY__UNITS:
         setUnits(UNITS_EDEFAULT);
@@ -238,7 +204,7 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
     switch (featureID)
     {
       case IblPackage.QUANTITY__VALUE:
-        return value != null;
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
       case IblPackage.QUANTITY__UNITS:
         return UNITS_EDEFAULT == null ? units != null : !UNITS_EDEFAULT.equals(units);
     }
@@ -256,7 +222,9 @@ public class QuantityImpl extends MinimalEObjectImpl.Container implements Quanti
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (units: ");
+    result.append(" (value: ");
+    result.append(value);
+    result.append(", units: ");
     result.append(units);
     result.append(')');
     return result.toString();

@@ -30,15 +30,6 @@ ImportStatement:
 	'import' importedNamespace=QualifiedNameWithWildcard
 ;
 
-//// a variable definition
-//VariableDefinition:
-//	{VariableDefinition}
-//	'define' (type=ID)? name=ID
-//	'{'
-//		members+=VariableDefinitionMember*
-//	'}'	
-//;
-//
 ///////////////
 // functions //
 ///////////////
@@ -90,7 +81,6 @@ FunctionUseMember:
 
 // a variable
 VariableName:
-	{VariableName}
 	ID
 ;
 
@@ -103,14 +93,8 @@ VariableComplex:
 // a variable attribute
 VariableAttribute:
 	{VariableAttribute}
-	name=ID '.' attribute=ID
-//	name=(ID|REAL) (('.'|'~') attribute=ID)?
+	name=VariableName '.' attribute=ID
 ;
-
-// entries allowed inside variable definition
-//VariableDefinitionMember:
-//	VariableDeclaration
-//;
 
 // a declaration of a variable
 VariableDefinition:
@@ -124,7 +108,7 @@ VariableDefinition:
 ;
 
 ParameterAssignment:
-	name=ID '=' value=(VariableName | VariableComplex | REAL)
+	name=VariableName '=' value=VariableExpressionObject
 ;
 
 VariableQualifier:
@@ -141,12 +125,22 @@ CollectionID:
 
 VariableAssignment:
 	{VariableAssignment}
-	 variable=(VariableName | VariableAttribute) '=' expression=VariableExpression
+	 variable=VariableAssignmentObject '=' expression=VariableExpression
+;
+
+VariableAssignmentObject:
+	{VariableAssignmentObject}
+	VariableName | VariableAttribute
 ;
 
 VariableExpression:
 	{VariableExpression}
-	members+=(VariableAttribute | VariableName | REAL) (VariableExpressionOperator members+=(VariableAttribute | VariableName | REAL))*
+	members+=VariableExpressionObject (VariableExpressionOperator members+=VariableExpressionObject)*
+;
+
+VariableExpressionObject:
+	{VariableExpressionObject}
+	VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity
 ;
 
 VariableExpressionOperator:
@@ -165,62 +159,9 @@ RuleDefinition:
 
 // left or right hand side of rule
 RuleObject:
+	{RuleObject}
 	VariableName | VariableComplex 
 ;
-
-///////////////
-// processes //
-///////////////
-
-//// processes are collections of rules
-//
-//// a process definition
-//ProcessDefinition:
-//	{ProcessDefinition}
-//	'define' 'PROCESS' name=ID
-//	'('
-//		// process parameters
-//		(parameters+=ProcessParameterMember (',' parameters+=ProcessParameterMember)*)?
-//	')'
-//	'{'
-//		// process rules
-//		members+=ProcessDefinitionMember*
-//	'}'
-//	(
-//	'USES'
-//		// process 
-//		uses+=ProcessUseMember (',' uses+=ProcessUseMember)*
-//	)?
-//;
-//
-//// process parameter member
-//ProcessParameterMember:
-//	{ProcessParameterMember}
-//	type=ID name=ID ':' scope=ProcessParameterScope
-//;
-//
-//// allowed scope of process parameters
-//ProcessParameterScope:
-//	'required' | 'returned' | 'optional'
-//;
-//
-//// process definition member
-//ProcessDefinitionMember:
-//	RuleDefinition | VariableAssignment
-//;
-//
-//// process use member
-//ProcessUseMember:
-//	{ProcessUseMember}
-//	type=ID name=ID
-//;
-//
-//// a process call
-//ProcessCall:
-//	{ProcessCall}
-//	'PROCESS' name=ID '=' constructor=ID '(' (parameters+=VariableAssignment (',' parameters+=VariableAssignment)*)? ')'
-//;
-//
 
 /////////////
 // devices //
@@ -229,9 +170,9 @@ RuleObject:
 // device definition
 DeviceDefinition:
 	{DeviceDefinition}
-	'DEVICE' name=ID '=' 'DEVICE'
+	'DEVICE' name=VariableName '=' 'DEVICE'
 	'('
-		(parts+=ID (',' parts+=ID)*)
+		(parts+=VariableName (',' parts+=VariableName)*)
 	')'
 	'('
 		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
@@ -251,7 +192,11 @@ DeviceMembers:
 
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command=ID ':' arguments+=ID (',' arguments+=ID)*
+	'ATGC' command=ATGCCommand ':' arguments+=VariableName (',' arguments+=VariableName)*
+;
+
+ATGCCommand:
+	'ARRANGE'
 ;
 
 /////////////////////////
@@ -265,7 +210,7 @@ PropertyDefinition:
 		'[' property+=Property (BooleanOperator property+=Property)* ']' condition=PropertyCondition	
 	) | 
 	(
-		'EXPECTED' '[' name=ID ']' 'AT TIME INSTANT' time=REAL 'IS' ((operator=RelationalOperator concentration=Quantity) | '?')
+		'EXPECTED' '[' name=VariableName ']' 'AT TIME INSTANT' time=Quantity 'IS' ((operator=RelationalOperator concentration=Quantity) | '?')
 	))
 ;
 
@@ -282,7 +227,7 @@ PropertyCondition:
 	'ALWAYS HOLDS'
 	)
 	(
-	'WITHIN TIME BOUND' '[' lowerBound=REAL ',' upperBounds=REAL ']'
+	'WITHIN TIME BOUND' '[' lowerBound=Quantity ',' upperBounds=Quantity ']'
 		(
 		'WITH PROBABILITY BOUND' ((operator=RelationalOperator probability=REAL) | '?') 
 		)?
@@ -295,8 +240,7 @@ PropertyCondition:
 
 // a real number
 REAL:
-	{REAL}
-	Decimal|DecimalExp
+	Decimal | DecimalExp
 ;
 
 Decimal hidden():
@@ -310,9 +254,12 @@ DecimalExp hidden():
 // a quantity with units
 Quantity:
 	{Quantity}
-	value=REAL units=ID
+	value=REAL units=Unit
 ;
 
+Unit:
+	's' | 'min' | 'mins' | 's^-1' | 'min^-1' | 'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules' 
+;
 // relational operators
 RelationalOperator:
 	'==' | '!=' | '<' | '>' | '<=' | '>='

@@ -26,14 +26,15 @@ import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
-import roadblock.xtext.ibl.ibl.REAL;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
+import roadblock.xtext.ibl.ibl.VariableAssignmentObject;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
 import roadblock.xtext.ibl.ibl.VariableComplex;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
 import roadblock.xtext.ibl.ibl.VariableExpression;
-import roadblock.xtext.ibl.ibl.VariableName;
+import roadblock.xtext.ibl.ibl.VariableExpressionObject;
 import roadblock.xtext.ibl.services.IblGrammarAccess;
 
 @SuppressWarnings("all")
@@ -122,16 +123,16 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.REAL:
-				if(context == grammarAccess.getREALRule()) {
-					sequence_REAL(context, (REAL) semanticObject); 
-					return; 
-				}
-				else break;
 			case IblPackage.RULE_DEFINITION:
 				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getRuleDefinitionRule()) {
 					sequence_RuleDefinition(context, (RuleDefinition) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.RULE_OBJECT:
+				if(context == grammarAccess.getRuleObjectRule()) {
+					sequence_RuleObject(context, (RuleObject) semanticObject); 
 					return; 
 				}
 				else break;
@@ -142,15 +143,24 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.VARIABLE_ASSIGNMENT_OBJECT:
+				if(context == grammarAccess.getVariableAssignmentObjectRule()) {
+					sequence_VariableAssignmentObject(context, (VariableAssignmentObject) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.VARIABLE_ATTRIBUTE:
-				if(context == grammarAccess.getVariableAttributeRule()) {
+				if(context == grammarAccess.getVariableAssignmentObjectRule() ||
+				   context == grammarAccess.getVariableAttributeRule() ||
+				   context == grammarAccess.getVariableExpressionObjectRule()) {
 					sequence_VariableAttribute(context, (VariableAttribute) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.VARIABLE_COMPLEX:
 				if(context == grammarAccess.getRuleObjectRule() ||
-				   context == grammarAccess.getVariableComplexRule()) {
+				   context == grammarAccess.getVariableComplexRule() ||
+				   context == grammarAccess.getVariableExpressionObjectRule()) {
 					sequence_VariableComplex(context, (VariableComplex) semanticObject); 
 					return; 
 				}
@@ -169,10 +179,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.VARIABLE_NAME:
-				if(context == grammarAccess.getRuleObjectRule() ||
-				   context == grammarAccess.getVariableNameRule()) {
-					sequence_VariableName(context, (VariableName) semanticObject); 
+			case IblPackage.VARIABLE_EXPRESSION_OBJECT:
+				if(context == grammarAccess.getVariableExpressionObjectRule()) {
+					sequence_VariableExpressionObject(context, (VariableExpressionObject) semanticObject); 
 					return; 
 				}
 				else break;
@@ -182,7 +191,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (command=ID arguments+=ID arguments+=ID*)
+	 *     (command=ATGCCommand arguments+=VariableName arguments+=VariableName*)
 	 */
 	protected void sequence_ATGCDefinition(EObject context, ATGCDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -191,7 +200,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID parts+=ID parts+=ID* (parameters+=ParameterAssignment parameters+=ParameterAssignment*)? members+=DeviceMembers*)
+	 *     (
+	 *         name=VariableName 
+	 *         parts+=VariableName 
+	 *         parts+=VariableName* 
+	 *         (parameters+=ParameterAssignment parameters+=ParameterAssignment*)? 
+	 *         members+=DeviceMembers*
+	 *     )
 	 */
 	protected void sequence_DeviceDefinition(EObject context, DeviceDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -268,16 +283,26 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (value=VariableName | value=VariableComplex | value=REAL))
+	 *     (name=VariableName value=VariableExpressionObject)
 	 */
 	protected void sequence_ParameterAssignment(EObject context, ParameterAssignment semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PARAMETER_ASSIGNMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PARAMETER_ASSIGNMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PARAMETER_ASSIGNMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PARAMETER_ASSIGNMENT__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParameterAssignmentAccess().getNameVariableNameParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParameterAssignmentAccess().getValueVariableExpressionObjectParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     ((lowerBound=REAL upperBounds=REAL (operator=RelationalOperator probability=REAL)?)?)
+	 *     ((lowerBound=Quantity upperBounds=Quantity (operator=RelationalOperator probability=REAL)?)?)
 	 */
 	protected void sequence_PropertyCondition(EObject context, PropertyCondition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -288,7 +313,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         (property+=Property property+=Property* condition=PropertyCondition) | 
-	 *         (name=ID time=REAL (operator=RelationalOperator concentration=Quantity)?)
+	 *         (name=VariableName time=Quantity (operator=RelationalOperator concentration=Quantity)?)
 	 *     )
 	 */
 	protected void sequence_PropertyDefinition(EObject context, PropertyDefinition semanticObject) {
@@ -320,7 +345,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (value=REAL units=ID)
+	 *     (value=REAL units=Unit)
 	 */
 	protected void sequence_Quantity(EObject context, Quantity semanticObject) {
 		if(errorAcceptor != null) {
@@ -332,17 +357,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getQuantityAccess().getValueREALParserRuleCall_1_0(), semanticObject.getValue());
-		feeder.accept(grammarAccess.getQuantityAccess().getUnitsIDTerminalRuleCall_2_0(), semanticObject.getUnits());
+		feeder.accept(grammarAccess.getQuantityAccess().getUnitsUnitParserRuleCall_2_0(), semanticObject.getUnits());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     {REAL}
-	 */
-	protected void sequence_REAL(EObject context, REAL semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -357,29 +373,47 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((variable=VariableName | variable=VariableAttribute) expression=VariableExpression)
+	 *     {RuleObject}
 	 */
-	protected void sequence_VariableAssignment(EObject context, VariableAssignment semanticObject) {
+	protected void sequence_RuleObject(EObject context, RuleObject semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ID attribute=ID)
+	 *     {VariableAssignmentObject}
 	 */
-	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
+	protected void sequence_VariableAssignmentObject(EObject context, VariableAssignmentObject semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (variable=VariableAssignmentObject expression=VariableExpression)
+	 */
+	protected void sequence_VariableAssignment(EObject context, VariableAssignment semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__NAME));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__ATTRIBUTE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ATTRIBUTE__ATTRIBUTE));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__VARIABLE));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.VARIABLE_ASSIGNMENT__EXPRESSION));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getVariableAttributeAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getVariableAttributeAccess().getAttributeIDTerminalRuleCall_3_0(), semanticObject.getAttribute());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getVariableVariableAssignmentObjectParserRuleCall_1_0(), semanticObject.getVariable());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getExpressionVariableExpressionParserRuleCall_3_0(), semanticObject.getExpression());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName attribute=ID)
+	 */
+	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -407,18 +441,18 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((members+=VariableAttribute | members+=VariableName | members+=REAL) (members+=VariableAttribute | members+=VariableName | members+=REAL)*)
+	 *     {VariableExpressionObject}
 	 */
-	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
+	protected void sequence_VariableExpressionObject(EObject context, VariableExpressionObject semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     {VariableName}
+	 *     (members+=VariableExpressionObject members+=VariableExpressionObject*)
 	 */
-	protected void sequence_VariableName(EObject context, VariableName semanticObject) {
+	protected void sequence_VariableExpression(EObject context, VariableExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

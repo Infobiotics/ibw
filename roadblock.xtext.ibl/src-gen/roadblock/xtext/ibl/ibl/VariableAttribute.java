@@ -2,7 +2,6 @@
  */
 package roadblock.xtext.ibl.ibl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface VariableAttribute extends EObject
+public interface VariableAttribute extends VariableAssignmentObject, VariableExpressionObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

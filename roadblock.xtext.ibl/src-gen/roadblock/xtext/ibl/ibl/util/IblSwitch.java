@@ -123,18 +123,11 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.VARIABLE_NAME:
-      {
-        VariableName variableName = (VariableName)theEObject;
-        T result = caseVariableName(variableName);
-        if (result == null) result = caseRuleObject(variableName);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case IblPackage.VARIABLE_COMPLEX:
       {
         VariableComplex variableComplex = (VariableComplex)theEObject;
         T result = caseVariableComplex(variableComplex);
+        if (result == null) result = caseVariableExpressionObject(variableComplex);
         if (result == null) result = caseRuleObject(variableComplex);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -143,6 +136,8 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableAttribute variableAttribute = (VariableAttribute)theEObject;
         T result = caseVariableAttribute(variableAttribute);
+        if (result == null) result = caseVariableAssignmentObject(variableAttribute);
+        if (result == null) result = caseVariableExpressionObject(variableAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -170,10 +165,24 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.VARIABLE_ASSIGNMENT_OBJECT:
+      {
+        VariableAssignmentObject variableAssignmentObject = (VariableAssignmentObject)theEObject;
+        T result = caseVariableAssignmentObject(variableAssignmentObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.VARIABLE_EXPRESSION:
       {
         VariableExpression variableExpression = (VariableExpression)theEObject;
         T result = caseVariableExpression(variableExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_EXPRESSION_OBJECT:
+      {
+        VariableExpressionObject variableExpressionObject = (VariableExpressionObject)theEObject;
+        T result = caseVariableExpressionObject(variableExpressionObject);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -235,13 +244,6 @@ public class IblSwitch<T> extends Switch<T>
       {
         PropertyCondition propertyCondition = (PropertyCondition)theEObject;
         T result = casePropertyCondition(propertyCondition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.REAL:
-      {
-        REAL real = (REAL)theEObject;
-        T result = caseREAL(real);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -378,22 +380,6 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Name</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Name</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableName(VariableName object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Variable Complex</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -474,6 +460,22 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Assignment Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Assignment Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableAssignmentObject(VariableAssignmentObject object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Variable Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -485,6 +487,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableExpression(VariableExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Expression Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Expression Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableExpressionObject(VariableExpressionObject object)
   {
     return null;
   }
@@ -613,22 +631,6 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePropertyCondition(PropertyCondition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>REAL</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>REAL</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseREAL(REAL object)
   {
     return null;
   }

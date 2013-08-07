@@ -142,7 +142,7 @@ public interface IblPackage extends EPackage
   int FUNCTION_DEFINITION__TYPE = MODEL_MEMBER_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -206,7 +206,7 @@ public interface IblPackage extends EPackage
   int FUNCTION_PARAMETER_MEMBER__TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -271,7 +271,7 @@ public interface IblPackage extends EPackage
   int FUNCTION_USE_MEMBER__TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -289,42 +289,41 @@ public interface IblPackage extends EPackage
   int FUNCTION_USE_MEMBER_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RuleObjectImpl <em>Rule Object</em>}' class.
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableExpressionObjectImpl <em>Variable Expression Object</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.RuleObjectImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
+   * @see roadblock.xtext.ibl.ibl.impl.VariableExpressionObjectImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpressionObject()
    * @generated
    */
-  int RULE_OBJECT = 15;
+  int VARIABLE_EXPRESSION_OBJECT = 14;
 
   /**
-   * The number of structural features of the '<em>Rule Object</em>' class.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_OBJECT_FEATURE_COUNT = 0;
+  int VARIABLE_EXPRESSION_OBJECT__VALUE = 0;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableNameImpl <em>Variable Name</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.VariableNameImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableName()
-   * @generated
-   */
-  int VARIABLE_NAME = 7;
-
-  /**
-   * The number of structural features of the '<em>Variable Name</em>' class.
+   * The feature id for the '<em><b>Quantity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_NAME_FEATURE_COUNT = RULE_OBJECT_FEATURE_COUNT + 0;
+  int VARIABLE_EXPRESSION_OBJECT__QUANTITY = 1;
+
+  /**
+   * The number of structural features of the '<em>Variable Expression Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_EXPRESSION_OBJECT_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableComplexImpl <em>Variable Complex</em>}' class.
@@ -334,7 +333,25 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableComplex()
    * @generated
    */
-  int VARIABLE_COMPLEX = 8;
+  int VARIABLE_COMPLEX = 7;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_COMPLEX__VALUE = VARIABLE_EXPRESSION_OBJECT__VALUE;
+
+  /**
+   * The feature id for the '<em><b>Quantity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_COMPLEX__QUANTITY = VARIABLE_EXPRESSION_OBJECT__QUANTITY;
 
   /**
    * The feature id for the '<em><b>Components</b></em>' attribute list.
@@ -343,7 +360,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_COMPLEX__COMPONENTS = RULE_OBJECT_FEATURE_COUNT + 0;
+  int VARIABLE_COMPLEX__COMPONENTS = VARIABLE_EXPRESSION_OBJECT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Variable Complex</em>' class.
@@ -352,7 +369,26 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_COMPLEX_FEATURE_COUNT = RULE_OBJECT_FEATURE_COUNT + 1;
+  int VARIABLE_COMPLEX_FEATURE_COUNT = VARIABLE_EXPRESSION_OBJECT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAssignmentObjectImpl <em>Variable Assignment Object</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.VariableAssignmentObjectImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignmentObject()
+   * @generated
+   */
+  int VARIABLE_ASSIGNMENT_OBJECT = 12;
+
+  /**
+   * The number of structural features of the '<em>Variable Assignment Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl <em>Variable Attribute</em>}' class.
@@ -362,7 +398,25 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
    * @generated
    */
-  int VARIABLE_ATTRIBUTE = 9;
+  int VARIABLE_ATTRIBUTE = 8;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ATTRIBUTE__VALUE = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Quantity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ATTRIBUTE__QUANTITY = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -371,7 +425,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ATTRIBUTE__NAME = 0;
+  int VARIABLE_ATTRIBUTE__NAME = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -380,7 +434,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ATTRIBUTE__ATTRIBUTE = 1;
+  int VARIABLE_ATTRIBUTE__ATTRIBUTE = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Variable Attribute</em>' class.
@@ -389,7 +443,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ATTRIBUTE_FEATURE_COUNT = 2;
+  int VARIABLE_ATTRIBUTE_FEATURE_COUNT = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl <em>Variable Definition</em>}' class.
@@ -399,7 +453,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinition()
    * @generated
    */
-  int VARIABLE_DEFINITION = 10;
+  int VARIABLE_DEFINITION = 9;
 
   /**
    * The feature id for the '<em><b>Qualifier</b></em>' attribute.
@@ -472,7 +526,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getParameterAssignment()
    * @generated
    */
-  int PARAMETER_ASSIGNMENT = 11;
+  int PARAMETER_ASSIGNMENT = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -509,7 +563,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignment()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT = 12;
+  int VARIABLE_ASSIGNMENT = 11;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -574,10 +628,10 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleDefinition()
    * @generated
    */
-  int RULE_DEFINITION = 14;
+  int RULE_DEFINITION = 15;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -622,6 +676,25 @@ public interface IblPackage extends EPackage
   int RULE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 4;
 
   /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RuleObjectImpl <em>Rule Object</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.RuleObjectImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
+   * @generated
+   */
+  int RULE_OBJECT = 16;
+
+  /**
+   * The number of structural features of the '<em>Rule Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE_OBJECT_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl <em>Device Definition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -629,7 +702,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getDeviceDefinition()
    * @generated
    */
-  int DEVICE_DEFINITION = 16;
+  int DEVICE_DEFINITION = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -684,7 +757,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getDeviceMembers()
    * @generated
    */
-  int DEVICE_MEMBERS = 17;
+  int DEVICE_MEMBERS = 18;
 
   /**
    * The number of structural features of the '<em>Device Members</em>' class.
@@ -703,7 +776,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getATGCDefinition()
    * @generated
    */
-  int ATGC_DEFINITION = 18;
+  int ATGC_DEFINITION = 19;
 
   /**
    * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -740,7 +813,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyDefinition()
    * @generated
    */
-  int PROPERTY_DEFINITION = 19;
+  int PROPERTY_DEFINITION = 20;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference list.
@@ -813,7 +886,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 20;
+  int PROPERTY = 21;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' attribute.
@@ -859,7 +932,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyCondition()
    * @generated
    */
-  int PROPERTY_CONDITION = 21;
+  int PROPERTY_CONDITION = 22;
 
   /**
    * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
@@ -889,7 +962,7 @@ public interface IblPackage extends EPackage
   int PROPERTY_CONDITION__OPERATOR = 2;
 
   /**
-   * The feature id for the '<em><b>Probability</b></em>' containment reference.
+   * The feature id for the '<em><b>Probability</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -907,25 +980,6 @@ public interface IblPackage extends EPackage
   int PROPERTY_CONDITION_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.REALImpl <em>REAL</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.REALImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getREAL()
-   * @generated
-   */
-  int REAL = 22;
-
-  /**
-   * The number of structural features of the '<em>REAL</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REAL_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.QuantityImpl <em>Quantity</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -936,7 +990,7 @@ public interface IblPackage extends EPackage
   int QUANTITY = 23;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1054,15 +1108,15 @@ public interface IblPackage extends EPackage
   EAttribute getFunctionDefinition_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
    * @see roadblock.xtext.ibl.ibl.FunctionDefinition#getName()
    * @see #getFunctionDefinition()
    * @generated
    */
-  EReference getFunctionDefinition_Name();
+  EAttribute getFunctionDefinition_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getParameters <em>Parameters</em>}'.
@@ -1119,15 +1173,15 @@ public interface IblPackage extends EPackage
   EAttribute getFunctionParameterMember_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
    * @see roadblock.xtext.ibl.ibl.FunctionParameterMember#getName()
    * @see #getFunctionParameterMember()
    * @generated
    */
-  EReference getFunctionParameterMember_Name();
+  EAttribute getFunctionParameterMember_Name();
 
   /**
    * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getScope <em>Scope</em>}'.
@@ -1172,25 +1226,15 @@ public interface IblPackage extends EPackage
   EAttribute getFunctionUseMember_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.FunctionUseMember#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionUseMember#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
    * @see roadblock.xtext.ibl.ibl.FunctionUseMember#getName()
    * @see #getFunctionUseMember()
    * @generated
    */
-  EReference getFunctionUseMember_Name();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableName <em>Variable Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Variable Name</em>'.
-   * @see roadblock.xtext.ibl.ibl.VariableName
-   * @generated
-   */
-  EClass getVariableName();
+  EAttribute getFunctionUseMember_Name();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableComplex <em>Variable Complex</em>}'.
@@ -1386,6 +1430,16 @@ public interface IblPackage extends EPackage
   EReference getVariableAssignment_Expression();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableAssignmentObject <em>Variable Assignment Object</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Assignment Object</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableAssignmentObject
+   * @generated
+   */
+  EClass getVariableAssignmentObject();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableExpression <em>Variable Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1407,6 +1461,38 @@ public interface IblPackage extends EPackage
   EReference getVariableExpression_Members();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableExpressionObject <em>Variable Expression Object</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Expression Object</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableExpressionObject
+   * @generated
+   */
+  EClass getVariableExpressionObject();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableExpressionObject#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableExpressionObject#getValue()
+   * @see #getVariableExpressionObject()
+   * @generated
+   */
+  EAttribute getVariableExpressionObject_Value();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableExpressionObject#getQuantity <em>Quantity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Quantity</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableExpressionObject#getQuantity()
+   * @see #getVariableExpressionObject()
+   * @generated
+   */
+  EReference getVariableExpressionObject_Quantity();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.RuleDefinition <em>Rule Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1417,15 +1503,15 @@ public interface IblPackage extends EPackage
   EClass getRuleDefinition();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.RuleDefinition#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RuleDefinition#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @return the meta object for the attribute '<em>Name</em>'.
    * @see roadblock.xtext.ibl.ibl.RuleDefinition#getName()
    * @see #getRuleDefinition()
    * @generated
    */
-  EReference getRuleDefinition_Name();
+  EAttribute getRuleDefinition_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.RuleDefinition#getLhs <em>Lhs</em>}'.
@@ -1729,25 +1815,15 @@ public interface IblPackage extends EPackage
   EAttribute getPropertyCondition_Operator();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Probability</em>'.
+   * @return the meta object for the attribute '<em>Probability</em>'.
    * @see roadblock.xtext.ibl.ibl.PropertyCondition#getProbability()
    * @see #getPropertyCondition()
    * @generated
    */
-  EReference getPropertyCondition_Probability();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.REAL <em>REAL</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>REAL</em>'.
-   * @see roadblock.xtext.ibl.ibl.REAL
-   * @generated
-   */
-  EClass getREAL();
+  EAttribute getPropertyCondition_Probability();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.Quantity <em>Quantity</em>}'.
@@ -1760,15 +1836,15 @@ public interface IblPackage extends EPackage
   EClass getQuantity();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.Quantity#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.Quantity#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @return the meta object for the attribute '<em>Value</em>'.
    * @see roadblock.xtext.ibl.ibl.Quantity#getValue()
    * @see #getQuantity()
    * @generated
    */
-  EReference getQuantity_Value();
+  EAttribute getQuantity_Value();
 
   /**
    * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.Quantity#getUnits <em>Units</em>}'.
@@ -1882,12 +1958,12 @@ public interface IblPackage extends EPackage
     EAttribute FUNCTION_DEFINITION__TYPE = eINSTANCE.getFunctionDefinition_Type();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_DEFINITION__NAME = eINSTANCE.getFunctionDefinition_Name();
+    EAttribute FUNCTION_DEFINITION__NAME = eINSTANCE.getFunctionDefinition_Name();
 
     /**
      * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -1932,12 +2008,12 @@ public interface IblPackage extends EPackage
     EAttribute FUNCTION_PARAMETER_MEMBER__TYPE = eINSTANCE.getFunctionParameterMember_Type();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_PARAMETER_MEMBER__NAME = eINSTANCE.getFunctionParameterMember_Name();
+    EAttribute FUNCTION_PARAMETER_MEMBER__NAME = eINSTANCE.getFunctionParameterMember_Name();
 
     /**
      * The meta object literal for the '<em><b>Scope</b></em>' attribute feature.
@@ -1976,22 +2052,12 @@ public interface IblPackage extends EPackage
     EAttribute FUNCTION_USE_MEMBER__TYPE = eINSTANCE.getFunctionUseMember_Type();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_USE_MEMBER__NAME = eINSTANCE.getFunctionUseMember_Name();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableNameImpl <em>Variable Name</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.VariableNameImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableName()
-     * @generated
-     */
-    EClass VARIABLE_NAME = eINSTANCE.getVariableName();
+    EAttribute FUNCTION_USE_MEMBER__NAME = eINSTANCE.getFunctionUseMember_Name();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableComplexImpl <em>Variable Complex</em>}' class.
@@ -2148,6 +2214,16 @@ public interface IblPackage extends EPackage
     EReference VARIABLE_ASSIGNMENT__EXPRESSION = eINSTANCE.getVariableAssignment_Expression();
 
     /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableAssignmentObjectImpl <em>Variable Assignment Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.VariableAssignmentObjectImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignmentObject()
+     * @generated
+     */
+    EClass VARIABLE_ASSIGNMENT_OBJECT = eINSTANCE.getVariableAssignmentObject();
+
+    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableExpressionImpl <em>Variable Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2166,6 +2242,32 @@ public interface IblPackage extends EPackage
     EReference VARIABLE_EXPRESSION__MEMBERS = eINSTANCE.getVariableExpression_Members();
 
     /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableExpressionObjectImpl <em>Variable Expression Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.VariableExpressionObjectImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpressionObject()
+     * @generated
+     */
+    EClass VARIABLE_EXPRESSION_OBJECT = eINSTANCE.getVariableExpressionObject();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_EXPRESSION_OBJECT__VALUE = eINSTANCE.getVariableExpressionObject_Value();
+
+    /**
+     * The meta object literal for the '<em><b>Quantity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_EXPRESSION_OBJECT__QUANTITY = eINSTANCE.getVariableExpressionObject_Quantity();
+
+    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.RuleDefinitionImpl <em>Rule Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2176,12 +2278,12 @@ public interface IblPackage extends EPackage
     EClass RULE_DEFINITION = eINSTANCE.getRuleDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_DEFINITION__NAME = eINSTANCE.getRuleDefinition_Name();
+    EAttribute RULE_DEFINITION__NAME = eINSTANCE.getRuleDefinition_Name();
 
     /**
      * The meta object literal for the '<em><b>Lhs</b></em>' containment reference list feature.
@@ -2422,22 +2524,12 @@ public interface IblPackage extends EPackage
     EAttribute PROPERTY_CONDITION__OPERATOR = eINSTANCE.getPropertyCondition_Operator();
 
     /**
-     * The meta object literal for the '<em><b>Probability</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Probability</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_CONDITION__PROBABILITY = eINSTANCE.getPropertyCondition_Probability();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.REALImpl <em>REAL</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.REALImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getREAL()
-     * @generated
-     */
-    EClass REAL = eINSTANCE.getREAL();
+    EAttribute PROPERTY_CONDITION__PROBABILITY = eINSTANCE.getPropertyCondition_Probability();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.QuantityImpl <em>Quantity</em>}' class.
@@ -2450,12 +2542,12 @@ public interface IblPackage extends EPackage
     EClass QUANTITY = eINSTANCE.getQuantity();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference QUANTITY__VALUE = eINSTANCE.getQuantity_Value();
+    EAttribute QUANTITY__VALUE = eINSTANCE.getQuantity_Value();
 
     /**
      * The meta object literal for the '<em><b>Units</b></em>' attribute feature.

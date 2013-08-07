@@ -43,12 +43,10 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionBodyMemberAccess().getAlternatives(), "rule__FunctionBodyMember__Alternatives");
 					put(grammarAccess.getVariableDefinitionAccess().getAlternatives_2(), "rule__VariableDefinition__Alternatives_2");
 					put(grammarAccess.getVariableDefinitionAccess().getConstructorAlternatives_3_1_0(), "rule__VariableDefinition__ConstructorAlternatives_3_1_0");
-					put(grammarAccess.getParameterAssignmentAccess().getValueAlternatives_2_0(), "rule__ParameterAssignment__ValueAlternatives_2_0");
 					put(grammarAccess.getVariableTypeAccess().getAlternatives(), "rule__VariableType__Alternatives");
 					put(grammarAccess.getCollectionIDAccess().getAlternatives(), "rule__CollectionID__Alternatives");
-					put(grammarAccess.getVariableAssignmentAccess().getVariableAlternatives_1_0(), "rule__VariableAssignment__VariableAlternatives_1_0");
-					put(grammarAccess.getVariableExpressionAccess().getMembersAlternatives_1_0(), "rule__VariableExpression__MembersAlternatives_1_0");
-					put(grammarAccess.getVariableExpressionAccess().getMembersAlternatives_2_1_0(), "rule__VariableExpression__MembersAlternatives_2_1_0");
+					put(grammarAccess.getVariableAssignmentObjectAccess().getAlternatives(), "rule__VariableAssignmentObject__Alternatives");
+					put(grammarAccess.getVariableExpressionObjectAccess().getAlternatives(), "rule__VariableExpressionObject__Alternatives");
 					put(grammarAccess.getVariableExpressionOperatorAccess().getAlternatives(), "rule__VariableExpressionOperator__Alternatives");
 					put(grammarAccess.getRuleDefinitionAccess().getAlternatives_5(), "rule__RuleDefinition__Alternatives_5");
 					put(grammarAccess.getRuleObjectAccess().getAlternatives(), "rule__RuleObject__Alternatives");
@@ -62,6 +60,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDecimalExpAccess().getAlternatives_0(), "rule__DecimalExp__Alternatives_0");
 					put(grammarAccess.getDecimalExpAccess().getAlternatives_3(), "rule__DecimalExp__Alternatives_3");
 					put(grammarAccess.getDecimalExpAccess().getAlternatives_4(), "rule__DecimalExp__Alternatives_4");
+					put(grammarAccess.getUnitAccess().getAlternatives(), "rule__Unit__Alternatives");
 					put(grammarAccess.getRelationalOperatorAccess().getAlternatives(), "rule__RelationalOperator__Alternatives");
 					put(grammarAccess.getBooleanOperatorAccess().getAlternatives(), "rule__BooleanOperator__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
@@ -74,7 +73,6 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionParameterMemberAccess().getGroup(), "rule__FunctionParameterMember__Group__0");
 					put(grammarAccess.getFunctionParameterMemberAccess().getGroup_2(), "rule__FunctionParameterMember__Group_2__0");
 					put(grammarAccess.getFunctionUseMemberAccess().getGroup(), "rule__FunctionUseMember__Group__0");
-					put(grammarAccess.getVariableNameAccess().getGroup(), "rule__VariableName__Group__0");
 					put(grammarAccess.getVariableComplexAccess().getGroup(), "rule__VariableComplex__Group__0");
 					put(grammarAccess.getVariableComplexAccess().getGroup_2(), "rule__VariableComplex__Group_2__0");
 					put(grammarAccess.getVariableAttributeAccess().getGroup(), "rule__VariableAttribute__Group__0");
@@ -86,13 +84,16 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableDefinitionAccess().getGroup_3_3_1(), "rule__VariableDefinition__Group_3_3_1__0");
 					put(grammarAccess.getParameterAssignmentAccess().getGroup(), "rule__ParameterAssignment__Group__0");
 					put(grammarAccess.getVariableAssignmentAccess().getGroup(), "rule__VariableAssignment__Group__0");
+					put(grammarAccess.getVariableAssignmentObjectAccess().getGroup_0(), "rule__VariableAssignmentObject__Group_0__0");
 					put(grammarAccess.getVariableExpressionAccess().getGroup(), "rule__VariableExpression__Group__0");
 					put(grammarAccess.getVariableExpressionAccess().getGroup_2(), "rule__VariableExpression__Group_2__0");
+					put(grammarAccess.getVariableExpressionObjectAccess().getGroup_0(), "rule__VariableExpressionObject__Group_0__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup(), "rule__RuleDefinition__Group__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup_4(), "rule__RuleDefinition__Group_4__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup_4_1(), "rule__RuleDefinition__Group_4_1__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup_6(), "rule__RuleDefinition__Group_6__0");
 					put(grammarAccess.getRuleDefinitionAccess().getGroup_6_1(), "rule__RuleDefinition__Group_6_1__0");
+					put(grammarAccess.getRuleObjectAccess().getGroup_0(), "rule__RuleObject__Group_0__0");
 					put(grammarAccess.getDeviceDefinitionAccess().getGroup(), "rule__DeviceDefinition__Group__0");
 					put(grammarAccess.getDeviceDefinitionAccess().getGroup_6(), "rule__DeviceDefinition__Group_6__0");
 					put(grammarAccess.getDeviceDefinitionAccess().getGroup_6_1(), "rule__DeviceDefinition__Group_6_1__0");
@@ -110,7 +111,6 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyConditionAccess().getGroup_2(), "rule__PropertyCondition__Group_2__0");
 					put(grammarAccess.getPropertyConditionAccess().getGroup_2_6(), "rule__PropertyCondition__Group_2_6__0");
 					put(grammarAccess.getPropertyConditionAccess().getGroup_2_6_1_0(), "rule__PropertyCondition__Group_2_6_1_0__0");
-					put(grammarAccess.getREALAccess().getGroup_0(), "rule__REAL__Group_0__0");
 					put(grammarAccess.getDecimalAccess().getGroup(), "rule__Decimal__Group__0");
 					put(grammarAccess.getDecimalAccess().getGroup_2(), "rule__Decimal__Group_2__0");
 					put(grammarAccess.getDecimalExpAccess().getGroup(), "rule__DecimalExp__Group__0");
@@ -152,6 +152,8 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableAssignmentAccess().getExpressionAssignment_3(), "rule__VariableAssignment__ExpressionAssignment_3");
 					put(grammarAccess.getVariableExpressionAccess().getMembersAssignment_1(), "rule__VariableExpression__MembersAssignment_1");
 					put(grammarAccess.getVariableExpressionAccess().getMembersAssignment_2_1(), "rule__VariableExpression__MembersAssignment_2_1");
+					put(grammarAccess.getVariableExpressionObjectAccess().getValueAssignment_3(), "rule__VariableExpressionObject__ValueAssignment_3");
+					put(grammarAccess.getVariableExpressionObjectAccess().getQuantityAssignment_4(), "rule__VariableExpressionObject__QuantityAssignment_4");
 					put(grammarAccess.getRuleDefinitionAccess().getNameAssignment_2(), "rule__RuleDefinition__NameAssignment_2");
 					put(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_0(), "rule__RuleDefinition__LhsAssignment_4_0");
 					put(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_1_1(), "rule__RuleDefinition__LhsAssignment_4_1_1");

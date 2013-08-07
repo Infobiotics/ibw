@@ -2,7 +2,6 @@
  */
 package roadblock.xtext.ibl.ibl;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,12 +31,12 @@ public interface VariableAssignment extends FunctionBodyMember
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variable</em>' containment reference.
-   * @see #setVariable(EObject)
+   * @see #setVariable(VariableAssignmentObject)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableAssignment_Variable()
    * @model containment="true"
    * @generated
    */
-  EObject getVariable();
+  VariableAssignmentObject getVariable();
 
   /**
    * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableAssignment#getVariable <em>Variable</em>}' containment reference.
@@ -47,7 +46,7 @@ public interface VariableAssignment extends FunctionBodyMember
    * @see #getVariable()
    * @generated
    */
-  void setVariable(EObject value);
+  void setVariable(VariableAssignmentObject value);
 
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.

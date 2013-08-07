@@ -22,7 +22,6 @@ import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
-import roadblock.xtext.ibl.ibl.REAL;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,7 +91,7 @@ public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements Pr
    * @generated
    * @ordered
    */
-  protected REAL time;
+  protected Quantity time;
 
   /**
    * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -235,7 +234,7 @@ public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements Pr
    * <!-- end-user-doc -->
    * @generated
    */
-  public REAL getTime()
+  public Quantity getTime()
   {
     return time;
   }
@@ -245,9 +244,9 @@ public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements Pr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTime(REAL newTime, NotificationChain msgs)
+  public NotificationChain basicSetTime(Quantity newTime, NotificationChain msgs)
   {
-    REAL oldTime = time;
+    Quantity oldTime = time;
     time = newTime;
     if (eNotificationRequired())
     {
@@ -262,7 +261,7 @@ public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements Pr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTime(REAL newTime)
+  public void setTime(Quantity newTime)
   {
     if (newTime != time)
     {
@@ -419,7 +418,7 @@ public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements Pr
         setName((String)newValue);
         return;
       case IblPackage.PROPERTY_DEFINITION__TIME:
-        setTime((REAL)newValue);
+        setTime((Quantity)newValue);
         return;
       case IblPackage.PROPERTY_DEFINITION__OPERATOR:
         setOperator((String)newValue);
@@ -451,7 +450,7 @@ public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements Pr
         setName(NAME_EDEFAULT);
         return;
       case IblPackage.PROPERTY_DEFINITION__TIME:
-        setTime((REAL)null);
+        setTime((Quantity)null);
         return;
       case IblPackage.PROPERTY_DEFINITION__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);

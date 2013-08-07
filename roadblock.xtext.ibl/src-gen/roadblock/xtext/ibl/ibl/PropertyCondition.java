@@ -34,12 +34,12 @@ public interface PropertyCondition extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Lower Bound</em>' containment reference.
-   * @see #setLowerBound(REAL)
+   * @see #setLowerBound(Quantity)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_LowerBound()
    * @model containment="true"
    * @generated
    */
-  REAL getLowerBound();
+  Quantity getLowerBound();
 
   /**
    * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getLowerBound <em>Lower Bound</em>}' containment reference.
@@ -49,7 +49,7 @@ public interface PropertyCondition extends EObject
    * @see #getLowerBound()
    * @generated
    */
-  void setLowerBound(REAL value);
+  void setLowerBound(Quantity value);
 
   /**
    * Returns the value of the '<em><b>Upper Bounds</b></em>' containment reference.
@@ -60,12 +60,12 @@ public interface PropertyCondition extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Upper Bounds</em>' containment reference.
-   * @see #setUpperBounds(REAL)
+   * @see #setUpperBounds(Quantity)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_UpperBounds()
    * @model containment="true"
    * @generated
    */
-  REAL getUpperBounds();
+  Quantity getUpperBounds();
 
   /**
    * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getUpperBounds <em>Upper Bounds</em>}' containment reference.
@@ -75,7 +75,7 @@ public interface PropertyCondition extends EObject
    * @see #getUpperBounds()
    * @generated
    */
-  void setUpperBounds(REAL value);
+  void setUpperBounds(Quantity value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.
@@ -104,29 +104,29 @@ public interface PropertyCondition extends EObject
   void setOperator(String value);
 
   /**
-   * Returns the value of the '<em><b>Probability</b></em>' containment reference.
+   * Returns the value of the '<em><b>Probability</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Probability</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Probability</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Probability</em>' containment reference.
-   * @see #setProbability(REAL)
+   * @return the value of the '<em>Probability</em>' attribute.
+   * @see #setProbability(String)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_Probability()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  REAL getProbability();
+  String getProbability();
 
   /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}' containment reference.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Probability</em>' containment reference.
+   * @param value the new value of the '<em>Probability</em>' attribute.
    * @see #getProbability()
    * @generated
    */
-  void setProbability(REAL value);
+  void setProbability(String value);
 
 } // PropertyCondition

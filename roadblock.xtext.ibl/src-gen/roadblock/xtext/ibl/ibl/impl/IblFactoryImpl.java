@@ -71,13 +71,14 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_BODY_MEMBER: return createFunctionBodyMember();
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
-      case IblPackage.VARIABLE_NAME: return createVariableName();
       case IblPackage.VARIABLE_COMPLEX: return createVariableComplex();
       case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
       case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
       case IblPackage.PARAMETER_ASSIGNMENT: return createParameterAssignment();
       case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
+      case IblPackage.VARIABLE_ASSIGNMENT_OBJECT: return createVariableAssignmentObject();
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
+      case IblPackage.VARIABLE_EXPRESSION_OBJECT: return createVariableExpressionObject();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
       case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
@@ -86,7 +87,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
       case IblPackage.PROPERTY: return createProperty();
       case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
-      case IblPackage.REAL: return createREAL();
       case IblPackage.QUANTITY: return createQuantity();
       case IblPackage.IMPORT: return createImport();
       default:
@@ -176,17 +176,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableName createVariableName()
-  {
-    VariableNameImpl variableName = new VariableNameImpl();
-    return variableName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public VariableComplex createVariableComplex()
   {
     VariableComplexImpl variableComplex = new VariableComplexImpl();
@@ -242,10 +231,32 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public VariableAssignmentObject createVariableAssignmentObject()
+  {
+    VariableAssignmentObjectImpl variableAssignmentObject = new VariableAssignmentObjectImpl();
+    return variableAssignmentObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public VariableExpression createVariableExpression()
   {
     VariableExpressionImpl variableExpression = new VariableExpressionImpl();
     return variableExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableExpressionObject createVariableExpressionObject()
+  {
+    VariableExpressionObjectImpl variableExpressionObject = new VariableExpressionObjectImpl();
+    return variableExpressionObject;
   }
 
   /**
@@ -334,17 +345,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     PropertyConditionImpl propertyCondition = new PropertyConditionImpl();
     return propertyCondition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public REAL createREAL()
-  {
-    REALImpl real = new REALImpl();
-    return real;
   }
 
   /**

@@ -104,12 +104,12 @@ public interface PropertyDefinition extends FunctionBodyMember, DeviceMembers
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Time</em>' containment reference.
-   * @see #setTime(REAL)
+   * @see #setTime(Quantity)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyDefinition_Time()
    * @model containment="true"
    * @generated
    */
-  REAL getTime();
+  Quantity getTime();
 
   /**
    * Sets the value of the '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getTime <em>Time</em>}' containment reference.
@@ -119,7 +119,7 @@ public interface PropertyDefinition extends FunctionBodyMember, DeviceMembers
    * @see #getTime()
    * @generated
    */
-  void setTime(REAL value);
+  void setTime(Quantity value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' attribute.

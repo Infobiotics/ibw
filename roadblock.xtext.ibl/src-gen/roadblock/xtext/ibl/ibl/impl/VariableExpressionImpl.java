@@ -9,7 +9,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -19,6 +18,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableExpression;
+import roadblock.xtext.ibl.ibl.VariableExpressionObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +43,7 @@ public class VariableExpressionImpl extends MinimalEObjectImpl.Container impleme
    * @generated
    * @ordered
    */
-  protected EList<EObject> members;
+  protected EList<VariableExpressionObject> members;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +71,11 @@ public class VariableExpressionImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EObject> getMembers()
+  public EList<VariableExpressionObject> getMembers()
   {
     if (members == null)
     {
-      members = new EObjectContainmentEList<EObject>(EObject.class, this, IblPackage.VARIABLE_EXPRESSION__MEMBERS);
+      members = new EObjectContainmentEList<VariableExpressionObject>(VariableExpressionObject.class, this, IblPackage.VARIABLE_EXPRESSION__MEMBERS);
     }
     return members;
   }
@@ -125,7 +125,7 @@ public class VariableExpressionImpl extends MinimalEObjectImpl.Container impleme
     {
       case IblPackage.VARIABLE_EXPRESSION__MEMBERS:
         getMembers().clear();
-        getMembers().addAll((Collection<? extends EObject>)newValue);
+        getMembers().addAll((Collection<? extends VariableExpressionObject>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
-import roadblock.xtext.ibl.ibl.VariableName;
 
 /**
  * <!-- begin-user-doc -->
@@ -41,14 +40,24 @@ import roadblock.xtext.ibl.ibl.VariableName;
 public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDefinition
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected VariableName name;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference list.
@@ -116,7 +125,7 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableName getName()
+  public String getName()
   {
     return name;
   }
@@ -126,37 +135,12 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetName(VariableName newName, NotificationChain msgs)
+  public void setName(String newName)
   {
-    VariableName oldName = name;
+    String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__NAME, oldName, newName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(VariableName newName)
-  {
-    if (newName != name)
-    {
-      NotificationChain msgs = null;
-      if (name != null)
-        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE_DEFINITION__NAME, null, msgs);
-      if (newName != null)
-        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE_DEFINITION__NAME, null, msgs);
-      msgs = basicSetName(newName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__NAME, newName, newName));
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE_DEFINITION__NAME, oldName, name));
   }
 
   /**
@@ -220,8 +204,6 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
   {
     switch (featureID)
     {
-      case IblPackage.RULE_DEFINITION__NAME:
-        return basicSetName(null, msgs);
       case IblPackage.RULE_DEFINITION__LHS:
         return ((InternalEList<?>)getLhs()).basicRemove(otherEnd, msgs);
       case IblPackage.RULE_DEFINITION__RHS:
@@ -264,7 +246,7 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
     switch (featureID)
     {
       case IblPackage.RULE_DEFINITION__NAME:
-        setName((VariableName)newValue);
+        setName((String)newValue);
         return;
       case IblPackage.RULE_DEFINITION__LHS:
         getLhs().clear();
@@ -292,7 +274,7 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
     switch (featureID)
     {
       case IblPackage.RULE_DEFINITION__NAME:
-        setName((VariableName)null);
+        setName(NAME_EDEFAULT);
         return;
       case IblPackage.RULE_DEFINITION__LHS:
         getLhs().clear();
@@ -318,7 +300,7 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
     switch (featureID)
     {
       case IblPackage.RULE_DEFINITION__NAME:
-        return name != null;
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.RULE_DEFINITION__LHS:
         return lhs != null && !lhs.isEmpty();
       case IblPackage.RULE_DEFINITION__REVERSIBLE:
@@ -340,7 +322,9 @@ public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDe
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (reversible: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", reversible: ");
     result.append(reversible);
     result.append(')');
     return result.toString();
