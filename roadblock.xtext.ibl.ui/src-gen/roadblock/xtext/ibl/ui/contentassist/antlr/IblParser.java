@@ -154,6 +154,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableExpressionAccess().getMembersAssignment_2_1(), "rule__VariableExpression__MembersAssignment_2_1");
 					put(grammarAccess.getVariableExpressionObjectAccess().getValueAssignment_3(), "rule__VariableExpressionObject__ValueAssignment_3");
 					put(grammarAccess.getVariableExpressionObjectAccess().getQuantityAssignment_4(), "rule__VariableExpressionObject__QuantityAssignment_4");
+					put(grammarAccess.getVariableExpressionObjectAccess().getStringAssignment_5(), "rule__VariableExpressionObject__StringAssignment_5");
 					put(grammarAccess.getRuleDefinitionAccess().getNameAssignment_2(), "rule__RuleDefinition__NameAssignment_2");
 					put(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_0(), "rule__RuleDefinition__LhsAssignment_4_0");
 					put(grammarAccess.getRuleDefinitionAccess().getLhsAssignment_4_1_1(), "rule__RuleDefinition__LhsAssignment_4_1_1");

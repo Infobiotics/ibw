@@ -89,7 +89,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'WILL HOLD' | 'ALWAYS HOLDS' | 'NEVER HOLDS'
+	 *     'NEVER HOLDS' | 'ALWAYS HOLDS' | 'WILL HOLD'
 	 */
 	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

@@ -59,6 +59,7 @@
     <genClasses ecoreClass="Ibl.ecore#//VariableExpressionObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableExpressionObject/value"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableExpressionObject/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableExpressionObject/string"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>

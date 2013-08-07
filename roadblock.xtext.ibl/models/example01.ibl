@@ -15,7 +15,7 @@ import library01
 /////////////////////////
 
 define SITE site() {
-	MOLECULE SA = MOLECULE(displayID = SA, degradationRate = 1 s^-1, concentration = 100 uM)
+	MOLECULE SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
 
 	CELL myCell = SASensorCell(consumed = SA)
 }

@@ -23,7 +23,6 @@ define PROCESS doublyRegulatedProteinExpression(
 
 } USES RIBOSOME ribosome, RNA rnaP
 
-
 define SYSTEM XORGate(				
 	PROMOTER promoter1, 
 	GENE gene1 = GENE(URI = 'db://lacl'),

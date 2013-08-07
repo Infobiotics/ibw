@@ -416,6 +416,13 @@ ruleFunctionType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getCELLKeyword_2()); 
     }
+
+    |
+	kw='SYSTEM' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); 
+    }
 )
     ;
 
@@ -1559,6 +1566,25 @@ ruleVariableName
         		lv_quantity_5_0, 
         		"Quantity");
 	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)
+    |(
+(
+		lv_string_6_0=RULE_STRING
+		{
+			newLeafNode(lv_string_6_0, grammarAccess.getVariableExpressionObjectAccess().getStringSTRINGTerminalRuleCall_5_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getVariableExpressionObjectRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"string",
+        		lv_string_6_0, 
+        		"STRING");
 	    }
 
 )

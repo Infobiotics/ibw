@@ -52,7 +52,7 @@ FunctionDefinition:
 
 // function types
 FunctionType:
-	'PROCESS' | 'SITE' | 'CELL'
+	'PROCESS' | 'SITE' | 'CELL' | 'SYSTEM'
 ;
 
 // function parameter member
@@ -145,7 +145,7 @@ VariableExpression:
 
 VariableExpressionObject:
 	{VariableExpressionObject}
-	VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity
+	VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity | string=STRING
 ;
 
 VariableExpressionOperator:

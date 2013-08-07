@@ -24,6 +24,7 @@ import roadblock.xtext.ibl.ibl.VariableExpressionObject;
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getValue <em>Value</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getString <em>String</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getAttribute <em>Attribute</em>}</li>
  * </ul>
@@ -62,6 +63,26 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
    * @ordered
    */
   protected Quantity quantity;
+
+  /**
+   * The default value of the '{@link #getString() <em>String</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getString()
+   * @generated
+   * @ordered
+   */
+  protected static final String STRING_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getString() <em>String</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getString()
+   * @generated
+   * @ordered
+   */
+  protected String string = STRING_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -200,6 +221,29 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getString()
+  {
+    return string;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setString(String newString)
+  {
+    String oldString = string;
+    string = newString;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_ATTRIBUTE__STRING, oldString, string));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getName()
   {
     return name;
@@ -271,6 +315,8 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
         return getValue();
       case IblPackage.VARIABLE_ATTRIBUTE__QUANTITY:
         return getQuantity();
+      case IblPackage.VARIABLE_ATTRIBUTE__STRING:
+        return getString();
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         return getName();
       case IblPackage.VARIABLE_ATTRIBUTE__ATTRIBUTE:
@@ -294,6 +340,9 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
         return;
       case IblPackage.VARIABLE_ATTRIBUTE__QUANTITY:
         setQuantity((Quantity)newValue);
+        return;
+      case IblPackage.VARIABLE_ATTRIBUTE__STRING:
+        setString((String)newValue);
         return;
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         setName((String)newValue);
@@ -321,6 +370,9 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
       case IblPackage.VARIABLE_ATTRIBUTE__QUANTITY:
         setQuantity((Quantity)null);
         return;
+      case IblPackage.VARIABLE_ATTRIBUTE__STRING:
+        setString(STRING_EDEFAULT);
+        return;
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -345,6 +397,8 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
       case IblPackage.VARIABLE_ATTRIBUTE__QUANTITY:
         return quantity != null;
+      case IblPackage.VARIABLE_ATTRIBUTE__STRING:
+        return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.VARIABLE_ATTRIBUTE__ATTRIBUTE:
@@ -367,6 +421,7 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
       {
         case IblPackage.VARIABLE_ATTRIBUTE__VALUE: return IblPackage.VARIABLE_EXPRESSION_OBJECT__VALUE;
         case IblPackage.VARIABLE_ATTRIBUTE__QUANTITY: return IblPackage.VARIABLE_EXPRESSION_OBJECT__QUANTITY;
+        case IblPackage.VARIABLE_ATTRIBUTE__STRING: return IblPackage.VARIABLE_EXPRESSION_OBJECT__STRING;
         default: return -1;
       }
     }
@@ -387,6 +442,7 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
       {
         case IblPackage.VARIABLE_EXPRESSION_OBJECT__VALUE: return IblPackage.VARIABLE_ATTRIBUTE__VALUE;
         case IblPackage.VARIABLE_EXPRESSION_OBJECT__QUANTITY: return IblPackage.VARIABLE_ATTRIBUTE__QUANTITY;
+        case IblPackage.VARIABLE_EXPRESSION_OBJECT__STRING: return IblPackage.VARIABLE_ATTRIBUTE__STRING;
         default: return -1;
       }
     }
@@ -406,6 +462,8 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (value: ");
     result.append(value);
+    result.append(", string: ");
+    result.append(string);
     result.append(", name: ");
     result.append(name);
     result.append(", attribute: ");

@@ -1248,6 +1248,14 @@ rule__FunctionType__Alternatives
 { after(grammarAccess.getFunctionTypeAccess().getCELLKeyword_2()); }
 )
 
+    |(
+{ before(grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); }
+
+	'SYSTEM' 
+
+{ after(grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1556,6 +1564,12 @@ rule__VariableExpressionObject__Alternatives
 { before(grammarAccess.getVariableExpressionObjectAccess().getQuantityAssignment_4()); }
 (rule__VariableExpressionObject__QuantityAssignment_4)
 { after(grammarAccess.getVariableExpressionObjectAccess().getQuantityAssignment_4()); }
+)
+
+    |(
+{ before(grammarAccess.getVariableExpressionObjectAccess().getStringAssignment_5()); }
+(rule__VariableExpressionObject__StringAssignment_5)
+{ after(grammarAccess.getVariableExpressionObjectAccess().getStringAssignment_5()); }
 )
 
 ;
@@ -8416,6 +8430,21 @@ rule__VariableExpressionObject__QuantityAssignment_4
 (
 { before(grammarAccess.getVariableExpressionObjectAccess().getQuantityQuantityParserRuleCall_4_0()); }
 	ruleQuantity{ after(grammarAccess.getVariableExpressionObjectAccess().getQuantityQuantityParserRuleCall_4_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__VariableExpressionObject__StringAssignment_5
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getVariableExpressionObjectAccess().getStringSTRINGTerminalRuleCall_5_0()); }
+	RULE_STRING{ after(grammarAccess.getVariableExpressionObjectAccess().getStringSTRINGTerminalRuleCall_5_0()); }
 )
 
 ;

@@ -708,6 +708,16 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getVariableExpressionObject_String()
+  {
+    return (EAttribute)variableExpressionObjectEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRuleDefinition()
   {
     return ruleDefinitionEClass;
@@ -1149,6 +1159,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     variableExpressionObjectEClass = createEClass(VARIABLE_EXPRESSION_OBJECT);
     createEAttribute(variableExpressionObjectEClass, VARIABLE_EXPRESSION_OBJECT__VALUE);
     createEReference(variableExpressionObjectEClass, VARIABLE_EXPRESSION_OBJECT__QUANTITY);
+    createEAttribute(variableExpressionObjectEClass, VARIABLE_EXPRESSION_OBJECT__STRING);
 
     ruleDefinitionEClass = createEClass(RULE_DEFINITION);
     createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
@@ -1299,6 +1310,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(variableExpressionObjectEClass, VariableExpressionObject.class, "VariableExpressionObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableExpressionObject_Value(), ecorePackage.getEString(), "value", null, 0, 1, VariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableExpressionObject_Quantity(), this.getQuantity(), null, "quantity", null, 0, 1, VariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableExpressionObject_String(), ecorePackage.getEString(), "string", null, 0, 1, VariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
