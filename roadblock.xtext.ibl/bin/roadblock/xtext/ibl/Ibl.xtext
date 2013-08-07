@@ -107,22 +107,27 @@ VariableDefinition:
 	)?
 ;
 
+// a parameter assignment
 ParameterAssignment:
 	name=VariableName '=' value=VariableExpressionObject
 ;
 
+// a variable qualifier
 VariableQualifier:
 	'observable'
 ;
 
+// variable types
 VariableType:
 	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS'
 ;
 
+// variable collections
 CollectionID:
 	'LIST' | 'SET'
 ;
 
+// a variable assignment
 VariableAssignment:
 	{VariableAssignment}
 	 variable=VariableAssignmentObject '=' expression=VariableExpression
@@ -278,4 +283,3 @@ QualifiedNameWithWildcard:
 QualifiedName:
 	ID ('.' ID)*
 ;
-
