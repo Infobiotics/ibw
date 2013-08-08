@@ -410,7 +410,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=VariableName attribute=ID)
+	 *     (name=VariableName attribute=VariableName)
 	 */
 	protected void sequence_VariableAttribute(EObject context, VariableAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -419,7 +419,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (components+=ID components+=ID+)
+	 *     (components+=VariableName components+=VariableName+)
 	 */
 	protected void sequence_VariableComplex(EObject context, VariableComplex semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -430,8 +430,11 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         qualifier=VariableQualifier? 
-	 *         ((type=VariableType name=ID) | (collection=CollectionID type=VariableType name=ID)) 
-	 *         ((constructor=VariableType | constructor=ID) (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?
+	 *         ((type=VariableType name=VariableName) | (collection=CollectionID type=VariableType name=VariableName)) 
+	 *         (
+	 *             ((constructor=VariableType | constructor=VariableName) (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?) | 
+	 *             value=VariableExpressionObject
+	 *         )?
 	 *     )
 	 */
 	protected void sequence_VariableDefinition(EObject context, VariableDefinition semanticObject) {

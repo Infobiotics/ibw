@@ -32,19 +32,19 @@ define CELL SASensorCell(MOLECULE SA:required) {
 // ??JT - how do we specify chassis types 
 //	CHASSIS chassis = CHASSIS(organism = ecoli)
 
-	PROMOTER PnahR = PROMOTER(URI = biobricksURI)
-	PROTEIN NahR = PROTEIN(URI = dbURI)
+	PROMOTER PnahR = PROMOTER(URI = "biobricks://...")
+	PROTEIN NahR = PROTEIN(URI = "db://...")
 
-	PROMOTER Psal = PROMOTER(URI = biofabURI)
-	GENE xylS2 = GENE(sequence = ATTGTGT)
+	PROMOTER Psal = PROMOTER(URI = "biofab://")
+	GENE xylS2 = GENE(sequence = "ATTGTGT")
 	PROTEIN XylS2 = PROTEIN()
 
-	GENE nahR = GENE(URI = biofabURI)
-	PROMOTER Pm = PROMOTER(sequence = ATTGTGT)
-	GENE rFP = GENE(sequence = TTGTGTG)
+	GENE nahR = GENE(URI = "biofab://")
+	PROMOTER Pm = PROMOTER(sequence = "ATTGTGT")
+	GENE rFP = GENE(sequence = "TTGTGTG")
 	PROTEIN RFP = PROTEIN()
 
-	INTEGER plasmidNumber = INTEGER(value = 500)
+	INTEGER plasmidNumber = 500
 
 	// devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
 	DEVICE D1 = DEVICE(PnahR,nahR)(produced = NahR){

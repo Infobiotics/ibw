@@ -537,13 +537,22 @@ public interface IblPackage extends EPackage
   int VARIABLE_DEFINITION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 5;
 
   /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DEFINITION__VALUE = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 6;
+
+  /**
    * The number of structural features of the '<em>Variable Definition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 6;
+  int VARIABLE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ParameterAssignmentImpl <em>Parameter Assignment</em>}' class.
@@ -1393,6 +1402,17 @@ public interface IblPackage extends EPackage
   EReference getVariableDefinition_Parameters();
 
   /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinition#getValue()
+   * @see #getVariableDefinition()
+   * @generated
+   */
+  EReference getVariableDefinition_Value();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ParameterAssignment <em>Parameter Assignment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2198,6 +2218,14 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EReference VARIABLE_DEFINITION__PARAMETERS = eINSTANCE.getVariableDefinition_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_DEFINITION__VALUE = eINSTANCE.getVariableDefinition_Value();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ParameterAssignmentImpl <em>Parameter Assignment</em>}' class.

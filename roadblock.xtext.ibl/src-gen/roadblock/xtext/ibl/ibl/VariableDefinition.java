@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDefinition#getCollection <em>Collection</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDefinition#getConstructor <em>Constructor</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableDefinition#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.VariableDefinition#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -172,5 +173,31 @@ public interface VariableDefinition extends FunctionBodyMember, DeviceMembers
    * @generated
    */
   EList<ParameterAssignment> getParameters();
+
+  /**
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Value</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(VariableExpressionObject)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableDefinition_Value()
+   * @model containment="true"
+   * @generated
+   */
+  VariableExpressionObject getValue();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getValue <em>Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @see #getValue()
+   * @generated
+   */
+  void setValue(VariableExpressionObject value);
 
 } // VariableDefinition

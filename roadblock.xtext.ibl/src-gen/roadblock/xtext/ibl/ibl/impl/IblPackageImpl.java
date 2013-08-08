@@ -588,6 +588,16 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getVariableDefinition_Value()
+  {
+    return (EReference)variableDefinitionEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getParameterAssignment()
   {
     return parameterAssignmentEClass;
@@ -1142,6 +1152,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__COLLECTION);
     createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__CONSTRUCTOR);
     createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__PARAMETERS);
+    createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__VALUE);
 
     parameterAssignmentEClass = createEClass(PARAMETER_ASSIGNMENT);
     createEAttribute(parameterAssignmentEClass, PARAMETER_ASSIGNMENT__NAME);
@@ -1293,6 +1304,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getVariableDefinition_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDefinition_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableDefinition_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDefinition_Value(), this.getVariableExpressionObject(), null, "value", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterAssignmentEClass, ParameterAssignment.class, "ParameterAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParameterAssignment_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParameterAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

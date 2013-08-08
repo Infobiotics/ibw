@@ -43,6 +43,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/collection"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/constructor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/value"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//ParameterAssignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ParameterAssignment/name"/>

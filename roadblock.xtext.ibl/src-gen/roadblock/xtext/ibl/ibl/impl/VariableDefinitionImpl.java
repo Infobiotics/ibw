@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
 import roadblock.xtext.ibl.ibl.VariableDefinition;
+import roadblock.xtext.ibl.ibl.VariableExpressionObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +35,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinition;
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getCollection <em>Collection</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getConstructor <em>Constructor</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -150,6 +152,16 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
    * @ordered
    */
   protected EList<ParameterAssignment> parameters;
+
+  /**
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValue()
+   * @generated
+   * @ordered
+   */
+  protected VariableExpressionObject value;
 
   /**
    * <!-- begin-user-doc -->
@@ -306,6 +318,54 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
    * <!-- end-user-doc -->
    * @generated
    */
+  public VariableExpressionObject getValue()
+  {
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValue(VariableExpressionObject newValue, NotificationChain msgs)
+  {
+    VariableExpressionObject oldValue = value;
+    value = newValue;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DEFINITION__VALUE, oldValue, newValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValue(VariableExpressionObject newValue)
+  {
+    if (newValue != value)
+    {
+      NotificationChain msgs = null;
+      if (value != null)
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DEFINITION__VALUE, null, msgs);
+      if (newValue != null)
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_DEFINITION__VALUE, null, msgs);
+      msgs = basicSetValue(newValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DEFINITION__VALUE, newValue, newValue));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -313,6 +373,8 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
     {
       case IblPackage.VARIABLE_DEFINITION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+      case IblPackage.VARIABLE_DEFINITION__VALUE:
+        return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -339,6 +401,8 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
         return getConstructor();
       case IblPackage.VARIABLE_DEFINITION__PARAMETERS:
         return getParameters();
+      case IblPackage.VARIABLE_DEFINITION__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -373,6 +437,9 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
         getParameters().clear();
         getParameters().addAll((Collection<? extends ParameterAssignment>)newValue);
         return;
+      case IblPackage.VARIABLE_DEFINITION__VALUE:
+        setValue((VariableExpressionObject)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -405,6 +472,9 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
       case IblPackage.VARIABLE_DEFINITION__PARAMETERS:
         getParameters().clear();
         return;
+      case IblPackage.VARIABLE_DEFINITION__VALUE:
+        setValue((VariableExpressionObject)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -431,6 +501,8 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
         return CONSTRUCTOR_EDEFAULT == null ? constructor != null : !CONSTRUCTOR_EDEFAULT.equals(constructor);
       case IblPackage.VARIABLE_DEFINITION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
+      case IblPackage.VARIABLE_DEFINITION__VALUE:
+        return value != null;
     }
     return super.eIsSet(featureID);
   }

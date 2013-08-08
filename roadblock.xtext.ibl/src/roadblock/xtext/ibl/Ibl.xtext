@@ -67,7 +67,7 @@ FunctionParameterScope:
 
 // function definition body member
 FunctionBodyMember:
-	RuleDefinition | DeviceDefinition | VariableAssignment | VariableDefinition | ATGCDefinition | PropertyDefinition
+	RuleDefinition | DeviceDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition
 ;
 
 // function use member
@@ -87,23 +87,27 @@ VariableName:
 // a variable complex
 VariableComplex:
 	{VariableComplex}
-	components+=ID ('~' components+=ID)+ 
+	components+=VariableName ('~' components+=VariableName)+ 
 ; 
 
 // a variable attribute
 VariableAttribute:
 	{VariableAttribute}
-	name=VariableName '.' attribute=ID
+	name=VariableName '.' attribute=VariableName
 ;
 
 // a declaration of a variable
 VariableDefinition:
 	{VariableDefinition}
 	(qualifier=VariableQualifier)?
-	((type=VariableType name=ID) |
-	(collection=CollectionID '<' type=VariableType '>' name=ID))
+	((type=VariableType name=VariableName) |
+	(collection=CollectionID '<' type=VariableType '>' name=VariableName))
 	(
-		'=' constructor=(VariableType | ID) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+		'=' 
+		(
+		(constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')') |
+		(value=VariableExpressionObject)
+		)
 	)?
 ;
 
@@ -221,7 +225,7 @@ PropertyDefinition:
 
 Property:
 	{Property}
-	lhs=ID operator=RelationalOperator rhs=Quantity
+	lhs=VariableName operator=RelationalOperator rhs=Quantity
 ;
 
 PropertyCondition:
