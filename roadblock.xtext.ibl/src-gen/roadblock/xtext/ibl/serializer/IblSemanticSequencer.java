@@ -28,6 +28,7 @@ import roadblock.xtext.ibl.ibl.ParameterAssignment;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
+import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
@@ -136,6 +137,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				   context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getPropertyDefinitionRule()) {
 					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.PROPERTY_INITIAL_CONDITION:
+				if(context == grammarAccess.getPropertyInitialConditionRule()) {
+					sequence_PropertyInitialCondition(context, (PropertyInitialCondition) semanticObject); 
 					return; 
 				}
 				else break;
@@ -350,7 +357,10 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((lowerBound=Quantity upperBounds=Quantity (operator=RelationalOperator probability=REAL)?)?)
+	 *     (
+	 *         (lowerBound=Quantity upperBounds=Quantity (operator=RelationalOperator probability=REAL)?)? 
+	 *         (initialConditions+=PropertyInitialCondition initialConditions+=PropertyInitialCondition*)?
+	 *     )
 	 */
 	protected void sequence_PropertyCondition(EObject context, PropertyCondition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -366,6 +376,25 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_PropertyDefinition(EObject context, PropertyDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (variable=VariableAssignmentObject value=Quantity)
+	 */
+	protected void sequence_PropertyInitialCondition(EObject context, PropertyInitialCondition semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY_INITIAL_CONDITION__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY_INITIAL_CONDITION__VARIABLE));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY_INITIAL_CONDITION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY_INITIAL_CONDITION__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPropertyInitialConditionAccess().getVariableVariableAssignmentObjectParserRuleCall_1_0(), semanticObject.getVariable());
+		feeder.accept(grammarAccess.getPropertyInitialConditionAccess().getValueQuantityParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

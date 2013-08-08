@@ -89,6 +89,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
       case IblPackage.PROPERTY: return createProperty();
       case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
+      case IblPackage.PROPERTY_INITIAL_CONDITION: return createPropertyInitialCondition();
       case IblPackage.QUANTITY: return createQuantity();
       case IblPackage.LIST: return createList();
       case IblPackage.IMPORT: return createImport();
@@ -370,6 +371,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     PropertyConditionImpl propertyCondition = new PropertyConditionImpl();
     return propertyCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyInitialCondition createPropertyInitialCondition()
+  {
+    PropertyInitialConditionImpl propertyInitialCondition = new PropertyInitialConditionImpl();
+    return propertyInitialCondition;
   }
 
   /**

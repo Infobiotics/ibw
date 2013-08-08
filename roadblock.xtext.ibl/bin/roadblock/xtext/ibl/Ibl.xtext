@@ -123,7 +123,7 @@ VariableQualifier:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS'
+	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM'
 ;
 
 // variable collections
@@ -249,7 +249,15 @@ PropertyCondition:
 		(
 		'WITH PROBABILITY BOUND' ((operator=RelationalOperator probability=REAL) | '?') 
 		)?
-	)?	 
+	)?
+	(
+	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
+	)?
+;
+
+PropertyInitialCondition:
+	{PropertyInitialCondition}
+	variable=VariableAssignmentObject '=' value=Quantity	
 ;
 
 /////////////////

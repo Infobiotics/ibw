@@ -2,6 +2,8 @@
  */
 package roadblock.xtext.ibl.ibl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyCondition#getUpperBounds <em>Upper Bounds</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyCondition#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.PropertyCondition#getInitialConditions <em>Initial Conditions</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,5 +131,21 @@ public interface PropertyCondition extends EObject
    * @generated
    */
   void setProbability(String value);
+
+  /**
+   * Returns the value of the '<em><b>Initial Conditions</b></em>' containment reference list.
+   * The list contents are of type {@link roadblock.xtext.ibl.ibl.PropertyInitialCondition}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Initial Conditions</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Initial Conditions</em>' containment reference list.
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getPropertyCondition_InitialConditions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<PropertyInitialCondition> getInitialConditions();
 
 } // PropertyCondition

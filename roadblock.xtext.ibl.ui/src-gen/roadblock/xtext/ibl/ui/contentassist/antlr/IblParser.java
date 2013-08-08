@@ -115,6 +115,9 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyConditionAccess().getGroup_2(), "rule__PropertyCondition__Group_2__0");
 					put(grammarAccess.getPropertyConditionAccess().getGroup_2_6(), "rule__PropertyCondition__Group_2_6__0");
 					put(grammarAccess.getPropertyConditionAccess().getGroup_2_6_1_0(), "rule__PropertyCondition__Group_2_6_1_0__0");
+					put(grammarAccess.getPropertyConditionAccess().getGroup_3(), "rule__PropertyCondition__Group_3__0");
+					put(grammarAccess.getPropertyConditionAccess().getGroup_3_2(), "rule__PropertyCondition__Group_3_2__0");
+					put(grammarAccess.getPropertyInitialConditionAccess().getGroup(), "rule__PropertyInitialCondition__Group__0");
 					put(grammarAccess.getDecimalAccess().getGroup(), "rule__Decimal__Group__0");
 					put(grammarAccess.getDecimalAccess().getGroup_2(), "rule__Decimal__Group_2__0");
 					put(grammarAccess.getDecimalExpAccess().getGroup(), "rule__DecimalExp__Group__0");
@@ -195,6 +198,10 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyConditionAccess().getUpperBoundsAssignment_2_4(), "rule__PropertyCondition__UpperBoundsAssignment_2_4");
 					put(grammarAccess.getPropertyConditionAccess().getOperatorAssignment_2_6_1_0_0(), "rule__PropertyCondition__OperatorAssignment_2_6_1_0_0");
 					put(grammarAccess.getPropertyConditionAccess().getProbabilityAssignment_2_6_1_0_1(), "rule__PropertyCondition__ProbabilityAssignment_2_6_1_0_1");
+					put(grammarAccess.getPropertyConditionAccess().getInitialConditionsAssignment_3_1(), "rule__PropertyCondition__InitialConditionsAssignment_3_1");
+					put(grammarAccess.getPropertyConditionAccess().getInitialConditionsAssignment_3_2_1(), "rule__PropertyCondition__InitialConditionsAssignment_3_2_1");
+					put(grammarAccess.getPropertyInitialConditionAccess().getVariableAssignment_1(), "rule__PropertyInitialCondition__VariableAssignment_1");
+					put(grammarAccess.getPropertyInitialConditionAccess().getValueAssignment_3(), "rule__PropertyInitialCondition__ValueAssignment_3");
 					put(grammarAccess.getQuantityAccess().getValueAssignment_1(), "rule__Quantity__ValueAssignment_1");
 					put(grammarAccess.getQuantityAccess().getUnitsAssignment_2(), "rule__Quantity__UnitsAssignment_2");
 					put(grammarAccess.getListAccess().getEntriesAssignment_2(), "rule__List__EntriesAssignment_2");

@@ -1027,13 +1027,59 @@ public interface IblPackage extends EPackage
   int PROPERTY_CONDITION__PROBABILITY = 3;
 
   /**
+   * The feature id for the '<em><b>Initial Conditions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CONDITION__INITIAL_CONDITIONS = 4;
+
+  /**
    * The number of structural features of the '<em>Property Condition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_CONDITION_FEATURE_COUNT = 4;
+  int PROPERTY_CONDITION_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyInitialConditionImpl <em>Property Initial Condition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.PropertyInitialConditionImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyInitialCondition()
+   * @generated
+   */
+  int PROPERTY_INITIAL_CONDITION = 25;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_INITIAL_CONDITION__VARIABLE = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_INITIAL_CONDITION__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Property Initial Condition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.QuantityImpl <em>Quantity</em>}' class.
@@ -1043,7 +1089,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getQuantity()
    * @generated
    */
-  int QUANTITY = 25;
+  int QUANTITY = 26;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1080,7 +1126,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getList()
    * @generated
    */
-  int LIST = 26;
+  int LIST = 27;
 
   /**
    * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -1108,7 +1154,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 27;
+  int IMPORT = 28;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -1996,6 +2042,49 @@ public interface IblPackage extends EPackage
   EAttribute getPropertyCondition_Probability();
 
   /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getInitialConditions <em>Initial Conditions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Initial Conditions</em>'.
+   * @see roadblock.xtext.ibl.ibl.PropertyCondition#getInitialConditions()
+   * @see #getPropertyCondition()
+   * @generated
+   */
+  EReference getPropertyCondition_InitialConditions();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Property Initial Condition</em>'.
+   * @see roadblock.xtext.ibl.ibl.PropertyInitialCondition
+   * @generated
+   */
+  EClass getPropertyInitialCondition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyInitialCondition#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Variable</em>'.
+   * @see roadblock.xtext.ibl.ibl.PropertyInitialCondition#getVariable()
+   * @see #getPropertyInitialCondition()
+   * @generated
+   */
+  EReference getPropertyInitialCondition_Variable();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyInitialCondition#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see roadblock.xtext.ibl.ibl.PropertyInitialCondition#getValue()
+   * @see #getPropertyInitialCondition()
+   * @generated
+   */
+  EReference getPropertyInitialCondition_Value();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.Quantity <em>Quantity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2789,6 +2878,40 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute PROPERTY_CONDITION__PROBABILITY = eINSTANCE.getPropertyCondition_Probability();
+
+    /**
+     * The meta object literal for the '<em><b>Initial Conditions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_CONDITION__INITIAL_CONDITIONS = eINSTANCE.getPropertyCondition_InitialConditions();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyInitialConditionImpl <em>Property Initial Condition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.PropertyInitialConditionImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyInitialCondition()
+     * @generated
+     */
+    EClass PROPERTY_INITIAL_CONDITION = eINSTANCE.getPropertyInitialCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_INITIAL_CONDITION__VARIABLE = eINSTANCE.getPropertyInitialCondition_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_INITIAL_CONDITION__VALUE = eINSTANCE.getPropertyInitialCondition_Value();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.QuantityImpl <em>Quantity</em>}' class.

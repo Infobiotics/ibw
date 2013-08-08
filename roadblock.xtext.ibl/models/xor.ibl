@@ -69,14 +69,15 @@ define SYSTEM XORGate(
 	RULE R2 : molecule2 + protein2 <-> molecule2~protein2
 
 	// CHECK that it does work as a XOR gate
-	VERIFY [reporterProtein == 0] WILL EVENTUALLY HOLD GIVEN molecule1 = 0 uM, molecule2 = 0 uM 
-	VERIFY [reporterProtein >  0] WILL EVENTUALLY HOLD GIVEN molecule1 = 0 uM, molecule2 = 1 uM 
-	VERIFY [reporterProtein >  0] WILL EVENTUALLY HOLD GIVEN molecule1 = 1 uM, molecule2 = 0 uM 
-	VERIFY [reporterProtein == 0] WILL EVENTUALLY HOLD GIVEN molecule1 = 1 uM, molecule2 = 1 uM 
+	VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 0 uM 
+	VERIFY [reporterProtein >  0 molecules] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 1 uM 
+	VERIFY [reporterProtein >  0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 0 uM 
+	VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 1 uM 
 }
 
-MOLECULE IPTG = MOLECULE(URI = 'db://...')
-MOLECULE aTc = MOLECULE(URI = 'db://...')
+// ??JT?? why are these defined at the top level, don't they need to be inside a SYSTEM or something?
+//MOLECULE IPTG = MOLECULE(URI = 'db://...')
+//MOLECULE aTc = MOLECULE(URI = 'db://...')
 
 // ??JT?? not sure what the exact use of consumed is in the commented out header below
 //define CELL XOREnabledCell(consumed = [IPTG, aTc]){
@@ -85,10 +86,17 @@ define CELL XOREnabledCell(){
 	observable RIBOSOME ribosome
 	observable RNA rnaP
 
-	SYSTEM system1 = XORGate(			// using the XOR gate with a different reporter than the default one.
-		promoter1 = PROMOTER(URI='db://...'),
-		reporterGene = GENE(URI = 'db://rFP'),
-		reporterProtein = PROTEIN(URI='db://RFP')
+// ??JT?? do we allow variable definitions within variable definitions as in commented out SYSTEM below
+//	SYSTEM system1 = XORGate(			// using the XOR gate with a different reporter than the default one.
+//		promoter1 = PROMOTER(URI='db://...'),
+//		reporterGene = GENE(URI = 'db://rFP'),
+//		reporterProtein = PROTEIN(URI='db://RFP')
+//	)
+// below is how this looks currently
+	PROMOTER promoter1 = PROMOTER(URI='db://...')
+	GENE reporterGene1 = GENE(URI = 'db://rFP')
+	PROTEIN reporterProtein1 = PROTEIN(URI='db://RFP')
+	SYSTEM system1 = XORGate(
+		promoter1 = promoter1,	reporterGene = reporterGene1, reporterProtein = reporterProtein1
 	)
-
 }

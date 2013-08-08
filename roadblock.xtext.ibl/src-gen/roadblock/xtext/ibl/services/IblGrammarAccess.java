@@ -713,13 +713,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cINTEGERKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
 		private final Keyword cRATEKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
 		private final Keyword cPROCESSKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cSYSTEMKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
 		
 		//// variable types
 		//VariableType:
-		//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS";
+		//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
+		//	"SYSTEM";
 		public ParserRule getRule() { return rule; }
 
-		//"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS"
+		//"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
+		//"SYSTEM"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"MOLECULE"
@@ -754,6 +757,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"PROCESS"
 		public Keyword getPROCESSKeyword_10() { return cPROCESSKeyword_10; }
+
+		//"SYSTEM"
+		public Keyword getSYSTEMKeyword_11() { return cSYSTEMKeyword_11; }
 	}
 
 	public class CollectionIDElements extends AbstractParserRuleElementFinder {
@@ -1592,14 +1598,24 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cProbabilityAssignment_2_6_1_0_1 = (Assignment)cGroup_2_6_1_0.eContents().get(1);
 		private final RuleCall cProbabilityREALParserRuleCall_2_6_1_0_1_0 = (RuleCall)cProbabilityAssignment_2_6_1_0_1.eContents().get(0);
 		private final Keyword cQuestionMarkKeyword_2_6_1_1 = (Keyword)cAlternatives_2_6_1.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cGIVENKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cInitialConditionsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cInitialConditionsPropertyInitialConditionParserRuleCall_3_1_0 = (RuleCall)cInitialConditionsAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cInitialConditionsAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final RuleCall cInitialConditionsPropertyInitialConditionParserRuleCall_3_2_1_0 = (RuleCall)cInitialConditionsAssignment_3_2_1.eContents().get(0);
 		
 		//PropertyCondition:
 		//	{PropertyCondition} ("WILL HOLD" | "NEVER HOLDS" | "ALWAYS HOLDS") ("WITHIN TIME BOUND" "[" lowerBound=Quantity ","
-		//	upperBounds=Quantity "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)?;
+		//	upperBounds=Quantity "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)? ("GIVEN"
+		//	initialConditions+=PropertyInitialCondition ("," initialConditions+=PropertyInitialCondition)*)?;
 		public ParserRule getRule() { return rule; }
 
 		//{PropertyCondition} ("WILL HOLD" | "NEVER HOLDS" | "ALWAYS HOLDS") ("WITHIN TIME BOUND" "[" lowerBound=Quantity ","
-		//upperBounds=Quantity "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)?
+		//upperBounds=Quantity "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)? ("GIVEN"
+		//initialConditions+=PropertyInitialCondition ("," initialConditions+=PropertyInitialCondition)*)?
 		public Group getGroup() { return cGroup; }
 
 		//{PropertyCondition}
@@ -1671,6 +1687,66 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"?"
 		public Keyword getQuestionMarkKeyword_2_6_1_1() { return cQuestionMarkKeyword_2_6_1_1; }
+
+		//("GIVEN" initialConditions+=PropertyInitialCondition ("," initialConditions+=PropertyInitialCondition)*)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"GIVEN"
+		public Keyword getGIVENKeyword_3_0() { return cGIVENKeyword_3_0; }
+
+		//initialConditions+=PropertyInitialCondition
+		public Assignment getInitialConditionsAssignment_3_1() { return cInitialConditionsAssignment_3_1; }
+
+		//PropertyInitialCondition
+		public RuleCall getInitialConditionsPropertyInitialConditionParserRuleCall_3_1_0() { return cInitialConditionsPropertyInitialConditionParserRuleCall_3_1_0; }
+
+		//("," initialConditions+=PropertyInitialCondition)*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//","
+		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
+
+		//initialConditions+=PropertyInitialCondition
+		public Assignment getInitialConditionsAssignment_3_2_1() { return cInitialConditionsAssignment_3_2_1; }
+
+		//PropertyInitialCondition
+		public RuleCall getInitialConditionsPropertyInitialConditionParserRuleCall_3_2_1_0() { return cInitialConditionsPropertyInitialConditionParserRuleCall_3_2_1_0; }
+	}
+
+	public class PropertyInitialConditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PropertyInitialCondition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cPropertyInitialConditionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cVariableAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cVariableVariableAssignmentObjectParserRuleCall_1_0 = (RuleCall)cVariableAssignment_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cValueQuantityParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		
+		//PropertyInitialCondition:
+		//	{PropertyInitialCondition} variable=VariableAssignmentObject "=" value=Quantity;
+		public ParserRule getRule() { return rule; }
+
+		//{PropertyInitialCondition} variable=VariableAssignmentObject "=" value=Quantity
+		public Group getGroup() { return cGroup; }
+
+		//{PropertyInitialCondition}
+		public Action getPropertyInitialConditionAction_0() { return cPropertyInitialConditionAction_0; }
+
+		//variable=VariableAssignmentObject
+		public Assignment getVariableAssignment_1() { return cVariableAssignment_1; }
+
+		//VariableAssignmentObject
+		public RuleCall getVariableVariableAssignmentObjectParserRuleCall_1_0() { return cVariableVariableAssignmentObjectParserRuleCall_1_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
+
+		//value=Quantity
+		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
+
+		//Quantity
+		public RuleCall getValueQuantityParserRuleCall_3_0() { return cValueQuantityParserRuleCall_3_0; }
 	}
 
 	public class REALElements extends AbstractParserRuleElementFinder {
@@ -2091,6 +2167,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private PropertyDefinitionElements pPropertyDefinition;
 	private PropertyElements pProperty;
 	private PropertyConditionElements pPropertyCondition;
+	private PropertyInitialConditionElements pPropertyInitialCondition;
 	private REALElements pREAL;
 	private DecimalElements pDecimal;
 	private DecimalExpElements pDecimalExp;
@@ -2322,7 +2399,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// variable types
 	//VariableType:
-	//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS";
+	//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
+	//	"SYSTEM";
 	public VariableTypeElements getVariableTypeAccess() {
 		return (pVariableType != null) ? pVariableType : (pVariableType = new VariableTypeElements());
 	}
@@ -2516,13 +2594,24 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PropertyCondition:
 	//	{PropertyCondition} ("WILL HOLD" | "NEVER HOLDS" | "ALWAYS HOLDS") ("WITHIN TIME BOUND" "[" lowerBound=Quantity ","
-	//	upperBounds=Quantity "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)?;
+	//	upperBounds=Quantity "]" ("WITH PROBABILITY BOUND" (operator=RelationalOperator probability=REAL | "?"))?)? ("GIVEN"
+	//	initialConditions+=PropertyInitialCondition ("," initialConditions+=PropertyInitialCondition)*)?;
 	public PropertyConditionElements getPropertyConditionAccess() {
 		return (pPropertyCondition != null) ? pPropertyCondition : (pPropertyCondition = new PropertyConditionElements());
 	}
 	
 	public ParserRule getPropertyConditionRule() {
 		return getPropertyConditionAccess().getRule();
+	}
+
+	//PropertyInitialCondition:
+	//	{PropertyInitialCondition} variable=VariableAssignmentObject "=" value=Quantity;
+	public PropertyInitialConditionElements getPropertyInitialConditionAccess() {
+		return (pPropertyInitialCondition != null) ? pPropertyInitialCondition : (pPropertyInitialCondition = new PropertyInitialConditionElements());
+	}
+	
+	public ParserRule getPropertyInitialConditionRule() {
+		return getPropertyInitialConditionAccess().getRule();
 	}
 
 	///////////////////

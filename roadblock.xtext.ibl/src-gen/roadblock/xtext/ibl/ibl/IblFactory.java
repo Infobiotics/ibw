@@ -248,6 +248,15 @@ public interface IblFactory extends EFactory
   PropertyCondition createPropertyCondition();
 
   /**
+   * Returns a new object of class '<em>Property Initial Condition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Initial Condition</em>'.
+   * @generated
+   */
+  PropertyInitialCondition createPropertyInitialCondition();
+
+  /**
    * Returns a new object of class '<em>Quantity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

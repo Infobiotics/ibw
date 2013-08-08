@@ -105,6 +105,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/upperBounds"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/operator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/probability"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/initialConditions"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//PropertyInitialCondition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyInitialCondition/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyInitialCondition/value"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//Quantity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/value"/>

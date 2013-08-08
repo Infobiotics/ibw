@@ -2,8 +2,12 @@
  */
 package roadblock.xtext.ibl.ibl.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -11,8 +15,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.PropertyCondition;
+import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
 
 /**
@@ -26,6 +34,7 @@ import roadblock.xtext.ibl.ibl.Quantity;
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl#getUpperBounds <em>Upper Bounds</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl#getProbability <em>Probability</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl#getInitialConditions <em>Initial Conditions</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +101,16 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected String probability = PROBABILITY_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getInitialConditions() <em>Initial Conditions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInitialConditions()
+   * @generated
+   * @ordered
+   */
+  protected EList<PropertyInitialCondition> initialConditions;
 
   /**
    * <!-- begin-user-doc -->
@@ -261,6 +280,20 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<PropertyInitialCondition> getInitialConditions()
+  {
+    if (initialConditions == null)
+    {
+      initialConditions = new EObjectContainmentEList<PropertyInitialCondition>(PropertyInitialCondition.class, this, IblPackage.PROPERTY_CONDITION__INITIAL_CONDITIONS);
+    }
+    return initialConditions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -270,6 +303,8 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
         return basicSetLowerBound(null, msgs);
       case IblPackage.PROPERTY_CONDITION__UPPER_BOUNDS:
         return basicSetUpperBounds(null, msgs);
+      case IblPackage.PROPERTY_CONDITION__INITIAL_CONDITIONS:
+        return ((InternalEList<?>)getInitialConditions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -292,6 +327,8 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
         return getOperator();
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
         return getProbability();
+      case IblPackage.PROPERTY_CONDITION__INITIAL_CONDITIONS:
+        return getInitialConditions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -301,6 +338,7 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -317,6 +355,10 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
         return;
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
         setProbability((String)newValue);
+        return;
+      case IblPackage.PROPERTY_CONDITION__INITIAL_CONDITIONS:
+        getInitialConditions().clear();
+        getInitialConditions().addAll((Collection<? extends PropertyInitialCondition>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -344,6 +386,9 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
         setProbability(PROBABILITY_EDEFAULT);
         return;
+      case IblPackage.PROPERTY_CONDITION__INITIAL_CONDITIONS:
+        getInitialConditions().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -366,6 +411,8 @@ public class PropertyConditionImpl extends MinimalEObjectImpl.Container implemen
         return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
       case IblPackage.PROPERTY_CONDITION__PROBABILITY:
         return PROBABILITY_EDEFAULT == null ? probability != null : !PROBABILITY_EDEFAULT.equals(probability);
+      case IblPackage.PROPERTY_CONDITION__INITIAL_CONDITIONS:
+        return initialConditions != null && !initialConditions.isEmpty();
     }
     return super.eIsSet(featureID);
   }
