@@ -57,10 +57,17 @@
     <genClasses ecoreClass="Ibl.ecore#//VariableExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableExpression/members"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//VariableExpressionObject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableExpressionObject/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableExpressionObject/quantity"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableExpressionObject/string"/>
+    <genClasses ecoreClass="Ibl.ecore#//VariableExpressionObject"/>
+    <genClasses ecoreClass="Ibl.ecore#//AtomicVariableExpressionObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//AtomicVariableExpressionObject/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//AtomicVariableExpressionObject/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//AtomicVariableExpressionObject/complex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//AtomicVariableExpressionObject/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//AtomicVariableExpressionObject/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//AtomicVariableExpressionObject/string"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//CompoundVariableExpressionObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//CompoundVariableExpressionObject/list"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//RuleDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RuleDefinition/name"/>
@@ -102,6 +109,9 @@
     <genClasses ecoreClass="Ibl.ecore#//Quantity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/units"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//List">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//List/entries"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Import/importedNamespace"/>

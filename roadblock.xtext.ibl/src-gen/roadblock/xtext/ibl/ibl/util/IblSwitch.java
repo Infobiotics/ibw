@@ -127,7 +127,6 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableComplex variableComplex = (VariableComplex)theEObject;
         T result = caseVariableComplex(variableComplex);
-        if (result == null) result = caseVariableExpressionObject(variableComplex);
         if (result == null) result = caseRuleObject(variableComplex);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -137,7 +136,6 @@ public class IblSwitch<T> extends Switch<T>
         VariableAttribute variableAttribute = (VariableAttribute)theEObject;
         T result = caseVariableAttribute(variableAttribute);
         if (result == null) result = caseVariableAssignmentObject(variableAttribute);
-        if (result == null) result = caseVariableExpressionObject(variableAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -183,6 +181,22 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableExpressionObject variableExpressionObject = (VariableExpressionObject)theEObject;
         T result = caseVariableExpressionObject(variableExpressionObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.ATOMIC_VARIABLE_EXPRESSION_OBJECT:
+      {
+        AtomicVariableExpressionObject atomicVariableExpressionObject = (AtomicVariableExpressionObject)theEObject;
+        T result = caseAtomicVariableExpressionObject(atomicVariableExpressionObject);
+        if (result == null) result = caseVariableExpressionObject(atomicVariableExpressionObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.COMPOUND_VARIABLE_EXPRESSION_OBJECT:
+      {
+        CompoundVariableExpressionObject compoundVariableExpressionObject = (CompoundVariableExpressionObject)theEObject;
+        T result = caseCompoundVariableExpressionObject(compoundVariableExpressionObject);
+        if (result == null) result = caseVariableExpressionObject(compoundVariableExpressionObject);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -251,6 +265,13 @@ public class IblSwitch<T> extends Switch<T>
       {
         Quantity quantity = (Quantity)theEObject;
         T result = caseQuantity(quantity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.LIST:
+      {
+        List list = (List)theEObject;
+        T result = caseList(list);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -508,6 +529,38 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Atomic Variable Expression Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atomic Variable Expression Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtomicVariableExpressionObject(AtomicVariableExpressionObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Compound Variable Expression Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Compound Variable Expression Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompoundVariableExpressionObject(CompoundVariableExpressionObject object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Rule Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -647,6 +700,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseQuantity(Quantity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseList(List object)
   {
     return null;
   }

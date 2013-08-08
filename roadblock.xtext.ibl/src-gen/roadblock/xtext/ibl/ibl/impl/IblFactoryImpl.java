@@ -79,6 +79,8 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.VARIABLE_ASSIGNMENT_OBJECT: return createVariableAssignmentObject();
       case IblPackage.VARIABLE_EXPRESSION: return createVariableExpression();
       case IblPackage.VARIABLE_EXPRESSION_OBJECT: return createVariableExpressionObject();
+      case IblPackage.ATOMIC_VARIABLE_EXPRESSION_OBJECT: return createAtomicVariableExpressionObject();
+      case IblPackage.COMPOUND_VARIABLE_EXPRESSION_OBJECT: return createCompoundVariableExpressionObject();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
       case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
@@ -88,6 +90,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.PROPERTY: return createProperty();
       case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
       case IblPackage.QUANTITY: return createQuantity();
+      case IblPackage.LIST: return createList();
       case IblPackage.IMPORT: return createImport();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -264,6 +267,28 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public AtomicVariableExpressionObject createAtomicVariableExpressionObject()
+  {
+    AtomicVariableExpressionObjectImpl atomicVariableExpressionObject = new AtomicVariableExpressionObjectImpl();
+    return atomicVariableExpressionObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompoundVariableExpressionObject createCompoundVariableExpressionObject()
+  {
+    CompoundVariableExpressionObjectImpl compoundVariableExpressionObject = new CompoundVariableExpressionObjectImpl();
+    return compoundVariableExpressionObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public RuleDefinition createRuleDefinition()
   {
     RuleDefinitionImpl ruleDefinition = new RuleDefinitionImpl();
@@ -356,6 +381,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     QuantityImpl quantity = new QuantityImpl();
     return quantity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public List createList()
+  {
+    ListImpl list = new ListImpl();
+    return list;
   }
 
   /**

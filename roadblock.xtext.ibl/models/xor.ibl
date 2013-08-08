@@ -23,21 +23,36 @@ define PROCESS doublyRegulatedProteinExpression(
 
 } USES RIBOSOME ribosome, RNA rnaP
 
-define SYSTEM XORGate(				
+define SYSTEM XORGate(		
+//	 ??JT?? why are there variable definitions e.g. "GENE gene1 = GENE(URI = 'db://lacl')"
+//	 in the original commented out parameter list - default values? 		
+//	PROMOTER promoter1, 
+//	GENE gene1 = GENE(URI = 'db://lacl'),
+//	PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
+//	GENE gene2 = GENE(URI = 'db://tetR'),
+//	PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
+//	MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
+//	MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
+//	PROMOTER promoter2,
+//	PROMOTER promoter3,
+//	GENE reporterGene = GENE(URI = 'bd://gFP'),
+//	PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
 	PROMOTER promoter1, 
-	GENE gene1 = GENE(URI = 'db://lacl'),
-	PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
-	GENE gene2 = GENE(URI = 'db://tetR'),
-	PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
-	MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
-	MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
+	GENE gene1,
+	PROTEIN protein1,
+	GENE gene2,
+	PROTEIN protein2,
+	MOLECULE molecule1,
+	MOLECULE molecule2,
 	PROMOTER promoter2,
 	PROMOTER promoter3,
-	GENE reporterGene = GENE(URI = 'bd://gFP'),
-	PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
+	GENE reporterGene,
+	PROTEIN reporterProtein){
 	
 	DEVICE D1 = DEVICE(promoter1,gene1,gene2)(produced = [protein1, protein2]){
-		PROCESS P1 = constitutivePromoterTwoGenes(promoter1,gene1,protein1,gene2,protein2)
+		PROCESS P1 = constitutivePromoterTwoGenes(
+			promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
+		)
 	}
 	
 	DEVICE D2 = DEVICE(promoter2,reporterGene)(consumed = [protein1,protein2], produced = reporterProtein){
@@ -63,12 +78,14 @@ define SYSTEM XORGate(
 MOLECULE IPTG = MOLECULE(URI = 'db://...')
 MOLECULE aTc = MOLECULE(URI = 'db://...')
 
-define CELL XOREnabledCell(consumed = [IPTG, aTc]){
+// ??JT?? not sure what the exact use of consumed is in the commented out header below
+//define CELL XOREnabledCell(consumed = [IPTG, aTc]){
+define CELL XOREnabledCell(){
 
 	observable RIBOSOME ribosome
 	observable RNA rnaP
 
-	SYSTEM XORGate(			// using the XOR gate with a different reporter than the default one.
+	SYSTEM system1 = XORGate(			// using the XOR gate with a different reporter than the default one.
 		promoter1 = PROMOTER(URI='db://...'),
 		reporterGene = GENE(URI = 'db://rFP'),
 		reporterProtein = PROTEIN(URI='db://RFP')

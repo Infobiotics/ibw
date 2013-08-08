@@ -29,7 +29,7 @@ define CELL SASensorCell(MOLECULE SA:required) {
 	observable RIBOSOME ribosome
 	observable RNA rnaP
 
-// ??JT - how do we specify chassis types 
+// ??JT?? - how do we specify chassis types 
 //	CHASSIS chassis = CHASSIS(organism = ecoli)
 
 	PROMOTER PnahR = PROMOTER(URI = "biobricks://...")

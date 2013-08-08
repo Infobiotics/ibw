@@ -886,11 +886,34 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	public class VariableExpressionObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableExpressionObject");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cAtomicVariableExpressionObjectParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCompoundVariableExpressionObjectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//VariableExpressionObject:
+		//	AtomicVariableExpressionObject | CompoundVariableExpressionObject;
+		public ParserRule getRule() { return rule; }
+
+		//AtomicVariableExpressionObject | CompoundVariableExpressionObject
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//AtomicVariableExpressionObject
+		public RuleCall getAtomicVariableExpressionObjectParserRuleCall_0() { return cAtomicVariableExpressionObjectParserRuleCall_0; }
+
+		//CompoundVariableExpressionObject
+		public RuleCall getCompoundVariableExpressionObjectParserRuleCall_1() { return cCompoundVariableExpressionObjectParserRuleCall_1; }
+	}
+
+	public class AtomicVariableExpressionObjectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AtomicVariableExpressionObject");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cVariableExpressionObjectAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final RuleCall cVariableNameParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final RuleCall cVariableAttributeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableComplexParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Action cAtomicVariableExpressionObjectAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cVariableAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cVariableVariableNameParserRuleCall_0_1_0 = (RuleCall)cVariableAssignment_0_1.eContents().get(0);
+		private final Assignment cAttributeAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cAttributeVariableAttributeParserRuleCall_1_0 = (RuleCall)cAttributeAssignment_1.eContents().get(0);
+		private final Assignment cComplexAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cComplexVariableComplexParserRuleCall_2_0 = (RuleCall)cComplexAssignment_2.eContents().get(0);
 		private final Assignment cValueAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
 		private final RuleCall cValueREALParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		private final Assignment cQuantityAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
@@ -898,29 +921,38 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cStringAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
 		private final RuleCall cStringSTRINGTerminalRuleCall_5_0 = (RuleCall)cStringAssignment_5.eContents().get(0);
 		
-		//VariableExpressionObject:
-		//	{VariableExpressionObject} VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity |
-		//	string=STRING;
+		//AtomicVariableExpressionObject:
+		//	{AtomicVariableExpressionObject} variable=VariableName | attribute=VariableAttribute | complex=VariableComplex |
+		//	value=REAL | quantity=Quantity | string=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//{VariableExpressionObject} VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity |
-		//string=STRING
+		//{AtomicVariableExpressionObject} variable=VariableName | attribute=VariableAttribute | complex=VariableComplex |
+		//value=REAL | quantity=Quantity | string=STRING
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//{VariableExpressionObject} VariableName
+		//{AtomicVariableExpressionObject} variable=VariableName
 		public Group getGroup_0() { return cGroup_0; }
 
-		//{VariableExpressionObject}
-		public Action getVariableExpressionObjectAction_0_0() { return cVariableExpressionObjectAction_0_0; }
+		//{AtomicVariableExpressionObject}
+		public Action getAtomicVariableExpressionObjectAction_0_0() { return cAtomicVariableExpressionObjectAction_0_0; }
+
+		//variable=VariableName
+		public Assignment getVariableAssignment_0_1() { return cVariableAssignment_0_1; }
 
 		//VariableName
-		public RuleCall getVariableNameParserRuleCall_0_1() { return cVariableNameParserRuleCall_0_1; }
+		public RuleCall getVariableVariableNameParserRuleCall_0_1_0() { return cVariableVariableNameParserRuleCall_0_1_0; }
+
+		//attribute=VariableAttribute
+		public Assignment getAttributeAssignment_1() { return cAttributeAssignment_1; }
 
 		//VariableAttribute
-		public RuleCall getVariableAttributeParserRuleCall_1() { return cVariableAttributeParserRuleCall_1; }
+		public RuleCall getAttributeVariableAttributeParserRuleCall_1_0() { return cAttributeVariableAttributeParserRuleCall_1_0; }
+
+		//complex=VariableComplex
+		public Assignment getComplexAssignment_2() { return cComplexAssignment_2; }
 
 		//VariableComplex
-		public RuleCall getVariableComplexParserRuleCall_2() { return cVariableComplexParserRuleCall_2; }
+		public RuleCall getComplexVariableComplexParserRuleCall_2_0() { return cComplexVariableComplexParserRuleCall_2_0; }
 
 		//value=REAL
 		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
@@ -939,6 +971,30 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//STRING
 		public RuleCall getStringSTRINGTerminalRuleCall_5_0() { return cStringSTRINGTerminalRuleCall_5_0; }
+	}
+
+	public class CompoundVariableExpressionObjectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CompoundVariableExpressionObject");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCompoundVariableExpressionObjectAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cListAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cListListParserRuleCall_1_0 = (RuleCall)cListAssignment_1.eContents().get(0);
+		
+		//CompoundVariableExpressionObject:
+		//	{CompoundVariableExpressionObject} list=List;
+		public ParserRule getRule() { return rule; }
+
+		//{CompoundVariableExpressionObject} list=List
+		public Group getGroup() { return cGroup; }
+
+		//{CompoundVariableExpressionObject}
+		public Action getCompoundVariableExpressionObjectAction_0() { return cCompoundVariableExpressionObjectAction_0; }
+
+		//list=List
+		public Assignment getListAssignment_1() { return cListAssignment_1; }
+
+		//List
+		public RuleCall getListListParserRuleCall_1_0() { return cListListParserRuleCall_1_0; }
 	}
 
 	public class VariableExpressionOperatorElements extends AbstractParserRuleElementFinder {
@@ -1475,27 +1531,27 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cPropertyAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLhsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cLhsIDTerminalRuleCall_1_0 = (RuleCall)cLhsAssignment_1.eContents().get(0);
+		private final RuleCall cLhsVariableNameParserRuleCall_1_0 = (RuleCall)cLhsAssignment_1.eContents().get(0);
 		private final Assignment cOperatorAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cOperatorRelationalOperatorParserRuleCall_2_0 = (RuleCall)cOperatorAssignment_2.eContents().get(0);
 		private final Assignment cRhsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cRhsQuantityParserRuleCall_3_0 = (RuleCall)cRhsAssignment_3.eContents().get(0);
 		
 		//Property:
-		//	{Property} lhs=ID operator=RelationalOperator rhs=Quantity;
+		//	{Property} lhs=VariableName operator=RelationalOperator rhs=Quantity;
 		public ParserRule getRule() { return rule; }
 
-		//{Property} lhs=ID operator=RelationalOperator rhs=Quantity
+		//{Property} lhs=VariableName operator=RelationalOperator rhs=Quantity
 		public Group getGroup() { return cGroup; }
 
 		//{Property}
 		public Action getPropertyAction_0() { return cPropertyAction_0; }
 
-		//lhs=ID
+		//lhs=VariableName
 		public Assignment getLhsAssignment_1() { return cLhsAssignment_1; }
 
-		//ID
-		public RuleCall getLhsIDTerminalRuleCall_1_0() { return cLhsIDTerminalRuleCall_1_0; }
+		//VariableName
+		public RuleCall getLhsVariableNameParserRuleCall_1_0() { return cLhsVariableNameParserRuleCall_1_0; }
 
 		//operator=RelationalOperator
 		public Assignment getOperatorAssignment_2() { return cOperatorAssignment_2; }
@@ -1952,6 +2008,54 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
+
+	public class ListElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "List");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cListAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cEntriesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEntriesAtomicVariableExpressionObjectParserRuleCall_2_0 = (RuleCall)cEntriesAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cEntriesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cEntriesAtomicVariableExpressionObjectParserRuleCall_3_1_0 = (RuleCall)cEntriesAssignment_3_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//List:
+		//	{List} "[" entries+=AtomicVariableExpressionObject ("," entries+=AtomicVariableExpressionObject)* "]";
+		public ParserRule getRule() { return rule; }
+
+		//{List} "[" entries+=AtomicVariableExpressionObject ("," entries+=AtomicVariableExpressionObject)* "]"
+		public Group getGroup() { return cGroup; }
+
+		//{List}
+		public Action getListAction_0() { return cListAction_0; }
+
+		//"["
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
+
+		//entries+=AtomicVariableExpressionObject
+		public Assignment getEntriesAssignment_2() { return cEntriesAssignment_2; }
+
+		//AtomicVariableExpressionObject
+		public RuleCall getEntriesAtomicVariableExpressionObjectParserRuleCall_2_0() { return cEntriesAtomicVariableExpressionObjectParserRuleCall_2_0; }
+
+		//("," entries+=AtomicVariableExpressionObject)*
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//entries+=AtomicVariableExpressionObject
+		public Assignment getEntriesAssignment_3_1() { return cEntriesAssignment_3_1; }
+
+		//AtomicVariableExpressionObject
+		public RuleCall getEntriesAtomicVariableExpressionObjectParserRuleCall_3_1_0() { return cEntriesAtomicVariableExpressionObjectParserRuleCall_3_1_0; }
+
+		//"]"
+		public Keyword getRightSquareBracketKeyword_4() { return cRightSquareBracketKeyword_4; }
+	}
 	
 	
 	private ModelElements pModel;
@@ -1975,6 +2079,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private VariableAssignmentObjectElements pVariableAssignmentObject;
 	private VariableExpressionElements pVariableExpression;
 	private VariableExpressionObjectElements pVariableExpressionObject;
+	private AtomicVariableExpressionObjectElements pAtomicVariableExpressionObject;
+	private CompoundVariableExpressionObjectElements pCompoundVariableExpressionObject;
 	private VariableExpressionOperatorElements pVariableExpressionOperator;
 	private RuleDefinitionElements pRuleDefinition;
 	private RuleObjectElements pRuleObject;
@@ -1994,6 +2100,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private BooleanOperatorElements pBooleanOperator;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private QualifiedNameElements pQualifiedName;
+	private ListElements pList;
 	
 	private final Grammar grammar;
 
@@ -2268,14 +2375,34 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//VariableExpressionObject:
-	//	{VariableExpressionObject} VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity |
-	//	string=STRING;
+	//	AtomicVariableExpressionObject | CompoundVariableExpressionObject;
 	public VariableExpressionObjectElements getVariableExpressionObjectAccess() {
 		return (pVariableExpressionObject != null) ? pVariableExpressionObject : (pVariableExpressionObject = new VariableExpressionObjectElements());
 	}
 	
 	public ParserRule getVariableExpressionObjectRule() {
 		return getVariableExpressionObjectAccess().getRule();
+	}
+
+	//AtomicVariableExpressionObject:
+	//	{AtomicVariableExpressionObject} variable=VariableName | attribute=VariableAttribute | complex=VariableComplex |
+	//	value=REAL | quantity=Quantity | string=STRING;
+	public AtomicVariableExpressionObjectElements getAtomicVariableExpressionObjectAccess() {
+		return (pAtomicVariableExpressionObject != null) ? pAtomicVariableExpressionObject : (pAtomicVariableExpressionObject = new AtomicVariableExpressionObjectElements());
+	}
+	
+	public ParserRule getAtomicVariableExpressionObjectRule() {
+		return getAtomicVariableExpressionObjectAccess().getRule();
+	}
+
+	//CompoundVariableExpressionObject:
+	//	{CompoundVariableExpressionObject} list=List;
+	public CompoundVariableExpressionObjectElements getCompoundVariableExpressionObjectAccess() {
+		return (pCompoundVariableExpressionObject != null) ? pCompoundVariableExpressionObject : (pCompoundVariableExpressionObject = new CompoundVariableExpressionObjectElements());
+	}
+	
+	public ParserRule getCompoundVariableExpressionObjectRule() {
+		return getCompoundVariableExpressionObjectAccess().getRule();
 	}
 
 	//VariableExpressionOperator:
@@ -2378,7 +2505,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	{Property} lhs=ID operator=RelationalOperator rhs=Quantity;
+	//	{Property} lhs=VariableName operator=RelationalOperator rhs=Quantity;
 	public PropertyElements getPropertyAccess() {
 		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
 	}
@@ -2494,6 +2621,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
+	}
+
+	//List:
+	//	{List} "[" entries+=AtomicVariableExpressionObject ("," entries+=AtomicVariableExpressionObject)* "]";
+	public ListElements getListAccess() {
+		return (pList != null) ? pList : (pList = new ListElements());
+	}
+	
+	public ParserRule getListRule() {
+		return getListAccess().getRule();
 	}
 
 	//terminal ID:

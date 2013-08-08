@@ -150,6 +150,16 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createVariableExpressionObjectAdapter();
       }
       @Override
+      public Adapter caseAtomicVariableExpressionObject(AtomicVariableExpressionObject object)
+      {
+        return createAtomicVariableExpressionObjectAdapter();
+      }
+      @Override
+      public Adapter caseCompoundVariableExpressionObject(CompoundVariableExpressionObject object)
+      {
+        return createCompoundVariableExpressionObjectAdapter();
+      }
+      @Override
       public Adapter caseRuleDefinition(RuleDefinition object)
       {
         return createRuleDefinitionAdapter();
@@ -193,6 +203,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseQuantity(Quantity object)
       {
         return createQuantityAdapter();
+      }
+      @Override
+      public Adapter caseList(List object)
+      {
+        return createListAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -447,6 +462,36 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject <em>Atomic Variable Expression Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject
+   * @generated
+   */
+  public Adapter createAtomicVariableExpressionObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject <em>Compound Variable Expression Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject
+   * @generated
+   */
+  public Adapter createCompoundVariableExpressionObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RuleDefinition <em>Rule Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -577,6 +622,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQuantityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.List <em>List</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.List
+   * @generated
+   */
+  public Adapter createListAdapter()
   {
     return null;
   }

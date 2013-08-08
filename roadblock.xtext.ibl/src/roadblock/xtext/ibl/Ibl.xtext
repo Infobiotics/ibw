@@ -148,8 +148,17 @@ VariableExpression:
 ;
 
 VariableExpressionObject:
-	{VariableExpressionObject}
-	VariableName | VariableAttribute | VariableComplex | value=REAL | quantity=Quantity | string=STRING
+	AtomicVariableExpressionObject | CompoundVariableExpressionObject
+;
+
+AtomicVariableExpressionObject:
+	{AtomicVariableExpressionObject}
+	variable=VariableName | attribute=VariableAttribute | complex=VariableComplex | value=REAL | quantity=Quantity | string=STRING
+;
+
+CompoundVariableExpressionObject:
+	{CompoundVariableExpressionObject}
+	list=List
 ;
 
 VariableExpressionOperator:
@@ -286,4 +295,9 @@ QualifiedNameWithWildcard:
 
 QualifiedName:
 	ID ('.' ID)*
+;
+
+List:
+	{List}
+	'[' entries+=AtomicVariableExpressionObject (',' entries+=AtomicVariableExpressionObject)* ']'
 ;

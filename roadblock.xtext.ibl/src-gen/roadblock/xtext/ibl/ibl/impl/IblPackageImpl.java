@@ -10,6 +10,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
+import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
 import roadblock.xtext.ibl.ibl.FunctionBodyMember;
@@ -20,6 +22,7 @@ import roadblock.xtext.ibl.ibl.IblFactory;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.ImportStatement;
+import roadblock.xtext.ibl.ibl.List;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
@@ -155,6 +158,20 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass atomicVariableExpressionObjectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compoundVariableExpressionObjectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass ruleDefinitionEClass = null;
 
   /**
@@ -212,6 +229,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass quantityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass listEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -698,9 +722,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariableExpressionObject_Value()
+  public EClass getAtomicVariableExpressionObject()
   {
-    return (EAttribute)variableExpressionObjectEClass.getEStructuralFeatures().get(0);
+    return atomicVariableExpressionObjectEClass;
   }
 
   /**
@@ -708,9 +732,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableExpressionObject_Quantity()
+  public EAttribute getAtomicVariableExpressionObject_Variable()
   {
-    return (EReference)variableExpressionObjectEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)atomicVariableExpressionObjectEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -718,9 +742,69 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariableExpressionObject_String()
+  public EReference getAtomicVariableExpressionObject_Attribute()
   {
-    return (EAttribute)variableExpressionObjectEClass.getEStructuralFeatures().get(2);
+    return (EReference)atomicVariableExpressionObjectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAtomicVariableExpressionObject_Complex()
+  {
+    return (EReference)atomicVariableExpressionObjectEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAtomicVariableExpressionObject_Value()
+  {
+    return (EAttribute)atomicVariableExpressionObjectEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAtomicVariableExpressionObject_Quantity()
+  {
+    return (EReference)atomicVariableExpressionObjectEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAtomicVariableExpressionObject_String()
+  {
+    return (EAttribute)atomicVariableExpressionObjectEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCompoundVariableExpressionObject()
+  {
+    return compoundVariableExpressionObjectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCompoundVariableExpressionObject_List()
+  {
+    return (EReference)compoundVariableExpressionObjectEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1068,6 +1152,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getList()
+  {
+    return listEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getList_Entries()
+  {
+    return (EReference)listEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getImport()
   {
     return importEClass;
@@ -1168,9 +1272,17 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEReference(variableExpressionEClass, VARIABLE_EXPRESSION__MEMBERS);
 
     variableExpressionObjectEClass = createEClass(VARIABLE_EXPRESSION_OBJECT);
-    createEAttribute(variableExpressionObjectEClass, VARIABLE_EXPRESSION_OBJECT__VALUE);
-    createEReference(variableExpressionObjectEClass, VARIABLE_EXPRESSION_OBJECT__QUANTITY);
-    createEAttribute(variableExpressionObjectEClass, VARIABLE_EXPRESSION_OBJECT__STRING);
+
+    atomicVariableExpressionObjectEClass = createEClass(ATOMIC_VARIABLE_EXPRESSION_OBJECT);
+    createEAttribute(atomicVariableExpressionObjectEClass, ATOMIC_VARIABLE_EXPRESSION_OBJECT__VARIABLE);
+    createEReference(atomicVariableExpressionObjectEClass, ATOMIC_VARIABLE_EXPRESSION_OBJECT__ATTRIBUTE);
+    createEReference(atomicVariableExpressionObjectEClass, ATOMIC_VARIABLE_EXPRESSION_OBJECT__COMPLEX);
+    createEAttribute(atomicVariableExpressionObjectEClass, ATOMIC_VARIABLE_EXPRESSION_OBJECT__VALUE);
+    createEReference(atomicVariableExpressionObjectEClass, ATOMIC_VARIABLE_EXPRESSION_OBJECT__QUANTITY);
+    createEAttribute(atomicVariableExpressionObjectEClass, ATOMIC_VARIABLE_EXPRESSION_OBJECT__STRING);
+
+    compoundVariableExpressionObjectEClass = createEClass(COMPOUND_VARIABLE_EXPRESSION_OBJECT);
+    createEReference(compoundVariableExpressionObjectEClass, COMPOUND_VARIABLE_EXPRESSION_OBJECT__LIST);
 
     ruleDefinitionEClass = createEClass(RULE_DEFINITION);
     createEAttribute(ruleDefinitionEClass, RULE_DEFINITION__NAME);
@@ -1215,6 +1327,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(quantityEClass, QUANTITY__VALUE);
     createEAttribute(quantityEClass, QUANTITY__UNITS);
 
+    listEClass = createEClass(LIST);
+    createEReference(listEClass, LIST__ENTRIES);
+
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
   }
@@ -1250,13 +1365,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     importStatementEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    variableComplexEClass.getESuperTypes().add(this.getVariableExpressionObject());
     variableComplexEClass.getESuperTypes().add(this.getRuleObject());
     variableAttributeEClass.getESuperTypes().add(this.getVariableAssignmentObject());
-    variableAttributeEClass.getESuperTypes().add(this.getVariableExpressionObject());
     variableDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     variableDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
     variableAssignmentEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    atomicVariableExpressionObjectEClass.getESuperTypes().add(this.getVariableExpressionObject());
+    compoundVariableExpressionObjectEClass.getESuperTypes().add(this.getVariableExpressionObject());
     ruleDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     deviceDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     atgcDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
@@ -1320,9 +1435,17 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEReference(getVariableExpression_Members(), this.getVariableExpressionObject(), null, "members", null, 0, -1, VariableExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableExpressionObjectEClass, VariableExpressionObject.class, "VariableExpressionObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableExpressionObject_Value(), ecorePackage.getEString(), "value", null, 0, 1, VariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableExpressionObject_Quantity(), this.getQuantity(), null, "quantity", null, 0, 1, VariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableExpressionObject_String(), ecorePackage.getEString(), "string", null, 0, 1, VariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(atomicVariableExpressionObjectEClass, AtomicVariableExpressionObject.class, "AtomicVariableExpressionObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAtomicVariableExpressionObject_Variable(), ecorePackage.getEString(), "variable", null, 0, 1, AtomicVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtomicVariableExpressionObject_Attribute(), this.getVariableAttribute(), null, "attribute", null, 0, 1, AtomicVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtomicVariableExpressionObject_Complex(), this.getVariableComplex(), null, "complex", null, 0, 1, AtomicVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAtomicVariableExpressionObject_Value(), ecorePackage.getEString(), "value", null, 0, 1, AtomicVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAtomicVariableExpressionObject_Quantity(), this.getQuantity(), null, "quantity", null, 0, 1, AtomicVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAtomicVariableExpressionObject_String(), ecorePackage.getEString(), "string", null, 0, 1, AtomicVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(compoundVariableExpressionObjectEClass, CompoundVariableExpressionObject.class, "CompoundVariableExpressionObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCompoundVariableExpressionObject_List(), this.getList(), null, "list", null, 0, 1, CompoundVariableExpressionObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleDefinitionEClass, RuleDefinition.class, "RuleDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRuleDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, RuleDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1366,6 +1489,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(quantityEClass, Quantity.class, "Quantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getQuantity_Value(), ecorePackage.getEString(), "value", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuantity_Units(), ecorePackage.getEString(), "units", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getList_Entries(), this.getAtomicVariableExpressionObject(), null, "entries", null, 0, -1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

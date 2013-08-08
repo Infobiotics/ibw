@@ -158,6 +158,24 @@ public interface IblFactory extends EFactory
   VariableExpressionObject createVariableExpressionObject();
 
   /**
+   * Returns a new object of class '<em>Atomic Variable Expression Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atomic Variable Expression Object</em>'.
+   * @generated
+   */
+  AtomicVariableExpressionObject createAtomicVariableExpressionObject();
+
+  /**
+   * Returns a new object of class '<em>Compound Variable Expression Object</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Compound Variable Expression Object</em>'.
+   * @generated
+   */
+  CompoundVariableExpressionObject createCompoundVariableExpressionObject();
+
+  /**
    * Returns a new object of class '<em>Rule Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -237,6 +255,15 @@ public interface IblFactory extends EFactory
    * @generated
    */
   Quantity createQuantity();
+
+  /**
+   * Returns a new object of class '<em>List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>List</em>'.
+   * @generated
+   */
+  List createList();
 
   /**
    * Returns a new object of class '<em>Import</em>'.

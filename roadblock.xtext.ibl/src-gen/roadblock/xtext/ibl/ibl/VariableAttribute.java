@@ -20,7 +20,7 @@ package roadblock.xtext.ibl.ibl;
  * @model
  * @generated
  */
-public interface VariableAttribute extends VariableAssignmentObject, VariableExpressionObject
+public interface VariableAttribute extends VariableAssignmentObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
