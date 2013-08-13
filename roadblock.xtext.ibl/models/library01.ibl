@@ -8,34 +8,51 @@
 // processes //
 ///////////////
 
-define PROCESS ConstitutiveProteinExpression (
+define ConstitutiveProteinExpression typeof PROCESS (
 	PROMOTER promoter:required,
 	GENE gene1:required,
 	PROTEIN protein1:returned,
-	RATE rates:optional
+	HASH rates:optional
 ) 
 {
-	RULE R1 : promoter <-> promoter + gene1~rnaP
-	R1.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
-	R1.reverseRate = rates.unbindingRate
+	RNA mrna1
+	
+	RULE promoterBinding : promoter + rnaP <-> promoter~rnaP	
+	promoterBinding.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+	promoterBinding.reverseRate = promoter.unbindingRate | rates.unbindingRate
 
-	RULE R2 : gene1~rnaP -> mrna1
-	R2.rate = rates.transcriptionRate
+	RULE transcription : promoter~rnaP -> promoter~rnaP + mrna1
+	transcription.forwardRate = rates.transcriptionRate
 
-	RULE R3 : mrna1 ->
-	R3.rate = rates.rnaDegratationRate
+	RULE mrnaDegradation : mrna1 ->
+	mrnaDegradation.forwardRate = rates.rnaDegratationRate
 
-	RULE R4 : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
-	R4.associationConstant = rates.ribosomeBinding
+	RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+	translationInitiation.forwardRate = rates.ribosomeBinding
+	translationInitiation.reverseRate = rates.ribosomeUnbinding
 
-	RULE R5 : mrna1~ribosome -> protein1
-	R5.rate = rates.translationRate
+	RULE translation : mrna1~ribosome -> mrna1~ribosome + protein1
+	translation.forwardRate = rates.translationRate
 
-	RULE R6 : protein1 ->
-	R6.rate = protein1.degradationRate | rates.proteinDegradationRate
+//	RULE proteinDegradation : protein1 ->
+//	R6.rate = protein1.degradationRate | rates.proteinDegradationRate
 } USES RIBOSOME ribosome, RNA rnaP
 
-define PROCESS RegulatedProteinExpression (
+define RegulatedProteinExpression typeof ConstitutiveProcessExpression (
+	MOLECULE signal:required	
+)
+{
+	RULE signalBinding : signal + promoter <-> signal~promoter
+	signalBinding.forwardRate = promoter.bindingRate | rate.bindingRate
+	signalBinding.reverseRate = promoter.unbindingRate | rate.unbindingRate
+
+	RULE promoterBinding : signal~promoter + rnaP <-> promoter~rnaP	
+//1	promoterBinding.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+//2	promoterBinding.reverseRate = promoter.unbindingRate | rates.unbindingRate
+
+}
+
+define RegulatedProteinExpression typeof PROCESS (
 	MOLECULE regulator:required,
 	PROMOTER promoter:required,
 	GENE gene:required,
