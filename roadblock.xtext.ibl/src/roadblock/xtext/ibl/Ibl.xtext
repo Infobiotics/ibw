@@ -52,7 +52,7 @@ FunctionDefinition:
 
 // function types
 FunctionType:
-	'PROCESS' | 'SITE' | 'CELL' | 'SYSTEM'
+	'PROCESS' | 'CELL' | 'SYSTEM'  | 'REGION' 
 ;
 
 // function parameter member

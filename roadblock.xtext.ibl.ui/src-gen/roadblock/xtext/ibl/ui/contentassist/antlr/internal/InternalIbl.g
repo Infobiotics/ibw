@@ -1345,27 +1345,27 @@ rule__FunctionType__Alternatives
 )
 
     |(
-{ before(grammarAccess.getFunctionTypeAccess().getSITEKeyword_1()); }
-
-	'SITE' 
-
-{ after(grammarAccess.getFunctionTypeAccess().getSITEKeyword_1()); }
-)
-
-    |(
-{ before(grammarAccess.getFunctionTypeAccess().getCELLKeyword_2()); }
+{ before(grammarAccess.getFunctionTypeAccess().getCELLKeyword_1()); }
 
 	'CELL' 
 
-{ after(grammarAccess.getFunctionTypeAccess().getCELLKeyword_2()); }
+{ after(grammarAccess.getFunctionTypeAccess().getCELLKeyword_1()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); }
+{ before(grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_2()); }
 
 	'SYSTEM' 
 
-{ after(grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); }
+{ after(grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_2()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionTypeAccess().getREGIONKeyword_3()); }
+
+	'REGION' 
+
+{ after(grammarAccess.getFunctionTypeAccess().getREGIONKeyword_3()); }
 )
 
 ;

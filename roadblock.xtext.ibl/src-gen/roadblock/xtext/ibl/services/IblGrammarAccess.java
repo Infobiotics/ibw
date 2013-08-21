@@ -234,29 +234,29 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cPROCESSKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cSITEKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cCELLKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cSYSTEMKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cCELLKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cSYSTEMKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cREGIONKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
 		//// function types
 		//FunctionType:
-		//	"PROCESS" | "SITE" | "CELL" | "SYSTEM";
+		//	"PROCESS" | "CELL" | "SYSTEM" | "REGION";
 		public ParserRule getRule() { return rule; }
 
-		//"PROCESS" | "SITE" | "CELL" | "SYSTEM"
+		//"PROCESS" | "CELL" | "SYSTEM" | "REGION"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"PROCESS"
 		public Keyword getPROCESSKeyword_0() { return cPROCESSKeyword_0; }
 
-		//"SITE"
-		public Keyword getSITEKeyword_1() { return cSITEKeyword_1; }
-
 		//"CELL"
-		public Keyword getCELLKeyword_2() { return cCELLKeyword_2; }
+		public Keyword getCELLKeyword_1() { return cCELLKeyword_1; }
 
 		//"SYSTEM"
-		public Keyword getSYSTEMKeyword_3() { return cSYSTEMKeyword_3; }
+		public Keyword getSYSTEMKeyword_2() { return cSYSTEMKeyword_2; }
+
+		//"REGION"
+		public Keyword getREGIONKeyword_3() { return cREGIONKeyword_3; }
 	}
 
 	public class FunctionParameterMemberElements extends AbstractParserRuleElementFinder {
@@ -2281,7 +2281,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// function types
 	//FunctionType:
-	//	"PROCESS" | "SITE" | "CELL" | "SYSTEM";
+	//	"PROCESS" | "CELL" | "SYSTEM" | "REGION";
 	public FunctionTypeElements getFunctionTypeAccess() {
 		return (pFunctionType != null) ? pFunctionType : (pFunctionType = new FunctionTypeElements());
 	}

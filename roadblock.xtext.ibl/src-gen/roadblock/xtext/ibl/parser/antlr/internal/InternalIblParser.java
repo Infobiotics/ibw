@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "'define'", "'typeof'", "'('", "','", "')'", "'{'", "'}'", "'USES'", "'PROCESS'", "'SITE'", "'CELL'", "'SYSTEM'", "':'", "'required'", "'returned'", "'optional'", "'~'", "'.'", "'<'", "'>'", "'='", "'new'", "'observable'", "'MOLECULE'", "'RIBOSOME'", "'PROMOTER'", "'PROTEIN'", "'DNA'", "'RNA'", "'GENE'", "'INTEGER'", "'RATE'", "'LIST'", "'SET'", "'+'", "'-'", "'|'", "'RULE'", "'->'", "'<->'", "'DEVICE'", "'ATGC'", "'ARRANGE'", "'VERIFY'", "'['", "']'", "'EXPECTED'", "'AT TIME INSTANT'", "'IS'", "'?'", "'WILL HOLD'", "'NEVER HOLDS'", "'ALWAYS HOLDS'", "'WITHIN TIME BOUND'", "'WITH PROBABILITY BOUND'", "'GIVEN'", "'E'", "'e'", "'s'", "'min'", "'mins'", "'s^-1'", "'min^-1'", "'M'", "'mM'", "'uM'", "'nM'", "'pM'", "'fM'", "'molecule'", "'molecules'", "'=='", "'!='", "'<='", "'>='", "'&'", "'.*'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "'define'", "'typeof'", "'('", "','", "')'", "'{'", "'}'", "'USES'", "'PROCESS'", "'CELL'", "'SYSTEM'", "'REGION'", "':'", "'required'", "'returned'", "'optional'", "'~'", "'.'", "'<'", "'>'", "'='", "'new'", "'observable'", "'MOLECULE'", "'RIBOSOME'", "'PROMOTER'", "'PROTEIN'", "'DNA'", "'RNA'", "'GENE'", "'INTEGER'", "'RATE'", "'LIST'", "'SET'", "'+'", "'-'", "'|'", "'RULE'", "'->'", "'<->'", "'DEVICE'", "'ATGC'", "'ARRANGE'", "'VERIFY'", "'['", "']'", "'EXPECTED'", "'AT TIME INSTANT'", "'IS'", "'?'", "'WILL HOLD'", "'NEVER HOLDS'", "'ALWAYS HOLDS'", "'WITHIN TIME BOUND'", "'WITH PROBABILITY BOUND'", "'GIVEN'", "'E'", "'e'", "'s'", "'min'", "'mins'", "'s^-1'", "'min^-1'", "'M'", "'mM'", "'uM'", "'nM'", "'pM'", "'fM'", "'molecule'", "'molecules'", "'=='", "'!='", "'<='", "'>='", "'&'", "'.*'"
     };
     public static final int T__68=68;
     public static final int T__69=69;
@@ -689,7 +689,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==20||(LA4_0>=22 && LA4_0<=23)||(LA4_0>=35 && LA4_0<=43)) ) {
+            if ( ((LA4_0>=20 && LA4_0<=22)||(LA4_0>=35 && LA4_0<=43)) ) {
                 alt4=1;
             }
             switch (alt4) {
@@ -806,7 +806,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( (LA5_0==RULE_ID||LA5_0==20||(LA5_0>=22 && LA5_0<=23)||(LA5_0>=34 && LA5_0<=45)||LA5_0==49||(LA5_0>=52 && LA5_0<=53)||LA5_0==55) ) {
+                if ( (LA5_0==RULE_ID||(LA5_0>=20 && LA5_0<=22)||(LA5_0>=34 && LA5_0<=45)||LA5_0==49||(LA5_0>=52 && LA5_0<=53)||LA5_0==55) ) {
                     alt5=1;
                 }
 
@@ -1021,7 +1021,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionType"
-    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:399:1: ruleFunctionType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'PROCESS' | kw= 'SITE' | kw= 'CELL' | kw= 'SYSTEM' ) ;
+    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:399:1: ruleFunctionType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'PROCESS' | kw= 'CELL' | kw= 'SYSTEM' | kw= 'REGION' ) ;
     public final AntlrDatatypeRuleToken ruleFunctionType() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -1030,10 +1030,10 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:402:28: ( (kw= 'PROCESS' | kw= 'SITE' | kw= 'CELL' | kw= 'SYSTEM' ) )
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:403:1: (kw= 'PROCESS' | kw= 'SITE' | kw= 'CELL' | kw= 'SYSTEM' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:402:28: ( (kw= 'PROCESS' | kw= 'CELL' | kw= 'SYSTEM' | kw= 'REGION' ) )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:403:1: (kw= 'PROCESS' | kw= 'CELL' | kw= 'SYSTEM' | kw= 'REGION' )
             {
-            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:403:1: (kw= 'PROCESS' | kw= 'SITE' | kw= 'CELL' | kw= 'SYSTEM' )
+            // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:403:1: (kw= 'PROCESS' | kw= 'CELL' | kw= 'SYSTEM' | kw= 'REGION' )
             int alt8=4;
             switch ( input.LA(1) ) {
             case 20:
@@ -1076,34 +1076,34 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:411:2: kw= 'SITE'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:411:2: kw= 'CELL'
                     {
                     kw=(Token)match(input,21,FOLLOW_21_in_ruleFunctionType826); 
 
                             current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSITEKeyword_1()); 
+                            newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getCELLKeyword_1()); 
                         
 
                     }
                     break;
                 case 3 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:418:2: kw= 'CELL'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:418:2: kw= 'SYSTEM'
                     {
                     kw=(Token)match(input,22,FOLLOW_22_in_ruleFunctionType845); 
 
                             current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getCELLKeyword_2()); 
+                            newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_2()); 
                         
 
                     }
                     break;
                 case 4 :
-                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:425:2: kw= 'SYSTEM'
+                    // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:425:2: kw= 'REGION'
                     {
                     kw=(Token)match(input,23,FOLLOW_23_in_ruleFunctionType864); 
 
                             current.merge(kw);
-                            newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); 
+                            newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getREGIONKeyword_3()); 
                         
 
                     }
@@ -1522,8 +1522,8 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 }
                 break;
             case 20:
+            case 21:
             case 22:
-            case 23:
             case 34:
             case 35:
             case 36:
@@ -2373,7 +2373,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( (LA14_0==20||(LA14_0>=22 && LA14_0<=23)||(LA14_0>=35 && LA14_0<=43)) ) {
+            if ( ((LA14_0>=20 && LA14_0<=22)||(LA14_0>=35 && LA14_0<=43)) ) {
                 alt14=1;
             }
             else if ( ((LA14_0>=44 && LA14_0<=45)) ) {
@@ -2628,7 +2628,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                             int alt15=2;
                             int LA15_0 = input.LA(1);
 
-                            if ( (LA15_0==20||(LA15_0>=22 && LA15_0<=23)||(LA15_0>=35 && LA15_0<=43)) ) {
+                            if ( ((LA15_0>=20 && LA15_0<=22)||(LA15_0>=35 && LA15_0<=43)) ) {
                                 alt15=1;
                             }
                             else if ( (LA15_0==RULE_ID) ) {
@@ -3157,7 +3157,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 alt20=1;
                 }
                 break;
-            case 22:
+            case 21:
                 {
                 alt20=2;
                 }
@@ -3207,7 +3207,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 alt20=11;
                 }
                 break;
-            case 23:
+            case 22:
                 {
                 alt20=12;
                 }
@@ -3234,7 +3234,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1221:2: kw= 'CELL'
                     {
-                    kw=(Token)match(input,22,FOLLOW_22_in_ruleVariableType2599); 
+                    kw=(Token)match(input,21,FOLLOW_21_in_ruleVariableType2599); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getVariableTypeAccess().getCELLKeyword_1()); 
@@ -3344,7 +3344,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 case 12 :
                     // ../roadblock.xtext.ibl/src-gen/roadblock/xtext/ibl/parser/antlr/internal/InternalIbl.g:1291:2: kw= 'SYSTEM'
                     {
-                    kw=(Token)match(input,23,FOLLOW_23_in_ruleVariableType2789); 
+                    kw=(Token)match(input,22,FOLLOW_22_in_ruleVariableType2789); 
 
                             current.merge(kw);
                             newLeafNode(kw, grammarAccess.getVariableTypeAccess().getSYSTEMKeyword_11()); 
@@ -4939,7 +4939,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             if ( (LA31_0==RULE_ID) ) {
                 int LA31_1 = input.LA(2);
 
-                if ( (LA31_1==EOF||LA31_1==RULE_ID||LA31_1==18||LA31_1==20||(LA31_1>=22 && LA31_1<=23)||LA31_1==28||(LA31_1>=34 && LA31_1<=46)||LA31_1==49||(LA31_1>=52 && LA31_1<=53)||LA31_1==55) ) {
+                if ( (LA31_1==EOF||LA31_1==RULE_ID||LA31_1==18||(LA31_1>=20 && LA31_1<=22)||LA31_1==28||(LA31_1>=34 && LA31_1<=46)||LA31_1==49||(LA31_1>=52 && LA31_1<=53)||LA31_1==55) ) {
                     alt31=1;
                 }
             }
@@ -5123,7 +5123,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 if ( (LA32_1==28) ) {
                     alt32=2;
                 }
-                else if ( (LA32_1==EOF||LA32_1==RULE_ID||LA32_1==18||LA32_1==20||(LA32_1>=22 && LA32_1<=23)||(LA32_1>=34 && LA32_1<=46)||(LA32_1>=49 && LA32_1<=53)||LA32_1==55) ) {
+                else if ( (LA32_1==EOF||LA32_1==RULE_ID||LA32_1==18||(LA32_1>=20 && LA32_1<=22)||(LA32_1>=34 && LA32_1<=46)||(LA32_1>=49 && LA32_1<=53)||LA32_1==55) ) {
                     alt32=1;
                 }
                 else {
@@ -5569,7 +5569,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 int alt36=2;
                 int LA36_0 = input.LA(1);
 
-                if ( (LA36_0==20||(LA36_0>=22 && LA36_0<=23)||(LA36_0>=34 && LA36_0<=45)||LA36_0==55) ) {
+                if ( ((LA36_0>=20 && LA36_0<=22)||(LA36_0>=34 && LA36_0<=45)||LA36_0==55) ) {
                     alt36=1;
                 }
 
@@ -5692,7 +5692,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             int alt37=2;
             int LA37_0 = input.LA(1);
 
-            if ( (LA37_0==20||(LA37_0>=22 && LA37_0<=23)||(LA37_0>=34 && LA37_0<=45)) ) {
+            if ( ((LA37_0>=20 && LA37_0<=22)||(LA37_0>=34 && LA37_0<=45)) ) {
                 alt37=1;
             }
             else if ( (LA37_0==55) ) {
@@ -7424,7 +7424,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                         if ( (LA48_4==RULE_INT) ) {
                             int LA48_7 = input.LA(5);
 
-                            if ( (LA48_7==EOF||LA48_7==RULE_ID||(LA48_7>=15 && LA48_7<=16)||LA48_7==18||LA48_7==20||(LA48_7>=22 && LA48_7<=23)||(LA48_7>=34 && LA48_7<=49)||(LA48_7>=52 && LA48_7<=53)||LA48_7==55||LA48_7==57||LA48_7==67||(LA48_7>=70 && LA48_7<=82)) ) {
+                            if ( (LA48_7==EOF||LA48_7==RULE_ID||(LA48_7>=15 && LA48_7<=16)||LA48_7==18||(LA48_7>=20 && LA48_7<=22)||(LA48_7>=34 && LA48_7<=49)||(LA48_7>=52 && LA48_7<=53)||LA48_7==55||LA48_7==57||LA48_7==67||(LA48_7>=70 && LA48_7<=82)) ) {
                                 alt48=1;
                             }
                             else if ( ((LA48_7>=68 && LA48_7<=69)) ) {
@@ -7457,8 +7457,8 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     case 16:
                     case 18:
                     case 20:
+                    case 21:
                     case 22:
-                    case 23:
                     case 34:
                     case 35:
                     case 36:
@@ -7526,7 +7526,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                         if ( (LA48_4==RULE_INT) ) {
                             int LA48_7 = input.LA(5);
 
-                            if ( (LA48_7==EOF||LA48_7==RULE_ID||(LA48_7>=15 && LA48_7<=16)||LA48_7==18||LA48_7==20||(LA48_7>=22 && LA48_7<=23)||(LA48_7>=34 && LA48_7<=49)||(LA48_7>=52 && LA48_7<=53)||LA48_7==55||LA48_7==57||LA48_7==67||(LA48_7>=70 && LA48_7<=82)) ) {
+                            if ( (LA48_7==EOF||LA48_7==RULE_ID||(LA48_7>=15 && LA48_7<=16)||LA48_7==18||(LA48_7>=20 && LA48_7<=22)||(LA48_7>=34 && LA48_7<=49)||(LA48_7>=52 && LA48_7<=53)||LA48_7==55||LA48_7==57||LA48_7==67||(LA48_7>=70 && LA48_7<=82)) ) {
                                 alt48=1;
                             }
                             else if ( ((LA48_7>=68 && LA48_7<=69)) ) {
@@ -7559,8 +7559,8 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     case 16:
                     case 18:
                     case 20:
+                    case 21:
                     case 22:
-                    case 23:
                     case 34:
                     case 35:
                     case 36:
@@ -7625,7 +7625,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                     if ( (LA48_4==RULE_INT) ) {
                         int LA48_7 = input.LA(4);
 
-                        if ( (LA48_7==EOF||LA48_7==RULE_ID||(LA48_7>=15 && LA48_7<=16)||LA48_7==18||LA48_7==20||(LA48_7>=22 && LA48_7<=23)||(LA48_7>=34 && LA48_7<=49)||(LA48_7>=52 && LA48_7<=53)||LA48_7==55||LA48_7==57||LA48_7==67||(LA48_7>=70 && LA48_7<=82)) ) {
+                        if ( (LA48_7==EOF||LA48_7==RULE_ID||(LA48_7>=15 && LA48_7<=16)||LA48_7==18||(LA48_7>=20 && LA48_7<=22)||(LA48_7>=34 && LA48_7<=49)||(LA48_7>=52 && LA48_7<=53)||LA48_7==55||LA48_7==57||LA48_7==67||(LA48_7>=70 && LA48_7<=82)) ) {
                             alt48=1;
                         }
                         else if ( ((LA48_7>=68 && LA48_7<=69)) ) {
@@ -7658,8 +7658,8 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
                 case 16:
                 case 18:
                 case 20:
+                case 21:
                 case 22:
-                case 23:
                 case 34:
                 case 35:
                 case 36:
@@ -9325,14 +9325,13 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
         "\22\uffff}>";
     static final String[] DFA25_transitionS = {
             "\1\1\1\5\1\4\47\uffff\1\2\1\3",
-            "\1\10\12\uffff\2\10\1\uffff\1\10\1\uffff\1\10\1\uffff\2\10"+
-            "\4\uffff\1\7\1\6\4\uffff\20\10\2\uffff\2\10\1\uffff\1\10\1\uffff"+
-            "\1\10",
+            "\1\10\12\uffff\2\10\1\uffff\1\10\1\uffff\3\10\5\uffff\1\7\1"+
+            "\6\4\uffff\20\10\2\uffff\2\10\1\uffff\1\10\1\uffff\1\10",
             "\1\4",
             "\1\4",
-            "\1\15\12\uffff\2\15\1\uffff\1\15\1\uffff\1\15\1\uffff\2\15"+
-            "\5\uffff\1\11\4\uffff\20\15\2\uffff\2\15\1\uffff\1\15\1\uffff"+
-            "\1\15\12\uffff\1\13\1\14\15\12",
+            "\1\15\12\uffff\2\15\1\uffff\1\15\1\uffff\3\15\6\uffff\1\11"+
+            "\4\uffff\20\15\2\uffff\2\15\1\uffff\1\15\1\uffff\1\15\12\uffff"+
+            "\1\13\1\14\15\12",
             "",
             "",
             "",
@@ -9342,14 +9341,13 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
             "\1\21\47\uffff\1\17\1\20",
             "\1\21\47\uffff\1\17\1\20",
             "",
-            "\1\15\12\uffff\2\15\1\uffff\1\15\1\uffff\1\15\1\uffff\2\15"+
-            "\12\uffff\20\15\2\uffff\2\15\1\uffff\1\15\1\uffff\1\15\12\uffff"+
-            "\1\13\1\14\15\12",
+            "\1\15\12\uffff\2\15\1\uffff\1\15\1\uffff\3\15\13\uffff\20\15"+
+            "\2\uffff\2\15\1\uffff\1\15\1\uffff\1\15\12\uffff\1\13\1\14\15"+
+            "\12",
             "\1\21",
             "\1\21",
-            "\1\15\12\uffff\2\15\1\uffff\1\15\1\uffff\1\15\1\uffff\2\15"+
-            "\12\uffff\20\15\2\uffff\2\15\1\uffff\1\15\1\uffff\1\15\14\uffff"+
-            "\15\12"
+            "\1\15\12\uffff\2\15\1\uffff\1\15\1\uffff\3\15\13\uffff\20\15"+
+            "\2\uffff\2\15\1\uffff\1\15\1\uffff\1\15\14\uffff\15\12"
     };
 
     static final short[] DFA25_eot = DFA.unpackEncodedString(DFA25_eotS);
@@ -9404,17 +9402,17 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleVariableName_in_ruleFunctionDefinition486 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_13_in_ruleFunctionDefinition498 = new BitSet(new long[]{0x0000000000F00000L});
     public static final BitSet FOLLOW_ruleFunctionType_in_ruleFunctionDefinition519 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleFunctionDefinition531 = new BitSet(new long[]{0x00000FF800D10000L});
+    public static final BitSet FOLLOW_14_in_ruleFunctionDefinition531 = new BitSet(new long[]{0x00000FF800710000L});
     public static final BitSet FOLLOW_ruleFunctionParameterMember_in_ruleFunctionDefinition553 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_15_in_ruleFunctionDefinition566 = new BitSet(new long[]{0x00000FF800D00000L});
+    public static final BitSet FOLLOW_15_in_ruleFunctionDefinition566 = new BitSet(new long[]{0x00000FF800700000L});
     public static final BitSet FOLLOW_ruleFunctionParameterMember_in_ruleFunctionDefinition587 = new BitSet(new long[]{0x0000000000018000L});
     public static final BitSet FOLLOW_16_in_ruleFunctionDefinition603 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleFunctionDefinition615 = new BitSet(new long[]{0x00B23FFC00D40010L});
-    public static final BitSet FOLLOW_ruleFunctionBodyMember_in_ruleFunctionDefinition636 = new BitSet(new long[]{0x00B23FFC00D40010L});
+    public static final BitSet FOLLOW_17_in_ruleFunctionDefinition615 = new BitSet(new long[]{0x00B23FFC00740010L});
+    public static final BitSet FOLLOW_ruleFunctionBodyMember_in_ruleFunctionDefinition636 = new BitSet(new long[]{0x00B23FFC00740010L});
     public static final BitSet FOLLOW_18_in_ruleFunctionDefinition649 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_19_in_ruleFunctionDefinition662 = new BitSet(new long[]{0x00000FF800D00000L});
+    public static final BitSet FOLLOW_19_in_ruleFunctionDefinition662 = new BitSet(new long[]{0x00000FF800700000L});
     public static final BitSet FOLLOW_ruleFunctionUseMember_in_ruleFunctionDefinition683 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_15_in_ruleFunctionDefinition696 = new BitSet(new long[]{0x00000FF800D00000L});
+    public static final BitSet FOLLOW_15_in_ruleFunctionDefinition696 = new BitSet(new long[]{0x00000FF800700000L});
     public static final BitSet FOLLOW_ruleFunctionUseMember_in_ruleFunctionDefinition717 = new BitSet(new long[]{0x0000000000008002L});
     public static final BitSet FOLLOW_ruleFunctionType_in_entryRuleFunctionType758 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunctionType769 = new BitSet(new long[]{0x0000000000000002L});
@@ -9460,16 +9458,16 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleVariableName_in_ruleVariableAttribute1851 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleVariableDefinition_in_entryRuleVariableDefinition1887 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableDefinition1897 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVariableQualifier_in_ruleVariableDefinition1952 = new BitSet(new long[]{0x00003FFC00D00000L});
+    public static final BitSet FOLLOW_ruleVariableQualifier_in_ruleVariableDefinition1952 = new BitSet(new long[]{0x00003FFC00700000L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleVariableDefinition1976 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleVariableName_in_ruleVariableDefinition1997 = new BitSet(new long[]{0x0000000100000002L});
     public static final BitSet FOLLOW_ruleCollectionID_in_ruleVariableDefinition2026 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_30_in_ruleVariableDefinition2038 = new BitSet(new long[]{0x00000FF800D00000L});
+    public static final BitSet FOLLOW_30_in_ruleVariableDefinition2038 = new BitSet(new long[]{0x00000FF800700000L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleVariableDefinition2059 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_31_in_ruleVariableDefinition2071 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleVariableName_in_ruleVariableDefinition2092 = new BitSet(new long[]{0x0000000100000002L});
     public static final BitSet FOLLOW_32_in_ruleVariableDefinition2107 = new BitSet(new long[]{0x0100C00200000070L});
-    public static final BitSet FOLLOW_33_in_ruleVariableDefinition2121 = new BitSet(new long[]{0x00000FF800D00010L});
+    public static final BitSet FOLLOW_33_in_ruleVariableDefinition2121 = new BitSet(new long[]{0x00000FF800700010L});
     public static final BitSet FOLLOW_ruleVariableType_in_ruleVariableDefinition2144 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_ruleVariableName_in_ruleVariableDefinition2163 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_14_in_ruleVariableDefinition2178 = new BitSet(new long[]{0x0000000000010010L});
@@ -9489,7 +9487,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleVariableType_in_entryRuleVariableType2531 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleVariableType2542 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_35_in_ruleVariableType2580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleVariableType2599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_ruleVariableType2599 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_36_in_ruleVariableType2618 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_37_in_ruleVariableType2637 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_38_in_ruleVariableType2656 = new BitSet(new long[]{0x0000000000000002L});
@@ -9499,7 +9497,7 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_42_in_ruleVariableType2732 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_43_in_ruleVariableType2751 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_20_in_ruleVariableType2770 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleVariableType2789 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleVariableType2789 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCollectionID_in_entryRuleCollectionID2830 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleCollectionID2841 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_44_in_ruleCollectionID2879 = new BitSet(new long[]{0x0000000000000002L});
@@ -9571,8 +9569,8 @@ public class InternalIblParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_15_in_ruleDeviceDefinition4574 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleParameterAssignment_in_ruleDeviceDefinition4595 = new BitSet(new long[]{0x0000000000018000L});
     public static final BitSet FOLLOW_16_in_ruleDeviceDefinition4611 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleDeviceDefinition4623 = new BitSet(new long[]{0x00B23FFC00D40010L});
-    public static final BitSet FOLLOW_ruleDeviceMembers_in_ruleDeviceDefinition4644 = new BitSet(new long[]{0x00B23FFC00D40010L});
+    public static final BitSet FOLLOW_17_in_ruleDeviceDefinition4623 = new BitSet(new long[]{0x00B23FFC00740010L});
+    public static final BitSet FOLLOW_ruleDeviceMembers_in_ruleDeviceDefinition4644 = new BitSet(new long[]{0x00B23FFC00740010L});
     public static final BitSet FOLLOW_18_in_ruleDeviceDefinition4657 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleDeviceMembers_in_entryRuleDeviceMembers4693 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleDeviceMembers4703 = new BitSet(new long[]{0x0000000000000002L});
