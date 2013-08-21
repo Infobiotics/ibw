@@ -133,22 +133,22 @@ public interface IblPackage extends EPackage
   int FUNCTION_DEFINITION = 3;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_DEFINITION__TYPE = MODEL_MEMBER_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_DEFINITION__NAME = MODEL_MEMBER_FEATURE_COUNT + 1;
+  int FUNCTION_DEFINITION__NAME = MODEL_MEMBER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_DEFINITION__TYPE = MODEL_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1227,17 +1227,6 @@ public interface IblPackage extends EPackage
   EClass getFunctionDefinition();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see roadblock.xtext.ibl.ibl.FunctionDefinition#getType()
-   * @see #getFunctionDefinition()
-   * @generated
-   */
-  EAttribute getFunctionDefinition_Type();
-
-  /**
    * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1247,6 +1236,17 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EAttribute getFunctionDefinition_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionDefinition#getType()
+   * @see #getFunctionDefinition()
+   * @generated
+   */
+  EAttribute getFunctionDefinition_Type();
 
   /**
    * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getParameters <em>Parameters</em>}'.
@@ -2230,20 +2230,20 @@ public interface IblPackage extends EPackage
     EClass FUNCTION_DEFINITION = eINSTANCE.getFunctionDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNCTION_DEFINITION__TYPE = eINSTANCE.getFunctionDefinition_Type();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute FUNCTION_DEFINITION__NAME = eINSTANCE.getFunctionDefinition_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_DEFINITION__TYPE = eINSTANCE.getFunctionDefinition_Type();
 
     /**
      * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.

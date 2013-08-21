@@ -30,8 +30,8 @@ import roadblock.xtext.ibl.ibl.IblPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getType <em>Type</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getType <em>Type</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getMembers <em>Members</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getUses <em>Uses</em>}</li>
@@ -42,26 +42,6 @@ import roadblock.xtext.ibl.ibl.IblPackage;
  */
 public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionDefinition
 {
-  /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -81,6 +61,26 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -138,29 +138,6 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__TYPE, oldType, type));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getName()
   {
     return name;
@@ -177,6 +154,29 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(String newType)
+  {
+    String oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__TYPE, oldType, type));
   }
 
   /**
@@ -251,10 +251,10 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        return getType();
       case IblPackage.FUNCTION_DEFINITION__NAME:
         return getName();
+      case IblPackage.FUNCTION_DEFINITION__TYPE:
+        return getType();
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return getParameters();
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -276,11 +276,11 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        setType((String)newValue);
-        return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
         setName((String)newValue);
+        return;
+      case IblPackage.FUNCTION_DEFINITION__TYPE:
+        setType((String)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -308,11 +308,11 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
       case IblPackage.FUNCTION_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case IblPackage.FUNCTION_DEFINITION__TYPE:
+        setType(TYPE_EDEFAULT);
         return;
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -337,10 +337,10 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.FUNCTION_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case IblPackage.FUNCTION_DEFINITION__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
       case IblPackage.FUNCTION_DEFINITION__MEMBERS:
@@ -362,10 +362,10 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

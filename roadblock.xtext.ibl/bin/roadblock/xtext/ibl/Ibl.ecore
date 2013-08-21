@@ -8,8 +8,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModelMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="ImportStatement" eSuperTypes="#//ModelMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionDefinition" eSuperTypes="#//ModelMember">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//FunctionParameterMember" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"

@@ -370,7 +370,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionDefinition_Type()
+  public EAttribute getFunctionDefinition_Name()
   {
     return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(0);
   }
@@ -380,7 +380,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionDefinition_Name()
+  public EAttribute getFunctionDefinition_Type()
   {
     return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(1);
   }
@@ -1273,8 +1273,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     importStatementEClass = createEClass(IMPORT_STATEMENT);
 
     functionDefinitionEClass = createEClass(FUNCTION_DEFINITION);
-    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__TYPE);
     createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__NAME);
+    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__TYPE);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__PARAMETERS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__MEMBERS);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__USES);
@@ -1441,8 +1441,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(importStatementEClass, ImportStatement.class, "ImportStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Members(), this.getFunctionBodyMember(), null, "members", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Uses(), this.getFunctionUseMember(), null, "uses", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

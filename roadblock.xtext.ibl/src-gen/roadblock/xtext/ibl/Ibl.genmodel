@@ -13,8 +13,8 @@
     <genClasses ecoreClass="Ibl.ecore#//ModelMember"/>
     <genClasses ecoreClass="Ibl.ecore#//ImportStatement"/>
     <genClasses ecoreClass="Ibl.ecore#//FunctionDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionDefinition/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/members"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/uses"/>
