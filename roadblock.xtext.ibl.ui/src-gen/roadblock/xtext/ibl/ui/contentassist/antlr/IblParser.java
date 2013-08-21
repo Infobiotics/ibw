@@ -43,7 +43,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionBodyMemberAccess().getAlternatives(), "rule__FunctionBodyMember__Alternatives");
 					put(grammarAccess.getVariableDefinitionAccess().getAlternatives_2(), "rule__VariableDefinition__Alternatives_2");
 					put(grammarAccess.getVariableDefinitionAccess().getAlternatives_3_1(), "rule__VariableDefinition__Alternatives_3_1");
-					put(grammarAccess.getVariableDefinitionAccess().getConstructorAlternatives_3_1_0_0_0(), "rule__VariableDefinition__ConstructorAlternatives_3_1_0_0_0");
+					put(grammarAccess.getVariableDefinitionAccess().getConstructorAlternatives_3_1_0_1_0(), "rule__VariableDefinition__ConstructorAlternatives_3_1_0_1_0");
 					put(grammarAccess.getVariableTypeAccess().getAlternatives(), "rule__VariableType__Alternatives");
 					put(grammarAccess.getCollectionIDAccess().getAlternatives(), "rule__CollectionID__Alternatives");
 					put(grammarAccess.getVariableAssignmentObjectAccess().getAlternatives(), "rule__VariableAssignmentObject__Alternatives");
@@ -83,8 +83,8 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableDefinitionAccess().getGroup_2_1(), "rule__VariableDefinition__Group_2_1__0");
 					put(grammarAccess.getVariableDefinitionAccess().getGroup_3(), "rule__VariableDefinition__Group_3__0");
 					put(grammarAccess.getVariableDefinitionAccess().getGroup_3_1_0(), "rule__VariableDefinition__Group_3_1_0__0");
-					put(grammarAccess.getVariableDefinitionAccess().getGroup_3_1_0_2(), "rule__VariableDefinition__Group_3_1_0_2__0");
-					put(grammarAccess.getVariableDefinitionAccess().getGroup_3_1_0_2_1(), "rule__VariableDefinition__Group_3_1_0_2_1__0");
+					put(grammarAccess.getVariableDefinitionAccess().getGroup_3_1_0_3(), "rule__VariableDefinition__Group_3_1_0_3__0");
+					put(grammarAccess.getVariableDefinitionAccess().getGroup_3_1_0_3_1(), "rule__VariableDefinition__Group_3_1_0_3_1__0");
 					put(grammarAccess.getParameterAssignmentAccess().getGroup(), "rule__ParameterAssignment__Group__0");
 					put(grammarAccess.getVariableAssignmentAccess().getGroup(), "rule__VariableAssignment__Group__0");
 					put(grammarAccess.getVariableAssignmentObjectAccess().getGroup_0(), "rule__VariableAssignmentObject__Group_0__0");
@@ -152,9 +152,9 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVariableDefinitionAccess().getCollectionAssignment_2_1_0(), "rule__VariableDefinition__CollectionAssignment_2_1_0");
 					put(grammarAccess.getVariableDefinitionAccess().getTypeAssignment_2_1_2(), "rule__VariableDefinition__TypeAssignment_2_1_2");
 					put(grammarAccess.getVariableDefinitionAccess().getNameAssignment_2_1_4(), "rule__VariableDefinition__NameAssignment_2_1_4");
-					put(grammarAccess.getVariableDefinitionAccess().getConstructorAssignment_3_1_0_0(), "rule__VariableDefinition__ConstructorAssignment_3_1_0_0");
-					put(grammarAccess.getVariableDefinitionAccess().getParametersAssignment_3_1_0_2_0(), "rule__VariableDefinition__ParametersAssignment_3_1_0_2_0");
-					put(grammarAccess.getVariableDefinitionAccess().getParametersAssignment_3_1_0_2_1_1(), "rule__VariableDefinition__ParametersAssignment_3_1_0_2_1_1");
+					put(grammarAccess.getVariableDefinitionAccess().getConstructorAssignment_3_1_0_1(), "rule__VariableDefinition__ConstructorAssignment_3_1_0_1");
+					put(grammarAccess.getVariableDefinitionAccess().getParametersAssignment_3_1_0_3_0(), "rule__VariableDefinition__ParametersAssignment_3_1_0_3_0");
+					put(grammarAccess.getVariableDefinitionAccess().getParametersAssignment_3_1_0_3_1_1(), "rule__VariableDefinition__ParametersAssignment_3_1_0_3_1_1");
 					put(grammarAccess.getVariableDefinitionAccess().getValueAssignment_3_1_1(), "rule__VariableDefinition__ValueAssignment_3_1_1");
 					put(grammarAccess.getParameterAssignmentAccess().getNameAssignment_0(), "rule__ParameterAssignment__NameAssignment_0");
 					put(grammarAccess.getParameterAssignmentAccess().getValueAssignment_2(), "rule__ParameterAssignment__ValueAssignment_2");

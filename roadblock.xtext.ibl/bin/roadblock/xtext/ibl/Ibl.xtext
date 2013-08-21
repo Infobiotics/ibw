@@ -103,9 +103,9 @@ VariableDefinition:
 	((type=VariableType name=VariableName) |
 	(collection=CollectionID '<' type=VariableType '>' name=VariableName))
 	(
-		'=' 
+		'='
 		(
-		(constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')') |
+		('new' constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')') |
 		(value=VariableExpressionObject)
 		)
 	)?
