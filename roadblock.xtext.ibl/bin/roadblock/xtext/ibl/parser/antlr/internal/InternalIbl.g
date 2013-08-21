@@ -408,24 +408,24 @@ ruleFunctionType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
     }
 
     |
-	kw='SITE' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSITEKeyword_1()); 
-    }
-
-    |
 	kw='CELL' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getCELLKeyword_2()); 
+        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getCELLKeyword_1()); 
     }
 
     |
 	kw='SYSTEM' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_3()); 
+        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getSYSTEMKeyword_2()); 
+    }
+
+    |
+	kw='REGION' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getFunctionTypeAccess().getREGIONKeyword_3()); 
     }
 )
     ;

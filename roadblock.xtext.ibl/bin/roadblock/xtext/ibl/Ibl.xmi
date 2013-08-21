@@ -100,9 +100,9 @@
       </type>
       <alternatives xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:Keyword" value="PROCESS"/>
-        <elements xsi:type="xtext:Keyword" value="SITE"/>
         <elements xsi:type="xtext:Keyword" value="CELL"/>
         <elements xsi:type="xtext:Keyword" value="SYSTEM"/>
+        <elements xsi:type="xtext:Keyword" value="REGION"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="FunctionParameterMember">
