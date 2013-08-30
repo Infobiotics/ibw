@@ -36,14 +36,35 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableAttribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableAttribute/attribute"/>
     </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//UserDefinedType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//UserDefinedType/name"/>
+    </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/qualifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/collection"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/constructor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/definition"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionBuiltIn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinitionBuiltIn/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionUserDefined">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionUserDefined/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionUserDefined/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionUserDefined/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinitionUserDefined/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionCollection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionCollection/collection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionCollection/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionCollection/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinitionCollection/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionBasic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBasic/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBasic/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinitionBasic/expression"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//ParameterAssignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ParameterAssignment/name"/>
@@ -78,7 +99,7 @@
     <genClasses ecoreClass="Ibl.ecore#//RuleObject"/>
     <genClasses ecoreClass="Ibl.ecore#//DeviceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/parts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/members"/>
     </genClasses>

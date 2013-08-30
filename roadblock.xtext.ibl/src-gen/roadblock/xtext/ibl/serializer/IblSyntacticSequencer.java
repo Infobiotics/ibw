@@ -19,13 +19,13 @@ import roadblock.xtext.ibl.services.IblGrammarAccess;
 public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected IblGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0;
+	protected AbstractElementAlias match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_EVENTUALLYHOLDSKeyword_1_3_or_NEVERHOLDSKeyword_1_1_or_SOMETIMESHOLDSKeyword_1_4_or_WILLHOLDKeyword_1_0;
 	protected AbstractElementAlias match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (IblGrammarAccess) access;
-		match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getALWAYSHOLDSKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getNEVERHOLDSKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWILLHOLDKeyword_1_0()));
+		match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_EVENTUALLYHOLDSKeyword_1_3_or_NEVERHOLDSKeyword_1_1_or_SOMETIMESHOLDSKeyword_1_4_or_WILLHOLDKeyword_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getALWAYSHOLDSKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getEVENTUALLYHOLDSKeyword_1_3()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getNEVERHOLDSKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getSOMETIMESHOLDSKeyword_1_4()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWILLHOLDKeyword_1_0()));
 		match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getWITHPROBABILITYBOUNDKeyword_2_6_0()), new TokenAlias(false, false, grammarAccess.getPropertyConditionAccess().getQuestionMarkKeyword_2_6_1_1()));
 	}
 	
@@ -42,7 +42,7 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * BooleanOperator:
-	 * 	'&' | '|'
+	 * 	'&' | '|' | 'AND' | 'OR' | 'AND' 'NOT' | 'OR' 'NOT'
 	 * ;
 	 */
 	protected String getBooleanOperatorToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -79,8 +79,8 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0.equals(syntax))
-				emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			if(match_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_EVENTUALLYHOLDSKeyword_1_3_or_NEVERHOLDSKeyword_1_1_or_SOMETIMESHOLDSKeyword_1_4_or_WILLHOLDKeyword_1_0.equals(syntax))
+				emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_EVENTUALLYHOLDSKeyword_1_3_or_NEVERHOLDSKeyword_1_1_or_SOMETIMESHOLDSKeyword_1_4_or_WILLHOLDKeyword_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q.equals(syntax))
 				emit_PropertyCondition___WITHPROBABILITYBOUNDKeyword_2_6_0_QuestionMarkKeyword_2_6_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
@@ -89,9 +89,9 @@ public class IblSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
-	 *     'NEVER HOLDS' | 'WILL HOLD' | 'ALWAYS HOLDS'
+	 *     'EVENTUALLY HOLDS' | 'WILL HOLD' | 'ALWAYS HOLDS' | 'NEVER HOLDS' | 'SOMETIMES HOLDS'
 	 */
-	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_NEVERHOLDSKeyword_1_1_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_PropertyCondition_ALWAYSHOLDSKeyword_1_2_or_EVENTUALLYHOLDSKeyword_1_3_or_NEVERHOLDSKeyword_1_1_or_SOMETIMESHOLDSKeyword_1_4_or_WILLHOLDKeyword_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

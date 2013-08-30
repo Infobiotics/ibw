@@ -96,19 +96,45 @@ VariableAttribute:
 	name=VariableName '.' attribute=VariableName
 ;
 
-// a declaration of a variable
+
+UserDefinedType:
+	name=ID
+;
+
+// a definition of a variable
 VariableDefinition:
 	{VariableDefinition}
 	(qualifier=VariableQualifier)?
-	((type=VariableType name=VariableName) |
-	(collection=CollectionID '<' type=VariableType '>' name=VariableName))
+	definition=(VariableDefinitionBuiltIn | VariableDefinitionUserDefined | VariableDefinitionCollection | VariableDefinitionBasic)
+;
+
+VariableDefinitionBuiltIn:
+	{VariableDefinitionBuiltIn}
+	type=VariableType name=VariableName
 	(
-		'='
-		(
-		('new' constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')') |
-		(value=VariableExpressionObject)
-		)
+	'=' 'new' constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
+;
+
+VariableDefinitionUserDefined:
+	{VariableDefinitionUserDefined}
+	type=VariableName name=VariableName
+	(
+	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+VariableDefinitionCollection:
+	{VariableDefinitionCollection}
+	(collection=CollectionID '<' type=(VariableType | VariableName) '>' name=VariableName)
+	(
+	'=' value=List ')'
+	)?
+;
+
+VariableDefinitionBasic:
+	{VariableDefinitionBasic}
+	type=VariableType name=VariableName '=' expression=VariableExpression
 ;
 
 // a parameter assignment
@@ -134,7 +160,7 @@ CollectionID:
 // a variable assignment
 VariableAssignment:
 	{VariableAssignment}
-	 variable=VariableAssignmentObject '=' expression=VariableExpression
+	variable=VariableAssignmentObject '=' expression=VariableExpression
 ;
 
 VariableAssignmentObject:
@@ -188,9 +214,9 @@ RuleObject:
 // device definition
 DeviceDefinition:
 	{DeviceDefinition}
-	'DEVICE' name=VariableName '=' 'DEVICE'
+	'DEVICE' name=VariableName '=' 'new' 'DEVICE'
 	'('
-		(parts+=VariableName (',' parts+=VariableName)*)
+		'parts' '=' parts=List
 	')'
 	'('
 		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
@@ -201,7 +227,7 @@ DeviceDefinition:
 ;
 
 DeviceMembers:
-	VariableDefinition | PropertyDefinition
+	VariableDefinition | PropertyDefinition | ATGCDefinition
 ;
 
 ////////////////
@@ -242,7 +268,9 @@ PropertyCondition:
 	(
 	'WILL HOLD' |
 	'NEVER HOLDS' |
-	'ALWAYS HOLDS'
+	'ALWAYS HOLDS' |
+	'EVENTUALLY HOLDS' | 
+	'SOMETIMES HOLDS'
 	)
 	(
 	'WITHIN TIME BOUND' '[' lowerBound=Quantity ',' upperBounds=Quantity ']'
@@ -293,7 +321,7 @@ RelationalOperator:
 
 // boolean operator
 BooleanOperator:
-	'&' | '|'
+	'&' | '|' | 'AND' | 'OR' | 'AND' 'NOT' | 'OR' 'NOT'
 ;
 
 // qualified name

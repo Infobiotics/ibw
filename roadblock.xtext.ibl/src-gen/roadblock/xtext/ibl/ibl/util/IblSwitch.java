@@ -139,12 +139,47 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.USER_DEFINED_TYPE:
+      {
+        UserDefinedType userDefinedType = (UserDefinedType)theEObject;
+        T result = caseUserDefinedType(userDefinedType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.VARIABLE_DEFINITION:
       {
         VariableDefinition variableDefinition = (VariableDefinition)theEObject;
         T result = caseVariableDefinition(variableDefinition);
         if (result == null) result = caseFunctionBodyMember(variableDefinition);
         if (result == null) result = caseDeviceMembers(variableDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_DEFINITION_BUILT_IN:
+      {
+        VariableDefinitionBuiltIn variableDefinitionBuiltIn = (VariableDefinitionBuiltIn)theEObject;
+        T result = caseVariableDefinitionBuiltIn(variableDefinitionBuiltIn);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_DEFINITION_USER_DEFINED:
+      {
+        VariableDefinitionUserDefined variableDefinitionUserDefined = (VariableDefinitionUserDefined)theEObject;
+        T result = caseVariableDefinitionUserDefined(variableDefinitionUserDefined);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_DEFINITION_COLLECTION:
+      {
+        VariableDefinitionCollection variableDefinitionCollection = (VariableDefinitionCollection)theEObject;
+        T result = caseVariableDefinitionCollection(variableDefinitionCollection);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.VARIABLE_DEFINITION_BASIC:
+      {
+        VariableDefinitionBasic variableDefinitionBasic = (VariableDefinitionBasic)theEObject;
+        T result = caseVariableDefinitionBasic(variableDefinitionBasic);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -235,6 +270,7 @@ public class IblSwitch<T> extends Switch<T>
         ATGCDefinition atgcDefinition = (ATGCDefinition)theEObject;
         T result = caseATGCDefinition(atgcDefinition);
         if (result == null) result = caseFunctionBodyMember(atgcDefinition);
+        if (result == null) result = caseDeviceMembers(atgcDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -440,6 +476,22 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>User Defined Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>User Defined Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUserDefinedType(UserDefinedType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Variable Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -451,6 +503,70 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableDefinition(VariableDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Definition Built In</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Definition Built In</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDefinitionBuiltIn(VariableDefinitionBuiltIn object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Definition User Defined</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Definition User Defined</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDefinitionUserDefined(VariableDefinitionUserDefined object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Definition Collection</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Definition Collection</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDefinitionCollection(VariableDefinitionCollection object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Definition Basic</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Definition Basic</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDefinitionBasic(VariableDefinitionBasic object)
   {
     return null;
   }

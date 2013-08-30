@@ -52,20 +52,30 @@ public interface DeviceDefinition extends FunctionBodyMember
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Parts</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Parts</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parts</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Parts</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parts</em>' attribute list.
+   * @return the value of the '<em>Parts</em>' containment reference.
+   * @see #setParts(List)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getDeviceDefinition_Parts()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getParts();
+  List getParts();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getParts <em>Parts</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parts</em>' containment reference.
+   * @see #getParts()
+   * @generated
+   */
+  void setParts(List value);
 
   /**
    * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.

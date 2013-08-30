@@ -14,13 +14,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
 import roadblock.xtext.ibl.ibl.IblPackage;
+import roadblock.xtext.ibl.ibl.List;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
 
 /**
@@ -62,14 +62,14 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getParts() <em>Parts</em>}' attribute list.
+   * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParts()
    * @generated
    * @ordered
    */
-  protected EList<String> parts;
+  protected List parts;
 
   /**
    * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -140,13 +140,47 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getParts()
+  public List getParts()
   {
-    if (parts == null)
-    {
-      parts = new EDataTypeEList<String>(String.class, this, IblPackage.DEVICE_DEFINITION__PARTS);
-    }
     return parts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParts(List newParts, NotificationChain msgs)
+  {
+    List oldParts = parts;
+    parts = newParts;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE_DEFINITION__PARTS, oldParts, newParts);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParts(List newParts)
+  {
+    if (newParts != parts)
+    {
+      NotificationChain msgs = null;
+      if (parts != null)
+        msgs = ((InternalEObject)parts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE_DEFINITION__PARTS, null, msgs);
+      if (newParts != null)
+        msgs = ((InternalEObject)newParts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE_DEFINITION__PARTS, null, msgs);
+      msgs = basicSetParts(newParts, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE_DEFINITION__PARTS, newParts, newParts));
   }
 
   /**
@@ -187,6 +221,8 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
   {
     switch (featureID)
     {
+      case IblPackage.DEVICE_DEFINITION__PARTS:
+        return basicSetParts(null, msgs);
       case IblPackage.DEVICE_DEFINITION__PARAMETERS:
         return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
@@ -232,8 +268,7 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
         setName((String)newValue);
         return;
       case IblPackage.DEVICE_DEFINITION__PARTS:
-        getParts().clear();
-        getParts().addAll((Collection<? extends String>)newValue);
+        setParts((List)newValue);
         return;
       case IblPackage.DEVICE_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -261,7 +296,7 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
         setName(NAME_EDEFAULT);
         return;
       case IblPackage.DEVICE_DEFINITION__PARTS:
-        getParts().clear();
+        setParts((List)null);
         return;
       case IblPackage.DEVICE_DEFINITION__PARAMETERS:
         getParameters().clear();
@@ -286,7 +321,7 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
       case IblPackage.DEVICE_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.DEVICE_DEFINITION__PARTS:
-        return parts != null && !parts.isEmpty();
+        return parts != null;
       case IblPackage.DEVICE_DEFINITION__PARAMETERS:
         return parameters != null && !parameters.isEmpty();
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
@@ -308,8 +343,6 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", parts: ");
-    result.append(parts);
     result.append(')');
     return result.toString();
   }

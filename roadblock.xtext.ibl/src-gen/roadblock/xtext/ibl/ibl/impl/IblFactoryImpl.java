@@ -73,7 +73,12 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
       case IblPackage.VARIABLE_COMPLEX: return createVariableComplex();
       case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
+      case IblPackage.USER_DEFINED_TYPE: return createUserDefinedType();
       case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
+      case IblPackage.VARIABLE_DEFINITION_BUILT_IN: return createVariableDefinitionBuiltIn();
+      case IblPackage.VARIABLE_DEFINITION_USER_DEFINED: return createVariableDefinitionUserDefined();
+      case IblPackage.VARIABLE_DEFINITION_COLLECTION: return createVariableDefinitionCollection();
+      case IblPackage.VARIABLE_DEFINITION_BASIC: return createVariableDefinitionBasic();
       case IblPackage.PARAMETER_ASSIGNMENT: return createParameterAssignment();
       case IblPackage.VARIABLE_ASSIGNMENT: return createVariableAssignment();
       case IblPackage.VARIABLE_ASSIGNMENT_OBJECT: return createVariableAssignmentObject();
@@ -202,10 +207,65 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public UserDefinedType createUserDefinedType()
+  {
+    UserDefinedTypeImpl userDefinedType = new UserDefinedTypeImpl();
+    return userDefinedType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public VariableDefinition createVariableDefinition()
   {
     VariableDefinitionImpl variableDefinition = new VariableDefinitionImpl();
     return variableDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDefinitionBuiltIn createVariableDefinitionBuiltIn()
+  {
+    VariableDefinitionBuiltInImpl variableDefinitionBuiltIn = new VariableDefinitionBuiltInImpl();
+    return variableDefinitionBuiltIn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDefinitionUserDefined createVariableDefinitionUserDefined()
+  {
+    VariableDefinitionUserDefinedImpl variableDefinitionUserDefined = new VariableDefinitionUserDefinedImpl();
+    return variableDefinitionUserDefined;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDefinitionCollection createVariableDefinitionCollection()
+  {
+    VariableDefinitionCollectionImpl variableDefinitionCollection = new VariableDefinitionCollectionImpl();
+    return variableDefinitionCollection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDefinitionBasic createVariableDefinitionBasic()
+  {
+    VariableDefinitionBasicImpl variableDefinitionBasic = new VariableDefinitionBasicImpl();
+    return variableDefinitionBasic;
   }
 
   /**

@@ -104,6 +104,15 @@ public interface IblFactory extends EFactory
   VariableAttribute createVariableAttribute();
 
   /**
+   * Returns a new object of class '<em>User Defined Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>User Defined Type</em>'.
+   * @generated
+   */
+  UserDefinedType createUserDefinedType();
+
+  /**
    * Returns a new object of class '<em>Variable Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -111,6 +120,42 @@ public interface IblFactory extends EFactory
    * @generated
    */
   VariableDefinition createVariableDefinition();
+
+  /**
+   * Returns a new object of class '<em>Variable Definition Built In</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Definition Built In</em>'.
+   * @generated
+   */
+  VariableDefinitionBuiltIn createVariableDefinitionBuiltIn();
+
+  /**
+   * Returns a new object of class '<em>Variable Definition User Defined</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Definition User Defined</em>'.
+   * @generated
+   */
+  VariableDefinitionUserDefined createVariableDefinitionUserDefined();
+
+  /**
+   * Returns a new object of class '<em>Variable Definition Collection</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Definition Collection</em>'.
+   * @generated
+   */
+  VariableDefinitionCollection createVariableDefinitionCollection();
+
+  /**
+   * Returns a new object of class '<em>Variable Definition Basic</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Definition Basic</em>'.
+   * @generated
+   */
+  VariableDefinitionBasic createVariableDefinitionBasic();
 
   /**
    * Returns a new object of class '<em>Parameter Assignment</em>'.

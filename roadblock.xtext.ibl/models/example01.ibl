@@ -18,11 +18,13 @@ import library01
 
 define site1 typeof REGION () {
 	MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+	SensorCell myCell = new SensorCell(signal = SA, displayName = "A Cell", chassis = "E.Coli")
 
 //a	CELL myCell = SensorCell(signal = SA)
 //b	myCell is a SensorCell(signal = SA)
 //c	SensorCell myCell = SensorCell(signal = SA)
-	SensorCell myCell = new SensorCell(signal = SA, displayName = "A Cell", chassis = "E.Coli")
+// FIX
+//	SensorCell myCell = new SensorCell(signal = SA, displayName = "A Cell", chassis = "E.Coli")
 }
 
 /////////////////
@@ -108,13 +110,13 @@ define SensorCell typeof CELL (MOLECULE signal) {
 	VERIFY [SA >= 50 uM AND NOT SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND ?
 	
 
-	VERIFY IF [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND <= 0.9
+	VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND <= 0.9
 //verify what when accuracy
 	
-1	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 s IS ?
-3	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 min IS > 1 M
-2	VERIFY IF EXPECTED RFP IS ? AT TIME INSTANT 1000 s
-4	VERIFY IF EXPECTED RFP IS > 1 M AT TIME INSTANT 1000 min 
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 s IS ?
+	VERIFY EXPECTED [RFP] AT TIME INSTANT 1000 min IS > 1 M
+//	VERIFY IF EXPECTED RFP IS ? AT TIME INSTANT 1000 s
+//4	VERIFY IF EXPECTED RFP IS > 1 M AT TIME INSTANT 1000 min 
 	// We do not need to refer to outputs or inputs of devices generically. WE can simply write the species name.
 	// We do not need to use keywords e.g. Concentration, instead we write units in the queries.
 }

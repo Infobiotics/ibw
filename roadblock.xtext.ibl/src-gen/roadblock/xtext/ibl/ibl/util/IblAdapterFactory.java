@@ -120,9 +120,34 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createVariableAttributeAdapter();
       }
       @Override
+      public Adapter caseUserDefinedType(UserDefinedType object)
+      {
+        return createUserDefinedTypeAdapter();
+      }
+      @Override
       public Adapter caseVariableDefinition(VariableDefinition object)
       {
         return createVariableDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseVariableDefinitionBuiltIn(VariableDefinitionBuiltIn object)
+      {
+        return createVariableDefinitionBuiltInAdapter();
+      }
+      @Override
+      public Adapter caseVariableDefinitionUserDefined(VariableDefinitionUserDefined object)
+      {
+        return createVariableDefinitionUserDefinedAdapter();
+      }
+      @Override
+      public Adapter caseVariableDefinitionCollection(VariableDefinitionCollection object)
+      {
+        return createVariableDefinitionCollectionAdapter();
+      }
+      @Override
+      public Adapter caseVariableDefinitionBasic(VariableDefinitionBasic object)
+      {
+        return createVariableDefinitionBasicAdapter();
       }
       @Override
       public Adapter caseParameterAssignment(ParameterAssignment object)
@@ -377,6 +402,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.UserDefinedType <em>User Defined Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.UserDefinedType
+   * @generated
+   */
+  public Adapter createUserDefinedTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinition <em>Variable Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -387,6 +427,66 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createVariableDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn <em>Variable Definition Built In</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
+   * @generated
+   */
+  public Adapter createVariableDefinitionBuiltInAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionUserDefined <em>Variable Definition User Defined</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinitionUserDefined
+   * @generated
+   */
+  public Adapter createVariableDefinitionUserDefinedAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionCollection <em>Variable Definition Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinitionCollection
+   * @generated
+   */
+  public Adapter createVariableDefinitionCollectionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionBasic <em>Variable Definition Basic</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinitionBasic
+   * @generated
+   */
+  public Adapter createVariableDefinitionBasicAdapter()
   {
     return null;
   }
