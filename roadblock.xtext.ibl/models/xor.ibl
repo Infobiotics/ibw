@@ -1,102 +1,92 @@
 // XOR device
 
-define PROCESS constitutiveProteinExpressionTwoGenes(
-	PROMOTER promoter,
-	GENE gene1,
-	PROTEIN protein1,
-	GENE gene2,
-	PROTEIN protein2){
+import library01  
 
-	// INSERT RULES HERE
-
+define constitutiveProteinExpressionTwoGenes typeof ConstitutiveProteinExpression (
+        PROMOTER promoter, 
+        GENE gene,
+        returned PROTEIN protein,
+        GENE gene2,
+        returned PROTEIN protein2){
+        
+        RULE translation2 : mrna1~ribosome -> mrna1~ribosome + protein2
+        translation.forwardRate = rates.translationRate
+        
+        
 } USES RIBOSOME ribosome, RNA rnaP
-
-define PROCESS doublyRegulatedProteinExpression( 
-	PROMOTER promoter,
-	MOLECULE upRegulator,
-	MOLECULE downRegulator,
-	GENE gene,
-	PROTEIN protein
-){
-	// INSERT RULES HERE
-
-
+        
+define doublyRegulatedProteinExpression typeof PROCESS(
+        PROMOTER promoter,
+        MOLECULE upRegulator,
+        MOLECULE downRegulator,
+        GENE gene,
+        PROTEIN protein
+){      
+        UpRegulatedProteinExpression upRegulation = new UpRegulatedExpression(promoter = promoter, signal = upRegulator, gene = gene, protein = protein)
+        DownRegulatedProteinExpression downRegulation = new DownRegulatedExpression(promoter = promoter, signal = downRegulator, gene = gene, protein = protein)
+        
 } USES RIBOSOME ribosome, RNA rnaP
+        
+define SYSTEM XORGate(          
+        PROMOTER promoter1, 
+        GENE gene1 = GENE(URI = 'db://lacl'),          // default value
+        PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
+        GENE gene2 = GENE(URI = 'db://tetR'),
+        PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
+        MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
+        MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
+        PROMOTER promoter2,
+        PROMOTER promoter3,
+        GENE reporterGene = GENE(URI = 'bd://gFP'),
+        PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
+        PROMOTER promoter1,
+        GENE gene1,
+        PROTEIN protein1,
+        GENE gene2,
+        PROTEIN protein2,
+        MOLECULE molecule1,
+        MOLECULE molecule2,
+        PROMOTER promoter2,
+        PROMOTER promoter3,
+        GENE reporterGene,
+        PROTEIN reporterProtein){
 
-define SYSTEM XORGate(		
-//	 ??JT?? why are there variable definitions e.g. "GENE gene1 = GENE(URI = 'db://lacl')"
-//	 in the original commented out parameter list - default values? 		
-//	PROMOTER promoter1, 
-//	GENE gene1 = GENE(URI = 'db://lacl'),
-//	PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
-//	GENE gene2 = GENE(URI = 'db://tetR'),
-//	PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
-//	MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
-//	MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
-//	PROMOTER promoter2,
-//	PROMOTER promoter3,
-//	GENE reporterGene = GENE(URI = 'bd://gFP'),
-//	PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
-	PROMOTER promoter1, 
-	GENE gene1,
-	PROTEIN protein1,
-	GENE gene2,
-	PROTEIN protein2,
-	MOLECULE molecule1,
-	MOLECULE molecule2,
-	PROMOTER promoter2,
-	PROMOTER promoter3,
-	GENE reporterGene,
-	PROTEIN reporterProtein){
-	
-	DEVICE D1 = DEVICE(promoter1,gene1,gene2)(produced = [protein1, protein2]){
-		PROCESS P1 = constitutivePromoterTwoGenes(
-			promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
-		)
-	}
-	
-	DEVICE D2 = DEVICE(promoter2,reporterGene)(consumed = [protein1,protein2], produced = reporterProtein){
-		PROCESS P1 = doublyRegulatedProteinExpression(promoter = promoter2, upRegulator = protein1, downRegulator = protein2)
-	}
+        DEVICE D1 = DEVICE(parts = [promoter1,gene1,gene2])(produced = [protein1, protein2]){
+                PROCESS P1 = constitutivePromoterTwoGenes(
+                        promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
+                )
+        }
 
-	DEVICE D3 = DEVICE(promoter3,reporterGene)(consumed = [protein1,protein2], produced = reporterProtein){
-		PROCESS P1 = doublyRegulatedProteinExpression(promoter = promoter2, downRegulator = protein1, upRegulator = protein2)
-	}
-	
-	// extra rules to make complexes and sequester molecule1 and molecule2
+        DEVICE D2 = DEVICE(parts = [promoter2,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
+                PROCESS P1 = doublyRegulatedProteinExpression(promoter = promoter2, upRegulator = protein1, downRegulator = protein2)
+        }
 
-	RULE R1 : molecule1 + protein1 <-> molecule1~protein1
-	RULE R2 : molecule2 + protein2 <-> molecule2~protein2
+        DEVICE D3 = DEVICE(parts = [promoter3,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
+                PROCESS P1 = doublyRegulatedProteinExpression(promoter = promoter2, downRegulator = protein1, upRegulator = protein2)
+        }
 
-	// CHECK that it does work as a XOR gate
-	VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 0 uM 
-	VERIFY [reporterProtein >  0 molecules] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 1 uM 
-	VERIFY [reporterProtein >  0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 0 uM 
-	VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 1 uM 
+        // extra rules to make complexes and sequester molecule1 and molecule2
+
+        RULE R1 : molecule1 + protein1 <-> molecule1~protein1
+        RULE R2 : molecule2 + protein2 <-> molecule2~protein2
+
+        // CHECK that it does work as a XOR gate
+        VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 0 uM
+        VERIFY [reporterProtein >  0 molecules] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 1 uM
+        VERIFY [reporterProtein >  0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 0 uM
+        VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 1 uM
 }
 
-// ??JT?? why are these defined at the top level, don't they need to be inside a SYSTEM or something?
-//MOLECULE IPTG = MOLECULE(URI = 'db://...')
-//MOLECULE aTc = MOLECULE(URI = 'db://...')
+MOLECULE IPTG = MOLECULE(URI = 'db://...')
+MOLECULE aTc = MOLECULE(URI = 'db://...')
+define CELL XOREnabledCell(consumed = [IPTG, aTc]){
 
-// ??JT?? not sure what the exact use of consumed is in the commented out header below
-//define CELL XOREnabledCell(consumed = [IPTG, aTc]){
-define CELL XOREnabledCell(){
+        observable RIBOSOME ribosome
+        observable RNA rnaP
 
-	observable RIBOSOME ribosome
-	observable RNA rnaP
-
-// ??JT?? do we allow variable definitions within variable definitions as in commented out SYSTEM below
-//	SYSTEM system1 = XORGate(			// using the XOR gate with a different reporter than the default one.
-//		promoter1 = PROMOTER(URI='db://...'),
-//		reporterGene = GENE(URI = 'db://rFP'),
-//		reporterProtein = PROTEIN(URI='db://RFP')
-//	)
-// below is how this looks currently
-	PROMOTER promoter1 = PROMOTER(URI='db://...')
-	GENE reporterGene1 = GENE(URI = 'db://rFP')
-	PROTEIN reporterProtein1 = PROTEIN(URI='db://RFP')
-	SYSTEM system1 = XORGate(
-		promoter1 = promoter1,	reporterGene = reporterGene1, reporterProtein = reporterProtein1
-	)
-}
+        SYSTEM system1 = XORGate(                       // using the XOR gate with a different reporter than the default one.
+                promoter1 = PROMOTER(URI='db://...'),
+                reporterGene = GENE(URI = 'db://rFP'),
+                reporterProtein = PROTEIN(URI='db://RFP')
+        )
+ }
