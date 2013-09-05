@@ -91,10 +91,12 @@ define XOREnabledCell typeof CELL (){
 	observable RIBOSOME ribosome
 	observable RNA rnaP
 
+	PROMOTER myPromoter = new PROMOTER(URI='db://...')
+	GENE myReporterGene = new GENE(URI = 'db://rFP')
+	PROTEIN myReporterProtein = new PROTEIN(URI='db://RFP')
 	SYSTEM system1 = new XORGate(                       // using the XOR gate with a different reporter than the default one.
-// JT: this syntax doesn't work:
-//		promoter1 = PROMOTER(URI='db://...'),
-//		reporterGene = GENE(URI = 'db://rFP'),
-//		reporterProtein = PROTEIN(URI='db://RFP')
-	)
+		promoter1 = myPromoter,
+		reporterGene = myReporterGene,
+		reporterProtein = myReporterProtein
+		)
  }
