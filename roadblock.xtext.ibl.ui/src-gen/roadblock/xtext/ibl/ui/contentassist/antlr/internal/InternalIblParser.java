@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalIblParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'observable'", "'ARRANGE'", "'PROCESS'", "'CELL'", "'SYSTEM'", "'REGION'", "'required'", "'returned'", "'optional'", "'MOLECULE'", "'RIBOSOME'", "'PROMOTER'", "'PROTEIN'", "'DNA'", "'RNA'", "'GENE'", "'INTEGER'", "'RATE'", "'CHASSIS'", "'COMPLEX'", "'LIST'", "'SET'", "'HASH'", "'+'", "'-'", "'|'", "'->'", "'?'", "'WILL HOLD'", "'NEVER HOLDS'", "'ALWAYS HOLDS'", "'EVENTUALLY HOLDS'", "'SOMETIMES HOLDS'", "'E'", "'e'", "'s'", "'min'", "'mins'", "'s^-1'", "'min^-1'", "'M'", "'mM'", "'uM'", "'nM'", "'pM'", "'fM'", "'molecule'", "'molecules'", "'=='", "'!='", "'<'", "'>'", "'<='", "'>='", "'&'", "'AND'", "'OR'", "'import'", "'define'", "'typeof'", "'('", "')'", "'{'", "'}'", "','", "'USES'", "':'", "'~'", "'.'", "'='", "'new'", "'RULE'", "'DEVICE'", "'parts'", "'ATGC'", "'VERIFY'", "'['", "']'", "'EXPECTED'", "'AT TIME INSTANT'", "'IS'", "'WITHIN TIME BOUND'", "'WITH PROBABILITY BOUND'", "'GIVEN'", "'NOT'", "'.*'", "'<->'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'observable'", "'ARRANGE'", "'PROCESS'", "'CELL'", "'SYSTEM'", "'REGION'", "'input'", "'output'", "'optional'", "'MOLECULE'", "'RIBOSOME'", "'PROMOTER'", "'PROTEIN'", "'DNA'", "'RNA'", "'GENE'", "'INTEGER'", "'RATE'", "'CHASSIS'", "'COMPLEX'", "'LIST'", "'SET'", "'HASH'", "'+'", "'-'", "'|'", "'->'", "'?'", "'WILL HOLD'", "'NEVER HOLDS'", "'ALWAYS HOLDS'", "'EVENTUALLY HOLDS'", "'SOMETIMES HOLDS'", "'E'", "'e'", "'s'", "'min'", "'mins'", "'s^-1'", "'min^-1'", "'M'", "'mM'", "'uM'", "'nM'", "'pM'", "'fM'", "'molecule'", "'molecules'", "'=='", "'!='", "'<'", "'>'", "'<='", "'>='", "'&'", "'AND'", "'OR'", "'import'", "'define'", "'typeof'", "'('", "')'", "'{'", "'}'", "','", "'USES'", "':'", "'~'", "'.'", "'='", "'new'", "'RULE'", "'DEVICE'", "'parts'", "'ATGC'", "'VERIFY'", "'['", "']'", "'EXPECTED'", "'AT TIME INSTANT'", "'IS'", "'WITHIN TIME BOUND'", "'WITH PROBABILITY BOUND'", "'GIVEN'", "'NOT'", "'.*'", "'<->'"
     };
     public static final int RULE_ID=4;
     public static final int T__29=29;
@@ -4283,13 +4283,13 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunctionParameterScope__Alternatives"
-    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1556:1: rule__FunctionParameterScope__Alternatives : ( ( 'required' ) | ( 'returned' ) | ( 'optional' ) );
+    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1556:1: rule__FunctionParameterScope__Alternatives : ( ( 'input' ) | ( 'output' ) | ( 'optional' ) );
     public final void rule__FunctionParameterScope__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1560:1: ( ( 'required' ) | ( 'returned' ) | ( 'optional' ) )
+            // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1560:1: ( ( 'input' ) | ( 'output' ) | ( 'optional' ) )
             int alt6=3;
             switch ( input.LA(1) ) {
             case 17:
@@ -4316,14 +4316,14 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
 
             switch (alt6) {
                 case 1 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1561:1: ( 'required' )
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1561:1: ( 'input' )
                     {
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1561:1: ( 'required' )
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1562:1: 'required'
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1561:1: ( 'input' )
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1562:1: 'input'
                     {
-                     before(grammarAccess.getFunctionParameterScopeAccess().getRequiredKeyword_0()); 
+                     before(grammarAccess.getFunctionParameterScopeAccess().getInputKeyword_0()); 
                     match(input,17,FOLLOW_17_in_rule__FunctionParameterScope__Alternatives3267); 
-                     after(grammarAccess.getFunctionParameterScopeAccess().getRequiredKeyword_0()); 
+                     after(grammarAccess.getFunctionParameterScopeAccess().getInputKeyword_0()); 
 
                     }
 
@@ -4331,14 +4331,14 @@ public class InternalIblParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1569:6: ( 'returned' )
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1569:6: ( 'output' )
                     {
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1569:6: ( 'returned' )
-                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1570:1: 'returned'
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1569:6: ( 'output' )
+                    // ../roadblock.xtext.ibl.ui/src-gen/roadblock/xtext/ibl/ui/contentassist/antlr/internal/InternalIbl.g:1570:1: 'output'
                     {
-                     before(grammarAccess.getFunctionParameterScopeAccess().getReturnedKeyword_1()); 
+                     before(grammarAccess.getFunctionParameterScopeAccess().getOutputKeyword_1()); 
                     match(input,18,FOLLOW_18_in_rule__FunctionParameterScope__Alternatives3287); 
-                     after(grammarAccess.getFunctionParameterScopeAccess().getReturnedKeyword_1()); 
+                     after(grammarAccess.getFunctionParameterScopeAccess().getOutputKeyword_1()); 
 
                     }
 

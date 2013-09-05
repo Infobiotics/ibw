@@ -62,7 +62,7 @@ FunctionParameterMember:
 
 // allowed scope of function parameters
 FunctionParameterScope:
-	'required' | 'returned' | 'optional'
+	'input' | 'output' | 'optional'
 ;
 
 // function definition body member

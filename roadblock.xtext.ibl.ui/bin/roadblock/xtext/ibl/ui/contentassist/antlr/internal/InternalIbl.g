@@ -1559,19 +1559,19 @@ rule__FunctionParameterScope__Alternatives
     }
 :
 (
-{ before(grammarAccess.getFunctionParameterScopeAccess().getRequiredKeyword_0()); }
+{ before(grammarAccess.getFunctionParameterScopeAccess().getInputKeyword_0()); }
 
-	'required' 
+	'input' 
 
-{ after(grammarAccess.getFunctionParameterScopeAccess().getRequiredKeyword_0()); }
+{ after(grammarAccess.getFunctionParameterScopeAccess().getInputKeyword_0()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionParameterScopeAccess().getReturnedKeyword_1()); }
+{ before(grammarAccess.getFunctionParameterScopeAccess().getOutputKeyword_1()); }
 
-	'returned' 
+	'output' 
 
-{ after(grammarAccess.getFunctionParameterScopeAccess().getReturnedKeyword_1()); }
+{ after(grammarAccess.getFunctionParameterScopeAccess().getOutputKeyword_1()); }
 )
 
     |(

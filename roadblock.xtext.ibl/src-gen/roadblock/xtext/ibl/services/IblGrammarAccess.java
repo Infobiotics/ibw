@@ -357,23 +357,23 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	public class FunctionParameterScopeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionParameterScope");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cRequiredKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cReturnedKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cInputKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cOutputKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cOptionalKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		//// allowed scope of function parameters
 		//FunctionParameterScope:
-		//	"required" | "returned" | "optional";
+		//	"input" | "output" | "optional";
 		public ParserRule getRule() { return rule; }
 
-		//"required" | "returned" | "optional"
+		//"input" | "output" | "optional"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"required"
-		public Keyword getRequiredKeyword_0() { return cRequiredKeyword_0; }
+		//"input"
+		public Keyword getInputKeyword_0() { return cInputKeyword_0; }
 
-		//"returned"
-		public Keyword getReturnedKeyword_1() { return cReturnedKeyword_1; }
+		//"output"
+		public Keyword getOutputKeyword_1() { return cOutputKeyword_1; }
 
 		//"optional"
 		public Keyword getOptionalKeyword_2() { return cOptionalKeyword_2; }
@@ -2646,7 +2646,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// allowed scope of function parameters
 	//FunctionParameterScope:
-	//	"required" | "returned" | "optional";
+	//	"input" | "output" | "optional";
 	public FunctionParameterScopeElements getFunctionParameterScopeAccess() {
 		return (pFunctionParameterScope != null) ? pFunctionParameterScope : (pFunctionParameterScope = new FunctionParameterScopeElements());
 	}

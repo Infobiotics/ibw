@@ -147,8 +147,8 @@
         <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:Keyword" value="required"/>
-        <elements xsi:type="xtext:Keyword" value="returned"/>
+        <elements xsi:type="xtext:Keyword" value="input"/>
+        <elements xsi:type="xtext:Keyword" value="output"/>
         <elements xsi:type="xtext:Keyword" value="optional"/>
       </alternatives>
     </rules>

@@ -609,17 +609,17 @@ ruleFunctionParameterScope returns [AntlrDatatypeRuleToken current=new AntlrData
     }
     @after { leaveRule(); }:
 (
-	kw='required' 
+	kw='input' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFunctionParameterScopeAccess().getRequiredKeyword_0()); 
+        newLeafNode(kw, grammarAccess.getFunctionParameterScopeAccess().getInputKeyword_0()); 
     }
 
     |
-	kw='returned' 
+	kw='output' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFunctionParameterScopeAccess().getReturnedKeyword_1()); 
+        newLeafNode(kw, grammarAccess.getFunctionParameterScopeAccess().getOutputKeyword_1()); 
     }
 
     |
