@@ -221,7 +221,6 @@ DeviceDefinition:
 	'('
 		('input' '=' input=List)?
 		(',' 'output' '=' outputput=List)?
-//		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
 	')'
 	'{'
 		(members+=DeviceMembers*)
