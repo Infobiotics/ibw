@@ -117,7 +117,7 @@ define SensorCell typeof CELL(MOLECULE signal){
          VERIFY [SA > 0 molecules] WILL HOLD
          VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s]
          // Probability bounds could be any relational operator <,>,=,<=,>= as well as ?
-         VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND => 0.9
+         VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND >= 0.9
          VERIFY [SA == 0 molecules] NEVER HOLDS
          VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins]
          VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins] WITH PROBABILITY BOUND ?
@@ -126,7 +126,7 @@ define SensorCell typeof CELL(MOLECULE signal){
          VERIFY [SA >= 50 uM AND NOT SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND ?
  
  
-         VERIFY IF [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND => 0.9
+         VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND >= 0.9
  
          // We do not need to refer to outputs or inputs of devices generically. We can simply write the species name.
          // We do not need to use keywords e.g. Concentration, instead we write units in the queries.
