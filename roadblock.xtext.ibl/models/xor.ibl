@@ -3,17 +3,12 @@
 import library01  
 
 define constitutiveProteinExpressionTwoGenes typeof ConstitutiveProteinExpression (
-        PROMOTER promoter, 
-        GENE gene,
-        PROTEIN protein : returned,
         GENE gene2,
         PROTEIN protein2 : returned){
         
         RULE translation2 : mrna1~ribosome -> mrna1~ribosome + protein2
-        translation.forwardRate = rates.translationRate
-        
-        
-} USES RIBOSOME ribosome, RNA rnaP
+        translation.forwardRate = rates.translationRate       
+} 
         
 define doublyRegulatedProteinExpression typeof PROCESS(
         PROMOTER promoter,
@@ -28,11 +23,11 @@ define doublyRegulatedProteinExpression typeof PROCESS(
 } USES RIBOSOME ribosome, RNA rnaP
         
 define XORGate typeof SYSTEM (          
-        PROMOTER promoter1, 
-        GENE gene1,          // default value
-        PROTEIN protein1,
-        GENE gene2,
-        PROTEIN protein2,
+        PROMOTER xorPromoter, 
+        GENE xorGene1,          // default value
+        PROTEIN xorProtein1,
+        GENE xorGene2,
+        PROTEIN xorProtein2,
         MOLECULE molecule1,
         MOLECULE molecule2,
         PROMOTER promoter2,
@@ -52,9 +47,10 @@ define XORGate typeof SYSTEM (
 //        GENE reporterGene = GENE(URI = 'bd://gFP'),
 //        PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
 
-        DEVICE D1 = new DEVICE(parts = [promoter1,gene1,gene2])(produced = [protein1, protein2]){
+        DEVICE D1 = new DEVICE(parts = [xorPromoter,xorGene1,xorGene2])(produced = [xorProtein1, xorProtein2]){
                 PROCESS P1 = new constitutivePromoterTwoGenes(
-                        promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
+                        //promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
+                        promoter = xorPromoter, gene1 = xorGene1, gene2 = xorGene2, protein1 = xorProtein1, protein2 = xorProtein2  
                 )
         }
 

@@ -9,9 +9,9 @@
 ///////////////
 
 define ConstitutiveProteinExpression typeof PROCESS (
-	PROMOTER promoter:required,
-	GENE gene1:required,
-	PROTEIN protein1:returned,
+	PROMOTER promoter:input,
+	GENE gene1:input,
+	PROTEIN protein1:output,
 	HASH<RATE> rates:optional
 ) 
 {
@@ -39,7 +39,7 @@ define ConstitutiveProteinExpression typeof PROCESS (
 } USES RIBOSOME ribosome, RNA rnaP
 
 define RegulatedProteinExpression typeof ConstitutiveProcessExpression (
-	MOLECULE signal:required	
+	MOLECULE signal:input	
 )
 {
 	COMPLEX signal~promoter
@@ -56,10 +56,10 @@ define RegulatedProteinExpression typeof ConstitutiveProcessExpression (
 }
 
 define RegulatedProteinExpression typeof PROCESS (
-	MOLECULE regulator:required,
-	PROMOTER promoter:required,
-	GENE gene:required,
-	PROTEIN protein:returned,
+	MOLECULE regulator:input,
+	PROMOTER promoter:input,
+	GENE gene:input,
+	PROTEIN protein:output,
 	RATE rates:optional
 )
 {

@@ -24,12 +24,12 @@ define site1 typeof REGION () {
 // a new useful process
 
 define DualPromoterProteinExpression typeof Process(
-        MOLECULE signal1,
-        PROMOTER promoter1,
-        MOLECULE signal2,
-        PROMOTER promoter2,
-        GENE gene,
-        PROTEIN protein: returned){
+        MOLECULE signal1: input,
+        PROMOTER promoter1: input,
+        MOLECULE signal2: input,
+        PROMOTER promoter2: input,
+        GENE gene: input,
+        PROTEIN protein: output){
 
         // Model the dual promoter as an OR
 
@@ -44,8 +44,8 @@ define DualPromoterProteinExpression typeof Process(
 
 define SensorCell typeof CELL(MOLECULE signal){
         // define molecular elements
-        observable RIBOSOME ribosome
-        observable RNA rnaP
+        RIBOSOME ribosome: observable
+        RNA rnaP = new RNA(displayName = "XYZ") : observable
 
         CHASSIS chassis = new CHASSIS(organism = "ecoli")
 
@@ -64,11 +64,11 @@ define SensorCell typeof CELL(MOLECULE signal){
         INTEGER plasmidNumber = 500
 
         // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
-        DEVICE D1 = new DEVICE(parts = [PnahR, nahR, lasR])(produced = [NahR, LasR]){
+        DEVICE D1 = new DEVICE(parts = [PnahR, nahR, lasR])(input = [SA~NahR], output = [NahR, LasR]){
                 PROCESS process1 = new ConstitutiveProteinExpression(promoter = PnahR, gene = nahR, protein = NahR)
    }
 
-        DEVICE D2 = new DEVICE(parts = [Psal, xylS2])(consumed = [SA~NahR], produced = [XylS2]){
+        DEVICE D2 = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
                 // how the parts are arranged
                 ATGC ARRANGE : Psal, xylS2
                 // rates
@@ -80,7 +80,7 @@ define SensorCell typeof CELL(MOLECULE signal){
                 VERIFY [ Xysl2 > 0 uM ] WILL HOLD
         }
 
-        DEVICE D3 = new DEVICE(parts = [Pm, PlasR, gFP])(consumed = [SA~XylS2, AHL~LasR], produced = [GFP]){
+        DEVICE D3 = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
                 PROCESS process1 = new DualPromoterProteinExpression(
                         signal1 = SA~XylS2,
                         promoter1 = Pm,
@@ -114,19 +114,19 @@ define SensorCell typeof CELL(MOLECULE signal){
  
          // model checker rules
          // HERE ARE SOME MODALITIES WE NEED TO CONSIDER IN THE FIRST INSTANCE
-         VERIFY [SA > 0 molecules] WILL HOLD
-         VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s]
+         VERIFY [signal > 0 molecules] WILL HOLD
+         VERIFY [signal > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s]
          // Probability bounds could be any relational operator <,>,=,<=,>= as well as ?
-         VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND >= 0.9
-         VERIFY [SA == 0 molecules] NEVER HOLDS
-         VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins]
-         VERIFY [SA == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins] WITH PROBABILITY BOUND ?
-         VERIFY [SA >= 50 uM AND SA <= 100 uM] ALWAYS HOLDS
-         VERIFY [SA >= 50 uM OR SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s]
-         VERIFY [SA >= 50 uM AND NOT SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND ?
+         VERIFY [signal > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND >= 0.9
+         VERIFY [signal == 0 molecules] NEVER HOLDS
+         VERIFY [signal == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins]
+         VERIFY [signal == 0 molecules] NEVER HOLDS WITHIN TIME BOUND [100 mins,200 mins] WITH PROBABILITY BOUND ?
+         VERIFY [signal >= 50 uM AND SA <= 100 uM] ALWAYS HOLDS
+         VERIFY [signal >= 50 uM OR SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s]
+         VERIFY [signal >= 50 uM AND NOT SA <= 100 uM] ALWAYS HOLDS WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND ?
  
  
-         VERIFY [SA > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND >= 0.9
+         VERIFY [signal > 0 molecules] WILL HOLD WITHIN TIME BOUND [100 s,200 s] WITH PROBABILITY BOUND >= 0.9
  
          // We do not need to refer to outputs or inputs of devices generically. We can simply write the species name.
          // We do not need to use keywords e.g. Concentration, instead we write units in the queries.
