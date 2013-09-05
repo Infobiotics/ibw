@@ -448,22 +448,22 @@ public interface IblPackage extends EPackage
   int VARIABLE_DEFINITION = 10;
 
   /**
-   * The feature id for the '<em><b>Qualifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DEFINITION__QUALIFIER = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Definition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION__DEFINITION = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
+  int VARIABLE_DEFINITION__DEFINITION = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Qualifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DEFINITION__QUALIFIER = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Variable Definition</em>' class.
@@ -1000,13 +1000,22 @@ public interface IblPackage extends EPackage
   int DEVICE_DEFINITION__PARTS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * The feature id for the '<em><b>Input</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
+  int DEVICE_DEFINITION__INPUT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Outputput</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVICE_DEFINITION__OUTPUTPUT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1015,7 +1024,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__MEMBERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
+  int DEVICE_DEFINITION__MEMBERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Device Definition</em>' class.
@@ -1024,7 +1033,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 4;
+  int DEVICE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.DeviceMembersImpl <em>Device Members</em>}' class.
@@ -1694,17 +1703,6 @@ public interface IblPackage extends EPackage
   EClass getVariableDefinition();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getQualifier <em>Qualifier</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Qualifier</em>'.
-   * @see roadblock.xtext.ibl.ibl.VariableDefinition#getQualifier()
-   * @see #getVariableDefinition()
-   * @generated
-   */
-  EAttribute getVariableDefinition_Qualifier();
-
-  /**
    * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getDefinition <em>Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1714,6 +1712,17 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EReference getVariableDefinition_Definition();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableDefinition#getQualifier <em>Qualifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Qualifier</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinition#getQualifier()
+   * @see #getVariableDefinition()
+   * @generated
+   */
+  EAttribute getVariableDefinition_Qualifier();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn <em>Variable Definition Built In</em>}'.
@@ -2230,15 +2239,26 @@ public interface IblPackage extends EPackage
   EReference getDeviceDefinition_Parts();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getInput <em>Input</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.DeviceDefinition#getParameters()
+   * @return the meta object for the containment reference '<em>Input</em>'.
+   * @see roadblock.xtext.ibl.ibl.DeviceDefinition#getInput()
    * @see #getDeviceDefinition()
    * @generated
    */
-  EReference getDeviceDefinition_Parameters();
+  EReference getDeviceDefinition_Input();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getOutputput <em>Outputput</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Outputput</em>'.
+   * @see roadblock.xtext.ibl.ibl.DeviceDefinition#getOutputput()
+   * @see #getDeviceDefinition()
+   * @generated
+   */
+  EReference getDeviceDefinition_Outputput();
 
   /**
    * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getMembers <em>Members</em>}'.
@@ -2853,20 +2873,20 @@ public interface IblPackage extends EPackage
     EClass VARIABLE_DEFINITION = eINSTANCE.getVariableDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE_DEFINITION__QUALIFIER = eINSTANCE.getVariableDefinition_Qualifier();
-
-    /**
      * The meta object literal for the '<em><b>Definition</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference VARIABLE_DEFINITION__DEFINITION = eINSTANCE.getVariableDefinition_Definition();
+
+    /**
+     * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_DEFINITION__QUALIFIER = eINSTANCE.getVariableDefinition_Qualifier();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionBuiltInImpl <em>Variable Definition Built In</em>}' class.
@@ -3281,12 +3301,20 @@ public interface IblPackage extends EPackage
     EReference DEVICE_DEFINITION__PARTS = eINSTANCE.getDeviceDefinition_Parts();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Input</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DEVICE_DEFINITION__PARAMETERS = eINSTANCE.getDeviceDefinition_Parameters();
+    EReference DEVICE_DEFINITION__INPUT = eINSTANCE.getDeviceDefinition_Input();
+
+    /**
+     * The meta object literal for the '<em><b>Outputput</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DEVICE_DEFINITION__OUTPUTPUT = eINSTANCE.getDeviceDefinition_Outputput();
 
     /**
      * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.

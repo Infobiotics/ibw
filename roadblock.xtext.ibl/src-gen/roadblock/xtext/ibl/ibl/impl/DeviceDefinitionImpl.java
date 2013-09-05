@@ -21,7 +21,6 @@ import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.List;
-import roadblock.xtext.ibl.ibl.ParameterAssignment;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +31,8 @@ import roadblock.xtext.ibl.ibl.ParameterAssignment;
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl#getParts <em>Parts</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl#getOutputput <em>Outputput</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.DeviceDefinitionImpl#getMembers <em>Members</em>}</li>
  * </ul>
  * </p>
@@ -72,14 +72,24 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
   protected List parts;
 
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+   * The cached value of the '{@link #getInput() <em>Input</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameters()
+   * @see #getInput()
    * @generated
    * @ordered
    */
-  protected EList<ParameterAssignment> parameters;
+  protected List input;
+
+  /**
+   * The cached value of the '{@link #getOutputput() <em>Outputput</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOutputput()
+   * @generated
+   * @ordered
+   */
+  protected List outputput;
 
   /**
    * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
@@ -188,13 +198,95 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParameterAssignment> getParameters()
+  public List getInput()
   {
-    if (parameters == null)
+    return input;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInput(List newInput, NotificationChain msgs)
+  {
+    List oldInput = input;
+    input = newInput;
+    if (eNotificationRequired())
     {
-      parameters = new EObjectContainmentEList<ParameterAssignment>(ParameterAssignment.class, this, IblPackage.DEVICE_DEFINITION__PARAMETERS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE_DEFINITION__INPUT, oldInput, newInput);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return parameters;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInput(List newInput)
+  {
+    if (newInput != input)
+    {
+      NotificationChain msgs = null;
+      if (input != null)
+        msgs = ((InternalEObject)input).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE_DEFINITION__INPUT, null, msgs);
+      if (newInput != null)
+        msgs = ((InternalEObject)newInput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE_DEFINITION__INPUT, null, msgs);
+      msgs = basicSetInput(newInput, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE_DEFINITION__INPUT, newInput, newInput));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public List getOutputput()
+  {
+    return outputput;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOutputput(List newOutputput, NotificationChain msgs)
+  {
+    List oldOutputput = outputput;
+    outputput = newOutputput;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE_DEFINITION__OUTPUTPUT, oldOutputput, newOutputput);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOutputput(List newOutputput)
+  {
+    if (newOutputput != outputput)
+    {
+      NotificationChain msgs = null;
+      if (outputput != null)
+        msgs = ((InternalEObject)outputput).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE_DEFINITION__OUTPUTPUT, null, msgs);
+      if (newOutputput != null)
+        msgs = ((InternalEObject)newOutputput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE_DEFINITION__OUTPUTPUT, null, msgs);
+      msgs = basicSetOutputput(newOutputput, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE_DEFINITION__OUTPUTPUT, newOutputput, newOutputput));
   }
 
   /**
@@ -223,8 +315,10 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
     {
       case IblPackage.DEVICE_DEFINITION__PARTS:
         return basicSetParts(null, msgs);
-      case IblPackage.DEVICE_DEFINITION__PARAMETERS:
-        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+      case IblPackage.DEVICE_DEFINITION__INPUT:
+        return basicSetInput(null, msgs);
+      case IblPackage.DEVICE_DEFINITION__OUTPUTPUT:
+        return basicSetOutputput(null, msgs);
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
         return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
     }
@@ -245,8 +339,10 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
         return getName();
       case IblPackage.DEVICE_DEFINITION__PARTS:
         return getParts();
-      case IblPackage.DEVICE_DEFINITION__PARAMETERS:
-        return getParameters();
+      case IblPackage.DEVICE_DEFINITION__INPUT:
+        return getInput();
+      case IblPackage.DEVICE_DEFINITION__OUTPUTPUT:
+        return getOutputput();
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
         return getMembers();
     }
@@ -270,9 +366,11 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
       case IblPackage.DEVICE_DEFINITION__PARTS:
         setParts((List)newValue);
         return;
-      case IblPackage.DEVICE_DEFINITION__PARAMETERS:
-        getParameters().clear();
-        getParameters().addAll((Collection<? extends ParameterAssignment>)newValue);
+      case IblPackage.DEVICE_DEFINITION__INPUT:
+        setInput((List)newValue);
+        return;
+      case IblPackage.DEVICE_DEFINITION__OUTPUTPUT:
+        setOutputput((List)newValue);
         return;
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
         getMembers().clear();
@@ -298,8 +396,11 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
       case IblPackage.DEVICE_DEFINITION__PARTS:
         setParts((List)null);
         return;
-      case IblPackage.DEVICE_DEFINITION__PARAMETERS:
-        getParameters().clear();
+      case IblPackage.DEVICE_DEFINITION__INPUT:
+        setInput((List)null);
+        return;
+      case IblPackage.DEVICE_DEFINITION__OUTPUTPUT:
+        setOutputput((List)null);
         return;
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
         getMembers().clear();
@@ -322,8 +423,10 @@ public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements Devi
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.DEVICE_DEFINITION__PARTS:
         return parts != null;
-      case IblPackage.DEVICE_DEFINITION__PARAMETERS:
-        return parameters != null && !parameters.isEmpty();
+      case IblPackage.DEVICE_DEFINITION__INPUT:
+        return input != null;
+      case IblPackage.DEVICE_DEFINITION__OUTPUTPUT:
+        return outputput != null;
       case IblPackage.DEVICE_DEFINITION__MEMBERS:
         return members != null && !members.isEmpty();
     }

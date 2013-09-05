@@ -14,7 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getParts <em>Parts</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getInput <em>Input</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getOutputput <em>Outputput</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getMembers <em>Members</em>}</li>
  * </ul>
  * </p>
@@ -78,20 +79,56 @@ public interface DeviceDefinition extends FunctionBodyMember
   void setParts(List value);
 
   /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.ParameterAssignment}.
+   * Returns the value of the '<em><b>Input</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Input</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference list.
-   * @see roadblock.xtext.ibl.ibl.IblPackage#getDeviceDefinition_Parameters()
+   * @return the value of the '<em>Input</em>' containment reference.
+   * @see #setInput(List)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getDeviceDefinition_Input()
    * @model containment="true"
    * @generated
    */
-  EList<ParameterAssignment> getParameters();
+  List getInput();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getInput <em>Input</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Input</em>' containment reference.
+   * @see #getInput()
+   * @generated
+   */
+  void setInput(List value);
+
+  /**
+   * Returns the value of the '<em><b>Outputput</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Outputput</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Outputput</em>' containment reference.
+   * @see #setOutputput(List)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getDeviceDefinition_Outputput()
+   * @model containment="true"
+   * @generated
+   */
+  List getOutputput();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.DeviceDefinition#getOutputput <em>Outputput</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Outputput</em>' containment reference.
+   * @see #getOutputput()
+   * @generated
+   */
+  void setOutputput(List value);
 
   /**
    * Returns the value of the '<em><b>Members</b></em>' containment reference list.

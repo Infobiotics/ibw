@@ -640,9 +640,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVariableDefinition_Qualifier()
+  public EReference getVariableDefinition_Definition()
   {
-    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(0);
+    return (EReference)variableDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -650,9 +650,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVariableDefinition_Definition()
+  public EAttribute getVariableDefinition_Qualifier()
   {
-    return (EReference)variableDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1140,7 +1140,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDeviceDefinition_Parameters()
+  public EReference getDeviceDefinition_Input()
   {
     return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(2);
   }
@@ -1150,9 +1150,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDeviceDefinition_Members()
+  public EReference getDeviceDefinition_Outputput()
   {
     return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Members()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1533,8 +1543,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(userDefinedTypeEClass, USER_DEFINED_TYPE__NAME);
 
     variableDefinitionEClass = createEClass(VARIABLE_DEFINITION);
-    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__QUALIFIER);
     createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__DEFINITION);
+    createEAttribute(variableDefinitionEClass, VARIABLE_DEFINITION__QUALIFIER);
 
     variableDefinitionBuiltInEClass = createEClass(VARIABLE_DEFINITION_BUILT_IN);
     createEAttribute(variableDefinitionBuiltInEClass, VARIABLE_DEFINITION_BUILT_IN__TYPE);
@@ -1597,7 +1607,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
     createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
     createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARTS);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARAMETERS);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__INPUT);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__OUTPUTPUT);
     createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
 
     deviceMembersEClass = createEClass(DEVICE_MEMBERS);
@@ -1726,8 +1737,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getUserDefinedType_Name(), ecorePackage.getEString(), "name", null, 0, 1, UserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDefinitionEClass, VariableDefinition.class, "VariableDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableDefinition_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableDefinition_Definition(), ecorePackage.getEObject(), null, "definition", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDefinition_Qualifier(), ecorePackage.getEString(), "qualifier", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDefinitionBuiltInEClass, VariableDefinitionBuiltIn.class, "VariableDefinitionBuiltIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableDefinitionBuiltIn_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDefinitionBuiltIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1790,7 +1801,8 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeviceDefinition_Parts(), this.getList(), null, "parts", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Input(), this.getList(), null, "input", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Outputput(), this.getList(), null, "outputput", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeviceDefinition_Members(), this.getDeviceMembers(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deviceMembersEClass, DeviceMembers.class, "DeviceMembers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

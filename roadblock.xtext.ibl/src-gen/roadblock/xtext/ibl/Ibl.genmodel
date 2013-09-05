@@ -42,8 +42,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//UserDefinedType/name"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/qualifier"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinition/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinition/qualifier"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionBuiltIn">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/type"/>
@@ -103,7 +103,8 @@
     <genClasses ecoreClass="Ibl.ecore#//DeviceDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//DeviceDefinition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/parts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/input"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/outputput"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//DeviceDefinition/members"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//DeviceMembers"/>

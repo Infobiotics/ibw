@@ -282,7 +282,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=VariableName parts=List (parameters+=ParameterAssignment parameters+=ParameterAssignment*)? members+=DeviceMembers*)
+	 *     (name=VariableName parts=List input=List? outputput=List? members+=DeviceMembers*)
 	 */
 	protected void sequence_DeviceDefinition(EObject context, DeviceDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -605,13 +605,13 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         qualifier=VariableQualifier? 
 	 *         (
 	 *             definition=VariableDefinitionBuiltIn | 
 	 *             definition=VariableDefinitionUserDefined | 
 	 *             definition=VariableDefinitionCollection | 
 	 *             definition=VariableDefinitionBasic
-	 *         )
+	 *         ) 
+	 *         qualifier=VariableQualifier?
 	 *     )
 	 */
 	protected void sequence_VariableDefinition(EObject context, VariableDefinition semanticObject) {

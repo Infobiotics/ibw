@@ -21,8 +21,8 @@ import roadblock.xtext.ibl.ibl.VariableDefinition;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getQualifier <em>Qualifier</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionImpl#getQualifier <em>Qualifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,6 +30,16 @@ import roadblock.xtext.ibl.ibl.VariableDefinition;
  */
 public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements VariableDefinition
 {
+  /**
+   * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDefinition()
+   * @generated
+   * @ordered
+   */
+  protected EObject definition;
+
   /**
    * The default value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -51,16 +61,6 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
   protected String qualifier = QUALIFIER_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDefinition()
-   * @generated
-   * @ordered
-   */
-  protected EObject definition;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -79,29 +79,6 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
   protected EClass eStaticClass()
   {
     return IblPackage.Literals.VARIABLE_DEFINITION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getQualifier()
-  {
-    return qualifier;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setQualifier(String newQualifier)
-  {
-    String oldQualifier = qualifier;
-    qualifier = newQualifier;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DEFINITION__QUALIFIER, oldQualifier, qualifier));
   }
 
   /**
@@ -157,6 +134,29 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getQualifier()
+  {
+    return qualifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setQualifier(String newQualifier)
+  {
+    String oldQualifier = qualifier;
+    qualifier = newQualifier;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_DEFINITION__QUALIFIER, oldQualifier, qualifier));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -178,10 +178,10 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
   {
     switch (featureID)
     {
-      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
-        return getQualifier();
       case IblPackage.VARIABLE_DEFINITION__DEFINITION:
         return getDefinition();
+      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
+        return getQualifier();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -196,11 +196,11 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
   {
     switch (featureID)
     {
-      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
-        setQualifier((String)newValue);
-        return;
       case IblPackage.VARIABLE_DEFINITION__DEFINITION:
         setDefinition((EObject)newValue);
+        return;
+      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
+        setQualifier((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -216,11 +216,11 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
   {
     switch (featureID)
     {
-      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
-        setQualifier(QUALIFIER_EDEFAULT);
-        return;
       case IblPackage.VARIABLE_DEFINITION__DEFINITION:
         setDefinition((EObject)null);
+        return;
+      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
+        setQualifier(QUALIFIER_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -236,10 +236,10 @@ public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements Va
   {
     switch (featureID)
     {
-      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
-        return QUALIFIER_EDEFAULT == null ? qualifier != null : !QUALIFIER_EDEFAULT.equals(qualifier);
       case IblPackage.VARIABLE_DEFINITION__DEFINITION:
         return definition != null;
+      case IblPackage.VARIABLE_DEFINITION__QUALIFIER:
+        return QUALIFIER_EDEFAULT == null ? qualifier != null : !QUALIFIER_EDEFAULT.equals(qualifier);
     }
     return super.eIsSet(featureID);
   }

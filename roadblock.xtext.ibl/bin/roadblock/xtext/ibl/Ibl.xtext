@@ -104,8 +104,8 @@ UserDefinedType:
 // a definition of a variable
 VariableDefinition:
 	{VariableDefinition}
-	(qualifier=VariableQualifier)?
 	definition=(VariableDefinitionBuiltIn | VariableDefinitionUserDefined | VariableDefinitionCollection | VariableDefinitionBasic)
+	(':' qualifier=VariableQualifier)?
 ;
 
 VariableDefinitionBuiltIn:
@@ -219,7 +219,9 @@ DeviceDefinition:
 		'parts' '=' parts=List
 	')'
 	'('
-		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
+		('input' '=' input=List)?
+		(',' 'output' '=' outputput=List)?
+//		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
 	')'
 	'{'
 		(members+=DeviceMembers*)
