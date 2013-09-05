@@ -107,7 +107,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameVariableNameParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cTypeofKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cTypeFunctionTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final Alternatives cTypeAlternatives_4_0 = (Alternatives)cTypeAssignment_4.eContents().get(0);
+		private final RuleCall cTypeFunctionTypeParserRuleCall_4_0_0 = (RuleCall)cTypeAlternatives_4_0.eContents().get(0);
+		private final RuleCall cTypeVariableNameParserRuleCall_4_0_1 = (RuleCall)cTypeAlternatives_4_0.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Assignment cParametersAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
@@ -135,14 +137,14 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		/////////////////
 		//// a function definition
 		//FunctionDefinition:
-		//	{FunctionDefinition} "define" name=VariableName "typeof" type=FunctionType "(" (parameters+=FunctionParameterMember
-		//	("," parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember* "}" ("USES" uses+=FunctionUseMember
-		//	("," uses+=FunctionUseMember)*)?;
+		//	{FunctionDefinition} "define" name=VariableName "typeof" type=(FunctionType | VariableName) "("
+		//	(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember*
+		//	"}" ("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember)*)?;
 		public ParserRule getRule() { return rule; }
 
-		//{FunctionDefinition} "define" name=VariableName "typeof" type=FunctionType "(" (parameters+=FunctionParameterMember (","
-		//parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember* "}" ("USES" uses+=FunctionUseMember (","
-		//uses+=FunctionUseMember)*)?
+		//{FunctionDefinition} "define" name=VariableName "typeof" type=(FunctionType | VariableName) "("
+		//(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember*
+		//"}" ("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember)*)?
 		public Group getGroup() { return cGroup; }
 
 		//{FunctionDefinition}
@@ -160,11 +162,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"typeof"
 		public Keyword getTypeofKeyword_3() { return cTypeofKeyword_3; }
 
-		//type=FunctionType
+		//type=(FunctionType | VariableName)
 		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
 
+		//FunctionType | VariableName
+		public Alternatives getTypeAlternatives_4_0() { return cTypeAlternatives_4_0; }
+
 		//FunctionType
-		public RuleCall getTypeFunctionTypeParserRuleCall_4_0() { return cTypeFunctionTypeParserRuleCall_4_0; }
+		public RuleCall getTypeFunctionTypeParserRuleCall_4_0_0() { return cTypeFunctionTypeParserRuleCall_4_0_0; }
+
+		//VariableName
+		public RuleCall getTypeVariableNameParserRuleCall_4_0_1() { return cTypeVariableNameParserRuleCall_4_0_1; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
@@ -2522,9 +2530,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	/////////////////
 	//// a function definition
 	//FunctionDefinition:
-	//	{FunctionDefinition} "define" name=VariableName "typeof" type=FunctionType "(" (parameters+=FunctionParameterMember
-	//	("," parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember* "}" ("USES" uses+=FunctionUseMember
-	//	("," uses+=FunctionUseMember)*)?;
+	//	{FunctionDefinition} "define" name=VariableName "typeof" type=(FunctionType | VariableName) "("
+	//	(parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember*
+	//	"}" ("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember)*)?;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return (pFunctionDefinition != null) ? pFunctionDefinition : (pFunctionDefinition = new FunctionDefinitionElements());
 	}

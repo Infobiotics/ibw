@@ -5,9 +5,9 @@ import library01
 define constitutiveProteinExpressionTwoGenes typeof ConstitutiveProteinExpression (
         PROMOTER promoter, 
         GENE gene,
-        returned PROTEIN protein,
+        PROTEIN protein : returned,
         GENE gene2,
-        returned PROTEIN protein2){
+        PROTEIN protein2 : returned){
         
         RULE translation2 : mrna1~ribosome -> mrna1~ribosome + protein2
         translation.forwardRate = rates.translationRate
@@ -27,20 +27,9 @@ define doublyRegulatedProteinExpression typeof PROCESS(
         
 } USES RIBOSOME ribosome, RNA rnaP
         
-define SYSTEM XORGate(          
+define XORGate typeof SYSTEM (          
         PROMOTER promoter1, 
-        GENE gene1 = GENE(URI = 'db://lacl'),          // default value
-        PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
-        GENE gene2 = GENE(URI = 'db://tetR'),
-        PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
-        MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
-        MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
-        PROMOTER promoter2,
-        PROMOTER promoter3,
-        GENE reporterGene = GENE(URI = 'bd://gFP'),
-        PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
-        PROMOTER promoter1,
-        GENE gene1,
+        GENE gene1,          // default value
         PROTEIN protein1,
         GENE gene2,
         PROTEIN protein2,
@@ -50,19 +39,31 @@ define SYSTEM XORGate(
         PROMOTER promoter3,
         GENE reporterGene,
         PROTEIN reporterProtein){
+// JT: default initial values??
+//        PROMOTER promoter1, 
+//        GENE gene1 = GENE(URI = 'db://lacl'),          // default value
+//        PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
+//        GENE gene2 = GENE(URI = 'db://tetR'),
+//        PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
+//        MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
+//        MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
+//        PROMOTER promoter2,
+//        PROMOTER promoter3,
+//        GENE reporterGene = GENE(URI = 'bd://gFP'),
+//        PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
 
-        DEVICE D1 = DEVICE(parts = [promoter1,gene1,gene2])(produced = [protein1, protein2]){
-                PROCESS P1 = constitutivePromoterTwoGenes(
+        DEVICE D1 = new DEVICE(parts = [promoter1,gene1,gene2])(produced = [protein1, protein2]){
+                PROCESS P1 = new constitutivePromoterTwoGenes(
                         promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
                 )
         }
 
-        DEVICE D2 = DEVICE(parts = [promoter2,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
-                PROCESS P1 = doublyRegulatedProteinExpression(promoter = promoter2, upRegulator = protein1, downRegulator = protein2)
+        DEVICE D2 = new DEVICE(parts = [promoter2,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
+                PROCESS P1 = new doublyRegulatedProteinExpression(promoter = promoter2, upRegulator = protein1, downRegulator = protein2)
         }
 
-        DEVICE D3 = DEVICE(parts = [promoter3,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
-                PROCESS P1 = doublyRegulatedProteinExpression(promoter = promoter2, downRegulator = protein1, upRegulator = protein2)
+        DEVICE D3 = new DEVICE(parts = [promoter3,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
+                PROCESS P1 = new doublyRegulatedProteinExpression(promoter = promoter2, downRegulator = protein1, upRegulator = protein2)
         }
 
         // extra rules to make complexes and sequester molecule1 and molecule2
@@ -77,16 +78,23 @@ define SYSTEM XORGate(
         VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 1 uM
 }
 
-MOLECULE IPTG = MOLECULE(URI = 'db://...')
-MOLECULE aTc = MOLECULE(URI = 'db://...')
-define CELL XOREnabledCell(consumed = [IPTG, aTc]){
+// JT: moved global definitions to cell 
+//MOLECULE IPTG = new MOLECULE(URI = 'db://...')
+//MOLECULE aTc = new MOLECULE(URI = 'db://...')
 
-        observable RIBOSOME ribosome
-        observable RNA rnaP
+// JT: not sure what consumed is here:
+//define XOREnabledCell typeof CELL (consumed = [IPTG, aTc]){
+define XOREnabledCell typeof CELL (){
+	MOLECULE IPTG = new MOLECULE(URI = 'db://...')
+	MOLECULE aTc = new MOLECULE(URI = 'db://...')
 
-        SYSTEM system1 = XORGate(                       // using the XOR gate with a different reporter than the default one.
-                promoter1 = PROMOTER(URI='db://...'),
-                reporterGene = GENE(URI = 'db://rFP'),
-                reporterProtein = PROTEIN(URI='db://RFP')
-        )
+	observable RIBOSOME ribosome
+	observable RNA rnaP
+
+	SYSTEM system1 = new XORGate(                       // using the XOR gate with a different reporter than the default one.
+// JT: this syntax doesn't work:
+//		promoter1 = PROMOTER(URI='db://...'),
+//		reporterGene = GENE(URI = 'db://rFP'),
+//		reporterProtein = PROTEIN(URI='db://RFP')
+	)
  }

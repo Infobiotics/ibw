@@ -245,20 +245,38 @@ ruleFunctionDefinition returns [EObject current=null]
     }
 (
 (
+(
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getTypeFunctionTypeParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getTypeFunctionTypeParserRuleCall_4_0_0()); 
 	    }
-		lv_type_4_0=ruleFunctionType		{
+		lv_type_4_1=ruleFunctionType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_4_0, 
+        		lv_type_4_1, 
         		"FunctionType");
 	        afterParserOrEnumRuleCall();
 	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getTypeVariableNameParserRuleCall_4_0_1()); 
+	    }
+		lv_type_4_2=ruleVariableName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_4_2, 
+        		"VariableName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 
 )
 )	otherlv_5='(' 

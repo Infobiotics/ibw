@@ -38,6 +38,7 @@ public class IblParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getModelMemberAccess().getAlternatives(), "rule__ModelMember__Alternatives");
+					put(grammarAccess.getFunctionDefinitionAccess().getTypeAlternatives_4_0(), "rule__FunctionDefinition__TypeAlternatives_4_0");
 					put(grammarAccess.getFunctionTypeAccess().getAlternatives(), "rule__FunctionType__Alternatives");
 					put(grammarAccess.getFunctionParameterScopeAccess().getAlternatives(), "rule__FunctionParameterScope__Alternatives");
 					put(grammarAccess.getFunctionBodyMemberAccess().getAlternatives(), "rule__FunctionBodyMember__Alternatives");

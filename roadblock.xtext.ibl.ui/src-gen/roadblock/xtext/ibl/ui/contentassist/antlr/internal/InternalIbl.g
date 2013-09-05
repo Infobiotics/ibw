@@ -1445,6 +1445,28 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__FunctionDefinition__TypeAlternatives_4_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getFunctionDefinitionAccess().getTypeFunctionTypeParserRuleCall_4_0_0()); }
+	ruleFunctionType
+{ after(grammarAccess.getFunctionDefinitionAccess().getTypeFunctionTypeParserRuleCall_4_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionDefinitionAccess().getTypeVariableNameParserRuleCall_4_0_1()); }
+	ruleVariableName
+{ after(grammarAccess.getFunctionDefinitionAccess().getTypeVariableNameParserRuleCall_4_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__FunctionType__Alternatives
     @init {
 		int stackSize = keepStackSize();
@@ -9897,8 +9919,9 @@ rule__FunctionDefinition__TypeAssignment_4
     }
 :
 (
-{ before(grammarAccess.getFunctionDefinitionAccess().getTypeFunctionTypeParserRuleCall_4_0()); }
-	ruleFunctionType{ after(grammarAccess.getFunctionDefinitionAccess().getTypeFunctionTypeParserRuleCall_4_0()); }
+{ before(grammarAccess.getFunctionDefinitionAccess().getTypeAlternatives_4_0()); }
+(rule__FunctionDefinition__TypeAlternatives_4_0)
+{ after(grammarAccess.getFunctionDefinitionAccess().getTypeAlternatives_4_0()); }
 )
 
 ;

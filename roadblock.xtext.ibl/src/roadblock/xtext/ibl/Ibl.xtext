@@ -37,7 +37,7 @@ ImportStatement:
 // a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' name=VariableName 'typeof' type=FunctionType 
+	'define' name=VariableName 'typeof' type=(FunctionType | VariableName) 
 	'('
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'

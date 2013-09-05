@@ -293,7 +293,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=VariableName 
-	 *         type=FunctionType 
+	 *         (type=FunctionType | type=VariableName) 
 	 *         (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? 
 	 *         members+=FunctionBodyMember* 
 	 *         (uses+=FunctionUseMember uses+=FunctionUseMember*)?
