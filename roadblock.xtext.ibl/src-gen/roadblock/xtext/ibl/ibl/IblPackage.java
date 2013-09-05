@@ -383,13 +383,22 @@ public interface IblPackage extends EPackage
   int VARIABLE_ATTRIBUTE__NAME = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Complex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_ATTRIBUTE__COMPLEX = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_ATTRIBUTE__ATTRIBUTE = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 1;
+  int VARIABLE_ATTRIBUTE__ATTRIBUTE = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Variable Attribute</em>' class.
@@ -398,7 +407,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ATTRIBUTE_FEATURE_COUNT = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 2;
+  int VARIABLE_ATTRIBUTE_FEATURE_COUNT = VARIABLE_ASSIGNMENT_OBJECT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.UserDefinedTypeImpl <em>User Defined Type</em>}' class.
@@ -494,13 +503,22 @@ public interface IblPackage extends EPackage
   int VARIABLE_DEFINITION_BUILT_IN__NAME = 1;
 
   /**
+   * The feature id for the '<em><b>Complex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DEFINITION_BUILT_IN__COMPLEX = 2;
+
+  /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_BUILT_IN__CONSTRUCTOR = 2;
+  int VARIABLE_DEFINITION_BUILT_IN__CONSTRUCTOR = 3;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -509,7 +527,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_BUILT_IN__PARAMETERS = 3;
+  int VARIABLE_DEFINITION_BUILT_IN__PARAMETERS = 4;
 
   /**
    * The number of structural features of the '<em>Variable Definition Built In</em>' class.
@@ -518,7 +536,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_BUILT_IN_FEATURE_COUNT = 4;
+  int VARIABLE_DEFINITION_BUILT_IN_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionUserDefinedImpl <em>Variable Definition User Defined</em>}' class.
@@ -1623,6 +1641,17 @@ public interface IblPackage extends EPackage
   EAttribute getVariableAttribute_Name();
 
   /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getComplex <em>Complex</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Complex</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableAttribute#getComplex()
+   * @see #getVariableAttribute()
+   * @generated
+   */
+  EReference getVariableAttribute_Complex();
+
+  /**
    * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getAttribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1717,6 +1746,17 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EAttribute getVariableDefinitionBuiltIn_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn#getComplex <em>Complex</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Complex</em>'.
+   * @see roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn#getComplex()
+   * @see #getVariableDefinitionBuiltIn()
+   * @generated
+   */
+  EReference getVariableDefinitionBuiltIn_Complex();
 
   /**
    * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn#getConstructor <em>Constructor</em>}'.
@@ -2769,6 +2809,14 @@ public interface IblPackage extends EPackage
     EAttribute VARIABLE_ATTRIBUTE__NAME = eINSTANCE.getVariableAttribute_Name();
 
     /**
+     * The meta object literal for the '<em><b>Complex</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_ATTRIBUTE__COMPLEX = eINSTANCE.getVariableAttribute_Complex();
+
+    /**
      * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2845,6 +2893,14 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute VARIABLE_DEFINITION_BUILT_IN__NAME = eINSTANCE.getVariableDefinitionBuiltIn_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Complex</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_DEFINITION_BUILT_IN__COMPLEX = eINSTANCE.getVariableDefinitionBuiltIn_Complex();
 
     /**
      * The meta object literal for the '<em><b>Constructor</b></em>' attribute feature.

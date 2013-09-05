@@ -4,7 +4,7 @@
     editorDirectory="/roadblock.xtext.ibl.editor/src" modelPluginID="roadblock.xtext.ibl"
     forceOverwrite="true" modelName="Ibl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="roadblock.xtext.ibl.edit"
-    editorPluginID="roadblock.xtext.ibl.editor" runtimeVersion="2.8">
+    editorPluginID="roadblock.xtext.ibl.editor" runtimeVersion="2.9">
   <genPackages prefix="Ibl" basePackage="roadblock.xtext.ibl" disposableProviderFactory="true"
       fileExtensions="ibl" ecorePackage="Ibl.ecore#/">
     <genClasses ecoreClass="Ibl.ecore#//Model">
@@ -35,6 +35,7 @@
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//VariableAttribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableAttribute/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableAttribute/complex"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableAttribute/attribute"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//UserDefinedType">
@@ -47,6 +48,7 @@
     <genClasses ecoreClass="Ibl.ecore#//VariableDefinitionBuiltIn">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinitionBuiltIn/complex"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//VariableDefinitionBuiltIn/constructor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//VariableDefinitionBuiltIn/parameters"/>
     </genClasses>

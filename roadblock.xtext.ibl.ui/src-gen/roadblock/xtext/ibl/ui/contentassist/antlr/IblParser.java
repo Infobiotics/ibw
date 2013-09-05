@@ -44,7 +44,9 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAlternatives_0_1_2_0(), "rule__FunctionParameterMember__TypeAlternatives_0_1_2_0");
 					put(grammarAccess.getFunctionParameterScopeAccess().getAlternatives(), "rule__FunctionParameterScope__Alternatives");
 					put(grammarAccess.getFunctionBodyMemberAccess().getAlternatives(), "rule__FunctionBodyMember__Alternatives");
+					put(grammarAccess.getVariableAttributeAccess().getAlternatives_1(), "rule__VariableAttribute__Alternatives_1");
 					put(grammarAccess.getVariableDefinitionAccess().getDefinitionAlternatives_2_0(), "rule__VariableDefinition__DefinitionAlternatives_2_0");
+					put(grammarAccess.getVariableDefinitionBuiltInAccess().getAlternatives_2(), "rule__VariableDefinitionBuiltIn__Alternatives_2");
 					put(grammarAccess.getVariableDefinitionBuiltInAccess().getConstructorAlternatives_3_2_0(), "rule__VariableDefinitionBuiltIn__ConstructorAlternatives_3_2_0");
 					put(grammarAccess.getVariableDefinitionCollectionAccess().getTypeAlternatives_1_2_0(), "rule__VariableDefinitionCollection__TypeAlternatives_1_2_0");
 					put(grammarAccess.getVariableTypeAccess().getAlternatives(), "rule__VariableType__Alternatives");
@@ -156,13 +158,15 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionUseMemberAccess().getNameAssignment_1(), "rule__FunctionUseMember__NameAssignment_1");
 					put(grammarAccess.getVariableComplexAccess().getComponentsAssignment_1(), "rule__VariableComplex__ComponentsAssignment_1");
 					put(grammarAccess.getVariableComplexAccess().getComponentsAssignment_2_1(), "rule__VariableComplex__ComponentsAssignment_2_1");
-					put(grammarAccess.getVariableAttributeAccess().getNameAssignment_1(), "rule__VariableAttribute__NameAssignment_1");
+					put(grammarAccess.getVariableAttributeAccess().getNameAssignment_1_0(), "rule__VariableAttribute__NameAssignment_1_0");
+					put(grammarAccess.getVariableAttributeAccess().getComplexAssignment_1_1(), "rule__VariableAttribute__ComplexAssignment_1_1");
 					put(grammarAccess.getVariableAttributeAccess().getAttributeAssignment_3(), "rule__VariableAttribute__AttributeAssignment_3");
 					put(grammarAccess.getUserDefinedTypeAccess().getNameAssignment(), "rule__UserDefinedType__NameAssignment");
 					put(grammarAccess.getVariableDefinitionAccess().getQualifierAssignment_1(), "rule__VariableDefinition__QualifierAssignment_1");
 					put(grammarAccess.getVariableDefinitionAccess().getDefinitionAssignment_2(), "rule__VariableDefinition__DefinitionAssignment_2");
 					put(grammarAccess.getVariableDefinitionBuiltInAccess().getTypeAssignment_1(), "rule__VariableDefinitionBuiltIn__TypeAssignment_1");
-					put(grammarAccess.getVariableDefinitionBuiltInAccess().getNameAssignment_2(), "rule__VariableDefinitionBuiltIn__NameAssignment_2");
+					put(grammarAccess.getVariableDefinitionBuiltInAccess().getNameAssignment_2_0(), "rule__VariableDefinitionBuiltIn__NameAssignment_2_0");
+					put(grammarAccess.getVariableDefinitionBuiltInAccess().getComplexAssignment_2_1(), "rule__VariableDefinitionBuiltIn__ComplexAssignment_2_1");
 					put(grammarAccess.getVariableDefinitionBuiltInAccess().getConstructorAssignment_3_2(), "rule__VariableDefinitionBuiltIn__ConstructorAssignment_3_2");
 					put(grammarAccess.getVariableDefinitionBuiltInAccess().getParametersAssignment_3_4_0(), "rule__VariableDefinitionBuiltIn__ParametersAssignment_3_4_0");
 					put(grammarAccess.getVariableDefinitionBuiltInAccess().getParametersAssignment_3_4_1_1(), "rule__VariableDefinitionBuiltIn__ParametersAssignment_3_4_1_1");

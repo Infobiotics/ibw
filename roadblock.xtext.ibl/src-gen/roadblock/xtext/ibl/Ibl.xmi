@@ -215,8 +215,13 @@
             <classifier xsi:type="ecore:EClass" href="http://www.xtext.roadblock/ibl/Ibl#//VariableAttribute"/>
           </type>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="complex" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="."/>
         <elements xsi:type="xtext:Assignment" feature="attribute" operator="=">
@@ -268,8 +273,13 @@
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+        <elements xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="complex" operator="=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group" cardinality="?">
           <elements xsi:type="xtext:Keyword" value="="/>
@@ -429,6 +439,7 @@
         <elements xsi:type="xtext:Keyword" value="PROCESS"/>
         <elements xsi:type="xtext:Keyword" value="SYSTEM"/>
         <elements xsi:type="xtext:Keyword" value="CHASSIS"/>
+        <elements xsi:type="xtext:Keyword" value="COMPLEX"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="CollectionID">

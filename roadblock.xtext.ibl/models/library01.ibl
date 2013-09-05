@@ -42,13 +42,16 @@ define RegulatedProteinExpression typeof ConstitutiveProcessExpression (
 	MOLECULE signal:required	
 )
 {
+	COMPLEX signal~promoter
+	signal~promoter.bindingRate = 0.3 min-1
+	
 	RULE signalBinding : signal + promoter <-> signal~promoter
 	signalBinding.forwardRate = promoter.bindingRate | rate.bindingRate
 	signalBinding.reverseRate = promoter.unbindingRate | rate.unbindingRate
 
-	RULE promoterBinding : signal~promoter + rnaP <-> promoter~rnaP	
-//1	promoterBinding.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
-//2	promoterBinding.reverseRate = promoter.unbindingRate | rates.unbindingRate
+	RULE promoterBinding : signal~promoter + rnaP <-> promoter~rnaP
+	promoterBinding.forwardRate = signal~promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+	promoterBinding.reverseRate = signal~promoter.unbindingRate | rates.unbindingRate
 
 }
 

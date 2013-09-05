@@ -3,13 +3,16 @@
 package roadblock.xtext.ibl.ibl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import roadblock.xtext.ibl.ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
+import roadblock.xtext.ibl.ibl.VariableComplex;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +22,7 @@ import roadblock.xtext.ibl.ibl.VariableAttribute;
  * The following features are implemented:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getComplex <em>Complex</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.VariableAttributeImpl#getAttribute <em>Attribute</em>}</li>
  * </ul>
  * </p>
@@ -46,6 +50,16 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getComplex() <em>Complex</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComplex()
+   * @generated
+   * @ordered
+   */
+  protected VariableComplex complex;
 
   /**
    * The default value of the '{@link #getAttribute() <em>Attribute</em>}' attribute.
@@ -116,6 +130,54 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public VariableComplex getComplex()
+  {
+    return complex;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetComplex(VariableComplex newComplex, NotificationChain msgs)
+  {
+    VariableComplex oldComplex = complex;
+    complex = newComplex;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_ATTRIBUTE__COMPLEX, oldComplex, newComplex);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setComplex(VariableComplex newComplex)
+  {
+    if (newComplex != complex)
+    {
+      NotificationChain msgs = null;
+      if (complex != null)
+        msgs = ((InternalEObject)complex).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_ATTRIBUTE__COMPLEX, null, msgs);
+      if (newComplex != null)
+        msgs = ((InternalEObject)newComplex).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.VARIABLE_ATTRIBUTE__COMPLEX, null, msgs);
+      msgs = basicSetComplex(newComplex, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.VARIABLE_ATTRIBUTE__COMPLEX, newComplex, newComplex));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getAttribute()
   {
     return attribute;
@@ -140,12 +202,30 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case IblPackage.VARIABLE_ATTRIBUTE__COMPLEX:
+        return basicSetComplex(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         return getName();
+      case IblPackage.VARIABLE_ATTRIBUTE__COMPLEX:
+        return getComplex();
       case IblPackage.VARIABLE_ATTRIBUTE__ATTRIBUTE:
         return getAttribute();
     }
@@ -164,6 +244,9 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
     {
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         setName((String)newValue);
+        return;
+      case IblPackage.VARIABLE_ATTRIBUTE__COMPLEX:
+        setComplex((VariableComplex)newValue);
         return;
       case IblPackage.VARIABLE_ATTRIBUTE__ATTRIBUTE:
         setAttribute((String)newValue);
@@ -185,6 +268,9 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case IblPackage.VARIABLE_ATTRIBUTE__COMPLEX:
+        setComplex((VariableComplex)null);
+        return;
       case IblPackage.VARIABLE_ATTRIBUTE__ATTRIBUTE:
         setAttribute(ATTRIBUTE_EDEFAULT);
         return;
@@ -204,6 +290,8 @@ public class VariableAttributeImpl extends VariableAssignmentObjectImpl implemen
     {
       case IblPackage.VARIABLE_ATTRIBUTE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case IblPackage.VARIABLE_ATTRIBUTE__COMPLEX:
+        return complex != null;
       case IblPackage.VARIABLE_ATTRIBUTE__ATTRIBUTE:
         return ATTRIBUTE_EDEFAULT == null ? attribute != null : !ATTRIBUTE_EDEFAULT.equals(attribute);
     }

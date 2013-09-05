@@ -506,28 +506,40 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VariableAttribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVariableAttributeAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameVariableNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cNameVariableNameParserRuleCall_1_0_0 = (RuleCall)cNameAssignment_1_0.eContents().get(0);
+		private final Assignment cComplexAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cComplexVariableComplexParserRuleCall_1_1_0 = (RuleCall)cComplexAssignment_1_1.eContents().get(0);
 		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cAttributeAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cAttributeVariableNameParserRuleCall_3_0 = (RuleCall)cAttributeAssignment_3.eContents().get(0);
 		
 		//// a variable attribute
 		//VariableAttribute:
-		//	{VariableAttribute} name=VariableName "." attribute=VariableName;
+		//	{VariableAttribute} (name=VariableName | complex=VariableComplex) "." attribute=VariableName;
 		public ParserRule getRule() { return rule; }
 
-		//{VariableAttribute} name=VariableName "." attribute=VariableName
+		//{VariableAttribute} (name=VariableName | complex=VariableComplex) "." attribute=VariableName
 		public Group getGroup() { return cGroup; }
 
 		//{VariableAttribute}
 		public Action getVariableAttributeAction_0() { return cVariableAttributeAction_0; }
 
+		//name=VariableName | complex=VariableComplex
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
 		//name=VariableName
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_1_0() { return cNameAssignment_1_0; }
 
 		//VariableName
-		public RuleCall getNameVariableNameParserRuleCall_1_0() { return cNameVariableNameParserRuleCall_1_0; }
+		public RuleCall getNameVariableNameParserRuleCall_1_0_0() { return cNameVariableNameParserRuleCall_1_0_0; }
+
+		//complex=VariableComplex
+		public Assignment getComplexAssignment_1_1() { return cComplexAssignment_1_1; }
+
+		//VariableComplex
+		public RuleCall getComplexVariableComplexParserRuleCall_1_1_0() { return cComplexVariableComplexParserRuleCall_1_1_0; }
 
 		//"."
 		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
@@ -613,8 +625,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cVariableDefinitionBuiltInAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cTypeVariableTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameVariableNameParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cNameVariableNameParserRuleCall_2_0_0 = (RuleCall)cNameAssignment_2_0.eContents().get(0);
+		private final Assignment cComplexAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cComplexVariableComplexParserRuleCall_2_1_0 = (RuleCall)cComplexAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Keyword cNewKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
@@ -633,12 +648,14 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_3_5 = (Keyword)cGroup_3.eContents().get(5);
 		
 		//VariableDefinitionBuiltIn:
-		//	{VariableDefinitionBuiltIn} type=VariableType name=VariableName ("=" "new" constructor=(VariableType | VariableName)
-		//	"(" (parameters+=ParameterAssignment ("," parameters+=ParameterAssignment)*)? ")")?;
+		//	{VariableDefinitionBuiltIn} type=VariableType (name=VariableName | complex=VariableComplex) ("=" "new"
+		//	constructor=(VariableType | VariableName) "(" (parameters+=ParameterAssignment (","
+		//	parameters+=ParameterAssignment)*)? ")")?;
 		public ParserRule getRule() { return rule; }
 
-		//{VariableDefinitionBuiltIn} type=VariableType name=VariableName ("=" "new" constructor=(VariableType | VariableName) "("
-		//(parameters+=ParameterAssignment ("," parameters+=ParameterAssignment)*)? ")")?
+		//{VariableDefinitionBuiltIn} type=VariableType (name=VariableName | complex=VariableComplex) ("=" "new"
+		//constructor=(VariableType | VariableName) "(" (parameters+=ParameterAssignment ("," parameters+=ParameterAssignment)*)?
+		//")")?
 		public Group getGroup() { return cGroup; }
 
 		//{VariableDefinitionBuiltIn}
@@ -650,11 +667,20 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//VariableType
 		public RuleCall getTypeVariableTypeParserRuleCall_1_0() { return cTypeVariableTypeParserRuleCall_1_0; }
 
+		//name=VariableName | complex=VariableComplex
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+
 		//name=VariableName
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_2_0() { return cNameAssignment_2_0; }
 
 		//VariableName
-		public RuleCall getNameVariableNameParserRuleCall_2_0() { return cNameVariableNameParserRuleCall_2_0; }
+		public RuleCall getNameVariableNameParserRuleCall_2_0_0() { return cNameVariableNameParserRuleCall_2_0_0; }
+
+		//complex=VariableComplex
+		public Assignment getComplexAssignment_2_1() { return cComplexAssignment_2_1; }
+
+		//VariableComplex
+		public RuleCall getComplexVariableComplexParserRuleCall_2_1_0() { return cComplexVariableComplexParserRuleCall_2_1_0; }
 
 		//("=" "new" constructor=(VariableType | VariableName) "(" (parameters+=ParameterAssignment (","
 		//parameters+=ParameterAssignment)*)? ")")?
@@ -984,15 +1010,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPROCESSKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
 		private final Keyword cSYSTEMKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
 		private final Keyword cCHASSISKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		private final Keyword cCOMPLEXKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
 		
 		//// variable types
 		//VariableType:
 		//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
-		//	"SYSTEM" | "CHASSIS";
+		//	"SYSTEM" | "CHASSIS" | "COMPLEX";
 		public ParserRule getRule() { return rule; }
 
 		//"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
-		//"SYSTEM" | "CHASSIS"
+		//"SYSTEM" | "CHASSIS" | "COMPLEX"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"MOLECULE"
@@ -1033,6 +1060,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"CHASSIS"
 		public Keyword getCHASSISKeyword_12() { return cCHASSISKeyword_12; }
+
+		//"COMPLEX"
+		public Keyword getCOMPLEXKeyword_13() { return cCOMPLEXKeyword_13; }
 	}
 
 	public class CollectionIDElements extends AbstractParserRuleElementFinder {
@@ -2674,7 +2704,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// a variable attribute
 	//VariableAttribute:
-	//	{VariableAttribute} name=VariableName "." attribute=VariableName;
+	//	{VariableAttribute} (name=VariableName | complex=VariableComplex) "." attribute=VariableName;
 	public VariableAttributeElements getVariableAttributeAccess() {
 		return (pVariableAttribute != null) ? pVariableAttribute : (pVariableAttribute = new VariableAttributeElements());
 	}
@@ -2706,8 +2736,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//VariableDefinitionBuiltIn:
-	//	{VariableDefinitionBuiltIn} type=VariableType name=VariableName ("=" "new" constructor=(VariableType | VariableName)
-	//	"(" (parameters+=ParameterAssignment ("," parameters+=ParameterAssignment)*)? ")")?;
+	//	{VariableDefinitionBuiltIn} type=VariableType (name=VariableName | complex=VariableComplex) ("=" "new"
+	//	constructor=(VariableType | VariableName) "(" (parameters+=ParameterAssignment (","
+	//	parameters+=ParameterAssignment)*)? ")")?;
 	public VariableDefinitionBuiltInElements getVariableDefinitionBuiltInAccess() {
 		return (pVariableDefinitionBuiltIn != null) ? pVariableDefinitionBuiltIn : (pVariableDefinitionBuiltIn = new VariableDefinitionBuiltInElements());
 	}
@@ -2773,7 +2804,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// variable types
 	//VariableType:
 	//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
-	//	"SYSTEM" | "CHASSIS";
+	//	"SYSTEM" | "CHASSIS" | "COMPLEX";
 	public VariableTypeElements getVariableTypeAccess() {
 		return (pVariableType != null) ? pVariableType : (pVariableType = new VariableTypeElements());
 	}

@@ -93,7 +93,7 @@ VariableComplex:
 // a variable attribute
 VariableAttribute:
 	{VariableAttribute}
-	name=VariableName '.' attribute=VariableName
+	(name=VariableName | complex=VariableComplex) '.' attribute=VariableName
 ;
 
 
@@ -110,7 +110,7 @@ VariableDefinition:
 
 VariableDefinitionBuiltIn:
 	{VariableDefinitionBuiltIn}
-	type=VariableType name=VariableName
+	type=VariableType (name=VariableName | complex=VariableComplex)
 	(
 	'=' 'new' constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
@@ -149,7 +149,7 @@ VariableQualifier:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM' | 'CHASSIS'
+	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM' | 'CHASSIS' | 'COMPLEX'
 ;
 
 // variable collections

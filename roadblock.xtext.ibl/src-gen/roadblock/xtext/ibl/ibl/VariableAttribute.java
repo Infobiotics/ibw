@@ -12,6 +12,7 @@ package roadblock.xtext.ibl.ibl;
  * The following features are supported:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableAttribute#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.VariableAttribute#getComplex <em>Complex</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.VariableAttribute#getAttribute <em>Attribute</em>}</li>
  * </ul>
  * </p>
@@ -47,6 +48,32 @@ public interface VariableAttribute extends VariableAssignmentObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Complex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Complex</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Complex</em>' containment reference.
+   * @see #setComplex(VariableComplex)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getVariableAttribute_Complex()
+   * @model containment="true"
+   * @generated
+   */
+  VariableComplex getComplex();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.VariableAttribute#getComplex <em>Complex</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Complex</em>' containment reference.
+   * @see #getComplex()
+   * @generated
+   */
+  void setComplex(VariableComplex value);
 
   /**
    * Returns the value of the '<em><b>Attribute</b></em>' attribute.

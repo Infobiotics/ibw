@@ -590,9 +590,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getVariableAttribute_Complex()
+  {
+    return (EReference)variableAttributeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getVariableAttribute_Attribute()
   {
-    return (EAttribute)variableAttributeEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableAttributeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -680,9 +690,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getVariableDefinitionBuiltIn_Complex()
+  {
+    return (EReference)variableDefinitionBuiltInEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getVariableDefinitionBuiltIn_Constructor()
   {
-    return (EAttribute)variableDefinitionBuiltInEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)variableDefinitionBuiltInEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -692,7 +712,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    */
   public EReference getVariableDefinitionBuiltIn_Parameters()
   {
-    return (EReference)variableDefinitionBuiltInEClass.getEStructuralFeatures().get(3);
+    return (EReference)variableDefinitionBuiltInEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1506,6 +1526,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     variableAttributeEClass = createEClass(VARIABLE_ATTRIBUTE);
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__NAME);
+    createEReference(variableAttributeEClass, VARIABLE_ATTRIBUTE__COMPLEX);
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__ATTRIBUTE);
 
     userDefinedTypeEClass = createEClass(USER_DEFINED_TYPE);
@@ -1518,6 +1539,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     variableDefinitionBuiltInEClass = createEClass(VARIABLE_DEFINITION_BUILT_IN);
     createEAttribute(variableDefinitionBuiltInEClass, VARIABLE_DEFINITION_BUILT_IN__TYPE);
     createEAttribute(variableDefinitionBuiltInEClass, VARIABLE_DEFINITION_BUILT_IN__NAME);
+    createEReference(variableDefinitionBuiltInEClass, VARIABLE_DEFINITION_BUILT_IN__COMPLEX);
     createEAttribute(variableDefinitionBuiltInEClass, VARIABLE_DEFINITION_BUILT_IN__CONSTRUCTOR);
     createEReference(variableDefinitionBuiltInEClass, VARIABLE_DEFINITION_BUILT_IN__PARAMETERS);
 
@@ -1697,6 +1719,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(variableAttributeEClass, VariableAttribute.class, "VariableAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableAttribute_Complex(), this.getVariableComplex(), null, "complex", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableAttribute_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(userDefinedTypeEClass, UserDefinedType.class, "UserDefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1709,6 +1732,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEClass(variableDefinitionBuiltInEClass, VariableDefinitionBuiltIn.class, "VariableDefinitionBuiltIn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableDefinitionBuiltIn_Type(), ecorePackage.getEString(), "type", null, 0, 1, VariableDefinitionBuiltIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDefinitionBuiltIn_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDefinitionBuiltIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDefinitionBuiltIn_Complex(), this.getVariableComplex(), null, "complex", null, 0, 1, VariableDefinitionBuiltIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDefinitionBuiltIn_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, VariableDefinitionBuiltIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableDefinitionBuiltIn_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, VariableDefinitionBuiltIn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
