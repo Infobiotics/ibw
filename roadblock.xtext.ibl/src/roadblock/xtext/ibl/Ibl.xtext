@@ -149,7 +149,7 @@ VariableQualifier:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM'
+	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM' | 'CHASSIS'
 ;
 
 // variable collections

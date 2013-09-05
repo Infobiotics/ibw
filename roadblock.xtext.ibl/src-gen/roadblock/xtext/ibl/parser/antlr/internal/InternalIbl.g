@@ -1742,6 +1742,13 @@ ruleVariableType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getVariableTypeAccess().getSYSTEMKeyword_11()); 
     }
+
+    |
+	kw='CHASSIS' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getVariableTypeAccess().getCHASSISKeyword_12()); 
+    }
 )
     ;
 

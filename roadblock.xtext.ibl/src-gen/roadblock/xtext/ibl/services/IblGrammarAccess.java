@@ -983,15 +983,16 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRATEKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
 		private final Keyword cPROCESSKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
 		private final Keyword cSYSTEMKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cCHASSISKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
 		
 		//// variable types
 		//VariableType:
 		//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
-		//	"SYSTEM";
+		//	"SYSTEM" | "CHASSIS";
 		public ParserRule getRule() { return rule; }
 
 		//"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
-		//"SYSTEM"
+		//"SYSTEM" | "CHASSIS"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"MOLECULE"
@@ -1029,6 +1030,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"SYSTEM"
 		public Keyword getSYSTEMKeyword_11() { return cSYSTEMKeyword_11; }
+
+		//"CHASSIS"
+		public Keyword getCHASSISKeyword_12() { return cCHASSISKeyword_12; }
 	}
 
 	public class CollectionIDElements extends AbstractParserRuleElementFinder {
@@ -2769,7 +2773,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// variable types
 	//VariableType:
 	//	"MOLECULE" | "CELL" | "RIBOSOME" | "PROMOTER" | "PROTEIN" | "DNA" | "RNA" | "GENE" | "INTEGER" | "RATE" | "PROCESS" |
-	//	"SYSTEM";
+	//	"SYSTEM" | "CHASSIS";
 	public VariableTypeElements getVariableTypeAccess() {
 		return (pVariableType != null) ? pVariableType : (pVariableType = new VariableTypeElements());
 	}

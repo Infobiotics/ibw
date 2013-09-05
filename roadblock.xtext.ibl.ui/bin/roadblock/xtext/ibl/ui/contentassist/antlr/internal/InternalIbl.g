@@ -1812,6 +1812,14 @@ rule__VariableType__Alternatives
 { after(grammarAccess.getVariableTypeAccess().getSYSTEMKeyword_11()); }
 )
 
+    |(
+{ before(grammarAccess.getVariableTypeAccess().getCHASSISKeyword_12()); }
+
+	'CHASSIS' 
+
+{ after(grammarAccess.getVariableTypeAccess().getCHASSISKeyword_12()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
