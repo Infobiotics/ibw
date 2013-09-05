@@ -40,6 +40,8 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelMemberAccess().getAlternatives(), "rule__ModelMember__Alternatives");
 					put(grammarAccess.getFunctionDefinitionAccess().getTypeAlternatives_4_0(), "rule__FunctionDefinition__TypeAlternatives_4_0");
 					put(grammarAccess.getFunctionTypeAccess().getAlternatives(), "rule__FunctionType__Alternatives");
+					put(grammarAccess.getFunctionParameterMemberAccess().getAlternatives_0(), "rule__FunctionParameterMember__Alternatives_0");
+					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAlternatives_0_1_2_0(), "rule__FunctionParameterMember__TypeAlternatives_0_1_2_0");
 					put(grammarAccess.getFunctionParameterScopeAccess().getAlternatives(), "rule__FunctionParameterScope__Alternatives");
 					put(grammarAccess.getFunctionBodyMemberAccess().getAlternatives(), "rule__FunctionBodyMember__Alternatives");
 					put(grammarAccess.getVariableDefinitionAccess().getDefinitionAlternatives_2_0(), "rule__VariableDefinition__DefinitionAlternatives_2_0");
@@ -74,6 +76,7 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionDefinitionAccess().getGroup_11(), "rule__FunctionDefinition__Group_11__0");
 					put(grammarAccess.getFunctionDefinitionAccess().getGroup_11_2(), "rule__FunctionDefinition__Group_11_2__0");
 					put(grammarAccess.getFunctionParameterMemberAccess().getGroup(), "rule__FunctionParameterMember__Group__0");
+					put(grammarAccess.getFunctionParameterMemberAccess().getGroup_0_1(), "rule__FunctionParameterMember__Group_0_1__0");
 					put(grammarAccess.getFunctionParameterMemberAccess().getGroup_2(), "rule__FunctionParameterMember__Group_2__0");
 					put(grammarAccess.getFunctionUseMemberAccess().getGroup(), "rule__FunctionUseMember__Group__0");
 					put(grammarAccess.getVariableComplexAccess().getGroup(), "rule__VariableComplex__Group__0");
@@ -144,7 +147,9 @@ public class IblParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionDefinitionAccess().getMembersAssignment_9(), "rule__FunctionDefinition__MembersAssignment_9");
 					put(grammarAccess.getFunctionDefinitionAccess().getUsesAssignment_11_1(), "rule__FunctionDefinition__UsesAssignment_11_1");
 					put(grammarAccess.getFunctionDefinitionAccess().getUsesAssignment_11_2_1(), "rule__FunctionDefinition__UsesAssignment_11_2_1");
-					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAssignment_0(), "rule__FunctionParameterMember__TypeAssignment_0");
+					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAssignment_0_0(), "rule__FunctionParameterMember__TypeAssignment_0_0");
+					put(grammarAccess.getFunctionParameterMemberAccess().getCollectionAssignment_0_1_0(), "rule__FunctionParameterMember__CollectionAssignment_0_1_0");
+					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAssignment_0_1_2(), "rule__FunctionParameterMember__TypeAssignment_0_1_2");
 					put(grammarAccess.getFunctionParameterMemberAccess().getNameAssignment_1(), "rule__FunctionParameterMember__NameAssignment_1");
 					put(grammarAccess.getFunctionParameterMemberAccess().getScopeAssignment_2_1(), "rule__FunctionParameterMember__ScopeAssignment_2_1");
 					put(grammarAccess.getFunctionUseMemberAccess().getTypeAssignment_0(), "rule__FunctionUseMember__TypeAssignment_0");

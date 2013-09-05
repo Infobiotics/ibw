@@ -480,7 +480,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionParameterMember_Name()
+  public EAttribute getFunctionParameterMember_Collection()
   {
     return (EAttribute)functionParameterMemberEClass.getEStructuralFeatures().get(1);
   }
@@ -490,9 +490,19 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionParameterMember_Scope()
+  public EAttribute getFunctionParameterMember_Name()
   {
     return (EAttribute)functionParameterMemberEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionParameterMember_Scope()
+  {
+    return (EAttribute)functionParameterMemberEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1481,6 +1491,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     functionParameterMemberEClass = createEClass(FUNCTION_PARAMETER_MEMBER);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__TYPE);
+    createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__COLLECTION);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__NAME);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__SCOPE);
 
@@ -1671,6 +1682,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(functionParameterMemberEClass, FunctionParameterMember.class, "FunctionParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionParameterMember_Collection(), ecorePackage.getEString(), "collection", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionParameterMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionParameterMember_Scope(), ecorePackage.getEString(), "scope", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

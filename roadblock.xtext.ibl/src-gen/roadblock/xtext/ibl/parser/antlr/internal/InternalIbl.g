@@ -466,10 +466,10 @@ ruleFunctionParameterMember returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getTypeVariableTypeParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getTypeVariableTypeParserRuleCall_0_0_0()); 
 	    }
 		lv_type_0_0=ruleVariableType		{
 	        if ($current==null) {
@@ -484,41 +484,104 @@ ruleFunctionParameterMember returns [EObject current=null]
 	    }
 
 )
-)(
+)
+    |((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getCollectionCollectionIDParserRuleCall_0_1_0_0()); 
+	    }
+		lv_collection_1_0=ruleCollectionID		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionParameterMemberRule());
+	        }
+       		set(
+       			$current, 
+       			"collection",
+        		lv_collection_1_0, 
+        		"CollectionID");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_2='<' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getFunctionParameterMemberAccess().getLessThanSignKeyword_0_1_1());
+    }
+(
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getTypeVariableTypeParserRuleCall_0_1_2_0_0()); 
+	    }
+		lv_type_3_1=ruleVariableType		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionParameterMemberRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_3_1, 
+        		"VariableType");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getTypeVariableNameParserRuleCall_0_1_2_0_1()); 
+	    }
+		lv_type_3_2=ruleVariableName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionParameterMemberRule());
+	        }
+       		set(
+       			$current, 
+       			"type",
+        		lv_type_3_2, 
+        		"VariableName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+
+)
+)	otherlv_4='>' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getFunctionParameterMemberAccess().getGreaterThanSignKeyword_0_1_3());
+    }
+))(
 (
 		{ 
 	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getNameVariableNameParserRuleCall_1_0()); 
 	    }
-		lv_name_1_0=ruleVariableName		{
+		lv_name_5_0=ruleVariableName		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionParameterMemberRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_5_0, 
         		"VariableName");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_2=':' 
+)(	otherlv_6=':' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getFunctionParameterMemberAccess().getColonKeyword_2_0());
+    	newLeafNode(otherlv_6, grammarAccess.getFunctionParameterMemberAccess().getColonKeyword_2_0());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getFunctionParameterMemberAccess().getScopeFunctionParameterScopeParserRuleCall_2_1_0()); 
 	    }
-		lv_scope_3_0=ruleFunctionParameterScope		{
+		lv_scope_7_0=ruleFunctionParameterScope		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionParameterMemberRule());
 	        }
        		set(
        			$current, 
        			"scope",
-        		lv_scope_3_0, 
+        		lv_scope_7_0, 
         		"FunctionParameterScope");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1712,6 +1775,13 @@ ruleCollectionID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
     {
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getCollectionIDAccess().getSETKeyword_1()); 
+    }
+
+    |
+	kw='HASH' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCollectionIDAccess().getHASHKeyword_2()); 
     }
 )
     ;

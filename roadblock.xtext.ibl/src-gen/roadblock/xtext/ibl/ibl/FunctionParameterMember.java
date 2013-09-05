@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getType <em>Type</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getCollection <em>Collection</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getScope <em>Scope</em>}</li>
  * </ul>
@@ -49,6 +50,32 @@ public interface FunctionParameterMember extends EObject
    * @generated
    */
   void setType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Collection</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Collection</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Collection</em>' attribute.
+   * @see #setCollection(String)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getFunctionParameterMember_Collection()
+   * @model
+   * @generated
+   */
+  String getCollection();
+
+  /**
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getCollection <em>Collection</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Collection</em>' attribute.
+   * @see #getCollection()
+   * @generated
+   */
+  void setCollection(String value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

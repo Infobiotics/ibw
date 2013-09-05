@@ -270,8 +270,18 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	public class FunctionParameterMemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionParameterMember");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTypeVariableTypeParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final RuleCall cTypeVariableTypeParserRuleCall_0_0_0 = (RuleCall)cTypeAssignment_0_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
+		private final Assignment cCollectionAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
+		private final RuleCall cCollectionCollectionIDParserRuleCall_0_1_0_0 = (RuleCall)cCollectionAssignment_0_1_0.eContents().get(0);
+		private final Keyword cLessThanSignKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
+		private final Assignment cTypeAssignment_0_1_2 = (Assignment)cGroup_0_1.eContents().get(2);
+		private final Alternatives cTypeAlternatives_0_1_2_0 = (Alternatives)cTypeAssignment_0_1_2.eContents().get(0);
+		private final RuleCall cTypeVariableTypeParserRuleCall_0_1_2_0_0 = (RuleCall)cTypeAlternatives_0_1_2_0.eContents().get(0);
+		private final RuleCall cTypeVariableNameParserRuleCall_0_1_2_0_1 = (RuleCall)cTypeAlternatives_0_1_2_0.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_0_1_3 = (Keyword)cGroup_0_1.eContents().get(3);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameVariableNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
@@ -281,17 +291,49 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//// function parameter member
 		//FunctionParameterMember:
-		//	type=VariableType name=VariableName (":" scope=FunctionParameterScope)?;
+		//	(type=VariableType | collection=CollectionID "<" type=(VariableType | VariableName) ">") name=VariableName (":"
+		//	scope=FunctionParameterScope)?;
 		public ParserRule getRule() { return rule; }
 
-		//type=VariableType name=VariableName (":" scope=FunctionParameterScope)?
+		//(type=VariableType | collection=CollectionID "<" type=(VariableType | VariableName) ">") name=VariableName (":"
+		//scope=FunctionParameterScope)?
 		public Group getGroup() { return cGroup; }
 
+		//type=VariableType | collection=CollectionID "<" type=(VariableType | VariableName) ">"
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
 		//type=VariableType
-		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		public Assignment getTypeAssignment_0_0() { return cTypeAssignment_0_0; }
 
 		//VariableType
-		public RuleCall getTypeVariableTypeParserRuleCall_0_0() { return cTypeVariableTypeParserRuleCall_0_0; }
+		public RuleCall getTypeVariableTypeParserRuleCall_0_0_0() { return cTypeVariableTypeParserRuleCall_0_0_0; }
+
+		//collection=CollectionID "<" type=(VariableType | VariableName) ">"
+		public Group getGroup_0_1() { return cGroup_0_1; }
+
+		//collection=CollectionID
+		public Assignment getCollectionAssignment_0_1_0() { return cCollectionAssignment_0_1_0; }
+
+		//CollectionID
+		public RuleCall getCollectionCollectionIDParserRuleCall_0_1_0_0() { return cCollectionCollectionIDParserRuleCall_0_1_0_0; }
+
+		//"<"
+		public Keyword getLessThanSignKeyword_0_1_1() { return cLessThanSignKeyword_0_1_1; }
+
+		//type=(VariableType | VariableName)
+		public Assignment getTypeAssignment_0_1_2() { return cTypeAssignment_0_1_2; }
+
+		//VariableType | VariableName
+		public Alternatives getTypeAlternatives_0_1_2_0() { return cTypeAlternatives_0_1_2_0; }
+
+		//VariableType
+		public RuleCall getTypeVariableTypeParserRuleCall_0_1_2_0_0() { return cTypeVariableTypeParserRuleCall_0_1_2_0_0; }
+
+		//VariableName
+		public RuleCall getTypeVariableNameParserRuleCall_0_1_2_0_1() { return cTypeVariableNameParserRuleCall_0_1_2_0_1; }
+
+		//">"
+		public Keyword getGreaterThanSignKeyword_0_1_3() { return cGreaterThanSignKeyword_0_1_3; }
 
 		//name=VariableName
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -994,13 +1036,14 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cLISTKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cSETKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cHASHKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		//// variable collections
 		//CollectionID:
-		//	"LIST" | "SET";
+		//	"LIST" | "SET" | "HASH";
 		public ParserRule getRule() { return rule; }
 
-		//"LIST" | "SET"
+		//"LIST" | "SET" | "HASH"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"LIST"
@@ -1008,6 +1051,9 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"SET"
 		public Keyword getSETKeyword_1() { return cSETKeyword_1; }
+
+		//"HASH"
+		public Keyword getHASHKeyword_2() { return cHASHKeyword_2; }
 	}
 
 	public class VariableAssignmentElements extends AbstractParserRuleElementFinder {
@@ -2554,7 +2600,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// function parameter member
 	//FunctionParameterMember:
-	//	type=VariableType name=VariableName (":" scope=FunctionParameterScope)?;
+	//	(type=VariableType | collection=CollectionID "<" type=(VariableType | VariableName) ">") name=VariableName (":"
+	//	scope=FunctionParameterScope)?;
 	public FunctionParameterMemberElements getFunctionParameterMemberAccess() {
 		return (pFunctionParameterMember != null) ? pFunctionParameterMember : (pFunctionParameterMember = new FunctionParameterMemberElements());
 	}
@@ -2733,7 +2780,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// variable collections
 	//CollectionID:
-	//	"LIST" | "SET";
+	//	"LIST" | "SET" | "HASH";
 	public CollectionIDElements getCollectionIDAccess() {
 		return (pCollectionID != null) ? pCollectionID : (pCollectionID = new CollectionIDElements());
 	}

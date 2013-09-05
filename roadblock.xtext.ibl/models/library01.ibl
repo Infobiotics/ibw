@@ -12,7 +12,7 @@ define ConstitutiveProteinExpression typeof PROCESS (
 	PROMOTER promoter:required,
 	GENE gene1:required,
 	PROTEIN protein1:returned,
-	HASH rates:optional
+	HASH<RATE> rates:optional
 ) 
 {
 	RNA mrna1

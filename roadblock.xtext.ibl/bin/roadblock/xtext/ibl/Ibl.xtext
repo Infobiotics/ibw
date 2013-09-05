@@ -57,7 +57,7 @@ FunctionType:
 
 // function parameter member
 FunctionParameterMember:
-	type=VariableType name=VariableName (':' scope=FunctionParameterScope)?
+	((type=VariableType) | (collection=CollectionID '<' type=(VariableType | VariableName) '>'))  name=VariableName (':' scope=FunctionParameterScope)?
 ;
 
 // allowed scope of function parameters
@@ -154,7 +154,7 @@ VariableType:
 
 // variable collections
 CollectionID:
-	'LIST' | 'SET'
+	'LIST' | 'SET' | 'HASH'
 ;
 
 // a variable assignment

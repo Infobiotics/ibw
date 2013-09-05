@@ -306,7 +306,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (type=VariableType name=VariableName scope=FunctionParameterScope?)
+	 *     ((type=VariableType | (collection=CollectionID (type=VariableType | type=VariableName))) name=VariableName scope=FunctionParameterScope?)
 	 */
 	protected void sequence_FunctionParameterMember(EObject context, FunctionParameterMember semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

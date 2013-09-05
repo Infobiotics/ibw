@@ -206,13 +206,22 @@ public interface IblPackage extends EPackage
   int FUNCTION_PARAMETER_MEMBER__TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Collection</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_PARAMETER_MEMBER__COLLECTION = 1;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_PARAMETER_MEMBER__NAME = 1;
+  int FUNCTION_PARAMETER_MEMBER__NAME = 2;
 
   /**
    * The feature id for the '<em><b>Scope</b></em>' attribute.
@@ -221,7 +230,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_PARAMETER_MEMBER__SCOPE = 2;
+  int FUNCTION_PARAMETER_MEMBER__SCOPE = 3;
 
   /**
    * The number of structural features of the '<em>Function Parameter Member</em>' class.
@@ -230,7 +239,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_PARAMETER_MEMBER_FEATURE_COUNT = 3;
+  int FUNCTION_PARAMETER_MEMBER_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionBodyMemberImpl <em>Function Body Member</em>}' class.
@@ -1497,6 +1506,17 @@ public interface IblPackage extends EPackage
   EAttribute getFunctionParameterMember_Type();
 
   /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getCollection <em>Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Collection</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionParameterMember#getCollection()
+   * @see #getFunctionParameterMember()
+   * @generated
+   */
+  EAttribute getFunctionParameterMember_Collection();
+
+  /**
    * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2651,6 +2671,14 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute FUNCTION_PARAMETER_MEMBER__TYPE = eINSTANCE.getFunctionParameterMember_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Collection</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_PARAMETER_MEMBER__COLLECTION = eINSTANCE.getFunctionParameterMember_Collection();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

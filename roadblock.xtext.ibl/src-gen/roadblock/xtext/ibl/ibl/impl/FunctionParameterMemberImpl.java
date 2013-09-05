@@ -20,6 +20,7 @@ import roadblock.xtext.ibl.ibl.IblPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl#getType <em>Type</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl#getCollection <em>Collection</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl#getScope <em>Scope</em>}</li>
  * </ul>
@@ -48,6 +49,26 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
    * @ordered
    */
   protected String type = TYPE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getCollection() <em>Collection</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCollection()
+   * @generated
+   * @ordered
+   */
+  protected static final String COLLECTION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCollection() <em>Collection</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCollection()
+   * @generated
+   * @ordered
+   */
+  protected String collection = COLLECTION_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -138,6 +159,29 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getCollection()
+  {
+    return collection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCollection(String newCollection)
+  {
+    String oldCollection = collection;
+    collection = newCollection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_PARAMETER_MEMBER__COLLECTION, oldCollection, collection));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getName()
   {
     return name;
@@ -191,6 +235,8 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
     {
       case IblPackage.FUNCTION_PARAMETER_MEMBER__TYPE:
         return getType();
+      case IblPackage.FUNCTION_PARAMETER_MEMBER__COLLECTION:
+        return getCollection();
       case IblPackage.FUNCTION_PARAMETER_MEMBER__NAME:
         return getName();
       case IblPackage.FUNCTION_PARAMETER_MEMBER__SCOPE:
@@ -211,6 +257,9 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
     {
       case IblPackage.FUNCTION_PARAMETER_MEMBER__TYPE:
         setType((String)newValue);
+        return;
+      case IblPackage.FUNCTION_PARAMETER_MEMBER__COLLECTION:
+        setCollection((String)newValue);
         return;
       case IblPackage.FUNCTION_PARAMETER_MEMBER__NAME:
         setName((String)newValue);
@@ -235,6 +284,9 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
       case IblPackage.FUNCTION_PARAMETER_MEMBER__TYPE:
         setType(TYPE_EDEFAULT);
         return;
+      case IblPackage.FUNCTION_PARAMETER_MEMBER__COLLECTION:
+        setCollection(COLLECTION_EDEFAULT);
+        return;
       case IblPackage.FUNCTION_PARAMETER_MEMBER__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -257,6 +309,8 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
     {
       case IblPackage.FUNCTION_PARAMETER_MEMBER__TYPE:
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case IblPackage.FUNCTION_PARAMETER_MEMBER__COLLECTION:
+        return COLLECTION_EDEFAULT == null ? collection != null : !COLLECTION_EDEFAULT.equals(collection);
       case IblPackage.FUNCTION_PARAMETER_MEMBER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case IblPackage.FUNCTION_PARAMETER_MEMBER__SCOPE:
@@ -278,6 +332,8 @@ public class FunctionParameterMemberImpl extends MinimalEObjectImpl.Container im
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (type: ");
     result.append(type);
+    result.append(", collection: ");
+    result.append(collection);
     result.append(", name: ");
     result.append(name);
     result.append(", scope: ");
