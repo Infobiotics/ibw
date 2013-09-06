@@ -3,19 +3,19 @@
 import library01  
 
 define constitutiveProteinExpressionTwoGenes typeof ConstitutiveProteinExpression (
-        GENE gene2,
-        PROTEIN protein2 : returned){
+        GENE gene2: input,
+        PROTEIN protein2 : output){
         
         RULE translation2 : mrna1~ribosome -> mrna1~ribosome + protein2
         translation.forwardRate = rates.translationRate       
 } 
         
 define doublyRegulatedProteinExpression typeof PROCESS(
-        PROMOTER promoter,
-        MOLECULE upRegulator,
-        MOLECULE downRegulator,
-        GENE gene,
-        PROTEIN protein
+        PROMOTER promoter: input, 
+        MOLECULE upRegulator: input,
+        MOLECULE downRegulator: input,
+        GENE gene: input,
+        PROTEIN protein: output
 ){      
         UpRegulatedProteinExpression upRegulation = new UpRegulatedExpression(promoter = promoter, signal = upRegulator, gene = gene, protein = protein)
         DownRegulatedProteinExpression downRegulation = new DownRegulatedExpression(promoter = promoter, signal = downRegulator, gene = gene, protein = protein)
@@ -23,42 +23,30 @@ define doublyRegulatedProteinExpression typeof PROCESS(
 } USES RIBOSOME ribosome, RNA rnaP
         
 define XORGate typeof SYSTEM (          
-        PROMOTER xorPromoter, 
-        GENE xorGene1,          // default value
-        PROTEIN xorProtein1,
-        GENE xorGene2,
-        PROTEIN xorProtein2,
-        MOLECULE molecule1,
-        MOLECULE molecule2,
-        PROMOTER promoter2,
-        PROMOTER promoter3,
-        GENE reporterGene,
-        PROTEIN reporterProtein){
-// JT: default initial values??
-//        PROMOTER promoter1, 
-//        GENE gene1 = GENE(URI = 'db://lacl'),          // default value
-//        PROTEIN protein1 = PROTEIN(URI = 'db://Lacl'),
-//        GENE gene2 = GENE(URI = 'db://tetR'),
-//        PROTEIN protein2 = PROTEIN(URI = 'db://TetR'),
-//        MOLECULE molecule1 = MOLECULE(URI = 'db://IPTG'),
-//        MOLECULE molecule2 = MOLECULE(URI = 'db://aTc'),
-//        PROMOTER promoter2,
-//        PROMOTER promoter3,
-//        GENE reporterGene = GENE(URI = 'bd://gFP'),
-//        PROTEIN reporterProtein = PROTEIN(URI = 'db://GFP' )){
+        PROMOTER xorPromoter: input, 
+        GENE xorGene1: input,          // default value
+        PROTEIN xorProtein1: output,
+        GENE xorGene2: input,
+        PROTEIN xorProtein2: output,
+        MOLECULE molecule1: input,
+        MOLECULE molecule2: input,
+        PROMOTER promoter2: input,
+        PROMOTER promoter3: input,
+        GENE reporterGene: input,
+        PROTEIN reporterProtein: output){
 
-        DEVICE D1 = new DEVICE(parts = [xorPromoter,xorGene1,xorGene2])(produced = [xorProtein1, xorProtein2]){
+        DEVICE D1 = new DEVICE(parts = [xorPromoter,xorGene1,xorGene2])(input = [xorProtein1, xorProtein2]){
                 PROCESS P1 = new constitutivePromoterTwoGenes(
                         //promoter = [promoter1, promoter2], gene = [gene1,gene2], protein = [protein1, protein2]
                         promoter = xorPromoter, gene1 = xorGene1, gene2 = xorGene2, protein1 = xorProtein1, protein2 = xorProtein2  
                 )
         }
 
-        DEVICE D2 = new DEVICE(parts = [promoter2,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
+        DEVICE D2 = new DEVICE(parts = [promoter2,reporterGene])(input = [protein1,protein2], output = [reporterProtein]){
                 PROCESS P1 = new doublyRegulatedProteinExpression(promoter = promoter2, upRegulator = protein1, downRegulator = protein2)
         }
 
-        DEVICE D3 = new DEVICE(parts = [promoter3,reporterGene])(consumed = [protein1,protein2], produced = reporterProtein){
+        DEVICE D3 = new DEVICE(parts = [promoter3,reporterGene])(input = [protein1,protein2], output = [reporterProtein]){
                 PROCESS P1 = new doublyRegulatedProteinExpression(promoter = promoter2, downRegulator = protein1, upRegulator = protein2)
         }
 
@@ -67,7 +55,8 @@ define XORGate typeof SYSTEM (
         RULE R1 : molecule1 + protein1 <-> molecule1~protein1
         RULE R2 : molecule2 + protein2 <-> molecule2~protein2
 
-        // CHECK that it does work as a XOR gate
+        // CHECK that it does work as a XOR gate 
+        // (Truth table)
         VERIFY [reporterProtein == 0 M] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 0 uM
         VERIFY [reporterProtein >  0 molecules] WILL HOLD GIVEN molecule1 = 0 uM, molecule2 = 1 uM
         VERIFY [reporterProtein >  0 M] WILL HOLD GIVEN molecule1 = 1 uM, molecule2 = 0 uM
@@ -84,8 +73,8 @@ define XOREnabledCell typeof CELL (){
 	MOLECULE IPTG = new MOLECULE(URI = 'db://...')
 	MOLECULE aTc = new MOLECULE(URI = 'db://...')
 
-	observable RIBOSOME ribosome
-	observable RNA rnaP
+	RIBOSOME ribosome : observable
+	RNA rnaP : observable
 
 	PROMOTER myPromoter = new PROMOTER(URI='db://...')
 	GENE myReporterGene = new GENE(URI = 'db://rFP')

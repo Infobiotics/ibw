@@ -4,7 +4,7 @@
     editorDirectory="/roadblock.xtext.ibl.editor/src" modelPluginID="roadblock.xtext.ibl"
     forceOverwrite="true" modelName="Ibl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="roadblock.xtext.ibl.edit"
-    editorPluginID="roadblock.xtext.ibl.editor" runtimeVersion="2.8">
+    editorPluginID="roadblock.xtext.ibl.editor" runtimeVersion="2.9">
   <genPackages prefix="Ibl" basePackage="roadblock.xtext.ibl" disposableProviderFactory="true"
       fileExtensions="ibl" ecorePackage="Ibl.ecore#/">
     <genClasses ecoreClass="Ibl.ecore#//Model">

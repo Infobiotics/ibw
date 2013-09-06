@@ -1521,13 +1521,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//// device definition
 		//DeviceDefinition:
 		//	{DeviceDefinition} "DEVICE" name=VariableName "=" "new" "DEVICE" "(" "parts" "=" parts=List ")" "(" ("input" "="
-		//	input=List)? ("," "output" "=" outputput=List)? //		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
-		//	")" "{" members+=DeviceMembers* "}";
+		//	input=List)? ("," "output" "=" outputput=List)? ")" "{" members+=DeviceMembers* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{DeviceDefinition} "DEVICE" name=VariableName "=" "new" "DEVICE" "(" "parts" "=" parts=List ")" "(" ("input" "="
-		//input=List)? ("," "output" "=" outputput=List)? //		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
-		//")" "{" members+=DeviceMembers* "}"
+		//input=List)? ("," "output" "=" outputput=List)? ")" "{" members+=DeviceMembers* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{DeviceDefinition}
@@ -1605,7 +1603,6 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//List
 		public RuleCall getOutputputListParserRuleCall_13_3_0() { return cOutputputListParserRuleCall_13_3_0; }
 
-		////		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
 		//")"
 		public Keyword getRightParenthesisKeyword_14() { return cRightParenthesisKeyword_14; }
 
@@ -2956,8 +2953,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// device definition
 	//DeviceDefinition:
 	//	{DeviceDefinition} "DEVICE" name=VariableName "=" "new" "DEVICE" "(" "parts" "=" parts=List ")" "(" ("input" "="
-	//	input=List)? ("," "output" "=" outputput=List)? //		(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
-	//	")" "{" members+=DeviceMembers* "}";
+	//	input=List)? ("," "output" "=" outputput=List)? ")" "{" members+=DeviceMembers* "}";
 	public DeviceDefinitionElements getDeviceDefinitionAccess() {
 		return (pDeviceDefinition != null) ? pDeviceDefinition : (pDeviceDefinition = new DeviceDefinitionElements());
 	}

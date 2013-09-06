@@ -30,7 +30,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     try
     {
-      IblFactory theIblFactory = (IblFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.xtext.roadblock/ibl/Ibl"); 
+      IblFactory theIblFactory = (IblFactory)EPackage.Registry.INSTANCE.getEFactory(IblPackage.eNS_URI);
       if (theIblFactory != null)
       {
         return theIblFactory;
