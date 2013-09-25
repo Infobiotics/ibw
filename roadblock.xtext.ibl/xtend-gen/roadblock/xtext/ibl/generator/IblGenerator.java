@@ -3,12 +3,23 @@
  */
 package roadblock.xtext.ibl.generator;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import roadblock.emf.ibl.Ibl.IblFactory;
 import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.impl.IblPackageImpl;
+import roadblock.xtext.ibl.ibl.FunctionBodyMember;
+import roadblock.xtext.ibl.ibl.FunctionDefinition;
+import roadblock.xtext.ibl.ibl.RuleDefinition;
 
 /**
  * Generates code from your model files on save.
@@ -23,5 +34,41 @@ public class IblGenerator implements IGenerator {
     IblPackageImpl.init();
     this.factory = IblFactory.eINSTANCE;
     final Model emfModel = this.factory.createModel();
+    emfModel.setName("Main model");
+    this.populateProcesses(resource, emfModel);
+  }
+  
+  public void populateProcesses(final Resource resource, final Model emfModel) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<FunctionDefinition> _filter = Iterables.<FunctionDefinition>filter(_iterable, FunctionDefinition.class);
+    for (final FunctionDefinition functionDefinition : _filter) {
+      String _type = functionDefinition.getType();
+      boolean _equals = Objects.equal(_type, "PROCESS");
+      if (_equals) {
+        final roadblock.emf.ibl.Ibl.Process emfProcess = this.factory.createProcess();
+        String _name = functionDefinition.getName();
+        emfProcess.setName(_name);
+        InputOutput.<String>print("new process: ");
+        String _name_1 = emfProcess.getName();
+        InputOutput.<String>println(_name_1);
+        EList<FunctionBodyMember> _members = functionDefinition.getMembers();
+        Iterable<RuleDefinition> _filter_1 = Iterables.<RuleDefinition>filter(_members, RuleDefinition.class);
+        for (final RuleDefinition rule : _filter_1) {
+          {
+            final Rule emfRule = this.factory.createRule();
+            String _name_2 = rule.getName();
+            emfRule.setName(_name_2);
+            EList<Rule> _ruleList = emfProcess.getRuleList();
+            _ruleList.add(emfRule);
+            InputOutput.<String>print("new rule: ");
+            String _name_3 = emfRule.getName();
+            InputOutput.<String>println(_name_3);
+          }
+        }
+        EList<roadblock.emf.ibl.Ibl.Process> _processList = emfModel.getProcessList();
+        _processList.add(emfProcess);
+      }
+    }
   }
 }

@@ -34,5 +34,42 @@ class IblGenerator implements IGenerator {
 	IblPackageImpl::init
 	factory = IblFactory::eINSTANCE
 	val roadblock.emf.ibl.Ibl.Model emfModel = factory.createModel
+	
+	// set emfmodel attribute
+	emfModel.setName("Main model")
+	
+	// populate emf model from xtext mode
+	populateProcesses(resource, emfModel)
+	}
+	
+	def populateProcesses(Resource resource, roadblock.emf.ibl.Ibl.Model emfModel)
+	{
+		for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition)))
+		{
+			if(functionDefinition.type == "PROCESS") {
+				// create new emf process
+				val emfProcess = factory.createProcess
+				// set emf process attributes from xtext model
+				emfProcess.setName(functionDefinition.name)
+					print("new process: ")
+					println(emfProcess.name)
+				
+				// set rules
+				for(rule: functionDefinition.members.filter(typeof(RuleDefinition))){
+					// create new rule
+					val emfRule = factory.createRule
+					// set emf rule attribute
+					emfRule.setName(rule.name)
+					
+					// add rule to process
+					emfProcess.ruleList.add(emfRule)
+					print("new rule: ")
+					println(emfRule.name)
+				}
+				// add process to the list
+				emfModel.processList.add(emfProcess)	
+			}
+		}	
+		
 	}
 }
