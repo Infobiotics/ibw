@@ -6,6 +6,9 @@ package roadblock.xtext.ibl.generator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import roadblock.emf.ibl.Ibl.IblFactory;
+import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.impl.IblPackageImpl;
 
 /**
  * Generates code from your model files on save.
@@ -14,15 +17,11 @@ import org.eclipse.xtext.generator.IGenerator;
  */
 @SuppressWarnings("all")
 public class IblGenerator implements IGenerator {
-  private /* IblFactory */Object factory;
+  private IblFactory factory;
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nIblPackageImpl cannot be resolved to a type."
-      + "\nIblFactory cannot be resolved to a type."
-      + "\nroadblock.emf.ibl.Ibl.Model cannot be resolved to a type."
-      + "\ninit cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateModel cannot be resolved");
+    IblPackageImpl.init();
+    this.factory = IblFactory.eINSTANCE;
+    final Model emfModel = this.factory.createModel();
   }
 }
