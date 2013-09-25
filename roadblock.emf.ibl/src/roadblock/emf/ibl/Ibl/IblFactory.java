@@ -1,6 +1,6 @@
 /**
  */
-package Ibl;
+package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see Ibl.IblPackage
+ * @see roadblock.emf.ibl.Ibl.IblPackage
  * @generated
  */
 public interface IblFactory extends EFactory {
@@ -19,7 +19,7 @@ public interface IblFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	IblFactory eINSTANCE = Ibl.impl.IblFactoryImpl.init();
+	IblFactory eINSTANCE = roadblock.emf.ibl.Ibl.impl.IblFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Model</em>'.

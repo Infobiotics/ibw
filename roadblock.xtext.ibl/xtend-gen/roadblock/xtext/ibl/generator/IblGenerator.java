@@ -14,6 +14,15 @@ import org.eclipse.xtext.generator.IGenerator;
  */
 @SuppressWarnings("all")
 public class IblGenerator implements IGenerator {
+  private /* IblFactory */Object factory;
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nIblPackageImpl cannot be resolved to a type."
+      + "\nIblFactory cannot be resolved to a type."
+      + "\nroadblock.emf.ibl.Ibl.Model cannot be resolved to a type."
+      + "\ninit cannot be resolved"
+      + "\neINSTANCE cannot be resolved"
+      + "\ncreateModel cannot be resolved");
   }
 }

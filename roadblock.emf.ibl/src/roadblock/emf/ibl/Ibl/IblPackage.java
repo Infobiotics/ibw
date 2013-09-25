@@ -1,6 +1,6 @@
 /**
  */
-package Ibl;
+package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see Ibl.IblFactory
+ * @see roadblock.emf.ibl.Ibl.IblFactory
  * @model kind="package"
  * @generated
  */
@@ -53,14 +53,14 @@ public interface IblPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	IblPackage eINSTANCE = Ibl.impl.IblPackageImpl.init();
+	IblPackage eINSTANCE = roadblock.emf.ibl.Ibl.impl.IblPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link Ibl.impl.ModelImpl <em>Model</em>}' class.
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.impl.ModelImpl <em>Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Ibl.impl.ModelImpl
-	 * @see Ibl.impl.IblPackageImpl#getModel()
+	 * @see roadblock.emf.ibl.Ibl.impl.ModelImpl
+	 * @see roadblock.emf.ibl.Ibl.impl.IblPackageImpl#getModel()
 	 * @generated
 	 */
 	int MODEL = 0;
@@ -93,11 +93,11 @@ public interface IblPackage extends EPackage {
 	int MODEL_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link Ibl.impl.ProcessImpl <em>Process</em>}' class.
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl <em>Process</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Ibl.impl.ProcessImpl
-	 * @see Ibl.impl.IblPackageImpl#getProcess()
+	 * @see roadblock.emf.ibl.Ibl.impl.ProcessImpl
+	 * @see roadblock.emf.ibl.Ibl.impl.IblPackageImpl#getProcess()
 	 * @generated
 	 */
 	int PROCESS = 1;
@@ -130,11 +130,11 @@ public interface IblPackage extends EPackage {
 	int PROCESS_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link Ibl.impl.RuleImpl <em>Rule</em>}' class.
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.impl.RuleImpl <em>Rule</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Ibl.impl.RuleImpl
-	 * @see Ibl.impl.IblPackageImpl#getRule()
+	 * @see roadblock.emf.ibl.Ibl.impl.RuleImpl
+	 * @see roadblock.emf.ibl.Ibl.impl.IblPackageImpl#getRule()
 	 * @generated
 	 */
 	int RULE = 2;
@@ -159,85 +159,85 @@ public interface IblPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link Ibl.Model <em>Model</em>}'.
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Model</em>'.
-	 * @see Ibl.Model
+	 * @see roadblock.emf.ibl.Ibl.Model
 	 * @generated
 	 */
 	EClass getModel();
 
 	/**
-	 * Returns the meta object for the attribute '{@link Ibl.Model#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Model#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see Ibl.Model#getName()
+	 * @see roadblock.emf.ibl.Ibl.Model#getName()
 	 * @see #getModel()
 	 * @generated
 	 */
 	EAttribute getModel_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link Ibl.Model#getProcessList <em>Process List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Model#getProcessList <em>Process List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Process List</em>'.
-	 * @see Ibl.Model#getProcessList()
+	 * @see roadblock.emf.ibl.Ibl.Model#getProcessList()
 	 * @see #getModel()
 	 * @generated
 	 */
 	EReference getModel_ProcessList();
 
 	/**
-	 * Returns the meta object for class '{@link Ibl.Process <em>Process</em>}'.
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Process <em>Process</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Process</em>'.
-	 * @see Ibl.Process
+	 * @see roadblock.emf.ibl.Ibl.Process
 	 * @generated
 	 */
 	EClass getProcess();
 
 	/**
-	 * Returns the meta object for the attribute '{@link Ibl.Process#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Process#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see Ibl.Process#getName()
+	 * @see roadblock.emf.ibl.Ibl.Process#getName()
 	 * @see #getProcess()
 	 * @generated
 	 */
 	EAttribute getProcess_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link Ibl.Process#getRuleList <em>Rule List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Process#getRuleList <em>Rule List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Rule List</em>'.
-	 * @see Ibl.Process#getRuleList()
+	 * @see roadblock.emf.ibl.Ibl.Process#getRuleList()
 	 * @see #getProcess()
 	 * @generated
 	 */
 	EReference getProcess_RuleList();
 
 	/**
-	 * Returns the meta object for class '{@link Ibl.Rule <em>Rule</em>}'.
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Rule</em>'.
-	 * @see Ibl.Rule
+	 * @see roadblock.emf.ibl.Ibl.Rule
 	 * @generated
 	 */
 	EClass getRule();
 
 	/**
-	 * Returns the meta object for the attribute '{@link Ibl.Rule#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Rule#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see Ibl.Rule#getName()
+	 * @see roadblock.emf.ibl.Ibl.Rule#getName()
 	 * @see #getRule()
 	 * @generated
 	 */
@@ -266,11 +266,11 @@ public interface IblPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link Ibl.impl.ModelImpl <em>Model</em>}' class.
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.impl.ModelImpl <em>Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see Ibl.impl.ModelImpl
-		 * @see Ibl.impl.IblPackageImpl#getModel()
+		 * @see roadblock.emf.ibl.Ibl.impl.ModelImpl
+		 * @see roadblock.emf.ibl.Ibl.impl.IblPackageImpl#getModel()
 		 * @generated
 		 */
 		EClass MODEL = eINSTANCE.getModel();
@@ -292,11 +292,11 @@ public interface IblPackage extends EPackage {
 		EReference MODEL__PROCESS_LIST = eINSTANCE.getModel_ProcessList();
 
 		/**
-		 * The meta object literal for the '{@link Ibl.impl.ProcessImpl <em>Process</em>}' class.
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl <em>Process</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see Ibl.impl.ProcessImpl
-		 * @see Ibl.impl.IblPackageImpl#getProcess()
+		 * @see roadblock.emf.ibl.Ibl.impl.ProcessImpl
+		 * @see roadblock.emf.ibl.Ibl.impl.IblPackageImpl#getProcess()
 		 * @generated
 		 */
 		EClass PROCESS = eINSTANCE.getProcess();
@@ -318,11 +318,11 @@ public interface IblPackage extends EPackage {
 		EReference PROCESS__RULE_LIST = eINSTANCE.getProcess_RuleList();
 
 		/**
-		 * The meta object literal for the '{@link Ibl.impl.RuleImpl <em>Rule</em>}' class.
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.impl.RuleImpl <em>Rule</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see Ibl.impl.RuleImpl
-		 * @see Ibl.impl.IblPackageImpl#getRule()
+		 * @see roadblock.emf.ibl.Ibl.impl.RuleImpl
+		 * @see roadblock.emf.ibl.Ibl.impl.IblPackageImpl#getRule()
 		 * @generated
 		 */
 		EClass RULE = eINSTANCE.getRule();

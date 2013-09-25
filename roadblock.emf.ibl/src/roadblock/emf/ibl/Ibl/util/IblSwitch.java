@@ -1,15 +1,15 @@
 /**
  */
-package Ibl.util;
-
-import Ibl.IblPackage;
-import Ibl.Model;
-import Ibl.Rule;
+package roadblock.emf.ibl.Ibl.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
+
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Rule;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see Ibl.IblPackage
+ * @see roadblock.emf.ibl.Ibl.IblPackage
  * @generated
  */
 public class IblSwitch<T> extends Switch<T> {
@@ -75,7 +75,7 @@ public class IblSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IblPackage.PROCESS: {
-				Ibl.Process process = (Ibl.Process)theEObject;
+				roadblock.emf.ibl.Ibl.Process process = (roadblock.emf.ibl.Ibl.Process)theEObject;
 				T result = caseProcess(process);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -116,7 +116,7 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseProcess(Ibl.Process object) {
+	public T caseProcess(roadblock.emf.ibl.Ibl.Process object) {
 		return null;
 	}
 

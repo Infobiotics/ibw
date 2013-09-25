@@ -1,6 +1,6 @@
 /**
  */
-package Ibl;
+package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link Ibl.Rule#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see Ibl.IblPackage#getRule()
+ * @see roadblock.emf.ibl.Ibl.IblPackage#getRule()
  * @model
  * @generated
  */
@@ -31,14 +31,14 @@ public interface Rule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see Ibl.IblPackage#getRule_Name()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link Ibl.Rule#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

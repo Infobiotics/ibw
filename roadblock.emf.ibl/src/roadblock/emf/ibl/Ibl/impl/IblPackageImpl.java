@@ -1,11 +1,6 @@
 /**
  */
-package Ibl.impl;
-
-import Ibl.IblFactory;
-import Ibl.IblPackage;
-import Ibl.Model;
-import Ibl.Rule;
+package roadblock.emf.ibl.Ibl.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -13,6 +8,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import roadblock.emf.ibl.Ibl.IblFactory;
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Rule;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see Ibl.IblPackage#eNS_URI
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -249,9 +249,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage {
 		initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_ProcessList(), this.getProcess(), null, "processList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(processEClass, Ibl.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getProcess_Name(), ecorePackage.getEString(), "name", null, 0, 1, Ibl.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProcess_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Ibl.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(processEClass, roadblock.emf.ibl.Ibl.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getProcess_Name(), ecorePackage.getEString(), "name", null, 0, 1, roadblock.emf.ibl.Ibl.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcess_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, roadblock.emf.ibl.Ibl.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

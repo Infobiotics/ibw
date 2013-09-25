@@ -4,7 +4,8 @@
     modelName="Ibl" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>ibl.ecore</foreignModel>
-  <genPackages prefix="Ibl" disposableProviderFactory="true" ecorePackage="ibl.ecore#/">
+  <genPackages prefix="Ibl" basePackage="roadblock.emf.ibl" disposableProviderFactory="true"
+      ecorePackage="ibl.ecore#/">
     <genClasses ecoreClass="ibl.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/processList"/>

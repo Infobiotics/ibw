@@ -1,10 +1,6 @@
 /**
  */
-package Ibl.util;
-
-import Ibl.IblPackage;
-import Ibl.Model;
-import Ibl.Rule;
+package roadblock.emf.ibl.Ibl.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -13,12 +9,16 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Rule;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see Ibl.IblPackage
+ * @see roadblock.emf.ibl.Ibl.IblPackage
  * @generated
  */
 public class IblAdapterFactory extends AdapterFactoryImpl {
@@ -74,7 +74,7 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 				return createModelAdapter();
 			}
 			@Override
-			public Adapter caseProcess(Ibl.Process object) {
+			public Adapter caseProcess(roadblock.emf.ibl.Ibl.Process object) {
 				return createProcessAdapter();
 			}
 			@Override
@@ -102,13 +102,13 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link Ibl.Model <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see Ibl.Model
+	 * @see roadblock.emf.ibl.Ibl.Model
 	 * @generated
 	 */
 	public Adapter createModelAdapter() {
@@ -116,13 +116,13 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link Ibl.Process <em>Process</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Process <em>Process</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see Ibl.Process
+	 * @see roadblock.emf.ibl.Ibl.Process
 	 * @generated
 	 */
 	public Adapter createProcessAdapter() {
@@ -130,13 +130,13 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link Ibl.Rule <em>Rule</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see Ibl.Rule
+	 * @see roadblock.emf.ibl.Ibl.Rule
 	 * @generated
 	 */
 	public Adapter createRuleAdapter() {

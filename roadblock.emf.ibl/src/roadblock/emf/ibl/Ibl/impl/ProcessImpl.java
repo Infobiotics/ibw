@@ -1,9 +1,6 @@
 /**
  */
-package Ibl.impl;
-
-import Ibl.IblPackage;
-import Ibl.Model;
+package roadblock.emf.ibl.Ibl.impl;
 
 import java.util.Collection;
 
@@ -21,21 +18,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Rule;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model</b></em>'.
+ * An implementation of the model object '<em><b>Process</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link Ibl.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link Ibl.impl.ModelImpl#getProcessList <em>Process List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getRuleList <em>Rule List</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ModelImpl extends EObjectImpl implements Model {
+public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Process {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,21 +57,21 @@ public class ModelImpl extends EObjectImpl implements Model {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProcessList() <em>Process List</em>}' containment reference list.
+	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProcessList()
+	 * @see #getRuleList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Ibl.Process> processList;
+	protected EList<Rule> ruleList;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelImpl() {
+	protected ProcessImpl() {
 		super();
 	}
 
@@ -82,7 +82,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IblPackage.Literals.MODEL;
+		return IblPackage.Literals.PROCESS;
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MODEL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROCESS__NAME, oldName, name));
 	}
 
 	/**
@@ -111,11 +111,11 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Ibl.Process> getProcessList() {
-		if (processList == null) {
-			processList = new EObjectContainmentEList<Ibl.Process>(Ibl.Process.class, this, IblPackage.MODEL__PROCESS_LIST);
+	public EList<Rule> getRuleList() {
+		if (ruleList == null) {
+			ruleList = new EObjectContainmentEList<Rule>(Rule.class, this, IblPackage.PROCESS__RULE_LIST);
 		}
-		return processList;
+		return ruleList;
 	}
 
 	/**
@@ -126,8 +126,8 @@ public class ModelImpl extends EObjectImpl implements Model {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IblPackage.MODEL__PROCESS_LIST:
-				return ((InternalEList<?>)getProcessList()).basicRemove(otherEnd, msgs);
+			case IblPackage.PROCESS__RULE_LIST:
+				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -140,10 +140,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.MODEL__NAME:
+			case IblPackage.PROCESS__NAME:
 				return getName();
-			case IblPackage.MODEL__PROCESS_LIST:
-				return getProcessList();
+			case IblPackage.PROCESS__RULE_LIST:
+				return getRuleList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -157,12 +157,12 @@ public class ModelImpl extends EObjectImpl implements Model {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.MODEL__NAME:
+			case IblPackage.PROCESS__NAME:
 				setName((String)newValue);
 				return;
-			case IblPackage.MODEL__PROCESS_LIST:
-				getProcessList().clear();
-				getProcessList().addAll((Collection<? extends Ibl.Process>)newValue);
+			case IblPackage.PROCESS__RULE_LIST:
+				getRuleList().clear();
+				getRuleList().addAll((Collection<? extends Rule>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,11 +176,11 @@ public class ModelImpl extends EObjectImpl implements Model {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.MODEL__NAME:
+			case IblPackage.PROCESS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IblPackage.MODEL__PROCESS_LIST:
-				getProcessList().clear();
+			case IblPackage.PROCESS__RULE_LIST:
+				getRuleList().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -194,10 +194,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.MODEL__NAME:
+			case IblPackage.PROCESS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IblPackage.MODEL__PROCESS_LIST:
-				return processList != null && !processList.isEmpty();
+			case IblPackage.PROCESS__RULE_LIST:
+				return ruleList != null && !ruleList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -218,4 +218,4 @@ public class ModelImpl extends EObjectImpl implements Model {
 		return result.toString();
 	}
 
-} //ModelImpl
+} //ProcessImpl

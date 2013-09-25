@@ -1,41 +1,31 @@
 /**
  */
-package Ibl.impl;
-
-import Ibl.IblPackage;
-import Ibl.Rule;
-
-import java.util.Collection;
+package roadblock.emf.ibl.Ibl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Rule;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Process</b></em>'.
+ * An implementation of the model object '<em><b>Rule</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link Ibl.impl.ProcessImpl#getName <em>Name</em>}</li>
- *   <li>{@link Ibl.impl.ProcessImpl#getRuleList <em>Rule List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.RuleImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ProcessImpl extends EObjectImpl implements Ibl.Process {
+public class RuleImpl extends EObjectImpl implements Rule {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -57,21 +47,11 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRuleList()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Rule> ruleList;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProcessImpl() {
+	protected RuleImpl() {
 		super();
 	}
 
@@ -82,7 +62,7 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IblPackage.Literals.PROCESS;
+		return IblPackage.Literals.RULE;
 	}
 
 	/**
@@ -103,33 +83,7 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROCESS__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Rule> getRuleList() {
-		if (ruleList == null) {
-			ruleList = new EObjectContainmentEList<Rule>(Rule.class, this, IblPackage.PROCESS__RULE_LIST);
-		}
-		return ruleList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case IblPackage.PROCESS__RULE_LIST:
-				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__NAME, oldName, name));
 	}
 
 	/**
@@ -140,10 +94,8 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.RULE__NAME:
 				return getName();
-			case IblPackage.PROCESS__RULE_LIST:
-				return getRuleList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -153,16 +105,11 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.RULE__NAME:
 				setName((String)newValue);
-				return;
-			case IblPackage.PROCESS__RULE_LIST:
-				getRuleList().clear();
-				getRuleList().addAll((Collection<? extends Rule>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -176,11 +123,8 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.RULE__NAME:
 				setName(NAME_EDEFAULT);
-				return;
-			case IblPackage.PROCESS__RULE_LIST:
-				getRuleList().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -194,10 +138,8 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.RULE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IblPackage.PROCESS__RULE_LIST:
-				return ruleList != null && !ruleList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -218,4 +160,4 @@ public class ProcessImpl extends EObjectImpl implements Ibl.Process {
 		return result.toString();
 	}
 
-} //ProcessImpl
+} //RuleImpl

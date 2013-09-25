@@ -7,18 +7,32 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 
+import roadblock.emf.ibl.Ibl.impl.IblPackageImpl
+import roadblock.emf.ibl.Ibl.IblFactory
+
+import roadblock.xtext.ibl.ibl.Model
+import roadblock.xtext.ibl.ibl.FunctionDefinition
+import roadblock.xtext.ibl.ibl.RuleDefinition
+
+
+
 /**
  * Generates code from your model files on save.
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class IblGenerator implements IGenerator {
-	
+	private IblFactory factory
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
 //				.filter(typeof(Greeting))
 //				.map[name]
 //				.join(', '))
+
+	// Create an empty emf model
+	IblPackageImpl::init
+	factory = IblFactory::eINSTANCE
+	val roadblock.emf.ibl.Ibl.Model emfModel = factory.createModel
 	}
 }

@@ -1,11 +1,6 @@
 /**
  */
-package Ibl.impl;
-
-import Ibl.IblFactory;
-import Ibl.IblPackage;
-import Ibl.Model;
-import Ibl.Rule;
+package roadblock.emf.ibl.Ibl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -14,6 +9,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import roadblock.emf.ibl.Ibl.IblFactory;
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Rule;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,7 +82,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ibl.Process createProcess() {
+	public roadblock.emf.ibl.Ibl.Process createProcess() {
 		ProcessImpl process = new ProcessImpl();
 		return process;
 	}
