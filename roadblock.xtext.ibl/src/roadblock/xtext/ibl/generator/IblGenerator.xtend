@@ -13,8 +13,8 @@ import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.xtext.ibl.ibl.Model
 import roadblock.xtext.ibl.ibl.FunctionDefinition
 import roadblock.xtext.ibl.ibl.RuleDefinition
-
-
+import java.io.File
+import java.io.FileOutputStream
 
 /**
  * Generates code from your model files on save.
@@ -23,6 +23,7 @@ import roadblock.xtext.ibl.ibl.RuleDefinition
  */
 class IblGenerator implements IGenerator {
 	private IblFactory factory
+	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
@@ -40,6 +41,15 @@ class IblGenerator implements IGenerator {
 	
 	// populate emf model from xtext mode
 	populateProcesses(resource, emfModel)
+	
+	// save emf model to a file
+	val file = new File("generatedEMFModel.txt")
+	val fop = new FileOutputStream(file)		
+	if (!file.exists()) file.createNewFile()
+	val content = "Hello"
+	fop.write(content.bytes)
+	fop.flush()
+	fop.close()
 	}
 	
 	def populateProcesses(Resource resource, roadblock.emf.ibl.Ibl.Model emfModel)
