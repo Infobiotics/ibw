@@ -1,0 +1,42 @@
+/* XPECT_SETUP roadblock.xtext.xpect.ibl.validation.IBLValidationTest END_SETUP */
+
+
+
+
+define ConstitutiveProteinExpression typeof PROCESS (
+	PROMOTER promoter:input,
+	GENE gene1:input,
+	PROTEIN protein1:output,
+	HASH<RATE> rates:optional
+) 
+{
+	RNA mrna1
+	
+	/* XPECT errors ---
+		"no viable alternative at input '1'" at "RNA"
+		"no viable alternative at input 'mrna2'" at "mrna2"
+	--- */
+	RNA 1mrna2
+	
+	RULE promoterBinding : promoter + rnaP <-> promoter~rnaP	
+	promoterBinding.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+	promoterBinding.reverseRate = promoter.unbindingRate | rates.unbindingRate
+
+	RULE transcription : promoter~rnaP -> promoter~rnaP + mrna1
+	transcription.forwardRate = rates.transcriptionRate
+
+	RULE mrnaDegradation : mrna1 ->
+	mrnaDegradation.forwardRate = rates.rnaDegratationRate
+
+	RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+	translationInitiation.forwardRate = rates.ribosomeBinding
+	translationInitiation.reverseRate = rates.ribosomeUnbinding
+
+	RULE translation : mrna1~ribosome -> mrna1~ribosome + protein1
+	translation.forwardRate = rates.translationRate
+
+} USES RIBOSOME ribosome, RNA rnaP
+
+// XPECT errors --> "extraneous input 'foobar' expecting EOF" at "foobar"
+foobar
+
