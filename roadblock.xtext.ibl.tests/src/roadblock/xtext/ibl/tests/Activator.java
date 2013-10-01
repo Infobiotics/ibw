@@ -1,4 +1,4 @@
-package roadblock.xtext.xpect.ibl;
+package roadblock.xtext.ibl.tests;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -9,7 +9,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "roadblock.xtext.xpect.ibl"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "roadblock.xtext.ibl.tests"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
