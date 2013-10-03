@@ -23,7 +23,7 @@ define site1 typeof REGION () {
 
 // a new useful process
 
-define DualPromoterProteinExpression typeof Process(
+define DualPromoterProteinExpression typeof PROCESS(
         MOLECULE signal1: input,
         PROMOTER promoter1: input,
         MOLECULE signal2: input,

@@ -43,13 +43,13 @@ class IblGenerator implements IGenerator {
 	populateProcesses(resource, emfModel)
 	
 	// save emf model to a file
-	val file = new File("generatedEMFModel.txt")
-	val fop = new FileOutputStream(file)		
-	if (!file.exists()) file.createNewFile()
-	val content = "Hello"
-	fop.write(content.bytes)
-	fop.flush()
-	fop.close()
+//	val file = new File("generatedEMFModel.txt")
+//	val fop = new FileOutputStream(file)		
+//	if (!file.exists()) file.createNewFile()
+//	val content = "Hello"
+//	fop.write(content.bytes)
+//	fop.flush()
+//	fop.close()
 	}
 	
 	def populateProcesses(Resource resource, roadblock.emf.ibl.Ibl.Model emfModel)

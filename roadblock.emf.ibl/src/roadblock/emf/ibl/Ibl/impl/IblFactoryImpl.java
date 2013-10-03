@@ -10,9 +10,12 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import roadblock.emf.ibl.Ibl.Cell;
+import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.IblFactory;
 import roadblock.emf.ibl.Ibl.IblPackage;
 import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Molecule;
 import roadblock.emf.ibl.Ibl.Rule;
 
 /**
@@ -62,6 +65,9 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory {
 			case IblPackage.MODEL: return createModel();
 			case IblPackage.PROCESS: return createProcess();
 			case IblPackage.RULE: return createRule();
+			case IblPackage.MOLECULE: return createMolecule();
+			case IblPackage.DEVICE: return createDevice();
+			case IblPackage.CELL: return createCell();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -95,6 +101,36 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory {
 	public Rule createRule() {
 		RuleImpl rule = new RuleImpl();
 		return rule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Molecule createMolecule() {
+		MoleculeImpl molecule = new MoleculeImpl();
+		return molecule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Device createDevice() {
+		DeviceImpl device = new DeviceImpl();
+		return device;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Cell createCell() {
+		CellImpl cell = new CellImpl();
+		return cell;
 	}
 
 	/**

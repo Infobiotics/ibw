@@ -49,6 +49,33 @@ public interface IblFactory extends EFactory {
 	Rule createRule();
 
 	/**
+	 * Returns a new object of class '<em>Molecule</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Molecule</em>'.
+	 * @generated
+	 */
+	Molecule createMolecule();
+
+	/**
+	 * Returns a new object of class '<em>Device</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Device</em>'.
+	 * @generated
+	 */
+	Device createDevice();
+
+	/**
+	 * Returns a new object of class '<em>Cell</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cell</em>'.
+	 * @generated
+	 */
+	Cell createCell();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

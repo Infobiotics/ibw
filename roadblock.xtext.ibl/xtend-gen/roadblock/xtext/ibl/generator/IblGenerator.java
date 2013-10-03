@@ -5,15 +5,12 @@ package roadblock.xtext.ibl.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import java.io.File;
-import java.io.FileOutputStream;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import roadblock.emf.ibl.Ibl.IblFactory;
@@ -34,29 +31,11 @@ public class IblGenerator implements IGenerator {
   private IblFactory factory;
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    try {
-      IblPackageImpl.init();
-      this.factory = IblFactory.eINSTANCE;
-      final Model emfModel = this.factory.createModel();
-      emfModel.setName("Main model");
-      this.populateProcesses(resource, emfModel);
-      File _file = new File("generatedEMFModel.txt");
-      final File file = _file;
-      FileOutputStream _fileOutputStream = new FileOutputStream(file);
-      final FileOutputStream fop = _fileOutputStream;
-      boolean _exists = file.exists();
-      boolean _not = (!_exists);
-      if (_not) {
-        file.createNewFile();
-      }
-      final String content = "Hello";
-      byte[] _bytes = content.getBytes();
-      fop.write(_bytes);
-      fop.flush();
-      fop.close();
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    IblPackageImpl.init();
+    this.factory = IblFactory.eINSTANCE;
+    final Model emfModel = this.factory.createModel();
+    emfModel.setName("Main model");
+    this.populateProcesses(resource, emfModel);
   }
   
   public void populateProcesses(final Resource resource, final Model emfModel) {

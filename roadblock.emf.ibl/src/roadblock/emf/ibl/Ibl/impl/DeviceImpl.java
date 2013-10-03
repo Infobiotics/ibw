@@ -18,28 +18,28 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.IblPackage;
 import roadblock.emf.ibl.Ibl.Molecule;
 import roadblock.emf.ibl.Ibl.Rule;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Process</b></em>'.
+ * An implementation of the model object '<em><b>Device</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getName <em>Name</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getRuleList <em>Rule List</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getInputList <em>Input List</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getOutputList <em>Output List</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.impl.ProcessImpl#getOptionList <em>Option List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.DeviceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.DeviceImpl#getProcessList <em>Process List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.DeviceImpl#getRuleList <em>Rule List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.impl.DeviceImpl#getMoleculeList <em>Molecule List</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Process {
+public class DeviceImpl extends EObjectImpl implements Device {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,6 +61,16 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getProcessList() <em>Process List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcessList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<roadblock.emf.ibl.Ibl.Process> processList;
+
+	/**
 	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,41 +81,21 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	protected EList<Rule> ruleList;
 
 	/**
-	 * The cached value of the '{@link #getInputList() <em>Input List</em>}' containment reference list.
+	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInputList()
+	 * @see #getMoleculeList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Molecule> inputList;
-
-	/**
-	 * The cached value of the '{@link #getOutputList() <em>Output List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutputList()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Molecule> outputList;
-
-	/**
-	 * The cached value of the '{@link #getOptionList() <em>Option List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOptionList()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Molecule> optionList;
+	protected EList<Molecule> moleculeList;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProcessImpl() {
+	protected DeviceImpl() {
 		super();
 	}
 
@@ -116,7 +106,7 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IblPackage.Literals.PROCESS;
+		return IblPackage.Literals.DEVICE;
 	}
 
 	/**
@@ -137,7 +127,19 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROCESS__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<roadblock.emf.ibl.Ibl.Process> getProcessList() {
+		if (processList == null) {
+			processList = new EObjectContainmentEList<roadblock.emf.ibl.Ibl.Process>(roadblock.emf.ibl.Ibl.Process.class, this, IblPackage.DEVICE__PROCESS_LIST);
+		}
+		return processList;
 	}
 
 	/**
@@ -147,7 +149,7 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	 */
 	public EList<Rule> getRuleList() {
 		if (ruleList == null) {
-			ruleList = new EObjectContainmentEList<Rule>(Rule.class, this, IblPackage.PROCESS__RULE_LIST);
+			ruleList = new EObjectContainmentEList<Rule>(Rule.class, this, IblPackage.DEVICE__RULE_LIST);
 		}
 		return ruleList;
 	}
@@ -157,35 +159,11 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Molecule> getInputList() {
-		if (inputList == null) {
-			inputList = new EObjectContainmentEList<Molecule>(Molecule.class, this, IblPackage.PROCESS__INPUT_LIST);
+	public EList<Molecule> getMoleculeList() {
+		if (moleculeList == null) {
+			moleculeList = new EObjectContainmentEList<Molecule>(Molecule.class, this, IblPackage.DEVICE__MOLECULE_LIST);
 		}
-		return inputList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Molecule> getOutputList() {
-		if (outputList == null) {
-			outputList = new EObjectContainmentEList<Molecule>(Molecule.class, this, IblPackage.PROCESS__OUTPUT_LIST);
-		}
-		return outputList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Molecule> getOptionList() {
-		if (optionList == null) {
-			optionList = new EObjectContainmentEList<Molecule>(Molecule.class, this, IblPackage.PROCESS__OPTION_LIST);
-		}
-		return optionList;
+		return moleculeList;
 	}
 
 	/**
@@ -196,14 +174,12 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IblPackage.PROCESS__RULE_LIST:
+			case IblPackage.DEVICE__PROCESS_LIST:
+				return ((InternalEList<?>)getProcessList()).basicRemove(otherEnd, msgs);
+			case IblPackage.DEVICE__RULE_LIST:
 				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
-			case IblPackage.PROCESS__INPUT_LIST:
-				return ((InternalEList<?>)getInputList()).basicRemove(otherEnd, msgs);
-			case IblPackage.PROCESS__OUTPUT_LIST:
-				return ((InternalEList<?>)getOutputList()).basicRemove(otherEnd, msgs);
-			case IblPackage.PROCESS__OPTION_LIST:
-				return ((InternalEList<?>)getOptionList()).basicRemove(otherEnd, msgs);
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -216,16 +192,14 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.DEVICE__NAME:
 				return getName();
-			case IblPackage.PROCESS__RULE_LIST:
+			case IblPackage.DEVICE__PROCESS_LIST:
+				return getProcessList();
+			case IblPackage.DEVICE__RULE_LIST:
 				return getRuleList();
-			case IblPackage.PROCESS__INPUT_LIST:
-				return getInputList();
-			case IblPackage.PROCESS__OUTPUT_LIST:
-				return getOutputList();
-			case IblPackage.PROCESS__OPTION_LIST:
-				return getOptionList();
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				return getMoleculeList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,24 +213,20 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.DEVICE__NAME:
 				setName((String)newValue);
 				return;
-			case IblPackage.PROCESS__RULE_LIST:
+			case IblPackage.DEVICE__PROCESS_LIST:
+				getProcessList().clear();
+				getProcessList().addAll((Collection<? extends roadblock.emf.ibl.Ibl.Process>)newValue);
+				return;
+			case IblPackage.DEVICE__RULE_LIST:
 				getRuleList().clear();
 				getRuleList().addAll((Collection<? extends Rule>)newValue);
 				return;
-			case IblPackage.PROCESS__INPUT_LIST:
-				getInputList().clear();
-				getInputList().addAll((Collection<? extends Molecule>)newValue);
-				return;
-			case IblPackage.PROCESS__OUTPUT_LIST:
-				getOutputList().clear();
-				getOutputList().addAll((Collection<? extends Molecule>)newValue);
-				return;
-			case IblPackage.PROCESS__OPTION_LIST:
-				getOptionList().clear();
-				getOptionList().addAll((Collection<? extends Molecule>)newValue);
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				getMoleculeList().clear();
+				getMoleculeList().addAll((Collection<? extends Molecule>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -270,20 +240,17 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.DEVICE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case IblPackage.PROCESS__RULE_LIST:
+			case IblPackage.DEVICE__PROCESS_LIST:
+				getProcessList().clear();
+				return;
+			case IblPackage.DEVICE__RULE_LIST:
 				getRuleList().clear();
 				return;
-			case IblPackage.PROCESS__INPUT_LIST:
-				getInputList().clear();
-				return;
-			case IblPackage.PROCESS__OUTPUT_LIST:
-				getOutputList().clear();
-				return;
-			case IblPackage.PROCESS__OPTION_LIST:
-				getOptionList().clear();
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				getMoleculeList().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -297,16 +264,14 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROCESS__NAME:
+			case IblPackage.DEVICE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case IblPackage.PROCESS__RULE_LIST:
+			case IblPackage.DEVICE__PROCESS_LIST:
+				return processList != null && !processList.isEmpty();
+			case IblPackage.DEVICE__RULE_LIST:
 				return ruleList != null && !ruleList.isEmpty();
-			case IblPackage.PROCESS__INPUT_LIST:
-				return inputList != null && !inputList.isEmpty();
-			case IblPackage.PROCESS__OUTPUT_LIST:
-				return outputList != null && !outputList.isEmpty();
-			case IblPackage.PROCESS__OPTION_LIST:
-				return optionList != null && !optionList.isEmpty();
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				return moleculeList != null && !moleculeList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -327,4 +292,4 @@ public class ProcessImpl extends EObjectImpl implements roadblock.emf.ibl.Ibl.Pr
 		return result.toString();
 	}
 
-} //ProcessImpl
+} //DeviceImpl
