@@ -148,9 +148,9 @@
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_XyVrgSXQEeOvQ8tKHglXfw" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_XyVrgiXQEeOvQ8tKHglXfw" fontColor="4210752" fontName="Droid Sans" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="ibl.ecore#//Model/processList"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_XyVrgyXQEeOvQ8tKHglXfw" points="[0, 1, -358, -198]$[0, 247, -358, 48]$[358, 247, 0, 48]$[358, 247, 0, 48]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_XyVrgyXQEeOvQ8tKHglXfw" points="[6, 1, -360, -255]$[6, 256, -360, 0]$[366, 256, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_XyjG4CXQEeOvQ8tKHglXfw" id="(0.19658119658119658,0.9803921568627451)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_XyjG4SXQEeOvQ8tKHglXfw" id="(0.0,0.45098039215686275)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_XyjG4SXQEeOvQ8tKHglXfw" id="(0.0,0.940677966101695)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_ac3YECXQEeOvQ8tKHglXfw" type="3002" source="_UPsrMCXQEeOvQ8tKHglXfw" target="_UPtSQiXQEeOvQ8tKHglXfw">
     <children xmi:type="notation:Node" xmi:id="_ac4mMCXQEeOvQ8tKHglXfw" type="4011">
