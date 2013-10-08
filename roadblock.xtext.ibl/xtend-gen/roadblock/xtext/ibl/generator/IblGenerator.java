@@ -31,11 +31,68 @@ public class IblGenerator implements IGenerator {
   private IblFactory factory;
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    InputOutput.<String>println("in generator");
     IblPackageImpl.init();
     this.factory = IblFactory.eINSTANCE;
     final Model emfModel = this.factory.createModel();
     emfModel.setName("Main model");
-    this.populateProcesses(resource, emfModel);
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<FunctionDefinition> _filter = Iterables.<FunctionDefinition>filter(_iterable, FunctionDefinition.class);
+    for (final FunctionDefinition functionDefinition : _filter) {
+      String _type = functionDefinition.getType();
+      final String _switchValue = _type;
+      boolean _matched = false;
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"CELL")) {
+          _matched=true;
+          InputOutput.<String>println("Cell definition:");
+          String _name = functionDefinition.getName();
+          InputOutput.<String>println(_name);
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"DEVICE")) {
+          _matched=true;
+          InputOutput.<String>println("Device definition:");
+          String _name_1 = functionDefinition.getName();
+          InputOutput.<String>println(_name_1);
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"PROCESS")) {
+          _matched=true;
+          this.addProcessDefinition(emfModel, functionDefinition);
+        }
+      }
+      if (!_matched) {
+        InputOutput.<String>println("unknown type");
+      }
+    }
+    InputOutput.<String>println("-------");
+    TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+    Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
+    for (final EObject thing : _iterable_1) {
+      String _string = thing.toString();
+      InputOutput.<String>println(_string);
+    }
+    InputOutput.<String>println("---------");
+  }
+  
+  public boolean addProcessDefinition(final Model emfModel, final FunctionDefinition process) {
+    boolean _xblockexpression = false;
+    {
+      InputOutput.<String>print("Adding a process definition: ");
+      String _name = process.getName();
+      InputOutput.<String>println(_name);
+      final roadblock.emf.ibl.Ibl.Process emfProcess = this.factory.createProcess();
+      String _name_1 = process.getName();
+      emfProcess.setName(_name_1);
+      EList<roadblock.emf.ibl.Ibl.Process> _processList = emfModel.getProcessList();
+      boolean _add = _processList.add(emfProcess);
+      _xblockexpression = (_add);
+    }
+    return _xblockexpression;
   }
   
   public void populateProcesses(final Resource resource, final Model emfModel) {

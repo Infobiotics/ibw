@@ -31,6 +31,8 @@ class IblGenerator implements IGenerator {
 //				.map[name]
 //				.join(', '))
 
+	println("in generator")
+
 	// Create an empty emf model
 	IblPackageImpl::init
 	factory = IblFactory::eINSTANCE
@@ -39,8 +41,48 @@ class IblGenerator implements IGenerator {
 	// set emfmodel attribute
 	emfModel.setName("Main model")
 	
+	
+	// go through each functionDefinition
+	for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition))){
+		switch(functionDefinition.type){
+			case 'CELL': {println('Cell definition:') 
+						println(functionDefinition.name)}
+						
+			case 'DEVICE': {println('Device definition:')
+						println(functionDefinition.name)}
+						
+			case 'PROCESS': addProcessDefinition(emfModel,functionDefinition)
+			default: println('unknown type')
+			
+		}
+	}
+	println("-------")
+	for(thing: resource.allContents.toIterable){
+		println(thing.toString)
+	}
+	
+	println("---------")
+
+	
+}
+
+def addProcessDefinition(roadblock.emf.ibl.Ibl.Model emfModel, FunctionDefinition process){
+	print("Adding a process definition: ")
+	println(process.name)
+	// create new emf process
+	val emfProcess = factory.createProcess
+	
+	// set emf process attributes from xtext model
+	emfProcess.setName(process.name)
+	
+	// add it to emfModel
+	emfModel.processList.add(emfProcess)
+	}
+
+
+	
 	// populate emf model from xtext mode
-	populateProcesses(resource, emfModel)
+	//populateProcesses(resource, emfModel)
 	
 	// save emf model to a file
 //	val file = new File("generatedEMFModel.txt")
@@ -50,7 +92,9 @@ class IblGenerator implements IGenerator {
 //	fop.write(content.bytes)
 //	fop.flush()
 //	fop.close()
-	}
+
+
+	
 	
 	def populateProcesses(Resource resource, roadblock.emf.ibl.Ibl.Model emfModel)
 	{
