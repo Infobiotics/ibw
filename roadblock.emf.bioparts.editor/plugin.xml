@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="bioparts.presentation.BiopartsModelWizardID"
+            name="%_UI_BiopartsModelWizard_label"
+            class="bioparts.presentation.BiopartsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BiopartsModelFile.gif">
+         <description>%_UI_BiopartsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="bioparts.presentation.BiopartsEditorID"
+            name="%_UI_BiopartsEditor_label"
+            icon="icons/full/obj16/BiopartsModelFile.gif"
+            extensions="bioparts"
+            class="bioparts.presentation.BiopartsEditor"
+            contributorClass="bioparts.presentation.BiopartsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

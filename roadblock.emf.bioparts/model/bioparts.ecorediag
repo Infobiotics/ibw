@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_GpN54DABEeOELJoq3n742Q" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_H3dOoDABEeOELJoq3n742Q" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_H3fq4DABEeOELJoq3n742Q" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_H3g5ADABEeOELJoq3n742Q" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_glyUIDACEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/ID"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_glyUITACEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_FBAUADADEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/creationDate"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_FBAUATADEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_Wnd0YDADEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/sequence"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Wnd0YTADEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_cYuoYDADEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cYuoYTADEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_wv4b0DAQEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/notes"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wv5C4DAQEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_o9BtADDgEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/repositoryName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_o9BtATDgEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_sFM-4DDgEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/accessionURL"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_sFM-4TDgEeOELJoq3n742Q"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_v4ki0DDgEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//Biopart/biologicalFunction"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_v4ki0TDgEeOELJoq3n742Q"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_H3g5ATABEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_H3g5AjABEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_H3g5AzABEeOELJoq3n742Q"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_H3hgEDABEeOELJoq3n742Q" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_H3hgETABEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_H3hgEjABEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_H3hgEzABEeOELJoq3n742Q"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_H3dOoTABEeOELJoq3n742Q" fontColor="4210752" fontName="Droid Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="bioparts.ecore#//Biopart"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_H3dOojABEeOELJoq3n742Q" x="140" y="285"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_37ZFoDAjEeOELJoq3n742Q" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_37ZssDAjEeOELJoq3n742Q" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_37ZssTAjEeOELJoq3n742Q" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_5s-YADAjEeOELJoq3n742Q" type="2001">
+        <element xmi:type="ecore:EAttribute" href="bioparts.ecore#//AllBioparts/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_5s-YATAjEeOELJoq3n742Q"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_37ZssjAjEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_37ZsszAjEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_37ZstDAjEeOELJoq3n742Q"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_37aTwDAjEeOELJoq3n742Q" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_37aTwTAjEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_37aTwjAjEeOELJoq3n742Q"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_37aTwzAjEeOELJoq3n742Q"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_37ZFoTAjEeOELJoq3n742Q" fontColor="4210752" fontName="Droid Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="bioparts.ecore#//AllBioparts"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_37ZFojAjEeOELJoq3n742Q" x="180" y="105"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_GpN54TABEeOELJoq3n742Q"/>
+  <element xmi:type="ecore:EPackage" href="bioparts.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_9UKhIDAjEeOELJoq3n742Q" type="3002" source="_37ZFoDAjEeOELJoq3n742Q" target="_H3dOoDABEeOELJoq3n742Q">
+    <children xmi:type="notation:Node" xmi:id="_9UKhJDAjEeOELJoq3n742Q" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_9UKhJTAjEeOELJoq3n742Q" x="-47" y="-35"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_9ULIMDAjEeOELJoq3n742Q" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_9ULIMTAjEeOELJoq3n742Q" x="-27" y="-34"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_9UKhITAjEeOELJoq3n742Q" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_9UKhIjAjEeOELJoq3n742Q" fontColor="4210752" fontName="Droid Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="bioparts.ecore#//AllBioparts/biopartList"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9UKhIzAjEeOELJoq3n742Q" points="[-4, 41, 1, -147]$[-4, 172, 1, -16]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9UNkcDAjEeOELJoq3n742Q" id="(0.3247863247863248,0.17647058823529413)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_9UNkcTAjEeOELJoq3n742Q" id="(0.4124293785310734,0.1111111111111111)"/>
+  </edges>
+</notation:Diagram>
