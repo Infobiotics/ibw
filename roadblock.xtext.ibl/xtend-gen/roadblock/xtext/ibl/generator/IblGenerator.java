@@ -5,21 +5,33 @@ package roadblock.xtext.ibl.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IntegerRange;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import roadblock.emf.ibl.Ibl.IblFactory;
 import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.Molecule;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.impl.IblPackageImpl;
 import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
+import roadblock.xtext.ibl.ibl.FunctionParameterMember;
+import roadblock.xtext.ibl.ibl.Property;
+import roadblock.xtext.ibl.ibl.PropertyDefinition;
+import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.VariableComplex;
 
 /**
  * Generates code from your model files on save.
@@ -69,63 +81,189 @@ public class IblGenerator implements IGenerator {
         InputOutput.<String>println("unknown type");
       }
     }
-    InputOutput.<String>println("-------");
+    InputOutput.<String>println("After model populating:");
     TreeIterator<EObject> _allContents_1 = resource.getAllContents();
     Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
-    for (final EObject thing : _iterable_1) {
-      String _string = thing.toString();
-      InputOutput.<String>println(_string);
-    }
-    InputOutput.<String>println("---------");
-  }
-  
-  public boolean addProcessDefinition(final Model emfModel, final FunctionDefinition process) {
-    boolean _xblockexpression = false;
-    {
-      InputOutput.<String>print("Adding a process definition: ");
-      String _name = process.getName();
-      InputOutput.<String>println(_name);
-      final roadblock.emf.ibl.Ibl.Process emfProcess = this.factory.createProcess();
-      String _name_1 = process.getName();
-      emfProcess.setName(_name_1);
-      EList<roadblock.emf.ibl.Ibl.Process> _processList = emfModel.getProcessList();
-      boolean _add = _processList.add(emfProcess);
-      _xblockexpression = (_add);
-    }
-    return _xblockexpression;
-  }
-  
-  public void populateProcesses(final Resource resource, final Model emfModel) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<FunctionDefinition> _filter = Iterables.<FunctionDefinition>filter(_iterable, FunctionDefinition.class);
-    for (final FunctionDefinition functionDefinition : _filter) {
-      String _type = functionDefinition.getType();
-      boolean _equals = Objects.equal(_type, "PROCESS");
-      if (_equals) {
-        final roadblock.emf.ibl.Ibl.Process emfProcess = this.factory.createProcess();
-        String _name = functionDefinition.getName();
-        emfProcess.setName(_name);
-        InputOutput.<String>print("new process: ");
-        String _name_1 = emfProcess.getName();
-        InputOutput.<String>println(_name_1);
-        EList<FunctionBodyMember> _members = functionDefinition.getMembers();
-        Iterable<RuleDefinition> _filter_1 = Iterables.<RuleDefinition>filter(_members, RuleDefinition.class);
-        for (final RuleDefinition rule : _filter_1) {
-          {
-            final Rule emfRule = this.factory.createRule();
-            String _name_2 = rule.getName();
-            emfRule.setName(_name_2);
-            EList<Rule> _ruleList = emfProcess.getRuleList();
-            _ruleList.add(emfRule);
-            InputOutput.<String>print("new rule: ");
-            String _name_3 = emfRule.getName();
-            InputOutput.<String>println(_name_3);
-          }
+    Iterable<PropertyDefinition> _filter_1 = Iterables.<PropertyDefinition>filter(_iterable_1, PropertyDefinition.class);
+    for (final PropertyDefinition propertyDefinition : _filter_1) {
+      {
+        InputOutput.<String>println("New property Definition");
+        EList<Property> _property = propertyDefinition.getProperty();
+        for (final Property property : _property) {
+          String _lhs = property.getLhs();
+          String _plus = ("property:" + _lhs);
+          String _plus_1 = (_plus + " # ");
+          String _operator = property.getOperator();
+          String _plus_2 = (_plus_1 + _operator);
+          String _plus_3 = (_plus_2 + " # ");
+          Quantity _rhs = property.getRhs();
+          String _value = _rhs.getValue();
+          String _plus_4 = (_plus_3 + _value);
+          String _plus_5 = (_plus_4 + " # ");
+          Quantity _rhs_1 = property.getRhs();
+          String _units = _rhs_1.getUnits();
+          String _plus_6 = (_plus_5 + _units);
+          InputOutput.<String>println(_plus_6);
         }
-        EList<roadblock.emf.ibl.Ibl.Process> _processList = emfModel.getProcessList();
-        _processList.add(emfProcess);
       }
     }
+  }
+  
+  public void addProcessDefinition(final Model emfModel, final FunctionDefinition process) {
+    String _name = process.getName();
+    String _plus = ("Adding a process definition: " + _name);
+    InputOutput.<String>println(_plus);
+    final roadblock.emf.ibl.Ibl.Process emfProcess = this.factory.createProcess();
+    String _name_1 = process.getName();
+    emfProcess.setName(_name_1);
+    EList<roadblock.emf.ibl.Ibl.Process> _processList = emfModel.getProcessList();
+    _processList.add(emfProcess);
+    EList<FunctionBodyMember> _members = process.getMembers();
+    Iterable<RuleDefinition> _filter = Iterables.<RuleDefinition>filter(_members, RuleDefinition.class);
+    for (final RuleDefinition rule : _filter) {
+      EList<Rule> _ruleList = emfProcess.getRuleList();
+      Rule _populateRule = this.populateRule(rule);
+      _ruleList.add(_populateRule);
+    }
+    EList<FunctionParameterMember> _parameters = process.getParameters();
+    for (final FunctionParameterMember parameter : _parameters) {
+    }
+  }
+  
+  public Rule populateRule(final RuleDefinition rule) {
+    final Rule emfRule = this.factory.createRule();
+    String _name = rule.getName();
+    emfRule.setName(_name);
+    EList<RuleObject> _rhs = rule.getRhs();
+    Iterable<RuleObject> _filter = Iterables.<RuleObject>filter(_rhs, RuleObject.class);
+    for (final RuleObject ruleObject : _filter) {
+      {
+        final Molecule emfMolecule = this.factory.createMolecule();
+        Class<? extends RuleObject> _class = ruleObject.getClass();
+        String _string = _class.toString();
+        boolean _equals = Objects.equal(_string, "roadblock.xtext.ibl.ibl.VariableComplex");
+        if (_equals) {
+          EList<String> _components = ((VariableComplex) ruleObject).getComponents();
+          String _join = IterableExtensions.join(_components, "~");
+          emfMolecule.setName(_join);
+        } else {
+          String _string_1 = ruleObject.toString();
+          emfMolecule.setName(_string_1);
+        }
+        EList<Molecule> _rightHandSide = emfRule.getRightHandSide();
+        _rightHandSide.add(emfMolecule);
+      }
+    }
+    boolean _isReversible = rule.isReversible();
+    emfRule.setIsBidirectional(_isReversible);
+    emfRule.setForwardRate(1.0);
+    emfRule.setReverseRate(1.0);
+    return emfRule;
+  }
+  
+  public String showModelAttributes(final int level, final Model model) {
+    IntegerRange _upTo = new IntegerRange(1, level);
+    final Function1<Integer,String> _function = new Function1<Integer,String>() {
+        public String apply(final Integer it) {
+          return "  ";
+        }
+      };
+    Iterable<String> _map = IterableExtensions.<Integer, String>map(_upTo, _function);
+    String _join = IterableExtensions.join(_map, "");
+    final String tab = ("\n" + _join);
+    String _plus = (tab + "Model definition:");
+    String _name = model.getName();
+    String s = (_plus + _name);
+    return s;
+  }
+  
+  public String showModel(final int level, final Model model) {
+    String s = this.showModelAttributes(level, model);
+    EList<roadblock.emf.ibl.Ibl.Process> _processList = model.getProcessList();
+    for (final roadblock.emf.ibl.Ibl.Process p : _processList) {
+      int _plus = (level + 1);
+      String _showProcessDefinition = this.showProcessDefinition(_plus, p);
+      String _plus_1 = (s + _showProcessDefinition);
+      s = _plus_1;
+    }
+    return s;
+  }
+  
+  public String showModel(final Model model) {
+    return this.showModel(1, model);
+  }
+  
+  public String showProcessDefinitionAttributes(final int level, final roadblock.emf.ibl.Ibl.Process process) {
+    IntegerRange _upTo = new IntegerRange(1, level);
+    final Function1<Integer,String> _function = new Function1<Integer,String>() {
+        public String apply(final Integer it) {
+          return "  ";
+        }
+      };
+    Iterable<String> _map = IterableExtensions.<Integer, String>map(_upTo, _function);
+    String _join = IterableExtensions.join(_map, "");
+    final String tab = ("\n" + _join);
+    String _plus = (tab + "Process definition:");
+    String _name = process.getName();
+    String s = (_plus + _name);
+    return s;
+  }
+  
+  public String showProcessDefinition(final int level, final roadblock.emf.ibl.Ibl.Process process) {
+    String s = this.showProcessDefinitionAttributes(level, process);
+    EList<Rule> _ruleList = process.getRuleList();
+    for (final Rule r : _ruleList) {
+      int _plus = (level + 1);
+      String _showRule = this.showRule(_plus, r);
+      String _plus_1 = (s + _showRule);
+      s = _plus_1;
+    }
+    return s;
+  }
+  
+  public String showRuleAttributes(final int level, final Rule rule) {
+    IntegerRange _upTo = new IntegerRange(1, level);
+    final Function1<Integer,String> _function = new Function1<Integer,String>() {
+        public String apply(final Integer it) {
+          return "  ";
+        }
+      };
+    Iterable<String> _map = IterableExtensions.<Integer, String>map(_upTo, _function);
+    String _join = IterableExtensions.join(_map, "");
+    final String tab = ("\n" + _join);
+    String _plus = (tab + "Rule definition: ");
+    String _name = rule.getName();
+    String s = (_plus + _name);
+    String _plus_1 = (s + tab);
+    String _plus_2 = (_plus_1 + " Right hand side: ");
+    EList<Molecule> _rightHandSide = rule.getRightHandSide();
+    final Function1<Molecule,String> _function_1 = new Function1<Molecule,String>() {
+        public String apply(final Molecule e) {
+          String _name = e.getName();
+          return _name;
+        }
+      };
+    List<String> _map_1 = ListExtensions.<Molecule, String>map(_rightHandSide, _function_1);
+    String _join_1 = IterableExtensions.join(_map_1, ", ");
+    String _plus_3 = (_plus_2 + _join_1);
+    s = _plus_3;
+    String _plus_4 = (s + tab);
+    String _plus_5 = (_plus_4 + " Left hand side: ");
+    EList<Molecule> _leftHandSide = rule.getLeftHandSide();
+    final Function1<Molecule,String> _function_2 = new Function1<Molecule,String>() {
+        public String apply(final Molecule e) {
+          String _name = e.getName();
+          return _name;
+        }
+      };
+    List<String> _map_2 = ListExtensions.<Molecule, String>map(_leftHandSide, _function_2);
+    String _join_2 = IterableExtensions.join(_map_2, ", ");
+    String _plus_6 = (_plus_5 + _join_2);
+    s = _plus_6;
+    return s;
+  }
+  
+  public String showRule(final int level, final Rule rule) {
+    return this.showRuleAttributes(level, rule);
   }
 }
