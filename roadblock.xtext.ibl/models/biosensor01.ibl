@@ -37,7 +37,7 @@ define DualPromoterProteinExpression typeof PROCESS(
         UpRegulatedProteinExpression signal2UpRegulated = new UpRegulatedProteinExpression(signal = signal2, promoter = promoter2, gene = gene, protein = protein    )
 
 }
-
+ 
 /////////////////
 // define cell //
 /////////////////
@@ -60,7 +60,7 @@ define SensorCell typeof CELL(MOLECULE signal){
         PROMOTER Pm = new PROMOTER(sequence = "ATTGTGT")
         GENE rFP = new GENE(sequence = "TTGTGTG")
         PROTEIN RFP = new PROTEIN()
-
+  
         INTEGER plasmidNumber = 500
 
         // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device

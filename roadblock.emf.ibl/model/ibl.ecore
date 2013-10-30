@@ -13,7 +13,7 @@
         eType="#//Device" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ATGCList" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ATGCcommandList" upperBound="-1"
         eType="#//ATGCDirective" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Process">

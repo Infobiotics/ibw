@@ -5,13 +5,21 @@ package roadblock.xtext.ibl.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
@@ -19,13 +27,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import roadblock.emf.ibl.Ibl.IblFactory;
-import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.Molecule;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.impl.IblPackageImpl;
 import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
+import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.Quantity;
@@ -44,9 +52,17 @@ public class IblGenerator implements IGenerator {
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     InputOutput.<String>println("in generator");
+    EList<EObject> _contents = resource.getContents();
+    EObject _get = _contents.get(0);
+    URI _uRI = resource.getURI();
+    String _lastSegment = _uRI.lastSegment();
+    String _plus = ("findme/" + _lastSegment);
+    String _plus_1 = (_plus + "XtextModel");
+    IblGenerator.emfModelToFile(
+      ((Model) _get), _plus_1);
     IblPackageImpl.init();
     this.factory = IblFactory.eINSTANCE;
-    final Model emfModel = this.factory.createModel();
+    final roadblock.emf.ibl.Ibl.Model emfModel = this.factory.createModel();
     emfModel.setName("Main model");
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
@@ -91,25 +107,25 @@ public class IblGenerator implements IGenerator {
         EList<Property> _property = propertyDefinition.getProperty();
         for (final Property property : _property) {
           String _lhs = property.getLhs();
-          String _plus = ("property:" + _lhs);
-          String _plus_1 = (_plus + " # ");
-          String _operator = property.getOperator();
-          String _plus_2 = (_plus_1 + _operator);
+          String _plus_2 = ("property:" + _lhs);
           String _plus_3 = (_plus_2 + " # ");
+          String _operator = property.getOperator();
+          String _plus_4 = (_plus_3 + _operator);
+          String _plus_5 = (_plus_4 + " # ");
           Quantity _rhs = property.getRhs();
           String _value = _rhs.getValue();
-          String _plus_4 = (_plus_3 + _value);
-          String _plus_5 = (_plus_4 + " # ");
+          String _plus_6 = (_plus_5 + _value);
+          String _plus_7 = (_plus_6 + " # ");
           Quantity _rhs_1 = property.getRhs();
           String _units = _rhs_1.getUnits();
-          String _plus_6 = (_plus_5 + _units);
-          InputOutput.<String>println(_plus_6);
+          String _plus_8 = (_plus_7 + _units);
+          InputOutput.<String>println(_plus_8);
         }
       }
     }
   }
   
-  public void addProcessDefinition(final Model emfModel, final FunctionDefinition process) {
+  public void addProcessDefinition(final roadblock.emf.ibl.Ibl.Model emfModel, final FunctionDefinition process) {
     String _name = process.getName();
     String _plus = ("Adding a process definition: " + _name);
     InputOutput.<String>println(_plus);
@@ -161,7 +177,7 @@ public class IblGenerator implements IGenerator {
     return emfRule;
   }
   
-  public String showModelAttributes(final int level, final Model model) {
+  public String showModelAttributes(final int level, final roadblock.emf.ibl.Ibl.Model model) {
     IntegerRange _upTo = new IntegerRange(1, level);
     final Function1<Integer,String> _function = new Function1<Integer,String>() {
         public String apply(final Integer it) {
@@ -177,7 +193,7 @@ public class IblGenerator implements IGenerator {
     return s;
   }
   
-  public String showModel(final int level, final Model model) {
+  public String showModel(final int level, final roadblock.emf.ibl.Ibl.Model model) {
     String s = this.showModelAttributes(level, model);
     EList<roadblock.emf.ibl.Ibl.Process> _processList = model.getProcessList();
     for (final roadblock.emf.ibl.Ibl.Process p : _processList) {
@@ -189,7 +205,7 @@ public class IblGenerator implements IGenerator {
     return s;
   }
   
-  public String showModel(final Model model) {
+  public String showModel(final roadblock.emf.ibl.Ibl.Model model) {
     return this.showModel(1, model);
   }
   
@@ -265,5 +281,39 @@ public class IblGenerator implements IGenerator {
   
   public String showRule(final int level, final Rule rule) {
     return this.showRuleAttributes(level, rule);
+  }
+  
+  public static void emfModelToFile(final Model model, final String filename) {
+    final Registry reg = Registry.INSTANCE;
+    Map<String,Object> _extensionToFactoryMap = reg.getExtensionToFactoryMap();
+    final Map<String,Object> m = ((Map<String,Object>) _extensionToFactoryMap);
+    XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
+    m.put("iblXtextModel", _xMIResourceFactoryImpl);
+    ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
+    final ResourceSetImpl resSet = _resourceSetImpl;
+    URI _createURI = URI.createURI(filename);
+    Resource resource = resSet.createResource(_createURI);
+    EList<EObject> _contents = resource.getContents();
+    _contents.add(model);
+    try {
+      resource.save(Collections.EMPTY_MAP);
+    } catch (final Throwable _t) {
+      if (_t instanceof IOException) {
+        final IOException e = (IOException)_t;
+        InputOutput.<String>println("emfModelToFile: something wrong when writing to file");
+        e.printStackTrace();
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+  }
+  
+  public static EObject fileToEmfModel(final String filename) {
+    ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
+    final ResourceSetImpl resSet = _resourceSetImpl;
+    URI _createURI = URI.createURI(filename);
+    final Resource resource2 = resSet.getResource(_createURI, true);
+    EList<EObject> _contents = resource2.getContents();
+    return _contents.get(0);
   }
 }

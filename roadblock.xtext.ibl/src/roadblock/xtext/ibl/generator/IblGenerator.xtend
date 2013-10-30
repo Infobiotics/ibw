@@ -3,25 +3,28 @@
  */
 package roadblock.xtext.ibl.generator
 
+import java.io.IOException
+import java.util.Collections
+import java.util.Map
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.emf.ecore.resource.Resource$Factory$Registry
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.generator.IFileSystemAccess
-
-import roadblock.emf.ibl.Ibl.impl.IblPackageImpl
+import org.eclipse.xtext.generator.IGenerator
 import roadblock.emf.ibl.Ibl.IblFactory
+import roadblock.emf.ibl.Ibl.Model
+import roadblock.emf.ibl.Ibl.Process
+import roadblock.emf.ibl.Ibl.Rule
+import roadblock.emf.ibl.Ibl.impl.IblPackageImpl
 
-import roadblock.xtext.ibl.ibl.Model
+//import roadblock.xtext.ibl.ibl.Model
 import roadblock.xtext.ibl.ibl.FunctionDefinition
-import roadblock.xtext.ibl.ibl.RuleDefinition
-import roadblock.xtext.ibl.ibl.VariableComplex
-
-
-import java.io.File
-import java.io.FileOutputStream
-
-import org.eclipse.emf.ecore.EObject
-import roadblock.xtext.ibl.ibl.RuleObject
 import roadblock.xtext.ibl.ibl.PropertyDefinition
+import roadblock.xtext.ibl.ibl.RuleDefinition
+import roadblock.xtext.ibl.ibl.RuleObject
+import roadblock.xtext.ibl.ibl.VariableComplex
 
 /**
  * Generates code from your model files on save.
@@ -37,16 +40,17 @@ class IblGenerator implements IGenerator {
 	
 	println("in generator")
 
-	// trying with iterator
-//	for(thing: resource.allContents.toIterable){
-//		println(thing.toString + "\tClass:" + thing.eClass + ",\tcontainer: " + thing.eContainer)
-//	}
+	// save the AST in a file
+	emfModelToFile(
+		resource.getContents().get(0) as roadblock.xtext.ibl.ibl.Model, 
+		"findme/" + resource.URI.lastSegment + "XtextModel"
+	)
 
 
 	// Create an empty emf model
 	IblPackageImpl::init
 	factory = IblFactory::eINSTANCE
-	val roadblock.emf.ibl.Ibl.Model emfModel = factory.createModel
+	val Model emfModel = factory.createModel
 	
 	// set emfmodel attribute
 	emfModel.setName("Main model")
@@ -80,7 +84,7 @@ class IblGenerator implements IGenerator {
 }
 
 
-def addProcessDefinition(roadblock.emf.ibl.Ibl.Model emfModel, FunctionDefinition process){
+def addProcessDefinition(Model emfModel, FunctionDefinition process){
 	println("Adding a process definition: " + process.name)
 	// create new emf process
 	val emfProcess = factory.createProcess
@@ -140,30 +144,30 @@ for(ruleObject: rule.rhs.filter(typeof(RuleObject))){
 // helpers for printing an emf model.
 // ********************************************************************
 
-def showModelAttributes(int level, roadblock.emf.ibl.Ibl.Model model){
+def showModelAttributes(int level, Model model){
 	val tab = "\n" + (1..level).map["  "].join('')
 	var s = tab + "Model definition:" + model.name	
 	return s		
 }
 
-def showModel(int level, roadblock.emf.ibl.Ibl.Model model){
+def showModel(int level, Model model){
 	var s = showModelAttributes(level,model)
 	for(p: model.processList)
 		s = s + showProcessDefinition(level + 1, p)
 	return s	
 }
 
-def showModel(roadblock.emf.ibl.Ibl.Model model){
+def showModel(Model model){
 	return showModel(1, model)	
 }
 
-def showProcessDefinitionAttributes(int level, roadblock.emf.ibl.Ibl.Process process){
+def showProcessDefinitionAttributes(int level, Process process){
 	val tab = "\n" + (1..level).map["  "].join('')
 	var s = tab + "Process definition:" + process.name	
 	return s		
 }
 
-def showProcessDefinition(int level, roadblock.emf.ibl.Ibl.Process process){
+def showProcessDefinition(int level, Process process){
 	var s = showProcessDefinitionAttributes(level,process)
 	for(r: process.ruleList)
 		s = s + showRule(level + 1, r)
@@ -171,7 +175,7 @@ def showProcessDefinition(int level, roadblock.emf.ibl.Ibl.Process process){
 }
 
 
-def showRuleAttributes(int level, roadblock.emf.ibl.Ibl.Rule rule){
+def showRuleAttributes(int level, Rule rule){
 	val tab = "\n" + (1..level).map["  "].join('')
 	var s = tab + "Rule definition: "  + rule.name
 	s = s + tab + " Right hand side: " + rule.rightHandSide.map[e | e.name].join(', ')
@@ -180,41 +184,42 @@ def showRuleAttributes(int level, roadblock.emf.ibl.Ibl.Rule rule){
 	return s		
 }
 
-def showRule(int level, roadblock.emf.ibl.Ibl.Rule rule){
+def showRule(int level, Rule rule){
 	return showRuleAttributes(level,rule)
 }	
 
 
 	
 	
-//def populateProcesses(Resource resource, roadblock.emf.ibl.Ibl.Model emfModel)
-//	{
-//		for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition)))
-//		{
-//			if(functionDefinition.type == "PROCESS") {
-//				// create new emf process
-//				val emfProcess = factory.createProcess
-//				// set emf process attributes from xtext model
-//				emfProcess.setName(functionDefinition.name)
-//					print("new process: ")
-//					println(emfProcess.name)
-//				
-//				// set rules
-//				for(rule: functionDefinition.members.filter(typeof(RuleDefinition))){
-//					// create new rule
-//					val emfRule = factory.createRule
-//					// set emf rule attribute
-//					emfRule.setName(rule.name)
-//					
-//					// add rule to process
-//					emfProcess.ruleList.add(emfRule)
-//					print("new rule: ")
-//					println(emfRule.name)
-//				}
-//				// add process to the list
-//				emfModel.processList.add(emfProcess)	
-//			}
-//		}	
-//		
-//	}
+def static emfModelToFile(roadblock.xtext.ibl.ibl.Model  model, String filename){
+
+	val reg = Registry::INSTANCE
+	val m  = reg.getExtensionToFactoryMap as Map<String, Object>
+	m.put("iblXtextModel", new XMIResourceFactoryImpl)
+	
+	val resSet = new ResourceSetImpl
+
+    // create a resource
+	var resource = resSet.createResource(URI::createURI(filename))
+	resource.getContents().add(model);
+	
+		try {
+	      resource.save(Collections::EMPTY_MAP);
+	    } catch (IOException e) {
+		println("emfModelToFile: something wrong when writing to file")
+	      e.printStackTrace();
+	    }		
+}
+
+def static fileToEmfModel(String filename){ // Don't forget to cast the result as the expected EMF object. 
+// adapted to extend from http://www.vogella.com/articles/EclipseEMFPersistence/article.html	
+    val resSet = new ResourceSetImpl
+
+    // Get the resource
+    val resource2 = resSet.getResource(URI::createURI(filename), true)
+    // Get the first model element and cast it to the right type, in my
+    // example everything is hierarchical included in this first node
+    return  resource2.getContents().get(0) //as roadblock.emf.ibl.Ibl.Model
+}
+
 }
