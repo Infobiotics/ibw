@@ -1102,7 +1102,7 @@ public interface IblPackage extends EPackage
   int PROPERTY_DEFINITION = 27;
 
   /**
-   * The feature id for the '<em><b>Property</b></em>' containment reference list.
+   * The feature id for the '<em><b>Property</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1111,77 +1111,77 @@ public interface IblPackage extends EPackage
   int PROPERTY_DEFINITION__PROPERTY = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Condition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_DEFINITION__CONDITION = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_DEFINITION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Time</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_DEFINITION__TIME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_DEFINITION__OPERATOR = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 4;
-
-  /**
-   * The feature id for the '<em><b>Concentration</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_DEFINITION__CONCENTRATION = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 5;
-
-  /**
    * The number of structural features of the '<em>Property Definition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 6;
+  int PROPERTY_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyImpl <em>Property</em>}' class.
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProbabilityPropertyImpl <em>Probability Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.PropertyImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProperty()
+   * @see roadblock.xtext.ibl.ibl.impl.ProbabilityPropertyImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProbabilityProperty()
    * @generated
    */
-  int PROPERTY = 28;
+  int PROBABILITY_PROPERTY = 28;
 
   /**
-   * The feature id for the '<em><b>Lhs</b></em>' attribute.
+   * The feature id for the '<em><b>State Formula</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__LHS = 0;
+  int PROBABILITY_PROPERTY__STATE_FORMULA = 0;
+
+  /**
+   * The feature id for the '<em><b>Pattern</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_PROPERTY__PATTERN = 1;
+
+  /**
+   * The feature id for the '<em><b>State Formula2</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_PROPERTY__STATE_FORMULA2 = 2;
+
+  /**
+   * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_PROPERTY__LOWER_BOUND = 3;
+
+  /**
+   * The feature id for the '<em><b>Upper Bound</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_PROPERTY__UPPER_BOUND = 4;
+
+  /**
+   * The feature id for the '<em><b>Time Unit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROBABILITY_PROPERTY__TIME_UNIT = 5;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -1190,62 +1190,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__OPERATOR = 1;
-
-  /**
-   * The feature id for the '<em><b>Rhs</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY__RHS = 2;
-
-  /**
-   * The number of structural features of the '<em>Property</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl <em>Property Condition</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyCondition()
-   * @generated
-   */
-  int PROPERTY_CONDITION = 29;
-
-  /**
-   * The feature id for the '<em><b>Lower Bound</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_CONDITION__LOWER_BOUND = 0;
-
-  /**
-   * The feature id for the '<em><b>Upper Bounds</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_CONDITION__UPPER_BOUNDS = 1;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY_CONDITION__OPERATOR = 2;
+  int PROBABILITY_PROPERTY__OPERATOR = 6;
 
   /**
    * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -1254,7 +1199,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CONDITION__PROBABILITY = 3;
+  int PROBABILITY_PROPERTY__PROBABILITY = 7;
 
   /**
    * The feature id for the '<em><b>Initial Conditions</b></em>' containment reference list.
@@ -1263,16 +1208,208 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CONDITION__INITIAL_CONDITIONS = 4;
+  int PROBABILITY_PROPERTY__INITIAL_CONDITIONS = 8;
 
   /**
-   * The number of structural features of the '<em>Property Condition</em>' class.
+   * The number of structural features of the '<em>Probability Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_CONDITION_FEATURE_COUNT = 5;
+  int PROBABILITY_PROPERTY_FEATURE_COUNT = 9;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RewardPropertyImpl <em>Reward Property</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.RewardPropertyImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRewardProperty()
+   * @generated
+   */
+  int REWARD_PROPERTY = 29;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Time Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__TIME_VALUE = 1;
+
+  /**
+   * The feature id for the '<em><b>Tim Unit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__TIM_UNIT = 2;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__OPERATOR = 3;
+
+  /**
+   * The feature id for the '<em><b>Concen Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__CONCEN_VALUE = 4;
+
+  /**
+   * The feature id for the '<em><b>Units</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__UNITS = 5;
+
+  /**
+   * The feature id for the '<em><b>Initial Conditions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY__INITIAL_CONDITIONS = 6;
+
+  /**
+   * The number of structural features of the '<em>Reward Property</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REWARD_PROPERTY_FEATURE_COUNT = 7;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.StateExpressionImpl <em>State Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.StateExpressionImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getStateExpression()
+   * @generated
+   */
+  int STATE_EXPRESSION = 30;
+
+  /**
+   * The feature id for the '<em><b>Lhs</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_EXPRESSION__LHS = 0;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_EXPRESSION__OPERATOR = 1;
+
+  /**
+   * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_EXPRESSION__RHS = 2;
+
+  /**
+   * The number of structural features of the '<em>State Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_EXPRESSION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.StateFormulaImpl <em>State Formula</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.StateFormulaImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getStateFormula()
+   * @generated
+   */
+  int STATE_FORMULA = 31;
+
+  /**
+   * The feature id for the '<em><b>Formula</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FORMULA__FORMULA = 0;
+
+  /**
+   * The feature id for the '<em><b>Atomic Formula</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FORMULA__ATOMIC_FORMULA = 1;
+
+  /**
+   * The feature id for the '<em><b>Not Formula</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FORMULA__NOT_FORMULA = 2;
+
+  /**
+   * The feature id for the '<em><b>Boolean Formula1</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FORMULA__BOOLEAN_FORMULA1 = 3;
+
+  /**
+   * The feature id for the '<em><b>Boolean Formula2</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FORMULA__BOOLEAN_FORMULA2 = 4;
+
+  /**
+   * The number of structural features of the '<em>State Formula</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STATE_FORMULA_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyInitialConditionImpl <em>Property Initial Condition</em>}' class.
@@ -1282,7 +1419,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyInitialCondition()
    * @generated
    */
-  int PROPERTY_INITIAL_CONDITION = 30;
+  int PROPERTY_INITIAL_CONDITION = 32;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1319,7 +1456,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getQuantity()
    * @generated
    */
-  int QUANTITY = 31;
+  int QUANTITY = 33;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1349,6 +1486,43 @@ public interface IblPackage extends EPackage
   int QUANTITY_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ConcentrationQuantityImpl <em>Concentration Quantity</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.ConcentrationQuantityImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getConcentrationQuantity()
+   * @generated
+   */
+  int CONCENTRATION_QUANTITY = 34;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCENTRATION_QUANTITY__VALUE = 0;
+
+  /**
+   * The feature id for the '<em><b>Units</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCENTRATION_QUANTITY__UNITS = 1;
+
+  /**
+   * The number of structural features of the '<em>Concentration Quantity</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCENTRATION_QUANTITY_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ListImpl <em>List</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1356,7 +1530,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getList()
    * @generated
    */
-  int LIST = 32;
+  int LIST = 35;
 
   /**
    * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -1384,7 +1558,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 33;
+  int IMPORT = 36;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -2324,10 +2498,10 @@ public interface IblPackage extends EPackage
   EClass getPropertyDefinition();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getProperty <em>Property</em>}'.
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Property</em>'.
+   * @return the meta object for the containment reference '<em>Property</em>'.
    * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getProperty()
    * @see #getPropertyDefinition()
    * @generated
@@ -2335,167 +2509,308 @@ public interface IblPackage extends EPackage
   EReference getPropertyDefinition_Property();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getCondition <em>Condition</em>}'.
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty <em>Probability Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Condition</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getCondition()
-   * @see #getPropertyDefinition()
+   * @return the meta object for class '<em>Probability Property</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty
    * @generated
    */
-  EReference getPropertyDefinition_Condition();
+  EClass getProbabilityProperty();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getStateFormula <em>State Formula</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getName()
-   * @see #getPropertyDefinition()
+   * @return the meta object for the containment reference '<em>State Formula</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getStateFormula()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EAttribute getPropertyDefinition_Name();
+  EReference getProbabilityProperty_StateFormula();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getTime <em>Time</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getPattern <em>Pattern</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Time</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getTime()
-   * @see #getPropertyDefinition()
+   * @return the meta object for the attribute '<em>Pattern</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getPattern()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EReference getPropertyDefinition_Time();
+  EAttribute getProbabilityProperty_Pattern();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getStateFormula2 <em>State Formula2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getOperator()
-   * @see #getPropertyDefinition()
+   * @return the meta object for the containment reference '<em>State Formula2</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getStateFormula2()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EAttribute getPropertyDefinition_Operator();
+  EReference getProbabilityProperty_StateFormula2();
 
   /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyDefinition#getConcentration <em>Concentration</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getLowerBound <em>Lower Bound</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Concentration</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyDefinition#getConcentration()
-   * @see #getPropertyDefinition()
+   * @return the meta object for the attribute '<em>Lower Bound</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getLowerBound()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EReference getPropertyDefinition_Concentration();
+  EAttribute getProbabilityProperty_LowerBound();
 
   /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.Property <em>Property</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getUpperBound <em>Upper Bound</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Property</em>'.
-   * @see roadblock.xtext.ibl.ibl.Property
+   * @return the meta object for the attribute '<em>Upper Bound</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getUpperBound()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EClass getProperty();
+  EAttribute getProbabilityProperty_UpperBound();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.Property#getLhs <em>Lhs</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getTimeUnit <em>Time Unit</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Lhs</em>'.
-   * @see roadblock.xtext.ibl.ibl.Property#getLhs()
-   * @see #getProperty()
+   * @return the meta object for the attribute '<em>Time Unit</em>'.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getTimeUnit()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EAttribute getProperty_Lhs();
+  EAttribute getProbabilityProperty_TimeUnit();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.Property#getOperator <em>Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see roadblock.xtext.ibl.ibl.Property#getOperator()
-   * @see #getProperty()
-   * @generated
-   */
-  EAttribute getProperty_Operator();
-
-  /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.Property#getRhs <em>Rhs</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rhs</em>'.
-   * @see roadblock.xtext.ibl.ibl.Property#getRhs()
-   * @see #getProperty()
-   * @generated
-   */
-  EReference getProperty_Rhs();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PropertyCondition <em>Property Condition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Property Condition</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition
-   * @generated
-   */
-  EClass getPropertyCondition();
-
-  /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getLowerBound <em>Lower Bound</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Lower Bound</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition#getLowerBound()
-   * @see #getPropertyCondition()
-   * @generated
-   */
-  EReference getPropertyCondition_LowerBound();
-
-  /**
-   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getUpperBounds <em>Upper Bounds</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Upper Bounds</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition#getUpperBounds()
-   * @see #getPropertyCondition()
-   * @generated
-   */
-  EReference getPropertyCondition_UpperBounds();
-
-  /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Operator</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition#getOperator()
-   * @see #getPropertyCondition()
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getOperator()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EAttribute getPropertyCondition_Operator();
+  EAttribute getProbabilityProperty_Operator();
 
   /**
-   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getProbability <em>Probability</em>}'.
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getProbability <em>Probability</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Probability</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition#getProbability()
-   * @see #getPropertyCondition()
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getProbability()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EAttribute getPropertyCondition_Probability();
+  EAttribute getProbabilityProperty_Probability();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.PropertyCondition#getInitialConditions <em>Initial Conditions</em>}'.
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty#getInitialConditions <em>Initial Conditions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Initial Conditions</em>'.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition#getInitialConditions()
-   * @see #getPropertyCondition()
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty#getInitialConditions()
+   * @see #getProbabilityProperty()
    * @generated
    */
-  EReference getPropertyCondition_InitialConditions();
+  EReference getProbabilityProperty_InitialConditions();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.RewardProperty <em>Reward Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Reward Property</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty
+   * @generated
+   */
+  EClass getRewardProperty();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RewardProperty#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getName()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EAttribute getRewardProperty_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RewardProperty#getTimeValue <em>Time Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Time Value</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getTimeValue()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EAttribute getRewardProperty_TimeValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RewardProperty#getTimUnit <em>Tim Unit</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tim Unit</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getTimUnit()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EAttribute getRewardProperty_TimUnit();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RewardProperty#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getOperator()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EAttribute getRewardProperty_Operator();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RewardProperty#getConcenValue <em>Concen Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Concen Value</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getConcenValue()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EAttribute getRewardProperty_ConcenValue();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.RewardProperty#getUnits <em>Units</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Units</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getUnits()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EAttribute getRewardProperty_Units();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.RewardProperty#getInitialConditions <em>Initial Conditions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Initial Conditions</em>'.
+   * @see roadblock.xtext.ibl.ibl.RewardProperty#getInitialConditions()
+   * @see #getRewardProperty()
+   * @generated
+   */
+  EReference getRewardProperty_InitialConditions();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.StateExpression <em>State Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>State Expression</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateExpression
+   * @generated
+   */
+  EClass getStateExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.StateExpression#getLhs <em>Lhs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lhs</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateExpression#getLhs()
+   * @see #getStateExpression()
+   * @generated
+   */
+  EAttribute getStateExpression_Lhs();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.StateExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateExpression#getOperator()
+   * @see #getStateExpression()
+   * @generated
+   */
+  EAttribute getStateExpression_Operator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.StateExpression#getRhs <em>Rhs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Rhs</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateExpression#getRhs()
+   * @see #getStateExpression()
+   * @generated
+   */
+  EReference getStateExpression_Rhs();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.StateFormula <em>State Formula</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>State Formula</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateFormula
+   * @generated
+   */
+  EClass getStateFormula();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.StateFormula#getFormula <em>Formula</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Formula</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateFormula#getFormula()
+   * @see #getStateFormula()
+   * @generated
+   */
+  EAttribute getStateFormula_Formula();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.StateFormula#getAtomicFormula <em>Atomic Formula</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Atomic Formula</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateFormula#getAtomicFormula()
+   * @see #getStateFormula()
+   * @generated
+   */
+  EReference getStateFormula_AtomicFormula();
+
+  /**
+   * Returns the meta object for the containment reference '{@link roadblock.xtext.ibl.ibl.StateFormula#getNotFormula <em>Not Formula</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Not Formula</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateFormula#getNotFormula()
+   * @see #getStateFormula()
+   * @generated
+   */
+  EReference getStateFormula_NotFormula();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.StateFormula#getBooleanFormula1 <em>Boolean Formula1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Boolean Formula1</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateFormula#getBooleanFormula1()
+   * @see #getStateFormula()
+   * @generated
+   */
+  EReference getStateFormula_BooleanFormula1();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.StateFormula#getBooleanFormula2 <em>Boolean Formula2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Boolean Formula2</em>'.
+   * @see roadblock.xtext.ibl.ibl.StateFormula#getBooleanFormula2()
+   * @see #getStateFormula()
+   * @generated
+   */
+  EReference getStateFormula_BooleanFormula2();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
@@ -2560,6 +2875,38 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EAttribute getQuantity_Units();
+
+  /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ConcentrationQuantity <em>Concentration Quantity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Concentration Quantity</em>'.
+   * @see roadblock.xtext.ibl.ibl.ConcentrationQuantity
+   * @generated
+   */
+  EClass getConcentrationQuantity();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ConcentrationQuantity#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see roadblock.xtext.ibl.ibl.ConcentrationQuantity#getValue()
+   * @see #getConcentrationQuantity()
+   * @generated
+   */
+  EAttribute getConcentrationQuantity_Value();
+
+  /**
+   * Returns the meta object for the attribute '{@link roadblock.xtext.ibl.ibl.ConcentrationQuantity#getUnits <em>Units</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Units</em>'.
+   * @see roadblock.xtext.ibl.ibl.ConcentrationQuantity#getUnits()
+   * @see #getConcentrationQuantity()
+   * @generated
+   */
+  EAttribute getConcentrationQuantity_Units();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.List <em>List</em>}'.
@@ -3371,7 +3718,7 @@ public interface IblPackage extends EPackage
     EClass PROPERTY_DEFINITION = eINSTANCE.getPropertyDefinition();
 
     /**
-     * The meta object literal for the '<em><b>Property</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3379,104 +3726,62 @@ public interface IblPackage extends EPackage
     EReference PROPERTY_DEFINITION__PROPERTY = eINSTANCE.getPropertyDefinition_Property();
 
     /**
-     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProbabilityPropertyImpl <em>Probability Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ProbabilityPropertyImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProbabilityProperty()
      * @generated
      */
-    EReference PROPERTY_DEFINITION__CONDITION = eINSTANCE.getPropertyDefinition_Condition();
+    EClass PROBABILITY_PROPERTY = eINSTANCE.getProbabilityProperty();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>State Formula</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY_DEFINITION__NAME = eINSTANCE.getPropertyDefinition_Name();
+    EReference PROBABILITY_PROPERTY__STATE_FORMULA = eINSTANCE.getProbabilityProperty_StateFormula();
 
     /**
-     * The meta object literal for the '<em><b>Time</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_DEFINITION__TIME = eINSTANCE.getPropertyDefinition_Time();
+    EAttribute PROBABILITY_PROPERTY__PATTERN = eINSTANCE.getProbabilityProperty_Pattern();
 
     /**
-     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>State Formula2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY_DEFINITION__OPERATOR = eINSTANCE.getPropertyDefinition_Operator();
+    EReference PROBABILITY_PROPERTY__STATE_FORMULA2 = eINSTANCE.getProbabilityProperty_StateFormula2();
 
     /**
-     * The meta object literal for the '<em><b>Concentration</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Lower Bound</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_DEFINITION__CONCENTRATION = eINSTANCE.getPropertyDefinition_Concentration();
+    EAttribute PROBABILITY_PROPERTY__LOWER_BOUND = eINSTANCE.getProbabilityProperty_LowerBound();
 
     /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyImpl <em>Property</em>}' class.
+     * The meta object literal for the '<em><b>Upper Bound</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.PropertyImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProperty()
      * @generated
      */
-    EClass PROPERTY = eINSTANCE.getProperty();
+    EAttribute PROBABILITY_PROPERTY__UPPER_BOUND = eINSTANCE.getProbabilityProperty_UpperBound();
 
     /**
-     * The meta object literal for the '<em><b>Lhs</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Time Unit</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY__LHS = eINSTANCE.getProperty_Lhs();
-
-    /**
-     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROPERTY__OPERATOR = eINSTANCE.getProperty_Operator();
-
-    /**
-     * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROPERTY__RHS = eINSTANCE.getProperty_Rhs();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl <em>Property Condition</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.PropertyConditionImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyCondition()
-     * @generated
-     */
-    EClass PROPERTY_CONDITION = eINSTANCE.getPropertyCondition();
-
-    /**
-     * The meta object literal for the '<em><b>Lower Bound</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROPERTY_CONDITION__LOWER_BOUND = eINSTANCE.getPropertyCondition_LowerBound();
-
-    /**
-     * The meta object literal for the '<em><b>Upper Bounds</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROPERTY_CONDITION__UPPER_BOUNDS = eINSTANCE.getPropertyCondition_UpperBounds();
+    EAttribute PROBABILITY_PROPERTY__TIME_UNIT = eINSTANCE.getProbabilityProperty_TimeUnit();
 
     /**
      * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -3484,7 +3789,7 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY_CONDITION__OPERATOR = eINSTANCE.getPropertyCondition_Operator();
+    EAttribute PROBABILITY_PROPERTY__OPERATOR = eINSTANCE.getProbabilityProperty_Operator();
 
     /**
      * The meta object literal for the '<em><b>Probability</b></em>' attribute feature.
@@ -3492,7 +3797,7 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY_CONDITION__PROBABILITY = eINSTANCE.getPropertyCondition_Probability();
+    EAttribute PROBABILITY_PROPERTY__PROBABILITY = eINSTANCE.getProbabilityProperty_Probability();
 
     /**
      * The meta object literal for the '<em><b>Initial Conditions</b></em>' containment reference list feature.
@@ -3500,7 +3805,157 @@ public interface IblPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_CONDITION__INITIAL_CONDITIONS = eINSTANCE.getPropertyCondition_InitialConditions();
+    EReference PROBABILITY_PROPERTY__INITIAL_CONDITIONS = eINSTANCE.getProbabilityProperty_InitialConditions();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.RewardPropertyImpl <em>Reward Property</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.RewardPropertyImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRewardProperty()
+     * @generated
+     */
+    EClass REWARD_PROPERTY = eINSTANCE.getRewardProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REWARD_PROPERTY__NAME = eINSTANCE.getRewardProperty_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Time Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REWARD_PROPERTY__TIME_VALUE = eINSTANCE.getRewardProperty_TimeValue();
+
+    /**
+     * The meta object literal for the '<em><b>Tim Unit</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REWARD_PROPERTY__TIM_UNIT = eINSTANCE.getRewardProperty_TimUnit();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REWARD_PROPERTY__OPERATOR = eINSTANCE.getRewardProperty_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Concen Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REWARD_PROPERTY__CONCEN_VALUE = eINSTANCE.getRewardProperty_ConcenValue();
+
+    /**
+     * The meta object literal for the '<em><b>Units</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REWARD_PROPERTY__UNITS = eINSTANCE.getRewardProperty_Units();
+
+    /**
+     * The meta object literal for the '<em><b>Initial Conditions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REWARD_PROPERTY__INITIAL_CONDITIONS = eINSTANCE.getRewardProperty_InitialConditions();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.StateExpressionImpl <em>State Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.StateExpressionImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getStateExpression()
+     * @generated
+     */
+    EClass STATE_EXPRESSION = eINSTANCE.getStateExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Lhs</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATE_EXPRESSION__LHS = eINSTANCE.getStateExpression_Lhs();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATE_EXPRESSION__OPERATOR = eINSTANCE.getStateExpression_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE_EXPRESSION__RHS = eINSTANCE.getStateExpression_Rhs();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.StateFormulaImpl <em>State Formula</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.StateFormulaImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getStateFormula()
+     * @generated
+     */
+    EClass STATE_FORMULA = eINSTANCE.getStateFormula();
+
+    /**
+     * The meta object literal for the '<em><b>Formula</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STATE_FORMULA__FORMULA = eINSTANCE.getStateFormula_Formula();
+
+    /**
+     * The meta object literal for the '<em><b>Atomic Formula</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE_FORMULA__ATOMIC_FORMULA = eINSTANCE.getStateFormula_AtomicFormula();
+
+    /**
+     * The meta object literal for the '<em><b>Not Formula</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE_FORMULA__NOT_FORMULA = eINSTANCE.getStateFormula_NotFormula();
+
+    /**
+     * The meta object literal for the '<em><b>Boolean Formula1</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE_FORMULA__BOOLEAN_FORMULA1 = eINSTANCE.getStateFormula_BooleanFormula1();
+
+    /**
+     * The meta object literal for the '<em><b>Boolean Formula2</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STATE_FORMULA__BOOLEAN_FORMULA2 = eINSTANCE.getStateFormula_BooleanFormula2();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyInitialConditionImpl <em>Property Initial Condition</em>}' class.
@@ -3553,6 +4008,32 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EAttribute QUANTITY__UNITS = eINSTANCE.getQuantity_Units();
+
+    /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ConcentrationQuantityImpl <em>Concentration Quantity</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.ConcentrationQuantityImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getConcentrationQuantity()
+     * @generated
+     */
+    EClass CONCENTRATION_QUANTITY = eINSTANCE.getConcentrationQuantity();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONCENTRATION_QUANTITY__VALUE = eINSTANCE.getConcentrationQuantity_Value();
+
+    /**
+     * The meta object literal for the '<em><b>Units</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONCENTRATION_QUANTITY__UNITS = eINSTANCE.getConcentrationQuantity_Units();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ListImpl <em>List</em>}' class.

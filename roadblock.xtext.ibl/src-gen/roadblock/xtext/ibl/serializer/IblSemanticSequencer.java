@@ -16,6 +16,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject;
 import roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.ConcentrationQuantity;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
@@ -25,13 +26,15 @@ import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.List;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
-import roadblock.xtext.ibl.ibl.Property;
-import roadblock.xtext.ibl.ibl.PropertyCondition;
+import roadblock.xtext.ibl.ibl.ProbabilityProperty;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
+import roadblock.xtext.ibl.ibl.RewardProperty;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.StateExpression;
+import roadblock.xtext.ibl.ibl.StateFormula;
 import roadblock.xtext.ibl.ibl.UserDefinedType;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAssignmentObject;
@@ -72,6 +75,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				if(context == grammarAccess.getCompoundVariableExpressionObjectRule() ||
 				   context == grammarAccess.getVariableExpressionObjectRule()) {
 					sequence_CompoundVariableExpressionObject(context, (CompoundVariableExpressionObject) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.CONCENTRATION_QUANTITY:
+				if(context == grammarAccess.getConcentrationQuantityRule()) {
+					sequence_ConcentrationQuantity(context, (ConcentrationQuantity) semanticObject); 
 					return; 
 				}
 				else break;
@@ -126,15 +135,9 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.PROPERTY:
-				if(context == grammarAccess.getPropertyRule()) {
-					sequence_Property(context, (Property) semanticObject); 
-					return; 
-				}
-				else break;
-			case IblPackage.PROPERTY_CONDITION:
-				if(context == grammarAccess.getPropertyConditionRule()) {
-					sequence_PropertyCondition(context, (PropertyCondition) semanticObject); 
+			case IblPackage.PROBABILITY_PROPERTY:
+				if(context == grammarAccess.getProbabilityPropertyRule()) {
+					sequence_ProbabilityProperty(context, (ProbabilityProperty) semanticObject); 
 					return; 
 				}
 				else break;
@@ -158,6 +161,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.REWARD_PROPERTY:
+				if(context == grammarAccess.getRewardPropertyRule()) {
+					sequence_RewardProperty(context, (RewardProperty) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.RULE_DEFINITION:
 				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getRuleDefinitionRule()) {
@@ -168,6 +177,18 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case IblPackage.RULE_OBJECT:
 				if(context == grammarAccess.getRuleObjectRule()) {
 					sequence_RuleObject(context, (RuleObject) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.STATE_EXPRESSION:
+				if(context == grammarAccess.getStateExpressionRule()) {
+					sequence_StateExpression(context, (StateExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.STATE_FORMULA:
+				if(context == grammarAccess.getStateFormulaRule()) {
+					sequence_StateFormula(context, (StateFormula) semanticObject); 
 					return; 
 				}
 				else break;
@@ -282,6 +303,25 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (value=REAL units=ConcentrationUnit)
+	 */
+	protected void sequence_ConcentrationQuantity(EObject context, ConcentrationQuantity semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__VALUE));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__UNITS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__UNITS));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getConcentrationQuantityAccess().getValueREALParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getConcentrationQuantityAccess().getUnitsConcentrationUnitParserRuleCall_2_0(), semanticObject.getUnits());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (name=VariableName parts=List input=List? outputput=List? members+=DeviceMembers*)
 	 */
 	protected void sequence_DeviceDefinition(EObject context, DeviceDefinition semanticObject) {
@@ -388,21 +428,21 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Constraint:
 	 *     (
-	 *         (lowerBound=Quantity upperBounds=Quantity (operator=RelationalOperator probability=REAL)?)? 
+	 *         stateFormula=StateFormula 
+	 *         (pattern=PatternType | (pattern=SequencePatternType stateFormula2=StateFormula)) 
+	 *         ((lowerBound=INT upperBound=INT timeUnit=TimeUnit) | timeUnit=TimeUnit)? 
+	 *         (operator=RelationalOperator probability=UnitInterval)? 
 	 *         (initialConditions+=PropertyInitialCondition initialConditions+=PropertyInitialCondition*)?
 	 *     )
 	 */
-	protected void sequence_PropertyCondition(EObject context, PropertyCondition semanticObject) {
+	protected void sequence_ProbabilityProperty(EObject context, ProbabilityProperty semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         (property+=Property property+=Property* condition=PropertyCondition) | 
-	 *         (name=VariableName time=Quantity (operator=RelationalOperator concentration=Quantity)?)
-	 *     )
+	 *     (property=ProbabilityProperty | property=RewardProperty)
 	 */
 	protected void sequence_PropertyDefinition(EObject context, PropertyDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -411,7 +451,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (variable=VariableAssignmentObject value=Quantity)
+	 *     (variable=VariableAssignmentObject value=ConcentrationQuantity)
 	 */
 	protected void sequence_PropertyInitialCondition(EObject context, PropertyInitialCondition semanticObject) {
 		if(errorAcceptor != null) {
@@ -423,29 +463,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getPropertyInitialConditionAccess().getVariableVariableAssignmentObjectParserRuleCall_1_0(), semanticObject.getVariable());
-		feeder.accept(grammarAccess.getPropertyInitialConditionAccess().getValueQuantityParserRuleCall_3_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (lhs=VariableName operator=RelationalOperator rhs=Quantity)
-	 */
-	protected void sequence_Property(EObject context, Property semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY__LHS));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY__OPERATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY__OPERATOR));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.PROPERTY__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.PROPERTY__RHS));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyAccess().getLhsVariableNameParserRuleCall_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getPropertyAccess().getOperatorRelationalOperatorParserRuleCall_2_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getPropertyAccess().getRhsQuantityParserRuleCall_3_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getPropertyInitialConditionAccess().getValueConcentrationQuantityParserRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -471,6 +489,21 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (
+	 *         name=VariableName 
+	 *         timeValue=INT 
+	 *         timUnit=TimeUnit 
+	 *         (operator=RelationalOperator concenValue=REAL units=ConcentrationUnit)? 
+	 *         (initialConditions+=PropertyInitialCondition initialConditions+=PropertyInitialCondition*)?
+	 *     )
+	 */
+	protected void sequence_RewardProperty(EObject context, RewardProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (name=VariableName (lhs+=RuleObject lhs+=RuleObject*)? reversible?='<->'? (rhs+=RuleObject rhs+=RuleObject*)?)
 	 */
 	protected void sequence_RuleDefinition(EObject context, RuleDefinition semanticObject) {
@@ -483,6 +516,37 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     {RuleObject}
 	 */
 	protected void sequence_RuleObject(EObject context, RuleObject semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (lhs=VariableName operator=RelationalOperator rhs=ConcentrationQuantity)
+	 */
+	protected void sequence_StateExpression(EObject context, StateExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__LHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__LHS));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__OPERATOR));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__RHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__RHS));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getStateExpressionAccess().getLhsVariableNameParserRuleCall_1_0(), semanticObject.getLhs());
+		feeder.accept(grammarAccess.getStateExpressionAccess().getOperatorRelationalOperatorParserRuleCall_2_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getStateExpressionAccess().getRhsConcentrationQuantityParserRuleCall_3_0(), semanticObject.getRhs());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (formula='[' atomicFormula=StateExpression)
+	 */
+	protected void sequence_StateFormula(EObject context, StateFormula semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

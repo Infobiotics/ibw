@@ -275,22 +275,40 @@ public interface IblFactory extends EFactory
   PropertyDefinition createPropertyDefinition();
 
   /**
-   * Returns a new object of class '<em>Property</em>'.
+   * Returns a new object of class '<em>Probability Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property</em>'.
+   * @return a new object of class '<em>Probability Property</em>'.
    * @generated
    */
-  Property createProperty();
+  ProbabilityProperty createProbabilityProperty();
 
   /**
-   * Returns a new object of class '<em>Property Condition</em>'.
+   * Returns a new object of class '<em>Reward Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Condition</em>'.
+   * @return a new object of class '<em>Reward Property</em>'.
    * @generated
    */
-  PropertyCondition createPropertyCondition();
+  RewardProperty createRewardProperty();
+
+  /**
+   * Returns a new object of class '<em>State Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State Expression</em>'.
+   * @generated
+   */
+  StateExpression createStateExpression();
+
+  /**
+   * Returns a new object of class '<em>State Formula</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State Formula</em>'.
+   * @generated
+   */
+  StateFormula createStateFormula();
 
   /**
    * Returns a new object of class '<em>Property Initial Condition</em>'.
@@ -309,6 +327,15 @@ public interface IblFactory extends EFactory
    * @generated
    */
   Quantity createQuantity();
+
+  /**
+   * Returns a new object of class '<em>Concentration Quantity</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Concentration Quantity</em>'.
+   * @generated
+   */
+  ConcentrationQuantity createConcentrationQuantity();
 
   /**
    * Returns a new object of class '<em>List</em>'.

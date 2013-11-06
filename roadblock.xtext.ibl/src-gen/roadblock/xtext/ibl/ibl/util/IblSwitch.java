@@ -283,17 +283,31 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.PROPERTY:
+      case IblPackage.PROBABILITY_PROPERTY:
       {
-        Property property = (Property)theEObject;
-        T result = caseProperty(property);
+        ProbabilityProperty probabilityProperty = (ProbabilityProperty)theEObject;
+        T result = caseProbabilityProperty(probabilityProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.PROPERTY_CONDITION:
+      case IblPackage.REWARD_PROPERTY:
       {
-        PropertyCondition propertyCondition = (PropertyCondition)theEObject;
-        T result = casePropertyCondition(propertyCondition);
+        RewardProperty rewardProperty = (RewardProperty)theEObject;
+        T result = caseRewardProperty(rewardProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.STATE_EXPRESSION:
+      {
+        StateExpression stateExpression = (StateExpression)theEObject;
+        T result = caseStateExpression(stateExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.STATE_FORMULA:
+      {
+        StateFormula stateFormula = (StateFormula)theEObject;
+        T result = caseStateFormula(stateFormula);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -308,6 +322,13 @@ public class IblSwitch<T> extends Switch<T>
       {
         Quantity quantity = (Quantity)theEObject;
         T result = caseQuantity(quantity);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CONCENTRATION_QUANTITY:
+      {
+        ConcentrationQuantity concentrationQuantity = (ConcentrationQuantity)theEObject;
+        T result = caseConcentrationQuantity(concentrationQuantity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -780,33 +801,65 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Probability Property</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Probability Property</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProperty(Property object)
+  public T caseProbabilityProperty(ProbabilityProperty object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Condition</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Reward Property</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Condition</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Reward Property</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePropertyCondition(PropertyCondition object)
+  public T caseRewardProperty(RewardProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStateExpression(StateExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State Formula</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State Formula</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStateFormula(StateFormula object)
   {
     return null;
   }
@@ -839,6 +892,22 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseQuantity(Quantity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Concentration Quantity</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Concentration Quantity</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConcentrationQuantity(ConcentrationQuantity object)
   {
     return null;
   }

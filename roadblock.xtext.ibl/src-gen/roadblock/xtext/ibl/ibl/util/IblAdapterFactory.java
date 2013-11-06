@@ -215,14 +215,24 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createPropertyDefinitionAdapter();
       }
       @Override
-      public Adapter caseProperty(Property object)
+      public Adapter caseProbabilityProperty(ProbabilityProperty object)
       {
-        return createPropertyAdapter();
+        return createProbabilityPropertyAdapter();
       }
       @Override
-      public Adapter casePropertyCondition(PropertyCondition object)
+      public Adapter caseRewardProperty(RewardProperty object)
       {
-        return createPropertyConditionAdapter();
+        return createRewardPropertyAdapter();
+      }
+      @Override
+      public Adapter caseStateExpression(StateExpression object)
+      {
+        return createStateExpressionAdapter();
+      }
+      @Override
+      public Adapter caseStateFormula(StateFormula object)
+      {
+        return createStateFormulaAdapter();
       }
       @Override
       public Adapter casePropertyInitialCondition(PropertyInitialCondition object)
@@ -233,6 +243,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseQuantity(Quantity object)
       {
         return createQuantityAdapter();
+      }
+      @Override
+      public Adapter caseConcentrationQuantity(ConcentrationQuantity object)
+      {
+        return createConcentrationQuantityAdapter();
       }
       @Override
       public Adapter caseList(List object)
@@ -687,31 +702,61 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.Property <em>Property</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProbabilityProperty <em>Probability Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.Property
+   * @see roadblock.xtext.ibl.ibl.ProbabilityProperty
    * @generated
    */
-  public Adapter createPropertyAdapter()
+  public Adapter createProbabilityPropertyAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PropertyCondition <em>Property Condition</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RewardProperty <em>Reward Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.PropertyCondition
+   * @see roadblock.xtext.ibl.ibl.RewardProperty
    * @generated
    */
-  public Adapter createPropertyConditionAdapter()
+  public Adapter createRewardPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.StateExpression <em>State Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.StateExpression
+   * @generated
+   */
+  public Adapter createStateExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.StateFormula <em>State Formula</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.StateFormula
+   * @generated
+   */
+  public Adapter createStateFormulaAdapter()
   {
     return null;
   }
@@ -742,6 +787,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQuantityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ConcentrationQuantity <em>Concentration Quantity</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ConcentrationQuantity
+   * @generated
+   */
+  public Adapter createConcentrationQuantityAdapter()
   {
     return null;
   }

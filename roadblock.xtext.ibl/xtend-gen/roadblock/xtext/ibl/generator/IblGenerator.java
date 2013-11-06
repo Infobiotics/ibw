@@ -34,9 +34,7 @@ import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.Model;
-import roadblock.xtext.ibl.ibl.Property;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
-import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.VariableComplex;
@@ -68,58 +66,41 @@ public class IblGenerator implements IGenerator {
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<FunctionDefinition> _filter = Iterables.<FunctionDefinition>filter(_iterable, FunctionDefinition.class);
     for (final FunctionDefinition functionDefinition : _filter) {
-      String _type = functionDefinition.getType();
-      final String _switchValue = _type;
-      boolean _matched = false;
-      if (!_matched) {
-        if (Objects.equal(_switchValue,"CELL")) {
-          _matched=true;
-          InputOutput.<String>println("Cell definition:");
-          String _name = functionDefinition.getName();
-          InputOutput.<String>println(_name);
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,"DEVICE")) {
-          _matched=true;
-          InputOutput.<String>println("Device definition:");
-          String _name_1 = functionDefinition.getName();
-          InputOutput.<String>println(_name_1);
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_switchValue,"PROCESS")) {
-          _matched=true;
-          this.addProcessDefinition(emfModel, functionDefinition);
-        }
-      }
-      if (!_matched) {
-        InputOutput.<String>println("unknown type");
-      }
-    }
-    InputOutput.<String>println("After model populating:");
-    TreeIterator<EObject> _allContents_1 = resource.getAllContents();
-    Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
-    Iterable<PropertyDefinition> _filter_1 = Iterables.<PropertyDefinition>filter(_iterable_1, PropertyDefinition.class);
-    for (final PropertyDefinition propertyDefinition : _filter_1) {
       {
-        InputOutput.<String>println("New property Definition");
-        EList<Property> _property = propertyDefinition.getProperty();
-        for (final Property property : _property) {
-          String _lhs = property.getLhs();
-          String _plus_2 = ("property:" + _lhs);
-          String _plus_3 = (_plus_2 + " # ");
-          String _operator = property.getOperator();
-          String _plus_4 = (_plus_3 + _operator);
-          String _plus_5 = (_plus_4 + " # ");
-          Quantity _rhs = property.getRhs();
-          String _value = _rhs.getValue();
-          String _plus_6 = (_plus_5 + _value);
-          String _plus_7 = (_plus_6 + " # ");
-          Quantity _rhs_1 = property.getRhs();
-          String _units = _rhs_1.getUnits();
-          String _plus_8 = (_plus_7 + _units);
-          InputOutput.<String>println(_plus_8);
+        String _type = functionDefinition.getType();
+        final String _switchValue = _type;
+        boolean _matched = false;
+        if (!_matched) {
+          if (Objects.equal(_switchValue,"CELL")) {
+            _matched=true;
+            InputOutput.<String>println("Cell definition:");
+            String _name = functionDefinition.getName();
+            InputOutput.<String>println(_name);
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(_switchValue,"DEVICE")) {
+            _matched=true;
+            InputOutput.<String>println("Device definition:");
+            String _name_1 = functionDefinition.getName();
+            InputOutput.<String>println(_name_1);
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(_switchValue,"PROCESS")) {
+            _matched=true;
+            this.addProcessDefinition(emfModel, functionDefinition);
+          }
+        }
+        if (!_matched) {
+          InputOutput.<String>println("unknown type");
+        }
+        InputOutput.<String>println("After model populating:");
+        TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+        Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
+        Iterable<PropertyDefinition> _filter_1 = Iterables.<PropertyDefinition>filter(_iterable_1, PropertyDefinition.class);
+        for (final PropertyDefinition propertyDefinition : _filter_1) {
+          InputOutput.<String>println("New property Definition");
         }
       }
     }
@@ -162,19 +143,15 @@ public class IblGenerator implements IGenerator {
           EList<String> _components = ((VariableComplex) ruleObject).getComponents();
           String _join = IterableExtensions.join(_components, "~");
           emfMolecule.setName(_join);
-        } else {
-          String _string_1 = ruleObject.toString();
-          emfMolecule.setName(_string_1);
+          boolean _isReversible = rule.isReversible();
+          emfRule.setIsBidirectional(_isReversible);
+          emfRule.setForwardRate(1.0);
+          emfRule.setReverseRate(1.0);
+          return emfRule;
         }
-        EList<Molecule> _rightHandSide = emfRule.getRightHandSide();
-        _rightHandSide.add(emfMolecule);
       }
     }
-    boolean _isReversible = rule.isReversible();
-    emfRule.setIsBidirectional(_isReversible);
-    emfRule.setForwardRate(1.0);
-    emfRule.setReverseRate(1.0);
-    return emfRule;
+    return null;
   }
   
   public String showModelAttributes(final int level, final roadblock.emf.ibl.Ibl.Model model) {

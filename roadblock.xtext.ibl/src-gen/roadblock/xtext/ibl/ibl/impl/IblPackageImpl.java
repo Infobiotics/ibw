@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject;
 import roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.ConcentrationQuantity;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
 import roadblock.xtext.ibl.ibl.FunctionBodyMember;
@@ -26,13 +27,15 @@ import roadblock.xtext.ibl.ibl.List;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
-import roadblock.xtext.ibl.ibl.Property;
-import roadblock.xtext.ibl.ibl.PropertyCondition;
+import roadblock.xtext.ibl.ibl.ProbabilityProperty;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
+import roadblock.xtext.ibl.ibl.RewardProperty;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
+import roadblock.xtext.ibl.ibl.StateExpression;
+import roadblock.xtext.ibl.ibl.StateFormula;
 import roadblock.xtext.ibl.ibl.UserDefinedType;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAssignmentObject;
@@ -255,14 +258,28 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass propertyEClass = null;
+  private EClass probabilityPropertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass propertyConditionEClass = null;
+  private EClass rewardPropertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateFormulaEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -277,6 +294,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass quantityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass concentrationQuantityEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1230,9 +1254,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyDefinition_Condition()
+  public EClass getProbabilityProperty()
   {
-    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(1);
+    return probabilityPropertyEClass;
   }
 
   /**
@@ -1240,9 +1264,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyDefinition_Name()
+  public EReference getProbabilityProperty_StateFormula()
   {
-    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(2);
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1250,9 +1274,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyDefinition_Time()
+  public EAttribute getProbabilityProperty_Pattern()
   {
-    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1260,9 +1284,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyDefinition_Operator()
+  public EReference getProbabilityProperty_StateFormula2()
   {
-    return (EAttribute)propertyDefinitionEClass.getEStructuralFeatures().get(4);
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1270,9 +1294,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyDefinition_Concentration()
+  public EAttribute getProbabilityProperty_LowerBound()
   {
-    return (EReference)propertyDefinitionEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1280,9 +1304,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProperty()
+  public EAttribute getProbabilityProperty_UpperBound()
   {
-    return propertyEClass;
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1290,9 +1314,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_Lhs()
+  public EAttribute getProbabilityProperty_TimeUnit()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1300,9 +1324,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_Operator()
+  public EAttribute getProbabilityProperty_Operator()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1310,9 +1334,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty_Rhs()
+  public EAttribute getProbabilityProperty_Probability()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1320,9 +1344,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPropertyCondition()
+  public EReference getProbabilityProperty_InitialConditions()
   {
-    return propertyConditionEClass;
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -1330,9 +1354,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyCondition_LowerBound()
+  public EClass getRewardProperty()
   {
-    return (EReference)propertyConditionEClass.getEStructuralFeatures().get(0);
+    return rewardPropertyEClass;
   }
 
   /**
@@ -1340,9 +1364,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyCondition_UpperBounds()
+  public EAttribute getRewardProperty_Name()
   {
-    return (EReference)propertyConditionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1350,9 +1374,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyCondition_Operator()
+  public EAttribute getRewardProperty_TimeValue()
   {
-    return (EAttribute)propertyConditionEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1360,9 +1384,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertyCondition_Probability()
+  public EAttribute getRewardProperty_TimUnit()
   {
-    return (EAttribute)propertyConditionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1370,9 +1394,139 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertyCondition_InitialConditions()
+  public EAttribute getRewardProperty_Operator()
   {
-    return (EReference)propertyConditionEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRewardProperty_ConcenValue()
+  {
+    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRewardProperty_Units()
+  {
+    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRewardProperty_InitialConditions()
+  {
+    return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStateExpression()
+  {
+    return stateExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStateExpression_Lhs()
+  {
+    return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStateExpression_Operator()
+  {
+    return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateExpression_Rhs()
+  {
+    return (EReference)stateExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStateFormula()
+  {
+    return stateFormulaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStateFormula_Formula()
+  {
+    return (EAttribute)stateFormulaEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateFormula_AtomicFormula()
+  {
+    return (EReference)stateFormulaEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateFormula_NotFormula()
+  {
+    return (EReference)stateFormulaEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateFormula_BooleanFormula1()
+  {
+    return (EReference)stateFormulaEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateFormula_BooleanFormula2()
+  {
+    return (EReference)stateFormulaEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1433,6 +1587,36 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EAttribute getQuantity_Units()
   {
     return (EAttribute)quantityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConcentrationQuantity()
+  {
+    return concentrationQuantityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConcentrationQuantity_Value()
+  {
+    return (EAttribute)concentrationQuantityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConcentrationQuantity_Units()
+  {
+    return (EAttribute)concentrationQuantityEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1619,23 +1803,38 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     propertyDefinitionEClass = createEClass(PROPERTY_DEFINITION);
     createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__PROPERTY);
-    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__CONDITION);
-    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__NAME);
-    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__TIME);
-    createEAttribute(propertyDefinitionEClass, PROPERTY_DEFINITION__OPERATOR);
-    createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__CONCENTRATION);
 
-    propertyEClass = createEClass(PROPERTY);
-    createEAttribute(propertyEClass, PROPERTY__LHS);
-    createEAttribute(propertyEClass, PROPERTY__OPERATOR);
-    createEReference(propertyEClass, PROPERTY__RHS);
+    probabilityPropertyEClass = createEClass(PROBABILITY_PROPERTY);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__STATE_FORMULA);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__PATTERN);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__STATE_FORMULA2);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__LOWER_BOUND);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__UPPER_BOUND);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__TIME_UNIT);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__OPERATOR);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__PROBABILITY);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__INITIAL_CONDITIONS);
 
-    propertyConditionEClass = createEClass(PROPERTY_CONDITION);
-    createEReference(propertyConditionEClass, PROPERTY_CONDITION__LOWER_BOUND);
-    createEReference(propertyConditionEClass, PROPERTY_CONDITION__UPPER_BOUNDS);
-    createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__OPERATOR);
-    createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__PROBABILITY);
-    createEReference(propertyConditionEClass, PROPERTY_CONDITION__INITIAL_CONDITIONS);
+    rewardPropertyEClass = createEClass(REWARD_PROPERTY);
+    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__NAME);
+    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__TIME_VALUE);
+    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__TIM_UNIT);
+    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__OPERATOR);
+    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__CONCEN_VALUE);
+    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__UNITS);
+    createEReference(rewardPropertyEClass, REWARD_PROPERTY__INITIAL_CONDITIONS);
+
+    stateExpressionEClass = createEClass(STATE_EXPRESSION);
+    createEAttribute(stateExpressionEClass, STATE_EXPRESSION__LHS);
+    createEAttribute(stateExpressionEClass, STATE_EXPRESSION__OPERATOR);
+    createEReference(stateExpressionEClass, STATE_EXPRESSION__RHS);
+
+    stateFormulaEClass = createEClass(STATE_FORMULA);
+    createEAttribute(stateFormulaEClass, STATE_FORMULA__FORMULA);
+    createEReference(stateFormulaEClass, STATE_FORMULA__ATOMIC_FORMULA);
+    createEReference(stateFormulaEClass, STATE_FORMULA__NOT_FORMULA);
+    createEReference(stateFormulaEClass, STATE_FORMULA__BOOLEAN_FORMULA1);
+    createEReference(stateFormulaEClass, STATE_FORMULA__BOOLEAN_FORMULA2);
 
     propertyInitialConditionEClass = createEClass(PROPERTY_INITIAL_CONDITION);
     createEReference(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE);
@@ -1644,6 +1843,10 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     quantityEClass = createEClass(QUANTITY);
     createEAttribute(quantityEClass, QUANTITY__VALUE);
     createEAttribute(quantityEClass, QUANTITY__UNITS);
+
+    concentrationQuantityEClass = createEClass(CONCENTRATION_QUANTITY);
+    createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__VALUE);
+    createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__UNITS);
 
     listEClass = createEClass(LIST);
     createEReference(listEClass, LIST__ENTRIES);
@@ -1812,32 +2015,51 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getATGCDefinition_Arguments(), ecorePackage.getEString(), "arguments", null, 0, -1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyDefinitionEClass, PropertyDefinition.class, "PropertyDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPropertyDefinition_Property(), this.getProperty(), null, "property", null, 0, -1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyDefinition_Condition(), this.getPropertyCondition(), null, "condition", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyDefinition_Time(), this.getQuantity(), null, "time", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyDefinition_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyDefinition_Concentration(), this.getQuantity(), null, "concentration", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyDefinition_Property(), ecorePackage.getEObject(), null, "property", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProperty_Lhs(), ecorePackage.getEString(), "lhs", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProperty_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProperty_Rhs(), this.getQuantity(), null, "rhs", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(probabilityPropertyEClass, ProbabilityProperty.class, "ProbabilityProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProbabilityProperty_StateFormula(), this.getStateFormula(), null, "stateFormula", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_Pattern(), ecorePackage.getEString(), "pattern", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbabilityProperty_StateFormula2(), this.getStateFormula(), null, "stateFormula2", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_TimeUnit(), ecorePackage.getEString(), "timeUnit", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_Probability(), ecorePackage.getEString(), "probability", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbabilityProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(propertyConditionEClass, PropertyCondition.class, "PropertyCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPropertyCondition_LowerBound(), this.getQuantity(), null, "lowerBound", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyCondition_UpperBounds(), this.getQuantity(), null, "upperBounds", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyCondition_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getPropertyCondition_Probability(), ecorePackage.getEString(), "probability", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyCondition_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(rewardPropertyEClass, RewardProperty.class, "RewardProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRewardProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardProperty_TimeValue(), ecorePackage.getEInt(), "timeValue", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardProperty_TimUnit(), ecorePackage.getEString(), "timUnit", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardProperty_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardProperty_ConcenValue(), ecorePackage.getEString(), "concenValue", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardProperty_Units(), ecorePackage.getEString(), "units", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRewardProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stateExpressionEClass, StateExpression.class, "StateExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStateExpression_Lhs(), ecorePackage.getEString(), "lhs", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStateExpression_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateExpression_Rhs(), this.getConcentrationQuantity(), null, "rhs", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stateFormulaEClass, StateFormula.class, "StateFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStateFormula_Formula(), ecorePackage.getEString(), "formula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_AtomicFormula(), this.getStateExpression(), null, "atomicFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_NotFormula(), this.getStateFormula(), null, "notFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_BooleanFormula1(), this.getStateFormula(), null, "booleanFormula1", null, 0, -1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_BooleanFormula2(), this.getStateFormula(), null, "booleanFormula2", null, 0, -1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPropertyInitialCondition_Variable(), this.getVariableAssignmentObject(), null, "variable", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPropertyInitialCondition_Value(), this.getQuantity(), null, "value", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPropertyInitialCondition_Value(), this.getConcentrationQuantity(), null, "value", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(quantityEClass, Quantity.class, "Quantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getQuantity_Value(), ecorePackage.getEString(), "value", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuantity_Units(), ecorePackage.getEString(), "units", null, 0, 1, Quantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(concentrationQuantityEClass, ConcentrationQuantity.class, "ConcentrationQuantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConcentrationQuantity_Value(), ecorePackage.getEString(), "value", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConcentrationQuantity_Units(), ecorePackage.getEString(), "units", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getList_Entries(), this.getAtomicVariableExpressionObject(), null, "entries", null, 0, -1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

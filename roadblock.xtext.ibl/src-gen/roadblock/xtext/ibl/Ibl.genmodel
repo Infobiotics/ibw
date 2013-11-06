@@ -114,23 +114,38 @@
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//PropertyDefinition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/property"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/condition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyDefinition/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/time"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyDefinition/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyDefinition/concentration"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//Property">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Property/lhs"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Property/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//Property/rhs"/>
+    <genClasses ecoreClass="Ibl.ecore#//ProbabilityProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProbabilityProperty/stateFormula"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProbabilityProperty/pattern"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProbabilityProperty/stateFormula2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProbabilityProperty/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProbabilityProperty/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProbabilityProperty/timeUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProbabilityProperty/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ProbabilityProperty/probability"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProbabilityProperty/initialConditions"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//PropertyCondition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/lowerBound"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/upperBounds"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/operator"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//PropertyCondition/probability"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyCondition/initialConditions"/>
+    <genClasses ecoreClass="Ibl.ecore#//RewardProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RewardProperty/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RewardProperty/timeValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RewardProperty/timUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RewardProperty/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RewardProperty/concenValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//RewardProperty/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RewardProperty/initialConditions"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//StateExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//StateExpression/lhs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//StateExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//StateExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//StateFormula">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//StateFormula/formula"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//StateFormula/atomicFormula"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//StateFormula/notFormula"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//StateFormula/booleanFormula1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//StateFormula/booleanFormula2"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//PropertyInitialCondition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PropertyInitialCondition/variable"/>
@@ -139,6 +154,10 @@
     <genClasses ecoreClass="Ibl.ecore#//Quantity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//Quantity/units"/>
+    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ConcentrationQuantity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ConcentrationQuantity/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//ConcentrationQuantity/units"/>
     </genClasses>
     <genClasses ecoreClass="Ibl.ecore#//List">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//List/entries"/>

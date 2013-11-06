@@ -92,10 +92,13 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
-      case IblPackage.PROPERTY: return createProperty();
-      case IblPackage.PROPERTY_CONDITION: return createPropertyCondition();
+      case IblPackage.PROBABILITY_PROPERTY: return createProbabilityProperty();
+      case IblPackage.REWARD_PROPERTY: return createRewardProperty();
+      case IblPackage.STATE_EXPRESSION: return createStateExpression();
+      case IblPackage.STATE_FORMULA: return createStateFormula();
       case IblPackage.PROPERTY_INITIAL_CONDITION: return createPropertyInitialCondition();
       case IblPackage.QUANTITY: return createQuantity();
+      case IblPackage.CONCENTRATION_QUANTITY: return createConcentrationQuantity();
       case IblPackage.LIST: return createList();
       case IblPackage.IMPORT: return createImport();
       default:
@@ -416,10 +419,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Property createProperty()
+  public ProbabilityProperty createProbabilityProperty()
   {
-    PropertyImpl property = new PropertyImpl();
-    return property;
+    ProbabilityPropertyImpl probabilityProperty = new ProbabilityPropertyImpl();
+    return probabilityProperty;
   }
 
   /**
@@ -427,10 +430,32 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyCondition createPropertyCondition()
+  public RewardProperty createRewardProperty()
   {
-    PropertyConditionImpl propertyCondition = new PropertyConditionImpl();
-    return propertyCondition;
+    RewardPropertyImpl rewardProperty = new RewardPropertyImpl();
+    return rewardProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StateExpression createStateExpression()
+  {
+    StateExpressionImpl stateExpression = new StateExpressionImpl();
+    return stateExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StateFormula createStateFormula()
+  {
+    StateFormulaImpl stateFormula = new StateFormulaImpl();
+    return stateFormula;
   }
 
   /**
@@ -453,6 +478,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     QuantityImpl quantity = new QuantityImpl();
     return quantity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConcentrationQuantity createConcentrationQuantity()
+  {
+    ConcentrationQuantityImpl concentrationQuantity = new ConcentrationQuantityImpl();
+    return concentrationQuantity;
   }
 
   /**

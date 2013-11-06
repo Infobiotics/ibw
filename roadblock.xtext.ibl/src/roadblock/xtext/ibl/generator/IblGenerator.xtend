@@ -89,7 +89,7 @@ class IblGenerator implements IGenerator {
 		}
 		
 	}
-}
+
 
 
 def addProcessDefinition(Model emfModel, FunctionDefinition process){
@@ -137,9 +137,9 @@ for(ruleObject: rule.rhs.filter(typeof(RuleObject))){
 	emfRule.setForwardRate(1.0)
 	emfRule.setReverseRate(1.0)
 	return emfRule
+  }
+ }
 }
-
-
 
 // ********************************************************************
 // helpers for printing an emf model.
