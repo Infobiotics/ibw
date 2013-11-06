@@ -250,43 +250,69 @@ ATGCCommand:
 
 PropertyDefinition:
 	{PropertyDefinition}
-	'VERIFY'
-	((
-		'[' property+=Property (BooleanOperator property+=Property)* ']' condition=PropertyCondition	
-	) | 
-	(
-		'EXPECTED' '[' name=VariableName ']' 'AT TIME INSTANT' time=Quantity 'IS' ((operator=RelationalOperator concentration=Quantity) | '?')
-	))
+	'VERIFY' property=(ProbabilityProperty | RewardProperty)	
 ;
 
-Property:
-	{Property}
-	lhs=VariableName operator=RelationalOperator rhs=Quantity
-;
-
-PropertyCondition:
-	{PropertyCondition}
+ProbabilityProperty:
+	{ProbabilityProperty}
+	stateFormula=StateFormula	
 	(
-	'WILL HOLD' |
-	'NEVER HOLDS' |
-	'ALWAYS HOLDS' |
-	'EVENTUALLY HOLDS' | 
-	'SOMETIMES HOLDS'
+	pattern= PatternType | 
+	(pattern = SequencePatternType) stateFormula2=StateFormula
+		
 	)
 	(
-	'WITHIN TIME BOUND' '[' lowerBound=Quantity ',' upperBounds=Quantity ']'
-		(
-		'WITH PROBABILITY BOUND' ((operator=RelationalOperator probability=REAL) | '?') 
-		)?
+	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TimeUnit | 'AFTER' timeUnit=TimeUnit 
+	)?
+	(
+	'WITH PROBABILITY' ((operator=RelationalOperator probability=UnitInterval) | '?') 
 	)?
 	(
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
 	)?
 ;
 
+RewardProperty:
+	{RewardProperty}
+	'EXPECTED' '[' name=VariableName ']' ('AT' | 'WITHIN') timeValue=INT timUnit=TimeUnit 'IS ' ((operator=RelationalOperator concenValue=REAL units=ConcentrationUnit) | '?')  
+    (
+	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
+	)?
+;
+
+PatternType:
+	'EVENTUALLY HOLDS' |
+	'NEVER HOLDS' |
+	'ALWAYS HOLDS' |
+	'HOLDS IN STEASY-STATE' |
+	'HOLDS INFINITELY OFTEN'
+;
+
+SequencePatternType:
+	'WILL HOLD UNTIL THEN' | 
+	'IS FOLLOWED BY'  
+;
+
+StateExpression:
+	{StateExpression}
+	lhs=VariableName operator=RelationalOperator rhs=ConcentrationQuantity
+;
+
+StateFormula:
+	{StateFormula}
+	formula=
+	'[' atomicFormula=StateExpression']' | 
+	'[' 'NOT' notFormula=StateFormula']' |
+	'[' booleanFormula1+=StateFormula ('AND' | 'OR' | 'IMPLIES') booleanFormula2+=StateFormula ']'
+;
+
+//StateFormula:
+//	{StateFormula}
+//'[' stateFormula+=StateFormula (BooleanOperator stateFormula+=StateFormula)* ']'
+
 PropertyInitialCondition:
 	{PropertyInitialCondition}
-	variable=VariableAssignmentObject '=' value=Quantity	
+	variable=VariableAssignmentObject '=' value=ConcentrationQuantity	
 ;
 
 /////////////////
@@ -298,6 +324,10 @@ REAL:
 	Decimal | DecimalExp
 ;
 
+UnitInterval:
+	'1.0' | '.' (INT)* | '0.' (INT)* 
+;
+
 Decimal hidden():
 	('+'|'-')?  INT ('.' INT)?
 ;
@@ -306,15 +336,33 @@ DecimalExp hidden():
 	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
 ;
 
+TimeUnit:
+	's' | 'min' | 'mins' 
+;
+
+FluxUnit:
+'s^-1' | 'min^-1'	
+;
+
+ConcentrationUnit:
+	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules' 
+;
+
+Unit:
+	TimeUnit | FluxUnit | ConcentrationUnit
+;
+
 // a quantity with units
 Quantity:
 	{Quantity}
 	value=REAL units=Unit
 ;
 
-Unit:
-	's' | 'min' | 'mins' | 's^-1' | 'min^-1' | 'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules' 
+ConcentrationQuantity:
+	{ConcentrationQuantity}
+	value=REAL units=ConcentrationUnit
 ;
+
 // relational operators
 RelationalOperator:
 	'==' | '!=' | '<' | '>' | '<=' | '>='
@@ -322,7 +370,7 @@ RelationalOperator:
 
 // boolean operator
 BooleanOperator:
-	'&' | '|' | 'AND' | 'OR' | 'AND' 'NOT' | 'OR' 'NOT'
+	'NOT' |'AND' | 'OR' | 'IMPLIES'
 ;
 
 // qualified name

@@ -23,6 +23,12 @@ import roadblock.emf.ibl.Ibl.impl.IblPackageImpl
 import roadblock.xtext.ibl.ibl.FunctionDefinition
 import roadblock.xtext.ibl.ibl.PropertyDefinition
 import roadblock.xtext.ibl.ibl.RuleDefinition
+import roadblock.xtext.ibl.ibl.VariableComplex
+
+import java.io.File
+import java.io.FileOutputStream
+
+import org.eclipse.emf.ecore.EObject
 import roadblock.xtext.ibl.ibl.RuleObject
 import roadblock.xtext.ibl.ibl.VariableComplex
 
@@ -33,7 +39,7 @@ import roadblock.xtext.ibl.ibl.VariableComplex
  */
 class IblGenerator implements IGenerator {
 	private IblFactory factory
-	
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 	
 	
@@ -68,16 +74,18 @@ class IblGenerator implements IGenerator {
 			default: println('unknown type')
 			
 		}
-	}
 
-	println("After model populating:")
-	//println(showModel(emfModel))
-	
-	// parsing properties
-	for(propertyDefinition: resource.allContents.toIterable.filter(typeof(PropertyDefinition))){
-		println("New property Definition")
-		for(property: propertyDefinition.property){
-			println("property:" + property.lhs + " # " + property.operator + " # " + property.rhs.value + " # " + property.rhs.units)
+		println("After model populating:")
+
+		//println(showModel(emfModel))
+		// parsing properties
+		for (propertyDefinition : resource.allContents.toIterable.filter(typeof(PropertyDefinition))) {
+			println("New property Definition")
+
+			//for(property: propertyDefinition.property){
+			//	println("property:" + property.lhs + " # " + property.operator + " # " + property.rhs.value + " # " + property.rhs.units)
+			}
+
 		}
 		
 	}
@@ -124,13 +132,6 @@ for(ruleObject: rule.rhs.filter(typeof(RuleObject))){
 	if(ruleObject.class.toString == "roadblock.xtext.ibl.ibl.VariableComplex"){
 		emfMolecule.setName((ruleObject as VariableComplex).components.join('~'))
 		
-		}
-	else{
-			emfMolecule.setName(ruleObject.toString)
-		}	
-		emfRule.rightHandSide.add(emfMolecule)
-	}
-
 			
 	emfRule.setIsBidirectional(rule.reversible)
 	emfRule.setForwardRate(1.0)
@@ -223,3 +224,4 @@ def static fileToEmfModel(String filename){ // Don't forget to cast the result a
 }
 
 }
+
