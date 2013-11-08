@@ -7,15 +7,59 @@
   <genPackages prefix="Ibl" basePackage="roadblock.emf.ibl" disposableProviderFactory="true"
       ecorePackage="ibl.ecore#/">
     <genClasses ecoreClass="ibl.ecore#//Model">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/displayName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/processList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/cellList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/deviceList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/moleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/ATGCcommandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/ID"/>
     </genClasses>
-    <genClasses ecoreClass="ibl.ecore#//Process">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Process/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Process/ruleList"/>
+    <genClasses ecoreClass="ibl.ecore#//Kinetics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Kinetics/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/MoleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/outputList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/optionList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Kinetics/ID"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Rule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/displayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/isBidirectional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/forwardRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/reverseRate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/leftHandSide"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/rightHandSide"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/ID"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//MolecularSpecies">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/DisplayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/URI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/amount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Device">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/processList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/PartList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/ATGCCommandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/Kinetics"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Cell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/deviceList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/Kinetics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/moleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/ATGCCommandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/ID"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCDirective">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCDirective/command"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//ATGCDirective/partList"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

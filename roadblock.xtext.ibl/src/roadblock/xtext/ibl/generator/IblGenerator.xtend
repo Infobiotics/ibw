@@ -31,6 +31,9 @@ import java.io.FileOutputStream
 import org.eclipse.emf.ecore.EObject
 import roadblock.xtext.ibl.ibl.RuleObject
 import roadblock.xtext.ibl.ibl.VariableComplex
+import java.util.HashMap
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.resource.SaveOptions
 
 /**
  * Generates code from your model files on save.
@@ -46,11 +49,12 @@ class IblGenerator implements IGenerator {
 	
 	println("in generator")
 
-	// save the AST in a file
+//	 save the AST in a file
 	emfModelToFile(
 		resource.getContents().get(0) as roadblock.xtext.ibl.ibl.Model, 
 		"findme/" + resource.URI.lastSegment + "XtextModel"
 	)
+	
 
 
 	// Create an empty emf model
@@ -61,7 +65,7 @@ class IblGenerator implements IGenerator {
 	// set emfmodel attribute
 	emfModel.setName("Main model")
 	
-	// go through each functionDefinition
+	// go through each functionD0efinition
 	for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition))){
 		switch(functionDefinition.type){
 			case 'CELL': {println('Cell definition:') 
