@@ -3,10 +3,13 @@
  */
 package roadblock.xtext.ibl.generator;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -17,9 +20,12 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import roadblock.emf.ibl.Ibl.IblFactory;
+import roadblock.emf.ibl.Ibl.impl.IblPackageImpl;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.Model;
-import roadblock.xtext.ibl.ibl.RuleDefinition;
+import roadblock.xtext.ibl.ibl.PropertyDefinition;
 
 /**
  * Generates code from your model files on save.
@@ -28,81 +34,58 @@ import roadblock.xtext.ibl.ibl.RuleDefinition;
  */
 @SuppressWarnings("all")
 public class IblGenerator implements IGenerator {
-  private /* IblFactory */Object factory;
+  private IblFactory factory;
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nIblPackageImpl cannot be resolved to a type."
-      + "\nIblFactory cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\ninit cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateModel cannot be resolved"
-      + "\nsetName cannot be resolved");
-  }
-  
-  public void addProcessDefinition(final /* Model */Object emfModel, final FunctionDefinition process) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ncreateProcess cannot be resolved"
-      + "\nsetName cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\nprocessList cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\nruleList cannot be resolved");
-  }
-  
-  public Object populateRule(final RuleDefinition rule) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ncreateRule cannot be resolved"
-      + "\nsetName cannot be resolved"
-      + "\ncreateMolecule cannot be resolved"
-      + "\nsetName cannot be resolved"
-      + "\nsetIsBidirectional cannot be resolved"
-      + "\nsetForwardRate cannot be resolved"
-      + "\nsetReverseRate cannot be resolved");
-  }
-  
-  public String showModelAttributes(final int level, final /* Model */Object model) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved");
-  }
-  
-  public String showModel(final int level, final /* Model */Object model) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nprocessList cannot be resolved");
-  }
-  
-  public String showModel(final /* Model */Object model) {
-    return this.showModel(1, model);
-  }
-  
-  public String showProcessDefinitionAttributes(final int level, final Process process) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method name is undefined for the type IblGenerator");
-  }
-  
-  public String showProcessDefinition(final int level, final Process process) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method ruleList is undefined for the type IblGenerator");
-  }
-  
-  public String showRuleAttributes(final int level, final /* Rule */Object rule) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method name is undefined for the type IblGenerator"
-      + "\nThe method name is undefined for the type IblGenerator"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nname cannot be resolved"
-      + "\njoin cannot be resolved"
-      + "\nmap cannot be resolved"
-      + "\nrightHandSide cannot be resolved"
-      + "\njoin cannot be resolved"
-      + "\nmap cannot be resolved"
-      + "\nleftHandSide cannot be resolved");
-  }
-  
-  public String showRule(final int level, final /* Rule */Object rule) {
-    return this.showRuleAttributes(level, rule);
+    InputOutput.<String>println("in generator");
+    EList<EObject> _contents = resource.getContents();
+    EObject _get = _contents.get(0);
+    URI _uRI = resource.getURI();
+    String _lastSegment = _uRI.lastSegment();
+    String _plus = ("findme/" + _lastSegment);
+    String _plus_1 = (_plus + "XtextModel");
+    IblGenerator.emfModelToFile(
+      ((Model) _get), _plus_1);
+    IblPackageImpl.init();
+    this.factory = IblFactory.eINSTANCE;
+    final roadblock.emf.ibl.Ibl.Model emfModel = this.factory.createModel();
+    emfModel.setDisplayName("Main model");
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<FunctionDefinition> _filter = Iterables.<FunctionDefinition>filter(_iterable, FunctionDefinition.class);
+    for (final FunctionDefinition functionDefinition : _filter) {
+      {
+        String _type = functionDefinition.getType();
+        final String _switchValue = _type;
+        boolean _matched = false;
+        if (!_matched) {
+          if (Objects.equal(_switchValue,"CELL")) {
+            _matched=true;
+            InputOutput.<String>println("Cell definition:");
+            String _name = functionDefinition.getName();
+            InputOutput.<String>println(_name);
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(_switchValue,"DEVICE")) {
+            _matched=true;
+            InputOutput.<String>println("Device definition:");
+            String _name_1 = functionDefinition.getName();
+            InputOutput.<String>println(_name_1);
+          }
+        }
+        if (!_matched) {
+          InputOutput.<String>println("unknown type");
+        }
+        InputOutput.<String>println("After model populating:");
+        TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+        Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
+        Iterable<PropertyDefinition> _filter_1 = Iterables.<PropertyDefinition>filter(_iterable_1, PropertyDefinition.class);
+        for (final PropertyDefinition propertyDefinition : _filter_1) {
+          InputOutput.<String>println("New property Definition");
+        }
+      }
+    }
   }
   
   public static void emfModelToFile(final Model model, final String filename) {

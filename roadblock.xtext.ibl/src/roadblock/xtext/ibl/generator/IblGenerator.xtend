@@ -15,7 +15,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.emf.ibl.Ibl.Model
-import roadblock.emf.ibl.Ibl.Process
+import roadblock.emf.ibl.Ibl.Kinetics
 import roadblock.emf.ibl.Ibl.Rule
 import roadblock.emf.ibl.Ibl.impl.IblPackageImpl
 
@@ -63,7 +63,7 @@ class IblGenerator implements IGenerator {
 	val Model emfModel = factory.createModel
 	
 	// set emfmodel attribute
-	emfModel.setName("Main model")
+	emfModel.setDisplayName("Main model")
 	
 	// go through each functionD0efinition
 	for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition))){
@@ -74,7 +74,7 @@ class IblGenerator implements IGenerator {
 			case 'DEVICE': {println('Device definition:')
 						println(functionDefinition.name)}
 						
-			case 'PROCESS': addProcessDefinition(emfModel,functionDefinition)
+//			case 'PROCESS': addProcessDefinition(emfModel,functionDefinition)
 			default: println('unknown type')
 			
 		}
@@ -96,106 +96,106 @@ class IblGenerator implements IGenerator {
 
 
 
-def addProcessDefinition(Model emfModel, FunctionDefinition process){
-	println("Adding a process definition: " + process.name)
-	// create new emf process
-	val emfProcess = factory.createProcess
-	
-	// set emf process attributes from xtext model
-	emfProcess.setName(process.name)
-	
-	// add it to emfModel
-	emfModel.processList.add(emfProcess)
-	
-	// rules
-	for(rule: process.members.filter(typeof(RuleDefinition)))
-		emfProcess.ruleList.add(populateRule(rule))
-		
-	// parameters
-	for(parameter: process.parameters){
-		
-		//if(parameter.scope == 'input') emfProcess.inputList.add
-		
-	}
-}
-
-def populateRule(RuleDefinition rule){
-	val emfRule = factory.createRule
-	emfRule.setName(rule.name)
-	
-	// variables on right hand side
-
-//	for(complex: rule.rhs.filter(typeof(VariableComplex))){
-//		val emfMolecule = factory.createMolecule
-//		emfMolecule.setName(complex.components.join('~'))
-//		emfRule.rightHandSide.add(emfMolecule)
-//		}
-		
-for(ruleObject: rule.rhs.filter(typeof(RuleObject))){
-	val emfMolecule = factory.createMolecule
-	if(ruleObject.class.toString == "roadblock.xtext.ibl.ibl.VariableComplex"){
-		emfMolecule.setName((ruleObject as VariableComplex).components.join('~'))
-		
-			
-	emfRule.setIsBidirectional(rule.reversible)
-	emfRule.setForwardRate(1.0)
-	emfRule.setReverseRate(1.0)
-	return emfRule
-  }
- }
-}
-
-// ********************************************************************
-// helpers for printing an emf model.
-// ********************************************************************
-
-def showModelAttributes(int level, Model model){
-	val tab = "\n" + (1..level).map["  "].join('')
-	var s = tab + "Model definition:" + model.name	
-	return s		
-}
-
-def showModel(int level, Model model){
-	var s = showModelAttributes(level,model)
-	for(p: model.processList)
-		s = s + showProcessDefinition(level + 1, p)
-	return s	
-}
-
-def showModel(Model model){
-	return showModel(1, model)	
-}
-
-def showProcessDefinitionAttributes(int level, Process process){
-	val tab = "\n" + (1..level).map["  "].join('')
-	var s = tab + "Process definition:" + process.name	
-	return s		
-}
-
-def showProcessDefinition(int level, Process process){
-	var s = showProcessDefinitionAttributes(level,process)
-	for(r: process.ruleList)
-		s = s + showRule(level + 1, r)
-	return s			
-}
-
-
-def showRuleAttributes(int level, Rule rule){
-	val tab = "\n" + (1..level).map["  "].join('')
-	var s = tab + "Rule definition: "  + rule.name
-	s = s + tab + " Right hand side: " + rule.rightHandSide.map[e | e.name].join(', ')
-	s = s + tab + " Left hand side: " + rule.leftHandSide.map[e | e.name].join(', ')
-	
-	return s		
-}
-
-def showRule(int level, Rule rule){
-	return showRuleAttributes(level,rule)
-}	
-
-
-	
-	
+//def addProcessDefinition(Model emfModel, FunctionDefinition process){
+//	println("Adding a process definition: " + process.name)
+//	// create new emf process
+//	val emfProcess = factory.createProcess
+//	
+//	// set emf process attributes from xtext model
+//	emfProcess.setName(process.name)
+//	
+//	// add it to emfModel
+//	emfModel.processList.add(emfProcess)
+//	
+//	// rules
+//	for(rule: process.members.filter(typeof(RuleDefinition)))
+//		emfProcess.ruleList.add(populateRule(rule))
+//		
+//	// parameters
+//	for(parameter: process.parameters){
+//		
+//		//if(parameter.scope == 'input') emfProcess.inputList.add
+//		
+//	}
+//}
+//
+//def populateRule(RuleDefinition rule){
+//	val emfRule = factory.createRule
+//	emfRule.setName(rule.name)
+//	
+//	// variables on right hand side
+//
+////	for(complex: rule.rhs.filter(typeof(VariableComplex))){
+////		val emfMolecule = factory.createMolecule
+////		emfMolecule.setName(complex.components.join('~'))
+////		emfRule.rightHandSide.add(emfMolecule)
+////		}
+//		
+//for(ruleObject: rule.rhs.filter(typeof(RuleObject))){
+//	val emfMolecule = factory.createMolecularSpecies
+//	if(ruleObject.class.toString == "roadblock.xtext.ibl.ibl.VariableComplex"){
+//		emfMolecule.setDisplayName((ruleObject as VariableComplex).components.join('~'))
+//		
+//			
+//	emfRule.setIsBidirectional(rule.reversible)
+//	emfRule.setForwardRate(1.0)
+//	emfRule.setReverseRate(1.0)
+//	return emfRule
+//  }
+// }
+//}
+//
+//// ********************************************************************
+//// helpers for printing an emf model.
+//// ********************************************************************
+//
+//def showModelAttributes(int level, Model model){
+//	val tab = "\n" + (1..level).map["  "].join('')
+//	var s = tab + "Model definition:" + model.displayName	
+//	return s		
+//}
+//
+//def showModel(int level, Model model){
+//	var s = showModelAttributes(level,model)
+//	for(p: model.processList)
+//		s = s + showProcessDefinition(level + 1, p)
+//	return s	
+//}
+//
+//def showModel(Model model){
+//	return showModel(1, model)	
+//}
+//
+//def showProcessDefinitionAttributes(int level, Process process){
+//	val tab = "\n" + (1..level).map["  "].join('')
+//	var s = tab + "Process definition:" + process.name	
+//	return s		
+//}
+//
+//def showProcessDefinition(int level, Process process){
+//	var s = showProcessDefinitionAttributes(level,process)
+//	for(r: process.ruleList)
+//		s = s + showRule(level + 1, r)
+//	return s			
+//}
+//
+//
+//def showRuleAttributes(int level, Rule rule){
+//	val tab = "\n" + (1..level).map["  "].join('')
+//	var s = tab + "Rule definition: "  + rule.name
+//	s = s + tab + " Right hand side: " + rule.rightHandSide.map[e | e.name].join(', ')
+//	s = s + tab + " Left hand side: " + rule.leftHandSide.map[e | e.name].join(', ')
+//	
+//	return s		
+//}
+//
+//def showRule(int level, Rule rule){
+//	return showRuleAttributes(level,rule)
+//}	
+//
+//
+//	
+//	
 def static emfModelToFile(roadblock.xtext.ibl.ibl.Model  model, String filename){
 
 	val reg = Registry::INSTANCE
