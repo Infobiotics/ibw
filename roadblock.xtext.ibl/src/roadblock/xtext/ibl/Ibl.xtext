@@ -52,7 +52,7 @@ FunctionDefinition:
 
 // function types
 FunctionType:
-	'PROCESS' | 'CELL' | 'SYSTEM'  | 'REGION' 
+	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' |  'REGION' 
 ;
 
 // function parameter member
@@ -149,7 +149,7 @@ VariableQualifier:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'CELL' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM' | 'CHASSIS' | 'COMPLEX'
+	'MOLECULE' | 'CHASSIS' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' |  'REGION'
 ;
 
 // variable collections
@@ -284,7 +284,7 @@ PatternType:
 	'EVENTUALLY HOLDS' |
 	'NEVER HOLDS' |
 	'ALWAYS HOLDS' |
-	'HOLDS IN STEASY-STATE' |
+	'HOLDS IN STEADY-STATE' |
 	'HOLDS INFINITELY OFTEN'
 ;
 
