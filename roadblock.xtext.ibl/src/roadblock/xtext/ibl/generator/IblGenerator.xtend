@@ -45,7 +45,7 @@ class IblGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 	
-	
+	/* 
 	
 	println("in generator")
 
@@ -93,7 +93,7 @@ class IblGenerator implements IGenerator {
 		}
 		
 	}
-
+	
 
 
 //def addProcessDefinition(Model emfModel, FunctionDefinition process){
@@ -226,6 +226,7 @@ def static fileToEmfModel(String filename){ // Don't forget to cast the result a
     // example everything is hierarchical included in this first node
     return  resource2.getContents().get(0) //as roadblock.emf.ibl.Ibl.Model
 }
-
+*/
+}
 }
 
