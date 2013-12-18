@@ -1,6 +1,5 @@
 // xtext grammar for Roadblock IBL language
 // 2013, released under GNU GPL V3
-// jamie.twycross AT nottingham.ac.uk
 
 grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
 
@@ -30,30 +29,157 @@ ImportStatement:
 	'import' importedNamespace=QualifiedNameWithWildcard
 ;
 
-///////////////
-// functions //
-///////////////
+/////////////////////////
+// Function definition //
+/////////////////////////
+
+// function types
+FunctionType:
+	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' |  'REGION'
+;
 
 // a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' name=VariableName 'typeof' type=(FunctionType | VariableName) 
-	'('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'
+	'define' name=VariableName 'typeof' functionBody=(ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody)
 	(
 	'USES'
 		uses+=FunctionUseMember (',' uses+=FunctionUseMember)*
 	)?
 ;
 
-// function types
-FunctionType:
-	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' |  'REGION' 
+// Process body definition
+ProcessBody:
+	{ProcessBody}
+	 'PROCESS'
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=ProcessBodyMember*
+	'}'	
 ;
+
+// System body definition
+SystemBody:
+	{SystemBody}
+	 'SYSTEM'
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=SystemBodyMember*
+	'}'
+;
+
+// Plasmid body definition
+PlasmidBody:
+	{PlasmidBody}
+	 'PLASMID'
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=PlasmidBodyMember*
+	'}'
+;
+
+// Chromosome body definition
+ChromosomeBody:
+	{ChromosomeBody}
+	 'CHROMOSOME'
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=ChromosomeBodyMember*
+	'}'
+;
+
+// Cell body definition
+CellBody:
+	{CellBody}
+	 'CELL'
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=CellBodyMember*
+	'}'
+;
+
+// Region body definition
+RegionBody:
+	{RegionBody}
+	 'REGION'
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=RegionBodyMember*
+	'}'
+;
+
+// User defined function body definition
+CustomFunctionBody:
+	{CustomFunctionBody}
+	 functionType=VariableName
+     '('
+		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	')'
+	'{'
+		members+=CustomFunctionBodyMember*
+	'}'
+;
+
+//////////////////
+// Body members //
+//////////////////
+
+// Process definition body member
+ProcessBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | 
+	ProcessInstantiation   
+;
+
+// System definition body member
+SystemBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
+	ProcessInstantiation 
+;
+
+// Plasmid definition body member
+PlasmidBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
+	ProcessInstantiation | SystemInstantiation 
+;
+
+// Chromosome definition body member
+ChromosomeBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
+	ProcessInstantiation | SystemInstantiation 
+;
+
+// Cell definition body member
+CellBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition | 
+	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation                     
+;
+
+// Region definition body member
+RegionBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | CellInstantiation 
+;
+
+// User defined function body member
+CustomFunctionBodyMember:
+	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition | 
+	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation 
+;
+
+//////////////////////
+// function members //
+//////////////////////
 
 // function parameter member
 FunctionParameterMember:
@@ -65,15 +191,85 @@ FunctionParameterScope:
 	'input' | 'output' | 'optional'
 ;
 
-// function definition body member
-FunctionBodyMember:
-	RuleDefinition | DeviceDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition
-;
-
 // function use member
 FunctionUseMember:
 	type=VariableType name=VariableName
 ;
+
+/////////////
+// devices //
+////////////
+
+// device definition
+DeviceDefinition:
+	{DeviceDefinition}
+	'DEVICE' name=VariableName '=' 'new' 'DEVICE'
+	'('
+		'parts' '=' parts=List
+	')'
+	'('
+		('input' '=' input=List)?
+		(',' 'output' '=' outputput=List)?
+	')'
+	'{'
+		(members+=DeviceMembers*)
+	'}'
+;
+
+DeviceMembers:
+	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation 
+;
+
+////////////////////
+// instantiations //
+////////////////////
+
+// System instantiation 
+ProcessInstantiation:
+	{ProcessInstantiation}
+	'PROCESS' name=VariableName
+	(
+	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+// System instantiation 
+SystemInstantiation:
+	{SystemInstantiation}
+	'SYSTEM' name=VariableName
+	(
+	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+// Plasmid instantiation 
+PlasmidInstantiation:
+	{PlasmidInstantiation}
+	'PLASMID' name=VariableName
+	(
+	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+// Chromosome instantiation 
+ChromosomeInstantiation:
+	{ChromosomeInstantiation}
+	'CHROMOSOME' name=VariableName
+	(
+	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+// Cell instantiation 
+CellInstantiation:
+	{CellInstantiation}
+	'CELL' name=VariableName
+	(
+	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+
 
 ///////////////
 // variables //
@@ -82,6 +278,11 @@ FunctionUseMember:
 // a variable
 VariableName:
 	ID
+;
+
+// variable types
+VariableType:
+	'MOLECULE' | 'CHASSIS' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' 
 ;
 
 // a variable complex
@@ -96,16 +297,16 @@ VariableAttribute:
 	(name=VariableName | complex=VariableComplex) '.' attribute=VariableName
 ;
 
-
-UserDefinedType:
-	name=ID
-;
-
 // a definition of a variable
 VariableDefinition:
 	{VariableDefinition}
 	definition=(VariableDefinitionBuiltIn | VariableDefinitionUserDefined | VariableDefinitionCollection | VariableDefinitionBasic)
 	(':' qualifier=VariableQualifier)?
+;
+
+// a variable qualifier
+VariableQualifier:
+	'observable'
 ;
 
 VariableDefinitionBuiltIn:
@@ -132,6 +333,11 @@ VariableDefinitionCollection:
 	)?
 ;
 
+// variable collections
+CollectionID:
+	'LIST' | 'SET' | 'HASH'
+;
+
 VariableDefinitionBasic:
 	{VariableDefinitionBasic}
 	type=VariableType name=VariableName '=' expression=VariableExpression
@@ -140,21 +346,6 @@ VariableDefinitionBasic:
 // a parameter assignment
 ParameterAssignment:
 	name=VariableName '=' value=VariableExpressionObject
-;
-
-// a variable qualifier
-VariableQualifier:
-	'observable'
-;
-
-// variable types
-VariableType:
-	'MOLECULE' | 'CHASSIS' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' |  'REGION'
-;
-
-// variable collections
-CollectionID:
-	'LIST' | 'SET' | 'HASH'
 ;
 
 // a variable assignment
@@ -207,30 +398,6 @@ RuleObject:
 	VariableName | VariableComplex 
 ;
 
-/////////////
-// devices //
-/////////////
-
-// device definition
-DeviceDefinition:
-	{DeviceDefinition}
-	'DEVICE' name=VariableName '=' 'new' 'DEVICE'
-	'('
-		'parts' '=' parts=List
-	')'
-	'('
-		('input' '=' input=List)?
-		(',' 'output' '=' outputput=List)?
-	')'
-	'{'
-		(members+=DeviceMembers*)
-	'}'
-;
-
-DeviceMembers:
-	VariableDefinition | PropertyDefinition | ATGCDefinition
-;
-
 ////////////////
 // atgc rules //
 ////////////////
@@ -255,15 +422,20 @@ PropertyDefinition:
 
 ProbabilityProperty:
 	{ProbabilityProperty}
-	stateFormula=StateFormula	
-	(
-	pattern= PatternType | 
-	(pattern = SequencePatternType) stateFormula2=StateFormula
-		
-	)
-	(
-	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TimeUnit | 'AFTER' timeUnit=TimeUnit 
+	stateFormula=StateFormula
+	((		
+	(('EVENTUALLY HOLDS' | 'NEVER HOLDS' | 'ALWAYS HOLDS') |
+	(('WILL HOLD UNTIL THEN' | 'IS FOLLOWED BY') stateFormula2=StateFormula))		
+	
+	((
+	'AT' timeInstant=INT | 'BEFORE' timeInstant=INT | 'AFTER' timeInstant=INT |
+	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' ) 
+	 timeUnit=TimeUnit  
 	)?
+	)  |
+	
+	('HOLDS IN STEADY-STATE' | 'HOLDS INFINITELY OFTEN' 	
+	))
 	(
 	'WITH PROBABILITY' ((operator=RelationalOperator probability=UnitInterval) | '?') 
 	)?
@@ -272,25 +444,13 @@ ProbabilityProperty:
 	)?
 ;
 
+
 RewardProperty:
 	{RewardProperty}
 	'EXPECTED' '[' name=VariableName ']' ('AT' | 'WITHIN') timeValue=INT timUnit=TimeUnit 'IS ' ((operator=RelationalOperator concenValue=REAL units=ConcentrationUnit) | '?')  
     (
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
 	)?
-;
-
-PatternType:
-	'EVENTUALLY HOLDS' |
-	'NEVER HOLDS' |
-	'ALWAYS HOLDS' |
-	'HOLDS IN STEADY-STATE' |
-	'HOLDS INFINITELY OFTEN'
-;
-
-SequencePatternType:
-	'WILL HOLD UNTIL THEN' | 
-	'IS FOLLOWED BY'  
 ;
 
 StateExpression:
@@ -319,7 +479,6 @@ PropertyInitialCondition:
 // basic types //
 /////////////////
 
-// a real number
 REAL:
 	Decimal | DecimalExp
 ;
