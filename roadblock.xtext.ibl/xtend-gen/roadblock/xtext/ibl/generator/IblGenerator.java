@@ -3,28 +3,10 @@
  */
 package roadblock.xtext.ibl.generator;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.InputOutput;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import roadblock.emf.ibl.Ibl.IblFactory;
-import roadblock.emf.ibl.Ibl.IblPackage;
-import roadblock.xtext.ibl.ibl.FunctionDefinition;
-import roadblock.xtext.ibl.ibl.Model;
-import roadblock.xtext.ibl.ibl.PropertyDefinition;
 
 /**
  * Generates code from your model files on save.
@@ -36,88 +18,5 @@ public class IblGenerator implements IGenerator {
   private IblFactory factory;
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    InputOutput.<String>println("in generator");
-    EList<EObject> _contents = resource.getContents();
-    EObject _get = _contents.get(0);
-    URI _uRI = resource.getURI();
-    String _lastSegment = _uRI.lastSegment();
-    String _plus = ("findme/" + _lastSegment);
-    String _plus_1 = (_plus + "XtextModel");
-    IblGenerator.emfModelToFile(
-      ((Model) _get), _plus_1);
-    IblPackage.init();
-    this.factory = IblFactory.eINSTANCE;
-    final roadblock.emf.ibl.Ibl.Model emfModel = this.factory.createModel();
-    emfModel.setDisplayName("Main model");
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<FunctionDefinition> _filter = Iterables.<FunctionDefinition>filter(_iterable, FunctionDefinition.class);
-    for (final FunctionDefinition functionDefinition : _filter) {
-      {
-        String _type = functionDefinition.getType();
-        final String _switchValue = _type;
-        boolean _matched = false;
-        if (!_matched) {
-          if (Objects.equal(_switchValue,"CELL")) {
-            _matched=true;
-            InputOutput.<String>println("Cell definition:");
-            String _name = functionDefinition.getName();
-            InputOutput.<String>println(_name);
-          }
-        }
-        if (!_matched) {
-          if (Objects.equal(_switchValue,"DEVICE")) {
-            _matched=true;
-            InputOutput.<String>println("Device definition:");
-            String _name_1 = functionDefinition.getName();
-            InputOutput.<String>println(_name_1);
-          }
-        }
-        if (!_matched) {
-          InputOutput.<String>println("unknown type");
-        }
-        InputOutput.<String>println("After model populating:");
-        TreeIterator<EObject> _allContents_1 = resource.getAllContents();
-        Iterable<EObject> _iterable_1 = IteratorExtensions.<EObject>toIterable(_allContents_1);
-        Iterable<PropertyDefinition> _filter_1 = Iterables.<PropertyDefinition>filter(_iterable_1, PropertyDefinition.class);
-        for (final PropertyDefinition propertyDefinition : _filter_1) {
-          InputOutput.<String>println("New property Definition");
-        }
-      }
-    }
-  }
-  
-  public static void emfModelToFile(final Model model, final String filename) {
-    final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-    Map<String,Object> _extensionToFactoryMap = reg.getExtensionToFactoryMap();
-    final Map<String,Object> m = ((Map<String,Object>) _extensionToFactoryMap);
-    XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
-    m.put("iblXtextModel", _xMIResourceFactoryImpl);
-    ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
-    final ResourceSetImpl resSet = _resourceSetImpl;
-    URI _createURI = URI.createURI(filename);
-    Resource resource = resSet.createResource(_createURI);
-    EList<EObject> _contents = resource.getContents();
-    _contents.add(model);
-    try {
-      resource.save(Collections.EMPTY_MAP);
-    } catch (final Throwable _t) {
-      if (_t instanceof IOException) {
-        final IOException e = (IOException)_t;
-        InputOutput.<String>println("emfModelToFile: something wrong when writing to file");
-        e.printStackTrace();
-      } else {
-        throw Exceptions.sneakyThrow(_t);
-      }
-    }
-  }
-  
-  public static EObject fileToEmfModel(final String filename) {
-    ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
-    final ResourceSetImpl resSet = _resourceSetImpl;
-    URI _createURI = URI.createURI(filename);
-    final Resource resource2 = resSet.getResource(_createURI, true);
-    EList<EObject> _contents = resource2.getContents();
-    return _contents.get(0);
   }
 }
