@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import roadblock.emf.ibl.Ibl.*;
+import roadblock.emf.ibl.Ibl.System;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,6 +69,14 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	protected IblSwitch<Adapter> modelSwitch =
 		new IblSwitch<Adapter>() {
 			@Override
+			public Adapter caseIVisitable(IVisitable object) {
+				return createIVisitableAdapter();
+			}
+			@Override
+			public <TResult> Adapter caseIVisitor(IVisitor<TResult> object) {
+				return createIVisitorAdapter();
+			}
+			@Override
 			public Adapter caseModel(Model object) {
 				return createModelAdapter();
 			}
@@ -94,6 +103,90 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseATGCDirective(ATGCDirective object) {
 				return createATGCDirectiveAdapter();
+			}
+			@Override
+			public Adapter caseSystem(System object) {
+				return createSystemAdapter();
+			}
+			@Override
+			public Adapter caseChromosome(Chromosome object) {
+				return createChromosomeAdapter();
+			}
+			@Override
+			public Adapter casePlasmid(Plasmid object) {
+				return createPlasmidAdapter();
+			}
+			@Override
+			public Adapter caseIProperty(IProperty object) {
+				return createIPropertyAdapter();
+			}
+			@Override
+			public Adapter caseProbabilityProperty(ProbabilityProperty object) {
+				return createProbabilityPropertyAdapter();
+			}
+			@Override
+			public Adapter caseIProbabilityConstraint(IProbabilityConstraint object) {
+				return createIProbabilityConstraintAdapter();
+			}
+			@Override
+			public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
+				return createPropertyInitialConditionAdapter();
+			}
+			@Override
+			public Adapter caseConcreteProbabilityConstraint(ConcreteProbabilityConstraint object) {
+				return createConcreteProbabilityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseUnknownProbabilityConstraint(UnknownProbabilityConstraint object) {
+				return createUnknownProbabilityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseITimeConstraint(ITimeConstraint object) {
+				return createITimeConstraintAdapter();
+			}
+			@Override
+			public Adapter caseTimeInterval(TimeInterval object) {
+				return createTimeIntervalAdapter();
+			}
+			@Override
+			public Adapter caseTimeInstant(TimeInstant object) {
+				return createTimeInstantAdapter();
+			}
+			@Override
+			public Adapter caseUnaryProbabilityProperty(UnaryProbabilityProperty object) {
+				return createUnaryProbabilityPropertyAdapter();
+			}
+			@Override
+			public Adapter caseBinaryProbabilityProperty(BinaryProbabilityProperty object) {
+				return createBinaryProbabilityPropertyAdapter();
+			}
+			@Override
+			public Adapter caseRewardProperty(RewardProperty object) {
+				return createRewardPropertyAdapter();
+			}
+			@Override
+			public Adapter caseSteadyStateProperty(SteadyStateProperty object) {
+				return createSteadyStatePropertyAdapter();
+			}
+			@Override
+			public Adapter caseConcentrationConstraint(ConcentrationConstraint object) {
+				return createConcentrationConstraintAdapter();
+			}
+			@Override
+			public Adapter caseIStateFormula(IStateFormula object) {
+				return createIStateFormulaAdapter();
+			}
+			@Override
+			public Adapter caseBinaryStateFormula(BinaryStateFormula object) {
+				return createBinaryStateFormulaAdapter();
+			}
+			@Override
+			public Adapter caseNotStateFormula(NotStateFormula object) {
+				return createNotStateFormulaAdapter();
+			}
+			@Override
+			public Adapter caseStateExpression(StateExpression object) {
+				return createStateExpressionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -210,6 +303,328 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createATGCDirectiveAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.System <em>System</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.System
+	 * @generated
+	 */
+	public Adapter createSystemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Chromosome <em>Chromosome</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.Chromosome
+	 * @generated
+	 */
+	public Adapter createChromosomeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Plasmid <em>Plasmid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.Plasmid
+	 * @generated
+	 */
+	public Adapter createPlasmidAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IVisitable <em>IVisitable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IVisitable
+	 * @generated
+	 */
+	public Adapter createIVisitableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IVisitor <em>IVisitor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IVisitor
+	 * @generated
+	 */
+	public Adapter createIVisitorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IProperty <em>IProperty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IProperty
+	 * @generated
+	 */
+	public Adapter createIPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty <em>Probability Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ProbabilityProperty
+	 * @generated
+	 */
+	public Adapter createProbabilityPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IProbabilityConstraint <em>IProbability Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IProbabilityConstraint
+	 * @generated
+	 */
+	public Adapter createIProbabilityConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
+	 * @generated
+	 */
+	public Adapter createPropertyInitialConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint <em>Concrete Probability Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint
+	 * @generated
+	 */
+	public Adapter createConcreteProbabilityConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint <em>Unknown Probability Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint
+	 * @generated
+	 */
+	public Adapter createUnknownProbabilityConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ITimeConstraint <em>ITime Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ITimeConstraint
+	 * @generated
+	 */
+	public Adapter createITimeConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.TimeInterval <em>Time Interval</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.TimeInterval
+	 * @generated
+	 */
+	public Adapter createTimeIntervalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.TimeInstant <em>Time Instant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.TimeInstant
+	 * @generated
+	 */
+	public Adapter createTimeInstantAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty <em>Unary Probability Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.UnaryProbabilityProperty
+	 * @generated
+	 */
+	public Adapter createUnaryProbabilityPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty <em>Binary Probability Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.BinaryProbabilityProperty
+	 * @generated
+	 */
+	public Adapter createBinaryProbabilityPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.RewardProperty <em>Reward Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.RewardProperty
+	 * @generated
+	 */
+	public Adapter createRewardPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty <em>Steady State Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.SteadyStateProperty
+	 * @generated
+	 */
+	public Adapter createSteadyStatePropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcentrationConstraint <em>Concentration Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationConstraint
+	 * @generated
+	 */
+	public Adapter createConcentrationConstraintAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IStateFormula <em>IState Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IStateFormula
+	 * @generated
+	 */
+	public Adapter createIStateFormulaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula <em>Binary State Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.BinaryStateFormula
+	 * @generated
+	 */
+	public Adapter createBinaryStateFormulaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.NotStateFormula <em>Not State Formula</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.NotStateFormula
+	 * @generated
+	 */
+	public Adapter createNotStateFormulaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.StateExpression
+	 * @generated
+	 */
+	public Adapter createStateExpressionAdapter() {
 		return null;
 	}
 
