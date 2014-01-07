@@ -13,7 +13,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.generator.IFileSystemAccess;
@@ -22,7 +21,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import roadblock.emf.ibl.Ibl.IblFactory;
-import roadblock.emf.ibl.Ibl.impl.IblPackageImpl;
+import roadblock.emf.ibl.Ibl.IblPackage;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
@@ -46,7 +45,7 @@ public class IblGenerator implements IGenerator {
     String _plus_1 = (_plus + "XtextModel");
     IblGenerator.emfModelToFile(
       ((Model) _get), _plus_1);
-    IblPackageImpl.init();
+    IblPackage.init();
     this.factory = IblFactory.eINSTANCE;
     final roadblock.emf.ibl.Ibl.Model emfModel = this.factory.createModel();
     emfModel.setDisplayName("Main model");
@@ -89,7 +88,7 @@ public class IblGenerator implements IGenerator {
   }
   
   public static void emfModelToFile(final Model model, final String filename) {
-    final Registry reg = Registry.INSTANCE;
+    final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
     Map<String,Object> _extensionToFactoryMap = reg.getExtensionToFactoryMap();
     final Map<String,Object> m = ((Map<String,Object>) _extensionToFactoryMap);
     XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();

@@ -21,7 +21,6 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  roadblock.emf.ibl.Ibl,
- roadblock.emf.ibl.Ibl.impl,
  roadblock.emf.ibl.Ibl.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: roadblock.xtext.ibl,
