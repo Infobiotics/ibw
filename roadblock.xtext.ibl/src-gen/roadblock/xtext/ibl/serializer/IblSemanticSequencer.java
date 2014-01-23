@@ -15,8 +15,14 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.CellBody;
+import roadblock.xtext.ibl.ibl.CellInstantiation;
+import roadblock.xtext.ibl.ibl.ChromosomeBody;
+import roadblock.xtext.ibl.ibl.ChromosomeInstantiation;
 import roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.ConcentrationConstraint;
 import roadblock.xtext.ibl.ibl.ConcentrationQuantity;
+import roadblock.xtext.ibl.ibl.CustomFunctionBody;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
@@ -26,16 +32,26 @@ import roadblock.xtext.ibl.ibl.Import;
 import roadblock.xtext.ibl.ibl.List;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
+import roadblock.xtext.ibl.ibl.PlasmidBody;
+import roadblock.xtext.ibl.ibl.PlasmidInstantiation;
+import roadblock.xtext.ibl.ibl.ProbabilityConstraint;
 import roadblock.xtext.ibl.ibl.ProbabilityProperty;
+import roadblock.xtext.ibl.ibl.ProcessBody;
+import roadblock.xtext.ibl.ibl.ProcessInstantiation;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
+import roadblock.xtext.ibl.ibl.RegionBody;
 import roadblock.xtext.ibl.ibl.RewardProperty;
+import roadblock.xtext.ibl.ibl.RewardTimeInstant;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.StateExpression;
 import roadblock.xtext.ibl.ibl.StateFormula;
-import roadblock.xtext.ibl.ibl.UserDefinedType;
+import roadblock.xtext.ibl.ibl.SystemBody;
+import roadblock.xtext.ibl.ibl.SystemInstantiation;
+import roadblock.xtext.ibl.ibl.TimeInstant;
+import roadblock.xtext.ibl.ibl.TimeInterval;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAssignmentObject;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
@@ -58,8 +74,12 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case IblPackage.ATGC_DEFINITION:
 				if(context == grammarAccess.getATGCDefinitionRule() ||
+				   context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
 				   context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getFunctionBodyMemberRule()) {
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule()) {
 					sequence_ATGCDefinition(context, (ATGCDefinition) semanticObject); 
 					return; 
 				}
@@ -71,10 +91,43 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.CELL_BODY:
+				if(context == grammarAccess.getCellBodyRule()) {
+					sequence_CellBody(context, (CellBody) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.CELL_INSTANTIATION:
+				if(context == grammarAccess.getCellInstantiationRule() ||
+				   context == grammarAccess.getRegionBodyMemberRule()) {
+					sequence_CellInstantiation(context, (CellInstantiation) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.CHROMOSOME_BODY:
+				if(context == grammarAccess.getChromosomeBodyRule()) {
+					sequence_ChromosomeBody(context, (ChromosomeBody) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.CHROMOSOME_INSTANTIATION:
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeInstantiationRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule()) {
+					sequence_ChromosomeInstantiation(context, (ChromosomeInstantiation) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.COMPOUND_VARIABLE_EXPRESSION_OBJECT:
 				if(context == grammarAccess.getCompoundVariableExpressionObjectRule() ||
 				   context == grammarAccess.getVariableExpressionObjectRule()) {
 					sequence_CompoundVariableExpressionObject(context, (CompoundVariableExpressionObject) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.CONCENTRATION_CONSTRAINT:
+				if(context == grammarAccess.getConcentrationConstraintRule()) {
+					sequence_ConcentrationConstraint(context, (ConcentrationConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -84,9 +137,19 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.CUSTOM_FUNCTION_BODY:
+				if(context == grammarAccess.getCustomFunctionBodyRule()) {
+					sequence_CustomFunctionBody(context, (CustomFunctionBody) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.DEVICE_DEFINITION:
-				if(context == grammarAccess.getDeviceDefinitionRule() ||
-				   context == grammarAccess.getFunctionBodyMemberRule()) {
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getDeviceDefinitionRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule()) {
 					sequence_DeviceDefinition(context, (DeviceDefinition) semanticObject); 
 					return; 
 				}
@@ -135,16 +198,59 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.PLASMID_BODY:
+				if(context == grammarAccess.getPlasmidBodyRule()) {
+					sequence_PlasmidBody(context, (PlasmidBody) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.PLASMID_INSTANTIATION:
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getPlasmidInstantiationRule()) {
+					sequence_PlasmidInstantiation(context, (PlasmidInstantiation) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.PROBABILITY_CONSTRAINT:
+				if(context == grammarAccess.getProbabilityConstraintRule()) {
+					sequence_ProbabilityConstraint(context, (ProbabilityConstraint) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.PROBABILITY_PROPERTY:
 				if(context == grammarAccess.getProbabilityPropertyRule()) {
 					sequence_ProbabilityProperty(context, (ProbabilityProperty) semanticObject); 
 					return; 
 				}
 				else break;
+			case IblPackage.PROCESS_BODY:
+				if(context == grammarAccess.getProcessBodyRule()) {
+					sequence_ProcessBody(context, (ProcessBody) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.PROCESS_INSTANTIATION:
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getProcessBodyMemberRule() ||
+				   context == grammarAccess.getProcessInstantiationRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule()) {
+					sequence_ProcessInstantiation(context, (ProcessInstantiation) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.PROPERTY_DEFINITION:
-				if(context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getFunctionBodyMemberRule() ||
-				   context == grammarAccess.getPropertyDefinitionRule()) {
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getPropertyDefinitionRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule()) {
 					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
 					return; 
 				}
@@ -161,15 +267,33 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case IblPackage.REGION_BODY:
+				if(context == grammarAccess.getRegionBodyRule()) {
+					sequence_RegionBody(context, (RegionBody) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.REWARD_PROPERTY:
 				if(context == grammarAccess.getRewardPropertyRule()) {
 					sequence_RewardProperty(context, (RewardProperty) semanticObject); 
 					return; 
 				}
 				else break;
+			case IblPackage.REWARD_TIME_INSTANT:
+				if(context == grammarAccess.getRewardTimeInstantRule()) {
+					sequence_RewardTimeInstant(context, (RewardTimeInstant) semanticObject); 
+					return; 
+				}
+				else break;
 			case IblPackage.RULE_DEFINITION:
-				if(context == grammarAccess.getFunctionBodyMemberRule() ||
-				   context == grammarAccess.getRuleDefinitionRule()) {
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getProcessBodyMemberRule() ||
+				   context == grammarAccess.getRegionBodyMemberRule() ||
+				   context == grammarAccess.getRuleDefinitionRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule()) {
 					sequence_RuleDefinition(context, (RuleDefinition) semanticObject); 
 					return; 
 				}
@@ -192,14 +316,42 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case IblPackage.USER_DEFINED_TYPE:
-				if(context == grammarAccess.getUserDefinedTypeRule()) {
-					sequence_UserDefinedType(context, (UserDefinedType) semanticObject); 
+			case IblPackage.SYSTEM_BODY:
+				if(context == grammarAccess.getSystemBodyRule()) {
+					sequence_SystemBody(context, (SystemBody) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.SYSTEM_INSTANTIATION:
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getSystemInstantiationRule()) {
+					sequence_SystemInstantiation(context, (SystemInstantiation) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.TIME_INSTANT:
+				if(context == grammarAccess.getTimeInstantRule()) {
+					sequence_TimeInstant(context, (TimeInstant) semanticObject); 
+					return; 
+				}
+				else break;
+			case IblPackage.TIME_INTERVAL:
+				if(context == grammarAccess.getTimeIntervalRule()) {
+					sequence_TimeInterval(context, (TimeInterval) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.VARIABLE_ASSIGNMENT:
-				if(context == grammarAccess.getFunctionBodyMemberRule() ||
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getProcessBodyMemberRule() ||
+				   context == grammarAccess.getRegionBodyMemberRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule() ||
 				   context == grammarAccess.getVariableAssignmentRule()) {
 					sequence_VariableAssignment(context, (VariableAssignment) semanticObject); 
 					return; 
@@ -226,8 +378,14 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.VARIABLE_DEFINITION:
-				if(context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getFunctionBodyMemberRule() ||
+				if(context == grammarAccess.getCellBodyMemberRule() ||
+				   context == grammarAccess.getChromosomeBodyMemberRule() ||
+				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				   context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				   context == grammarAccess.getProcessBodyMemberRule() ||
+				   context == grammarAccess.getRegionBodyMemberRule() ||
+				   context == grammarAccess.getSystemBodyMemberRule() ||
 				   context == grammarAccess.getVariableDefinitionRule()) {
 					sequence_VariableDefinition(context, (VariableDefinition) semanticObject); 
 					return; 
@@ -287,6 +445,42 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=CellBodyMember*)
+	 */
+	protected void sequence_CellBody(EObject context, CellBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName (constructor=VariableName (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?)
+	 */
+	protected void sequence_CellInstantiation(EObject context, CellInstantiation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=ChromosomeBodyMember*)
+	 */
+	protected void sequence_ChromosomeBody(EObject context, ChromosomeBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName (constructor=VariableName (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?)
+	 */
+	protected void sequence_ChromosomeInstantiation(EObject context, ChromosomeInstantiation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     list=List
 	 */
 	protected void sequence_CompoundVariableExpressionObject(EObject context, CompoundVariableExpressionObject semanticObject) {
@@ -303,20 +497,38 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (value=REAL units=ConcentrationUnit)
+	 *     (operator=RelationalOperator value=REAL unit=ConcentrationUnit)
+	 */
+	protected void sequence_ConcentrationConstraint(EObject context, ConcentrationConstraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (value=REAL unit=ConcentrationUnit)
 	 */
 	protected void sequence_ConcentrationQuantity(EObject context, ConcentrationQuantity semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__VALUE));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__UNITS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__UNITS));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__UNIT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.CONCENTRATION_QUANTITY__UNIT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getConcentrationQuantityAccess().getValueREALParserRuleCall_1_0(), semanticObject.getValue());
-		feeder.accept(grammarAccess.getConcentrationQuantityAccess().getUnitsConcentrationUnitParserRuleCall_2_0(), semanticObject.getUnits());
+		feeder.accept(grammarAccess.getConcentrationQuantityAccess().getUnitConcentrationUnitParserRuleCall_2_0(), semanticObject.getUnit());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (functionType=VariableName (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=CustomFunctionBodyMember*)
+	 */
+	protected void sequence_CustomFunctionBody(EObject context, CustomFunctionBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -333,9 +545,15 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         name=VariableName 
-	 *         (type=FunctionType | type=VariableName) 
-	 *         (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? 
-	 *         members+=FunctionBodyMember* 
+	 *         (
+	 *             functionBody=ProcessBody | 
+	 *             functionBody=SystemBody | 
+	 *             functionBody=PlasmidBody | 
+	 *             functionBody=ChromosomeBody | 
+	 *             functionBody=CellBody | 
+	 *             functionBody=RegionBody | 
+	 *             functionBody=CustomFunctionBody
+	 *         ) 
 	 *         (uses+=FunctionUseMember uses+=FunctionUseMember*)?
 	 *     )
 	 */
@@ -427,15 +645,71 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=PlasmidBodyMember*)
+	 */
+	protected void sequence_PlasmidBody(EObject context, PlasmidBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName (constructor=VariableName (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?)
+	 */
+	protected void sequence_PlasmidInstantiation(EObject context, PlasmidInstantiation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((operator=RelationalOperator probability=UnitInterval) | hasUnknownProbability?='?')
+	 */
+	protected void sequence_ProbabilityConstraint(EObject context, ProbabilityConstraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
-	 *         stateFormula=StateFormula 
-	 *         (pattern=PatternType | (pattern=SequencePatternType stateFormula2=StateFormula)) 
-	 *         ((lowerBound=INT upperBound=INT timeUnit=TimeUnit) | timeUnit=TimeUnit)? 
-	 *         (operator=RelationalOperator probability=UnitInterval)? 
+	 *         stateFormula1=StateFormula 
+	 *         (
+	 *             (
+	 *                 (
+	 *                     isEventually?='EVENTUALLY HOLDS' | 
+	 *                     isNever?='NEVER HOLDS' | 
+	 *                     isAlways?='ALWAYS HOLDS' | 
+	 *                     ((isUntilThen?='WILL HOLD UNTIL THEN' | isFollowedBy?='IS FOLLOWED BY') stateFormula2=StateFormula)
+	 *                 ) 
+	 *                 (timeInstant=TimeInstant | timeInterval=TimeInterval)?
+	 *             ) | 
+	 *             isSteadyState?='HOLDS IN STEADY-STATE' | 
+	 *             isInfinitelyOften?='HOLDS INFINITELY OFTEN'
+	 *         ) 
+	 *         probabilityConstraint=ProbabilityConstraint? 
 	 *         (initialConditions+=PropertyInitialCondition initialConditions+=PropertyInitialCondition*)?
 	 *     )
 	 */
 	protected void sequence_ProbabilityProperty(EObject context, ProbabilityProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=ProcessBodyMember*)
+	 */
+	protected void sequence_ProcessBody(EObject context, ProcessBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName (constructor=VariableName (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?)
+	 */
+	protected void sequence_ProcessInstantiation(EObject context, ProcessInstantiation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -489,15 +763,32 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=RegionBodyMember*)
+	 */
+	protected void sequence_RegionBody(EObject context, RegionBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (
 	 *         name=VariableName 
-	 *         timeValue=INT 
-	 *         timUnit=TimeUnit 
-	 *         (operator=RelationalOperator concenValue=REAL units=ConcentrationUnit)? 
+	 *         timeInstant=RewardTimeInstant 
+	 *         concentrationConstraint=ConcentrationConstraint 
 	 *         (initialConditions+=PropertyInitialCondition initialConditions+=PropertyInitialCondition*)?
 	 *     )
 	 */
 	protected void sequence_RewardProperty(EObject context, RewardProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((isEqualTo?='AT' | isLessThanOrEqual?='WITHIN') timeValue=INT timeUnit=TimeUnit)
+	 */
+	protected void sequence_RewardTimeInstant(EObject context, RewardTimeInstant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -522,22 +813,22 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (lhs=VariableName operator=RelationalOperator rhs=ConcentrationQuantity)
+	 *     (name=VariableName operator=RelationalOperator concentrationQuantity=ConcentrationQuantity)
 	 */
 	protected void sequence_StateExpression(EObject context, StateExpression semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__LHS));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__NAME));
 			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__OPERATOR) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__OPERATOR));
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__RHS));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.STATE_EXPRESSION__CONCENTRATION_QUANTITY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.STATE_EXPRESSION__CONCENTRATION_QUANTITY));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStateExpressionAccess().getLhsVariableNameParserRuleCall_1_0(), semanticObject.getLhs());
+		feeder.accept(grammarAccess.getStateExpressionAccess().getNameVariableNameParserRuleCall_1_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getStateExpressionAccess().getOperatorRelationalOperatorParserRuleCall_2_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getStateExpressionAccess().getRhsConcentrationQuantityParserRuleCall_3_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getStateExpressionAccess().getConcentrationQuantityConcentrationQuantityParserRuleCall_3_0(), semanticObject.getConcentrationQuantity());
 		feeder.finish();
 	}
 	
@@ -553,16 +844,52 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=SystemBodyMember*)
 	 */
-	protected void sequence_UserDefinedType(EObject context, UserDefinedType semanticObject) {
+	protected void sequence_SystemBody(EObject context, SystemBody semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=VariableName (constructor=VariableName (parameters+=ParameterAssignment parameters+=ParameterAssignment*)?)?)
+	 */
+	protected void sequence_SystemInstantiation(EObject context, SystemInstantiation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         ((isEqualTo?='AT' timeInstant=INT) | (isLessThanOrEqual?='BEFORE' timeInstant=INT) | (isGreaterThanOrEqual?='AFTER' timeInstant=INT)) 
+	 *         timeUnit=TimeUnit
+	 *     )
+	 */
+	protected void sequence_TimeInstant(EObject context, TimeInstant semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (lowerBound=INT upperBound=INT timeUnit=TimeUnit)
+	 */
+	protected void sequence_TimeInterval(EObject context, TimeInterval semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.USER_DEFINED_TYPE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.USER_DEFINED_TYPE__NAME));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.TIME_INTERVAL__LOWER_BOUND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.TIME_INTERVAL__LOWER_BOUND));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.TIME_INTERVAL__UPPER_BOUND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.TIME_INTERVAL__UPPER_BOUND));
+			if(transientValues.isValueTransient(semanticObject, IblPackage.Literals.TIME_INTERVAL__TIME_UNIT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IblPackage.Literals.TIME_INTERVAL__TIME_UNIT));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getUserDefinedTypeAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getTimeIntervalAccess().getLowerBoundINTTerminalRuleCall_3_0(), semanticObject.getLowerBound());
+		feeder.accept(grammarAccess.getTimeIntervalAccess().getUpperBoundINTTerminalRuleCall_5_0(), semanticObject.getUpperBound());
+		feeder.accept(grammarAccess.getTimeIntervalAccess().getTimeUnitTimeUnitParserRuleCall_7_0(), semanticObject.getTimeUnit());
 		feeder.finish();
 	}
 	

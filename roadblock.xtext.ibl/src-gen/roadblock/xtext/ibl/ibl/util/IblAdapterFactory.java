@@ -95,19 +95,119 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionDefinitionAdapter();
       }
       @Override
+      public Adapter caseProcessBody(ProcessBody object)
+      {
+        return createProcessBodyAdapter();
+      }
+      @Override
+      public Adapter caseSystemBody(SystemBody object)
+      {
+        return createSystemBodyAdapter();
+      }
+      @Override
+      public Adapter casePlasmidBody(PlasmidBody object)
+      {
+        return createPlasmidBodyAdapter();
+      }
+      @Override
+      public Adapter caseChromosomeBody(ChromosomeBody object)
+      {
+        return createChromosomeBodyAdapter();
+      }
+      @Override
+      public Adapter caseCellBody(CellBody object)
+      {
+        return createCellBodyAdapter();
+      }
+      @Override
+      public Adapter caseRegionBody(RegionBody object)
+      {
+        return createRegionBodyAdapter();
+      }
+      @Override
+      public Adapter caseCustomFunctionBody(CustomFunctionBody object)
+      {
+        return createCustomFunctionBodyAdapter();
+      }
+      @Override
+      public Adapter caseProcessBodyMember(ProcessBodyMember object)
+      {
+        return createProcessBodyMemberAdapter();
+      }
+      @Override
+      public Adapter caseSystemBodyMember(SystemBodyMember object)
+      {
+        return createSystemBodyMemberAdapter();
+      }
+      @Override
+      public Adapter casePlasmidBodyMember(PlasmidBodyMember object)
+      {
+        return createPlasmidBodyMemberAdapter();
+      }
+      @Override
+      public Adapter caseChromosomeBodyMember(ChromosomeBodyMember object)
+      {
+        return createChromosomeBodyMemberAdapter();
+      }
+      @Override
+      public Adapter caseCellBodyMember(CellBodyMember object)
+      {
+        return createCellBodyMemberAdapter();
+      }
+      @Override
+      public Adapter caseRegionBodyMember(RegionBodyMember object)
+      {
+        return createRegionBodyMemberAdapter();
+      }
+      @Override
+      public Adapter caseCustomFunctionBodyMember(CustomFunctionBodyMember object)
+      {
+        return createCustomFunctionBodyMemberAdapter();
+      }
+      @Override
       public Adapter caseFunctionParameterMember(FunctionParameterMember object)
       {
         return createFunctionParameterMemberAdapter();
       }
       @Override
-      public Adapter caseFunctionBodyMember(FunctionBodyMember object)
-      {
-        return createFunctionBodyMemberAdapter();
-      }
-      @Override
       public Adapter caseFunctionUseMember(FunctionUseMember object)
       {
         return createFunctionUseMemberAdapter();
+      }
+      @Override
+      public Adapter caseDeviceDefinition(DeviceDefinition object)
+      {
+        return createDeviceDefinitionAdapter();
+      }
+      @Override
+      public Adapter caseDeviceMembers(DeviceMembers object)
+      {
+        return createDeviceMembersAdapter();
+      }
+      @Override
+      public Adapter caseProcessInstantiation(ProcessInstantiation object)
+      {
+        return createProcessInstantiationAdapter();
+      }
+      @Override
+      public Adapter caseSystemInstantiation(SystemInstantiation object)
+      {
+        return createSystemInstantiationAdapter();
+      }
+      @Override
+      public Adapter casePlasmidInstantiation(PlasmidInstantiation object)
+      {
+        return createPlasmidInstantiationAdapter();
+      }
+      @Override
+      public Adapter caseChromosomeInstantiation(ChromosomeInstantiation object)
+      {
+        return createChromosomeInstantiationAdapter();
+      }
+      @Override
+      public Adapter caseCellInstantiation(CellInstantiation object)
+      {
+        return createCellInstantiationAdapter();
       }
       @Override
       public Adapter caseVariableComplex(VariableComplex object)
@@ -118,11 +218,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseVariableAttribute(VariableAttribute object)
       {
         return createVariableAttributeAdapter();
-      }
-      @Override
-      public Adapter caseUserDefinedType(UserDefinedType object)
-      {
-        return createUserDefinedTypeAdapter();
       }
       @Override
       public Adapter caseVariableDefinition(VariableDefinition object)
@@ -195,16 +290,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createRuleObjectAdapter();
       }
       @Override
-      public Adapter caseDeviceDefinition(DeviceDefinition object)
-      {
-        return createDeviceDefinitionAdapter();
-      }
-      @Override
-      public Adapter caseDeviceMembers(DeviceMembers object)
-      {
-        return createDeviceMembersAdapter();
-      }
-      @Override
       public Adapter caseATGCDefinition(ATGCDefinition object)
       {
         return createATGCDefinitionAdapter();
@@ -233,6 +318,31 @@ public class IblAdapterFactory extends AdapterFactoryImpl
       public Adapter caseStateFormula(StateFormula object)
       {
         return createStateFormulaAdapter();
+      }
+      @Override
+      public Adapter caseTimeInstant(TimeInstant object)
+      {
+        return createTimeInstantAdapter();
+      }
+      @Override
+      public Adapter caseTimeInterval(TimeInterval object)
+      {
+        return createTimeIntervalAdapter();
+      }
+      @Override
+      public Adapter caseRewardTimeInstant(RewardTimeInstant object)
+      {
+        return createRewardTimeInstantAdapter();
+      }
+      @Override
+      public Adapter caseProbabilityConstraint(ProbabilityConstraint object)
+      {
+        return createProbabilityConstraintAdapter();
+      }
+      @Override
+      public Adapter caseConcentrationConstraint(ConcentrationConstraint object)
+      {
+        return createConcentrationConstraintAdapter();
       }
       @Override
       public Adapter casePropertyInitialCondition(PropertyInitialCondition object)
@@ -342,6 +452,216 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessBody <em>Process Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessBody
+   * @generated
+   */
+  public Adapter createProcessBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.SystemBody <em>System Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.SystemBody
+   * @generated
+   */
+  public Adapter createSystemBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PlasmidBody <em>Plasmid Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.PlasmidBody
+   * @generated
+   */
+  public Adapter createPlasmidBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ChromosomeBody <em>Chromosome Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ChromosomeBody
+   * @generated
+   */
+  public Adapter createChromosomeBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CellBody <em>Cell Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.CellBody
+   * @generated
+   */
+  public Adapter createCellBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RegionBody <em>Region Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.RegionBody
+   * @generated
+   */
+  public Adapter createRegionBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CustomFunctionBody <em>Custom Function Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.CustomFunctionBody
+   * @generated
+   */
+  public Adapter createCustomFunctionBodyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessBodyMember <em>Process Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessBodyMember
+   * @generated
+   */
+  public Adapter createProcessBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.SystemBodyMember <em>System Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.SystemBodyMember
+   * @generated
+   */
+  public Adapter createSystemBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PlasmidBodyMember <em>Plasmid Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.PlasmidBodyMember
+   * @generated
+   */
+  public Adapter createPlasmidBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ChromosomeBodyMember <em>Chromosome Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ChromosomeBodyMember
+   * @generated
+   */
+  public Adapter createChromosomeBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CellBodyMember <em>Cell Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.CellBodyMember
+   * @generated
+   */
+  public Adapter createCellBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RegionBodyMember <em>Region Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.RegionBodyMember
+   * @generated
+   */
+  public Adapter createRegionBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CustomFunctionBodyMember <em>Custom Function Body Member</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.CustomFunctionBodyMember
+   * @generated
+   */
+  public Adapter createCustomFunctionBodyMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember <em>Function Parameter Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -357,21 +677,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionBodyMember <em>Function Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.FunctionBodyMember
-   * @generated
-   */
-  public Adapter createFunctionBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionUseMember <em>Function Use Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -382,6 +687,111 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionUseMemberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.DeviceDefinition
+   * @generated
+   */
+  public Adapter createDeviceDefinitionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceMembers <em>Device Members</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.DeviceMembers
+   * @generated
+   */
+  public Adapter createDeviceMembersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessInstantiation <em>Process Instantiation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProcessInstantiation
+   * @generated
+   */
+  public Adapter createProcessInstantiationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.SystemInstantiation <em>System Instantiation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.SystemInstantiation
+   * @generated
+   */
+  public Adapter createSystemInstantiationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PlasmidInstantiation <em>Plasmid Instantiation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.PlasmidInstantiation
+   * @generated
+   */
+  public Adapter createPlasmidInstantiationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ChromosomeInstantiation <em>Chromosome Instantiation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ChromosomeInstantiation
+   * @generated
+   */
+  public Adapter createChromosomeInstantiationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CellInstantiation <em>Cell Instantiation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.CellInstantiation
+   * @generated
+   */
+  public Adapter createCellInstantiationAdapter()
   {
     return null;
   }
@@ -412,21 +822,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createVariableAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.UserDefinedType <em>User Defined Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.UserDefinedType
-   * @generated
-   */
-  public Adapter createUserDefinedTypeAdapter()
   {
     return null;
   }
@@ -642,36 +1037,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceDefinition <em>Device Definition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.DeviceDefinition
-   * @generated
-   */
-  public Adapter createDeviceDefinitionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.DeviceMembers <em>Device Members</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.DeviceMembers
-   * @generated
-   */
-  public Adapter createDeviceMembersAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ATGCDefinition <em>ATGC Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -757,6 +1122,81 @@ public class IblAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStateFormulaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.TimeInstant <em>Time Instant</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.TimeInstant
+   * @generated
+   */
+  public Adapter createTimeInstantAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.TimeInterval <em>Time Interval</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.TimeInterval
+   * @generated
+   */
+  public Adapter createTimeIntervalAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RewardTimeInstant <em>Reward Time Instant</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.RewardTimeInstant
+   * @generated
+   */
+  public Adapter createRewardTimeInstantAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProbabilityConstraint <em>Probability Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ProbabilityConstraint
+   * @generated
+   */
+  public Adapter createProbabilityConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ConcentrationConstraint <em>Concentration Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.ConcentrationConstraint
+   * @generated
+   */
+  public Adapter createConcentrationConstraintAdapter()
   {
     return null;
   }

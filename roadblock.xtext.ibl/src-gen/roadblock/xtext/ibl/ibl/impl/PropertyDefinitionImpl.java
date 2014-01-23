@@ -27,7 +27,7 @@ import roadblock.xtext.ibl.ibl.PropertyDefinition;
  *
  * @generated
  */
-public class PropertyDefinitionImpl extends FunctionBodyMemberImpl implements PropertyDefinition
+public class PropertyDefinitionImpl extends SystemBodyMemberImpl implements PropertyDefinition
 {
   /**
    * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.

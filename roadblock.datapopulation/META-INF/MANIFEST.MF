@@ -5,8 +5,11 @@ Bundle-SymbolicName: roadblock.datapopulation
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: roadblock.datapopulation.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- roadblock.emf.ibl;bundle-version="1.0.0",
- roadblock.xtext.ibl;bundle-version="1.0.0"
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: roadblock.emf.ibl.Ibl,
+ roadblock.emf.ibl.Ibl.util,
+ roadblock.xtext.ibl.ibl,
+ roadblock.xtext.ibl.ibl.impl,
+ roadblock.xtext.ibl.ibl.util

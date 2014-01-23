@@ -102,6 +102,104 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case IblPackage.PROCESS_BODY:
+      {
+        ProcessBody processBody = (ProcessBody)theEObject;
+        T result = caseProcessBody(processBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.SYSTEM_BODY:
+      {
+        SystemBody systemBody = (SystemBody)theEObject;
+        T result = caseSystemBody(systemBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PLASMID_BODY:
+      {
+        PlasmidBody plasmidBody = (PlasmidBody)theEObject;
+        T result = casePlasmidBody(plasmidBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CHROMOSOME_BODY:
+      {
+        ChromosomeBody chromosomeBody = (ChromosomeBody)theEObject;
+        T result = caseChromosomeBody(chromosomeBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CELL_BODY:
+      {
+        CellBody cellBody = (CellBody)theEObject;
+        T result = caseCellBody(cellBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.REGION_BODY:
+      {
+        RegionBody regionBody = (RegionBody)theEObject;
+        T result = caseRegionBody(regionBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CUSTOM_FUNCTION_BODY:
+      {
+        CustomFunctionBody customFunctionBody = (CustomFunctionBody)theEObject;
+        T result = caseCustomFunctionBody(customFunctionBody);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROCESS_BODY_MEMBER:
+      {
+        ProcessBodyMember processBodyMember = (ProcessBodyMember)theEObject;
+        T result = caseProcessBodyMember(processBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.SYSTEM_BODY_MEMBER:
+      {
+        SystemBodyMember systemBodyMember = (SystemBodyMember)theEObject;
+        T result = caseSystemBodyMember(systemBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PLASMID_BODY_MEMBER:
+      {
+        PlasmidBodyMember plasmidBodyMember = (PlasmidBodyMember)theEObject;
+        T result = casePlasmidBodyMember(plasmidBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CHROMOSOME_BODY_MEMBER:
+      {
+        ChromosomeBodyMember chromosomeBodyMember = (ChromosomeBodyMember)theEObject;
+        T result = caseChromosomeBodyMember(chromosomeBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CELL_BODY_MEMBER:
+      {
+        CellBodyMember cellBodyMember = (CellBodyMember)theEObject;
+        T result = caseCellBodyMember(cellBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.REGION_BODY_MEMBER:
+      {
+        RegionBodyMember regionBodyMember = (RegionBodyMember)theEObject;
+        T result = caseRegionBodyMember(regionBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CUSTOM_FUNCTION_BODY_MEMBER:
+      {
+        CustomFunctionBodyMember customFunctionBodyMember = (CustomFunctionBodyMember)theEObject;
+        T result = caseCustomFunctionBodyMember(customFunctionBodyMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case IblPackage.FUNCTION_PARAMETER_MEMBER:
       {
         FunctionParameterMember functionParameterMember = (FunctionParameterMember)theEObject;
@@ -109,17 +207,80 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.FUNCTION_BODY_MEMBER:
-      {
-        FunctionBodyMember functionBodyMember = (FunctionBodyMember)theEObject;
-        T result = caseFunctionBodyMember(functionBodyMember);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case IblPackage.FUNCTION_USE_MEMBER:
       {
         FunctionUseMember functionUseMember = (FunctionUseMember)theEObject;
         T result = caseFunctionUseMember(functionUseMember);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.DEVICE_DEFINITION:
+      {
+        DeviceDefinition deviceDefinition = (DeviceDefinition)theEObject;
+        T result = caseDeviceDefinition(deviceDefinition);
+        if (result == null) result = caseSystemBodyMember(deviceDefinition);
+        if (result == null) result = casePlasmidBodyMember(deviceDefinition);
+        if (result == null) result = caseChromosomeBodyMember(deviceDefinition);
+        if (result == null) result = caseCellBodyMember(deviceDefinition);
+        if (result == null) result = caseCustomFunctionBodyMember(deviceDefinition);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.DEVICE_MEMBERS:
+      {
+        DeviceMembers deviceMembers = (DeviceMembers)theEObject;
+        T result = caseDeviceMembers(deviceMembers);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROCESS_INSTANTIATION:
+      {
+        ProcessInstantiation processInstantiation = (ProcessInstantiation)theEObject;
+        T result = caseProcessInstantiation(processInstantiation);
+        if (result == null) result = caseProcessBodyMember(processInstantiation);
+        if (result == null) result = caseSystemBodyMember(processInstantiation);
+        if (result == null) result = casePlasmidBodyMember(processInstantiation);
+        if (result == null) result = caseChromosomeBodyMember(processInstantiation);
+        if (result == null) result = caseCellBodyMember(processInstantiation);
+        if (result == null) result = caseCustomFunctionBodyMember(processInstantiation);
+        if (result == null) result = caseDeviceMembers(processInstantiation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.SYSTEM_INSTANTIATION:
+      {
+        SystemInstantiation systemInstantiation = (SystemInstantiation)theEObject;
+        T result = caseSystemInstantiation(systemInstantiation);
+        if (result == null) result = casePlasmidBodyMember(systemInstantiation);
+        if (result == null) result = caseChromosomeBodyMember(systemInstantiation);
+        if (result == null) result = caseCellBodyMember(systemInstantiation);
+        if (result == null) result = caseCustomFunctionBodyMember(systemInstantiation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PLASMID_INSTANTIATION:
+      {
+        PlasmidInstantiation plasmidInstantiation = (PlasmidInstantiation)theEObject;
+        T result = casePlasmidInstantiation(plasmidInstantiation);
+        if (result == null) result = caseCellBodyMember(plasmidInstantiation);
+        if (result == null) result = caseCustomFunctionBodyMember(plasmidInstantiation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CHROMOSOME_INSTANTIATION:
+      {
+        ChromosomeInstantiation chromosomeInstantiation = (ChromosomeInstantiation)theEObject;
+        T result = caseChromosomeInstantiation(chromosomeInstantiation);
+        if (result == null) result = caseCellBodyMember(chromosomeInstantiation);
+        if (result == null) result = caseCustomFunctionBodyMember(chromosomeInstantiation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CELL_INSTANTIATION:
+      {
+        CellInstantiation cellInstantiation = (CellInstantiation)theEObject;
+        T result = caseCellInstantiation(cellInstantiation);
+        if (result == null) result = caseRegionBodyMember(cellInstantiation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -139,18 +300,17 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.USER_DEFINED_TYPE:
-      {
-        UserDefinedType userDefinedType = (UserDefinedType)theEObject;
-        T result = caseUserDefinedType(userDefinedType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case IblPackage.VARIABLE_DEFINITION:
       {
         VariableDefinition variableDefinition = (VariableDefinition)theEObject;
         T result = caseVariableDefinition(variableDefinition);
-        if (result == null) result = caseFunctionBodyMember(variableDefinition);
+        if (result == null) result = caseProcessBodyMember(variableDefinition);
+        if (result == null) result = caseSystemBodyMember(variableDefinition);
+        if (result == null) result = casePlasmidBodyMember(variableDefinition);
+        if (result == null) result = caseChromosomeBodyMember(variableDefinition);
+        if (result == null) result = caseCellBodyMember(variableDefinition);
+        if (result == null) result = caseRegionBodyMember(variableDefinition);
+        if (result == null) result = caseCustomFunctionBodyMember(variableDefinition);
         if (result == null) result = caseDeviceMembers(variableDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -194,7 +354,13 @@ public class IblSwitch<T> extends Switch<T>
       {
         VariableAssignment variableAssignment = (VariableAssignment)theEObject;
         T result = caseVariableAssignment(variableAssignment);
-        if (result == null) result = caseFunctionBodyMember(variableAssignment);
+        if (result == null) result = caseProcessBodyMember(variableAssignment);
+        if (result == null) result = caseSystemBodyMember(variableAssignment);
+        if (result == null) result = casePlasmidBodyMember(variableAssignment);
+        if (result == null) result = caseChromosomeBodyMember(variableAssignment);
+        if (result == null) result = caseCellBodyMember(variableAssignment);
+        if (result == null) result = caseRegionBodyMember(variableAssignment);
+        if (result == null) result = caseCustomFunctionBodyMember(variableAssignment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -239,7 +405,13 @@ public class IblSwitch<T> extends Switch<T>
       {
         RuleDefinition ruleDefinition = (RuleDefinition)theEObject;
         T result = caseRuleDefinition(ruleDefinition);
-        if (result == null) result = caseFunctionBodyMember(ruleDefinition);
+        if (result == null) result = caseProcessBodyMember(ruleDefinition);
+        if (result == null) result = caseSystemBodyMember(ruleDefinition);
+        if (result == null) result = casePlasmidBodyMember(ruleDefinition);
+        if (result == null) result = caseChromosomeBodyMember(ruleDefinition);
+        if (result == null) result = caseCellBodyMember(ruleDefinition);
+        if (result == null) result = caseRegionBodyMember(ruleDefinition);
+        if (result == null) result = caseCustomFunctionBodyMember(ruleDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -250,26 +422,15 @@ public class IblSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case IblPackage.DEVICE_DEFINITION:
-      {
-        DeviceDefinition deviceDefinition = (DeviceDefinition)theEObject;
-        T result = caseDeviceDefinition(deviceDefinition);
-        if (result == null) result = caseFunctionBodyMember(deviceDefinition);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case IblPackage.DEVICE_MEMBERS:
-      {
-        DeviceMembers deviceMembers = (DeviceMembers)theEObject;
-        T result = caseDeviceMembers(deviceMembers);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case IblPackage.ATGC_DEFINITION:
       {
         ATGCDefinition atgcDefinition = (ATGCDefinition)theEObject;
         T result = caseATGCDefinition(atgcDefinition);
-        if (result == null) result = caseFunctionBodyMember(atgcDefinition);
+        if (result == null) result = caseSystemBodyMember(atgcDefinition);
+        if (result == null) result = casePlasmidBodyMember(atgcDefinition);
+        if (result == null) result = caseChromosomeBodyMember(atgcDefinition);
+        if (result == null) result = caseCellBodyMember(atgcDefinition);
+        if (result == null) result = caseCustomFunctionBodyMember(atgcDefinition);
         if (result == null) result = caseDeviceMembers(atgcDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -278,7 +439,11 @@ public class IblSwitch<T> extends Switch<T>
       {
         PropertyDefinition propertyDefinition = (PropertyDefinition)theEObject;
         T result = casePropertyDefinition(propertyDefinition);
-        if (result == null) result = caseFunctionBodyMember(propertyDefinition);
+        if (result == null) result = caseSystemBodyMember(propertyDefinition);
+        if (result == null) result = casePlasmidBodyMember(propertyDefinition);
+        if (result == null) result = caseChromosomeBodyMember(propertyDefinition);
+        if (result == null) result = caseCellBodyMember(propertyDefinition);
+        if (result == null) result = caseCustomFunctionBodyMember(propertyDefinition);
         if (result == null) result = caseDeviceMembers(propertyDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -308,6 +473,41 @@ public class IblSwitch<T> extends Switch<T>
       {
         StateFormula stateFormula = (StateFormula)theEObject;
         T result = caseStateFormula(stateFormula);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.TIME_INSTANT:
+      {
+        TimeInstant timeInstant = (TimeInstant)theEObject;
+        T result = caseTimeInstant(timeInstant);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.TIME_INTERVAL:
+      {
+        TimeInterval timeInterval = (TimeInterval)theEObject;
+        T result = caseTimeInterval(timeInterval);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.REWARD_TIME_INSTANT:
+      {
+        RewardTimeInstant rewardTimeInstant = (RewardTimeInstant)theEObject;
+        T result = caseRewardTimeInstant(rewardTimeInstant);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.PROBABILITY_CONSTRAINT:
+      {
+        ProbabilityConstraint probabilityConstraint = (ProbabilityConstraint)theEObject;
+        T result = caseProbabilityConstraint(probabilityConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case IblPackage.CONCENTRATION_CONSTRAINT:
+      {
+        ConcentrationConstraint concentrationConstraint = (ConcentrationConstraint)theEObject;
+        T result = caseConcentrationConstraint(concentrationConstraint);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -417,6 +617,230 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessBody(ProcessBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>System Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>System Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSystemBody(SystemBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plasmid Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plasmid Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlasmidBody(PlasmidBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Chromosome Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Chromosome Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChromosomeBody(ChromosomeBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellBody(CellBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Region Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Region Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRegionBody(RegionBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Custom Function Body</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Custom Function Body</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCustomFunctionBody(CustomFunctionBody object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessBodyMember(ProcessBodyMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>System Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>System Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSystemBodyMember(SystemBodyMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plasmid Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plasmid Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlasmidBodyMember(PlasmidBodyMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Chromosome Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Chromosome Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChromosomeBodyMember(ChromosomeBodyMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellBodyMember(CellBodyMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Region Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Region Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRegionBodyMember(RegionBodyMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Custom Function Body Member</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Custom Function Body Member</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCustomFunctionBodyMember(CustomFunctionBodyMember object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Function Parameter Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -433,22 +857,6 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Function Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Function Body Member</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFunctionBodyMember(FunctionBodyMember object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Function Use Member</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -460,6 +868,118 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionUseMember(FunctionUseMember object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Device Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Device Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeviceDefinition(DeviceDefinition object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Device Members</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Device Members</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeviceMembers(DeviceMembers object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Instantiation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Instantiation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessInstantiation(ProcessInstantiation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>System Instantiation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>System Instantiation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSystemInstantiation(SystemInstantiation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plasmid Instantiation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plasmid Instantiation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlasmidInstantiation(PlasmidInstantiation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Chromosome Instantiation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Chromosome Instantiation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseChromosomeInstantiation(ChromosomeInstantiation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cell Instantiation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cell Instantiation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCellInstantiation(CellInstantiation object)
   {
     return null;
   }
@@ -492,22 +1012,6 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseVariableAttribute(VariableAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>User Defined Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>User Defined Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseUserDefinedType(UserDefinedType object)
   {
     return null;
   }
@@ -737,38 +1241,6 @@ public class IblSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Device Definition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Device Definition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDeviceDefinition(DeviceDefinition object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Device Members</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Device Members</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDeviceMembers(DeviceMembers object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>ATGC Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -860,6 +1332,86 @@ public class IblSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStateFormula(StateFormula object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Time Instant</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Time Instant</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTimeInstant(TimeInstant object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Time Interval</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Time Interval</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTimeInterval(TimeInterval object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reward Time Instant</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reward Time Instant</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRewardTimeInstant(RewardTimeInstant object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Probability Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Probability Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProbabilityConstraint(ProbabilityConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Concentration Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Concentration Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConcentrationConstraint(ConcentrationConstraint object)
   {
     return null;
   }

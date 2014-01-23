@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ATGCDefinition extends FunctionBodyMember, DeviceMembers
+public interface ATGCDefinition extends SystemBodyMember, PlasmidBodyMember, ChromosomeBodyMember, CellBodyMember, CustomFunctionBodyMember, DeviceMembers
 {
   /**
    * Returns the value of the '<em><b>Command</b></em>' attribute.

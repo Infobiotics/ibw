@@ -6,10 +6,10 @@ public class PropertyTranslationManager {
 
 	private static PropertyTranslationManager instance = null;
 
-	private PropertyTranslationManager() {
+	public PropertyTranslationManager() {
 	}
 
-	public PropertyTranslationManager getInstance() {
+	public static PropertyTranslationManager getInstance() {
 
 		if (instance == null) {
 			instance = new PropertyTranslationManager();
@@ -25,6 +25,8 @@ public class PropertyTranslationManager {
 		switch (target) {
 		case PRISM:
 			propertyTranslator = new PrismPropertyTranslator();
+			break;
+		default:
 			break;
 		}
 

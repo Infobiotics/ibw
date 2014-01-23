@@ -422,32 +422,25 @@ PropertyDefinition:
 
 ProbabilityProperty:
 	{ProbabilityProperty}
-	stateFormula=StateFormula
+	stateFormula1=StateFormula
 	((		
-	(('EVENTUALLY HOLDS' | 'NEVER HOLDS' | 'ALWAYS HOLDS') |
-	(('WILL HOLD UNTIL THEN' | 'IS FOLLOWED BY') stateFormula2=StateFormula))		
+	((isEventually?='EVENTUALLY HOLDS' | isNever?='NEVER HOLDS' | isAlways?='ALWAYS HOLDS') |
+	((isUntilThen?='WILL HOLD UNTIL THEN' | isFollowedBy?='IS FOLLOWED BY') stateFormula2=StateFormula))		
 	
-	((
-	'AT' timeInstant=INT | 'BEFORE' timeInstant=INT | 'AFTER' timeInstant=INT |
-	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' ) 
-	 timeUnit=TimeUnit  
-	)?
+	(timeInstant=TimeInstant | timeInterval=TimeInterval)?
 	)  |
 	
-	('HOLDS IN STEADY-STATE' | 'HOLDS INFINITELY OFTEN' 	
+	(isSteadyState?='HOLDS IN STEADY-STATE' | isInfinitelyOften?='HOLDS INFINITELY OFTEN' 	
 	))
-	(
-	'WITH PROBABILITY' ((operator=RelationalOperator probability=UnitInterval) | '?') 
-	)?
+	(probabilityConstraint=ProbabilityConstraint)?
 	(
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
 	)?
 ;
 
-
 RewardProperty:
 	{RewardProperty}
-	'EXPECTED' '[' name=VariableName ']' ('AT' | 'WITHIN') timeValue=INT timUnit=TimeUnit 'IS ' ((operator=RelationalOperator concenValue=REAL units=ConcentrationUnit) | '?')  
+	'EXPECTED' '[' name=VariableName ']' timeInstant=RewardTimeInstant 'IS ' concentrationConstraint=ConcentrationConstraint 
     (
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
 	)?
@@ -455,15 +448,40 @@ RewardProperty:
 
 StateExpression:
 	{StateExpression}
-	lhs=VariableName operator=RelationalOperator rhs=ConcentrationQuantity
+	name=VariableName operator=RelationalOperator concentrationQuantity=ConcentrationQuantity
 ;
 
 StateFormula:
 	{StateFormula}
 	formula=
 	'[' atomicFormula=StateExpression']' | 
-	'[' 'NOT' notFormula=StateFormula']' |
-	'[' booleanFormula1+=StateFormula ('AND' | 'OR' | 'IMPLIES') booleanFormula2+=StateFormula ']'
+	'[' isNegation?='NOT' negatedFormula=StateFormula']' |
+	'[' leftFormula=StateFormula (isConjunction?='AND' | isDisjunction?='OR' | isImplication?='IMPLIES') rightFormula=StateFormula ']'
+;
+
+TimeInstant:
+	{TimeInstant}
+	(isEqualTo?='AT' timeInstant=INT | isLessThanOrEqual?='BEFORE' timeInstant=INT | isGreaterThanOrEqual?='AFTER' timeInstant=INT) timeUnit=TimeUnit
+;
+
+TimeInterval:
+	{TimeInterval}
+	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TimeUnit
+;
+
+RewardTimeInstant:
+	{RewardTimeInstant}
+	(isEqualTo?='AT' | isLessThanOrEqual?='WITHIN') timeValue=INT timeUnit=TimeUnit
+;
+
+ProbabilityConstraint:
+	{ProbabilityConstraint}
+	'WITH PROBABILITY' ((operator=RelationalOperator probability=UnitInterval) | hasUnknownProbability?='?') 
+;
+
+ConcentrationConstraint:
+	{ConcentrationConstraint}
+	(operator=RelationalOperator value=REAL unit=ConcentrationUnit) | isUnknown?='?' 
 ;
 
 //StateFormula:
@@ -519,7 +537,7 @@ Quantity:
 
 ConcentrationQuantity:
 	{ConcentrationQuantity}
-	value=REAL units=ConcentrationUnit
+	value=REAL unit=ConcentrationUnit
 ;
 
 // relational operators

@@ -30,7 +30,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     try
     {
-      IblFactory theIblFactory = (IblFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.xtext.roadblock/ibl/Ibl"); 
+      IblFactory theIblFactory = (IblFactory)EPackage.Registry.INSTANCE.getEFactory(IblPackage.eNS_URI);
       if (theIblFactory != null)
       {
         return theIblFactory;
@@ -68,12 +68,31 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.MODEL_MEMBER: return createModelMember();
       case IblPackage.IMPORT_STATEMENT: return createImportStatement();
       case IblPackage.FUNCTION_DEFINITION: return createFunctionDefinition();
+      case IblPackage.PROCESS_BODY: return createProcessBody();
+      case IblPackage.SYSTEM_BODY: return createSystemBody();
+      case IblPackage.PLASMID_BODY: return createPlasmidBody();
+      case IblPackage.CHROMOSOME_BODY: return createChromosomeBody();
+      case IblPackage.CELL_BODY: return createCellBody();
+      case IblPackage.REGION_BODY: return createRegionBody();
+      case IblPackage.CUSTOM_FUNCTION_BODY: return createCustomFunctionBody();
+      case IblPackage.PROCESS_BODY_MEMBER: return createProcessBodyMember();
+      case IblPackage.SYSTEM_BODY_MEMBER: return createSystemBodyMember();
+      case IblPackage.PLASMID_BODY_MEMBER: return createPlasmidBodyMember();
+      case IblPackage.CHROMOSOME_BODY_MEMBER: return createChromosomeBodyMember();
+      case IblPackage.CELL_BODY_MEMBER: return createCellBodyMember();
+      case IblPackage.REGION_BODY_MEMBER: return createRegionBodyMember();
+      case IblPackage.CUSTOM_FUNCTION_BODY_MEMBER: return createCustomFunctionBodyMember();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
-      case IblPackage.FUNCTION_BODY_MEMBER: return createFunctionBodyMember();
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
+      case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
+      case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
+      case IblPackage.PROCESS_INSTANTIATION: return createProcessInstantiation();
+      case IblPackage.SYSTEM_INSTANTIATION: return createSystemInstantiation();
+      case IblPackage.PLASMID_INSTANTIATION: return createPlasmidInstantiation();
+      case IblPackage.CHROMOSOME_INSTANTIATION: return createChromosomeInstantiation();
+      case IblPackage.CELL_INSTANTIATION: return createCellInstantiation();
       case IblPackage.VARIABLE_COMPLEX: return createVariableComplex();
       case IblPackage.VARIABLE_ATTRIBUTE: return createVariableAttribute();
-      case IblPackage.USER_DEFINED_TYPE: return createUserDefinedType();
       case IblPackage.VARIABLE_DEFINITION: return createVariableDefinition();
       case IblPackage.VARIABLE_DEFINITION_BUILT_IN: return createVariableDefinitionBuiltIn();
       case IblPackage.VARIABLE_DEFINITION_USER_DEFINED: return createVariableDefinitionUserDefined();
@@ -88,14 +107,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.COMPOUND_VARIABLE_EXPRESSION_OBJECT: return createCompoundVariableExpressionObject();
       case IblPackage.RULE_DEFINITION: return createRuleDefinition();
       case IblPackage.RULE_OBJECT: return createRuleObject();
-      case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
-      case IblPackage.DEVICE_MEMBERS: return createDeviceMembers();
       case IblPackage.ATGC_DEFINITION: return createATGCDefinition();
       case IblPackage.PROPERTY_DEFINITION: return createPropertyDefinition();
       case IblPackage.PROBABILITY_PROPERTY: return createProbabilityProperty();
       case IblPackage.REWARD_PROPERTY: return createRewardProperty();
       case IblPackage.STATE_EXPRESSION: return createStateExpression();
       case IblPackage.STATE_FORMULA: return createStateFormula();
+      case IblPackage.TIME_INSTANT: return createTimeInstant();
+      case IblPackage.TIME_INTERVAL: return createTimeInterval();
+      case IblPackage.REWARD_TIME_INSTANT: return createRewardTimeInstant();
+      case IblPackage.PROBABILITY_CONSTRAINT: return createProbabilityConstraint();
+      case IblPackage.CONCENTRATION_CONSTRAINT: return createConcentrationConstraint();
       case IblPackage.PROPERTY_INITIAL_CONDITION: return createPropertyInitialCondition();
       case IblPackage.QUANTITY: return createQuantity();
       case IblPackage.CONCENTRATION_QUANTITY: return createConcentrationQuantity();
@@ -155,6 +177,160 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public ProcessBody createProcessBody()
+  {
+    ProcessBodyImpl processBody = new ProcessBodyImpl();
+    return processBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SystemBody createSystemBody()
+  {
+    SystemBodyImpl systemBody = new SystemBodyImpl();
+    return systemBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PlasmidBody createPlasmidBody()
+  {
+    PlasmidBodyImpl plasmidBody = new PlasmidBodyImpl();
+    return plasmidBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChromosomeBody createChromosomeBody()
+  {
+    ChromosomeBodyImpl chromosomeBody = new ChromosomeBodyImpl();
+    return chromosomeBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellBody createCellBody()
+  {
+    CellBodyImpl cellBody = new CellBodyImpl();
+    return cellBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegionBody createRegionBody()
+  {
+    RegionBodyImpl regionBody = new RegionBodyImpl();
+    return regionBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CustomFunctionBody createCustomFunctionBody()
+  {
+    CustomFunctionBodyImpl customFunctionBody = new CustomFunctionBodyImpl();
+    return customFunctionBody;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessBodyMember createProcessBodyMember()
+  {
+    ProcessBodyMemberImpl processBodyMember = new ProcessBodyMemberImpl();
+    return processBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SystemBodyMember createSystemBodyMember()
+  {
+    SystemBodyMemberImpl systemBodyMember = new SystemBodyMemberImpl();
+    return systemBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PlasmidBodyMember createPlasmidBodyMember()
+  {
+    PlasmidBodyMemberImpl plasmidBodyMember = new PlasmidBodyMemberImpl();
+    return plasmidBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChromosomeBodyMember createChromosomeBodyMember()
+  {
+    ChromosomeBodyMemberImpl chromosomeBodyMember = new ChromosomeBodyMemberImpl();
+    return chromosomeBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellBodyMember createCellBodyMember()
+  {
+    CellBodyMemberImpl cellBodyMember = new CellBodyMemberImpl();
+    return cellBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegionBodyMember createRegionBodyMember()
+  {
+    RegionBodyMemberImpl regionBodyMember = new RegionBodyMemberImpl();
+    return regionBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CustomFunctionBodyMember createCustomFunctionBodyMember()
+  {
+    CustomFunctionBodyMemberImpl customFunctionBodyMember = new CustomFunctionBodyMemberImpl();
+    return customFunctionBodyMember;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public FunctionParameterMember createFunctionParameterMember()
   {
     FunctionParameterMemberImpl functionParameterMember = new FunctionParameterMemberImpl();
@@ -166,10 +342,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionBodyMember createFunctionBodyMember()
+  public FunctionUseMember createFunctionUseMember()
   {
-    FunctionBodyMemberImpl functionBodyMember = new FunctionBodyMemberImpl();
-    return functionBodyMember;
+    FunctionUseMemberImpl functionUseMember = new FunctionUseMemberImpl();
+    return functionUseMember;
   }
 
   /**
@@ -177,10 +353,76 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionUseMember createFunctionUseMember()
+  public DeviceDefinition createDeviceDefinition()
   {
-    FunctionUseMemberImpl functionUseMember = new FunctionUseMemberImpl();
-    return functionUseMember;
+    DeviceDefinitionImpl deviceDefinition = new DeviceDefinitionImpl();
+    return deviceDefinition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeviceMembers createDeviceMembers()
+  {
+    DeviceMembersImpl deviceMembers = new DeviceMembersImpl();
+    return deviceMembers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessInstantiation createProcessInstantiation()
+  {
+    ProcessInstantiationImpl processInstantiation = new ProcessInstantiationImpl();
+    return processInstantiation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SystemInstantiation createSystemInstantiation()
+  {
+    SystemInstantiationImpl systemInstantiation = new SystemInstantiationImpl();
+    return systemInstantiation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PlasmidInstantiation createPlasmidInstantiation()
+  {
+    PlasmidInstantiationImpl plasmidInstantiation = new PlasmidInstantiationImpl();
+    return plasmidInstantiation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ChromosomeInstantiation createChromosomeInstantiation()
+  {
+    ChromosomeInstantiationImpl chromosomeInstantiation = new ChromosomeInstantiationImpl();
+    return chromosomeInstantiation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CellInstantiation createCellInstantiation()
+  {
+    CellInstantiationImpl cellInstantiation = new CellInstantiationImpl();
+    return cellInstantiation;
   }
 
   /**
@@ -203,17 +445,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     VariableAttributeImpl variableAttribute = new VariableAttributeImpl();
     return variableAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public UserDefinedType createUserDefinedType()
-  {
-    UserDefinedTypeImpl userDefinedType = new UserDefinedTypeImpl();
-    return userDefinedType;
   }
 
   /**
@@ -375,28 +606,6 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public DeviceDefinition createDeviceDefinition()
-  {
-    DeviceDefinitionImpl deviceDefinition = new DeviceDefinitionImpl();
-    return deviceDefinition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DeviceMembers createDeviceMembers()
-  {
-    DeviceMembersImpl deviceMembers = new DeviceMembersImpl();
-    return deviceMembers;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ATGCDefinition createATGCDefinition()
   {
     ATGCDefinitionImpl atgcDefinition = new ATGCDefinitionImpl();
@@ -456,6 +665,61 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
   {
     StateFormulaImpl stateFormula = new StateFormulaImpl();
     return stateFormula;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TimeInstant createTimeInstant()
+  {
+    TimeInstantImpl timeInstant = new TimeInstantImpl();
+    return timeInstant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TimeInterval createTimeInterval()
+  {
+    TimeIntervalImpl timeInterval = new TimeIntervalImpl();
+    return timeInterval;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RewardTimeInstant createRewardTimeInstant()
+  {
+    RewardTimeInstantImpl rewardTimeInstant = new RewardTimeInstantImpl();
+    return rewardTimeInstant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProbabilityConstraint createProbabilityConstraint()
+  {
+    ProbabilityConstraintImpl probabilityConstraint = new ProbabilityConstraintImpl();
+    return probabilityConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConcentrationConstraint createConcentrationConstraint()
+  {
+    ConcentrationConstraintImpl concentrationConstraint = new ConcentrationConstraintImpl();
+    return concentrationConstraint;
   }
 
   /**

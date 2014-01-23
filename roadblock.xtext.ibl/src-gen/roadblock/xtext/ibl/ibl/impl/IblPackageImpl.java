@@ -11,11 +11,19 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.CellBody;
+import roadblock.xtext.ibl.ibl.CellBodyMember;
+import roadblock.xtext.ibl.ibl.CellInstantiation;
+import roadblock.xtext.ibl.ibl.ChromosomeBody;
+import roadblock.xtext.ibl.ibl.ChromosomeBodyMember;
+import roadblock.xtext.ibl.ibl.ChromosomeInstantiation;
 import roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject;
+import roadblock.xtext.ibl.ibl.ConcentrationConstraint;
 import roadblock.xtext.ibl.ibl.ConcentrationQuantity;
+import roadblock.xtext.ibl.ibl.CustomFunctionBody;
+import roadblock.xtext.ibl.ibl.CustomFunctionBodyMember;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
-import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
@@ -27,16 +35,30 @@ import roadblock.xtext.ibl.ibl.List;
 import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
+import roadblock.xtext.ibl.ibl.PlasmidBody;
+import roadblock.xtext.ibl.ibl.PlasmidBodyMember;
+import roadblock.xtext.ibl.ibl.PlasmidInstantiation;
+import roadblock.xtext.ibl.ibl.ProbabilityConstraint;
 import roadblock.xtext.ibl.ibl.ProbabilityProperty;
+import roadblock.xtext.ibl.ibl.ProcessBody;
+import roadblock.xtext.ibl.ibl.ProcessBodyMember;
+import roadblock.xtext.ibl.ibl.ProcessInstantiation;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
+import roadblock.xtext.ibl.ibl.RegionBody;
+import roadblock.xtext.ibl.ibl.RegionBodyMember;
 import roadblock.xtext.ibl.ibl.RewardProperty;
+import roadblock.xtext.ibl.ibl.RewardTimeInstant;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
 import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.StateExpression;
 import roadblock.xtext.ibl.ibl.StateFormula;
-import roadblock.xtext.ibl.ibl.UserDefinedType;
+import roadblock.xtext.ibl.ibl.SystemBody;
+import roadblock.xtext.ibl.ibl.SystemBodyMember;
+import roadblock.xtext.ibl.ibl.SystemInstantiation;
+import roadblock.xtext.ibl.ibl.TimeInstant;
+import roadblock.xtext.ibl.ibl.TimeInterval;
 import roadblock.xtext.ibl.ibl.VariableAssignment;
 import roadblock.xtext.ibl.ibl.VariableAssignmentObject;
 import roadblock.xtext.ibl.ibl.VariableAttribute;
@@ -90,6 +112,104 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass processBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass systemBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass plasmidBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass chromosomeBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass regionBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass customFunctionBodyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass systemBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass plasmidBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass chromosomeBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass regionBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass customFunctionBodyMemberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass functionParameterMemberEClass = null;
 
   /**
@@ -97,14 +217,56 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionBodyMemberEClass = null;
+  private EClass functionUseMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionUseMemberEClass = null;
+  private EClass deviceDefinitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deviceMembersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processInstantiationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass systemInstantiationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass plasmidInstantiationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass chromosomeInstantiationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cellInstantiationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -119,13 +281,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass variableAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass userDefinedTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -230,20 +385,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass deviceDefinitionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass deviceMembersEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass atgcDefinitionEClass = null;
 
   /**
@@ -280,6 +421,41 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * @generated
    */
   private EClass stateFormulaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass timeInstantEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass timeIntervalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rewardTimeInstantEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass probabilityConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass concentrationConstraintEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -444,29 +620,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionDefinition_Type()
+  public EReference getFunctionDefinition_FunctionBody()
   {
-    return (EAttribute)functionDefinitionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFunctionDefinition_Parameters()
-  {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFunctionDefinition_Members()
-  {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(3);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -476,7 +632,297 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    */
   public EReference getFunctionDefinition_Uses()
   {
-    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(4);
+    return (EReference)functionDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessBody()
+  {
+    return processBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessBody_Parameters()
+  {
+    return (EReference)processBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessBody_Members()
+  {
+    return (EReference)processBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSystemBody()
+  {
+    return systemBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSystemBody_Parameters()
+  {
+    return (EReference)systemBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSystemBody_Members()
+  {
+    return (EReference)systemBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPlasmidBody()
+  {
+    return plasmidBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPlasmidBody_Parameters()
+  {
+    return (EReference)plasmidBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPlasmidBody_Members()
+  {
+    return (EReference)plasmidBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChromosomeBody()
+  {
+    return chromosomeBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getChromosomeBody_Parameters()
+  {
+    return (EReference)chromosomeBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getChromosomeBody_Members()
+  {
+    return (EReference)chromosomeBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellBody()
+  {
+    return cellBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellBody_Parameters()
+  {
+    return (EReference)cellBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellBody_Members()
+  {
+    return (EReference)cellBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRegionBody()
+  {
+    return regionBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRegionBody_Parameters()
+  {
+    return (EReference)regionBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRegionBody_Members()
+  {
+    return (EReference)regionBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCustomFunctionBody()
+  {
+    return customFunctionBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCustomFunctionBody_FunctionType()
+  {
+    return (EAttribute)customFunctionBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCustomFunctionBody_Parameters()
+  {
+    return (EReference)customFunctionBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCustomFunctionBody_Members()
+  {
+    return (EReference)customFunctionBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessBodyMember()
+  {
+    return processBodyMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSystemBodyMember()
+  {
+    return systemBodyMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPlasmidBodyMember()
+  {
+    return plasmidBodyMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChromosomeBodyMember()
+  {
+    return chromosomeBodyMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellBodyMember()
+  {
+    return cellBodyMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRegionBodyMember()
+  {
+    return regionBodyMemberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCustomFunctionBodyMember()
+  {
+    return customFunctionBodyMemberEClass;
   }
 
   /**
@@ -534,16 +980,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunctionBodyMember()
-  {
-    return functionBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getFunctionUseMember()
   {
     return functionUseMemberEClass;
@@ -567,6 +1003,276 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EAttribute getFunctionUseMember_Name()
   {
     return (EAttribute)functionUseMemberEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDeviceDefinition()
+  {
+    return deviceDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeviceDefinition_Name()
+  {
+    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Parts()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Input()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Outputput()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeviceDefinition_Members()
+  {
+    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDeviceMembers()
+  {
+    return deviceMembersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessInstantiation()
+  {
+    return processInstantiationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessInstantiation_Name()
+  {
+    return (EAttribute)processInstantiationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProcessInstantiation_Constructor()
+  {
+    return (EAttribute)processInstantiationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessInstantiation_Parameters()
+  {
+    return (EReference)processInstantiationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSystemInstantiation()
+  {
+    return systemInstantiationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSystemInstantiation_Name()
+  {
+    return (EAttribute)systemInstantiationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSystemInstantiation_Constructor()
+  {
+    return (EAttribute)systemInstantiationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSystemInstantiation_Parameters()
+  {
+    return (EReference)systemInstantiationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPlasmidInstantiation()
+  {
+    return plasmidInstantiationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPlasmidInstantiation_Name()
+  {
+    return (EAttribute)plasmidInstantiationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPlasmidInstantiation_Constructor()
+  {
+    return (EAttribute)plasmidInstantiationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPlasmidInstantiation_Parameters()
+  {
+    return (EReference)plasmidInstantiationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getChromosomeInstantiation()
+  {
+    return chromosomeInstantiationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChromosomeInstantiation_Name()
+  {
+    return (EAttribute)chromosomeInstantiationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getChromosomeInstantiation_Constructor()
+  {
+    return (EAttribute)chromosomeInstantiationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getChromosomeInstantiation_Parameters()
+  {
+    return (EReference)chromosomeInstantiationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCellInstantiation()
+  {
+    return cellInstantiationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellInstantiation_Name()
+  {
+    return (EAttribute)cellInstantiationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCellInstantiation_Constructor()
+  {
+    return (EAttribute)cellInstantiationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCellInstantiation_Parameters()
+  {
+    return (EReference)cellInstantiationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -627,26 +1333,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
   public EAttribute getVariableAttribute_Attribute()
   {
     return (EAttribute)variableAttributeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getUserDefinedType()
-  {
-    return userDefinedTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getUserDefinedType_Name()
-  {
-    return (EAttribute)userDefinedTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1134,76 +1820,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDeviceDefinition()
-  {
-    return deviceDefinitionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getDeviceDefinition_Name()
-  {
-    return (EAttribute)deviceDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeviceDefinition_Parts()
-  {
-    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeviceDefinition_Input()
-  {
-    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeviceDefinition_Outputput()
-  {
-    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeviceDefinition_Members()
-  {
-    return (EReference)deviceDefinitionEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getDeviceMembers()
-  {
-    return deviceMembersEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getATGCDefinition()
   {
     return atgcDefinitionEClass;
@@ -1264,7 +1880,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProbabilityProperty_StateFormula()
+  public EReference getProbabilityProperty_StateFormula1()
   {
     return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(0);
   }
@@ -1274,7 +1890,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbabilityProperty_Pattern()
+  public EAttribute getProbabilityProperty_IsEventually()
   {
     return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(1);
   }
@@ -1284,9 +1900,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProbabilityProperty_StateFormula2()
+  public EAttribute getProbabilityProperty_IsNever()
   {
-    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1294,7 +1910,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbabilityProperty_LowerBound()
+  public EAttribute getProbabilityProperty_IsAlways()
   {
     return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(3);
   }
@@ -1304,7 +1920,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbabilityProperty_UpperBound()
+  public EAttribute getProbabilityProperty_IsUntilThen()
   {
     return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(4);
   }
@@ -1314,7 +1930,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbabilityProperty_TimeUnit()
+  public EAttribute getProbabilityProperty_IsFollowedBy()
   {
     return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(5);
   }
@@ -1324,9 +1940,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbabilityProperty_Operator()
+  public EReference getProbabilityProperty_StateFormula2()
   {
-    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(6);
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1334,9 +1950,49 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbabilityProperty_Probability()
+  public EReference getProbabilityProperty_TimeInstant()
   {
-    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(7);
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProbabilityProperty_TimeInterval()
+  {
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityProperty_IsSteadyState()
+  {
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityProperty_IsInfinitelyOften()
+  {
+    return (EAttribute)probabilityPropertyEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProbabilityProperty_ProbabilityConstraint()
+  {
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(11);
   }
 
   /**
@@ -1346,7 +2002,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    */
   public EReference getProbabilityProperty_InitialConditions()
   {
-    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(8);
+    return (EReference)probabilityPropertyEClass.getEStructuralFeatures().get(12);
   }
 
   /**
@@ -1374,9 +2030,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRewardProperty_TimeValue()
+  public EReference getRewardProperty_TimeInstant()
   {
-    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(1);
+    return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1384,39 +2040,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRewardProperty_TimUnit()
+  public EReference getRewardProperty_ConcentrationConstraint()
   {
-    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRewardProperty_Operator()
-  {
-    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRewardProperty_ConcenValue()
-  {
-    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRewardProperty_Units()
-  {
-    return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(5);
+    return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1426,7 +2052,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    */
   public EReference getRewardProperty_InitialConditions()
   {
-    return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(6);
+    return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1444,7 +2070,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStateExpression_Lhs()
+  public EAttribute getStateExpression_Name()
   {
     return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(0);
   }
@@ -1464,7 +2090,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStateExpression_Rhs()
+  public EReference getStateExpression_ConcentrationQuantity()
   {
     return (EReference)stateExpressionEClass.getEStructuralFeatures().get(2);
   }
@@ -1504,9 +2130,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStateFormula_NotFormula()
+  public EAttribute getStateFormula_IsNegation()
   {
-    return (EReference)stateFormulaEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)stateFormulaEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1514,7 +2140,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStateFormula_BooleanFormula1()
+  public EReference getStateFormula_NegatedFormula()
   {
     return (EReference)stateFormulaEClass.getEStructuralFeatures().get(3);
   }
@@ -1524,9 +2150,289 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStateFormula_BooleanFormula2()
+  public EReference getStateFormula_LeftFormula()
   {
     return (EReference)stateFormulaEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStateFormula_IsConjunction()
+  {
+    return (EAttribute)stateFormulaEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStateFormula_IsDisjunction()
+  {
+    return (EAttribute)stateFormulaEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStateFormula_IsImplication()
+  {
+    return (EAttribute)stateFormulaEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStateFormula_RightFormula()
+  {
+    return (EReference)stateFormulaEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTimeInstant()
+  {
+    return timeInstantEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInstant_IsEqualTo()
+  {
+    return (EAttribute)timeInstantEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInstant_TimeInstant()
+  {
+    return (EAttribute)timeInstantEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInstant_IsLessThanOrEqual()
+  {
+    return (EAttribute)timeInstantEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInstant_IsGreaterThanOrEqual()
+  {
+    return (EAttribute)timeInstantEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInstant_TimeUnit()
+  {
+    return (EAttribute)timeInstantEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTimeInterval()
+  {
+    return timeIntervalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInterval_LowerBound()
+  {
+    return (EAttribute)timeIntervalEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInterval_UpperBound()
+  {
+    return (EAttribute)timeIntervalEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTimeInterval_TimeUnit()
+  {
+    return (EAttribute)timeIntervalEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRewardTimeInstant()
+  {
+    return rewardTimeInstantEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRewardTimeInstant_IsEqualTo()
+  {
+    return (EAttribute)rewardTimeInstantEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRewardTimeInstant_IsLessThanOrEqual()
+  {
+    return (EAttribute)rewardTimeInstantEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRewardTimeInstant_TimeValue()
+  {
+    return (EAttribute)rewardTimeInstantEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRewardTimeInstant_TimeUnit()
+  {
+    return (EAttribute)rewardTimeInstantEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProbabilityConstraint()
+  {
+    return probabilityConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityConstraint_Operator()
+  {
+    return (EAttribute)probabilityConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityConstraint_Probability()
+  {
+    return (EAttribute)probabilityConstraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProbabilityConstraint_HasUnknownProbability()
+  {
+    return (EAttribute)probabilityConstraintEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConcentrationConstraint()
+  {
+    return concentrationConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConcentrationConstraint_Operator()
+  {
+    return (EAttribute)concentrationConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConcentrationConstraint_Value()
+  {
+    return (EAttribute)concentrationConstraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConcentrationConstraint_Unit()
+  {
+    return (EAttribute)concentrationConstraintEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConcentrationConstraint_IsUnknown()
+  {
+    return (EAttribute)concentrationConstraintEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1614,7 +2520,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getConcentrationQuantity_Units()
+  public EAttribute getConcentrationQuantity_Unit()
   {
     return (EAttribute)concentrationQuantityEClass.getEStructuralFeatures().get(1);
   }
@@ -1698,10 +2604,51 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     functionDefinitionEClass = createEClass(FUNCTION_DEFINITION);
     createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__NAME);
-    createEAttribute(functionDefinitionEClass, FUNCTION_DEFINITION__TYPE);
-    createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__PARAMETERS);
-    createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__MEMBERS);
+    createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__FUNCTION_BODY);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__USES);
+
+    processBodyEClass = createEClass(PROCESS_BODY);
+    createEReference(processBodyEClass, PROCESS_BODY__PARAMETERS);
+    createEReference(processBodyEClass, PROCESS_BODY__MEMBERS);
+
+    systemBodyEClass = createEClass(SYSTEM_BODY);
+    createEReference(systemBodyEClass, SYSTEM_BODY__PARAMETERS);
+    createEReference(systemBodyEClass, SYSTEM_BODY__MEMBERS);
+
+    plasmidBodyEClass = createEClass(PLASMID_BODY);
+    createEReference(plasmidBodyEClass, PLASMID_BODY__PARAMETERS);
+    createEReference(plasmidBodyEClass, PLASMID_BODY__MEMBERS);
+
+    chromosomeBodyEClass = createEClass(CHROMOSOME_BODY);
+    createEReference(chromosomeBodyEClass, CHROMOSOME_BODY__PARAMETERS);
+    createEReference(chromosomeBodyEClass, CHROMOSOME_BODY__MEMBERS);
+
+    cellBodyEClass = createEClass(CELL_BODY);
+    createEReference(cellBodyEClass, CELL_BODY__PARAMETERS);
+    createEReference(cellBodyEClass, CELL_BODY__MEMBERS);
+
+    regionBodyEClass = createEClass(REGION_BODY);
+    createEReference(regionBodyEClass, REGION_BODY__PARAMETERS);
+    createEReference(regionBodyEClass, REGION_BODY__MEMBERS);
+
+    customFunctionBodyEClass = createEClass(CUSTOM_FUNCTION_BODY);
+    createEAttribute(customFunctionBodyEClass, CUSTOM_FUNCTION_BODY__FUNCTION_TYPE);
+    createEReference(customFunctionBodyEClass, CUSTOM_FUNCTION_BODY__PARAMETERS);
+    createEReference(customFunctionBodyEClass, CUSTOM_FUNCTION_BODY__MEMBERS);
+
+    processBodyMemberEClass = createEClass(PROCESS_BODY_MEMBER);
+
+    systemBodyMemberEClass = createEClass(SYSTEM_BODY_MEMBER);
+
+    plasmidBodyMemberEClass = createEClass(PLASMID_BODY_MEMBER);
+
+    chromosomeBodyMemberEClass = createEClass(CHROMOSOME_BODY_MEMBER);
+
+    cellBodyMemberEClass = createEClass(CELL_BODY_MEMBER);
+
+    regionBodyMemberEClass = createEClass(REGION_BODY_MEMBER);
+
+    customFunctionBodyMemberEClass = createEClass(CUSTOM_FUNCTION_BODY_MEMBER);
 
     functionParameterMemberEClass = createEClass(FUNCTION_PARAMETER_MEMBER);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__TYPE);
@@ -1709,11 +2656,43 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__NAME);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__SCOPE);
 
-    functionBodyMemberEClass = createEClass(FUNCTION_BODY_MEMBER);
-
     functionUseMemberEClass = createEClass(FUNCTION_USE_MEMBER);
     createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__TYPE);
     createEAttribute(functionUseMemberEClass, FUNCTION_USE_MEMBER__NAME);
+
+    deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
+    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARTS);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__INPUT);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__OUTPUTPUT);
+    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
+
+    deviceMembersEClass = createEClass(DEVICE_MEMBERS);
+
+    processInstantiationEClass = createEClass(PROCESS_INSTANTIATION);
+    createEAttribute(processInstantiationEClass, PROCESS_INSTANTIATION__NAME);
+    createEAttribute(processInstantiationEClass, PROCESS_INSTANTIATION__CONSTRUCTOR);
+    createEReference(processInstantiationEClass, PROCESS_INSTANTIATION__PARAMETERS);
+
+    systemInstantiationEClass = createEClass(SYSTEM_INSTANTIATION);
+    createEAttribute(systemInstantiationEClass, SYSTEM_INSTANTIATION__NAME);
+    createEAttribute(systemInstantiationEClass, SYSTEM_INSTANTIATION__CONSTRUCTOR);
+    createEReference(systemInstantiationEClass, SYSTEM_INSTANTIATION__PARAMETERS);
+
+    plasmidInstantiationEClass = createEClass(PLASMID_INSTANTIATION);
+    createEAttribute(plasmidInstantiationEClass, PLASMID_INSTANTIATION__NAME);
+    createEAttribute(plasmidInstantiationEClass, PLASMID_INSTANTIATION__CONSTRUCTOR);
+    createEReference(plasmidInstantiationEClass, PLASMID_INSTANTIATION__PARAMETERS);
+
+    chromosomeInstantiationEClass = createEClass(CHROMOSOME_INSTANTIATION);
+    createEAttribute(chromosomeInstantiationEClass, CHROMOSOME_INSTANTIATION__NAME);
+    createEAttribute(chromosomeInstantiationEClass, CHROMOSOME_INSTANTIATION__CONSTRUCTOR);
+    createEReference(chromosomeInstantiationEClass, CHROMOSOME_INSTANTIATION__PARAMETERS);
+
+    cellInstantiationEClass = createEClass(CELL_INSTANTIATION);
+    createEAttribute(cellInstantiationEClass, CELL_INSTANTIATION__NAME);
+    createEAttribute(cellInstantiationEClass, CELL_INSTANTIATION__CONSTRUCTOR);
+    createEReference(cellInstantiationEClass, CELL_INSTANTIATION__PARAMETERS);
 
     variableComplexEClass = createEClass(VARIABLE_COMPLEX);
     createEAttribute(variableComplexEClass, VARIABLE_COMPLEX__COMPONENTS);
@@ -1722,9 +2701,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__NAME);
     createEReference(variableAttributeEClass, VARIABLE_ATTRIBUTE__COMPLEX);
     createEAttribute(variableAttributeEClass, VARIABLE_ATTRIBUTE__ATTRIBUTE);
-
-    userDefinedTypeEClass = createEClass(USER_DEFINED_TYPE);
-    createEAttribute(userDefinedTypeEClass, USER_DEFINED_TYPE__NAME);
 
     variableDefinitionEClass = createEClass(VARIABLE_DEFINITION);
     createEReference(variableDefinitionEClass, VARIABLE_DEFINITION__DEFINITION);
@@ -1788,15 +2764,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     ruleObjectEClass = createEClass(RULE_OBJECT);
 
-    deviceDefinitionEClass = createEClass(DEVICE_DEFINITION);
-    createEAttribute(deviceDefinitionEClass, DEVICE_DEFINITION__NAME);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__PARTS);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__INPUT);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__OUTPUTPUT);
-    createEReference(deviceDefinitionEClass, DEVICE_DEFINITION__MEMBERS);
-
-    deviceMembersEClass = createEClass(DEVICE_MEMBERS);
-
     atgcDefinitionEClass = createEClass(ATGC_DEFINITION);
     createEAttribute(atgcDefinitionEClass, ATGC_DEFINITION__COMMAND);
     createEAttribute(atgcDefinitionEClass, ATGC_DEFINITION__ARGUMENTS);
@@ -1805,36 +2772,70 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEReference(propertyDefinitionEClass, PROPERTY_DEFINITION__PROPERTY);
 
     probabilityPropertyEClass = createEClass(PROBABILITY_PROPERTY);
-    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__STATE_FORMULA);
-    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__PATTERN);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__STATE_FORMULA1);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_EVENTUALLY);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_NEVER);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_ALWAYS);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_UNTIL_THEN);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_FOLLOWED_BY);
     createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__STATE_FORMULA2);
-    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__LOWER_BOUND);
-    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__UPPER_BOUND);
-    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__TIME_UNIT);
-    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__OPERATOR);
-    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__PROBABILITY);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__TIME_INSTANT);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__TIME_INTERVAL);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_STEADY_STATE);
+    createEAttribute(probabilityPropertyEClass, PROBABILITY_PROPERTY__IS_INFINITELY_OFTEN);
+    createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT);
     createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__INITIAL_CONDITIONS);
 
     rewardPropertyEClass = createEClass(REWARD_PROPERTY);
     createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__NAME);
-    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__TIME_VALUE);
-    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__TIM_UNIT);
-    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__OPERATOR);
-    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__CONCEN_VALUE);
-    createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__UNITS);
+    createEReference(rewardPropertyEClass, REWARD_PROPERTY__TIME_INSTANT);
+    createEReference(rewardPropertyEClass, REWARD_PROPERTY__CONCENTRATION_CONSTRAINT);
     createEReference(rewardPropertyEClass, REWARD_PROPERTY__INITIAL_CONDITIONS);
 
     stateExpressionEClass = createEClass(STATE_EXPRESSION);
-    createEAttribute(stateExpressionEClass, STATE_EXPRESSION__LHS);
+    createEAttribute(stateExpressionEClass, STATE_EXPRESSION__NAME);
     createEAttribute(stateExpressionEClass, STATE_EXPRESSION__OPERATOR);
-    createEReference(stateExpressionEClass, STATE_EXPRESSION__RHS);
+    createEReference(stateExpressionEClass, STATE_EXPRESSION__CONCENTRATION_QUANTITY);
 
     stateFormulaEClass = createEClass(STATE_FORMULA);
     createEAttribute(stateFormulaEClass, STATE_FORMULA__FORMULA);
     createEReference(stateFormulaEClass, STATE_FORMULA__ATOMIC_FORMULA);
-    createEReference(stateFormulaEClass, STATE_FORMULA__NOT_FORMULA);
-    createEReference(stateFormulaEClass, STATE_FORMULA__BOOLEAN_FORMULA1);
-    createEReference(stateFormulaEClass, STATE_FORMULA__BOOLEAN_FORMULA2);
+    createEAttribute(stateFormulaEClass, STATE_FORMULA__IS_NEGATION);
+    createEReference(stateFormulaEClass, STATE_FORMULA__NEGATED_FORMULA);
+    createEReference(stateFormulaEClass, STATE_FORMULA__LEFT_FORMULA);
+    createEAttribute(stateFormulaEClass, STATE_FORMULA__IS_CONJUNCTION);
+    createEAttribute(stateFormulaEClass, STATE_FORMULA__IS_DISJUNCTION);
+    createEAttribute(stateFormulaEClass, STATE_FORMULA__IS_IMPLICATION);
+    createEReference(stateFormulaEClass, STATE_FORMULA__RIGHT_FORMULA);
+
+    timeInstantEClass = createEClass(TIME_INSTANT);
+    createEAttribute(timeInstantEClass, TIME_INSTANT__IS_EQUAL_TO);
+    createEAttribute(timeInstantEClass, TIME_INSTANT__TIME_INSTANT);
+    createEAttribute(timeInstantEClass, TIME_INSTANT__IS_LESS_THAN_OR_EQUAL);
+    createEAttribute(timeInstantEClass, TIME_INSTANT__IS_GREATER_THAN_OR_EQUAL);
+    createEAttribute(timeInstantEClass, TIME_INSTANT__TIME_UNIT);
+
+    timeIntervalEClass = createEClass(TIME_INTERVAL);
+    createEAttribute(timeIntervalEClass, TIME_INTERVAL__LOWER_BOUND);
+    createEAttribute(timeIntervalEClass, TIME_INTERVAL__UPPER_BOUND);
+    createEAttribute(timeIntervalEClass, TIME_INTERVAL__TIME_UNIT);
+
+    rewardTimeInstantEClass = createEClass(REWARD_TIME_INSTANT);
+    createEAttribute(rewardTimeInstantEClass, REWARD_TIME_INSTANT__IS_EQUAL_TO);
+    createEAttribute(rewardTimeInstantEClass, REWARD_TIME_INSTANT__IS_LESS_THAN_OR_EQUAL);
+    createEAttribute(rewardTimeInstantEClass, REWARD_TIME_INSTANT__TIME_VALUE);
+    createEAttribute(rewardTimeInstantEClass, REWARD_TIME_INSTANT__TIME_UNIT);
+
+    probabilityConstraintEClass = createEClass(PROBABILITY_CONSTRAINT);
+    createEAttribute(probabilityConstraintEClass, PROBABILITY_CONSTRAINT__OPERATOR);
+    createEAttribute(probabilityConstraintEClass, PROBABILITY_CONSTRAINT__PROBABILITY);
+    createEAttribute(probabilityConstraintEClass, PROBABILITY_CONSTRAINT__HAS_UNKNOWN_PROBABILITY);
+
+    concentrationConstraintEClass = createEClass(CONCENTRATION_CONSTRAINT);
+    createEAttribute(concentrationConstraintEClass, CONCENTRATION_CONSTRAINT__OPERATOR);
+    createEAttribute(concentrationConstraintEClass, CONCENTRATION_CONSTRAINT__VALUE);
+    createEAttribute(concentrationConstraintEClass, CONCENTRATION_CONSTRAINT__UNIT);
+    createEAttribute(concentrationConstraintEClass, CONCENTRATION_CONSTRAINT__IS_UNKNOWN);
 
     propertyInitialConditionEClass = createEClass(PROPERTY_INITIAL_CONDITION);
     createEReference(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE);
@@ -1846,7 +2847,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     concentrationQuantityEClass = createEClass(CONCENTRATION_QUANTITY);
     createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__VALUE);
-    createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__UNITS);
+    createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__UNIT);
 
     listEClass = createEClass(LIST);
     createEReference(listEClass, LIST__ENTRIES);
@@ -1886,18 +2887,64 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     importStatementEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
+    deviceDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getProcessBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getSystemBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getDeviceMembers());
+    systemInstantiationEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    systemInstantiationEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    systemInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
+    systemInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    plasmidInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
+    plasmidInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    chromosomeInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
+    chromosomeInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    cellInstantiationEClass.getESuperTypes().add(this.getRegionBodyMember());
     variableComplexEClass.getESuperTypes().add(this.getRuleObject());
     variableAttributeEClass.getESuperTypes().add(this.getVariableAssignmentObject());
-    variableDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getProcessBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getRegionBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
     variableDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
-    variableAssignmentEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getProcessBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getSystemBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getCellBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getRegionBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
     atomicVariableExpressionObjectEClass.getESuperTypes().add(this.getVariableExpressionObject());
     compoundVariableExpressionObjectEClass.getESuperTypes().add(this.getVariableExpressionObject());
-    ruleDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getProcessBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getRegionBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
     atgcDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
-    propertyDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
     importEClass.getESuperTypes().add(this.getImportStatement());
 
@@ -1911,10 +2958,51 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionDefinition_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionDefinition_Members(), this.getFunctionBodyMember(), null, "members", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDefinition_FunctionBody(), ecorePackage.getEObject(), null, "functionBody", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Uses(), this.getFunctionUseMember(), null, "uses", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processBodyEClass, ProcessBody.class, "ProcessBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, ProcessBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessBody_Members(), this.getProcessBodyMember(), null, "members", null, 0, -1, ProcessBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(systemBodyEClass, SystemBody.class, "SystemBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSystemBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, SystemBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSystemBody_Members(), this.getSystemBodyMember(), null, "members", null, 0, -1, SystemBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(plasmidBodyEClass, PlasmidBody.class, "PlasmidBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPlasmidBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, PlasmidBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPlasmidBody_Members(), this.getPlasmidBodyMember(), null, "members", null, 0, -1, PlasmidBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(chromosomeBodyEClass, ChromosomeBody.class, "ChromosomeBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getChromosomeBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, ChromosomeBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getChromosomeBody_Members(), this.getChromosomeBodyMember(), null, "members", null, 0, -1, ChromosomeBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellBodyEClass, CellBody.class, "CellBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCellBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, CellBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCellBody_Members(), this.getCellBodyMember(), null, "members", null, 0, -1, CellBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(regionBodyEClass, RegionBody.class, "RegionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRegionBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, RegionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRegionBody_Members(), this.getRegionBodyMember(), null, "members", null, 0, -1, RegionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(customFunctionBodyEClass, CustomFunctionBody.class, "CustomFunctionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCustomFunctionBody_FunctionType(), ecorePackage.getEString(), "functionType", null, 0, 1, CustomFunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomFunctionBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, CustomFunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomFunctionBody_Members(), this.getCustomFunctionBodyMember(), null, "members", null, 0, -1, CustomFunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processBodyMemberEClass, ProcessBodyMember.class, "ProcessBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(systemBodyMemberEClass, SystemBodyMember.class, "SystemBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(plasmidBodyMemberEClass, PlasmidBodyMember.class, "PlasmidBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(chromosomeBodyMemberEClass, ChromosomeBodyMember.class, "ChromosomeBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(cellBodyMemberEClass, CellBodyMember.class, "CellBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(regionBodyMemberEClass, RegionBodyMember.class, "RegionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(customFunctionBodyMemberEClass, CustomFunctionBodyMember.class, "CustomFunctionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(functionParameterMemberEClass, FunctionParameterMember.class, "FunctionParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1922,11 +3010,43 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getFunctionParameterMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionParameterMember_Scope(), ecorePackage.getEString(), "scope", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionBodyMemberEClass, FunctionBodyMember.class, "FunctionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(functionUseMemberEClass, FunctionUseMember.class, "FunctionUseMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionUseMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionUseMember_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionUseMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Parts(), this.getList(), null, "parts", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Input(), this.getList(), null, "input", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Outputput(), this.getList(), null, "outputput", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeviceDefinition_Members(), this.getDeviceMembers(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deviceMembersEClass, DeviceMembers.class, "DeviceMembers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(processInstantiationEClass, ProcessInstantiation.class, "ProcessInstantiation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProcessInstantiation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProcessInstantiation_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ProcessInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessInstantiation_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, ProcessInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(systemInstantiationEClass, SystemInstantiation.class, "SystemInstantiation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSystemInstantiation_Name(), ecorePackage.getEString(), "name", null, 0, 1, SystemInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSystemInstantiation_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, SystemInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSystemInstantiation_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, SystemInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(plasmidInstantiationEClass, PlasmidInstantiation.class, "PlasmidInstantiation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPlasmidInstantiation_Name(), ecorePackage.getEString(), "name", null, 0, 1, PlasmidInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPlasmidInstantiation_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, PlasmidInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPlasmidInstantiation_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, PlasmidInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(chromosomeInstantiationEClass, ChromosomeInstantiation.class, "ChromosomeInstantiation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getChromosomeInstantiation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ChromosomeInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getChromosomeInstantiation_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ChromosomeInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getChromosomeInstantiation_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, ChromosomeInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(cellInstantiationEClass, CellInstantiation.class, "CellInstantiation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCellInstantiation_Name(), ecorePackage.getEString(), "name", null, 0, 1, CellInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCellInstantiation_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, CellInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCellInstantiation_Parameters(), this.getParameterAssignment(), null, "parameters", null, 0, -1, CellInstantiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableComplexEClass, VariableComplex.class, "VariableComplex", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableComplex_Components(), ecorePackage.getEString(), "components", null, 0, -1, VariableComplex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1935,9 +3055,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEAttribute(getVariableAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getVariableAttribute_Complex(), this.getVariableComplex(), null, "complex", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableAttribute_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, VariableAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(userDefinedTypeEClass, UserDefinedType.class, "UserDefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getUserDefinedType_Name(), ecorePackage.getEString(), "name", null, 0, 1, UserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDefinitionEClass, VariableDefinition.class, "VariableDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getVariableDefinition_Definition(), ecorePackage.getEObject(), null, "definition", null, 0, 1, VariableDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2001,15 +3118,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(ruleObjectEClass, RuleObject.class, "RuleObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(deviceDefinitionEClass, DeviceDefinition.class, "DeviceDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDeviceDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Parts(), this.getList(), null, "parts", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Input(), this.getList(), null, "input", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Outputput(), this.getList(), null, "outputput", null, 0, 1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDeviceDefinition_Members(), this.getDeviceMembers(), null, "members", null, 0, -1, DeviceDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(deviceMembersEClass, DeviceMembers.class, "DeviceMembers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(atgcDefinitionEClass, ATGCDefinition.class, "ATGCDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getATGCDefinition_Command(), ecorePackage.getEString(), "command", null, 0, 1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getATGCDefinition_Arguments(), ecorePackage.getEString(), "arguments", null, 0, -1, ATGCDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2018,36 +3126,70 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     initEReference(getPropertyDefinition_Property(), ecorePackage.getEObject(), null, "property", null, 0, 1, PropertyDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(probabilityPropertyEClass, ProbabilityProperty.class, "ProbabilityProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProbabilityProperty_StateFormula(), this.getStateFormula(), null, "stateFormula", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityProperty_Pattern(), ecorePackage.getEString(), "pattern", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbabilityProperty_StateFormula1(), this.getStateFormula(), null, "stateFormula1", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsEventually(), ecorePackage.getEBoolean(), "isEventually", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsNever(), ecorePackage.getEBoolean(), "isNever", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsAlways(), ecorePackage.getEBoolean(), "isAlways", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsUntilThen(), ecorePackage.getEBoolean(), "isUntilThen", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsFollowedBy(), ecorePackage.getEBoolean(), "isFollowedBy", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProbabilityProperty_StateFormula2(), this.getStateFormula(), null, "stateFormula2", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityProperty_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityProperty_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityProperty_TimeUnit(), ecorePackage.getEString(), "timeUnit", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityProperty_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProbabilityProperty_Probability(), ecorePackage.getEString(), "probability", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbabilityProperty_TimeInstant(), this.getTimeInstant(), null, "timeInstant", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbabilityProperty_TimeInterval(), this.getTimeInterval(), null, "timeInterval", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsSteadyState(), ecorePackage.getEBoolean(), "isSteadyState", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityProperty_IsInfinitelyOften(), ecorePackage.getEBoolean(), "isInfinitelyOften", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbabilityProperty_ProbabilityConstraint(), this.getProbabilityConstraint(), null, "probabilityConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProbabilityProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rewardPropertyEClass, RewardProperty.class, "RewardProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRewardProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRewardProperty_TimeValue(), ecorePackage.getEInt(), "timeValue", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRewardProperty_TimUnit(), ecorePackage.getEString(), "timUnit", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRewardProperty_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRewardProperty_ConcenValue(), ecorePackage.getEString(), "concenValue", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRewardProperty_Units(), ecorePackage.getEString(), "units", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRewardProperty_TimeInstant(), this.getRewardTimeInstant(), null, "timeInstant", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRewardProperty_ConcentrationConstraint(), this.getConcentrationConstraint(), null, "concentrationConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRewardProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stateExpressionEClass, StateExpression.class, "StateExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStateExpression_Lhs(), ecorePackage.getEString(), "lhs", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStateExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStateExpression_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStateExpression_Rhs(), this.getConcentrationQuantity(), null, "rhs", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateExpression_ConcentrationQuantity(), this.getConcentrationQuantity(), null, "concentrationQuantity", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stateFormulaEClass, StateFormula.class, "StateFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStateFormula_Formula(), ecorePackage.getEString(), "formula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStateFormula_AtomicFormula(), this.getStateExpression(), null, "atomicFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStateFormula_NotFormula(), this.getStateFormula(), null, "notFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStateFormula_BooleanFormula1(), this.getStateFormula(), null, "booleanFormula1", null, 0, -1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getStateFormula_BooleanFormula2(), this.getStateFormula(), null, "booleanFormula2", null, 0, -1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStateFormula_IsNegation(), ecorePackage.getEBoolean(), "isNegation", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_NegatedFormula(), this.getStateFormula(), null, "negatedFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_LeftFormula(), this.getStateFormula(), null, "leftFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStateFormula_IsConjunction(), ecorePackage.getEBoolean(), "isConjunction", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStateFormula_IsDisjunction(), ecorePackage.getEBoolean(), "isDisjunction", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStateFormula_IsImplication(), ecorePackage.getEBoolean(), "isImplication", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStateFormula_RightFormula(), this.getStateFormula(), null, "rightFormula", null, 0, 1, StateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(timeInstantEClass, TimeInstant.class, "TimeInstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTimeInstant_IsEqualTo(), ecorePackage.getEBoolean(), "isEqualTo", null, 0, 1, TimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTimeInstant_TimeInstant(), ecorePackage.getEInt(), "timeInstant", null, 0, 1, TimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTimeInstant_IsLessThanOrEqual(), ecorePackage.getEBoolean(), "isLessThanOrEqual", null, 0, 1, TimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTimeInstant_IsGreaterThanOrEqual(), ecorePackage.getEBoolean(), "isGreaterThanOrEqual", null, 0, 1, TimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTimeInstant_TimeUnit(), ecorePackage.getEString(), "timeUnit", null, 0, 1, TimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(timeIntervalEClass, TimeInterval.class, "TimeInterval", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTimeInterval_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTimeInterval_UpperBound(), ecorePackage.getEInt(), "upperBound", null, 0, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTimeInterval_TimeUnit(), ecorePackage.getEString(), "timeUnit", null, 0, 1, TimeInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rewardTimeInstantEClass, RewardTimeInstant.class, "RewardTimeInstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRewardTimeInstant_IsEqualTo(), ecorePackage.getEBoolean(), "isEqualTo", null, 0, 1, RewardTimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardTimeInstant_IsLessThanOrEqual(), ecorePackage.getEBoolean(), "isLessThanOrEqual", null, 0, 1, RewardTimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardTimeInstant_TimeValue(), ecorePackage.getEInt(), "timeValue", null, 0, 1, RewardTimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRewardTimeInstant_TimeUnit(), ecorePackage.getEString(), "timeUnit", null, 0, 1, RewardTimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(probabilityConstraintEClass, ProbabilityConstraint.class, "ProbabilityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProbabilityConstraint_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, ProbabilityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityConstraint_Probability(), ecorePackage.getEString(), "probability", null, 0, 1, ProbabilityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProbabilityConstraint_HasUnknownProbability(), ecorePackage.getEBoolean(), "hasUnknownProbability", null, 0, 1, ProbabilityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(concentrationConstraintEClass, ConcentrationConstraint.class, "ConcentrationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConcentrationConstraint_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, ConcentrationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConcentrationConstraint_Value(), ecorePackage.getEString(), "value", null, 0, 1, ConcentrationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConcentrationConstraint_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, ConcentrationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConcentrationConstraint_IsUnknown(), ecorePackage.getEBoolean(), "isUnknown", null, 0, 1, ConcentrationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPropertyInitialCondition_Variable(), this.getVariableAssignmentObject(), null, "variable", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2059,7 +3201,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(concentrationQuantityEClass, ConcentrationQuantity.class, "ConcentrationQuantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConcentrationQuantity_Value(), ecorePackage.getEString(), "value", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getConcentrationQuantity_Units(), ecorePackage.getEString(), "units", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConcentrationQuantity_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getList_Entries(), this.getAtomicVariableExpressionObject(), null, "entries", null, 0, -1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

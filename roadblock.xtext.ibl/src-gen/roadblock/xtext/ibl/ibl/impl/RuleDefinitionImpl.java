@@ -37,7 +37,7 @@ import roadblock.xtext.ibl.ibl.RuleObject;
  *
  * @generated
  */
-public class RuleDefinitionImpl extends FunctionBodyMemberImpl implements RuleDefinition
+public class RuleDefinitionImpl extends ProcessBodyMemberImpl implements RuleDefinition
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

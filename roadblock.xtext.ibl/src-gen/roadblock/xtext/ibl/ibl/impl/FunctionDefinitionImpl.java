@@ -10,6 +10,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -17,9 +18,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import roadblock.xtext.ibl.ibl.FunctionBodyMember;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
-import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
 
@@ -31,9 +30,7 @@ import roadblock.xtext.ibl.ibl.IblPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getType <em>Type</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getMembers <em>Members</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getFunctionBody <em>Function Body</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.impl.FunctionDefinitionImpl#getUses <em>Uses</em>}</li>
  * </ul>
  * </p>
@@ -63,44 +60,14 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getFunctionBody() <em>Function Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getFunctionBody()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParameters()
-   * @generated
-   * @ordered
-   */
-  protected EList<FunctionParameterMember> parameters;
-
-  /**
-   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMembers()
-   * @generated
-   * @ordered
-   */
-  protected EList<FunctionBodyMember> members;
+  protected EObject functionBody;
 
   /**
    * The cached value of the '{@link #getUses() <em>Uses</em>}' containment reference list.
@@ -161,9 +128,9 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public EObject getFunctionBody()
   {
-    return type;
+    return functionBody;
   }
 
   /**
@@ -171,12 +138,16 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public NotificationChain basicSetFunctionBody(EObject newFunctionBody, NotificationChain msgs)
   {
-    String oldType = type;
-    type = newType;
+    EObject oldFunctionBody = functionBody;
+    functionBody = newFunctionBody;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY, oldFunctionBody, newFunctionBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -184,27 +155,20 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<FunctionParameterMember> getParameters()
+  public void setFunctionBody(EObject newFunctionBody)
   {
-    if (parameters == null)
+    if (newFunctionBody != functionBody)
     {
-      parameters = new EObjectContainmentEList<FunctionParameterMember>(FunctionParameterMember.class, this, IblPackage.FUNCTION_DEFINITION__PARAMETERS);
+      NotificationChain msgs = null;
+      if (functionBody != null)
+        msgs = ((InternalEObject)functionBody).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY, null, msgs);
+      if (newFunctionBody != null)
+        msgs = ((InternalEObject)newFunctionBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY, null, msgs);
+      msgs = basicSetFunctionBody(newFunctionBody, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return parameters;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<FunctionBodyMember> getMembers()
-  {
-    if (members == null)
-    {
-      members = new EObjectContainmentEList<FunctionBodyMember>(FunctionBodyMember.class, this, IblPackage.FUNCTION_DEFINITION__MEMBERS);
-    }
-    return members;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY, newFunctionBody, newFunctionBody));
   }
 
   /**
@@ -231,10 +195,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
   {
     switch (featureID)
     {
-      case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
-        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-      case IblPackage.FUNCTION_DEFINITION__MEMBERS:
-        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+      case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
+        return basicSetFunctionBody(null, msgs);
       case IblPackage.FUNCTION_DEFINITION__USES:
         return ((InternalEList<?>)getUses()).basicRemove(otherEnd, msgs);
     }
@@ -253,12 +215,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     {
       case IblPackage.FUNCTION_DEFINITION__NAME:
         return getName();
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        return getType();
-      case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
-        return getParameters();
-      case IblPackage.FUNCTION_DEFINITION__MEMBERS:
-        return getMembers();
+      case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
+        return getFunctionBody();
       case IblPackage.FUNCTION_DEFINITION__USES:
         return getUses();
     }
@@ -279,16 +237,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
       case IblPackage.FUNCTION_DEFINITION__NAME:
         setName((String)newValue);
         return;
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        setType((String)newValue);
-        return;
-      case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
-        getParameters().clear();
-        getParameters().addAll((Collection<? extends FunctionParameterMember>)newValue);
-        return;
-      case IblPackage.FUNCTION_DEFINITION__MEMBERS:
-        getMembers().clear();
-        getMembers().addAll((Collection<? extends FunctionBodyMember>)newValue);
+      case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
+        setFunctionBody((EObject)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__USES:
         getUses().clear();
@@ -311,14 +261,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
       case IblPackage.FUNCTION_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
-      case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
-        getParameters().clear();
-        return;
-      case IblPackage.FUNCTION_DEFINITION__MEMBERS:
-        getMembers().clear();
+      case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
+        setFunctionBody((EObject)null);
         return;
       case IblPackage.FUNCTION_DEFINITION__USES:
         getUses().clear();
@@ -339,12 +283,8 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     {
       case IblPackage.FUNCTION_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case IblPackage.FUNCTION_DEFINITION__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-      case IblPackage.FUNCTION_DEFINITION__PARAMETERS:
-        return parameters != null && !parameters.isEmpty();
-      case IblPackage.FUNCTION_DEFINITION__MEMBERS:
-        return members != null && !members.isEmpty();
+      case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
+        return functionBody != null;
       case IblPackage.FUNCTION_DEFINITION__USES:
         return uses != null && !uses.isEmpty();
     }
@@ -364,8 +304,6 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", type: ");
-    result.append(type);
     result.append(')');
     return result.toString();
   }

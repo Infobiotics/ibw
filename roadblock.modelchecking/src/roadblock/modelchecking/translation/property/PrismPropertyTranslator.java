@@ -13,6 +13,8 @@ import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
 import roadblock.emf.ibl.Ibl.ConcentrationUnit;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
+import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
@@ -37,11 +39,14 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(UnaryProbabilityProperty expression) {
 
-		String pattern = "P%s [ %s%s %s ]";
-		String probabilityConstraint = expression.getProbabilityConstraint()
-				.accept(this);
+		String pattern = "P%s [ %s%s (%s) ]";
+
+		IProbabilityConstraint pc = expression.getProbabilityConstraint();
+		ITimeConstraint tc = expression.getTimeConstraint();
+
+		String probabilityConstraint = pc != null ? pc.accept(this) : "";
 		String temporalOperator = Translate(expression.getOperator());
-		String timeConstraint = expression.getTimeConstraint().accept(this);
+		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
 		List<String> initialConditions = new ArrayList<String>();
 
@@ -59,11 +64,14 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 
 	@Override
 	public String visit(BinaryProbabilityProperty expression) {
-		String pattern = "P%s [ %s %s%s %s ]";
-		String probabilityConstraint = expression.getProbabilityConstraint()
-				.accept(this);
+		String pattern = "P%s [ (%s) %s%s (%s) ]";
+
+		IProbabilityConstraint pc = expression.getProbabilityConstraint();
+		ITimeConstraint tc = expression.getTimeConstraint();
+
+		String probabilityConstraint = pc != null ? pc.accept(this) : "";
 		String temporalOperator = Translate(expression.getOperator());
-		String timeConstraint = expression.getTimeConstraint().accept(this);
+		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String leftStateFormula = expression.getLeftOperand().accept(this);
 		String rightStateFormula = expression.getRightOperand().accept(this);
 		List<String> initialConditions = new ArrayList<String>();
@@ -82,9 +90,11 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(SteadyStateProperty expression) {
 
-		String pattern = "S%s [ %s ]";
-		String probabilityConstraint = expression.getProbabilityConstraint()
-				.accept(this);
+		String pattern = "S%s [ (%s) ]";
+
+		IProbabilityConstraint pc = expression.getProbabilityConstraint();
+
+		String probabilityConstraint = pc != null ? pc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
 		List<String> initialConditions = new ArrayList<String>();
 
@@ -104,10 +114,11 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String pattern = expression.getTimeConstraint().getOperator() == RelationalOperator.EQ ? "R{\"%s\"}=? [ I%s ]"
 				: "R{\"%s\"}=? [ I%s ]";
 
-		String rewardExpression = null;
+		ConcentrationConstraint cc = expression.getConcentrationConstraint();
+
+		String rewardExpression = expression.getVariableName();
 		String timeConstraint = expression.getTimeConstraint().accept(this);
-		String concentrationConstraint = expression
-				.getConcentrationConstraint().accept(this);
+		String concentrationConstraint = cc != null ? cc.accept(this) : "";
 
 		List<String> initialConditions = new ArrayList<String>();
 

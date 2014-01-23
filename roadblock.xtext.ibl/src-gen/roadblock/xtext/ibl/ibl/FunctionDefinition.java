@@ -4,6 +4,8 @@ package roadblock.xtext.ibl.ibl;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Function Definition</b></em>'.
@@ -13,9 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getName <em>Name</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getType <em>Type</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getParameters <em>Parameters</em>}</li>
- *   <li>{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getMembers <em>Members</em>}</li>
+ *   <li>{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getFunctionBody <em>Function Body</em>}</li>
  *   <li>{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getUses <em>Uses</em>}</li>
  * </ul>
  * </p>
@@ -53,62 +53,30 @@ public interface FunctionDefinition extends ModelMember
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Function Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Function Body</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see roadblock.xtext.ibl.ibl.IblPackage#getFunctionDefinition_Type()
-   * @model
-   * @generated
-   */
-  String getType();
-
-  /**
-   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getType <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
-   * @generated
-   */
-  void setType(String value);
-
-  /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.FunctionParameterMember}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference list.
-   * @see roadblock.xtext.ibl.ibl.IblPackage#getFunctionDefinition_Parameters()
+   * @return the value of the '<em>Function Body</em>' containment reference.
+   * @see #setFunctionBody(EObject)
+   * @see roadblock.xtext.ibl.ibl.IblPackage#getFunctionDefinition_FunctionBody()
    * @model containment="true"
    * @generated
    */
-  EList<FunctionParameterMember> getParameters();
+  EObject getFunctionBody();
 
   /**
-   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
-   * The list contents are of type {@link roadblock.xtext.ibl.ibl.FunctionBodyMember}.
+   * Sets the value of the '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getFunctionBody <em>Function Body</em>}' containment reference.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Members</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Members</em>' containment reference list.
-   * @see roadblock.xtext.ibl.ibl.IblPackage#getFunctionDefinition_Members()
-   * @model containment="true"
+   * @param value the new value of the '<em>Function Body</em>' containment reference.
+   * @see #getFunctionBody()
    * @generated
    */
-  EList<FunctionBodyMember> getMembers();
+  void setFunctionBody(EObject value);
 
   /**
    * Returns the value of the '<em><b>Uses</b></em>' containment reference list.

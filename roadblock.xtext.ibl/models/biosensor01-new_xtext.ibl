@@ -118,10 +118,10 @@ define SensorCell typeof CELL(MOLECULE signal){
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >=0.9
          VERIFY [signal > 0 uM] NEVER HOLDS
          VERIFY [signal > 0 uM] ALWAYS HOLDS
-         VERIFY [signal > 0 uM] HOLDS IN STEASY-STATE
+         VERIFY [signal > 0 uM] HOLDS IN STEADY-STATE
          VERIFY [signal > 0 uM] HOLDS INFINITELY OFTEN
          VERIFY [RFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
          VERIFY EXPECTED [RFP] AT 1000 s IS ?
-         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
- 	     
+         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ? 	  
+                 
 }

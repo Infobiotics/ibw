@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DeviceDefinition extends FunctionBodyMember
+public interface DeviceDefinition extends SystemBodyMember, PlasmidBodyMember, ChromosomeBodyMember, CellBodyMember, CustomFunctionBodyMember
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

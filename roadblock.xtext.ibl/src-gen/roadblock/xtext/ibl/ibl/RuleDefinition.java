@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface RuleDefinition extends FunctionBodyMember
+public interface RuleDefinition extends ProcessBodyMember, SystemBodyMember, PlasmidBodyMember, ChromosomeBodyMember, CellBodyMember, RegionBodyMember, CustomFunctionBodyMember
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
