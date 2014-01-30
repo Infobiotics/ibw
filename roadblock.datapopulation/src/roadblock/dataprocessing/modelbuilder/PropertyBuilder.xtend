@@ -1,4 +1,4 @@
-package roadblock.xtext.ibl.datapopulation
+package roadblock.dataprocessing.modelbuilder
 
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.IblFactory
@@ -32,6 +32,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 
 	def build(PropertyDefinition propertyDefinition) {
 		return doSwitch(propertyDefinition) as IProperty;
+		
 	}
 
 	override casePropertyDefinition(PropertyDefinition property) {

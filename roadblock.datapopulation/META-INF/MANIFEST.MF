@@ -1,15 +1,21 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Datapopulation
-Bundle-SymbolicName: roadblock.datapopulation
+Bundle-SymbolicName: roadblock.dataprocessing
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: roadblock.datapopulation.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: roadblock.emf.ibl.Ibl,
+Import-Package: org.eclipse.emf.ecore.util,
+ roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util,
  roadblock.xtext.ibl.ibl,
  roadblock.xtext.ibl.ibl.impl,
  roadblock.xtext.ibl.ibl.util
+Export-Package: roadblock.dataprocessing.modelbuilder
+

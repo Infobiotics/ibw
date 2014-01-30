@@ -13,10 +13,10 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import roadblock.dataprocessing.modelbuilder.PropertyBuilder;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.translation.property.PropertyTranslationManager;
 import roadblock.modelchecking.translation.property.TranslationTarget;
-import roadblock.xtext.ibl.datapopulation.PropertyBuilder;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 
 /**

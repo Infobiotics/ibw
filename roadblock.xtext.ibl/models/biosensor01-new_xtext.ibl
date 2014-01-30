@@ -122,6 +122,5 @@ define SensorCell typeof CELL(MOLECULE signal){
          VERIFY [signal > 0 uM] HOLDS INFINITELY OFTEN
          VERIFY [RFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
          VERIFY EXPECTED [RFP] AT 1000 s IS ?
-         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ? 	  
-                 
+         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
 }

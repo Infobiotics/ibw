@@ -6,10 +6,10 @@ package roadblock.xtext.ibl.generator
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import roadblock.dataprocessing.modelbuilder.PropertyBuilder
 import roadblock.modelchecking.translation.property.PropertyTranslationManager
-import roadblock.xtext.ibl.datapopulation.PropertyBuilder
-import roadblock.xtext.ibl.ibl.PropertyDefinition
 import roadblock.modelchecking.translation.property.TranslationTarget
+import roadblock.xtext.ibl.ibl.PropertyDefinition
 
 /**
  * Generates code from your model files on save.
@@ -26,11 +26,6 @@ class IblGenerator implements IGenerator {
 		val properties = resource.allContents.filter(typeof(PropertyDefinition)).toList;
 		System.out.println("Property count: " + properties.size);
 
-		/* 
-		for (PropertyDefinition  p : properties) {
-			System.out.println(propertyBuilder.doSwitch(p).class.toString);
-		}*/
-		
 		for (PropertyDefinition  p : properties) {
 			System.out.println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
 		}

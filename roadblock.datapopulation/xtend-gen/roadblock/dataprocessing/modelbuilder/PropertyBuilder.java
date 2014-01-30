@@ -1,4 +1,4 @@
-package roadblock.xtext.ibl.datapopulation;
+package roadblock.dataprocessing.modelbuilder;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
