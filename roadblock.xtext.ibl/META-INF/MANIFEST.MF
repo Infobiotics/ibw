@@ -24,7 +24,7 @@ Import-Package: org.apache.log4j,
  roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util,
  roadblock.modelchecking.translation.property
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.xtext.ibl,
  roadblock.xtext.ibl.services,
  roadblock.xtext.ibl.ibl,
