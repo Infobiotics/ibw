@@ -9,61 +9,27 @@
   <eClassifiers xsi:type="ecore:EClass" name="ImportStatement" eSuperTypes="#//ModelMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionDefinition" eSuperTypes="#//ModelMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="functionBody" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionBody" eType="#//FunctionBodyType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="uses" upperBound="-1" eType="#//FunctionUseMember"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProcessBody">
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionBodyType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//FunctionParameterMember" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//ProcessBodyMember" containment="true"/>
+        eType="#//FunctionBodyMember" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//FunctionParameterMember" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//SystemBodyMember" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PlasmidBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//FunctionParameterMember" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//PlasmidBodyMember" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChromosomeBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//FunctionParameterMember" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//ChromosomeBodyMember" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CellBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//FunctionParameterMember" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//CellBodyMember" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RegionBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//FunctionParameterMember" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//RegionBodyMember" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomFunctionBody">
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessBody" eSuperTypes="#//FunctionBodyType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemBody" eSuperTypes="#//FunctionBodyType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PlasmidBody" eSuperTypes="#//FunctionBodyType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChromosomeBody" eSuperTypes="#//FunctionBodyType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CellBody" eSuperTypes="#//FunctionBodyType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RegionBody" eSuperTypes="#//FunctionBodyType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomFunctionBody" eSuperTypes="#//FunctionBodyType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="functionType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//FunctionParameterMember" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//CustomFunctionBodyMember" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProcessBodyMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemBodyMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PlasmidBodyMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ChromosomeBodyMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CellBodyMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="RegionBodyMember"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomFunctionBodyMember"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionBodyMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionParameterMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -74,7 +40,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DeviceDefinition" eSuperTypes="#//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//CustomFunctionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="DeviceDefinition" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" eType="#//List"
         containment="true"/>
@@ -86,31 +52,31 @@
         eType="#//DeviceMembers" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeviceMembers"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ProcessInstantiation" eSuperTypes="#//ProcessBodyMember #//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//CustomFunctionBodyMember #//DeviceMembers">
+  <eClassifiers xsi:type="ecore:EClass" name="ProcessInstantiation" eSuperTypes="#//FunctionBodyMember #//DeviceMembers">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constructor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//ParameterAssignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SystemInstantiation" eSuperTypes="#//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//CustomFunctionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="SystemInstantiation" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constructor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//ParameterAssignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PlasmidInstantiation" eSuperTypes="#//CellBodyMember #//CustomFunctionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="PlasmidInstantiation" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constructor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//ParameterAssignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChromosomeInstantiation" eSuperTypes="#//CellBodyMember #//CustomFunctionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="ChromosomeInstantiation" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constructor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//ParameterAssignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CellInstantiation" eSuperTypes="#//RegionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="CellInstantiation" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constructor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
@@ -126,7 +92,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableDefinition" eSuperTypes="#//ProcessBodyMember #//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//RegionBodyMember #//CustomFunctionBodyMember #//DeviceMembers">
+  <eClassifiers xsi:type="ecore:EClass" name="VariableDefinition" eSuperTypes="#//FunctionBodyMember #//DeviceMembers">
     <eStructuralFeatures xsi:type="ecore:EReference" name="definition" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -165,7 +131,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//VariableExpressionObject"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" eSuperTypes="#//ProcessBodyMember #//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//RegionBodyMember #//CustomFunctionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableAssignmentObject"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//VariableExpression"
@@ -191,7 +157,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CompoundVariableExpressionObject" eSuperTypes="#//VariableExpressionObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="list" eType="#//List" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RuleDefinition" eSuperTypes="#//ProcessBodyMember #//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//RegionBodyMember #//CustomFunctionBodyMember">
+  <eClassifiers xsi:type="ecore:EClass" name="RuleDefinition" eSuperTypes="#//FunctionBodyMember">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" upperBound="-1" eType="#//RuleObject"
         containment="true"/>
@@ -200,12 +166,12 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RuleObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ATGCDefinition" eSuperTypes="#//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//CustomFunctionBodyMember #//DeviceMembers">
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCDefinition" eSuperTypes="#//FunctionBodyMember #//DeviceMembers">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyDefinition" eSuperTypes="#//SystemBodyMember #//PlasmidBodyMember #//ChromosomeBodyMember #//CellBodyMember #//CustomFunctionBodyMember #//DeviceMembers">
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDefinition" eSuperTypes="#//FunctionBodyMember #//DeviceMembers">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
   </eClassifiers>

@@ -28,7 +28,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinition;
  *
  * @generated
  */
-public class VariableDefinitionImpl extends ProcessBodyMemberImpl implements VariableDefinition
+public class VariableDefinitionImpl extends FunctionBodyMemberImpl implements VariableDefinition
 {
   /**
    * The cached value of the '{@link #getDefinition() <em>Definition</em>}' containment reference.

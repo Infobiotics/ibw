@@ -95,6 +95,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createFunctionDefinitionAdapter();
       }
       @Override
+      public Adapter caseFunctionBodyType(FunctionBodyType object)
+      {
+        return createFunctionBodyTypeAdapter();
+      }
+      @Override
       public Adapter caseProcessBody(ProcessBody object)
       {
         return createProcessBodyAdapter();
@@ -130,39 +135,9 @@ public class IblAdapterFactory extends AdapterFactoryImpl
         return createCustomFunctionBodyAdapter();
       }
       @Override
-      public Adapter caseProcessBodyMember(ProcessBodyMember object)
+      public Adapter caseFunctionBodyMember(FunctionBodyMember object)
       {
-        return createProcessBodyMemberAdapter();
-      }
-      @Override
-      public Adapter caseSystemBodyMember(SystemBodyMember object)
-      {
-        return createSystemBodyMemberAdapter();
-      }
-      @Override
-      public Adapter casePlasmidBodyMember(PlasmidBodyMember object)
-      {
-        return createPlasmidBodyMemberAdapter();
-      }
-      @Override
-      public Adapter caseChromosomeBodyMember(ChromosomeBodyMember object)
-      {
-        return createChromosomeBodyMemberAdapter();
-      }
-      @Override
-      public Adapter caseCellBodyMember(CellBodyMember object)
-      {
-        return createCellBodyMemberAdapter();
-      }
-      @Override
-      public Adapter caseRegionBodyMember(RegionBodyMember object)
-      {
-        return createRegionBodyMemberAdapter();
-      }
-      @Override
-      public Adapter caseCustomFunctionBodyMember(CustomFunctionBodyMember object)
-      {
-        return createCustomFunctionBodyMemberAdapter();
+        return createFunctionBodyMemberAdapter();
       }
       @Override
       public Adapter caseFunctionParameterMember(FunctionParameterMember object)
@@ -452,6 +427,21 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionBodyType <em>Function Body Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see roadblock.xtext.ibl.ibl.FunctionBodyType
+   * @generated
+   */
+  public Adapter createFunctionBodyTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessBody <em>Process Body</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -557,106 +547,16 @@ public class IblAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ProcessBodyMember <em>Process Body Member</em>}'.
+   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.FunctionBodyMember <em>Function Body Member</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.ProcessBodyMember
+   * @see roadblock.xtext.ibl.ibl.FunctionBodyMember
    * @generated
    */
-  public Adapter createProcessBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.SystemBodyMember <em>System Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.SystemBodyMember
-   * @generated
-   */
-  public Adapter createSystemBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.PlasmidBodyMember <em>Plasmid Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.PlasmidBodyMember
-   * @generated
-   */
-  public Adapter createPlasmidBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.ChromosomeBodyMember <em>Chromosome Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.ChromosomeBodyMember
-   * @generated
-   */
-  public Adapter createChromosomeBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CellBodyMember <em>Cell Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.CellBodyMember
-   * @generated
-   */
-  public Adapter createCellBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.RegionBodyMember <em>Region Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.RegionBodyMember
-   * @generated
-   */
-  public Adapter createRegionBodyMemberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link roadblock.xtext.ibl.ibl.CustomFunctionBodyMember <em>Custom Function Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see roadblock.xtext.ibl.ibl.CustomFunctionBodyMember
-   * @generated
-   */
-  public Adapter createCustomFunctionBodyMemberAdapter()
+  public Adapter createFunctionBodyMemberAdapter()
   {
     return null;
   }

@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -18,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import roadblock.xtext.ibl.ibl.FunctionBodyType;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
 import roadblock.xtext.ibl.ibl.IblPackage;
@@ -67,7 +67,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * @generated
    * @ordered
    */
-  protected EObject functionBody;
+  protected FunctionBodyType functionBody;
 
   /**
    * The cached value of the '{@link #getUses() <em>Uses</em>}' containment reference list.
@@ -128,7 +128,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getFunctionBody()
+  public FunctionBodyType getFunctionBody()
   {
     return functionBody;
   }
@@ -138,9 +138,9 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFunctionBody(EObject newFunctionBody, NotificationChain msgs)
+  public NotificationChain basicSetFunctionBody(FunctionBodyType newFunctionBody, NotificationChain msgs)
   {
-    EObject oldFunctionBody = functionBody;
+    FunctionBodyType oldFunctionBody = functionBody;
     functionBody = newFunctionBody;
     if (eNotificationRequired())
     {
@@ -155,7 +155,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFunctionBody(EObject newFunctionBody)
+  public void setFunctionBody(FunctionBodyType newFunctionBody)
   {
     if (newFunctionBody != functionBody)
     {
@@ -238,7 +238,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         setName((String)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
-        setFunctionBody((EObject)newValue);
+        setFunctionBody((FunctionBodyType)newValue);
         return;
       case IblPackage.FUNCTION_DEFINITION__USES:
         getUses().clear();
@@ -262,7 +262,7 @@ public class FunctionDefinitionImpl extends ModelMemberImpl implements FunctionD
         setName(NAME_EDEFAULT);
         return;
       case IblPackage.FUNCTION_DEFINITION__FUNCTION_BODY:
-        setFunctionBody((EObject)null);
+        setFunctionBody((FunctionBodyType)null);
         return;
       case IblPackage.FUNCTION_DEFINITION__USES:
         getUses().clear();

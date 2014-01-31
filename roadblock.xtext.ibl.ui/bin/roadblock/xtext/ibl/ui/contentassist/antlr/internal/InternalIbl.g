@@ -170,6 +170,34 @@ finally {
 
 
 
+// Entry rule entryRuleFunctionBodyType
+entryRuleFunctionBodyType 
+:
+{ before(grammarAccess.getFunctionBodyTypeRule()); }
+	 ruleFunctionBodyType
+{ after(grammarAccess.getFunctionBodyTypeRule()); } 
+	 EOF 
+;
+
+// Rule FunctionBodyType
+ruleFunctionBodyType
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getFunctionBodyTypeAccess().getAlternatives()); }
+(rule__FunctionBodyType__Alternatives)
+{ after(grammarAccess.getFunctionBodyTypeAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleProcessBody
 entryRuleProcessBody 
 :
@@ -366,193 +394,25 @@ finally {
 
 
 
-// Entry rule entryRuleProcessBodyMember
-entryRuleProcessBodyMember 
+// Entry rule entryRuleFunctionBodyMember
+entryRuleFunctionBodyMember 
 :
-{ before(grammarAccess.getProcessBodyMemberRule()); }
-	 ruleProcessBodyMember
-{ after(grammarAccess.getProcessBodyMemberRule()); } 
+{ before(grammarAccess.getFunctionBodyMemberRule()); }
+	 ruleFunctionBodyMember
+{ after(grammarAccess.getFunctionBodyMemberRule()); } 
 	 EOF 
 ;
 
-// Rule ProcessBodyMember
-ruleProcessBodyMember
+// Rule FunctionBodyMember
+ruleFunctionBodyMember
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getProcessBodyMemberAccess().getAlternatives()); }
-(rule__ProcessBodyMember__Alternatives)
-{ after(grammarAccess.getProcessBodyMemberAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleSystemBodyMember
-entryRuleSystemBodyMember 
-:
-{ before(grammarAccess.getSystemBodyMemberRule()); }
-	 ruleSystemBodyMember
-{ after(grammarAccess.getSystemBodyMemberRule()); } 
-	 EOF 
-;
-
-// Rule SystemBodyMember
-ruleSystemBodyMember
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getSystemBodyMemberAccess().getAlternatives()); }
-(rule__SystemBodyMember__Alternatives)
-{ after(grammarAccess.getSystemBodyMemberAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRulePlasmidBodyMember
-entryRulePlasmidBodyMember 
-:
-{ before(grammarAccess.getPlasmidBodyMemberRule()); }
-	 rulePlasmidBodyMember
-{ after(grammarAccess.getPlasmidBodyMemberRule()); } 
-	 EOF 
-;
-
-// Rule PlasmidBodyMember
-rulePlasmidBodyMember
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getAlternatives()); }
-(rule__PlasmidBodyMember__Alternatives)
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleChromosomeBodyMember
-entryRuleChromosomeBodyMember 
-:
-{ before(grammarAccess.getChromosomeBodyMemberRule()); }
-	 ruleChromosomeBodyMember
-{ after(grammarAccess.getChromosomeBodyMemberRule()); } 
-	 EOF 
-;
-
-// Rule ChromosomeBodyMember
-ruleChromosomeBodyMember
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getAlternatives()); }
-(rule__ChromosomeBodyMember__Alternatives)
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleCellBodyMember
-entryRuleCellBodyMember 
-:
-{ before(grammarAccess.getCellBodyMemberRule()); }
-	 ruleCellBodyMember
-{ after(grammarAccess.getCellBodyMemberRule()); } 
-	 EOF 
-;
-
-// Rule CellBodyMember
-ruleCellBodyMember
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCellBodyMemberAccess().getAlternatives()); }
-(rule__CellBodyMember__Alternatives)
-{ after(grammarAccess.getCellBodyMemberAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleRegionBodyMember
-entryRuleRegionBodyMember 
-:
-{ before(grammarAccess.getRegionBodyMemberRule()); }
-	 ruleRegionBodyMember
-{ after(grammarAccess.getRegionBodyMemberRule()); } 
-	 EOF 
-;
-
-// Rule RegionBodyMember
-ruleRegionBodyMember
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getRegionBodyMemberAccess().getAlternatives()); }
-(rule__RegionBodyMember__Alternatives)
-{ after(grammarAccess.getRegionBodyMemberAccess().getAlternatives()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-// Entry rule entryRuleCustomFunctionBodyMember
-entryRuleCustomFunctionBodyMember 
-:
-{ before(grammarAccess.getCustomFunctionBodyMemberRule()); }
-	 ruleCustomFunctionBodyMember
-{ after(grammarAccess.getCustomFunctionBodyMemberRule()); } 
-	 EOF 
-;
-
-// Rule CustomFunctionBodyMember
-ruleCustomFunctionBodyMember
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getAlternatives()); }
-(rule__CustomFunctionBodyMember__Alternatives)
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getAlternatives()); }
+{ before(grammarAccess.getFunctionBodyMemberAccess().getAlternatives()); }
+(rule__FunctionBodyMember__Alternatives)
+{ after(grammarAccess.getFunctionBodyMemberAccess().getAlternatives()); }
 )
 
 ;
@@ -2232,51 +2092,51 @@ finally {
 }
 
 
-rule__FunctionDefinition__FunctionBodyAlternatives_4_0
+rule__FunctionBodyType__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyProcessBodyParserRuleCall_4_0_0()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getProcessBodyParserRuleCall_0()); }
 	ruleProcessBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyProcessBodyParserRuleCall_4_0_0()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getProcessBodyParserRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodySystemBodyParserRuleCall_4_0_1()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getSystemBodyParserRuleCall_1()); }
 	ruleSystemBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodySystemBodyParserRuleCall_4_0_1()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getSystemBodyParserRuleCall_1()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyPlasmidBodyParserRuleCall_4_0_2()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getPlasmidBodyParserRuleCall_2()); }
 	rulePlasmidBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyPlasmidBodyParserRuleCall_4_0_2()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getPlasmidBodyParserRuleCall_2()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyChromosomeBodyParserRuleCall_4_0_3()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getChromosomeBodyParserRuleCall_3()); }
 	ruleChromosomeBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyChromosomeBodyParserRuleCall_4_0_3()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getChromosomeBodyParserRuleCall_3()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyCellBodyParserRuleCall_4_0_4()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getCellBodyParserRuleCall_4()); }
 	ruleCellBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyCellBodyParserRuleCall_4_0_4()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getCellBodyParserRuleCall_4()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyRegionBodyParserRuleCall_4_0_5()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getRegionBodyParserRuleCall_5()); }
 	ruleRegionBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyRegionBodyParserRuleCall_4_0_5()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getRegionBodyParserRuleCall_5()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyCustomFunctionBodyParserRuleCall_4_0_6()); }
+{ before(grammarAccess.getFunctionBodyTypeAccess().getCustomFunctionBodyParserRuleCall_6()); }
 	ruleCustomFunctionBody
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyCustomFunctionBodyParserRuleCall_4_0_6()); }
+{ after(grammarAccess.getFunctionBodyTypeAccess().getCustomFunctionBodyParserRuleCall_6()); }
 )
 
 ;
@@ -2284,375 +2144,75 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ProcessBodyMember__Alternatives
+rule__FunctionBodyMember__Alternatives
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getProcessBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getProcessBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getProcessBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getProcessBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getProcessBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getProcessBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getProcessBodyMemberAccess().getProcessInstantiationParserRuleCall_3()); }
-	ruleProcessInstantiation
-{ after(grammarAccess.getProcessBodyMemberAccess().getProcessInstantiationParserRuleCall_3()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__SystemBodyMember__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getSystemBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getSystemBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getSystemBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getSystemBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getSystemBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getSystemBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getSystemBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
+{ before(grammarAccess.getFunctionBodyMemberAccess().getATGCDefinitionParserRuleCall_0()); }
 	ruleATGCDefinition
-{ after(grammarAccess.getSystemBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
+{ after(grammarAccess.getFunctionBodyMemberAccess().getATGCDefinitionParserRuleCall_0()); }
 )
 
     |(
-{ before(grammarAccess.getSystemBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-	rulePropertyDefinition
-{ after(grammarAccess.getSystemBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getSystemBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-	ruleDeviceDefinition
-{ after(grammarAccess.getSystemBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getSystemBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-	ruleProcessInstantiation
-{ after(grammarAccess.getSystemBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__PlasmidBodyMember__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-	ruleATGCDefinition
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-	rulePropertyDefinition
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-	ruleDeviceDefinition
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-	ruleProcessInstantiation
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-)
-
-    |(
-{ before(grammarAccess.getPlasmidBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-	ruleSystemInstantiation
-{ after(grammarAccess.getPlasmidBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ChromosomeBodyMember__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-	ruleATGCDefinition
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-	rulePropertyDefinition
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-	ruleDeviceDefinition
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-	ruleProcessInstantiation
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-)
-
-    |(
-{ before(grammarAccess.getChromosomeBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-	ruleSystemInstantiation
-{ after(grammarAccess.getChromosomeBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__CellBodyMember__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCellBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getCellBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getCellBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getCellBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-	ruleATGCDefinition
-{ after(grammarAccess.getCellBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-	rulePropertyDefinition
-{ after(grammarAccess.getCellBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-	ruleDeviceDefinition
-{ after(grammarAccess.getCellBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-	ruleProcessInstantiation
-{ after(grammarAccess.getCellBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-	ruleSystemInstantiation
-{ after(grammarAccess.getCellBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getPlasmidInstantiationParserRuleCall_8()); }
-	rulePlasmidInstantiation
-{ after(grammarAccess.getCellBodyMemberAccess().getPlasmidInstantiationParserRuleCall_8()); }
-)
-
-    |(
-{ before(grammarAccess.getCellBodyMemberAccess().getChromosomeInstantiationParserRuleCall_9()); }
-	ruleChromosomeInstantiation
-{ after(grammarAccess.getCellBodyMemberAccess().getChromosomeInstantiationParserRuleCall_9()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__RegionBodyMember__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getRegionBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getRegionBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-)
-
-    |(
-{ before(grammarAccess.getRegionBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getRegionBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getRegionBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getRegionBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getRegionBodyMemberAccess().getCellInstantiationParserRuleCall_3()); }
+{ before(grammarAccess.getFunctionBodyMemberAccess().getCellInstantiationParserRuleCall_1()); }
 	ruleCellInstantiation
-{ after(grammarAccess.getRegionBodyMemberAccess().getCellInstantiationParserRuleCall_3()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__CustomFunctionBodyMember__Alternatives
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
-	ruleRuleDefinition
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); }
+{ after(grammarAccess.getFunctionBodyMemberAccess().getCellInstantiationParserRuleCall_1()); }
 )
 
     |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-	ruleVariableDefinition
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-	ruleVariableAssignment
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-	ruleATGCDefinition
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-	rulePropertyDefinition
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-	ruleDeviceDefinition
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-	ruleProcessInstantiation
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-	ruleSystemInstantiation
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getPlasmidInstantiationParserRuleCall_8()); }
-	rulePlasmidInstantiation
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getPlasmidInstantiationParserRuleCall_8()); }
-)
-
-    |(
-{ before(grammarAccess.getCustomFunctionBodyMemberAccess().getChromosomeInstantiationParserRuleCall_9()); }
+{ before(grammarAccess.getFunctionBodyMemberAccess().getChromosomeInstantiationParserRuleCall_2()); }
 	ruleChromosomeInstantiation
-{ after(grammarAccess.getCustomFunctionBodyMemberAccess().getChromosomeInstantiationParserRuleCall_9()); }
+{ after(grammarAccess.getFunctionBodyMemberAccess().getChromosomeInstantiationParserRuleCall_2()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getDeviceDefinitionParserRuleCall_3()); }
+	ruleDeviceDefinition
+{ after(grammarAccess.getFunctionBodyMemberAccess().getDeviceDefinitionParserRuleCall_3()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getPlasmidInstantiationParserRuleCall_4()); }
+	rulePlasmidInstantiation
+{ after(grammarAccess.getFunctionBodyMemberAccess().getPlasmidInstantiationParserRuleCall_4()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getProcessInstantiationParserRuleCall_5()); }
+	ruleProcessInstantiation
+{ after(grammarAccess.getFunctionBodyMemberAccess().getProcessInstantiationParserRuleCall_5()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getPropertyDefinitionParserRuleCall_6()); }
+	rulePropertyDefinition
+{ after(grammarAccess.getFunctionBodyMemberAccess().getPropertyDefinitionParserRuleCall_6()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getRuleDefinitionParserRuleCall_7()); }
+	ruleRuleDefinition
+{ after(grammarAccess.getFunctionBodyMemberAccess().getRuleDefinitionParserRuleCall_7()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getSystemInstantiationParserRuleCall_8()); }
+	ruleSystemInstantiation
+{ after(grammarAccess.getFunctionBodyMemberAccess().getSystemInstantiationParserRuleCall_8()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getVariableAssignmentParserRuleCall_9()); }
+	ruleVariableAssignment
+{ after(grammarAccess.getFunctionBodyMemberAccess().getVariableAssignmentParserRuleCall_9()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionBodyMemberAccess().getVariableDefinitionParserRuleCall_10()); }
+	ruleVariableDefinition
+{ after(grammarAccess.getFunctionBodyMemberAccess().getVariableDefinitionParserRuleCall_10()); }
 )
 
 ;
@@ -17422,9 +16982,8 @@ rule__FunctionDefinition__FunctionBodyAssignment_4
     }
 :
 (
-{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyAlternatives_4_0()); }
-(rule__FunctionDefinition__FunctionBodyAlternatives_4_0)
-{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyAlternatives_4_0()); }
+{ before(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyFunctionBodyTypeParserRuleCall_4_0()); }
+	ruleFunctionBodyType{ after(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyFunctionBodyTypeParserRuleCall_4_0()); }
 )
 
 ;
@@ -17498,8 +17057,8 @@ rule__ProcessBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getProcessBodyAccess().getMembersProcessBodyMemberParserRuleCall_6_0()); }
-	ruleProcessBodyMember{ after(grammarAccess.getProcessBodyAccess().getMembersProcessBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getProcessBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getProcessBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;
@@ -17543,8 +17102,8 @@ rule__SystemBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getSystemBodyAccess().getMembersSystemBodyMemberParserRuleCall_6_0()); }
-	ruleSystemBodyMember{ after(grammarAccess.getSystemBodyAccess().getMembersSystemBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getSystemBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getSystemBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;
@@ -17588,8 +17147,8 @@ rule__PlasmidBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getPlasmidBodyAccess().getMembersPlasmidBodyMemberParserRuleCall_6_0()); }
-	rulePlasmidBodyMember{ after(grammarAccess.getPlasmidBodyAccess().getMembersPlasmidBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getPlasmidBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getPlasmidBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;
@@ -17633,8 +17192,8 @@ rule__ChromosomeBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getChromosomeBodyAccess().getMembersChromosomeBodyMemberParserRuleCall_6_0()); }
-	ruleChromosomeBodyMember{ after(grammarAccess.getChromosomeBodyAccess().getMembersChromosomeBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getChromosomeBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getChromosomeBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;
@@ -17678,8 +17237,8 @@ rule__CellBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getCellBodyAccess().getMembersCellBodyMemberParserRuleCall_6_0()); }
-	ruleCellBodyMember{ after(grammarAccess.getCellBodyAccess().getMembersCellBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getCellBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getCellBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;
@@ -17723,8 +17282,8 @@ rule__RegionBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getRegionBodyAccess().getMembersRegionBodyMemberParserRuleCall_6_0()); }
-	ruleRegionBodyMember{ after(grammarAccess.getRegionBodyAccess().getMembersRegionBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getRegionBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getRegionBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;
@@ -17783,8 +17342,8 @@ rule__CustomFunctionBody__MembersAssignment_6
     }
 :
 (
-{ before(grammarAccess.getCustomFunctionBodyAccess().getMembersCustomFunctionBodyMemberParserRuleCall_6_0()); }
-	ruleCustomFunctionBodyMember{ after(grammarAccess.getCustomFunctionBodyAccess().getMembersCustomFunctionBodyMemberParserRuleCall_6_0()); }
+{ before(grammarAccess.getCustomFunctionBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
+	ruleFunctionBodyMember{ after(grammarAccess.getCustomFunctionBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); }
 )
 
 ;

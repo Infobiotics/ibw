@@ -59,6 +59,15 @@ public interface IblFactory extends EFactory
   FunctionDefinition createFunctionDefinition();
 
   /**
+   * Returns a new object of class '<em>Function Body Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Body Type</em>'.
+   * @generated
+   */
+  FunctionBodyType createFunctionBodyType();
+
+  /**
    * Returns a new object of class '<em>Process Body</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -122,67 +131,13 @@ public interface IblFactory extends EFactory
   CustomFunctionBody createCustomFunctionBody();
 
   /**
-   * Returns a new object of class '<em>Process Body Member</em>'.
+   * Returns a new object of class '<em>Function Body Member</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Body Member</em>'.
+   * @return a new object of class '<em>Function Body Member</em>'.
    * @generated
    */
-  ProcessBodyMember createProcessBodyMember();
-
-  /**
-   * Returns a new object of class '<em>System Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>System Body Member</em>'.
-   * @generated
-   */
-  SystemBodyMember createSystemBodyMember();
-
-  /**
-   * Returns a new object of class '<em>Plasmid Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Plasmid Body Member</em>'.
-   * @generated
-   */
-  PlasmidBodyMember createPlasmidBodyMember();
-
-  /**
-   * Returns a new object of class '<em>Chromosome Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Chromosome Body Member</em>'.
-   * @generated
-   */
-  ChromosomeBodyMember createChromosomeBodyMember();
-
-  /**
-   * Returns a new object of class '<em>Cell Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Cell Body Member</em>'.
-   * @generated
-   */
-  CellBodyMember createCellBodyMember();
-
-  /**
-   * Returns a new object of class '<em>Region Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Region Body Member</em>'.
-   * @generated
-   */
-  RegionBodyMember createRegionBodyMember();
-
-  /**
-   * Returns a new object of class '<em>Custom Function Body Member</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Custom Function Body Member</em>'.
-   * @generated
-   */
-  CustomFunctionBodyMember createCustomFunctionBodyMember();
+  FunctionBodyMember createFunctionBodyMember();
 
   /**
    * Returns a new object of class '<em>Function Parameter Member</em>'.

@@ -12,18 +12,17 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import roadblock.xtext.ibl.ibl.ATGCDefinition;
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject;
 import roadblock.xtext.ibl.ibl.CellBody;
-import roadblock.xtext.ibl.ibl.CellBodyMember;
 import roadblock.xtext.ibl.ibl.CellInstantiation;
 import roadblock.xtext.ibl.ibl.ChromosomeBody;
-import roadblock.xtext.ibl.ibl.ChromosomeBodyMember;
 import roadblock.xtext.ibl.ibl.ChromosomeInstantiation;
 import roadblock.xtext.ibl.ibl.CompoundVariableExpressionObject;
 import roadblock.xtext.ibl.ibl.ConcentrationConstraint;
 import roadblock.xtext.ibl.ibl.ConcentrationQuantity;
 import roadblock.xtext.ibl.ibl.CustomFunctionBody;
-import roadblock.xtext.ibl.ibl.CustomFunctionBodyMember;
 import roadblock.xtext.ibl.ibl.DeviceDefinition;
 import roadblock.xtext.ibl.ibl.DeviceMembers;
+import roadblock.xtext.ibl.ibl.FunctionBodyMember;
+import roadblock.xtext.ibl.ibl.FunctionBodyType;
 import roadblock.xtext.ibl.ibl.FunctionDefinition;
 import roadblock.xtext.ibl.ibl.FunctionParameterMember;
 import roadblock.xtext.ibl.ibl.FunctionUseMember;
@@ -36,18 +35,15 @@ import roadblock.xtext.ibl.ibl.Model;
 import roadblock.xtext.ibl.ibl.ModelMember;
 import roadblock.xtext.ibl.ibl.ParameterAssignment;
 import roadblock.xtext.ibl.ibl.PlasmidBody;
-import roadblock.xtext.ibl.ibl.PlasmidBodyMember;
 import roadblock.xtext.ibl.ibl.PlasmidInstantiation;
 import roadblock.xtext.ibl.ibl.ProbabilityConstraint;
 import roadblock.xtext.ibl.ibl.ProbabilityProperty;
 import roadblock.xtext.ibl.ibl.ProcessBody;
-import roadblock.xtext.ibl.ibl.ProcessBodyMember;
 import roadblock.xtext.ibl.ibl.ProcessInstantiation;
 import roadblock.xtext.ibl.ibl.PropertyDefinition;
 import roadblock.xtext.ibl.ibl.PropertyInitialCondition;
 import roadblock.xtext.ibl.ibl.Quantity;
 import roadblock.xtext.ibl.ibl.RegionBody;
-import roadblock.xtext.ibl.ibl.RegionBodyMember;
 import roadblock.xtext.ibl.ibl.RewardProperty;
 import roadblock.xtext.ibl.ibl.RewardTimeInstant;
 import roadblock.xtext.ibl.ibl.RuleDefinition;
@@ -55,7 +51,6 @@ import roadblock.xtext.ibl.ibl.RuleObject;
 import roadblock.xtext.ibl.ibl.StateExpression;
 import roadblock.xtext.ibl.ibl.StateFormula;
 import roadblock.xtext.ibl.ibl.SystemBody;
-import roadblock.xtext.ibl.ibl.SystemBodyMember;
 import roadblock.xtext.ibl.ibl.SystemInstantiation;
 import roadblock.xtext.ibl.ibl.TimeInstant;
 import roadblock.xtext.ibl.ibl.TimeInterval;
@@ -112,6 +107,13 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass functionBodyTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass processBodyEClass = null;
 
   /**
@@ -161,49 +163,7 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass processBodyMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass systemBodyMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass plasmidBodyMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass chromosomeBodyMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass cellBodyMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass regionBodyMemberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass customFunctionBodyMemberEClass = null;
+  private EClass functionBodyMemberEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -640,29 +600,39 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getFunctionBodyType()
+  {
+    return functionBodyTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionBodyType_Parameters()
+  {
+    return (EReference)functionBodyTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionBodyType_Members()
+  {
+    return (EReference)functionBodyTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getProcessBody()
   {
     return processBodyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessBody_Parameters()
-  {
-    return (EReference)processBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessBody_Members()
-  {
-    return (EReference)processBodyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -680,49 +650,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSystemBody_Parameters()
-  {
-    return (EReference)systemBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSystemBody_Members()
-  {
-    return (EReference)systemBodyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getPlasmidBody()
   {
     return plasmidBodyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPlasmidBody_Parameters()
-  {
-    return (EReference)plasmidBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPlasmidBody_Members()
-  {
-    return (EReference)plasmidBodyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -740,26 +670,6 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getChromosomeBody_Parameters()
-  {
-    return (EReference)chromosomeBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getChromosomeBody_Members()
-  {
-    return (EReference)chromosomeBodyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getCellBody()
   {
     return cellBodyEClass;
@@ -770,49 +680,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCellBody_Parameters()
-  {
-    return (EReference)cellBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCellBody_Members()
-  {
-    return (EReference)cellBodyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getRegionBody()
   {
     return regionBodyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRegionBody_Parameters()
-  {
-    return (EReference)regionBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRegionBody_Members()
-  {
-    return (EReference)regionBodyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -840,89 +710,9 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCustomFunctionBody_Parameters()
+  public EClass getFunctionBodyMember()
   {
-    return (EReference)customFunctionBodyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCustomFunctionBody_Members()
-  {
-    return (EReference)customFunctionBodyEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessBodyMember()
-  {
-    return processBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSystemBodyMember()
-  {
-    return systemBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getPlasmidBodyMember()
-  {
-    return plasmidBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getChromosomeBodyMember()
-  {
-    return chromosomeBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCellBodyMember()
-  {
-    return cellBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getRegionBodyMember()
-  {
-    return regionBodyMemberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCustomFunctionBodyMember()
-  {
-    return customFunctionBodyMemberEClass;
+    return functionBodyMemberEClass;
   }
 
   /**
@@ -2607,48 +2397,26 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__FUNCTION_BODY);
     createEReference(functionDefinitionEClass, FUNCTION_DEFINITION__USES);
 
+    functionBodyTypeEClass = createEClass(FUNCTION_BODY_TYPE);
+    createEReference(functionBodyTypeEClass, FUNCTION_BODY_TYPE__PARAMETERS);
+    createEReference(functionBodyTypeEClass, FUNCTION_BODY_TYPE__MEMBERS);
+
     processBodyEClass = createEClass(PROCESS_BODY);
-    createEReference(processBodyEClass, PROCESS_BODY__PARAMETERS);
-    createEReference(processBodyEClass, PROCESS_BODY__MEMBERS);
 
     systemBodyEClass = createEClass(SYSTEM_BODY);
-    createEReference(systemBodyEClass, SYSTEM_BODY__PARAMETERS);
-    createEReference(systemBodyEClass, SYSTEM_BODY__MEMBERS);
 
     plasmidBodyEClass = createEClass(PLASMID_BODY);
-    createEReference(plasmidBodyEClass, PLASMID_BODY__PARAMETERS);
-    createEReference(plasmidBodyEClass, PLASMID_BODY__MEMBERS);
 
     chromosomeBodyEClass = createEClass(CHROMOSOME_BODY);
-    createEReference(chromosomeBodyEClass, CHROMOSOME_BODY__PARAMETERS);
-    createEReference(chromosomeBodyEClass, CHROMOSOME_BODY__MEMBERS);
 
     cellBodyEClass = createEClass(CELL_BODY);
-    createEReference(cellBodyEClass, CELL_BODY__PARAMETERS);
-    createEReference(cellBodyEClass, CELL_BODY__MEMBERS);
 
     regionBodyEClass = createEClass(REGION_BODY);
-    createEReference(regionBodyEClass, REGION_BODY__PARAMETERS);
-    createEReference(regionBodyEClass, REGION_BODY__MEMBERS);
 
     customFunctionBodyEClass = createEClass(CUSTOM_FUNCTION_BODY);
     createEAttribute(customFunctionBodyEClass, CUSTOM_FUNCTION_BODY__FUNCTION_TYPE);
-    createEReference(customFunctionBodyEClass, CUSTOM_FUNCTION_BODY__PARAMETERS);
-    createEReference(customFunctionBodyEClass, CUSTOM_FUNCTION_BODY__MEMBERS);
 
-    processBodyMemberEClass = createEClass(PROCESS_BODY_MEMBER);
-
-    systemBodyMemberEClass = createEClass(SYSTEM_BODY_MEMBER);
-
-    plasmidBodyMemberEClass = createEClass(PLASMID_BODY_MEMBER);
-
-    chromosomeBodyMemberEClass = createEClass(CHROMOSOME_BODY_MEMBER);
-
-    cellBodyMemberEClass = createEClass(CELL_BODY_MEMBER);
-
-    regionBodyMemberEClass = createEClass(REGION_BODY_MEMBER);
-
-    customFunctionBodyMemberEClass = createEClass(CUSTOM_FUNCTION_BODY_MEMBER);
+    functionBodyMemberEClass = createEClass(FUNCTION_BODY_MEMBER);
 
     functionParameterMemberEClass = createEClass(FUNCTION_PARAMETER_MEMBER);
     createEAttribute(functionParameterMemberEClass, FUNCTION_PARAMETER_MEMBER__TYPE);
@@ -2887,64 +2655,31 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
     // Add supertypes to classes
     importStatementEClass.getESuperTypes().add(this.getModelMember());
     functionDefinitionEClass.getESuperTypes().add(this.getModelMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
-    deviceDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
-    processInstantiationEClass.getESuperTypes().add(this.getProcessBodyMember());
-    processInstantiationEClass.getESuperTypes().add(this.getSystemBodyMember());
-    processInstantiationEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    processInstantiationEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    processInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
-    processInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    processBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    systemBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    plasmidBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    chromosomeBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    cellBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    regionBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    customFunctionBodyEClass.getESuperTypes().add(this.getFunctionBodyType());
+    deviceDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    processInstantiationEClass.getESuperTypes().add(this.getFunctionBodyMember());
     processInstantiationEClass.getESuperTypes().add(this.getDeviceMembers());
-    systemInstantiationEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    systemInstantiationEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    systemInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
-    systemInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
-    plasmidInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
-    plasmidInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
-    chromosomeInstantiationEClass.getESuperTypes().add(this.getCellBodyMember());
-    chromosomeInstantiationEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
-    cellInstantiationEClass.getESuperTypes().add(this.getRegionBodyMember());
+    systemInstantiationEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    plasmidInstantiationEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    chromosomeInstantiationEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    cellInstantiationEClass.getESuperTypes().add(this.getFunctionBodyMember());
     variableComplexEClass.getESuperTypes().add(this.getRuleObject());
     variableAttributeEClass.getESuperTypes().add(this.getVariableAssignmentObject());
-    variableDefinitionEClass.getESuperTypes().add(this.getProcessBodyMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getRegionBodyMember());
-    variableDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    variableDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     variableDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
-    variableAssignmentEClass.getESuperTypes().add(this.getProcessBodyMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getSystemBodyMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getCellBodyMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getRegionBodyMember());
-    variableAssignmentEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    variableAssignmentEClass.getESuperTypes().add(this.getFunctionBodyMember());
     atomicVariableExpressionObjectEClass.getESuperTypes().add(this.getVariableExpressionObject());
     compoundVariableExpressionObjectEClass.getESuperTypes().add(this.getVariableExpressionObject());
-    ruleDefinitionEClass.getESuperTypes().add(this.getProcessBodyMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getRegionBodyMember());
-    ruleDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
-    atgcDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    ruleDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
+    atgcDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     atgcDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
-    propertyDefinitionEClass.getESuperTypes().add(this.getSystemBodyMember());
-    propertyDefinitionEClass.getESuperTypes().add(this.getPlasmidBodyMember());
-    propertyDefinitionEClass.getESuperTypes().add(this.getChromosomeBodyMember());
-    propertyDefinitionEClass.getESuperTypes().add(this.getCellBodyMember());
-    propertyDefinitionEClass.getESuperTypes().add(this.getCustomFunctionBodyMember());
+    propertyDefinitionEClass.getESuperTypes().add(this.getFunctionBodyMember());
     propertyDefinitionEClass.getESuperTypes().add(this.getDeviceMembers());
     importEClass.getESuperTypes().add(this.getImportStatement());
 
@@ -2958,51 +2693,29 @@ public class IblPackageImpl extends EPackageImpl implements IblPackage
 
     initEClass(functionDefinitionEClass, FunctionDefinition.class, "FunctionDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionDefinition_FunctionBody(), ecorePackage.getEObject(), null, "functionBody", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDefinition_FunctionBody(), this.getFunctionBodyType(), null, "functionBody", null, 0, 1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDefinition_Uses(), this.getFunctionUseMember(), null, "uses", null, 0, -1, FunctionDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(functionBodyTypeEClass, FunctionBodyType.class, "FunctionBodyType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionBodyType_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, FunctionBodyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionBodyType_Members(), this.getFunctionBodyMember(), null, "members", null, 0, -1, FunctionBodyType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(processBodyEClass, ProcessBody.class, "ProcessBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProcessBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, ProcessBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessBody_Members(), this.getProcessBodyMember(), null, "members", null, 0, -1, ProcessBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(systemBodyEClass, SystemBody.class, "SystemBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSystemBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, SystemBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSystemBody_Members(), this.getSystemBodyMember(), null, "members", null, 0, -1, SystemBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(plasmidBodyEClass, PlasmidBody.class, "PlasmidBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPlasmidBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, PlasmidBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPlasmidBody_Members(), this.getPlasmidBodyMember(), null, "members", null, 0, -1, PlasmidBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(chromosomeBodyEClass, ChromosomeBody.class, "ChromosomeBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getChromosomeBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, ChromosomeBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getChromosomeBody_Members(), this.getChromosomeBodyMember(), null, "members", null, 0, -1, ChromosomeBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(cellBodyEClass, CellBody.class, "CellBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCellBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, CellBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCellBody_Members(), this.getCellBodyMember(), null, "members", null, 0, -1, CellBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(regionBodyEClass, RegionBody.class, "RegionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRegionBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, RegionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRegionBody_Members(), this.getRegionBodyMember(), null, "members", null, 0, -1, RegionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customFunctionBodyEClass, CustomFunctionBody.class, "CustomFunctionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCustomFunctionBody_FunctionType(), ecorePackage.getEString(), "functionType", null, 0, 1, CustomFunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCustomFunctionBody_Parameters(), this.getFunctionParameterMember(), null, "parameters", null, 0, -1, CustomFunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCustomFunctionBody_Members(), this.getCustomFunctionBodyMember(), null, "members", null, 0, -1, CustomFunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(processBodyMemberEClass, ProcessBodyMember.class, "ProcessBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(systemBodyMemberEClass, SystemBodyMember.class, "SystemBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(plasmidBodyMemberEClass, PlasmidBodyMember.class, "PlasmidBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(chromosomeBodyMemberEClass, ChromosomeBodyMember.class, "ChromosomeBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(cellBodyMemberEClass, CellBodyMember.class, "CellBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(regionBodyMemberEClass, RegionBodyMember.class, "RegionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(customFunctionBodyMemberEClass, CustomFunctionBodyMember.class, "CustomFunctionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(functionBodyMemberEClass, FunctionBodyMember.class, "FunctionBodyMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(functionParameterMemberEClass, FunctionParameterMember.class, "FunctionParameterMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunctionParameterMember_Type(), ecorePackage.getEString(), "type", null, 0, 1, FunctionParameterMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

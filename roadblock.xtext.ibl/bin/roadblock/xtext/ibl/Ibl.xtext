@@ -41,11 +41,16 @@ FunctionType:
 // a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' name=VariableName 'typeof' functionBody=(ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody)
+	'define' name=VariableName 'typeof' functionBody = FunctionBodyType
 	(
 	'USES'
 		uses+=FunctionUseMember (',' uses+=FunctionUseMember)*
 	)?
+;
+
+
+FunctionBodyType:
+	ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody
 ;
 
 // Process body definition
@@ -56,7 +61,7 @@ ProcessBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=ProcessBodyMember*
+		members+=FunctionBodyMember*
 	'}'	
 ;
 
@@ -68,7 +73,7 @@ SystemBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=SystemBodyMember*
+		members+=FunctionBodyMember*
 	'}'
 ;
 
@@ -80,7 +85,7 @@ PlasmidBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=PlasmidBodyMember*
+		members+=FunctionBodyMember*
 	'}'
 ;
 
@@ -92,7 +97,7 @@ ChromosomeBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=ChromosomeBodyMember*
+		members+=FunctionBodyMember*
 	'}'
 ;
 
@@ -104,7 +109,7 @@ CellBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=CellBodyMember*
+		members+=FunctionBodyMember*
 	'}'
 ;
 
@@ -116,7 +121,7 @@ RegionBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=RegionBodyMember*
+		members+=FunctionBodyMember*
 	'}'
 ;
 
@@ -128,7 +133,7 @@ CustomFunctionBody:
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=CustomFunctionBodyMember*
+		members+=FunctionBodyMember*
 	'}'
 ;
 
@@ -136,45 +141,10 @@ CustomFunctionBody:
 // Body members //
 //////////////////
 
-// Process definition body member
-ProcessBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | 
-	ProcessInstantiation   
-;
 
-// System definition body member
-SystemBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	ProcessInstantiation 
-;
-
-// Plasmid definition body member
-PlasmidBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	ProcessInstantiation | SystemInstantiation 
-;
-
-// Chromosome definition body member
-ChromosomeBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	ProcessInstantiation | SystemInstantiation 
-;
-
-// Cell definition body member
-CellBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition | 
-	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation                     
-;
-
-// Region definition body member
-RegionBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | CellInstantiation 
-;
-
-// User defined function body member
-CustomFunctionBodyMember:
-	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition | 
-	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation 
+// See iblRefactoringGrammar.R for some automation
+FunctionBodyMember:
+	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation | ProcessInstantiation | PropertyDefinition | RuleDefinition | SystemInstantiation | VariableAssignment | VariableDefinition
 ;
 
 //////////////////////

@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface VariableDefinition extends ProcessBodyMember, SystemBodyMember, PlasmidBodyMember, ChromosomeBodyMember, CellBodyMember, RegionBodyMember, CustomFunctionBodyMember, DeviceMembers
+public interface VariableDefinition extends FunctionBodyMember, DeviceMembers
 {
   /**
    * Returns the value of the '<em><b>Definition</b></em>' containment reference.

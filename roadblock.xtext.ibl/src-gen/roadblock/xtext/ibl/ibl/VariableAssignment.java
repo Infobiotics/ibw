@@ -20,7 +20,7 @@ package roadblock.xtext.ibl.ibl;
  * @model
  * @generated
  */
-public interface VariableAssignment extends ProcessBodyMember, SystemBodyMember, PlasmidBodyMember, ChromosomeBodyMember, CellBodyMember, RegionBodyMember, CustomFunctionBodyMember
+public interface VariableAssignment extends FunctionBodyMember
 {
   /**
    * Returns the value of the '<em><b>Variable</b></em>' containment reference.

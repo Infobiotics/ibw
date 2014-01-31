@@ -4,8 +4,6 @@ package roadblock.xtext.ibl.ibl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Function Definition</b></em>'.
@@ -61,12 +59,12 @@ public interface FunctionDefinition extends ModelMember
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Function Body</em>' containment reference.
-   * @see #setFunctionBody(EObject)
+   * @see #setFunctionBody(FunctionBodyType)
    * @see roadblock.xtext.ibl.ibl.IblPackage#getFunctionDefinition_FunctionBody()
    * @model containment="true"
    * @generated
    */
-  EObject getFunctionBody();
+  FunctionBodyType getFunctionBody();
 
   /**
    * Sets the value of the '{@link roadblock.xtext.ibl.ibl.FunctionDefinition#getFunctionBody <em>Function Body</em>}' containment reference.
@@ -76,7 +74,7 @@ public interface FunctionDefinition extends ModelMember
    * @see #getFunctionBody()
    * @generated
    */
-  void setFunctionBody(EObject value);
+  void setFunctionBody(FunctionBodyType value);
 
   /**
    * Returns the value of the '<em><b>Uses</b></em>' containment reference list.

@@ -17,42 +17,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/functionBody"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionDefinition/uses"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//ProcessBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ProcessBody/members"/>
+    <genClasses ecoreClass="Ibl.ecore#//FunctionBodyType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionBodyType/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//FunctionBodyType/members"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//SystemBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//SystemBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//SystemBody/members"/>
-    </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//PlasmidBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PlasmidBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//PlasmidBody/members"/>
-    </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//ChromosomeBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ChromosomeBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//ChromosomeBody/members"/>
-    </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//CellBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//CellBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//CellBody/members"/>
-    </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//RegionBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RegionBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//RegionBody/members"/>
-    </genClasses>
+    <genClasses ecoreClass="Ibl.ecore#//ProcessBody"/>
+    <genClasses ecoreClass="Ibl.ecore#//SystemBody"/>
+    <genClasses ecoreClass="Ibl.ecore#//PlasmidBody"/>
+    <genClasses ecoreClass="Ibl.ecore#//ChromosomeBody"/>
+    <genClasses ecoreClass="Ibl.ecore#//CellBody"/>
+    <genClasses ecoreClass="Ibl.ecore#//RegionBody"/>
     <genClasses ecoreClass="Ibl.ecore#//CustomFunctionBody">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//CustomFunctionBody/functionType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//CustomFunctionBody/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ibl.ecore#//CustomFunctionBody/members"/>
     </genClasses>
-    <genClasses ecoreClass="Ibl.ecore#//ProcessBodyMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//SystemBodyMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//PlasmidBodyMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//ChromosomeBodyMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//CellBodyMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//RegionBodyMember"/>
-    <genClasses ecoreClass="Ibl.ecore#//CustomFunctionBodyMember"/>
+    <genClasses ecoreClass="Ibl.ecore#//FunctionBodyMember"/>
     <genClasses ecoreClass="Ibl.ecore#//FunctionParameterMember">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ibl.ecore#//FunctionParameterMember/collection"/>

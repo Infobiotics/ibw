@@ -169,14 +169,14 @@ public interface IblPackage extends EPackage
   int FUNCTION_DEFINITION_FEATURE_COUNT = MODEL_MEMBER_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl <em>Process Body</em>}' class.
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionBodyTypeImpl <em>Function Body Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessBody()
+   * @see roadblock.xtext.ibl.ibl.impl.FunctionBodyTypeImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionBodyType()
    * @generated
    */
-  int PROCESS_BODY = 4;
+  int FUNCTION_BODY_TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -185,7 +185,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_BODY__PARAMETERS = 0;
+  int FUNCTION_BODY_TYPE__PARAMETERS = 0;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -194,7 +194,44 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_BODY__MEMBERS = 1;
+  int FUNCTION_BODY_TYPE__MEMBERS = 1;
+
+  /**
+   * The number of structural features of the '<em>Function Body Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_BODY_TYPE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl <em>Process Body</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessBody()
+   * @generated
+   */
+  int PROCESS_BODY = 5;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
+
+  /**
+   * The feature id for the '<em><b>Members</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCESS_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
 
   /**
    * The number of structural features of the '<em>Process Body</em>' class.
@@ -203,7 +240,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_BODY_FEATURE_COUNT = 2;
+  int PROCESS_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.SystemBodyImpl <em>System Body</em>}' class.
@@ -213,7 +250,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getSystemBody()
    * @generated
    */
-  int SYSTEM_BODY = 5;
+  int SYSTEM_BODY = 6;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -222,7 +259,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_BODY__PARAMETERS = 0;
+  int SYSTEM_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -231,7 +268,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_BODY__MEMBERS = 1;
+  int SYSTEM_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
 
   /**
    * The number of structural features of the '<em>System Body</em>' class.
@@ -240,7 +277,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_BODY_FEATURE_COUNT = 2;
+  int SYSTEM_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl <em>Plasmid Body</em>}' class.
@@ -250,7 +287,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPlasmidBody()
    * @generated
    */
-  int PLASMID_BODY = 6;
+  int PLASMID_BODY = 7;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -259,7 +296,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_BODY__PARAMETERS = 0;
+  int PLASMID_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -268,7 +305,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_BODY__MEMBERS = 1;
+  int PLASMID_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
 
   /**
    * The number of structural features of the '<em>Plasmid Body</em>' class.
@@ -277,7 +314,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_BODY_FEATURE_COUNT = 2;
+  int PLASMID_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ChromosomeBodyImpl <em>Chromosome Body</em>}' class.
@@ -287,7 +324,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getChromosomeBody()
    * @generated
    */
-  int CHROMOSOME_BODY = 7;
+  int CHROMOSOME_BODY = 8;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -296,7 +333,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_BODY__PARAMETERS = 0;
+  int CHROMOSOME_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -305,7 +342,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_BODY__MEMBERS = 1;
+  int CHROMOSOME_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
 
   /**
    * The number of structural features of the '<em>Chromosome Body</em>' class.
@@ -314,7 +351,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_BODY_FEATURE_COUNT = 2;
+  int CHROMOSOME_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.CellBodyImpl <em>Cell Body</em>}' class.
@@ -324,7 +361,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCellBody()
    * @generated
    */
-  int CELL_BODY = 8;
+  int CELL_BODY = 9;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -333,7 +370,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_BODY__PARAMETERS = 0;
+  int CELL_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -342,7 +379,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_BODY__MEMBERS = 1;
+  int CELL_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
 
   /**
    * The number of structural features of the '<em>Cell Body</em>' class.
@@ -351,7 +388,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_BODY_FEATURE_COUNT = 2;
+  int CELL_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RegionBodyImpl <em>Region Body</em>}' class.
@@ -361,7 +398,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRegionBody()
    * @generated
    */
-  int REGION_BODY = 9;
+  int REGION_BODY = 10;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -370,7 +407,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REGION_BODY__PARAMETERS = 0;
+  int REGION_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -379,7 +416,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REGION_BODY__MEMBERS = 1;
+  int REGION_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
 
   /**
    * The number of structural features of the '<em>Region Body</em>' class.
@@ -388,7 +425,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REGION_BODY_FEATURE_COUNT = 2;
+  int REGION_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyImpl <em>Custom Function Body</em>}' class.
@@ -398,16 +435,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCustomFunctionBody()
    * @generated
    */
-  int CUSTOM_FUNCTION_BODY = 10;
-
-  /**
-   * The feature id for the '<em><b>Function Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FUNCTION_BODY__FUNCTION_TYPE = 0;
+  int CUSTOM_FUNCTION_BODY = 11;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -416,7 +444,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FUNCTION_BODY__PARAMETERS = 1;
+  int CUSTOM_FUNCTION_BODY__PARAMETERS = FUNCTION_BODY_TYPE__PARAMETERS;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -425,7 +453,16 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FUNCTION_BODY__MEMBERS = 2;
+  int CUSTOM_FUNCTION_BODY__MEMBERS = FUNCTION_BODY_TYPE__MEMBERS;
+
+  /**
+   * The feature id for the '<em><b>Function Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CUSTOM_FUNCTION_BODY__FUNCTION_TYPE = FUNCTION_BODY_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Custom Function Body</em>' class.
@@ -434,140 +471,26 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CUSTOM_FUNCTION_BODY_FEATURE_COUNT = 3;
+  int CUSTOM_FUNCTION_BODY_FEATURE_COUNT = FUNCTION_BODY_TYPE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessBodyMemberImpl <em>Process Body Member</em>}' class.
+   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionBodyMemberImpl <em>Function Body Member</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.ProcessBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessBodyMember()
+   * @see roadblock.xtext.ibl.ibl.impl.FunctionBodyMemberImpl
+   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionBodyMember()
    * @generated
    */
-  int PROCESS_BODY_MEMBER = 11;
+  int FUNCTION_BODY_MEMBER = 12;
 
   /**
-   * The number of structural features of the '<em>Process Body Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROCESS_BODY_MEMBER_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.SystemBodyMemberImpl <em>System Body Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.SystemBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getSystemBodyMember()
-   * @generated
-   */
-  int SYSTEM_BODY_MEMBER = 12;
-
-  /**
-   * The number of structural features of the '<em>System Body Member</em>' class.
+   * The number of structural features of the '<em>Function Body Member</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SYSTEM_BODY_MEMBER_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PlasmidBodyMemberImpl <em>Plasmid Body Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.PlasmidBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPlasmidBodyMember()
-   * @generated
-   */
-  int PLASMID_BODY_MEMBER = 13;
-
-  /**
-   * The number of structural features of the '<em>Plasmid Body Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLASMID_BODY_MEMBER_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ChromosomeBodyMemberImpl <em>Chromosome Body Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.ChromosomeBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getChromosomeBodyMember()
-   * @generated
-   */
-  int CHROMOSOME_BODY_MEMBER = 14;
-
-  /**
-   * The number of structural features of the '<em>Chromosome Body Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHROMOSOME_BODY_MEMBER_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.CellBodyMemberImpl <em>Cell Body Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.CellBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCellBodyMember()
-   * @generated
-   */
-  int CELL_BODY_MEMBER = 15;
-
-  /**
-   * The number of structural features of the '<em>Cell Body Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CELL_BODY_MEMBER_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RegionBodyMemberImpl <em>Region Body Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.RegionBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRegionBodyMember()
-   * @generated
-   */
-  int REGION_BODY_MEMBER = 16;
-
-  /**
-   * The number of structural features of the '<em>Region Body Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REGION_BODY_MEMBER_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyMemberImpl <em>Custom Function Body Member</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyMemberImpl
-   * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCustomFunctionBodyMember()
-   * @generated
-   */
-  int CUSTOM_FUNCTION_BODY_MEMBER = 17;
-
-  /**
-   * The number of structural features of the '<em>Custom Function Body Member</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_FUNCTION_BODY_MEMBER_FEATURE_COUNT = 0;
+  int FUNCTION_BODY_MEMBER_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl <em>Function Parameter Member</em>}' class.
@@ -577,7 +500,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionParameterMember()
    * @generated
    */
-  int FUNCTION_PARAMETER_MEMBER = 18;
+  int FUNCTION_PARAMETER_MEMBER = 13;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -632,7 +555,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionUseMember()
    * @generated
    */
-  int FUNCTION_USE_MEMBER = 19;
+  int FUNCTION_USE_MEMBER = 14;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -669,7 +592,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getDeviceDefinition()
    * @generated
    */
-  int DEVICE_DEFINITION = 20;
+  int DEVICE_DEFINITION = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -678,7 +601,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__NAME = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 0;
+  int DEVICE_DEFINITION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Parts</b></em>' containment reference.
@@ -687,7 +610,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__PARTS = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 1;
+  int DEVICE_DEFINITION__PARTS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Input</b></em>' containment reference.
@@ -696,7 +619,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__INPUT = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 2;
+  int DEVICE_DEFINITION__INPUT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Outputput</b></em>' containment reference.
@@ -705,7 +628,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__OUTPUTPUT = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 3;
+  int DEVICE_DEFINITION__OUTPUTPUT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -714,7 +637,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION__MEMBERS = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 4;
+  int DEVICE_DEFINITION__MEMBERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Device Definition</em>' class.
@@ -723,7 +646,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVICE_DEFINITION_FEATURE_COUNT = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 5;
+  int DEVICE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.DeviceMembersImpl <em>Device Members</em>}' class.
@@ -733,7 +656,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getDeviceMembers()
    * @generated
    */
-  int DEVICE_MEMBERS = 21;
+  int DEVICE_MEMBERS = 16;
 
   /**
    * The number of structural features of the '<em>Device Members</em>' class.
@@ -752,7 +675,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessInstantiation()
    * @generated
    */
-  int PROCESS_INSTANTIATION = 22;
+  int PROCESS_INSTANTIATION = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -761,7 +684,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_INSTANTIATION__NAME = PROCESS_BODY_MEMBER_FEATURE_COUNT + 0;
+  int PROCESS_INSTANTIATION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
@@ -770,7 +693,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_INSTANTIATION__CONSTRUCTOR = PROCESS_BODY_MEMBER_FEATURE_COUNT + 1;
+  int PROCESS_INSTANTIATION__CONSTRUCTOR = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -779,7 +702,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_INSTANTIATION__PARAMETERS = PROCESS_BODY_MEMBER_FEATURE_COUNT + 2;
+  int PROCESS_INSTANTIATION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Process Instantiation</em>' class.
@@ -788,7 +711,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_INSTANTIATION_FEATURE_COUNT = PROCESS_BODY_MEMBER_FEATURE_COUNT + 3;
+  int PROCESS_INSTANTIATION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.SystemInstantiationImpl <em>System Instantiation</em>}' class.
@@ -798,7 +721,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getSystemInstantiation()
    * @generated
    */
-  int SYSTEM_INSTANTIATION = 23;
+  int SYSTEM_INSTANTIATION = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -807,7 +730,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_INSTANTIATION__NAME = PLASMID_BODY_MEMBER_FEATURE_COUNT + 0;
+  int SYSTEM_INSTANTIATION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
@@ -816,7 +739,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_INSTANTIATION__CONSTRUCTOR = PLASMID_BODY_MEMBER_FEATURE_COUNT + 1;
+  int SYSTEM_INSTANTIATION__CONSTRUCTOR = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -825,7 +748,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_INSTANTIATION__PARAMETERS = PLASMID_BODY_MEMBER_FEATURE_COUNT + 2;
+  int SYSTEM_INSTANTIATION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>System Instantiation</em>' class.
@@ -834,7 +757,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SYSTEM_INSTANTIATION_FEATURE_COUNT = PLASMID_BODY_MEMBER_FEATURE_COUNT + 3;
+  int SYSTEM_INSTANTIATION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PlasmidInstantiationImpl <em>Plasmid Instantiation</em>}' class.
@@ -844,7 +767,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPlasmidInstantiation()
    * @generated
    */
-  int PLASMID_INSTANTIATION = 24;
+  int PLASMID_INSTANTIATION = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -853,7 +776,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_INSTANTIATION__NAME = CELL_BODY_MEMBER_FEATURE_COUNT + 0;
+  int PLASMID_INSTANTIATION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
@@ -862,7 +785,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_INSTANTIATION__CONSTRUCTOR = CELL_BODY_MEMBER_FEATURE_COUNT + 1;
+  int PLASMID_INSTANTIATION__CONSTRUCTOR = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -871,7 +794,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_INSTANTIATION__PARAMETERS = CELL_BODY_MEMBER_FEATURE_COUNT + 2;
+  int PLASMID_INSTANTIATION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Plasmid Instantiation</em>' class.
@@ -880,7 +803,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PLASMID_INSTANTIATION_FEATURE_COUNT = CELL_BODY_MEMBER_FEATURE_COUNT + 3;
+  int PLASMID_INSTANTIATION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ChromosomeInstantiationImpl <em>Chromosome Instantiation</em>}' class.
@@ -890,7 +813,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getChromosomeInstantiation()
    * @generated
    */
-  int CHROMOSOME_INSTANTIATION = 25;
+  int CHROMOSOME_INSTANTIATION = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -899,7 +822,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_INSTANTIATION__NAME = CELL_BODY_MEMBER_FEATURE_COUNT + 0;
+  int CHROMOSOME_INSTANTIATION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
@@ -908,7 +831,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_INSTANTIATION__CONSTRUCTOR = CELL_BODY_MEMBER_FEATURE_COUNT + 1;
+  int CHROMOSOME_INSTANTIATION__CONSTRUCTOR = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -917,7 +840,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_INSTANTIATION__PARAMETERS = CELL_BODY_MEMBER_FEATURE_COUNT + 2;
+  int CHROMOSOME_INSTANTIATION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Chromosome Instantiation</em>' class.
@@ -926,7 +849,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHROMOSOME_INSTANTIATION_FEATURE_COUNT = CELL_BODY_MEMBER_FEATURE_COUNT + 3;
+  int CHROMOSOME_INSTANTIATION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.CellInstantiationImpl <em>Cell Instantiation</em>}' class.
@@ -936,7 +859,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCellInstantiation()
    * @generated
    */
-  int CELL_INSTANTIATION = 26;
+  int CELL_INSTANTIATION = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -945,7 +868,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_INSTANTIATION__NAME = REGION_BODY_MEMBER_FEATURE_COUNT + 0;
+  int CELL_INSTANTIATION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Constructor</b></em>' attribute.
@@ -954,7 +877,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_INSTANTIATION__CONSTRUCTOR = REGION_BODY_MEMBER_FEATURE_COUNT + 1;
+  int CELL_INSTANTIATION__CONSTRUCTOR = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -963,7 +886,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_INSTANTIATION__PARAMETERS = REGION_BODY_MEMBER_FEATURE_COUNT + 2;
+  int CELL_INSTANTIATION__PARAMETERS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Cell Instantiation</em>' class.
@@ -972,7 +895,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CELL_INSTANTIATION_FEATURE_COUNT = REGION_BODY_MEMBER_FEATURE_COUNT + 3;
+  int CELL_INSTANTIATION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.RuleObjectImpl <em>Rule Object</em>}' class.
@@ -982,7 +905,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleObject()
    * @generated
    */
-  int RULE_OBJECT = 42;
+  int RULE_OBJECT = 37;
 
   /**
    * The number of structural features of the '<em>Rule Object</em>' class.
@@ -1001,7 +924,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableComplex()
    * @generated
    */
-  int VARIABLE_COMPLEX = 27;
+  int VARIABLE_COMPLEX = 22;
 
   /**
    * The feature id for the '<em><b>Components</b></em>' attribute list.
@@ -1029,7 +952,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignmentObject()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT_OBJECT = 36;
+  int VARIABLE_ASSIGNMENT_OBJECT = 31;
 
   /**
    * The number of structural features of the '<em>Variable Assignment Object</em>' class.
@@ -1048,7 +971,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAttribute()
    * @generated
    */
-  int VARIABLE_ATTRIBUTE = 28;
+  int VARIABLE_ATTRIBUTE = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1094,7 +1017,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinition()
    * @generated
    */
-  int VARIABLE_DEFINITION = 29;
+  int VARIABLE_DEFINITION = 24;
 
   /**
    * The feature id for the '<em><b>Definition</b></em>' containment reference.
@@ -1103,7 +1026,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION__DEFINITION = PROCESS_BODY_MEMBER_FEATURE_COUNT + 0;
+  int VARIABLE_DEFINITION__DEFINITION = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Qualifier</b></em>' attribute.
@@ -1112,7 +1035,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION__QUALIFIER = PROCESS_BODY_MEMBER_FEATURE_COUNT + 1;
+  int VARIABLE_DEFINITION__QUALIFIER = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Variable Definition</em>' class.
@@ -1121,7 +1044,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_DEFINITION_FEATURE_COUNT = PROCESS_BODY_MEMBER_FEATURE_COUNT + 2;
+  int VARIABLE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableDefinitionBuiltInImpl <em>Variable Definition Built In</em>}' class.
@@ -1131,7 +1054,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinitionBuiltIn()
    * @generated
    */
-  int VARIABLE_DEFINITION_BUILT_IN = 30;
+  int VARIABLE_DEFINITION_BUILT_IN = 25;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1195,7 +1118,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinitionUserDefined()
    * @generated
    */
-  int VARIABLE_DEFINITION_USER_DEFINED = 31;
+  int VARIABLE_DEFINITION_USER_DEFINED = 26;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1250,7 +1173,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinitionCollection()
    * @generated
    */
-  int VARIABLE_DEFINITION_COLLECTION = 32;
+  int VARIABLE_DEFINITION_COLLECTION = 27;
 
   /**
    * The feature id for the '<em><b>Collection</b></em>' attribute.
@@ -1305,7 +1228,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableDefinitionBasic()
    * @generated
    */
-  int VARIABLE_DEFINITION_BASIC = 33;
+  int VARIABLE_DEFINITION_BASIC = 28;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1351,7 +1274,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getParameterAssignment()
    * @generated
    */
-  int PARAMETER_ASSIGNMENT = 34;
+  int PARAMETER_ASSIGNMENT = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1388,7 +1311,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableAssignment()
    * @generated
    */
-  int VARIABLE_ASSIGNMENT = 35;
+  int VARIABLE_ASSIGNMENT = 30;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1397,7 +1320,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ASSIGNMENT__VARIABLE = PROCESS_BODY_MEMBER_FEATURE_COUNT + 0;
+  int VARIABLE_ASSIGNMENT__VARIABLE = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1406,7 +1329,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ASSIGNMENT__EXPRESSION = PROCESS_BODY_MEMBER_FEATURE_COUNT + 1;
+  int VARIABLE_ASSIGNMENT__EXPRESSION = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Variable Assignment</em>' class.
@@ -1415,7 +1338,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VARIABLE_ASSIGNMENT_FEATURE_COUNT = PROCESS_BODY_MEMBER_FEATURE_COUNT + 2;
+  int VARIABLE_ASSIGNMENT_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.VariableExpressionImpl <em>Variable Expression</em>}' class.
@@ -1425,7 +1348,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpression()
    * @generated
    */
-  int VARIABLE_EXPRESSION = 37;
+  int VARIABLE_EXPRESSION = 32;
 
   /**
    * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1453,7 +1376,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getVariableExpressionObject()
    * @generated
    */
-  int VARIABLE_EXPRESSION_OBJECT = 38;
+  int VARIABLE_EXPRESSION_OBJECT = 33;
 
   /**
    * The number of structural features of the '<em>Variable Expression Object</em>' class.
@@ -1472,7 +1395,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getAtomicVariableExpressionObject()
    * @generated
    */
-  int ATOMIC_VARIABLE_EXPRESSION_OBJECT = 39;
+  int ATOMIC_VARIABLE_EXPRESSION_OBJECT = 34;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' attribute.
@@ -1545,7 +1468,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCompoundVariableExpressionObject()
    * @generated
    */
-  int COMPOUND_VARIABLE_EXPRESSION_OBJECT = 40;
+  int COMPOUND_VARIABLE_EXPRESSION_OBJECT = 35;
 
   /**
    * The feature id for the '<em><b>List</b></em>' containment reference.
@@ -1573,7 +1496,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRuleDefinition()
    * @generated
    */
-  int RULE_DEFINITION = 41;
+  int RULE_DEFINITION = 36;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1582,7 +1505,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION__NAME = PROCESS_BODY_MEMBER_FEATURE_COUNT + 0;
+  int RULE_DEFINITION__NAME = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Lhs</b></em>' containment reference list.
@@ -1591,7 +1514,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION__LHS = PROCESS_BODY_MEMBER_FEATURE_COUNT + 1;
+  int RULE_DEFINITION__LHS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Reversible</b></em>' attribute.
@@ -1600,7 +1523,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION__REVERSIBLE = PROCESS_BODY_MEMBER_FEATURE_COUNT + 2;
+  int RULE_DEFINITION__REVERSIBLE = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Rhs</b></em>' containment reference list.
@@ -1609,7 +1532,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION__RHS = PROCESS_BODY_MEMBER_FEATURE_COUNT + 3;
+  int RULE_DEFINITION__RHS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Rule Definition</em>' class.
@@ -1618,7 +1541,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_DEFINITION_FEATURE_COUNT = PROCESS_BODY_MEMBER_FEATURE_COUNT + 4;
+  int RULE_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ATGCDefinitionImpl <em>ATGC Definition</em>}' class.
@@ -1628,7 +1551,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getATGCDefinition()
    * @generated
    */
-  int ATGC_DEFINITION = 43;
+  int ATGC_DEFINITION = 38;
 
   /**
    * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -1637,7 +1560,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATGC_DEFINITION__COMMAND = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 0;
+  int ATGC_DEFINITION__COMMAND = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Arguments</b></em>' attribute list.
@@ -1646,7 +1569,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATGC_DEFINITION__ARGUMENTS = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 1;
+  int ATGC_DEFINITION__ARGUMENTS = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>ATGC Definition</em>' class.
@@ -1655,7 +1578,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATGC_DEFINITION_FEATURE_COUNT = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 2;
+  int ATGC_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.PropertyDefinitionImpl <em>Property Definition</em>}' class.
@@ -1665,7 +1588,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyDefinition()
    * @generated
    */
-  int PROPERTY_DEFINITION = 44;
+  int PROPERTY_DEFINITION = 39;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -1674,7 +1597,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_DEFINITION__PROPERTY = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 0;
+  int PROPERTY_DEFINITION__PROPERTY = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Property Definition</em>' class.
@@ -1683,7 +1606,7 @@ public interface IblPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_DEFINITION_FEATURE_COUNT = SYSTEM_BODY_MEMBER_FEATURE_COUNT + 1;
+  int PROPERTY_DEFINITION_FEATURE_COUNT = FUNCTION_BODY_MEMBER_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link roadblock.xtext.ibl.ibl.impl.ProbabilityPropertyImpl <em>Probability Property</em>}' class.
@@ -1693,7 +1616,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProbabilityProperty()
    * @generated
    */
-  int PROBABILITY_PROPERTY = 45;
+  int PROBABILITY_PROPERTY = 40;
 
   /**
    * The feature id for the '<em><b>State Formula1</b></em>' containment reference.
@@ -1829,7 +1752,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRewardProperty()
    * @generated
    */
-  int REWARD_PROPERTY = 46;
+  int REWARD_PROPERTY = 41;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1884,7 +1807,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getStateExpression()
    * @generated
    */
-  int STATE_EXPRESSION = 47;
+  int STATE_EXPRESSION = 42;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1930,7 +1853,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getStateFormula()
    * @generated
    */
-  int STATE_FORMULA = 48;
+  int STATE_FORMULA = 43;
 
   /**
    * The feature id for the '<em><b>Formula</b></em>' attribute.
@@ -2030,7 +1953,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getTimeInstant()
    * @generated
    */
-  int TIME_INSTANT = 49;
+  int TIME_INSTANT = 44;
 
   /**
    * The feature id for the '<em><b>Is Equal To</b></em>' attribute.
@@ -2094,7 +2017,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getTimeInterval()
    * @generated
    */
-  int TIME_INTERVAL = 50;
+  int TIME_INTERVAL = 45;
 
   /**
    * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -2140,7 +2063,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRewardTimeInstant()
    * @generated
    */
-  int REWARD_TIME_INSTANT = 51;
+  int REWARD_TIME_INSTANT = 46;
 
   /**
    * The feature id for the '<em><b>Is Equal To</b></em>' attribute.
@@ -2195,7 +2118,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProbabilityConstraint()
    * @generated
    */
-  int PROBABILITY_CONSTRAINT = 52;
+  int PROBABILITY_CONSTRAINT = 47;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -2241,7 +2164,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getConcentrationConstraint()
    * @generated
    */
-  int CONCENTRATION_CONSTRAINT = 53;
+  int CONCENTRATION_CONSTRAINT = 48;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -2296,7 +2219,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPropertyInitialCondition()
    * @generated
    */
-  int PROPERTY_INITIAL_CONDITION = 54;
+  int PROPERTY_INITIAL_CONDITION = 49;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -2333,7 +2256,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getQuantity()
    * @generated
    */
-  int QUANTITY = 55;
+  int QUANTITY = 50;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2370,7 +2293,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getConcentrationQuantity()
    * @generated
    */
-  int CONCENTRATION_QUANTITY = 56;
+  int CONCENTRATION_QUANTITY = 51;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2407,7 +2330,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getList()
    * @generated
    */
-  int LIST = 57;
+  int LIST = 52;
 
   /**
    * The feature id for the '<em><b>Entries</b></em>' containment reference list.
@@ -2435,7 +2358,7 @@ public interface IblPackage extends EPackage
    * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getImport()
    * @generated
    */
-  int IMPORT = 58;
+  int IMPORT = 53;
 
   /**
    * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
@@ -2541,6 +2464,38 @@ public interface IblPackage extends EPackage
   EReference getFunctionDefinition_Uses();
 
   /**
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.FunctionBodyType <em>Function Body Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Body Type</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionBodyType
+   * @generated
+   */
+  EClass getFunctionBodyType();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.FunctionBodyType#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionBodyType#getParameters()
+   * @see #getFunctionBodyType()
+   * @generated
+   */
+  EReference getFunctionBodyType_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.FunctionBodyType#getMembers <em>Members</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Members</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionBodyType#getMembers()
+   * @see #getFunctionBodyType()
+   * @generated
+   */
+  EReference getFunctionBodyType_Members();
+
+  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessBody <em>Process Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2549,28 +2504,6 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EClass getProcessBody();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessBody#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.ProcessBody#getParameters()
-   * @see #getProcessBody()
-   * @generated
-   */
-  EReference getProcessBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ProcessBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.ProcessBody#getMembers()
-   * @see #getProcessBody()
-   * @generated
-   */
-  EReference getProcessBody_Members();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.SystemBody <em>System Body</em>}'.
@@ -2583,28 +2516,6 @@ public interface IblPackage extends EPackage
   EClass getSystemBody();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.SystemBody#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.SystemBody#getParameters()
-   * @see #getSystemBody()
-   * @generated
-   */
-  EReference getSystemBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.SystemBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.SystemBody#getMembers()
-   * @see #getSystemBody()
-   * @generated
-   */
-  EReference getSystemBody_Members();
-
-  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PlasmidBody <em>Plasmid Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2613,28 +2524,6 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EClass getPlasmidBody();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.PlasmidBody#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.PlasmidBody#getParameters()
-   * @see #getPlasmidBody()
-   * @generated
-   */
-  EReference getPlasmidBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.PlasmidBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.PlasmidBody#getMembers()
-   * @see #getPlasmidBody()
-   * @generated
-   */
-  EReference getPlasmidBody_Members();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ChromosomeBody <em>Chromosome Body</em>}'.
@@ -2647,28 +2536,6 @@ public interface IblPackage extends EPackage
   EClass getChromosomeBody();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ChromosomeBody#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.ChromosomeBody#getParameters()
-   * @see #getChromosomeBody()
-   * @generated
-   */
-  EReference getChromosomeBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.ChromosomeBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.ChromosomeBody#getMembers()
-   * @see #getChromosomeBody()
-   * @generated
-   */
-  EReference getChromosomeBody_Members();
-
-  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.CellBody <em>Cell Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2679,28 +2546,6 @@ public interface IblPackage extends EPackage
   EClass getCellBody();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.CellBody#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.CellBody#getParameters()
-   * @see #getCellBody()
-   * @generated
-   */
-  EReference getCellBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.CellBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.CellBody#getMembers()
-   * @see #getCellBody()
-   * @generated
-   */
-  EReference getCellBody_Members();
-
-  /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.RegionBody <em>Region Body</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2709,28 +2554,6 @@ public interface IblPackage extends EPackage
    * @generated
    */
   EClass getRegionBody();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.RegionBody#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.RegionBody#getParameters()
-   * @see #getRegionBody()
-   * @generated
-   */
-  EReference getRegionBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.RegionBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.RegionBody#getMembers()
-   * @see #getRegionBody()
-   * @generated
-   */
-  EReference getRegionBody_Members();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.CustomFunctionBody <em>Custom Function Body</em>}'.
@@ -2754,96 +2577,14 @@ public interface IblPackage extends EPackage
   EAttribute getCustomFunctionBody_FunctionType();
 
   /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.CustomFunctionBody#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.FunctionBodyMember <em>Function Body Member</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see roadblock.xtext.ibl.ibl.CustomFunctionBody#getParameters()
-   * @see #getCustomFunctionBody()
+   * @return the meta object for class '<em>Function Body Member</em>'.
+   * @see roadblock.xtext.ibl.ibl.FunctionBodyMember
    * @generated
    */
-  EReference getCustomFunctionBody_Parameters();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link roadblock.xtext.ibl.ibl.CustomFunctionBody#getMembers <em>Members</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Members</em>'.
-   * @see roadblock.xtext.ibl.ibl.CustomFunctionBody#getMembers()
-   * @see #getCustomFunctionBody()
-   * @generated
-   */
-  EReference getCustomFunctionBody_Members();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ProcessBodyMember <em>Process Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Process Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.ProcessBodyMember
-   * @generated
-   */
-  EClass getProcessBodyMember();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.SystemBodyMember <em>System Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>System Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.SystemBodyMember
-   * @generated
-   */
-  EClass getSystemBodyMember();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.PlasmidBodyMember <em>Plasmid Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Plasmid Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.PlasmidBodyMember
-   * @generated
-   */
-  EClass getPlasmidBodyMember();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.ChromosomeBodyMember <em>Chromosome Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Chromosome Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.ChromosomeBodyMember
-   * @generated
-   */
-  EClass getChromosomeBodyMember();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.CellBodyMember <em>Cell Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Cell Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.CellBodyMember
-   * @generated
-   */
-  EClass getCellBodyMember();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.RegionBodyMember <em>Region Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Region Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.RegionBodyMember
-   * @generated
-   */
-  EClass getRegionBodyMember();
-
-  /**
-   * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.CustomFunctionBodyMember <em>Custom Function Body Member</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Custom Function Body Member</em>'.
-   * @see roadblock.xtext.ibl.ibl.CustomFunctionBodyMember
-   * @generated
-   */
-  EClass getCustomFunctionBodyMember();
+  EClass getFunctionBodyMember();
 
   /**
    * Returns the meta object for class '{@link roadblock.xtext.ibl.ibl.FunctionParameterMember <em>Function Parameter Member</em>}'.
@@ -4704,6 +4445,32 @@ public interface IblPackage extends EPackage
     EReference FUNCTION_DEFINITION__USES = eINSTANCE.getFunctionDefinition_Uses();
 
     /**
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionBodyTypeImpl <em>Function Body Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.FunctionBodyTypeImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionBodyType()
+     * @generated
+     */
+    EClass FUNCTION_BODY_TYPE = eINSTANCE.getFunctionBodyType();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION_BODY_TYPE__PARAMETERS = eINSTANCE.getFunctionBodyType_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION_BODY_TYPE__MEMBERS = eINSTANCE.getFunctionBodyType_Members();
+
+    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl <em>Process Body</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4712,22 +4479,6 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EClass PROCESS_BODY = eINSTANCE.getProcessBody();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROCESS_BODY__PARAMETERS = eINSTANCE.getProcessBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROCESS_BODY__MEMBERS = eINSTANCE.getProcessBody_Members();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.SystemBodyImpl <em>System Body</em>}' class.
@@ -4740,22 +4491,6 @@ public interface IblPackage extends EPackage
     EClass SYSTEM_BODY = eINSTANCE.getSystemBody();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SYSTEM_BODY__PARAMETERS = eINSTANCE.getSystemBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SYSTEM_BODY__MEMBERS = eINSTANCE.getSystemBody_Members();
-
-    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl <em>Plasmid Body</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4764,22 +4499,6 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EClass PLASMID_BODY = eINSTANCE.getPlasmidBody();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLASMID_BODY__PARAMETERS = eINSTANCE.getPlasmidBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PLASMID_BODY__MEMBERS = eINSTANCE.getPlasmidBody_Members();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ChromosomeBodyImpl <em>Chromosome Body</em>}' class.
@@ -4792,22 +4511,6 @@ public interface IblPackage extends EPackage
     EClass CHROMOSOME_BODY = eINSTANCE.getChromosomeBody();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CHROMOSOME_BODY__PARAMETERS = eINSTANCE.getChromosomeBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CHROMOSOME_BODY__MEMBERS = eINSTANCE.getChromosomeBody_Members();
-
-    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.CellBodyImpl <em>Cell Body</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4818,22 +4521,6 @@ public interface IblPackage extends EPackage
     EClass CELL_BODY = eINSTANCE.getCellBody();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CELL_BODY__PARAMETERS = eINSTANCE.getCellBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CELL_BODY__MEMBERS = eINSTANCE.getCellBody_Members();
-
-    /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.RegionBodyImpl <em>Region Body</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4842,22 +4529,6 @@ public interface IblPackage extends EPackage
      * @generated
      */
     EClass REGION_BODY = eINSTANCE.getRegionBody();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REGION_BODY__PARAMETERS = eINSTANCE.getRegionBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REGION_BODY__MEMBERS = eINSTANCE.getRegionBody_Members();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyImpl <em>Custom Function Body</em>}' class.
@@ -4878,90 +4549,14 @@ public interface IblPackage extends EPackage
     EAttribute CUSTOM_FUNCTION_BODY__FUNCTION_TYPE = eINSTANCE.getCustomFunctionBody_FunctionType();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionBodyMemberImpl <em>Function Body Member</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see roadblock.xtext.ibl.ibl.impl.FunctionBodyMemberImpl
+     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getFunctionBodyMember()
      * @generated
      */
-    EReference CUSTOM_FUNCTION_BODY__PARAMETERS = eINSTANCE.getCustomFunctionBody_Parameters();
-
-    /**
-     * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CUSTOM_FUNCTION_BODY__MEMBERS = eINSTANCE.getCustomFunctionBody_Members();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ProcessBodyMemberImpl <em>Process Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.ProcessBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getProcessBodyMember()
-     * @generated
-     */
-    EClass PROCESS_BODY_MEMBER = eINSTANCE.getProcessBodyMember();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.SystemBodyMemberImpl <em>System Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.SystemBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getSystemBodyMember()
-     * @generated
-     */
-    EClass SYSTEM_BODY_MEMBER = eINSTANCE.getSystemBodyMember();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.PlasmidBodyMemberImpl <em>Plasmid Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.PlasmidBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getPlasmidBodyMember()
-     * @generated
-     */
-    EClass PLASMID_BODY_MEMBER = eINSTANCE.getPlasmidBodyMember();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.ChromosomeBodyMemberImpl <em>Chromosome Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.ChromosomeBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getChromosomeBodyMember()
-     * @generated
-     */
-    EClass CHROMOSOME_BODY_MEMBER = eINSTANCE.getChromosomeBodyMember();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.CellBodyMemberImpl <em>Cell Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.CellBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCellBodyMember()
-     * @generated
-     */
-    EClass CELL_BODY_MEMBER = eINSTANCE.getCellBodyMember();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.RegionBodyMemberImpl <em>Region Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.RegionBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getRegionBodyMember()
-     * @generated
-     */
-    EClass REGION_BODY_MEMBER = eINSTANCE.getRegionBodyMember();
-
-    /**
-     * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyMemberImpl <em>Custom Function Body Member</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyMemberImpl
-     * @see roadblock.xtext.ibl.ibl.impl.IblPackageImpl#getCustomFunctionBodyMember()
-     * @generated
-     */
-    EClass CUSTOM_FUNCTION_BODY_MEMBER = eINSTANCE.getCustomFunctionBodyMember();
+    EClass FUNCTION_BODY_MEMBER = eINSTANCE.getFunctionBodyMember();
 
     /**
      * The meta object literal for the '{@link roadblock.xtext.ibl.ibl.impl.FunctionParameterMemberImpl <em>Function Parameter Member</em>}' class.

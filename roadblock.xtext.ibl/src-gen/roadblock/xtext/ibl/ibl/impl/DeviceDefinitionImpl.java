@@ -39,7 +39,7 @@ import roadblock.xtext.ibl.ibl.List;
  *
  * @generated
  */
-public class DeviceDefinitionImpl extends SystemBodyMemberImpl implements DeviceDefinition
+public class DeviceDefinitionImpl extends FunctionBodyMemberImpl implements DeviceDefinition
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

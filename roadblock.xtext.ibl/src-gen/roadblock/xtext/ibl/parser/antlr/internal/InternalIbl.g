@@ -247,113 +247,20 @@ ruleFunctionDefinition returns [EObject current=null]
     }
 (
 (
-(
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyProcessBodyParserRuleCall_4_0_0()); 
+	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyFunctionBodyTypeParserRuleCall_4_0()); 
 	    }
-		lv_functionBody_4_1=ruleProcessBody		{
+		lv_functionBody_4_0=ruleFunctionBodyType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
 	        }
        		set(
        			$current, 
        			"functionBody",
-        		lv_functionBody_4_1, 
-        		"ProcessBody");
+        		lv_functionBody_4_0, 
+        		"FunctionBodyType");
 	        afterParserOrEnumRuleCall();
 	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodySystemBodyParserRuleCall_4_0_1()); 
-	    }
-		lv_functionBody_4_2=ruleSystemBody		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		set(
-       			$current, 
-       			"functionBody",
-        		lv_functionBody_4_2, 
-        		"SystemBody");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyPlasmidBodyParserRuleCall_4_0_2()); 
-	    }
-		lv_functionBody_4_3=rulePlasmidBody		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		set(
-       			$current, 
-       			"functionBody",
-        		lv_functionBody_4_3, 
-        		"PlasmidBody");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyChromosomeBodyParserRuleCall_4_0_3()); 
-	    }
-		lv_functionBody_4_4=ruleChromosomeBody		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		set(
-       			$current, 
-       			"functionBody",
-        		lv_functionBody_4_4, 
-        		"ChromosomeBody");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyCellBodyParserRuleCall_4_0_4()); 
-	    }
-		lv_functionBody_4_5=ruleCellBody		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		set(
-       			$current, 
-       			"functionBody",
-        		lv_functionBody_4_5, 
-        		"CellBody");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyRegionBodyParserRuleCall_4_0_5()); 
-	    }
-		lv_functionBody_4_6=ruleRegionBody		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		set(
-       			$current, 
-       			"functionBody",
-        		lv_functionBody_4_6, 
-        		"RegionBody");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyCustomFunctionBodyParserRuleCall_4_0_6()); 
-	    }
-		lv_functionBody_4_7=ruleCustomFunctionBody		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionDefinitionRule());
-	        }
-       		set(
-       			$current, 
-       			"functionBody",
-        		lv_functionBody_4_7, 
-        		"CustomFunctionBody");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 
 )
 )(	otherlv_5='USES' 
@@ -401,6 +308,96 @@ ruleFunctionDefinition returns [EObject current=null]
 
 )
 ))*)?)
+;
+
+
+
+
+
+// Entry rule entryRuleFunctionBodyType
+entryRuleFunctionBodyType returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getFunctionBodyTypeRule()); }
+	 iv_ruleFunctionBodyType=ruleFunctionBodyType 
+	 { $current=$iv_ruleFunctionBodyType.current; } 
+	 EOF 
+;
+
+// Rule FunctionBodyType
+ruleFunctionBodyType returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getProcessBodyParserRuleCall_0()); 
+    }
+    this_ProcessBody_0=ruleProcessBody
+    { 
+        $current = $this_ProcessBody_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getSystemBodyParserRuleCall_1()); 
+    }
+    this_SystemBody_1=ruleSystemBody
+    { 
+        $current = $this_SystemBody_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getPlasmidBodyParserRuleCall_2()); 
+    }
+    this_PlasmidBody_2=rulePlasmidBody
+    { 
+        $current = $this_PlasmidBody_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getChromosomeBodyParserRuleCall_3()); 
+    }
+    this_ChromosomeBody_3=ruleChromosomeBody
+    { 
+        $current = $this_ChromosomeBody_3.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getCellBodyParserRuleCall_4()); 
+    }
+    this_CellBody_4=ruleCellBody
+    { 
+        $current = $this_CellBody_4.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getRegionBodyParserRuleCall_5()); 
+    }
+    this_RegionBody_5=ruleRegionBody
+    { 
+        $current = $this_RegionBody_5.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getFunctionBodyTypeAccess().getCustomFunctionBodyParserRuleCall_6()); 
+    }
+    this_CustomFunctionBody_6=ruleCustomFunctionBody
+    { 
+        $current = $this_CustomFunctionBody_6.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 
@@ -486,9 +483,9 @@ ruleProcessBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getProcessBodyAccess().getMembersProcessBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getProcessBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=ruleProcessBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getProcessBodyRule());
 	        }
@@ -496,7 +493,7 @@ ruleProcessBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"ProcessBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -591,9 +588,9 @@ ruleSystemBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSystemBodyAccess().getMembersSystemBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getSystemBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=ruleSystemBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSystemBodyRule());
 	        }
@@ -601,7 +598,7 @@ ruleSystemBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"SystemBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -696,9 +693,9 @@ rulePlasmidBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPlasmidBodyAccess().getMembersPlasmidBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getPlasmidBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=rulePlasmidBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPlasmidBodyRule());
 	        }
@@ -706,7 +703,7 @@ rulePlasmidBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"PlasmidBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -801,9 +798,9 @@ ruleChromosomeBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getChromosomeBodyAccess().getMembersChromosomeBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getChromosomeBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=ruleChromosomeBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getChromosomeBodyRule());
 	        }
@@ -811,7 +808,7 @@ ruleChromosomeBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"ChromosomeBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -906,9 +903,9 @@ ruleCellBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCellBodyAccess().getMembersCellBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getCellBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=ruleCellBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCellBodyRule());
 	        }
@@ -916,7 +913,7 @@ ruleCellBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"CellBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1011,9 +1008,9 @@ ruleRegionBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getRegionBodyAccess().getMembersRegionBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getRegionBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=ruleRegionBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getRegionBodyRule());
 	        }
@@ -1021,7 +1018,7 @@ ruleRegionBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"RegionBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1130,9 +1127,9 @@ ruleCustomFunctionBody returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCustomFunctionBodyAccess().getMembersCustomFunctionBodyMemberParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getCustomFunctionBodyAccess().getMembersFunctionBodyMemberParserRuleCall_6_0()); 
 	    }
-		lv_members_8_0=ruleCustomFunctionBodyMember		{
+		lv_members_8_0=ruleFunctionBodyMember		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCustomFunctionBodyRule());
 	        }
@@ -1140,7 +1137,7 @@ ruleCustomFunctionBody returns [EObject current=null]
        			$current, 
        			"members",
         		lv_members_8_0, 
-        		"CustomFunctionBodyMember");
+        		"FunctionBodyMember");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1156,647 +1153,127 @@ ruleCustomFunctionBody returns [EObject current=null]
 
 
 
-// Entry rule entryRuleProcessBodyMember
-entryRuleProcessBodyMember returns [EObject current=null] 
+// Entry rule entryRuleFunctionBodyMember
+entryRuleFunctionBodyMember returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getProcessBodyMemberRule()); }
-	 iv_ruleProcessBodyMember=ruleProcessBodyMember 
-	 { $current=$iv_ruleProcessBodyMember.current; } 
+	{ newCompositeNode(grammarAccess.getFunctionBodyMemberRule()); }
+	 iv_ruleFunctionBodyMember=ruleFunctionBodyMember 
+	 { $current=$iv_ruleFunctionBodyMember.current; } 
 	 EOF 
 ;
 
-// Rule ProcessBodyMember
-ruleProcessBodyMember returns [EObject current=null] 
+// Rule FunctionBodyMember
+ruleFunctionBodyMember returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getProcessBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getATGCDefinitionParserRuleCall_0()); 
     }
-    this_RuleDefinition_0=ruleRuleDefinition
+    this_ATGCDefinition_0=ruleATGCDefinition
     { 
-        $current = $this_RuleDefinition_0.current; 
+        $current = $this_ATGCDefinition_0.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getProcessBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getCellInstantiationParserRuleCall_1()); 
     }
-    this_VariableDefinition_1=ruleVariableDefinition
+    this_CellInstantiation_1=ruleCellInstantiation
     { 
-        $current = $this_VariableDefinition_1.current; 
+        $current = $this_CellInstantiation_1.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getProcessBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getChromosomeInstantiationParserRuleCall_2()); 
     }
-    this_VariableAssignment_2=ruleVariableAssignment
+    this_ChromosomeInstantiation_2=ruleChromosomeInstantiation
     { 
-        $current = $this_VariableAssignment_2.current; 
+        $current = $this_ChromosomeInstantiation_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getProcessBodyMemberAccess().getProcessInstantiationParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getDeviceDefinitionParserRuleCall_3()); 
     }
-    this_ProcessInstantiation_3=ruleProcessInstantiation
+    this_DeviceDefinition_3=ruleDeviceDefinition
     { 
-        $current = $this_ProcessInstantiation_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleSystemBodyMember
-entryRuleSystemBodyMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getSystemBodyMemberRule()); }
-	 iv_ruleSystemBodyMember=ruleSystemBodyMember 
-	 { $current=$iv_ruleSystemBodyMember.current; } 
-	 EOF 
-;
-
-// Rule SystemBodyMember
-ruleSystemBodyMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
-    }
-    this_RuleDefinition_0=ruleRuleDefinition
-    { 
-        $current = $this_RuleDefinition_0.current; 
+        $current = $this_DeviceDefinition_3.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getPlasmidInstantiationParserRuleCall_4()); 
     }
-    this_VariableDefinition_1=ruleVariableDefinition
+    this_PlasmidInstantiation_4=rulePlasmidInstantiation
     { 
-        $current = $this_VariableDefinition_1.current; 
+        $current = $this_PlasmidInstantiation_4.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getProcessInstantiationParserRuleCall_5()); 
     }
-    this_VariableAssignment_2=ruleVariableAssignment
+    this_ProcessInstantiation_5=ruleProcessInstantiation
     { 
-        $current = $this_VariableAssignment_2.current; 
+        $current = $this_ProcessInstantiation_5.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getPropertyDefinitionParserRuleCall_6()); 
     }
-    this_ATGCDefinition_3=ruleATGCDefinition
+    this_PropertyDefinition_6=rulePropertyDefinition
     { 
-        $current = $this_ATGCDefinition_3.current; 
+        $current = $this_PropertyDefinition_6.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getRuleDefinitionParserRuleCall_7()); 
     }
-    this_PropertyDefinition_4=rulePropertyDefinition
+    this_RuleDefinition_7=ruleRuleDefinition
     { 
-        $current = $this_PropertyDefinition_4.current; 
+        $current = $this_RuleDefinition_7.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getSystemInstantiationParserRuleCall_8()); 
     }
-    this_DeviceDefinition_5=ruleDeviceDefinition
+    this_SystemInstantiation_8=ruleSystemInstantiation
     { 
-        $current = $this_DeviceDefinition_5.current; 
+        $current = $this_SystemInstantiation_8.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getSystemBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getVariableAssignmentParserRuleCall_9()); 
     }
-    this_ProcessInstantiation_6=ruleProcessInstantiation
+    this_VariableAssignment_9=ruleVariableAssignment
     { 
-        $current = $this_ProcessInstantiation_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRulePlasmidBodyMember
-entryRulePlasmidBodyMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getPlasmidBodyMemberRule()); }
-	 iv_rulePlasmidBodyMember=rulePlasmidBodyMember 
-	 { $current=$iv_rulePlasmidBodyMember.current; } 
-	 EOF 
-;
-
-// Rule PlasmidBodyMember
-rulePlasmidBodyMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
-    }
-    this_RuleDefinition_0=ruleRuleDefinition
-    { 
-        $current = $this_RuleDefinition_0.current; 
+        $current = $this_VariableAssignment_9.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
+        newCompositeNode(grammarAccess.getFunctionBodyMemberAccess().getVariableDefinitionParserRuleCall_10()); 
     }
-    this_VariableDefinition_1=ruleVariableDefinition
+    this_VariableDefinition_10=ruleVariableDefinition
     { 
-        $current = $this_VariableDefinition_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
-    }
-    this_VariableAssignment_2=ruleVariableAssignment
-    { 
-        $current = $this_VariableAssignment_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); 
-    }
-    this_ATGCDefinition_3=ruleATGCDefinition
-    { 
-        $current = $this_ATGCDefinition_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); 
-    }
-    this_PropertyDefinition_4=rulePropertyDefinition
-    { 
-        $current = $this_PropertyDefinition_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); 
-    }
-    this_DeviceDefinition_5=ruleDeviceDefinition
-    { 
-        $current = $this_DeviceDefinition_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); 
-    }
-    this_ProcessInstantiation_6=ruleProcessInstantiation
-    { 
-        $current = $this_ProcessInstantiation_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getPlasmidBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); 
-    }
-    this_SystemInstantiation_7=ruleSystemInstantiation
-    { 
-        $current = $this_SystemInstantiation_7.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleChromosomeBodyMember
-entryRuleChromosomeBodyMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getChromosomeBodyMemberRule()); }
-	 iv_ruleChromosomeBodyMember=ruleChromosomeBodyMember 
-	 { $current=$iv_ruleChromosomeBodyMember.current; } 
-	 EOF 
-;
-
-// Rule ChromosomeBodyMember
-ruleChromosomeBodyMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
-    }
-    this_RuleDefinition_0=ruleRuleDefinition
-    { 
-        $current = $this_RuleDefinition_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
-    }
-    this_VariableDefinition_1=ruleVariableDefinition
-    { 
-        $current = $this_VariableDefinition_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
-    }
-    this_VariableAssignment_2=ruleVariableAssignment
-    { 
-        $current = $this_VariableAssignment_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); 
-    }
-    this_ATGCDefinition_3=ruleATGCDefinition
-    { 
-        $current = $this_ATGCDefinition_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); 
-    }
-    this_PropertyDefinition_4=rulePropertyDefinition
-    { 
-        $current = $this_PropertyDefinition_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); 
-    }
-    this_DeviceDefinition_5=ruleDeviceDefinition
-    { 
-        $current = $this_DeviceDefinition_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); 
-    }
-    this_ProcessInstantiation_6=ruleProcessInstantiation
-    { 
-        $current = $this_ProcessInstantiation_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getChromosomeBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); 
-    }
-    this_SystemInstantiation_7=ruleSystemInstantiation
-    { 
-        $current = $this_SystemInstantiation_7.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleCellBodyMember
-entryRuleCellBodyMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getCellBodyMemberRule()); }
-	 iv_ruleCellBodyMember=ruleCellBodyMember 
-	 { $current=$iv_ruleCellBodyMember.current; } 
-	 EOF 
-;
-
-// Rule CellBodyMember
-ruleCellBodyMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
-    }
-    this_RuleDefinition_0=ruleRuleDefinition
-    { 
-        $current = $this_RuleDefinition_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
-    }
-    this_VariableDefinition_1=ruleVariableDefinition
-    { 
-        $current = $this_VariableDefinition_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
-    }
-    this_VariableAssignment_2=ruleVariableAssignment
-    { 
-        $current = $this_VariableAssignment_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); 
-    }
-    this_ATGCDefinition_3=ruleATGCDefinition
-    { 
-        $current = $this_ATGCDefinition_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); 
-    }
-    this_PropertyDefinition_4=rulePropertyDefinition
-    { 
-        $current = $this_PropertyDefinition_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); 
-    }
-    this_DeviceDefinition_5=ruleDeviceDefinition
-    { 
-        $current = $this_DeviceDefinition_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); 
-    }
-    this_ProcessInstantiation_6=ruleProcessInstantiation
-    { 
-        $current = $this_ProcessInstantiation_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); 
-    }
-    this_SystemInstantiation_7=ruleSystemInstantiation
-    { 
-        $current = $this_SystemInstantiation_7.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getPlasmidInstantiationParserRuleCall_8()); 
-    }
-    this_PlasmidInstantiation_8=rulePlasmidInstantiation
-    { 
-        $current = $this_PlasmidInstantiation_8.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCellBodyMemberAccess().getChromosomeInstantiationParserRuleCall_9()); 
-    }
-    this_ChromosomeInstantiation_9=ruleChromosomeInstantiation
-    { 
-        $current = $this_ChromosomeInstantiation_9.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleRegionBodyMember
-entryRuleRegionBodyMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getRegionBodyMemberRule()); }
-	 iv_ruleRegionBodyMember=ruleRegionBodyMember 
-	 { $current=$iv_ruleRegionBodyMember.current; } 
-	 EOF 
-;
-
-// Rule RegionBodyMember
-ruleRegionBodyMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getRegionBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
-    }
-    this_RuleDefinition_0=ruleRuleDefinition
-    { 
-        $current = $this_RuleDefinition_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getRegionBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
-    }
-    this_VariableDefinition_1=ruleVariableDefinition
-    { 
-        $current = $this_VariableDefinition_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getRegionBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
-    }
-    this_VariableAssignment_2=ruleVariableAssignment
-    { 
-        $current = $this_VariableAssignment_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getRegionBodyMemberAccess().getCellInstantiationParserRuleCall_3()); 
-    }
-    this_CellInstantiation_3=ruleCellInstantiation
-    { 
-        $current = $this_CellInstantiation_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRuleCustomFunctionBodyMember
-entryRuleCustomFunctionBodyMember returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getCustomFunctionBodyMemberRule()); }
-	 iv_ruleCustomFunctionBodyMember=ruleCustomFunctionBodyMember 
-	 { $current=$iv_ruleCustomFunctionBodyMember.current; } 
-	 EOF 
-;
-
-// Rule CustomFunctionBodyMember
-ruleCustomFunctionBodyMember returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getRuleDefinitionParserRuleCall_0()); 
-    }
-    this_RuleDefinition_0=ruleRuleDefinition
-    { 
-        $current = $this_RuleDefinition_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getVariableDefinitionParserRuleCall_1()); 
-    }
-    this_VariableDefinition_1=ruleVariableDefinition
-    { 
-        $current = $this_VariableDefinition_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getVariableAssignmentParserRuleCall_2()); 
-    }
-    this_VariableAssignment_2=ruleVariableAssignment
-    { 
-        $current = $this_VariableAssignment_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getATGCDefinitionParserRuleCall_3()); 
-    }
-    this_ATGCDefinition_3=ruleATGCDefinition
-    { 
-        $current = $this_ATGCDefinition_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getPropertyDefinitionParserRuleCall_4()); 
-    }
-    this_PropertyDefinition_4=rulePropertyDefinition
-    { 
-        $current = $this_PropertyDefinition_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getDeviceDefinitionParserRuleCall_5()); 
-    }
-    this_DeviceDefinition_5=ruleDeviceDefinition
-    { 
-        $current = $this_DeviceDefinition_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getProcessInstantiationParserRuleCall_6()); 
-    }
-    this_ProcessInstantiation_6=ruleProcessInstantiation
-    { 
-        $current = $this_ProcessInstantiation_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getSystemInstantiationParserRuleCall_7()); 
-    }
-    this_SystemInstantiation_7=ruleSystemInstantiation
-    { 
-        $current = $this_SystemInstantiation_7.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getPlasmidInstantiationParserRuleCall_8()); 
-    }
-    this_PlasmidInstantiation_8=rulePlasmidInstantiation
-    { 
-        $current = $this_PlasmidInstantiation_8.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getCustomFunctionBodyMemberAccess().getChromosomeInstantiationParserRuleCall_9()); 
-    }
-    this_ChromosomeInstantiation_9=ruleChromosomeInstantiation
-    { 
-        $current = $this_ChromosomeInstantiation_9.current; 
+        $current = $this_VariableDefinition_10.current; 
         afterParserOrEnumRuleCall();
     }
 )

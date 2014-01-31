@@ -147,14 +147,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameVariableNameParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cTypeofKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cFunctionBodyAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final Alternatives cFunctionBodyAlternatives_4_0 = (Alternatives)cFunctionBodyAssignment_4.eContents().get(0);
-		private final RuleCall cFunctionBodyProcessBodyParserRuleCall_4_0_0 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(0);
-		private final RuleCall cFunctionBodySystemBodyParserRuleCall_4_0_1 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(1);
-		private final RuleCall cFunctionBodyPlasmidBodyParserRuleCall_4_0_2 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(2);
-		private final RuleCall cFunctionBodyChromosomeBodyParserRuleCall_4_0_3 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(3);
-		private final RuleCall cFunctionBodyCellBodyParserRuleCall_4_0_4 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(4);
-		private final RuleCall cFunctionBodyRegionBodyParserRuleCall_4_0_5 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(5);
-		private final RuleCall cFunctionBodyCustomFunctionBodyParserRuleCall_4_0_6 = (RuleCall)cFunctionBodyAlternatives_4_0.eContents().get(6);
+		private final RuleCall cFunctionBodyFunctionBodyTypeParserRuleCall_4_0 = (RuleCall)cFunctionBodyAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cUSESKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Assignment cUsesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
@@ -166,14 +159,12 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//// a function definition
 		//FunctionDefinition:
-		//	{FunctionDefinition} "define" name=VariableName "typeof" functionBody=(ProcessBody | SystemBody | PlasmidBody |
-		//	ChromosomeBody | CellBody | RegionBody | CustomFunctionBody) ("USES" uses+=FunctionUseMember (","
-		//	uses+=FunctionUseMember)*)?;
+		//	{FunctionDefinition} "define" name=VariableName "typeof" functionBody=FunctionBodyType ("USES" uses+=FunctionUseMember
+		//	("," uses+=FunctionUseMember)*)?;
 		public ParserRule getRule() { return rule; }
 
-		//{FunctionDefinition} "define" name=VariableName "typeof" functionBody=(ProcessBody | SystemBody | PlasmidBody |
-		//ChromosomeBody | CellBody | RegionBody | CustomFunctionBody) ("USES" uses+=FunctionUseMember (","
-		//uses+=FunctionUseMember)*)?
+		//{FunctionDefinition} "define" name=VariableName "typeof" functionBody=FunctionBodyType ("USES" uses+=FunctionUseMember
+		//("," uses+=FunctionUseMember)*)?
 		public Group getGroup() { return cGroup; }
 
 		//{FunctionDefinition}
@@ -191,32 +182,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"typeof"
 		public Keyword getTypeofKeyword_3() { return cTypeofKeyword_3; }
 
-		//functionBody=(ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody)
+		//functionBody=FunctionBodyType
 		public Assignment getFunctionBodyAssignment_4() { return cFunctionBodyAssignment_4; }
 
-		//ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody
-		public Alternatives getFunctionBodyAlternatives_4_0() { return cFunctionBodyAlternatives_4_0; }
-
-		//ProcessBody
-		public RuleCall getFunctionBodyProcessBodyParserRuleCall_4_0_0() { return cFunctionBodyProcessBodyParserRuleCall_4_0_0; }
-
-		//SystemBody
-		public RuleCall getFunctionBodySystemBodyParserRuleCall_4_0_1() { return cFunctionBodySystemBodyParserRuleCall_4_0_1; }
-
-		//PlasmidBody
-		public RuleCall getFunctionBodyPlasmidBodyParserRuleCall_4_0_2() { return cFunctionBodyPlasmidBodyParserRuleCall_4_0_2; }
-
-		//ChromosomeBody
-		public RuleCall getFunctionBodyChromosomeBodyParserRuleCall_4_0_3() { return cFunctionBodyChromosomeBodyParserRuleCall_4_0_3; }
-
-		//CellBody
-		public RuleCall getFunctionBodyCellBodyParserRuleCall_4_0_4() { return cFunctionBodyCellBodyParserRuleCall_4_0_4; }
-
-		//RegionBody
-		public RuleCall getFunctionBodyRegionBodyParserRuleCall_4_0_5() { return cFunctionBodyRegionBodyParserRuleCall_4_0_5; }
-
-		//CustomFunctionBody
-		public RuleCall getFunctionBodyCustomFunctionBodyParserRuleCall_4_0_6() { return cFunctionBodyCustomFunctionBodyParserRuleCall_4_0_6; }
+		//FunctionBodyType
+		public RuleCall getFunctionBodyFunctionBodyTypeParserRuleCall_4_0() { return cFunctionBodyFunctionBodyTypeParserRuleCall_4_0; }
 
 		//("USES" uses+=FunctionUseMember ("," uses+=FunctionUseMember)*)?
 		public Group getGroup_5() { return cGroup_5; }
@@ -243,6 +213,46 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getUsesFunctionUseMemberParserRuleCall_5_2_1_0() { return cUsesFunctionUseMemberParserRuleCall_5_2_1_0; }
 	}
 
+	public class FunctionBodyTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionBodyType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cProcessBodyParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cSystemBodyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cPlasmidBodyParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cChromosomeBodyParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cCellBodyParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cRegionBodyParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cCustomFunctionBodyParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		
+		//FunctionBodyType:
+		//	ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody;
+		public ParserRule getRule() { return rule; }
+
+		//ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ProcessBody
+		public RuleCall getProcessBodyParserRuleCall_0() { return cProcessBodyParserRuleCall_0; }
+
+		//SystemBody
+		public RuleCall getSystemBodyParserRuleCall_1() { return cSystemBodyParserRuleCall_1; }
+
+		//PlasmidBody
+		public RuleCall getPlasmidBodyParserRuleCall_2() { return cPlasmidBodyParserRuleCall_2; }
+
+		//ChromosomeBody
+		public RuleCall getChromosomeBodyParserRuleCall_3() { return cChromosomeBodyParserRuleCall_3; }
+
+		//CellBody
+		public RuleCall getCellBodyParserRuleCall_4() { return cCellBodyParserRuleCall_4; }
+
+		//RegionBody
+		public RuleCall getRegionBodyParserRuleCall_5() { return cRegionBodyParserRuleCall_5; }
+
+		//CustomFunctionBody
+		public RuleCall getCustomFunctionBodyParserRuleCall_6() { return cCustomFunctionBodyParserRuleCall_6; }
+	}
+
 	public class ProcessBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessBody");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -259,17 +269,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersProcessBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// Process body definition
 		//ProcessBody:
 		//	{ProcessBody} "PROCESS" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//	members+=ProcessBodyMember* "}";
+		//	members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{ProcessBody} "PROCESS" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//members+=ProcessBodyMember* "}"
+		//members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{ProcessBody}
@@ -308,11 +318,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=ProcessBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//ProcessBodyMember
-		public RuleCall getMembersProcessBodyMemberParserRuleCall_6_0() { return cMembersProcessBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -334,17 +344,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersSystemBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// System body definition
 		//SystemBody:
 		//	{SystemBody} "SYSTEM" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//	members+=SystemBodyMember* "}";
+		//	members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{SystemBody} "SYSTEM" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//members+=SystemBodyMember* "}"
+		//members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{SystemBody}
@@ -383,11 +393,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=SystemBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//SystemBodyMember
-		public RuleCall getMembersSystemBodyMemberParserRuleCall_6_0() { return cMembersSystemBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -409,17 +419,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersPlasmidBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// Plasmid body definition
 		//PlasmidBody:
 		//	{PlasmidBody} "PLASMID" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//	members+=PlasmidBodyMember* "}";
+		//	members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{PlasmidBody} "PLASMID" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//members+=PlasmidBodyMember* "}"
+		//members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{PlasmidBody}
@@ -458,11 +468,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=PlasmidBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//PlasmidBodyMember
-		public RuleCall getMembersPlasmidBodyMemberParserRuleCall_6_0() { return cMembersPlasmidBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -484,17 +494,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersChromosomeBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// Chromosome body definition
 		//ChromosomeBody:
 		//	{ChromosomeBody} "CHROMOSOME" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)?
-		//	")" "{" members+=ChromosomeBodyMember* "}";
+		//	")" "{" members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{ChromosomeBody} "CHROMOSOME" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")"
-		//"{" members+=ChromosomeBodyMember* "}"
+		//"{" members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{ChromosomeBody}
@@ -533,11 +543,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=ChromosomeBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//ChromosomeBodyMember
-		public RuleCall getMembersChromosomeBodyMemberParserRuleCall_6_0() { return cMembersChromosomeBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -559,17 +569,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersCellBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// Cell body definition
 		//CellBody:
 		//	{CellBody} "CELL" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//	members+=CellBodyMember* "}";
+		//	members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{CellBody} "CELL" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//members+=CellBodyMember* "}"
+		//members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{CellBody}
@@ -608,11 +618,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=CellBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//CellBodyMember
-		public RuleCall getMembersCellBodyMemberParserRuleCall_6_0() { return cMembersCellBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -634,17 +644,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersRegionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// Region body definition
 		//RegionBody:
 		//	{RegionBody} "REGION" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//	members+=RegionBodyMember* "}";
+		//	members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{RegionBody} "REGION" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-		//members+=RegionBodyMember* "}"
+		//members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{RegionBody}
@@ -683,11 +693,11 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=RegionBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//RegionBodyMember
-		public RuleCall getMembersRegionBodyMemberParserRuleCall_6_0() { return cMembersRegionBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -710,17 +720,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cMembersAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cMembersCustomFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
+		private final RuleCall cMembersFunctionBodyMemberParserRuleCall_6_0 = (RuleCall)cMembersAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//// User defined function body definition
 		//CustomFunctionBody:
 		//	{CustomFunctionBody} functionType=VariableName "(" (parameters+=FunctionParameterMember (","
-		//	parameters+=FunctionParameterMember)*)? ")" "{" members+=CustomFunctionBodyMember* "}";
+		//	parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember* "}";
 		public ParserRule getRule() { return rule; }
 
 		//{CustomFunctionBody} functionType=VariableName "(" (parameters+=FunctionParameterMember (","
-		//parameters+=FunctionParameterMember)*)? ")" "{" members+=CustomFunctionBodyMember* "}"
+		//parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember* "}"
 		public Group getGroup() { return cGroup; }
 
 		//{CustomFunctionBody}
@@ -762,322 +772,78 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
-		//members+=CustomFunctionBodyMember*
+		//members+=FunctionBodyMember*
 		public Assignment getMembersAssignment_6() { return cMembersAssignment_6; }
 
-		//CustomFunctionBodyMember
-		public RuleCall getMembersCustomFunctionBodyMemberParserRuleCall_6_0() { return cMembersCustomFunctionBodyMemberParserRuleCall_6_0; }
+		//FunctionBodyMember
+		public RuleCall getMembersFunctionBodyMemberParserRuleCall_6_0() { return cMembersFunctionBodyMemberParserRuleCall_6_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
-	public class ProcessBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ProcessBodyMember");
+	public class FunctionBodyMemberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionBodyMember");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cProcessInstantiationParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cATGCDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCellInstantiationParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cChromosomeInstantiationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cDeviceDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cPlasmidInstantiationParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cProcessInstantiationParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cPropertyDefinitionParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cRuleDefinitionParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cSystemInstantiationParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cVariableAssignmentParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		private final RuleCall cVariableDefinitionParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		
 		////////////////////
 		//// Body members //
 		////////////////////
-		//// Process definition body member
-		//ProcessBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | ProcessInstantiation;
+		//// See iblRefactoringGrammar.R for some automation
+		//FunctionBodyMember:
+		//	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
+		//	ProcessInstantiation | PropertyDefinition | RuleDefinition | SystemInstantiation | VariableAssignment |
+		//	VariableDefinition;
 		public ParserRule getRule() { return rule; }
 
-		//RuleDefinition | VariableDefinition | VariableAssignment | ProcessInstantiation
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
+		//ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
+		//ProcessInstantiation | PropertyDefinition | RuleDefinition | SystemInstantiation | VariableAssignment |
 		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
-
-		//ProcessInstantiation
-		public RuleCall getProcessInstantiationParserRuleCall_3() { return cProcessInstantiationParserRuleCall_3; }
-	}
-
-	public class SystemBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SystemBodyMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cATGCDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cPropertyDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDeviceDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cProcessInstantiationParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		
-		//// System definition body member
-		//SystemBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//	ProcessInstantiation;
-		public ParserRule getRule() { return rule; }
-
-		//RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//ProcessInstantiation
 		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
-		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
 
 		//ATGCDefinition
-		public RuleCall getATGCDefinitionParserRuleCall_3() { return cATGCDefinitionParserRuleCall_3; }
-
-		//PropertyDefinition
-		public RuleCall getPropertyDefinitionParserRuleCall_4() { return cPropertyDefinitionParserRuleCall_4; }
-
-		//DeviceDefinition
-		public RuleCall getDeviceDefinitionParserRuleCall_5() { return cDeviceDefinitionParserRuleCall_5; }
-
-		//ProcessInstantiation
-		public RuleCall getProcessInstantiationParserRuleCall_6() { return cProcessInstantiationParserRuleCall_6; }
-	}
-
-	public class PlasmidBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PlasmidBodyMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cATGCDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cPropertyDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDeviceDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cProcessInstantiationParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cSystemInstantiationParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		
-		//// Plasmid definition body member
-		//PlasmidBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//	ProcessInstantiation | SystemInstantiation;
-		public ParserRule getRule() { return rule; }
-
-		//RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//ProcessInstantiation | SystemInstantiation
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
-		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
-
-		//ATGCDefinition
-		public RuleCall getATGCDefinitionParserRuleCall_3() { return cATGCDefinitionParserRuleCall_3; }
-
-		//PropertyDefinition
-		public RuleCall getPropertyDefinitionParserRuleCall_4() { return cPropertyDefinitionParserRuleCall_4; }
-
-		//DeviceDefinition
-		public RuleCall getDeviceDefinitionParserRuleCall_5() { return cDeviceDefinitionParserRuleCall_5; }
-
-		//ProcessInstantiation
-		public RuleCall getProcessInstantiationParserRuleCall_6() { return cProcessInstantiationParserRuleCall_6; }
-
-		//SystemInstantiation
-		public RuleCall getSystemInstantiationParserRuleCall_7() { return cSystemInstantiationParserRuleCall_7; }
-	}
-
-	public class ChromosomeBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ChromosomeBodyMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cATGCDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cPropertyDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDeviceDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cProcessInstantiationParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cSystemInstantiationParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		
-		//// Chromosome definition body member
-		//ChromosomeBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//	ProcessInstantiation | SystemInstantiation;
-		public ParserRule getRule() { return rule; }
-
-		//RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//ProcessInstantiation | SystemInstantiation
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
-		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
-
-		//ATGCDefinition
-		public RuleCall getATGCDefinitionParserRuleCall_3() { return cATGCDefinitionParserRuleCall_3; }
-
-		//PropertyDefinition
-		public RuleCall getPropertyDefinitionParserRuleCall_4() { return cPropertyDefinitionParserRuleCall_4; }
-
-		//DeviceDefinition
-		public RuleCall getDeviceDefinitionParserRuleCall_5() { return cDeviceDefinitionParserRuleCall_5; }
-
-		//ProcessInstantiation
-		public RuleCall getProcessInstantiationParserRuleCall_6() { return cProcessInstantiationParserRuleCall_6; }
-
-		//SystemInstantiation
-		public RuleCall getSystemInstantiationParserRuleCall_7() { return cSystemInstantiationParserRuleCall_7; }
-	}
-
-	public class CellBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CellBodyMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cATGCDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cPropertyDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDeviceDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cProcessInstantiationParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cSystemInstantiationParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cPlasmidInstantiationParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cChromosomeInstantiationParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		
-		//// Cell definition body member
-		//CellBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation;
-		public ParserRule getRule() { return rule; }
-
-		//RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
-		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
-
-		//ATGCDefinition
-		public RuleCall getATGCDefinitionParserRuleCall_3() { return cATGCDefinitionParserRuleCall_3; }
-
-		//PropertyDefinition
-		public RuleCall getPropertyDefinitionParserRuleCall_4() { return cPropertyDefinitionParserRuleCall_4; }
-
-		//DeviceDefinition
-		public RuleCall getDeviceDefinitionParserRuleCall_5() { return cDeviceDefinitionParserRuleCall_5; }
-
-		//ProcessInstantiation
-		public RuleCall getProcessInstantiationParserRuleCall_6() { return cProcessInstantiationParserRuleCall_6; }
-
-		//SystemInstantiation
-		public RuleCall getSystemInstantiationParserRuleCall_7() { return cSystemInstantiationParserRuleCall_7; }
-
-		//PlasmidInstantiation
-		public RuleCall getPlasmidInstantiationParserRuleCall_8() { return cPlasmidInstantiationParserRuleCall_8; }
-
-		//ChromosomeInstantiation
-		public RuleCall getChromosomeInstantiationParserRuleCall_9() { return cChromosomeInstantiationParserRuleCall_9; }
-	}
-
-	public class RegionBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RegionBodyMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cCellInstantiationParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		
-		//// Region definition body member
-		//RegionBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | CellInstantiation;
-		public ParserRule getRule() { return rule; }
-
-		//RuleDefinition | VariableDefinition | VariableAssignment | CellInstantiation
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
-		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
+		public RuleCall getATGCDefinitionParserRuleCall_0() { return cATGCDefinitionParserRuleCall_0; }
 
 		//CellInstantiation
-		public RuleCall getCellInstantiationParserRuleCall_3() { return cCellInstantiationParserRuleCall_3; }
-	}
-
-	public class CustomFunctionBodyMemberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CustomFunctionBodyMember");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cRuleDefinitionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cVariableDefinitionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableAssignmentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cATGCDefinitionParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cPropertyDefinitionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cDeviceDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cProcessInstantiationParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cSystemInstantiationParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cPlasmidInstantiationParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cChromosomeInstantiationParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		
-		//// User defined function body member
-		//CustomFunctionBodyMember:
-		//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation;
-		public ParserRule getRule() { return rule; }
-
-		//RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-		//ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//RuleDefinition
-		public RuleCall getRuleDefinitionParserRuleCall_0() { return cRuleDefinitionParserRuleCall_0; }
-
-		//VariableDefinition
-		public RuleCall getVariableDefinitionParserRuleCall_1() { return cVariableDefinitionParserRuleCall_1; }
-
-		//VariableAssignment
-		public RuleCall getVariableAssignmentParserRuleCall_2() { return cVariableAssignmentParserRuleCall_2; }
-
-		//ATGCDefinition
-		public RuleCall getATGCDefinitionParserRuleCall_3() { return cATGCDefinitionParserRuleCall_3; }
-
-		//PropertyDefinition
-		public RuleCall getPropertyDefinitionParserRuleCall_4() { return cPropertyDefinitionParserRuleCall_4; }
-
-		//DeviceDefinition
-		public RuleCall getDeviceDefinitionParserRuleCall_5() { return cDeviceDefinitionParserRuleCall_5; }
-
-		//ProcessInstantiation
-		public RuleCall getProcessInstantiationParserRuleCall_6() { return cProcessInstantiationParserRuleCall_6; }
-
-		//SystemInstantiation
-		public RuleCall getSystemInstantiationParserRuleCall_7() { return cSystemInstantiationParserRuleCall_7; }
-
-		//PlasmidInstantiation
-		public RuleCall getPlasmidInstantiationParserRuleCall_8() { return cPlasmidInstantiationParserRuleCall_8; }
+		public RuleCall getCellInstantiationParserRuleCall_1() { return cCellInstantiationParserRuleCall_1; }
 
 		//ChromosomeInstantiation
-		public RuleCall getChromosomeInstantiationParserRuleCall_9() { return cChromosomeInstantiationParserRuleCall_9; }
+		public RuleCall getChromosomeInstantiationParserRuleCall_2() { return cChromosomeInstantiationParserRuleCall_2; }
+
+		//DeviceDefinition
+		public RuleCall getDeviceDefinitionParserRuleCall_3() { return cDeviceDefinitionParserRuleCall_3; }
+
+		//PlasmidInstantiation
+		public RuleCall getPlasmidInstantiationParserRuleCall_4() { return cPlasmidInstantiationParserRuleCall_4; }
+
+		//ProcessInstantiation
+		public RuleCall getProcessInstantiationParserRuleCall_5() { return cProcessInstantiationParserRuleCall_5; }
+
+		//PropertyDefinition
+		public RuleCall getPropertyDefinitionParserRuleCall_6() { return cPropertyDefinitionParserRuleCall_6; }
+
+		//RuleDefinition
+		public RuleCall getRuleDefinitionParserRuleCall_7() { return cRuleDefinitionParserRuleCall_7; }
+
+		//SystemInstantiation
+		public RuleCall getSystemInstantiationParserRuleCall_8() { return cSystemInstantiationParserRuleCall_8; }
+
+		//VariableAssignment
+		public RuleCall getVariableAssignmentParserRuleCall_9() { return cVariableAssignmentParserRuleCall_9; }
+
+		//VariableDefinition
+		public RuleCall getVariableDefinitionParserRuleCall_10() { return cVariableDefinitionParserRuleCall_10; }
 	}
 
 	public class FunctionParameterMemberElements extends AbstractParserRuleElementFinder {
@@ -4263,6 +4029,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private ImportStatementElements pImportStatement;
 	private FunctionTypeElements pFunctionType;
 	private FunctionDefinitionElements pFunctionDefinition;
+	private FunctionBodyTypeElements pFunctionBodyType;
 	private ProcessBodyElements pProcessBody;
 	private SystemBodyElements pSystemBody;
 	private PlasmidBodyElements pPlasmidBody;
@@ -4270,13 +4037,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	private CellBodyElements pCellBody;
 	private RegionBodyElements pRegionBody;
 	private CustomFunctionBodyElements pCustomFunctionBody;
-	private ProcessBodyMemberElements pProcessBodyMember;
-	private SystemBodyMemberElements pSystemBodyMember;
-	private PlasmidBodyMemberElements pPlasmidBodyMember;
-	private ChromosomeBodyMemberElements pChromosomeBodyMember;
-	private CellBodyMemberElements pCellBodyMember;
-	private RegionBodyMemberElements pRegionBodyMember;
-	private CustomFunctionBodyMemberElements pCustomFunctionBodyMember;
+	private FunctionBodyMemberElements pFunctionBodyMember;
 	private FunctionParameterMemberElements pFunctionParameterMember;
 	private FunctionParameterScopeElements pFunctionParameterScope;
 	private FunctionUseMemberElements pFunctionUseMember;
@@ -4429,9 +4190,8 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// a function definition
 	//FunctionDefinition:
-	//	{FunctionDefinition} "define" name=VariableName "typeof" functionBody=(ProcessBody | SystemBody | PlasmidBody |
-	//	ChromosomeBody | CellBody | RegionBody | CustomFunctionBody) ("USES" uses+=FunctionUseMember (","
-	//	uses+=FunctionUseMember)*)?;
+	//	{FunctionDefinition} "define" name=VariableName "typeof" functionBody=FunctionBodyType ("USES" uses+=FunctionUseMember
+	//	("," uses+=FunctionUseMember)*)?;
 	public FunctionDefinitionElements getFunctionDefinitionAccess() {
 		return (pFunctionDefinition != null) ? pFunctionDefinition : (pFunctionDefinition = new FunctionDefinitionElements());
 	}
@@ -4440,10 +4200,20 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 		return getFunctionDefinitionAccess().getRule();
 	}
 
+	//FunctionBodyType:
+	//	ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody;
+	public FunctionBodyTypeElements getFunctionBodyTypeAccess() {
+		return (pFunctionBodyType != null) ? pFunctionBodyType : (pFunctionBodyType = new FunctionBodyTypeElements());
+	}
+	
+	public ParserRule getFunctionBodyTypeRule() {
+		return getFunctionBodyTypeAccess().getRule();
+	}
+
 	//// Process body definition
 	//ProcessBody:
 	//	{ProcessBody} "PROCESS" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-	//	members+=ProcessBodyMember* "}";
+	//	members+=FunctionBodyMember* "}";
 	public ProcessBodyElements getProcessBodyAccess() {
 		return (pProcessBody != null) ? pProcessBody : (pProcessBody = new ProcessBodyElements());
 	}
@@ -4455,7 +4225,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// System body definition
 	//SystemBody:
 	//	{SystemBody} "SYSTEM" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-	//	members+=SystemBodyMember* "}";
+	//	members+=FunctionBodyMember* "}";
 	public SystemBodyElements getSystemBodyAccess() {
 		return (pSystemBody != null) ? pSystemBody : (pSystemBody = new SystemBodyElements());
 	}
@@ -4467,7 +4237,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// Plasmid body definition
 	//PlasmidBody:
 	//	{PlasmidBody} "PLASMID" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-	//	members+=PlasmidBodyMember* "}";
+	//	members+=FunctionBodyMember* "}";
 	public PlasmidBodyElements getPlasmidBodyAccess() {
 		return (pPlasmidBody != null) ? pPlasmidBody : (pPlasmidBody = new PlasmidBodyElements());
 	}
@@ -4479,7 +4249,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// Chromosome body definition
 	//ChromosomeBody:
 	//	{ChromosomeBody} "CHROMOSOME" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)?
-	//	")" "{" members+=ChromosomeBodyMember* "}";
+	//	")" "{" members+=FunctionBodyMember* "}";
 	public ChromosomeBodyElements getChromosomeBodyAccess() {
 		return (pChromosomeBody != null) ? pChromosomeBody : (pChromosomeBody = new ChromosomeBodyElements());
 	}
@@ -4491,7 +4261,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// Cell body definition
 	//CellBody:
 	//	{CellBody} "CELL" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-	//	members+=CellBodyMember* "}";
+	//	members+=FunctionBodyMember* "}";
 	public CellBodyElements getCellBodyAccess() {
 		return (pCellBody != null) ? pCellBody : (pCellBody = new CellBodyElements());
 	}
@@ -4503,7 +4273,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// Region body definition
 	//RegionBody:
 	//	{RegionBody} "REGION" "(" (parameters+=FunctionParameterMember ("," parameters+=FunctionParameterMember)*)? ")" "{"
-	//	members+=RegionBodyMember* "}";
+	//	members+=FunctionBodyMember* "}";
 	public RegionBodyElements getRegionBodyAccess() {
 		return (pRegionBody != null) ? pRegionBody : (pRegionBody = new RegionBodyElements());
 	}
@@ -4515,7 +4285,7 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	//// User defined function body definition
 	//CustomFunctionBody:
 	//	{CustomFunctionBody} functionType=VariableName "(" (parameters+=FunctionParameterMember (","
-	//	parameters+=FunctionParameterMember)*)? ")" "{" members+=CustomFunctionBodyMember* "}";
+	//	parameters+=FunctionParameterMember)*)? ")" "{" members+=FunctionBodyMember* "}";
 	public CustomFunctionBodyElements getCustomFunctionBodyAccess() {
 		return (pCustomFunctionBody != null) ? pCustomFunctionBody : (pCustomFunctionBody = new CustomFunctionBodyElements());
 	}
@@ -4527,86 +4297,17 @@ public class IblGrammarAccess extends AbstractGrammarElementFinder {
 	////////////////////
 	//// Body members //
 	////////////////////
-	//// Process definition body member
-	//ProcessBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | ProcessInstantiation;
-	public ProcessBodyMemberElements getProcessBodyMemberAccess() {
-		return (pProcessBodyMember != null) ? pProcessBodyMember : (pProcessBodyMember = new ProcessBodyMemberElements());
+	//// See iblRefactoringGrammar.R for some automation
+	//FunctionBodyMember:
+	//	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
+	//	ProcessInstantiation | PropertyDefinition | RuleDefinition | SystemInstantiation | VariableAssignment |
+	//	VariableDefinition;
+	public FunctionBodyMemberElements getFunctionBodyMemberAccess() {
+		return (pFunctionBodyMember != null) ? pFunctionBodyMember : (pFunctionBodyMember = new FunctionBodyMemberElements());
 	}
 	
-	public ParserRule getProcessBodyMemberRule() {
-		return getProcessBodyMemberAccess().getRule();
-	}
-
-	//// System definition body member
-	//SystemBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	//	ProcessInstantiation;
-	public SystemBodyMemberElements getSystemBodyMemberAccess() {
-		return (pSystemBodyMember != null) ? pSystemBodyMember : (pSystemBodyMember = new SystemBodyMemberElements());
-	}
-	
-	public ParserRule getSystemBodyMemberRule() {
-		return getSystemBodyMemberAccess().getRule();
-	}
-
-	//// Plasmid definition body member
-	//PlasmidBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	//	ProcessInstantiation | SystemInstantiation;
-	public PlasmidBodyMemberElements getPlasmidBodyMemberAccess() {
-		return (pPlasmidBodyMember != null) ? pPlasmidBodyMember : (pPlasmidBodyMember = new PlasmidBodyMemberElements());
-	}
-	
-	public ParserRule getPlasmidBodyMemberRule() {
-		return getPlasmidBodyMemberAccess().getRule();
-	}
-
-	//// Chromosome definition body member
-	//ChromosomeBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	//	ProcessInstantiation | SystemInstantiation;
-	public ChromosomeBodyMemberElements getChromosomeBodyMemberAccess() {
-		return (pChromosomeBodyMember != null) ? pChromosomeBodyMember : (pChromosomeBodyMember = new ChromosomeBodyMemberElements());
-	}
-	
-	public ParserRule getChromosomeBodyMemberRule() {
-		return getChromosomeBodyMemberAccess().getRule();
-	}
-
-	//// Cell definition body member
-	//CellBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	//	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation;
-	public CellBodyMemberElements getCellBodyMemberAccess() {
-		return (pCellBodyMember != null) ? pCellBodyMember : (pCellBodyMember = new CellBodyMemberElements());
-	}
-	
-	public ParserRule getCellBodyMemberRule() {
-		return getCellBodyMemberAccess().getRule();
-	}
-
-	//// Region definition body member
-	//RegionBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | CellInstantiation;
-	public RegionBodyMemberElements getRegionBodyMemberAccess() {
-		return (pRegionBodyMember != null) ? pRegionBodyMember : (pRegionBodyMember = new RegionBodyMemberElements());
-	}
-	
-	public ParserRule getRegionBodyMemberRule() {
-		return getRegionBodyMemberAccess().getRule();
-	}
-
-	//// User defined function body member
-	//CustomFunctionBodyMember:
-	//	RuleDefinition | VariableDefinition | VariableAssignment | ATGCDefinition | PropertyDefinition | DeviceDefinition |
-	//	ProcessInstantiation | SystemInstantiation | PlasmidInstantiation | ChromosomeInstantiation;
-	public CustomFunctionBodyMemberElements getCustomFunctionBodyMemberAccess() {
-		return (pCustomFunctionBodyMember != null) ? pCustomFunctionBodyMember : (pCustomFunctionBodyMember = new CustomFunctionBodyMemberElements());
-	}
-	
-	public ParserRule getCustomFunctionBodyMemberRule() {
-		return getCustomFunctionBodyMemberAccess().getRule();
+	public ParserRule getFunctionBodyMemberRule() {
+		return getFunctionBodyMemberAccess().getRule();
 	}
 
 	////////////////////////

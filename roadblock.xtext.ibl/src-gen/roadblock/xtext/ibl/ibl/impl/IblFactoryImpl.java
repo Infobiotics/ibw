@@ -68,6 +68,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.MODEL_MEMBER: return createModelMember();
       case IblPackage.IMPORT_STATEMENT: return createImportStatement();
       case IblPackage.FUNCTION_DEFINITION: return createFunctionDefinition();
+      case IblPackage.FUNCTION_BODY_TYPE: return createFunctionBodyType();
       case IblPackage.PROCESS_BODY: return createProcessBody();
       case IblPackage.SYSTEM_BODY: return createSystemBody();
       case IblPackage.PLASMID_BODY: return createPlasmidBody();
@@ -75,13 +76,7 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
       case IblPackage.CELL_BODY: return createCellBody();
       case IblPackage.REGION_BODY: return createRegionBody();
       case IblPackage.CUSTOM_FUNCTION_BODY: return createCustomFunctionBody();
-      case IblPackage.PROCESS_BODY_MEMBER: return createProcessBodyMember();
-      case IblPackage.SYSTEM_BODY_MEMBER: return createSystemBodyMember();
-      case IblPackage.PLASMID_BODY_MEMBER: return createPlasmidBodyMember();
-      case IblPackage.CHROMOSOME_BODY_MEMBER: return createChromosomeBodyMember();
-      case IblPackage.CELL_BODY_MEMBER: return createCellBodyMember();
-      case IblPackage.REGION_BODY_MEMBER: return createRegionBodyMember();
-      case IblPackage.CUSTOM_FUNCTION_BODY_MEMBER: return createCustomFunctionBodyMember();
+      case IblPackage.FUNCTION_BODY_MEMBER: return createFunctionBodyMember();
       case IblPackage.FUNCTION_PARAMETER_MEMBER: return createFunctionParameterMember();
       case IblPackage.FUNCTION_USE_MEMBER: return createFunctionUseMember();
       case IblPackage.DEVICE_DEFINITION: return createDeviceDefinition();
@@ -177,6 +172,17 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public FunctionBodyType createFunctionBodyType()
+  {
+    FunctionBodyTypeImpl functionBodyType = new FunctionBodyTypeImpl();
+    return functionBodyType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ProcessBody createProcessBody()
   {
     ProcessBodyImpl processBody = new ProcessBodyImpl();
@@ -254,76 +260,10 @@ public class IblFactoryImpl extends EFactoryImpl implements IblFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessBodyMember createProcessBodyMember()
+  public FunctionBodyMember createFunctionBodyMember()
   {
-    ProcessBodyMemberImpl processBodyMember = new ProcessBodyMemberImpl();
-    return processBodyMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SystemBodyMember createSystemBodyMember()
-  {
-    SystemBodyMemberImpl systemBodyMember = new SystemBodyMemberImpl();
-    return systemBodyMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PlasmidBodyMember createPlasmidBodyMember()
-  {
-    PlasmidBodyMemberImpl plasmidBodyMember = new PlasmidBodyMemberImpl();
-    return plasmidBodyMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ChromosomeBodyMember createChromosomeBodyMember()
-  {
-    ChromosomeBodyMemberImpl chromosomeBodyMember = new ChromosomeBodyMemberImpl();
-    return chromosomeBodyMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CellBodyMember createCellBodyMember()
-  {
-    CellBodyMemberImpl cellBodyMember = new CellBodyMemberImpl();
-    return cellBodyMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RegionBodyMember createRegionBodyMember()
-  {
-    RegionBodyMemberImpl regionBodyMember = new RegionBodyMemberImpl();
-    return regionBodyMember;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CustomFunctionBodyMember createCustomFunctionBodyMember()
-  {
-    CustomFunctionBodyMemberImpl customFunctionBodyMember = new CustomFunctionBodyMemberImpl();
-    return customFunctionBodyMember;
+    FunctionBodyMemberImpl functionBodyMember = new FunctionBodyMemberImpl();
+    return functionBodyMember;
   }
 
   /**

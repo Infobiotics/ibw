@@ -74,12 +74,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if(semanticObject.eClass().getEPackage() == IblPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case IblPackage.ATGC_DEFINITION:
 				if(context == grammarAccess.getATGCDefinitionRule() ||
-				   context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
 				   context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule()) {
+				   context == grammarAccess.getFunctionBodyMemberRule()) {
 					sequence_ATGCDefinition(context, (ATGCDefinition) semanticObject); 
 					return; 
 				}
@@ -92,28 +88,29 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.CELL_BODY:
-				if(context == grammarAccess.getCellBodyRule()) {
+				if(context == grammarAccess.getCellBodyRule() ||
+				   context == grammarAccess.getFunctionBodyTypeRule()) {
 					sequence_CellBody(context, (CellBody) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.CELL_INSTANTIATION:
 				if(context == grammarAccess.getCellInstantiationRule() ||
-				   context == grammarAccess.getRegionBodyMemberRule()) {
+				   context == grammarAccess.getFunctionBodyMemberRule()) {
 					sequence_CellInstantiation(context, (CellInstantiation) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.CHROMOSOME_BODY:
-				if(context == grammarAccess.getChromosomeBodyRule()) {
+				if(context == grammarAccess.getChromosomeBodyRule() ||
+				   context == grammarAccess.getFunctionBodyTypeRule()) {
 					sequence_ChromosomeBody(context, (ChromosomeBody) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.CHROMOSOME_INSTANTIATION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeInstantiationRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule()) {
+				if(context == grammarAccess.getChromosomeInstantiationRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule()) {
 					sequence_ChromosomeInstantiation(context, (ChromosomeInstantiation) semanticObject); 
 					return; 
 				}
@@ -138,18 +135,15 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.CUSTOM_FUNCTION_BODY:
-				if(context == grammarAccess.getCustomFunctionBodyRule()) {
+				if(context == grammarAccess.getCustomFunctionBodyRule() ||
+				   context == grammarAccess.getFunctionBodyTypeRule()) {
 					sequence_CustomFunctionBody(context, (CustomFunctionBody) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.DEVICE_DEFINITION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getDeviceDefinitionRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule()) {
+				if(context == grammarAccess.getDeviceDefinitionRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule()) {
 					sequence_DeviceDefinition(context, (DeviceDefinition) semanticObject); 
 					return; 
 				}
@@ -199,14 +193,14 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.PLASMID_BODY:
-				if(context == grammarAccess.getPlasmidBodyRule()) {
+				if(context == grammarAccess.getFunctionBodyTypeRule() ||
+				   context == grammarAccess.getPlasmidBodyRule()) {
 					sequence_PlasmidBody(context, (PlasmidBody) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.PLASMID_INSTANTIATION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
+				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getPlasmidInstantiationRule()) {
 					sequence_PlasmidInstantiation(context, (PlasmidInstantiation) semanticObject); 
 					return; 
@@ -225,32 +219,24 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.PROCESS_BODY:
-				if(context == grammarAccess.getProcessBodyRule()) {
+				if(context == grammarAccess.getFunctionBodyTypeRule() ||
+				   context == grammarAccess.getProcessBodyRule()) {
 					sequence_ProcessBody(context, (ProcessBody) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.PROCESS_INSTANTIATION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getProcessBodyMemberRule() ||
-				   context == grammarAccess.getProcessInstantiationRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule()) {
+				if(context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule() ||
+				   context == grammarAccess.getProcessInstantiationRule()) {
 					sequence_ProcessInstantiation(context, (ProcessInstantiation) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.PROPERTY_DEFINITION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getPropertyDefinitionRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule()) {
+				if(context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule() ||
+				   context == grammarAccess.getPropertyDefinitionRule()) {
 					sequence_PropertyDefinition(context, (PropertyDefinition) semanticObject); 
 					return; 
 				}
@@ -268,7 +254,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.REGION_BODY:
-				if(context == grammarAccess.getRegionBodyRule()) {
+				if(context == grammarAccess.getFunctionBodyTypeRule() ||
+				   context == grammarAccess.getRegionBodyRule()) {
 					sequence_RegionBody(context, (RegionBody) semanticObject); 
 					return; 
 				}
@@ -286,14 +273,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.RULE_DEFINITION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getProcessBodyMemberRule() ||
-				   context == grammarAccess.getRegionBodyMemberRule() ||
-				   context == grammarAccess.getRuleDefinitionRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule()) {
+				if(context == grammarAccess.getFunctionBodyMemberRule() ||
+				   context == grammarAccess.getRuleDefinitionRule()) {
 					sequence_RuleDefinition(context, (RuleDefinition) semanticObject); 
 					return; 
 				}
@@ -317,16 +298,14 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.SYSTEM_BODY:
-				if(context == grammarAccess.getSystemBodyRule()) {
+				if(context == grammarAccess.getFunctionBodyTypeRule() ||
+				   context == grammarAccess.getSystemBodyRule()) {
 					sequence_SystemBody(context, (SystemBody) semanticObject); 
 					return; 
 				}
 				else break;
 			case IblPackage.SYSTEM_INSTANTIATION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
+				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getSystemInstantiationRule()) {
 					sequence_SystemInstantiation(context, (SystemInstantiation) semanticObject); 
 					return; 
@@ -345,13 +324,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.VARIABLE_ASSIGNMENT:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getProcessBodyMemberRule() ||
-				   context == grammarAccess.getRegionBodyMemberRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule() ||
+				if(context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getVariableAssignmentRule()) {
 					sequence_VariableAssignment(context, (VariableAssignment) semanticObject); 
 					return; 
@@ -378,14 +351,8 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case IblPackage.VARIABLE_DEFINITION:
-				if(context == grammarAccess.getCellBodyMemberRule() ||
-				   context == grammarAccess.getChromosomeBodyMemberRule() ||
-				   context == grammarAccess.getCustomFunctionBodyMemberRule() ||
-				   context == grammarAccess.getDeviceMembersRule() ||
-				   context == grammarAccess.getPlasmidBodyMemberRule() ||
-				   context == grammarAccess.getProcessBodyMemberRule() ||
-				   context == grammarAccess.getRegionBodyMemberRule() ||
-				   context == grammarAccess.getSystemBodyMemberRule() ||
+				if(context == grammarAccess.getDeviceMembersRule() ||
+				   context == grammarAccess.getFunctionBodyMemberRule() ||
 				   context == grammarAccess.getVariableDefinitionRule()) {
 					sequence_VariableDefinition(context, (VariableDefinition) semanticObject); 
 					return; 
@@ -445,7 +412,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=CellBodyMember*)
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_CellBody(EObject context, CellBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -463,7 +430,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=ChromosomeBodyMember*)
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_ChromosomeBody(EObject context, ChromosomeBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -525,7 +492,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (functionType=VariableName (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=CustomFunctionBodyMember*)
+	 *     (functionType=VariableName (parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_CustomFunctionBody(EObject context, CustomFunctionBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -543,19 +510,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         name=VariableName 
-	 *         (
-	 *             functionBody=ProcessBody | 
-	 *             functionBody=SystemBody | 
-	 *             functionBody=PlasmidBody | 
-	 *             functionBody=ChromosomeBody | 
-	 *             functionBody=CellBody | 
-	 *             functionBody=RegionBody | 
-	 *             functionBody=CustomFunctionBody
-	 *         ) 
-	 *         (uses+=FunctionUseMember uses+=FunctionUseMember*)?
-	 *     )
+	 *     (name=VariableName functionBody=FunctionBodyType (uses+=FunctionUseMember uses+=FunctionUseMember*)?)
 	 */
 	protected void sequence_FunctionDefinition(EObject context, FunctionDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -645,7 +600,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=PlasmidBodyMember*)
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_PlasmidBody(EObject context, PlasmidBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -698,7 +653,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=ProcessBodyMember*)
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_ProcessBody(EObject context, ProcessBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -763,7 +718,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=RegionBodyMember*)
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_RegionBody(EObject context, RegionBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -844,7 +799,7 @@ public class IblSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=SystemBodyMember*)
+	 *     ((parameters+=FunctionParameterMember parameters+=FunctionParameterMember*)? members+=FunctionBodyMember*)
 	 */
 	protected void sequence_SystemBody(EObject context, SystemBody semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

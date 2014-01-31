@@ -29,7 +29,7 @@ import roadblock.xtext.ibl.ibl.VariableExpression;
  *
  * @generated
  */
-public class VariableAssignmentImpl extends ProcessBodyMemberImpl implements VariableAssignment
+public class VariableAssignmentImpl extends FunctionBodyMemberImpl implements VariableAssignment
 {
   /**
    * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.

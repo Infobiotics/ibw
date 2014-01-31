@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface PropertyDefinition extends SystemBodyMember, PlasmidBodyMember, ChromosomeBodyMember, CellBodyMember, CustomFunctionBodyMember, DeviceMembers
+public interface PropertyDefinition extends FunctionBodyMember, DeviceMembers
 {
   /**
    * Returns the value of the '<em><b>Property</b></em>' containment reference.

@@ -39,14 +39,8 @@ public class IblParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getModelMemberAccess().getAlternatives(), "rule__ModelMember__Alternatives");
 					put(grammarAccess.getFunctionTypeAccess().getAlternatives(), "rule__FunctionType__Alternatives");
-					put(grammarAccess.getFunctionDefinitionAccess().getFunctionBodyAlternatives_4_0(), "rule__FunctionDefinition__FunctionBodyAlternatives_4_0");
-					put(grammarAccess.getProcessBodyMemberAccess().getAlternatives(), "rule__ProcessBodyMember__Alternatives");
-					put(grammarAccess.getSystemBodyMemberAccess().getAlternatives(), "rule__SystemBodyMember__Alternatives");
-					put(grammarAccess.getPlasmidBodyMemberAccess().getAlternatives(), "rule__PlasmidBodyMember__Alternatives");
-					put(grammarAccess.getChromosomeBodyMemberAccess().getAlternatives(), "rule__ChromosomeBodyMember__Alternatives");
-					put(grammarAccess.getCellBodyMemberAccess().getAlternatives(), "rule__CellBodyMember__Alternatives");
-					put(grammarAccess.getRegionBodyMemberAccess().getAlternatives(), "rule__RegionBodyMember__Alternatives");
-					put(grammarAccess.getCustomFunctionBodyMemberAccess().getAlternatives(), "rule__CustomFunctionBodyMember__Alternatives");
+					put(grammarAccess.getFunctionBodyTypeAccess().getAlternatives(), "rule__FunctionBodyType__Alternatives");
+					put(grammarAccess.getFunctionBodyMemberAccess().getAlternatives(), "rule__FunctionBodyMember__Alternatives");
 					put(grammarAccess.getFunctionParameterMemberAccess().getAlternatives_0(), "rule__FunctionParameterMember__Alternatives_0");
 					put(grammarAccess.getFunctionParameterMemberAccess().getTypeAlternatives_0_1_2_0(), "rule__FunctionParameterMember__TypeAlternatives_0_1_2_0");
 					put(grammarAccess.getFunctionParameterScopeAccess().getAlternatives(), "rule__FunctionParameterScope__Alternatives");
