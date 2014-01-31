@@ -1,5 +1,5 @@
 #!/bin/bash
-# a script to stop tracking .class and _trace files
+# a script to stop tracking generated files 
 # C.Ladroue
 
 # all the tracked .class
@@ -9,13 +9,20 @@ do
 	git rm --cached $file
 done
 
-# all the jave_trace
-for file in $(git ls-files |grep 'java\._trace$')
+# all the /src-gen/ 
+for file in $(git ls-files |grep '/src-gen/')
 do
-#	echo $file
-#	git rm --cached $file
+	echo $file
+	git rm --cached $file
 done
 
+# all the /xtend-gen/
+
+for file in $(git ls-files |grep '/xtend-gen/')
+do
+	echo $file
+	git rm --cached $file
+done
 
 
 
