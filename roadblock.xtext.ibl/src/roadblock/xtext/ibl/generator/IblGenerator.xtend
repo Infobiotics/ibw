@@ -24,10 +24,10 @@ class IblGenerator implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
 		val properties = resource.allContents.filter(typeof(PropertyDefinition)).toList;
-		System.out.println("Property count: " + properties.size);
+		println("Property count: " + properties.size);
 
 		for (PropertyDefinition  p : properties) {
-			System.out.println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
+			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
 		}
 
 	//for(PropertyDefinition p : properties) {

@@ -7,6 +7,36 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
+import roadblock.emf.ibl.Ibl.BinaryStateFormula;
+import roadblock.emf.ibl.Ibl.Cell;
+import roadblock.emf.ibl.Ibl.Chromosome;
+import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.Device;
+import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.IProperty;
+import roadblock.emf.ibl.Ibl.IStateFormula;
+import roadblock.emf.ibl.Ibl.ITimeConstraint;
+import roadblock.emf.ibl.Ibl.IVisitable;
+import roadblock.emf.ibl.Ibl.IVisitor;
+import roadblock.emf.ibl.Ibl.IblPackage;
+import roadblock.emf.ibl.Ibl.Kinetics;
+import roadblock.emf.ibl.Ibl.Model;
+import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.Plasmid;
+import roadblock.emf.ibl.Ibl.ProbabilityProperty;
+import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
+import roadblock.emf.ibl.Ibl.RewardProperty;
+import roadblock.emf.ibl.Ibl.Rule;
+import roadblock.emf.ibl.Ibl.StateExpression;
+import roadblock.emf.ibl.Ibl.SteadyStateProperty;
+import roadblock.emf.ibl.Ibl.TimeInstant;
+import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
+import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.*;
 import roadblock.emf.ibl.Ibl.System;
 

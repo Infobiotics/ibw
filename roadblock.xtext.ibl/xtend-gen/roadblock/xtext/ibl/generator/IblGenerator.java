@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import roadblock.dataprocessing.modelbuilder.PropertyBuilder;
 import roadblock.emf.ibl.Ibl.IProperty;
@@ -41,11 +42,11 @@ public class IblGenerator implements IGenerator {
     final List<PropertyDefinition> properties = IteratorExtensions.<PropertyDefinition>toList(_filter);
     int _size = properties.size();
     String _plus = ("Property count: " + Integer.valueOf(_size));
-    System.out.println(_plus);
+    InputOutput.<String>println(_plus);
     for (final PropertyDefinition p : properties) {
       IProperty _build = this.propertyBuilder.build(p);
       String _Translate = this.translationManager.Translate(_build, TranslationTarget.PRISM);
-      System.out.println(_Translate);
+      InputOutput.<String>println(_Translate);
     }
   }
 }
