@@ -42,6 +42,10 @@ class IblValidator extends AbstractIblValidator {
 			'CUSTOMFUNCTION' -> new ContainerData(typeof(CustomFunctionBodyImpl),"CUSTOMFUNCTIONs")
 		} 
 		
+	def getDefinitionContainer(FunctionBodyMember definition){
+		definition.eContainer.eContainer // have to go back twice now: first container is functionContent
+	}
+
 
 // Generate an error if the function body member is in the wrong container
 	def void generateWrongContainerError(
@@ -51,7 +55,7 @@ class IblValidator extends AbstractIblValidator {
 		EStructuralFeature feature
 	){
 		containerList.filter[k,v | forbiddenContainers.contains(k)].forEach[k,v |
-		if(definition.eContainer.eContainer.class == v.type )
+		if(definition.getDefinitionContainer.class == v.type )
 				error(errorMessage + v.displayName, feature)			
 		]
 	}	

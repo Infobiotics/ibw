@@ -41,7 +41,7 @@ FunctionType:
 // a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' name=VariableName 'typeof' functionBody = FunctionBodyType
+	'define' name=VariableName 'typeof' functionBody = FunctionBodyType 
 	(
 	'USES'
 		uses+=FunctionUseMember (',' uses+=FunctionUseMember)*
