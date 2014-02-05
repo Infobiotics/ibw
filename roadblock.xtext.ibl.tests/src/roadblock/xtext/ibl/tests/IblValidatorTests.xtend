@@ -200,6 +200,7 @@ define anotherProcess typeof PROCESS(
 	a = b	
 }
 		'''.parse
+	
 		
 		model.assertError(IblPackage::eINSTANCE.cellInstantiation, null, "Cell instantiations are not allowed in CUSTOMFUNCTION")
 

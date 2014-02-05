@@ -56,87 +56,62 @@ FunctionBodyType:
 // Process body definition
 ProcessBody:
 	{ProcessBody}
-	 'PROCESS'
-     '('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'	
+	 'PROCESS'	 
+	 functionContent = FunctionContent	
 ;
 
 // System body definition
 SystemBody:
 	{SystemBody}
 	 'SYSTEM'
-     '('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'
+	 functionContent = FunctionContent
 ;
 
 // Plasmid body definition
 PlasmidBody:
 	{PlasmidBody}
 	 'PLASMID'
-     '('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'
+	 functionContent = FunctionContent
 ;
 
 // Chromosome body definition
 ChromosomeBody:
 	{ChromosomeBody}
 	 'CHROMOSOME'
-     '('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'
+	 functionContent = FunctionContent
 ;
 
 // Cell body definition
 CellBody:
 	{CellBody}
 	 'CELL'
-     '('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'
+	 functionContent = FunctionContent
 ;
 
 // Region body definition
 RegionBody:
 	{RegionBody}
 	 'REGION'
-     '('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
-	')'
-	'{'
-		members+=FunctionBodyMember*
-	'}'
+	 functionContent = FunctionContent
 ;
 
 // User defined function body definition
 CustomFunctionBody:
 	{CustomFunctionBody}
 	 functionType=VariableName
-     '('
+	 functionContent = FunctionContent
+;
+
+
+FunctionContent:
+	{FunctionContent}
+	'('
 		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
 		members+=FunctionBodyMember*
 	'}'
 ;
-
 //////////////////
 // Body members //
 //////////////////

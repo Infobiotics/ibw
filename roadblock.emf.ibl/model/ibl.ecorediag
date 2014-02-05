@@ -339,10 +339,6 @@
   <children xmi:type="notation:Node" xmi:id="_wN09mXdfEeOJM_y6LNHFZg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_wN09nHdfEeOJM_y6LNHFZg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_wN1koHdfEeOJM_y6LNHFZg" type="5001">
-      <children xmi:type="notation:Node" xmi:id="_wN1kqHdfEeOJM_y6LNHFZg" type="2001">
-        <element xmi:type="ecore:EAttribute" href="ibl.ecore#//ProbabilityProperty/initialConditions"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_wN1kqXdfEeOJM_y6LNHFZg"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_wN1koXdfEeOJM_y6LNHFZg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_wN1kondfEeOJM_y6LNHFZg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_wN1ko3dfEeOJM_y6LNHFZg"/>
@@ -621,10 +617,6 @@
         <element xmi:type="ecore:EAttribute" href="ibl.ecore#//RewardProperty/variableName"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_wOBK3XdfEeOJM_y6LNHFZg"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_wOBx4HdfEeOJM_y6LNHFZg" type="2001">
-        <element xmi:type="ecore:EAttribute" href="ibl.ecore#//RewardProperty/initialConditions"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_wOBx4XdfEeOJM_y6LNHFZg"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_wOBK1XdfEeOJM_y6LNHFZg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_wOBK1ndfEeOJM_y6LNHFZg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_wOBK13dfEeOJM_y6LNHFZg"/>
@@ -641,10 +633,6 @@
   <children xmi:type="notation:Node" xmi:id="_wOBx4ndfEeOJM_y6LNHFZg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_wOBx5XdfEeOJM_y6LNHFZg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_wOBx5ndfEeOJM_y6LNHFZg" type="5001">
-      <children xmi:type="notation:Node" xmi:id="_wOCY9HdfEeOJM_y6LNHFZg" type="2001">
-        <element xmi:type="ecore:EAttribute" href="ibl.ecore#//SteadyStateProperty/initialConditions"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_wOCY9XdfEeOJM_y6LNHFZg"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_wOBx53dfEeOJM_y6LNHFZg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_wOBx6HdfEeOJM_y6LNHFZg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_wOBx6XdfEeOJM_y6LNHFZg"/>

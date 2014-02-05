@@ -7,5 +7,10 @@
 *.o
 *.so
 
+
+roadblock.xtext.ibl/bin
 roadblock.xtext.ibl/src-gen
+
 roadblock.xtext.ibl.ui/src-gen
+roadblock.xtext.ibl.ui/bin
+
