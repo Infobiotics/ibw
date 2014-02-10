@@ -855,6 +855,22 @@
     <element xmi:type="ecore:EEnum" href="ibl.ecore#//ConcentrationUnit"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wOIflXdfEeOJM_y6LNHFZg" x="4776" y="24"/>
   </children>
+  <children xmi:type="notation:Node" xmi:id="_ZNxR4I6CEeOyeusZ-iBT5g" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_ZNygAI6CEeOyeusZ-iBT5g" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_ZNygAY6CEeOyeusZ-iBT5g" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ZNygAo6CEeOyeusZ-iBT5g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ZNygA46CEeOyeusZ-iBT5g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ZNygBI6CEeOyeusZ-iBT5g"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_ZNzHEI6CEeOyeusZ-iBT5g" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ZNzHEY6CEeOyeusZ-iBT5g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ZNzHEo6CEeOyeusZ-iBT5g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ZNzHE46CEeOyeusZ-iBT5g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ZNxR4Y6CEeOyeusZ-iBT5g" fontColor="4210752" fontName="Droid Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="ibl.ecore#//EClass0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZNxR4o6CEeOyeusZ-iBT5g" x="2585" y="549"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_wNdKIHdfEeOJM_y6LNHFZg"/>
   <element xmi:type="ecore:EPackage" href="ibl.ecore#/"/>
   <edges xmi:type="notation:Edge" xmi:id="_wOJtuHdfEeOJM_y6LNHFZg" type="3002" source="_wNp-cndfEeOJM_y6LNHFZg" target="_wNqliHdfEeOJM_y6LNHFZg">

@@ -506,5 +506,5 @@ QualifiedName:
 
 List:
 	{List}
-	'[' entries+=AtomicVariableExpressionObject (',' entries+=AtomicVariableExpressionObject)* ']'
+	'[' (entries+=AtomicVariableExpressionObject (',' entries+=AtomicVariableExpressionObject)*)? ']'
 ;

@@ -307,4 +307,5 @@
     <eLiterals name="fM" value="6"/>
     <eLiterals name="MOLECULE" value="7"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass0"/>
 </ecore:EPackage>

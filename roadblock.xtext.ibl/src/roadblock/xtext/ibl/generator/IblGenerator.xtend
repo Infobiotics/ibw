@@ -10,6 +10,9 @@ import roadblock.dataprocessing.modelbuilder.PropertyBuilder
 import roadblock.modelchecking.translation.property.PropertyTranslationManager
 import roadblock.modelchecking.translation.property.TranslationTarget
 import roadblock.xtext.ibl.ibl.PropertyDefinition
+import roadblock.emf.ibl.Ibl.IblPackage
+import roadblock.emf.ibl.Ibl.IblFactory
+import roadblock.emf.ibl.Ibl.Model
 
 /**
  * Generates code from your model files on save.
@@ -23,12 +26,23 @@ class IblGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
-		val properties = resource.allContents.filter(PropertyDefinition).toList;
-		println("Property count: " + properties.size);
+//		val properties = resource.allContents.filter(PropertyDefinition).toList;
+//		println("Property count: " + properties.size);
+//
+//		for (PropertyDefinition  p : properties) {
+//			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
+//		}
 
-		for (PropertyDefinition  p : properties) {
-			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
-		}
+	// 
+	// Create an empty emf model
+	IblPackage::init
+	var factory = IblFactory::eINSTANCE
+	val Model emfModel = factory.createModel
+	
+	// set emfmodel attribute
+	emfModel.setDisplayName("Main model")
+	
+	fsa.generateFile('findMe.txt', emfModel.toString)
 
 	//for(PropertyDefinition p : properties) {
 	//		propertyBuilder.doSwitch(p).class.toString;

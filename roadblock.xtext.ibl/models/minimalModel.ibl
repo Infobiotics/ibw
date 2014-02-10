@@ -1,0 +1,58 @@
+// Minimal model
+// 1 device: constitutive promoter, produces XylS2
+// region contains AHL, which is consumed by XylS2 to produce AHL~XylS2 complex
+
+// simulation should show AHL concentration decreasing, being replaced by AHL~XylS2
+// and then unbound built-up of XylS2
+
+define factoryCell typeof CELL(){
+        // define molecular elements
+        RIBOSOME ribosome: observable
+		RNA rnaP = new RNA(displayName = "XYZ") : observable
+
+        CHASSIS chassis = new CHASSIS(organism = "ecoli")
+
+        PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
+        GENE xylS2 = new GENE(sequence = "ATTGTGT")
+        PROTEIN XylS2 = new PROTEIN()
+
+        INTEGER plasmidNumber = 500
+
+        // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
+        DEVICE D1 = new DEVICE(parts = [PnahR, xylS2])(input=[], output = [XylS2]){
+ 				// constitutive promoter               
+				RNA mrna1
+		
+//				RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
+//				promoterBinding.forwardRate = PnahR.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
+//				promoterBinding.reverseRate = PnahR.unbindingRate | rates.unbindingRate
+//			
+//				RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
+//				transcription.forwardRate = rates.transcriptionRate
+//			
+//				RULE mrnaDegradation : mrna1 ->
+//				mrnaDegradation.forwardRate = rates.rnaDegratationRate
+//			
+//				RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+//				translationInitiation.forwardRate = rates.ribosomeBinding
+//				translationInitiation.reverseRate = rates.ribosomeUnbinding
+//			
+//				RULE translation : mrna1~ribosome -> mrna1~ribosome + xylS2
+//				translation.forwardRate = rates.translationRate
+//			
+//			//	RULE proteinDegradation : protein1 ->
+//			//	R6.rate = protein1.degradationRate | rates.proteinDegradationRate
+                
+                }
+              RULE exportProtein: xylS2 -> OUTSIDE  
+}
+
+define site typeof REGION () {
+        MOLECULE AHL = new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM)
+        CELL myCell = new factoryCell()
+        
+        RULE xylS2Consumption: AHL + xylS2 -> AHL~xylS2
+        
+        VERIFY [AHL < 5 uM] EVENTUALLY HOLDS // should be TRUE
+        VERIFY [AHL~xylS2 < 50 uM] ALWAYS HOLDS // should be FALSE
+}
