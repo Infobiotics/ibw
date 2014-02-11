@@ -37,6 +37,7 @@ define RegulatedProteinExpression typeof PROCESS (
 	RATE rates:optional
 )
 {
+	
 	RULE R1 : regulator + promoter <-> regulator~promoter
 	R1.rate = promoter.bindingRate | rate.bindingRate
 

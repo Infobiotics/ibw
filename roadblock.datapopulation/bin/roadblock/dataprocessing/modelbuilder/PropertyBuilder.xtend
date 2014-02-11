@@ -25,10 +25,32 @@ import roadblock.xtext.ibl.ibl.ConcentrationConstraint
 import roadblock.xtext.ibl.ibl.StateFormula
 import roadblock.xtext.ibl.ibl.StateExpression
 import roadblock.emf.ibl.Ibl.BooleanOperator
+import roadblock.xtext.ibl.ibl.VariableName
+import roadblock.xtext.ibl.ibl.VariableComplex
+import roadblock.xtext.ibl.ibl.VariableKind
 
 public class PropertyBuilder extends IblSwitch<Object> {
 
 	var modelFactory = IblFactory::eINSTANCE;
+
+// helpers to build the name of a variableKind (either VariableName or VariableComplex)
+
+	def buildVariableName(VariableName variableName){
+		variableName.name
+	}
+
+	def buildVariableName(VariableComplex variableComplex){
+		variableComplex.components.map[name].join('~')
+	}
+	
+	def buildVariableName(VariableKind variableKind){
+		switch variableKind {
+			VariableName: buildVariableName(variableKind)
+			VariableComplex: buildVariableName(variableKind)			
+		}
+	}
+
+// property checking population  
 
 	def build(PropertyDefinition propertyDefinition) {
 		return doSwitch(propertyDefinition) as IProperty;
@@ -121,7 +143,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 
 		var property = modelFactory.createRewardProperty;
 
-		property.variableName = rewardProperty.name;
+		property.variableName = rewardProperty.name.buildVariableName;
 		property.timeConstraint = doSwitch(rewardProperty.timeInstant) as roadblock.emf.ibl.Ibl.TimeInstant;
 		property.concentrationConstraint = doSwitch(rewardProperty.concentrationConstraint) as roadblock.emf.ibl.Ibl.ConcentrationConstraint;
 		property.initialConditions.addAll(
@@ -210,12 +232,12 @@ public class PropertyBuilder extends IblSwitch<Object> {
 
 		return formula;
 	}
-
+	
 	override caseStateExpression(StateExpression stateExpression) {
 
 		var expression = modelFactory.createStateExpression;
-
-		expression.variableName = stateExpression.name;
+		
+		expression.variableName = stateExpression.name.buildVariableName;
 		expression.operator = getRelationalOperator(stateExpression.operator);
 		expression.quantity = Double.parseDouble(stateExpression.concentrationQuantity.value);
 		expression.unit = getConcentrationUnit(stateExpression.concentrationQuantity.unit);

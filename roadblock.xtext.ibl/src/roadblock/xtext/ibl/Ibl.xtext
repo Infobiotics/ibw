@@ -128,7 +128,7 @@ FunctionBodyMember:
 
 // function parameter member
 FunctionParameterMember:
-	((type=VariableType) | (collection=CollectionID '<' type=(VariableType | VariableName) '>'))  name=VariableName (':' scope=FunctionParameterScope)?
+	((type=VariableKind2) | (collection=CollectionID '<' type = VariableKind2 '>'))  name=VariableName (':' scope=FunctionParameterScope)?
 ;
 
 // allowed scope of function parameters
@@ -220,26 +220,49 @@ CellInstantiation:
 // variables //
 ///////////////
 
-// a variable
-VariableName:
-	ID
+
+VariableKind:
+	VariableName | VariableComplex
 ;
+
+VariableName:
+	{VariableName}
+	name = 	ID
+;
+
+VariableComplex:
+	{VariableComplex}
+	components+=VariableName ('~' components += VariableName)+
+;
+
+VariableKind2:
+	{VariableKind2}
+	VariableType | VariableName
+;
+
+
+//// a variable
+//VariableName:
+//	ID
+//;
+//
+//// a variable complex
+//VariableComplex:
+//	{VariableComplex}
+//	components+=VariableName ('~' components+=VariableName)+ 
+//; 
+
 
 // variable types
 VariableType:
 	'MOLECULE' | 'CHASSIS' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' 
 ;
 
-// a variable complex
-VariableComplex:
-	{VariableComplex}
-	components+=VariableName ('~' components+=VariableName)+ 
-; 
 
 // a variable attribute
 VariableAttribute:
 	{VariableAttribute}
-	(name=VariableName | complex=VariableComplex) '.' attribute=VariableName
+	name=VariableKind '.' attribute=VariableName
 ;
 
 // a definition of a variable
@@ -256,9 +279,9 @@ VariableQualifier:
 
 VariableDefinitionBuiltIn:
 	{VariableDefinitionBuiltIn}
-	type=VariableType (name=VariableName | complex=VariableComplex)
+	type=VariableType name=VariableName
 	(
-	'=' 'new' constructor=(VariableType | VariableName) '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	'=' 'new' constructor=VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
 ;
 
@@ -266,13 +289,13 @@ VariableDefinitionUserDefined:
 	{VariableDefinitionUserDefined}
 	type=VariableName name=VariableName
 	(
-	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	'=' 'new' constructor=VariableKind2'(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
 ;
 
 VariableDefinitionCollection:
 	{VariableDefinitionCollection}
-	(collection=CollectionID '<' type=(VariableType | VariableName) '>' name=VariableName)
+	(collection=CollectionID '<' type=VariableKind2 '>' name=VariableName)
 	(
 	'=' value=List ')'
 	)?
@@ -300,7 +323,7 @@ VariableAssignment:
 ;
 
 VariableAssignmentObject:
-	{VariableAssignmentObject}
+//	{VariableAssignmentObject}
 	VariableName | VariableAttribute
 ;
 
@@ -340,7 +363,7 @@ RuleDefinition:
 // left or right hand side of rule
 RuleObject:
 	{RuleObject}
-	VariableName | VariableComplex 
+	object=VariableKind 
 ;
 
 ////////////////
@@ -385,7 +408,7 @@ ProbabilityProperty:
 
 RewardProperty:
 	{RewardProperty}
-	'EXPECTED' '[' name=VariableName ']' timeInstant=RewardTimeInstant 'IS ' concentrationConstraint=ConcentrationConstraint 
+	'EXPECTED' '[' name=VariableKind ']' timeInstant=RewardTimeInstant 'IS ' concentrationConstraint=ConcentrationConstraint 
     (
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
 	)?
@@ -393,7 +416,7 @@ RewardProperty:
 
 StateExpression:
 	{StateExpression}
-	name=VariableName operator=RelationalOperator concentrationQuantity=ConcentrationQuantity
+	name = VariableKind  operator=RelationalOperator concentrationQuantity=ConcentrationQuantity
 ;
 
 StateFormula:

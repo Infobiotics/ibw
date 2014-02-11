@@ -18,4 +18,5 @@ roadblock.xtext.ibl.ui/xtend-gen
 
 roadblock.xtext.ibl.tests/xtend-gen
 
+roadblock.datapopulation/bin
 roadblock.datapopulation/xtend-gen/
