@@ -162,7 +162,7 @@ DeviceDefinition:
 ;
 
 DeviceMembers:
-	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation 
+	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RuleDefinition | VariableAssignment
 ;
 
 ////////////////////

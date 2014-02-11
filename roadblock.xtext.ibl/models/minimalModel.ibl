@@ -23,26 +23,20 @@ define factoryCell typeof CELL(){
  				// constitutive promoter               
 				RNA mrna1
 		
-//				RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
-//				promoterBinding.forwardRate = PnahR.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
-//				promoterBinding.reverseRate = PnahR.unbindingRate | rates.unbindingRate
-//			
-//				RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
-//				transcription.forwardRate = rates.transcriptionRate
-//			
-//				RULE mrnaDegradation : mrna1 ->
-//				mrnaDegradation.forwardRate = rates.rnaDegratationRate
-//			
-//				RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
-//				translationInitiation.forwardRate = rates.ribosomeBinding
-//				translationInitiation.reverseRate = rates.ribosomeUnbinding
-//			
-//				RULE translation : mrna1~ribosome -> mrna1~ribosome + xylS2
-//				translation.forwardRate = rates.translationRate
-//			
-//			//	RULE proteinDegradation : protein1 ->
-//			//	R6.rate = protein1.degradationRate | rates.proteinDegradationRate
-                
+				RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
+				promoterBinding.forwardRate = PnahR.bindingRate 
+				promoterBinding.reverseRate = PnahR.unbindingRate 
+			
+				RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
+				transcription.forwardRate = rates.transcriptionRate
+					
+				RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+				translationInitiation.forwardRate = rates.ribosomeBinding
+				translationInitiation.reverseRate = rates.ribosomeUnbinding
+			
+				RULE translation : mrna1~ribosome -> mrna1~ribosome + xylS2
+				translation.forwardRate = rates.translationRate
+			              
                 }
               RULE exportProtein: xylS2 -> OUTSIDE  
 }
