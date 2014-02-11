@@ -121,7 +121,7 @@ class IblValidator extends AbstractIblValidator {
 	@Check
 	def checkContainerOfPropertyDefinition(PropertyDefinition propertyDefinition){
 		propertyDefinition.generateWrongContainerError(
-			#["PROCESS", "REGION"],
+			#["PROCESS"],
 			"Property Definitions are not allowed in ",
 			IblPackage::eINSTANCE.propertyDefinition_Property
 		)

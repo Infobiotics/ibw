@@ -179,7 +179,7 @@ define anotherProcess typeof PROCESS(
 		model.assertError(IblPackage::eINSTANCE.deviceDefinition, null, "Device definitions are not allowed in REGIONs")
 		model.assertError(IblPackage::eINSTANCE.plasmidInstantiation, null, "Plasmid instantiations are not allowed in REGIONs")
 		model.assertError(IblPackage::eINSTANCE.processInstantiation, null, "Process instantiations are not allowed in REGIONs")
-		model.assertError(IblPackage::eINSTANCE.propertyDefinition, null, "Property definitions are not allowed in REGIONs")
+//		model.assertError(IblPackage::eINSTANCE.propertyDefinition, null, "Property definitions are not allowed in REGIONs")
 		model.assertError(IblPackage::eINSTANCE.systemInstantiation, null, "System instantiations are not allowed in REGIONs")
 	}	
 
