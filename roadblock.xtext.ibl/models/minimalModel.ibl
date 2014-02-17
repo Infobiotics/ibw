@@ -7,7 +7,7 @@
 
 define factoryCell typeof CELL(){
         // define molecular elements
-        RIBOSOME ribosome: observable
+        RIBOSOME ribosome : observable
 		RNA rnaP = new RNA(displayName = "XYZ") : observable
 
         CHASSIS chassis = new CHASSIS(organism = "ecoli")
@@ -15,9 +15,6 @@ define factoryCell typeof CELL(){
         PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
         GENE xylS2 = new GENE(sequence = "ATTGTGT")
         PROTEIN XylS2 = new PROTEIN()
-
-        INTEGER plasmidNumber = 500
-				
 
         // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
         DEVICE D1 = new DEVICE(parts = [PnahR, xylS2])(input=[], output = [XylS2]){
@@ -42,13 +39,12 @@ define factoryCell typeof CELL(){
               RULE exportProtein: xylS2 -> OUTSIDE  
 }
 
-
+  
 define site typeof REGION () {
         MOLECULE AHL = new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new factoryCell()
         
         RULE xylS2Consumption: AHL + xylS2 -> AHL~xylS2
-       
         VERIFY [AHL < 5 uM] EVENTUALLY HOLDS // should be TRUE
         VERIFY [AHL~xylS2 < 50 uM] ALWAYS HOLDS // should be FALSE
 }

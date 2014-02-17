@@ -88,6 +88,8 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.BINARY_STATE_FORMULA: return (EObject)createBinaryStateFormula();
 			case IblPackage.NOT_STATE_FORMULA: return (EObject)createNotStateFormula();
 			case IblPackage.STATE_EXPRESSION: return (EObject)createStateExpression();
+			case IblPackage.ECLASS0: return (EObject)createEClass0();
+			case IblPackage.REGION: return (EObject)createRegion();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -367,6 +369,26 @@ public class IblFactory extends EFactoryImpl {
 	public StateExpression createStateExpression() {
 		StateExpression stateExpression = new StateExpression();
 		return stateExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass0 createEClass0() {
+		EClass0 eClass0 = new EClass0();
+		return eClass0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Region createRegion() {
+		Region region = new Region();
+		return region;
 	}
 
 	/**

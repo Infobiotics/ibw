@@ -4,6 +4,7 @@
 package roadblock.xtext.ibl.generator
 
 import org.eclipse.emf.ecore.resource.Resource
+
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import roadblock.dataprocessing.modelbuilder.PropertyBuilder
@@ -13,6 +14,16 @@ import roadblock.xtext.ibl.ibl.PropertyDefinition
 import roadblock.emf.ibl.Ibl.IblPackage
 import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.emf.ibl.Ibl.Model
+import java.rmi.registry.Registry
+import java.util.Map
+import java.io.IOException
+import java.util.Collections
+import roadblock.xtext.ibl.ibl.FunctionDefinition
+
+import roadblock.dataprocessing.modelpopulation.ModelPopulation
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor
 
 /**
  * Generates code from your model files on save.
@@ -24,6 +35,18 @@ class IblGenerator implements IGenerator {
 	private PropertyBuilder propertyBuilder = new PropertyBuilder();
 	private PropertyTranslationManager translationManager = PropertyTranslationManager::instance;
 
+	private ModelPopulation modelPopulater = new ModelPopulation();
+
+// export an EMF model to XML
+// via http://techblog.goelite.org/sending-emf-models-via-soap/
+def public static String convertToXml(EObject eObject) throws IOException {
+        var resource = new XMLResourceImpl
+        var processor = new XMLProcessor
+        resource.setEncoding("UTF-8");
+        resource.getContents().add(eObject);
+        return processor.saveToString(resource, null);
+    }
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		
 //		val properties = resource.allContents.filter(PropertyDefinition).toList;
@@ -33,68 +56,135 @@ class IblGenerator implements IGenerator {
 //			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
 //		}
 
-	// 
-	// Create an empty emf model
-	IblPackage::init
-	var factory = IblFactory::eINSTANCE
-	val Model emfModel = factory.createModel
-	
-	// set emfmodel attribute
-	emfModel.setDisplayName("Main model")
-	
-	fsa.generateFile('findMe.txt', emfModel.toString)
+		
+		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
 
-	//for(PropertyDefinition p : properties) {
-	//		propertyBuilder.doSwitch(p).class.toString;
-	//}
-	/* 
-	
-	println("in generator")
+
+		println()
+		println("After population")
+		println("===============")
+		println(convertToXml(emfModel))
+		
+//		fsa.generateFile('unitTestingGenerator.xml', convertToXml(emfModel))
+		fsa.generateFile('unitTestingGenerator.xml', 'someContent')
+
+		
+
+
+	// 
+//	// Create an empty emf model
+//	IblPackage::init
+//	var factory = IblFactory::eINSTANCE
+//	val Model emfModel = factory.createModel
+//	
+//	// set emfmodel attribute
+//	emfModel.setDisplayName("Main model")
+//	
+//
+//	//for(PropertyDefinition p : properties) {
+//	//		propertyBuilder.doSwitch(p).class.toString;
+//	//}
+//	 
+//	
+//	println("in generator")
 
 //	 save the AST in a file
-	emfModelToFile(
-		resource.getContents().get(0) as roadblock.xtext.ibl.ibl.Model, 
-		"findme/" + resource.URI.lastSegment + "XtextModel"
-	)
-	
+//	ASTToFile(
+//		resource.getContents().get(0) as roadblock.xtext.ibl.ibl.Model, 
+//		"findme/" + resource.URI.lastSegment + "XtextModel"
+//	)
 
+//	save the emfModel in a file
+//	emfModelToFile(
+//		emfModel., 
+//		"findme/" + resource.URI.lastSegment + "emfModel"
+//	)
 
-	// Create an empty emf model
-	IblPackage::init
-	factory = IblFactory::eINSTANCE
-	val Model emfModel = factory.createModel
-	
-	// set emfmodel attribute
-	emfModel.setDisplayName("Main model")
-	
-	// go through each functionD0efinition
-	for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition))){
-		switch(functionDefinition.type){
-			case 'CELL': {println('Cell definition:') 
-						println(functionDefinition.name)}
-						
-			case 'DEVICE': {println('Device definition:')
-						println(functionDefinition.name)}
-						
-//			case 'PROCESS': addProcessDefinition(emfModel,functionDefinition)
-			default: println('unknown type')
-			
-		}
-
-		println("After model populating:")
-
-		//println(showModel(emfModel))
-		// parsing properties
-		for (propertyDefinition : resource.allContents.toIterable.filter(typeof(PropertyDefinition))) {
-			println("New property Definition")
-
-			//for(property: propertyDefinition.property){
-			//	println("property:" + property.lhs + " # " + property.operator + " # " + property.rhs.value + " # " + property.rhs.units)
-			}
-
-		}
-		
 	}
+
+
+
+
+
+}	
+
+//def static ASTToFile(roadblock.xtext.ibl.ibl.Model  model, String filename){
+//
+//	val reg = Resource.Factory.Registry.INSTANCE; //Registry::INSTANCE
+//	val m  = reg.getExtensionToFactoryMap as Map<String, Object>
+//	m.put("iblXtextModel", new XMIResourceFactoryImpl)
+//	
+//	val resSet = new ResourceSetImpl
+//
+//    // create a resource
+//	var resource = resSet.createResource(URI::createURI(filename))
+//	resource.getContents().add(model);
+//	
+//		try {
+//	      resource.save(Collections::EMPTY_MAP);
+//	    } catch (IOException e) {
+//		println("ASTToFile: something wrong when writing to file")
+//	      e.printStackTrace();
+//	    }		
+//}
+//
+//def static emfModelToFile(Model  model, String filename){
+//
+//	val reg = Resource.Factory.Registry.INSTANCE; //Registry::INSTANCE
+//	val m  = reg.getExtensionToFactoryMap as Map<String, Object>
+//	m.put("emfModel", new XMIResourceFactoryImpl)
+//	
+//	val resSet = new ResourceSetImpl
+//
+//    // create a resource
+//	var resource = resSet.createResource(URI::createURI(filename))
+//	resource.getContents().add(model);
+//	
+//		try {
+//	      resource.save(Collections::EMPTY_MAP);
+//	    } catch (IOException e) {
+//		println("emfModelToFile: something wrong when writing to file")
+//	      e.printStackTrace();
+//	    }		
+//}
+//
+//
+//	// Create an empty emf model
+//	IblPackage::init
+//	factory = IblFactory::eINSTANCE
+//	val Model emfModel = factory.createModel
+//	
+//	// set emfmodel attribute
+//	emfModel.setDisplayName("Main model")
+//	
+//	// go through each functionD0efinition
+//	for(functionDefinition: resource.allContents.toIterable.filter(typeof(FunctionDefinition))){
+//		switch(functionDefinition.type){
+//			case 'CELL': {println('Cell definition:') 
+//						println(functionDefinition.name)}
+//						
+//			case 'DEVICE': {println('Device definition:')
+//						println(functionDefinition.name)}
+//						
+////			case 'PROCESS': addProcessDefinition(emfModel,functionDefinition)
+//			default: println('unknown type')
+//			
+//		}
+//
+//		println("After model populating:")
+//
+//		//println(showModel(emfModel))
+//		// parsing properties
+//		for (propertyDefinition : resource.allContents.toIterable.filter(typeof(PropertyDefinition))) {
+//			println("New property Definition")
+//
+//			//for(property: propertyDefinition.property){
+//			//	println("property:" + property.lhs + " # " + property.operator + " # " + property.rhs.value + " # " + property.rhs.units)
+//			}
+//
+//		}
+//		
+//	}
 	
 
 
@@ -198,36 +288,17 @@ class IblGenerator implements IGenerator {
 //
 //	
 //	
-def static emfModelToFile(roadblock.xtext.ibl.ibl.Model  model, String filename){
 
-	val reg = Registry::INSTANCE
-	val m  = reg.getExtensionToFactoryMap as Map<String, Object>
-	m.put("iblXtextModel", new XMIResourceFactoryImpl)
-	
-	val resSet = new ResourceSetImpl
-
-    // create a resource
-	var resource = resSet.createResource(URI::createURI(filename))
-	resource.getContents().add(model);
-	
-		try {
-	      resource.save(Collections::EMPTY_MAP);
-	    } catch (IOException e) {
-		println("emfModelToFile: something wrong when writing to file")
-	      e.printStackTrace();
-	    }		
-}
-
-def static fileToEmfModel(String filename){ // Don't forget to cast the result as the expected EMF object. 
-// adapted to extend from http://www.vogella.com/articles/EclipseEMFPersistence/article.html	
-    val resSet = new ResourceSetImpl
-
-    // Get the resource
-    val resource2 = resSet.getResource(URI::createURI(filename), true)
-    // Get the first model element and cast it to the right type, in my
-    // example everything is hierarchical included in this first node
-    return  resource2.getContents().get(0) //as roadblock.emf.ibl.Ibl.Model
-}
-*/
-	}
-}
+//def static fileToEmfModel(String filename){ // Don't forget to cast the result as the expected EMF object. 
+//// adapted to extend from http://www.vogella.com/articles/EclipseEMFPersistence/article.html	
+//    val resSet = new ResourceSetImpl
+//
+//    // Get the resource
+//    val resource2 = resSet.getResource(URI::createURI(filename), true)
+//    // Get the first model element and cast it to the right type, in my
+//    // example everything is hierarchical included in this first node
+//    return  resource2.getContents().get(0) //as roadblock.emf.ibl.Ibl.Model
+//}
+//*/
+//	}
+//}

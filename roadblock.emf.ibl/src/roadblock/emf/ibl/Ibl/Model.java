@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getATGCcommandList <em>ATG Ccommand List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getID <em>ID</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Model#getRegionList <em>Region List</em>}</li>
  * </ul>
  * </p>
  *
@@ -142,6 +143,16 @@ public class Model extends EObjectImpl implements IVisitable {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRegionList() <em>Region List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRegionList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Region> regionList;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -355,6 +366,27 @@ public class Model extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Region List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Region}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Region List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Region List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getModel_RegionList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<Region> getRegionList() {
+		if (regionList == null) {
+			regionList = new EObjectContainmentEList<Region>(Region.class, this, IblPackage.MODEL__REGION_LIST);
+		}
+		return regionList;
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -384,6 +416,8 @@ public class Model extends EObjectImpl implements IVisitable {
 				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
 			case IblPackage.MODEL__ATG_CCOMMAND_LIST:
 				return ((InternalEList<?>)getATGCcommandList()).basicRemove(otherEnd, msgs);
+			case IblPackage.MODEL__REGION_LIST:
+				return ((InternalEList<?>)getRegionList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -412,6 +446,8 @@ public class Model extends EObjectImpl implements IVisitable {
 				return getATGCcommandList();
 			case IblPackage.MODEL__ID:
 				return getID();
+			case IblPackage.MODEL__REGION_LIST:
+				return getRegionList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -455,6 +491,10 @@ public class Model extends EObjectImpl implements IVisitable {
 			case IblPackage.MODEL__ID:
 				setID((String)newValue);
 				return;
+			case IblPackage.MODEL__REGION_LIST:
+				getRegionList().clear();
+				getRegionList().addAll((Collection<? extends Region>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -491,6 +531,9 @@ public class Model extends EObjectImpl implements IVisitable {
 			case IblPackage.MODEL__ID:
 				setID(ID_EDEFAULT);
 				return;
+			case IblPackage.MODEL__REGION_LIST:
+				getRegionList().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -519,6 +562,8 @@ public class Model extends EObjectImpl implements IVisitable {
 				return atgCcommandList != null && !atgCcommandList.isEmpty();
 			case IblPackage.MODEL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case IblPackage.MODEL__REGION_LIST:
+				return regionList != null && !regionList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

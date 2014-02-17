@@ -122,6 +122,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ATGCcommandList" upperBound="-1"
         eType="#//ATGCDirective" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="regionList" upperBound="-1"
+        eType="#//Region" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kinetics" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -308,4 +310,16 @@
     <eLiterals name="MOLECULE" value="7"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EClass0"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//IVisitable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Kinetics" eType="#//Kinetics"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
+        eType="#//Rule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
+        eType="#//MolecularSpecies" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cellList" upperBound="-1"
+        eType="#//Cell" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

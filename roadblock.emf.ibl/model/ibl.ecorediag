@@ -134,7 +134,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_wNqliXdfEeOJM_y6LNHFZg" fontColor="4210752" fontName="Ubuntu" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="ibl.ecore#//Kinetics"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wNqlindfEeOJM_y6LNHFZg" x="1188" y="660"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wNqlindfEeOJM_y6LNHFZg" x="1210" y="650"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_wNrzondfEeOJM_y6LNHFZg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_wNrzpXdfEeOJM_y6LNHFZg" type="4001"/>

@@ -7,6 +7,11 @@ import org.eclipse.xtext.xbase.compiler.CompilationTestHelper
 import roadblock.xtext.ibl.IblInjectorProvider
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.io.IOException
+import java.nio.charset.Charset
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.ByteBuffer
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(IblInjectorProvider))
@@ -15,12 +20,27 @@ class IblGeneratorTests {
 	
 	@Inject extension CompilationTestHelper
 	
-	@Test
-	def void testGeneratedCode() {
-		'''
-define dummyProcess typeof PROCESS(){}
-		'''.assertCompilesTo(
-		'''some content 2''')
-	}
+//	@Test
+//	def void testGeneratedCode() {
+//		'''
+//define dummyProcess2 typeof PROCESS(){}
+//		'''.assertCompilesTo(
+//		'''someContent''')
+//	}
 	
+	// read file into a string
+	// from http://stackoverflow.com/questions/326390/how-to-create-a-java-string-from-the-contents-of-a-file
+	// yep, 3 lines and 5 imports just to read a text file. Java.
+	
+	def static String readFile(String path, Charset encoding)  throws IOException 
+	{
+		var byte[] encoded = Files.readAllBytes(Paths.get(path));
+	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString();
+	}
+
+	@Test
+	def void testMinimalModel(){
+		val source = readFile("../roadblock.xtext.ibl/models/minimalModel.ibl",Charset.defaultCharset())
+		source.assertCompilesTo('someContent')		
+	}
 }

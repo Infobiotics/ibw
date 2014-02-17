@@ -272,13 +272,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int MODEL__ID = IVISITABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Region List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MODEL__REGION_LIST = IVISITABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MODEL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 8;
+	public static final int MODEL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -1388,6 +1397,98 @@ public class IblPackage extends EPackageImpl {
 	public static final int STATE_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.EClass0
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEClass0()
+	 * @generated
+	 */
+	public static final int ECLASS0 = 30;
+
+	/**
+	 * The number of structural features of the '<em>EClass0</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ECLASS0_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Region
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion()
+	 * @generated
+	 */
+	public static final int REGION = 31;
+
+	/**
+	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__DISPLAY_NAME = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Kinetics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__KINETICS = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Rule List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__RULE_LIST = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__ID = IVISITABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Cell List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__CELL_LIST = IVISITABLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Region</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 6;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1395,7 +1496,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 30;
+	public static final int TIME_UNIT = 32;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1405,7 +1506,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 31;
+	public static final int TEMPORAL_OPERATOR = 33;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1415,7 +1516,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 32;
+	public static final int RELATIONAL_OPERATOR = 34;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1425,7 +1526,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 33;
+	public static final int BOOLEAN_OPERATOR = 35;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1435,7 +1536,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 34;
+	public static final int CONCENTRATION_UNIT = 36;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1652,6 +1753,20 @@ public class IblPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eClass0EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass regionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum timeUnitEEnum = null;
 
 	/**
@@ -1859,6 +1974,20 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getModel_ID() {
 		return (EAttribute)modelEClass.getEStructuralFeatures().get(7);
 	}
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Model#getRegionList <em>Region List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Region List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Model#getRegionList()
+	 * @see #getModel()
+	 * @generated
+	 */
+	public EReference getModel_RegionList() {
+		return (EReference)modelEClass.getEStructuralFeatures().get(8);
+	}
+
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Kinetics <em>Kinetics</em>}'.
@@ -3123,6 +3252,116 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>EClass0</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EClass0
+	 * @generated
+	 */
+	public EClass getEClass0() {
+		return eClass0EClass;
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Region</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region
+	 * @generated
+	 */
+	public EClass getRegion() {
+		return regionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Region#getDisplayName <em>Display Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Display Name</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getDisplayName()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EAttribute getRegion_DisplayName() {
+		return (EAttribute)regionEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Region#getKinetics <em>Kinetics</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Kinetics</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getKinetics()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EReference getRegion_Kinetics() {
+		return (EReference)regionEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getRuleList <em>Rule List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rule List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getRuleList()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EReference getRegion_RuleList() {
+		return (EReference)regionEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getMoleculeList <em>Molecule List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Molecule List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getMoleculeList()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EReference getRegion_MoleculeList() {
+		return (EReference)regionEClass.getEStructuralFeatures().get(3);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Region#getID <em>ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>ID</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getID()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EAttribute getRegion_ID() {
+		return (EAttribute)regionEClass.getEStructuralFeatures().get(4);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getCellList <em>Cell List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Cell List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getCellList()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EReference getRegion_CellList() {
+		return (EReference)regionEClass.getEStructuralFeatures().get(5);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3225,6 +3464,7 @@ public class IblPackage extends EPackageImpl {
 		createEReference(modelEClass, MODEL__MOLECULE_LIST);
 		createEReference(modelEClass, MODEL__ATG_CCOMMAND_LIST);
 		createEAttribute(modelEClass, MODEL__ID);
+		createEReference(modelEClass, MODEL__REGION_LIST);
 
 		kineticsEClass = createEClass(KINETICS);
 		createEAttribute(kineticsEClass, KINETICS__DISPLAY_NAME);
@@ -3350,6 +3590,16 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__QUANTITY);
 		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__UNIT);
 
+		eClass0EClass = createEClass(ECLASS0);
+
+		regionEClass = createEClass(REGION);
+		createEAttribute(regionEClass, REGION__DISPLAY_NAME);
+		createEReference(regionEClass, REGION__KINETICS);
+		createEReference(regionEClass, REGION__RULE_LIST);
+		createEReference(regionEClass, REGION__MOLECULE_LIST);
+		createEAttribute(regionEClass, REGION__ID);
+		createEReference(regionEClass, REGION__CELL_LIST);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalOperatorEEnum = createEEnum(TEMPORAL_OPERATOR);
@@ -3415,6 +3665,7 @@ public class IblPackage extends EPackageImpl {
 		binaryStateFormulaEClass.getESuperTypes().add(this.getIStateFormula());
 		notStateFormulaEClass.getESuperTypes().add(this.getIStateFormula());
 		stateExpressionEClass.getESuperTypes().add(this.getIStateFormula());
+		regionEClass.getESuperTypes().add(this.getIVisitable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3554,6 +3805,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getModel_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_ATGCcommandList(), this.getATGCDirective(), null, "ATGCcommandList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModel_RegionList(), this.getRegion(), null, "regionList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(kineticsEClass, Kinetics.class, "Kinetics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getKinetics_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3678,6 +3930,16 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getStateExpression_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStateExpression_Quantity(), ecorePackage.getEDouble(), "quantity", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStateExpression_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eClass0EClass, EClass0.class, "EClass0", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(regionEClass, Region.class, "Region", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRegion_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_Kinetics(), this.getKinetics(), null, "Kinetics", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRegion_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_CellList(), this.getCell(), null, "cellList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -3806,6 +4068,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute MODEL__ID = eINSTANCE.getModel_ID();
+
+		/**
+		 * The meta object literal for the '<em><b>Region List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference MODEL__REGION_LIST = eINSTANCE.getModel_RegionList();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Kinetics <em>Kinetics</em>}' class.
@@ -4656,6 +4926,74 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute STATE_EXPRESSION__UNIT = eINSTANCE.getStateExpression_Unit();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.EClass0
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getEClass0()
+		 * @generated
+		 */
+		public static final EClass ECLASS0 = eINSTANCE.getEClass0();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.Region
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion()
+		 * @generated
+		 */
+		public static final EClass REGION = eINSTANCE.getRegion();
+
+		/**
+		 * The meta object literal for the '<em><b>Display Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute REGION__DISPLAY_NAME = eINSTANCE.getRegion_DisplayName();
+
+		/**
+		 * The meta object literal for the '<em><b>Kinetics</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference REGION__KINETICS = eINSTANCE.getRegion_Kinetics();
+
+		/**
+		 * The meta object literal for the '<em><b>Rule List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference REGION__RULE_LIST = eINSTANCE.getRegion_RuleList();
+
+		/**
+		 * The meta object literal for the '<em><b>Molecule List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference REGION__MOLECULE_LIST = eINSTANCE.getRegion_MoleculeList();
+
+		/**
+		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute REGION__ID = eINSTANCE.getRegion_ID();
+
+		/**
+		 * The meta object literal for the '<em><b>Cell List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference REGION__CELL_LIST = eINSTANCE.getRegion_CellList();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

@@ -17,5 +17,6 @@ Import-Package: org.eclipse.emf.ecore.util,
  roadblock.xtext.ibl.ibl,
  roadblock.xtext.ibl.ibl.impl,
  roadblock.xtext.ibl.ibl.util
-Export-Package: roadblock.dataprocessing.modelbuilder
+Export-Package: roadblock.dataprocessing.modelbuilder,
+ roadblock.dataprocessing.modelpopulation
 
