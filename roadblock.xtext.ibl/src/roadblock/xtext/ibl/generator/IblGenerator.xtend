@@ -3,6 +3,7 @@
  */
 package roadblock.xtext.ibl.generator
 
+
 import org.eclipse.emf.ecore.resource.Resource
 
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -58,7 +59,7 @@ def public static String convertToXml(EObject eObject) throws IOException {
 
 		
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
-
+	
 
 		println()
 		println("After population")

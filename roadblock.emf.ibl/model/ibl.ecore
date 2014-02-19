@@ -309,7 +309,6 @@
     <eLiterals name="fM" value="6"/>
     <eLiterals name="MOLECULE" value="7"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EClass0"/>
   <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Kinetics" eType="#//Kinetics"
