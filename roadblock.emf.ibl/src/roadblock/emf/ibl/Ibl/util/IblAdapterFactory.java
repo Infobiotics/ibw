@@ -219,10 +219,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 				return createStateExpressionAdapter();
 			}
 			@Override
-			public Adapter caseEClass0(EClass0 object) {
-				return createEClass0Adapter();
-			}
-			@Override
 			public Adapter caseRegion(Region object) {
 				return createRegionAdapter();
 			}
@@ -663,20 +659,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see roadblock.emf.ibl.Ibl.EClass0
-	 * @generated
-	 */
-	public Adapter createEClass0Adapter() {
 		return null;
 	}
 

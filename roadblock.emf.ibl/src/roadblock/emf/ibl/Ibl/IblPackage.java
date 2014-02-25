@@ -461,13 +461,58 @@ public class IblPackage extends EPackageImpl {
 	public static final int MOLECULAR_SPECIES__UNIT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Degradation Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__DEGRADATION_RATE = IVISITABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Binding Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__BINDING_RATE = IVISITABLE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Unbinding Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__UNBINDING_RATE = IVISITABLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Biological Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__BIOLOGICAL_TYPE = IVISITABLE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__SEQUENCE = IVISITABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Molecular Species</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MOLECULAR_SPECIES_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 4;
+	public static final int MOLECULAR_SPECIES_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -1397,25 +1442,6 @@ public class IblPackage extends EPackageImpl {
 	public static final int STATE_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.EClass0
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEClass0()
-	 * @generated
-	 */
-	public static final int ECLASS0 = 30;
-
-	/**
-	 * The number of structural features of the '<em>EClass0</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ECLASS0_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1423,7 +1449,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion()
 	 * @generated
 	 */
-	public static final int REGION = 31;
+	public static final int REGION = 30;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -1496,7 +1522,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 32;
+	public static final int TIME_UNIT = 31;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1506,7 +1532,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 33;
+	public static final int TEMPORAL_OPERATOR = 32;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1516,7 +1542,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 34;
+	public static final int RELATIONAL_OPERATOR = 33;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1526,7 +1552,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 35;
+	public static final int BOOLEAN_OPERATOR = 34;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1536,7 +1562,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 36;
+	public static final int CONCENTRATION_UNIT = 35;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1747,13 +1773,6 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass stateExpressionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass eClass0EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2245,6 +2264,76 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getMolecularSpecies_Unit() {
 		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(3);
 	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRate <em>Degradation Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Degradation Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRate()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_DegradationRate() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(4);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRate <em>Binding Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Binding Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRate()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_BindingRate() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(5);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRate <em>Unbinding Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unbinding Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRate()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_UnbindingRate() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(6);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBiologicalType <em>Biological Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Biological Type</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getBiologicalType()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_BiologicalType() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(7);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getSequence <em>Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sequence</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getSequence()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_Sequence() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(8);
+	}
+
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}'.
@@ -3252,19 +3341,6 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>EClass0</em>'.
-	 * @see roadblock.emf.ibl.Ibl.EClass0
-	 * @generated
-	 */
-	public EClass getEClass0() {
-		return eClass0EClass;
-	}
-
-
-	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3488,6 +3564,11 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__URI);
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__AMOUNT);
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__UNIT);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__DEGRADATION_RATE);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__BINDING_RATE);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__UNBINDING_RATE);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__BIOLOGICAL_TYPE);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__SEQUENCE);
 
 		deviceEClass = createEClass(DEVICE);
 		createEAttribute(deviceEClass, DEVICE__DISPLAY_NAME);
@@ -3589,8 +3670,6 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__OPERATOR);
 		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__QUANTITY);
 		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__UNIT);
-
-		eClass0EClass = createEClass(ECLASS0);
 
 		regionEClass = createEClass(REGION);
 		createEAttribute(regionEClass, REGION__DISPLAY_NAME);
@@ -3829,15 +3908,20 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getMolecularSpecies_URI(), ecorePackage.getEString(), "URI", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_DegradationRate(), ecorePackage.getEDouble(), "degradationRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_BindingRate(), ecorePackage.getEDoubleObject(), "bindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_UnbindingRate(), ecorePackage.getEDoubleObject(), "unbindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_BiologicalType(), ecorePackage.getEString(), "biologicalType", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDevice_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDevice_PartList(), this.getMolecularSpecies(), null, "PartList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_PartList(), this.getMolecularSpecies(), null, "partList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDevice_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDevice_Kinetics(), this.getKinetics(), null, "Kinetics", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_Kinetics(), this.getKinetics(), null, "kinetics", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3930,8 +4014,6 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getStateExpression_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStateExpression_Quantity(), ecorePackage.getEDouble(), "quantity", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getStateExpression_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(eClass0EClass, EClass0.class, "EClass0", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(regionEClass, Region.class, "Region", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRegion_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4242,6 +4324,46 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute MOLECULAR_SPECIES__UNIT = eINSTANCE.getMolecularSpecies_Unit();
+
+		/**
+		 * The meta object literal for the '<em><b>Degradation Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__DEGRADATION_RATE = eINSTANCE.getMolecularSpecies_DegradationRate();
+
+		/**
+		 * The meta object literal for the '<em><b>Binding Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__BINDING_RATE = eINSTANCE.getMolecularSpecies_BindingRate();
+
+		/**
+		 * The meta object literal for the '<em><b>Unbinding Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__UNBINDING_RATE = eINSTANCE.getMolecularSpecies_UnbindingRate();
+
+		/**
+		 * The meta object literal for the '<em><b>Biological Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__BIOLOGICAL_TYPE = eINSTANCE.getMolecularSpecies_BiologicalType();
+
+		/**
+		 * The meta object literal for the '<em><b>Sequence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__SEQUENCE = eINSTANCE.getMolecularSpecies_Sequence();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}' class.
@@ -4926,16 +5048,6 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute STATE_EXPRESSION__UNIT = eINSTANCE.getStateExpression_Unit();
-
-		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.EClass0 <em>EClass0</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.EClass0
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getEClass0()
-		 * @generated
-		 */
-		public static final EClass ECLASS0 = eINSTANCE.getEClass0();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}' class.
