@@ -326,6 +326,12 @@ public class IblSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT: {
+				EMFVariableAssignment emfVariableAssignment = (EMFVariableAssignment)theEObject;
+				T result = caseEMFVariableAssignment(emfVariableAssignment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -792,6 +798,21 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRegion(Region object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>EMF Variable Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EMF Variable Assignment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEMFVariableAssignment(EMFVariableAssignment object) {
 		return null;
 	}
 

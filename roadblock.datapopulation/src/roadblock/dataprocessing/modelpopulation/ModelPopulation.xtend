@@ -22,13 +22,33 @@ import roadblock.xtext.ibl.ibl.DeviceDefinition
 import roadblock.emf.ibl.Ibl.Device
 import roadblock.xtext.ibl.ibl.RuleObject
 import roadblock.emf.ibl.Ibl.MolecularSpecies
+import roadblock.xtext.ibl.ibl.Outside
+import roadblock.xtext.ibl.ibl.VariableDefinition
+import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
+import roadblock.xtext.ibl.ibl.VariableExpressionObject
+import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject
+import roadblock.xtext.ibl.ibl.RealConstant
+import roadblock.xtext.ibl.ibl.StringConstant
+import roadblock.xtext.ibl.ibl.Quantity
+import roadblock.xtext.ibl.ibl.VariableAssignment
+import roadblock.emf.ibl.Ibl.EMFVariableAssignment
+import roadblock.xtext.ibl.ibl.VariableAttribute
+import org.eclipse.emf.ecore.EObject
 
 class ModelPopulation extends IblSwitch<Object> {
 	var modelFactory = IblFactory::eINSTANCE;
 	
 	var emfModel = modelFactory.createModel;
-	// helpers to build the name of a variableKind (either VariableName or VariableComplex)
+	
+	// useful constant
+	val BIOLOGICALPART = #{'PROMOTER','GENE','RBS','SPACER','TERMINATOR'}
 
+	def isPart(String molecule){
+		return BIOLOGICALPART.contains(molecule)
+	}
+	//
+	// helpers to build the name of a variableKind (either VariableName or VariableComplex)
+	//
 	def buildVariableName(VariableName variableName){
 		variableName.name
 	}
@@ -43,10 +63,26 @@ class ModelPopulation extends IblSwitch<Object> {
 			VariableComplex: buildVariableName(variableKind)			
 		}
 	}
+	
+
+	//
+	def updateRule(Rule rule, EMFVariableAssignment variableAssignment){
+		// update its properties
+		switch variableAssignment.variableAttribute {
+			case 'forwardRate': rule => [forwardRate = variableAssignment.amount; forwardRateUnit = variableAssignment.unit]
+			case 'reverseRate': rule => [reverseRate = variableAssignment.amount; reverseRateUnit = variableAssignment.unit]
+					
+		}	
+		
+	}
+	
+	//
+	//
 	// 
 	def populate(Model xtextModel) {
 		return doSwitch(xtextModel) as roadblock.emf.ibl.Ibl.Model;	
 	}
+	
 	
 	override caseModel(Model xtextModel) {
 		println("in caseModel")
@@ -71,6 +107,27 @@ class ModelPopulation extends IblSwitch<Object> {
 			 }
 		// remove the abstract classes
 		emfModel.cellList.clear
+
+		// variable assignment resolution
+		// limited to rules and identical container for the time being
+		for(variableAssignment: emfModel.eAllContents.toList.filter(EMFVariableAssignment)){
+			println(variableAssignment.variableName)
+			val container = variableAssignment.eContainer
+			var EObject variable 
+			switch container {
+				Region: variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].head
+				Cell: variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
+				Device: variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].head
+			}
+			
+			switch variable {
+				Rule: updateRule(variable,variableAssignment)
+			}
+			
+			EcoreUtil.delete(variableAssignment)
+				
+					
+		}
 		
 		return emfModel;
 	}
@@ -82,8 +139,11 @@ class ModelPopulation extends IblSwitch<Object> {
 			switch member {
 				RuleDefinition: cell.ruleList.add(member.doSwitch as Rule)
 				DeviceDefinition : cell.deviceList.add(member.doSwitch as Device)
+				VariableDefinition: cell.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
+				VariableAssignment: cell.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
 			}
 		}	
+		
 		return cell
 	}
 
@@ -94,6 +154,8 @@ class ModelPopulation extends IblSwitch<Object> {
 			switch member {
 				CellInstantiation: region.cellList.add(member.doSwitch as Cell)
 				RuleDefinition: region.ruleList.add(member.doSwitch as Rule)
+				VariableDefinition: region.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
+				VariableAssignment: region.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
 			}
 			
 		}
@@ -133,15 +195,116 @@ class ModelPopulation extends IblSwitch<Object> {
 			device.ruleList.add(rule.doSwitch as Rule)
 		}
 		
+		for(member: deviceDefinition.members){
+			switch member {
+				RuleDefinition: device.ruleList.add(member.doSwitch as Rule)
+				VariableDefinition: device.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
+				VariableAssignment: device.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
+				}
+			}
 		return device
 		
 	}
 
 	override caseRuleObject(RuleObject ruleObject){
-		var molecule = modelFactory.createMolecularSpecies
-		molecule.displayName = ruleObject.object.buildVariableName
+		var molecule = modelFactory.createMolecularSpecies		
+
+		switch ruleObject {
+			VariableKind:	molecule.displayName = ruleObject.buildVariableName
+			Outside: 		molecule => [ displayName = "OUTSIDE"; biologicalType = 'OUTSIDE']
+		}
+		
 		return molecule
 		
+	}
+	
+	override caseVariableDefinitionBuiltIn(VariableDefinitionBuiltIn variableDefinition){
+		val molecule = modelFactory.createMolecularSpecies
+		
+		molecule => [ 
+			biologicalType = variableDefinition.type 
+			displayName = variableDefinition.name.buildVariableName
+			degradationRateUnit = 's^-1'
+			bindingRateUnit = 's^-1'
+			unbindingRateUnit = 's^-1'		
+		]
+		
+		
+		// Defaults for parts and molecules
+		if(isPart(molecule.biologicalType))
+			molecule => [	amount = 1.0;	unit = 'molecule'; 
+							degradationRate = 0.0; 
+							bindingRate = 1.0; 
+							unbindingRate = 1.0
+			]
+		
+		else 
+			molecule => [	amount = 0.0; unit = 'uM'; 
+							degradationRate = 1.0
+							bindingRate = 1.0; 
+							unbindingRate = 1.0
+							
+			]
+
+		// defaults are overriden if specified in the constructor
+		for(parameter : variableDefinition.parameters){
+			switch parameter.name.buildVariableName {
+				case 'displayID' : molecule.displayName = parameter.value.doSwitch as String
+				case 'concentration': {val q = parameter.value.doSwitch as Quantity; molecule => [amount = Double.parseDouble(q.value); unit = q.units]}
+				case 'URI': molecule.URI = parameter.value.doSwitch as String
+				case 'degradationRate': {val q = parameter.value.doSwitch as Quantity; molecule => [degradationRate = Double.parseDouble(q.value); unit = q.units]}				
+				case 'bindingRate': {val q = parameter.value.doSwitch as Quantity; molecule => [bindingRate = Double.parseDouble(q.value); unit = q.units]}	
+				case 'unbindingRate': {val q = parameter.value.doSwitch as Quantity; molecule => [unbindingRate = Double.parseDouble(q.value); unit = q.units]}	
+			}
+			
+		}
+		
+		molecule.ID = molecule.URI?.toString ?: molecule.displayName
+		return molecule
+	}
+	
+	override caseVariableExpressionObject(VariableExpressionObject variableExpressionObject){
+		switch variableExpressionObject {
+			AtomicVariableExpressionObject:  return variableExpressionObject.doSwitch as String
+			
+		}
+
+	}
+	
+	override caseAtomicVariableExpressionObject(AtomicVariableExpressionObject atomicVariableExpressionObject){
+		switch atomicVariableExpressionObject {
+			RealConstant: return atomicVariableExpressionObject.value
+			StringConstant: return atomicVariableExpressionObject.string
+			Quantity : return atomicVariableExpressionObject.quantity 
+		}
+	}
+	
+	override caseVariableAssignment(VariableAssignment variableAssignment){
+		val emfVariableAssignment = modelFactory.createEMFVariableAssignment
+		
+		val variable = variableAssignment.variable
+		switch variable {
+			VariableName : emfVariableAssignment => [
+										variableName = variable.name 
+										variableAttribute = ''
+													]
+			VariableAttribute: emfVariableAssignment => [
+										variableName = variable.name.buildVariableName
+										variableAttribute = variable.attribute.name
+														]
+			default: emfVariableAssignment => [variableName = 'NOT IMPLEMENTED'; variableAttribute = 'NOT IMPLEMENTED']
+		}
+		
+		val expression = variableAssignment.expression.members.head.doSwitch
+		switch expression {
+			Quantity: emfVariableAssignment => [
+											amount = Double.parseDouble(expression.value)
+											unit = expression.units
+												]
+			default: emfVariableAssignment => [amount = -111; unit = 'NOT IMPLEMENTED']
+		}
+		
+		return emfVariableAssignment
 	}
 	
 

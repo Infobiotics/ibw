@@ -34,6 +34,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getATGCCommandList <em>ATGC Command List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getID <em>ID</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getKinetics <em>Kinetics</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Device#getMoleculeList <em>Molecule List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Device#getOutputList <em>Output List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Device#getInputList <em>Input List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Device#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,6 +135,46 @@ public class Device extends EObjectImpl implements IVisitable {
 	 * @ordered
 	 */
 	protected Kinetics kinetics;
+
+	/**
+	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMoleculeList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MolecularSpecies> moleculeList;
+
+	/**
+	 * The cached value of the '{@link #getOutputList() <em>Output List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MolecularSpecies> outputList;
+
+	/**
+	 * The cached value of the '{@link #getInputList() <em>Input List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MolecularSpecies> inputList;
+
+	/**
+	 * The cached value of the '{@link #getVariableAssignmentList() <em>Variable Assignment List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariableAssignmentList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EMFVariableAssignment> variableAssignmentList;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -357,6 +401,90 @@ public class Device extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Molecule List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Molecule List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Molecule List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_MoleculeList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<MolecularSpecies> getMoleculeList() {
+		if (moleculeList == null) {
+			moleculeList = new EObjectContainmentEList<MolecularSpecies>(MolecularSpecies.class, this, IblPackage.DEVICE__MOLECULE_LIST);
+		}
+		return moleculeList;
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Output List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_OutputList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<MolecularSpecies> getOutputList() {
+		if (outputList == null) {
+			outputList = new EObjectContainmentEList<MolecularSpecies>(MolecularSpecies.class, this, IblPackage.DEVICE__OUTPUT_LIST);
+		}
+		return outputList;
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Input List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_InputList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<MolecularSpecies> getInputList() {
+		if (inputList == null) {
+			inputList = new EObjectContainmentEList<MolecularSpecies>(MolecularSpecies.class, this, IblPackage.DEVICE__INPUT_LIST);
+		}
+		return inputList;
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Variable Assignment List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variable Assignment List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variable Assignment List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_VariableAssignmentList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<EMFVariableAssignment> getVariableAssignmentList() {
+		if (variableAssignmentList == null) {
+			variableAssignmentList = new EObjectContainmentEList<EMFVariableAssignment>(EMFVariableAssignment.class, this, IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST);
+		}
+		return variableAssignmentList;
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -384,6 +512,14 @@ public class Device extends EObjectImpl implements IVisitable {
 				return ((InternalEList<?>)getATGCCommandList()).basicRemove(otherEnd, msgs);
 			case IblPackage.DEVICE__KINETICS:
 				return basicSetKinetics(null, msgs);
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
+			case IblPackage.DEVICE__OUTPUT_LIST:
+				return ((InternalEList<?>)getOutputList()).basicRemove(otherEnd, msgs);
+			case IblPackage.DEVICE__INPUT_LIST:
+				return ((InternalEList<?>)getInputList()).basicRemove(otherEnd, msgs);
+			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
+				return ((InternalEList<?>)getVariableAssignmentList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -410,6 +546,14 @@ public class Device extends EObjectImpl implements IVisitable {
 				return getID();
 			case IblPackage.DEVICE__KINETICS:
 				return getKinetics();
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				return getMoleculeList();
+			case IblPackage.DEVICE__OUTPUT_LIST:
+				return getOutputList();
+			case IblPackage.DEVICE__INPUT_LIST:
+				return getInputList();
+			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
+				return getVariableAssignmentList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -448,6 +592,22 @@ public class Device extends EObjectImpl implements IVisitable {
 			case IblPackage.DEVICE__KINETICS:
 				setKinetics((Kinetics)newValue);
 				return;
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				getMoleculeList().clear();
+				getMoleculeList().addAll((Collection<? extends MolecularSpecies>)newValue);
+				return;
+			case IblPackage.DEVICE__OUTPUT_LIST:
+				getOutputList().clear();
+				getOutputList().addAll((Collection<? extends MolecularSpecies>)newValue);
+				return;
+			case IblPackage.DEVICE__INPUT_LIST:
+				getInputList().clear();
+				getInputList().addAll((Collection<? extends MolecularSpecies>)newValue);
+				return;
+			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
+				getVariableAssignmentList().clear();
+				getVariableAssignmentList().addAll((Collection<? extends EMFVariableAssignment>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -481,6 +641,18 @@ public class Device extends EObjectImpl implements IVisitable {
 			case IblPackage.DEVICE__KINETICS:
 				setKinetics((Kinetics)null);
 				return;
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				getMoleculeList().clear();
+				return;
+			case IblPackage.DEVICE__OUTPUT_LIST:
+				getOutputList().clear();
+				return;
+			case IblPackage.DEVICE__INPUT_LIST:
+				getInputList().clear();
+				return;
+			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
+				getVariableAssignmentList().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -507,6 +679,14 @@ public class Device extends EObjectImpl implements IVisitable {
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IblPackage.DEVICE__KINETICS:
 				return kinetics != null;
+			case IblPackage.DEVICE__MOLECULE_LIST:
+				return moleculeList != null && !moleculeList.isEmpty();
+			case IblPackage.DEVICE__OUTPUT_LIST:
+				return outputList != null && !outputList.isEmpty();
+			case IblPackage.DEVICE__INPUT_LIST:
+				return inputList != null && !inputList.isEmpty();
+			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
+				return variableAssignmentList != null && !variableAssignmentList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

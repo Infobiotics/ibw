@@ -148,21 +148,36 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/leftHandSide"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/rightHandSide"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/forwardRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/reverseRateUnit"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//MolecularSpecies">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/DisplayName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/URI"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/amount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/degradationRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/bindingRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unbindingRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/biologicalType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/sequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/degradationRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/bindingRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unbindingRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/ID"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Device">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/displayName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/processList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/ruleList"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/PartList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/partList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/ATGCCommandList"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/ID"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/Kinetics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/kinetics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/moleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/outputList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/inputList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/variableAssignmentList"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Cell">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/displayName"/>
@@ -172,6 +187,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/moleculeList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/ATGCCommandList"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/variableAssignmentList"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//ATGCDirective">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCDirective/command"/>
@@ -248,7 +264,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//StateExpression/quantity"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//StateExpression/unit"/>
     </genClasses>
-    <genClasses ecoreClass="ibl.ecore#//EClass0"/>
     <genClasses ecoreClass="ibl.ecore#//Region">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Region/displayName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/Kinetics"/>
@@ -256,6 +271,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/moleculeList"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Region/ID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/cellList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/variableAssignmentList"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//EMFVariableAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/amount"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

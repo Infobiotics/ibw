@@ -416,13 +416,31 @@ public class IblPackage extends EPackageImpl {
 	public static final int RULE__ID = IVISITABLE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Forward Rate Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RULE__FORWARD_RATE_UNIT = IVISITABLE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Reverse Rate Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RULE__REVERSE_RATE_UNIT = IVISITABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RULE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 7;
+	public static final int RULE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -506,13 +524,49 @@ public class IblPackage extends EPackageImpl {
 	public static final int MOLECULAR_SPECIES__SEQUENCE = IVISITABLE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Degradation Rate Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT = IVISITABLE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Binding Rate Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__BINDING_RATE_UNIT = IVISITABLE_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Unbinding Rate Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__UNBINDING_RATE_UNIT = IVISITABLE_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MOLECULAR_SPECIES__ID = IVISITABLE_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Molecular Species</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MOLECULAR_SPECIES_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
+	public static final int MOLECULAR_SPECIES_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -578,13 +632,49 @@ public class IblPackage extends EPackageImpl {
 	public static final int DEVICE__KINETICS = IVISITABLE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEVICE__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Output List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEVICE__OUTPUT_LIST = IVISITABLE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Input List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEVICE__INPUT_LIST = IVISITABLE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Variable Assignment List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEVICE__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 7;
+	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -650,13 +740,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL__ID = IVISITABLE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Variable Assignment List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CELL__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Cell</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 7;
+	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -1506,13 +1605,77 @@ public class IblPackage extends EPackageImpl {
 	public static final int REGION__CELL_LIST = IVISITABLE_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Variable Assignment List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Region</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REGION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 6;
+	public static final int REGION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 7;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment <em>EMF Variable Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
+	 * @generated
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT = 31;
+
+	/**
+	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Variable Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT__UNIT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Amount</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT__AMOUNT = 3;
+
+	/**
+	 * The number of structural features of the '<em>EMF Variable Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
@@ -1522,7 +1685,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 31;
+	public static final int TIME_UNIT = 32;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1532,7 +1695,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 32;
+	public static final int TEMPORAL_OPERATOR = 33;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1542,7 +1705,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 33;
+	public static final int RELATIONAL_OPERATOR = 34;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1552,7 +1715,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 34;
+	public static final int BOOLEAN_OPERATOR = 35;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1562,7 +1725,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 35;
+	public static final int CONCENTRATION_UNIT = 36;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1780,6 +1943,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass regionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass emfVariableAssignmentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2202,6 +2372,34 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Forward Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit()
+	 * @see #getRule()
+	 * @generated
+	 */
+	public EAttribute getRule_ForwardRateUnit() {
+		return (EAttribute)ruleEClass.getEStructuralFeatures().get(7);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reverse Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit()
+	 * @see #getRule()
+	 * @generated
+	 */
+	public EAttribute getRule_ReverseRateUnit() {
+		return (EAttribute)ruleEClass.getEStructuralFeatures().get(8);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2336,6 +2534,62 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRateUnit <em>Degradation Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Degradation Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRateUnit()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_DegradationRateUnit() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(9);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit <em>Binding Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Binding Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_BindingRateUnit() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(10);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit <em>Unbinding Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unbinding Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_UnbindingRateUnit() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(11);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getID <em>ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>ID</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getID()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_ID() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(12);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2439,6 +2693,62 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getMoleculeList <em>Molecule List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Molecule List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Device#getMoleculeList()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	public EReference getDevice_MoleculeList() {
+		return (EReference)deviceEClass.getEStructuralFeatures().get(7);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getOutputList <em>Output List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Output List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Device#getOutputList()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	public EReference getDevice_OutputList() {
+		return (EReference)deviceEClass.getEStructuralFeatures().get(8);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getInputList <em>Input List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Input List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Device#getInputList()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	public EReference getDevice_InputList() {
+		return (EReference)deviceEClass.getEStructuralFeatures().get(9);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getVariableAssignmentList <em>Variable Assignment List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variable Assignment List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Device#getVariableAssignmentList()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	public EReference getDevice_VariableAssignmentList() {
+		return (EReference)deviceEClass.getEStructuralFeatures().get(10);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2540,6 +2850,20 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getCell_ID() {
 		return (EAttribute)cellEClass.getEStructuralFeatures().get(6);
 	}
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Cell#getVariableAssignmentList <em>Variable Assignment List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variable Assignment List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Cell#getVariableAssignmentList()
+	 * @see #getCell()
+	 * @generated
+	 */
+	public EReference getCell_VariableAssignmentList() {
+		return (EReference)cellEClass.getEStructuralFeatures().get(7);
+	}
+
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}'.
@@ -3438,6 +3762,89 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getVariableAssignmentList <em>Variable Assignment List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variable Assignment List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getVariableAssignmentList()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EReference getRegion_VariableAssignmentList() {
+		return (EReference)regionEClass.getEStructuralFeatures().get(6);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment <em>EMF Variable Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>EMF Variable Assignment</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment
+	 * @generated
+	 */
+	public EClass getEMFVariableAssignment() {
+		return emfVariableAssignmentEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable Name</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName()
+	 * @see #getEMFVariableAssignment()
+	 * @generated
+	 */
+	public EAttribute getEMFVariableAssignment_VariableName() {
+		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable Attribute</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute()
+	 * @see #getEMFVariableAssignment()
+	 * @generated
+	 */
+	public EAttribute getEMFVariableAssignment_VariableAttribute() {
+		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnit()
+	 * @see #getEMFVariableAssignment()
+	 * @generated
+	 */
+	public EAttribute getEMFVariableAssignment_Unit() {
+		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Amount</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount()
+	 * @see #getEMFVariableAssignment()
+	 * @generated
+	 */
+	public EAttribute getEMFVariableAssignment_Amount() {
+		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(3);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3558,6 +3965,8 @@ public class IblPackage extends EPackageImpl {
 		createEReference(ruleEClass, RULE__LEFT_HAND_SIDE);
 		createEReference(ruleEClass, RULE__RIGHT_HAND_SIDE);
 		createEAttribute(ruleEClass, RULE__ID);
+		createEAttribute(ruleEClass, RULE__FORWARD_RATE_UNIT);
+		createEAttribute(ruleEClass, RULE__REVERSE_RATE_UNIT);
 
 		molecularSpeciesEClass = createEClass(MOLECULAR_SPECIES);
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__DISPLAY_NAME);
@@ -3569,6 +3978,10 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__UNBINDING_RATE);
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__BIOLOGICAL_TYPE);
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__SEQUENCE);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__BINDING_RATE_UNIT);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__UNBINDING_RATE_UNIT);
+		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__ID);
 
 		deviceEClass = createEClass(DEVICE);
 		createEAttribute(deviceEClass, DEVICE__DISPLAY_NAME);
@@ -3578,6 +3991,10 @@ public class IblPackage extends EPackageImpl {
 		createEReference(deviceEClass, DEVICE__ATGC_COMMAND_LIST);
 		createEAttribute(deviceEClass, DEVICE__ID);
 		createEReference(deviceEClass, DEVICE__KINETICS);
+		createEReference(deviceEClass, DEVICE__MOLECULE_LIST);
+		createEReference(deviceEClass, DEVICE__OUTPUT_LIST);
+		createEReference(deviceEClass, DEVICE__INPUT_LIST);
+		createEReference(deviceEClass, DEVICE__VARIABLE_ASSIGNMENT_LIST);
 
 		cellEClass = createEClass(CELL);
 		createEAttribute(cellEClass, CELL__DISPLAY_NAME);
@@ -3587,6 +4004,7 @@ public class IblPackage extends EPackageImpl {
 		createEReference(cellEClass, CELL__MOLECULE_LIST);
 		createEReference(cellEClass, CELL__ATGC_COMMAND_LIST);
 		createEAttribute(cellEClass, CELL__ID);
+		createEReference(cellEClass, CELL__VARIABLE_ASSIGNMENT_LIST);
 
 		atgcDirectiveEClass = createEClass(ATGC_DIRECTIVE);
 		createEAttribute(atgcDirectiveEClass, ATGC_DIRECTIVE__COMMAND);
@@ -3678,6 +4096,13 @@ public class IblPackage extends EPackageImpl {
 		createEReference(regionEClass, REGION__MOLECULE_LIST);
 		createEAttribute(regionEClass, REGION__ID);
 		createEReference(regionEClass, REGION__CELL_LIST);
+		createEReference(regionEClass, REGION__VARIABLE_ASSIGNMENT_LIST);
+
+		emfVariableAssignmentEClass = createEClass(EMF_VARIABLE_ASSIGNMENT);
+		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME);
+		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE);
+		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__UNIT);
+		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__AMOUNT);
 
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
@@ -3902,6 +4327,8 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getRule_LeftHandSide(), this.getMolecularSpecies(), null, "leftHandSide", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_RightHandSide(), this.getMolecularSpecies(), null, "rightHandSide", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRule_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ForwardRateUnit(), ecorePackage.getEString(), "forwardRateUnit", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ReverseRateUnit(), ecorePackage.getEString(), "reverseRateUnit", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(molecularSpeciesEClass, MolecularSpecies.class, "MolecularSpecies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMolecularSpecies_DisplayName(), ecorePackage.getEString(), "DisplayName", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3913,6 +4340,10 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getMolecularSpecies_UnbindingRate(), ecorePackage.getEDoubleObject(), "unbindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_BiologicalType(), ecorePackage.getEString(), "biologicalType", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_DegradationRateUnit(), ecorePackage.getEString(), "degradationRateUnit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_BindingRateUnit(), ecorePackage.getEString(), "bindingRateUnit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_UnbindingRateUnit(), ecorePackage.getEString(), "unbindingRateUnit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_ID(), ecorePackage.getEString(), "ID", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDevice_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3922,6 +4353,10 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getDevice_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDevice_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_Kinetics(), this.getKinetics(), null, "kinetics", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_OutputList(), this.getMolecularSpecies(), null, "outputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_InputList(), this.getMolecularSpecies(), null, "inputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3931,6 +4366,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getCell_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCell_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCell_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atgcDirectiveEClass, ATGCDirective.class, "ATGCDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getATGCDirective_Command(), ecorePackage.getEString(), "command", null, 0, 1, ATGCDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4022,6 +4458,13 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getRegion_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRegion_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRegion_CellList(), this.getCell(), null, "cellList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(emfVariableAssignmentEClass, EMFVariableAssignment.class, "EMFVariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEMFVariableAssignment_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEMFVariableAssignment_VariableAttribute(), ecorePackage.getEString(), "variableAttribute", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEMFVariableAssignment_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEMFVariableAssignment_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -4284,6 +4727,22 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute RULE__ID = eINSTANCE.getRule_ID();
 
 		/**
+		 * The meta object literal for the '<em><b>Forward Rate Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RULE__FORWARD_RATE_UNIT = eINSTANCE.getRule_ForwardRateUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Reverse Rate Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RULE__REVERSE_RATE_UNIT = eINSTANCE.getRule_ReverseRateUnit();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4366,6 +4825,38 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute MOLECULAR_SPECIES__SEQUENCE = eINSTANCE.getMolecularSpecies_Sequence();
 
 		/**
+		 * The meta object literal for the '<em><b>Degradation Rate Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT = eINSTANCE.getMolecularSpecies_DegradationRateUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Binding Rate Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__BINDING_RATE_UNIT = eINSTANCE.getMolecularSpecies_BindingRateUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Unbinding Rate Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__UNBINDING_RATE_UNIT = eINSTANCE.getMolecularSpecies_UnbindingRateUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__ID = eINSTANCE.getMolecularSpecies_ID();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4432,6 +4923,38 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference DEVICE__KINETICS = eINSTANCE.getDevice_Kinetics();
 
 		/**
+		 * The meta object literal for the '<em><b>Molecule List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference DEVICE__MOLECULE_LIST = eINSTANCE.getDevice_MoleculeList();
+
+		/**
+		 * The meta object literal for the '<em><b>Output List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference DEVICE__OUTPUT_LIST = eINSTANCE.getDevice_OutputList();
+
+		/**
+		 * The meta object literal for the '<em><b>Input List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference DEVICE__INPUT_LIST = eINSTANCE.getDevice_InputList();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Assignment List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference DEVICE__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getDevice_VariableAssignmentList();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4496,6 +5019,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute CELL__ID = eINSTANCE.getCell_ID();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Assignment List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference CELL__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getCell_VariableAssignmentList();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}' class.
@@ -5106,6 +5637,56 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference REGION__CELL_LIST = eINSTANCE.getRegion_CellList();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Assignment List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference REGION__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getRegion_VariableAssignmentList();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment <em>EMF Variable Assignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
+		 * @generated
+		 */
+		public static final EClass EMF_VARIABLE_ASSIGNMENT = eINSTANCE.getEMFVariableAssignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME = eINSTANCE.getEMFVariableAssignment_VariableName();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE = eINSTANCE.getEMFVariableAssignment_VariableAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__UNIT = eINSTANCE.getEMFVariableAssignment_Unit();
+
+		/**
+		 * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__AMOUNT = eINSTANCE.getEMFVariableAssignment_Amount();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

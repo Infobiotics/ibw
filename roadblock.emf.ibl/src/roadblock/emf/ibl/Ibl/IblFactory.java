@@ -89,6 +89,7 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.NOT_STATE_FORMULA: return (EObject)createNotStateFormula();
 			case IblPackage.STATE_EXPRESSION: return (EObject)createStateExpression();
 			case IblPackage.REGION: return (EObject)createRegion();
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT: return (EObject)createEMFVariableAssignment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -378,6 +379,16 @@ public class IblFactory extends EFactoryImpl {
 	public Region createRegion() {
 		Region region = new Region();
 		return region;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EMFVariableAssignment createEMFVariableAssignment() {
+		EMFVariableAssignment emfVariableAssignment = new EMFVariableAssignment();
+		return emfVariableAssignment;
 	}
 
 	/**

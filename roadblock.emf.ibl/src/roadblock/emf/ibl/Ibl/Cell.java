@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getATGCCommandList <em>ATGC Command List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
  * </ul>
  * </p>
  *
@@ -135,6 +136,16 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getVariableAssignmentList() <em>Variable Assignment List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariableAssignmentList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EMFVariableAssignment> variableAssignmentList;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -361,6 +372,27 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Variable Assignment List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Variable Assignment List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Variable Assignment List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_VariableAssignmentList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<EMFVariableAssignment> getVariableAssignmentList() {
+		if (variableAssignmentList == null) {
+			variableAssignmentList = new EObjectContainmentEList<EMFVariableAssignment>(EMFVariableAssignment.class, this, IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST);
+		}
+		return variableAssignmentList;
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -388,6 +420,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
 			case IblPackage.CELL__ATGC_COMMAND_LIST:
 				return ((InternalEList<?>)getATGCCommandList()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				return ((InternalEList<?>)getVariableAssignmentList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -414,6 +448,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 				return getATGCCommandList();
 			case IblPackage.CELL__ID:
 				return getID();
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				return getVariableAssignmentList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -452,6 +488,10 @@ public class Cell extends EObjectImpl implements IVisitable {
 			case IblPackage.CELL__ID:
 				setID((String)newValue);
 				return;
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				getVariableAssignmentList().clear();
+				getVariableAssignmentList().addAll((Collection<? extends EMFVariableAssignment>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -485,6 +525,9 @@ public class Cell extends EObjectImpl implements IVisitable {
 			case IblPackage.CELL__ID:
 				setID(ID_EDEFAULT);
 				return;
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				getVariableAssignmentList().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -511,6 +554,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 				return atgcCommandList != null && !atgcCommandList.isEmpty();
 			case IblPackage.CELL__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				return variableAssignmentList != null && !variableAssignmentList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

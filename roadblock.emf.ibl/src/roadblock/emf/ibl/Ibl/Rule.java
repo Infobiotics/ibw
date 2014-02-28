@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getLeftHandSide <em>Left Hand Side</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getRightHandSide <em>Right Hand Side</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getID <em>ID</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}</li>
  * </ul>
  * </p>
  *
@@ -161,6 +163,46 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getForwardRateUnit() <em>Forward Rate Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForwardRateUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FORWARD_RATE_UNIT_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getForwardRateUnit() <em>Forward Rate Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForwardRateUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected String forwardRateUnit = FORWARD_RATE_UNIT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReverseRateUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REVERSE_RATE_UNIT_EDEFAULT = "";
+
+	/**
+	 * The cached value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReverseRateUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected String reverseRateUnit = REVERSE_RATE_UNIT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -389,6 +431,74 @@ public class Rule extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Forward Rate Unit</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Forward Rate Unit</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Forward Rate Unit</em>' attribute.
+	 * @see #setForwardRateUnit(String)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRateUnit()
+	 * @model default=""
+	 * @generated
+	 */
+	public String getForwardRateUnit() {
+		return forwardRateUnit;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Forward Rate Unit</em>' attribute.
+	 * @see #getForwardRateUnit()
+	 * @generated
+	 */
+	public void setForwardRateUnit(String newForwardRateUnit) {
+		String oldForwardRateUnit = forwardRateUnit;
+		forwardRateUnit = newForwardRateUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE_UNIT, oldForwardRateUnit, forwardRateUnit));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Reverse Rate Unit</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Reverse Rate Unit</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Reverse Rate Unit</em>' attribute.
+	 * @see #setReverseRateUnit(String)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRateUnit()
+	 * @model default=""
+	 * @generated
+	 */
+	public String getReverseRateUnit() {
+		return reverseRateUnit;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Reverse Rate Unit</em>' attribute.
+	 * @see #getReverseRateUnit()
+	 * @generated
+	 */
+	public void setReverseRateUnit(String newReverseRateUnit) {
+		String oldReverseRateUnit = reverseRateUnit;
+		reverseRateUnit = newReverseRateUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_UNIT, oldReverseRateUnit, reverseRateUnit));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -436,6 +546,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				return getRightHandSide();
 			case IblPackage.RULE__ID:
 				return getID();
+			case IblPackage.RULE__FORWARD_RATE_UNIT:
+				return getForwardRateUnit();
+			case IblPackage.RULE__REVERSE_RATE_UNIT:
+				return getReverseRateUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -472,6 +586,12 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__ID:
 				setID((String)newValue);
 				return;
+			case IblPackage.RULE__FORWARD_RATE_UNIT:
+				setForwardRateUnit((String)newValue);
+				return;
+			case IblPackage.RULE__REVERSE_RATE_UNIT:
+				setReverseRateUnit((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -505,6 +625,12 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__ID:
 				setID(ID_EDEFAULT);
 				return;
+			case IblPackage.RULE__FORWARD_RATE_UNIT:
+				setForwardRateUnit(FORWARD_RATE_UNIT_EDEFAULT);
+				return;
+			case IblPackage.RULE__REVERSE_RATE_UNIT:
+				setReverseRateUnit(REVERSE_RATE_UNIT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -531,6 +657,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				return rightHandSide != null && !rightHandSide.isEmpty();
 			case IblPackage.RULE__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case IblPackage.RULE__FORWARD_RATE_UNIT:
+				return FORWARD_RATE_UNIT_EDEFAULT == null ? forwardRateUnit != null : !FORWARD_RATE_UNIT_EDEFAULT.equals(forwardRateUnit);
+			case IblPackage.RULE__REVERSE_RATE_UNIT:
+				return REVERSE_RATE_UNIT_EDEFAULT == null ? reverseRateUnit != null : !REVERSE_RATE_UNIT_EDEFAULT.equals(reverseRateUnit);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -555,6 +685,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 		result.append(reverseRate);
 		result.append(", ID: ");
 		result.append(id);
+		result.append(", forwardRateUnit: ");
+		result.append(forwardRateUnit);
+		result.append(", reverseRateUnit: ");
+		result.append(reverseRateUnit);
 		result.append(')');
 		return result.toString();
 	}

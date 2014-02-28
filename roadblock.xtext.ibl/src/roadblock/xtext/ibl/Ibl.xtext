@@ -338,8 +338,12 @@ VariableExpressionObject:
 ;
 
 AtomicVariableExpressionObject:
-	{AtomicVariableExpressionObject}
-	variable=VariableName | attribute=VariableAttribute | complex=VariableComplex | value=REAL | quantity=Quantity | string=STRING
+	{VariableReference} variable = VariableName | 
+	{VariableAttibute} attribute=VariableAttribute | 
+	{VariableComplex} complex=VariableComplex | 
+	{RealConstant} value=REAL | 
+	{Quantity} quantity = Quantity | 
+	{StringConstant} string=STRING
 ;
 
 CompoundVariableExpressionObject:
@@ -358,15 +362,17 @@ VariableExpressionOperator:
 // rule definition
 RuleDefinition:
 	{RuleDefinition}
-	'RULE' name=VariableName ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->'|reversible?='<->') (rhs+=RuleObject ('+' rhs+=RuleObject)*)?
+	'RULE' name=VariableName ':' (lhs+= RuleObject ('+' lhs+=RuleObject)*)? ('->'|reversible?='<->') (rhs += RuleObject('+' rhs+=RuleObject)*)?
 ;
 
-// left or right hand side of rule
 RuleObject:
-	{RuleObject}
-	object=VariableKind 
+	VariableKind | Outside
 ;
 
+Outside:
+	{Outside}
+	'OUTSIDE'
+;
 ////////////////
 // atgc rules //
 ////////////////

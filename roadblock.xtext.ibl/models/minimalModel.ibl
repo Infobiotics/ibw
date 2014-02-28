@@ -22,29 +22,32 @@ define factoryCell typeof CELL(){
 				RNA mrna1
 		
 				RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
-				promoterBinding.forwardRate = PnahR.bindingRate 
-				promoterBinding.reverseRate = PnahR.unbindingRate 
+				promoterBinding.forwardRate = 11 s^-1 
+				promoterBinding.reverseRate = 12 s^-1 
 			
 				RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
-				transcription.forwardRate = rates.transcriptionRate
+				transcription.forwardRate = 13 s^-1
 					
 				RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
-				translationInitiation.forwardRate = rates.ribosomeBinding
-				translationInitiation.reverseRate = rates.ribosomeUnbinding
+				translationInitiation.forwardRate = 14 s^-1
+				translationInitiation.reverseRate = 15 s^-1
 			
-				RULE translation : mrna1~ribosome -> mrna1~ribosome + xylS2
-				translation.forwardRate = rates.translationRate
+				RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
+				translation.forwardRate = 16 s^-1 
 			              
                 }
-              RULE exportProtein: xylS2 -> OUTSIDE  
+              RULE exportProtein: XylS2 -> OUTSIDE  
+              exportProtein.forwardRate = 17 s^-1 
 }
-
-  
+   
 define site typeof REGION () {
-        MOLECULE AHL = new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM)
-        CELL myCell = new factoryCell()
+        MOLECULE AHL = new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM, URI ='metaboliteDB')
+        CELL myCell = new factoryCell()       
+		PROTEIN XylS2 = new PROTEIN(URI = 'proteinDB')
+		
+        RULE XylS2Consumption: AHL + XylS2 -> AHL~XylS2 
+        XylS2Consumption.forwardRate = 42 s^-1
         
-        RULE xylS2Consumption: AHL + xylS2 -> AHL~xylS2
         VERIFY [AHL < 5 uM] EVENTUALLY HOLDS // should be TRUE
-        VERIFY [AHL~xylS2 < 50 uM] ALWAYS HOLDS // should be FALSE
+        VERIFY [AHL~XylS2 < 50 uM] ALWAYS HOLDS // should be FALSE
 }
