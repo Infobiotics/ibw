@@ -20,7 +20,6 @@ class IblValidatorTest {
 
 	@Test 
 	def void testRuleOutside(){ // OUTSIDE must be used on its own, if used at all
-		val model = ""
 		
 		'''
 		define dummyProcess typeof PROCESS(){

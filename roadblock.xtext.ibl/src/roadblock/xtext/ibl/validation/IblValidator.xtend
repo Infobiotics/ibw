@@ -138,7 +138,7 @@ class IblValidator extends AbstractIblValidator {
 		)
 		}
 	
-	@Check 
+	@Check  // OUTSIDE must be used on its own, if used at all
 	def checkRuleOutside(RuleDefinition rule){
 		//number of OUTSIDE on the left hand side
 		val left = rule.lhs
