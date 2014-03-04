@@ -18,6 +18,53 @@ class IblValidatorTest {
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
 
+	@Test 
+	def void testRuleOutside(){ // OUTSIDE must be used on its own, if used at all
+		val model = ""
+		
+		'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule: aaa + OUTSIDE -> OUTSIDE			
+		}
+		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
+
+		'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule: aaa + OUTSIDE -> OUTSIDE + ccc			
+		}
+		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
+		
+		'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule:  OUTSIDE -> OUTSIDE + ccc			
+		}
+		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
+
+		'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule: aaa + bbb -> OUTSIDE 
+		}
+		'''.parse.assertNoErrors
+
+		'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule: OUTSIDE -> aaa + bbb 
+		}
+		'''.parse.assertNoErrors
+		
+	'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule: OUTSIDE + xxx -> aaa + bbb 
+		}
+		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used on its own")
+
+	'''
+		define dummyProcess typeof PROCESS(){
+			RULE myRule: aaa + bbb -> OUTSIDE + zzz 
+		}
+		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used on its own")
+			
+	}
 
 	@Test // testing all possible function body members in PROCESS
 	def void testWrongMembersOfProcess() {

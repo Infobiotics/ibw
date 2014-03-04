@@ -21,6 +21,8 @@ import roadblock.xtext.ibl.ibl.PlasmidInstantiation
 import roadblock.xtext.ibl.ibl.ProcessInstantiation
 import roadblock.xtext.ibl.ibl.SystemInstantiation
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.RuleDefinition
+import roadblock.xtext.ibl.ibl.Outside
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -45,7 +47,6 @@ class IblValidator extends AbstractIblValidator {
 	def getDefinitionContainer(FunctionBodyMember definition){
 		definition.eContainer.eContainer // have to go back twice now: first container is functionContent
 	}
-
 
 // Generate an error if the function body member is in the wrong container
 	def void generateWrongContainerError(
@@ -136,5 +137,28 @@ class IblValidator extends AbstractIblValidator {
 			IblPackage::eINSTANCE.systemInstantiation_Constructor
 		)
 		}
+	
+	@Check 
+	def checkRuleOutside(RuleDefinition rule){
+		//number of OUTSIDE on the left hand side
+		val left = rule.lhs
+		val n1 = left.filter(Outside).size
+		
+		//number of OUTSIDE on the right hand side
+		val right = rule.rhs
+		val n2 = right.filter(Outside).size
+		
+		// error if n1 + n2 > 1
+		if(n1 + n2 >1)
+			error("OUTSIDE must be used at most once", IblPackage::eINSTANCE.ruleDefinition_Name)
+		
+		// error if not used on its own
+		if((n1 == 1) && (left.size > 1))
+				error("OUTSIDE must be used on its own", IblPackage::eINSTANCE.ruleDefinition_Lhs)
+
+		if((n2 == 1) && (right.size > 1))
+				error("OUTSIDE must be used on its own", IblPackage::eINSTANCE.ruleDefinition_Rhs)
+				
+	}
 	
 }
