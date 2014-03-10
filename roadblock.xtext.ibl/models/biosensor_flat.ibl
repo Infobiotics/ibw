@@ -1,87 +1,11 @@
-define ConstitutiveProteinExpression typeof PROCESS (
-	PROMOTER promoter:input,
-	GENE gene1:input,
-	PROTEIN protein1:output,
-	HASH<RATE> rates:optional
-) 
-{
-	RNA mrna1
-		
-	
-	RULE promoterBinding : promoter + rnaP <-> promoter~rnaP	
-	promoterBinding.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.
-	promoterBinding.reverseRate = promoter.unbindingRate | rates.unbindingRate
-
-	RULE transcription : promoter~rnaP -> promoter~rnaP + mrna1
-	transcription.forwardRate = rates.transcriptionRate
-
-	RULE mrnaDegradation : mrna1 ->
-	mrnaDegradation.forwardRate = rates.rnaDegratationRate
-
-	RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
-	translationInitiation.forwardRate = rates.ribosomeBinding
-	translationInitiation.reverseRate = rates.ribosomeUnbinding
-
-	RULE translation : mrna1~ribosome -> mrna1~ribosome + protein1
-	translation.forwardRate = rates.translationRate
-
-//	RULE proteinDegradation : protein1 ->
-//	R6.rate = protein1.degradationRate | rates.proteinDegradationRate
-} USES RIBOSOME ribosome, RNA rnaP
-
-define RegulatedProteinExpression typeof PROCESS (
-	MOLECULE regulator:input,
-	PROMOTER promoter:input,
-	GENE gene:input,
-	PROTEIN protein:output,
-	RATE rates:optional
-)
-{
-	
-	RULE R1 : regulator + promoter <-> regulator~promoter
-	R1.rate = promoter.bindingRate | rate.bindingRate
-
-	RULE R2 : regulator~promoter -> regulator~promoter + rna~gene~RNAP
-	R2.rate = promoter.transcriptionRate
-
-	RULE R3 : rna~gene~RNAP -> rna~gene
-	R3.rate = rate.transcriptionRate
-
-	RULE R4 : rna~gene ->
-	R4.rate = rates.degradationRate | rates.RNADegradationRate
-
-	RULE R5 : rna~gene -> rna~gene + gene~ribosome
-	R5.rate = rate.translationRate1
-
-	RULE R6 : gene~ribosome -> protein
-	R6.rate = rate.translationRate2
-
-	RULE R7 : protein ->
-	R7.rate = protein.degradationRate | rates.proteinDegradationRate
-} USES RIBOSOME ribosome, RNA rnaP
-
-
-define DualPromoterProteinExpression typeof PROCESS(
-        MOLECULE signal1: input,
-        PROMOTER promoter1: input,
-        MOLECULE signal2: input,
-        PROMOTER promoter2: input,
-        GENE gene: input,
-        PROTEIN protein: output){
-
-        // Model the dual promoter as an OR
-
-        UpRegulatedProteinExpression signal1UpRegulated = new UpRegulatedProteinExpression(signal = signal1, promoter = promoter1, gene = gene, protein = protein    )   
-        UpRegulatedProteinExpression signal2UpRegulated = new UpRegulatedProteinExpression(signal = signal2, promoter = promoter2, gene = gene, protein = protein    )
-
-}
-
-define SensorCell typeof CELL(MOLECULE signal){
+// Flat version of the sensor cell: no process, no inheritance.
+define SensorCell typeof CELL(){
         // define molecular elements
         RIBOSOME ribosome: observable
         RNA rnaP = new RNA(displayName = "XYZ") : observable
 
-        CHASSIS chassis = new CHASSIS(organism = "ecoli")
+//        CHASSIS chassis = new CHASSIS(organism = "ecoli") // NOT YET IMPLEMENTED
+//        INTEGER plasmidNumber = 500 // NOT YET IMPLEMENTED
 
         PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
         GENE nahR = new GENE(URI = "biofab://")
@@ -95,40 +19,73 @@ define SensorCell typeof CELL(MOLECULE signal){
         GENE rFP = new GENE(sequence = "TTGTGTG")
         PROTEIN RFP = new PROTEIN()
 
-        INTEGER plasmidNumber = 500
 
-        // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
-        DEVICE D1 = new DEVICE(parts = [PnahR, nahR, lasR])(input = [SA~NahR], output = [NahR, LasR]){
-                PROCESS process1 = new ConstitutiveProteinExpression(promoter = PnahR, gene = nahR, protein = NahR)
+
+        DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
+       	// constitutively produces NahR and LasR
+			RNA mrna1
+		
+			RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
+			promoterBinding.forwardRate = 1 s^-1 
+			promoterBinding.reverseRate = 1 s^-1
+		
+			RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
+			transcription.forwardRate = 1 s^-1
+		
+			RULE mrnaDegradation : mrna1 ->
+			mrnaDegradation.forwardRate = 1 s^-1
+		
+			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+			translationInitiation.forwardRate = 1 s^-1
+			translationInitiation.reverseRate = 1 s^-1
+		
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + NahR
+			translation.forwardRate = 1 s^-1
+
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + LahR
+			translation.forwardRate = 1 s^-1
    }
 
-        DEVICE D2 = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
-                // how the parts are arranged
-                ATGC ARRANGE : Psal, xylS2
-                // rates
-                RATE myRates = new RATE(bindingRate = 10.0 s^-1, transcriptionRate = 3 min^-1)
-                // processes
-                PROCESS process1 = new UpRegulatedProteinExpression
-                        (regulator = SA~NahR, promoter = Psal, gene = xylS2, protein = XylS2, rates = myRates)
-                // properties should be allowed for device and cell levels
-                VERIFY [Xysl2 > 0 uM ] EVENTUALLY HOLDS
+        DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
+        // produces XylS2, upregulated by SA~NahR
+			ATGC ARRANGE : Psal, xylS2
+
+			RNA rna1	
+		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
+			RULE promoterBinding : SA~NahR~Psal + rnaP <-> SA~NahR~Psal~rnaP	
+			RULE transcription : SA~NahR~Psal~rnaP -> SA~NahR~Psal~rnaP + mrna1
+			RULE mrnaDegradation : mrna1 ->
+			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
+			
+            VERIFY [Xysl2 > 0 uM ] EVENTUALLY HOLDS
         }
 
-        DEVICE D3 = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
-                PROCESS process1 = new DualPromoterProteinExpression(
-                        signal1 = SA~XylS2,
-                        promoter1 = Pm,
-                        signal2 = AHL~LasR,
-                        promoter2 = PlasR,
-                        gene = gFP,
-                        protein = GFP)
-                VERIFY [ [ NOT [ RFP > 50 uM ] ] IMPLIES [[ RFP < 40 uM ] AND [ RFP < 100 uM ] ]] EVENTUALLY HOLDS
+        DEVICE GFPProduction = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
+        // produces GFP, upregulated by SA~XylS2 OR AHL~LasR (dual promoter)
+
+			RNA mrna1	
+			// binds with SA~Xyls2 and Pm
+		    RULE regulation : SA~XylS2 + Pm <-> SA~XylS2~Pm
+			RULE promoterBinding : SA~XylS2~Pm + rnaP <-> SA~XylS2~Pm~rnaP	
+			RULE transcription : SA~XylS2~Pm~rnaP -> SA~XylS2~Pm~rnaP + mrna1
+			// binds with AHL~LasR and PlasR
+		    RULE regulation : AHL~LasR + PlasR <-> AHL~LasR~PlasR
+			RULE promoterBinding : AHL~LasR~PlasR + rnaP <-> AHL~LasR~PlasR~rnaP	
+			RULE transcription : AHL~LasR~PlasR~rnaP -> AHL~LasR~PlasR~rnaP + mrna1
+			
+			// from there, usual steps for up regulation			
+			RULE mrnaDegradation : mrna1 ->
+			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
+			
+            VERIFY [ [ NOT [ RFP > 50 uM ] ] IMPLIES [[ RFP < 40 uM ] AND [ RFP < 100 uM ] ]] EVENTUALLY HOLDS
         }
 
          // INSIDE and OUTSIDE
 
          // additional rules
-         RULE R1 : signal + NahR <-> signal~NahR
+         RULE R1 : SA + NahR <-> SA~NahR
          R1.forwardRate = 1 s^-1
          R1.reverseRate = 1 s^-1
  
@@ -136,7 +93,7 @@ define SensorCell typeof CELL(MOLECULE signal){
          R2.forwardRate = 1 s^-1
          R2.reverseRate = 1 s^-1
  
-         RULE signalConsumption : OUTSIDE -> signal
+         RULE SAConsumption : OUTSIDE -> SA
          signalConsumption.rate = 1 min^-1
  
          RULE AHLConsumption : OUTSIDE -> AHL
@@ -160,5 +117,5 @@ define SensorCell typeof CELL(MOLECULE signal){
 }
 define site1 typeof REGION () {
         MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
-        SensorCell myCell = new SensorCell(signal = SA, displayName = "A Cell")
+        CELL myCell = new SensorCell()
 }
