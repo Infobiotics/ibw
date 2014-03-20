@@ -36,7 +36,7 @@ class IblGenerator implements IGenerator {
 	private PropertyBuilder propertyBuilder = new PropertyBuilder();
 	private PropertyTranslationManager translationManager = PropertyTranslationManager::instance;
 
-	private ModelPopulation modelPopulater = new ModelPopulation();
+
 
 // export an EMF model to XML
 // via http://techblog.goelite.org/sending-emf-models-via-soap/
@@ -57,9 +57,10 @@ def public static String convertToXml(EObject eObject) throws IOException {
 //			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
 //		}
 
-		
+
+	    val ModelPopulation modelPopulater = new ModelPopulation();
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
-	
+
 
 		println()
 		println("After population")
