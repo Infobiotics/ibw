@@ -34,6 +34,7 @@ import roadblock.xtext.ibl.ibl.VariableAssignment
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment
 import roadblock.xtext.ibl.ibl.VariableAttribute
 import org.eclipse.emf.ecore.EObject
+import java.util.List
 
 class ModelPopulation extends IblSwitch<Object> {
 	var modelFactory = IblFactory::eINSTANCE;
@@ -45,6 +46,21 @@ class ModelPopulation extends IblSwitch<Object> {
 
 	def isPart(String molecule){
 		return BIOLOGICALPART.contains(molecule)
+	}
+	
+	def isComplex(String name){
+		name.contains('~')
+	}
+	
+	
+	def addComplexToContainer(Device device,String complexName){
+		if(device.moleculeList.filter[displayName == complexName].size == 0){
+			val complex = modelFactory.createMolecularSpecies
+			complex => [displayName = complexName
+				biologicalType = 'COMPLEX'
+				amount = 0.0 ]
+			device.moleculeList.add(complex)
+		}
 	}
 	//
 	// helpers to build the name of a variableKind (either VariableName or VariableComplex)
@@ -101,7 +117,7 @@ class ModelPopulation extends IblSwitch<Object> {
 							cell.displayName = name
 							emfModel.cellList.add(cell)
 							}
-					
+	
 			}
 
 			 }
@@ -127,6 +143,52 @@ class ModelPopulation extends IblSwitch<Object> {
 			EcoreUtil.delete(variableAssignment)
 				
 					
+		}
+		
+		// create molecular species instances for complexes
+		
+		for(rule: emfModel.eAllContents.toList.filter(Rule)){
+			// build list of unique complexes
+			var  complexList = rule.leftHandSide.filter[displayName.complex].map[displayName].toList
+			complexList.addAll(rule.rightHandSide.filter[displayName.complex].map[displayName])
+
+			// create the molecular species with the factory
+			
+			for(molecule: complexList){
+				
+				switch rule.eContainer {
+					Device: { 
+						val container = (rule.eContainer as Device)
+							if(container.moleculeList.filter[displayName == molecule].size == 0){
+							val complex = modelFactory.createMolecularSpecies
+							complex => [displayName = molecule
+								biologicalType = 'COMPLEX'
+								amount = 0.0 ]
+							container.moleculeList.add(complex)
+							}
+						}
+					Region: { 
+						val container = (rule.eContainer as Region)
+							if(container.moleculeList.filter[displayName == molecule].size == 0){
+							val complex = modelFactory.createMolecularSpecies
+							complex => [displayName = molecule
+								biologicalType = 'COMPLEX'
+								amount = 0.0 ]
+							container.moleculeList.add(complex)
+							}
+						}
+					Cell: { 
+						val container = (rule.eContainer as Cell)
+							if(container.moleculeList.filter[displayName == molecule].size == 0){
+							val complex = modelFactory.createMolecularSpecies
+							complex => [displayName = molecule
+								biologicalType = 'COMPLEX'
+								amount = 0.0 ]
+							container.moleculeList.add(complex)
+							}
+						}		
+			}			
+		}
 		}
 		
 		return emfModel;
