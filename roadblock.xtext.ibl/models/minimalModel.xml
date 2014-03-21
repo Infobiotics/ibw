@@ -8,6 +8,7 @@
     </ruleList>
     <moleculeList DisplayName="AHL" URI="metaboliteDB" amount="100.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="MOLECULE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="metaboliteDB"/>
     <moleculeList DisplayName="XylS2" URI="proteinDB" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROTEIN" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="proteinDB"/>
+    <moleculeList DisplayName="AHL~XylS2" unit="uM" biologicalType="COMPLEX"/>
     <cellList displayName="myCell">
       <deviceList displayName="D1">
         <ruleList displayName="promoterBinding" isBidirectional="true" forwardRate="11.0" reverseRate="12.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
@@ -51,6 +52,8 @@
           <rightHandSide DisplayName="XylS2"/>
         </ruleList>
         <moleculeList DisplayName="mrna1" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RNA" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="mrna1"/>
+        <moleculeList DisplayName="PnahR~rnaP" unit="uM" biologicalType="COMPLEX"/>
+        <moleculeList DisplayName="mrna1~ribosome" unit="uM" biologicalType="COMPLEX"/>
       </deviceList>
       <ruleList displayName="exportProtein" forwardRate="17.0" forwardRateUnit="s^-1">
         <leftHandSide DisplayName="XylS2"/>

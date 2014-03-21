@@ -53,13 +53,14 @@ class ModelPopulation extends IblSwitch<Object> {
 	}
 	
 	
-	def addComplexToContainer(Device device,String complexName){
-		if(device.moleculeList.filter[displayName == complexName].size == 0){
+	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName){
+		if(moleculeList.filter[displayName == complexName].size == 0){
 			val complex = modelFactory.createMolecularSpecies
 			complex => [displayName = complexName
 				biologicalType = 'COMPLEX'
-				amount = 0.0 ]
-			device.moleculeList.add(complex)
+				amount = 0.0 
+				unit = "uM"]
+			moleculeList.add(complex)
 		}
 	}
 	//
@@ -119,7 +120,7 @@ class ModelPopulation extends IblSwitch<Object> {
 							}
 	
 			}
-
+ 
 			 }
 		// remove the abstract classes
 		emfModel.cellList.clear
@@ -146,51 +147,30 @@ class ModelPopulation extends IblSwitch<Object> {
 		}
 		
 		// create molecular species instances for complexes
-		
+		// go through every rules		
 		for(rule: emfModel.eAllContents.toList.filter(Rule)){
-			// build list of unique complexes
+			// build list of complexes
 			var  complexList = rule.leftHandSide.filter[displayName.complex].map[displayName].toList
 			complexList.addAll(rule.rightHandSide.filter[displayName.complex].map[displayName])
 
-			// create the molecular species with the factory
-			
-			for(molecule: complexList){
-				
+			for(molecule: complexList){ // add each complex to the rule's container				
 				switch rule.eContainer {
 					Device: { 
 						val container = (rule.eContainer as Device)
-							if(container.moleculeList.filter[displayName == molecule].size == 0){
-							val complex = modelFactory.createMolecularSpecies
-							complex => [displayName = molecule
-								biologicalType = 'COMPLEX'
-								amount = 0.0 ]
-							container.moleculeList.add(complex)
-							}
+						container.moleculeList.addComplexToContainer(molecule)
 						}
 					Region: { 
 						val container = (rule.eContainer as Region)
-							if(container.moleculeList.filter[displayName == molecule].size == 0){
-							val complex = modelFactory.createMolecularSpecies
-							complex => [displayName = molecule
-								biologicalType = 'COMPLEX'
-								amount = 0.0 ]
-							container.moleculeList.add(complex)
-							}
+						container.moleculeList.addComplexToContainer(molecule)
 						}
 					Cell: { 
 						val container = (rule.eContainer as Cell)
-							if(container.moleculeList.filter[displayName == molecule].size == 0){
-							val complex = modelFactory.createMolecularSpecies
-							complex => [displayName = molecule
-								biologicalType = 'COMPLEX'
-								amount = 0.0 ]
-							container.moleculeList.add(complex)
-							}
-						}		
-			}			
+						container.moleculeList.addComplexToContainer(molecule)
+						}			
+				}
+			}
+			
 		}
-		}
-		
 		return emfModel;
 	}
 		
@@ -299,7 +279,7 @@ class ModelPopulation extends IblSwitch<Object> {
 							bindingRate = 1.0; 
 							unbindingRate = 1.0
 			]
-		
+		 
 		else 
 			molecule => [	amount = 0.0; unit = 'uM'; 
 							degradationRate = 1.0
@@ -307,7 +287,7 @@ class ModelPopulation extends IblSwitch<Object> {
 							unbindingRate = 1.0
 							
 			]
-
+ 
 		// defaults are overriden if specified in the constructor
 		for(parameter : variableDefinition.parameters){
 			switch parameter.name.buildVariableName {
