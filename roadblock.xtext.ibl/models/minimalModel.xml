@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <roadblock.emf.ibl:Model xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" displayName="The EMF Model" ID="TheEMFmodel">
   <regionList displayName="site">
-    <ruleList displayName="XylS2Consumption" forwardRate="42.0" forwardRateUnit="s^-1">
-      <leftHandSide DisplayName="AHL"/>
-      <leftHandSide DisplayName="XylS2"/>
-      <rightHandSide DisplayName="AHL~XylS2"/>
+    <ruleList displayName="XylS2Consumption" forwardRate="42.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
+      <leftHandSide DisplayName="AHL" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+      <leftHandSide DisplayName="XylS2" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+      <rightHandSide DisplayName="AHL~XylS2" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
     </ruleList>
     <moleculeList DisplayName="AHL" URI="metaboliteDB" amount="100.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="MOLECULE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="metaboliteDB"/>
-    <moleculeList DisplayName="XylS2" URI="proteinDB" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROTEIN" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="proteinDB"/>
-    <moleculeList DisplayName="AHL~XylS2" unit="uM" biologicalType="COMPLEX"/>
+    <moleculeList DisplayName="XylS2" URI="proteinDB" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROTEIN" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="proteinDB"/>
+    <moleculeList DisplayName="AHL~XylS2" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
     <cellList displayName="myCell">
       <deviceList displayName="D1">
         <ruleList displayName="promoterBinding" isBidirectional="true" forwardRate="11.0" reverseRate="12.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
-          <leftHandSide DisplayName="PnahR"/>
-          <leftHandSide DisplayName="rnaP"/>
-          <rightHandSide DisplayName="PnahR~rnaP"/>
+          <leftHandSide DisplayName="PnahR" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <leftHandSide DisplayName="rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="PnahR~rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <ruleList displayName="transcription" forwardRate="13.0" forwardRateUnit="s^-1">
-          <leftHandSide DisplayName="PnahR~rnaP"/>
-          <rightHandSide DisplayName="PnahR~rnaP"/>
-          <rightHandSide DisplayName="mrna1"/>
+        <ruleList displayName="transcription" forwardRate="13.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
+          <leftHandSide DisplayName="PnahR~rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="PnahR~rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="mrna1" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
         <ruleList displayName="translationInitiation" isBidirectional="true" forwardRate="14.0" reverseRate="15.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
-          <leftHandSide DisplayName="mrna1"/>
-          <leftHandSide DisplayName="ribosome"/>
-          <rightHandSide DisplayName="mrna1~ribosome"/>
+          <leftHandSide DisplayName="mrna1" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <leftHandSide DisplayName="ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <ruleList displayName="translation" forwardRate="16.0" forwardRateUnit="s^-1">
-          <leftHandSide DisplayName="mrna1~ribosome"/>
-          <rightHandSide DisplayName="mrna1~ribosome"/>
-          <rightHandSide DisplayName="XylS2"/>
+        <ruleList displayName="translation" forwardRate="16.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
+          <leftHandSide DisplayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="XylS2" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <ruleList displayName="promoterBinding" isBidirectional="true" forwardRate="1.0" reverseRate="1.0">
-          <leftHandSide DisplayName="PnahR"/>
-          <leftHandSide DisplayName="rnaP"/>
-          <rightHandSide DisplayName="PnahR~rnaP"/>
+        <ruleList displayName="promoterBinding" isBidirectional="true" forwardRate="1.0" reverseRate="1.0" forwardRateUnit="" reverseRateUnit="s^-1">
+          <leftHandSide DisplayName="PnahR" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <leftHandSide DisplayName="rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="PnahR~rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <ruleList displayName="transcription" forwardRate="1.0">
-          <leftHandSide DisplayName="PnahR~rnaP"/>
-          <rightHandSide DisplayName="PnahR~rnaP"/>
-          <rightHandSide DisplayName="mrna1"/>
+        <ruleList displayName="transcription" forwardRate="1.0" forwardRateUnit="" reverseRateUnit="s^-1">
+          <leftHandSide DisplayName="PnahR~rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="PnahR~rnaP" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="mrna1" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <ruleList displayName="translationInitiation" isBidirectional="true" forwardRate="1.0" reverseRate="1.0">
-          <leftHandSide DisplayName="mrna1"/>
-          <leftHandSide DisplayName="ribosome"/>
-          <rightHandSide DisplayName="mrna1~ribosome"/>
+        <ruleList displayName="translationInitiation" isBidirectional="true" forwardRate="1.0" reverseRate="1.0" forwardRateUnit="" reverseRateUnit="s^-1">
+          <leftHandSide DisplayName="mrna1" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <leftHandSide DisplayName="ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <ruleList displayName="translation" forwardRate="1.0">
-          <leftHandSide DisplayName="mrna1~ribosome"/>
-          <rightHandSide DisplayName="mrna1~ribosome"/>
-          <rightHandSide DisplayName="XylS2"/>
+        <ruleList displayName="translation" forwardRate="1.0" forwardRateUnit="" reverseRateUnit="s^-1">
+          <leftHandSide DisplayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+          <rightHandSide DisplayName="XylS2" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
-        <moleculeList DisplayName="mrna1" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RNA" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="mrna1"/>
-        <moleculeList DisplayName="PnahR~rnaP" unit="uM" biologicalType="COMPLEX"/>
-        <moleculeList DisplayName="mrna1~ribosome" unit="uM" biologicalType="COMPLEX"/>
+        <moleculeList DisplayName="mrna1" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RNA" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="mrna1"/>
+        <moleculeList DisplayName="PnahR~rnaP" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+        <moleculeList DisplayName="mrna1~ribosome" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
       </deviceList>
-      <ruleList displayName="exportProtein" forwardRate="17.0" forwardRateUnit="s^-1">
-        <leftHandSide DisplayName="XylS2"/>
-        <rightHandSide DisplayName="OUTSIDE" biologicalType="OUTSIDE"/>
+      <ruleList displayName="exportProtein" forwardRate="17.0" forwardRateUnit="s^-1" reverseRateUnit="s^-1">
+        <leftHandSide DisplayName="XylS2" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+        <rightHandSide DisplayName="OUTSIDE" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="OUTSIDE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
       </ruleList>
-      <moleculeList DisplayName="ribosome" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RIBOSOME" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="ribosome"/>
-      <moleculeList DisplayName="rnaP" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RNA" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="rnaP"/>
-      <moleculeList DisplayName="chassis" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="CHASSIS" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="chassis"/>
-      <moleculeList DisplayName="PnahR" URI="biobricks://..." amount="1.0" unit="molecule" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROMOTER" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="biobricks://..."/>
-      <moleculeList DisplayName="xylS2" amount="1.0" unit="molecule" bindingRate="1.0" unbindingRate="1.0" biologicalType="GENE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="xylS2"/>
-      <moleculeList DisplayName="XylS2" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROTEIN" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="XylS2"/>
+      <moleculeList DisplayName="ribosome" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RIBOSOME" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="ribosome"/>
+      <moleculeList DisplayName="rnaP" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RNA" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="rnaP"/>
+      <moleculeList DisplayName="chassis" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="CHASSIS" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="chassis"/>
+      <moleculeList DisplayName="PnahR" URI="biobricks://..." amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROMOTER" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="biobricks://..."/>
+      <moleculeList DisplayName="xylS2" amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="GENE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="xylS2"/>
+      <moleculeList DisplayName="XylS2" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROTEIN" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="XylS2"/>
     </cellList>
   </regionList>
 </roadblock.emf.ibl:Model>

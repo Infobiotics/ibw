@@ -130,7 +130,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double DEGRADATION_RATE_EDEFAULT = 0.0;
+	protected static final double DEGRADATION_RATE_EDEFAULT = 1.0;
 
 	/**
 	 * The cached value of the '{@link #getDegradationRate() <em>Degradation Rate</em>}' attribute.
@@ -150,7 +150,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Double BINDING_RATE_EDEFAULT = null;
+	protected static final Double BINDING_RATE_EDEFAULT = new Double(1.0);
 
 	/**
 	 * The cached value of the '{@link #getBindingRate() <em>Binding Rate</em>}' attribute.
@@ -170,7 +170,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Double UNBINDING_RATE_EDEFAULT = null;
+	protected static final Double UNBINDING_RATE_EDEFAULT = new Double(1.0);
 
 	/**
 	 * The cached value of the '{@link #getUnbindingRate() <em>Unbinding Rate</em>}' attribute.
@@ -190,7 +190,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BIOLOGICAL_TYPE_EDEFAULT = null;
+	protected static final String BIOLOGICAL_TYPE_EDEFAULT = "undefined";
 
 	/**
 	 * The cached value of the '{@link #getBiologicalType() <em>Biological Type</em>}' attribute.
@@ -230,7 +230,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DEGRADATION_RATE_UNIT_EDEFAULT = null;
+	protected static final String DEGRADATION_RATE_UNIT_EDEFAULT = "s^-1";
 
 	/**
 	 * The cached value of the '{@link #getDegradationRateUnit() <em>Degradation Rate Unit</em>}' attribute.
@@ -250,7 +250,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BINDING_RATE_UNIT_EDEFAULT = null;
+	protected static final String BINDING_RATE_UNIT_EDEFAULT = "s^-1";
 
 	/**
 	 * The cached value of the '{@link #getBindingRateUnit() <em>Binding Rate Unit</em>}' attribute.
@@ -270,7 +270,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String UNBINDING_RATE_UNIT_EDEFAULT = null;
+	protected static final String UNBINDING_RATE_UNIT_EDEFAULT = "s^-1";
 
 	/**
 	 * The cached value of the '{@link #getUnbindingRateUnit() <em>Unbinding Rate Unit</em>}' attribute.
@@ -389,6 +389,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Amount</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Amount</em>' attribute isn't clear,
@@ -398,7 +399,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Amount</em>' attribute.
 	 * @see #setAmount(double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_Amount()
-	 * @model
+	 * @model default="0"
 	 * @generated
 	 */
 	public double getAmount() {
@@ -455,6 +456,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Degradation Rate</b></em>' attribute.
+	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Degradation Rate</em>' attribute isn't clear,
@@ -464,7 +466,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Degradation Rate</em>' attribute.
 	 * @see #setDegradationRate(double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_DegradationRate()
-	 * @model
+	 * @model default="1.0"
 	 * @generated
 	 */
 	public double getDegradationRate() {
@@ -488,6 +490,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Binding Rate</b></em>' attribute.
+	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Binding Rate</em>' attribute isn't clear,
@@ -497,7 +500,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Binding Rate</em>' attribute.
 	 * @see #setBindingRate(Double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_BindingRate()
-	 * @model
+	 * @model default="1.0"
 	 * @generated
 	 */
 	public Double getBindingRate() {
@@ -521,6 +524,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Unbinding Rate</b></em>' attribute.
+	 * The default value is <code>"1.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unbinding Rate</em>' attribute isn't clear,
@@ -530,7 +534,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Unbinding Rate</em>' attribute.
 	 * @see #setUnbindingRate(Double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_UnbindingRate()
-	 * @model
+	 * @model default="1.0"
 	 * @generated
 	 */
 	public Double getUnbindingRate() {
@@ -554,6 +558,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Biological Type</b></em>' attribute.
+	 * The default value is <code>"undefined"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Biological Type</em>' attribute isn't clear,
@@ -563,7 +568,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Biological Type</em>' attribute.
 	 * @see #setBiologicalType(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_BiologicalType()
-	 * @model
+	 * @model default="undefined"
 	 * @generated
 	 */
 	public String getBiologicalType() {
@@ -620,6 +625,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Degradation Rate Unit</b></em>' attribute.
+	 * The default value is <code>"s^-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Degradation Rate Unit</em>' attribute isn't clear,
@@ -629,7 +635,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Degradation Rate Unit</em>' attribute.
 	 * @see #setDegradationRateUnit(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_DegradationRateUnit()
-	 * @model
+	 * @model default="s^-1"
 	 * @generated
 	 */
 	public String getDegradationRateUnit() {
@@ -653,6 +659,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Binding Rate Unit</b></em>' attribute.
+	 * The default value is <code>"s^-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Binding Rate Unit</em>' attribute isn't clear,
@@ -662,7 +669,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Binding Rate Unit</em>' attribute.
 	 * @see #setBindingRateUnit(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_BindingRateUnit()
-	 * @model
+	 * @model default="s^-1"
 	 * @generated
 	 */
 	public String getBindingRateUnit() {
@@ -686,6 +693,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Unbinding Rate Unit</b></em>' attribute.
+	 * The default value is <code>"s^-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unbinding Rate Unit</em>' attribute isn't clear,
@@ -695,7 +703,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Unbinding Rate Unit</em>' attribute.
 	 * @see #setUnbindingRateUnit(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_UnbindingRateUnit()
-	 * @model
+	 * @model default="s^-1"
 	 * @generated
 	 */
 	public String getUnbindingRateUnit() {

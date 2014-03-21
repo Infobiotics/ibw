@@ -43,6 +43,7 @@ class IblGenerator implements IGenerator {
 def public static String convertToXml(EObject eObject) throws IOException {
         var resource = new XMLResourceImpl
         var processor = new XMLProcessor
+       	resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
         resource.setEncoding("UTF-8");
         resource.contents.add(eObject);
         return processor.saveToString(resource, null);

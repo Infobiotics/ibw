@@ -192,7 +192,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REVERSE_RATE_UNIT_EDEFAULT = "";
+	protected static final String REVERSE_RATE_UNIT_EDEFAULT = "s^-1";
 
 	/**
 	 * The cached value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
@@ -466,7 +466,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Reverse Rate Unit</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"s^-1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reverse Rate Unit</em>' attribute isn't clear,
@@ -476,7 +476,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Reverse Rate Unit</em>' attribute.
 	 * @see #setReverseRateUnit(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRateUnit()
-	 * @model default=""
+	 * @model default="s^-1"
 	 * @generated
 	 */
 	public String getReverseRateUnit() {
