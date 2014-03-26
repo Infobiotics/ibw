@@ -153,7 +153,7 @@
         defaultValueLiteral="s^-1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MolecularSpecies" eSuperTypes="#//IVisitable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DisplayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="URI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0"/>
