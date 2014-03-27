@@ -3,28 +3,21 @@
  */
 package roadblock.xtext.ibl.generator
 
-
 import org.eclipse.emf.ecore.resource.Resource
 
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import roadblock.dataprocessing.modelbuilder.PropertyBuilder
 import roadblock.modelchecking.translation.property.PropertyTranslationManager
-import roadblock.modelchecking.translation.property.TranslationTarget
-import roadblock.xtext.ibl.ibl.PropertyDefinition
-import roadblock.emf.ibl.Ibl.IblPackage
-import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.emf.ibl.Ibl.Model
-import java.rmi.registry.Registry
-import java.util.Map
 import java.io.IOException
-import java.util.Collections
-import roadblock.xtext.ibl.ibl.FunctionDefinition
 
 import roadblock.dataprocessing.modelpopulation.ModelPopulation
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor
+
+import roadblock.simulation.ngss.Simulator
 
 /**
  * Generates code from your model files on save.
@@ -58,34 +51,16 @@ def public static String convertToXml(EObject eObject) throws IOException {
 //			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
 //		}
 
-
 	    val ModelPopulation modelPopulater = new ModelPopulation();
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
-
-
-		println()
-		println("After population")
-		println("===============")
-		
 		var xml = convertToXml(emfModel)
-		println(xml)
-		
-
 		fsa.generateFile('EMFModel.xml', xml)
 		
 //		fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 
-		
-
-
-
-
+		val sim = new Simulator()
+		sim.runSimulation()
 	}
-
-
-
-
-
 }	
 
 
