@@ -152,7 +152,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/reverseRateUnit"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//MolecularSpecies">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/DisplayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/displayName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/URI"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/amount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unit"/>
