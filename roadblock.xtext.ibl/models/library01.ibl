@@ -16,6 +16,7 @@ define ConstitutiveProteinExpression typeof PROCESS (
 ) 
 {
 	RNA mrna1
+		
 	
 	RULE promoterBinding : promoter + rnaP <-> promoter~rnaP	
 	promoterBinding.forwardRate = promoter.bindingRate | rates.bindingRate // get binding rate from promoter's properties if available, or from constant RATE.

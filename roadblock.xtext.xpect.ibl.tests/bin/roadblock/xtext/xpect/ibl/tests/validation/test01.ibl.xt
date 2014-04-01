@@ -1,0 +1,12 @@
+/* XPECT_SETUP roadblock.xtext.xpect.ibl.tests.validation.IBLValidation END_SETUP */
+
+define dummyProcess typeof PROCESS(){
+	
+	/* XPECT errors ---
+	 "no viable alternative at input '1'" at "RNA"
+	 "no viable alternative at input 'mrna'" at "mrna"	 
+	 --- */
+	RNA 1mrna
+	
+	
+}

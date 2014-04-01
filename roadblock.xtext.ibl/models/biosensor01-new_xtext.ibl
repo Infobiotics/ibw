@@ -1,0 +1,126 @@
+///////////////////
+// biosensor01.ibl //
+///////////////////
+
+// edited 12/08/13
+
+// jamie twycross, CL 2013
+
+/////////////////////////////////
+// import objects from library //
+/////////////////////////////////
+
+import library01
+
+/////////////////////////
+// define lattice site //
+/////////////////////////
+
+define site1 typeof REGION () {
+        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+        SensorCell myCell = new SensorCell(signal = SA, displayName = "A Cell")
+}
+
+// a new useful process
+
+define DualPromoterProteinExpression typeof PROCESS(
+        MOLECULE signal1: input,
+        PROMOTER promoter1: input,
+        MOLECULE signal2: input,
+        PROMOTER promoter2: input,
+        GENE gene: input,
+        PROTEIN protein: output){
+
+        // Model the dual promoter as an OR
+
+        UpRegulatedProteinExpression signal1UpRegulated = new UpRegulatedProteinExpression(signal = signal1, promoter = promoter1, gene = gene, protein = protein    )   
+        UpRegulatedProteinExpression signal2UpRegulated = new UpRegulatedProteinExpression(signal = signal2, promoter = promoter2, gene = gene, protein = protein    )
+
+}
+
+/////////////////
+// define cell //
+/////////////////
+
+define SensorCell typeof CELL(MOLECULE signal){
+        // define molecular elements
+        RIBOSOME ribosome: observable
+        RNA rnaP = new RNA(displayName = "XYZ") : observable
+
+        CHASSIS chassis = new CHASSIS(organism = "ecoli")
+
+        PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
+        GENE nahR = new GENE(URI = "biofab://")
+        PROTEIN NahR = new PROTEIN(URI = "db://...")
+
+        PROMOTER Psal = new PROMOTER(URI = "biofab://")
+        GENE xylS2 = new GENE(sequence = "ATTGTGT")
+        PROTEIN XylS2 = new PROTEIN()
+
+        PROMOTER Pm = new PROMOTER(sequence = "ATTGTGT")
+        GENE rFP = new GENE(sequence = "TTGTGTG")
+        PROTEIN RFP = new PROTEIN()
+
+        INTEGER plasmidNumber = 500
+
+        // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
+        DEVICE D1 = new DEVICE(parts = [PnahR, nahR, lasR])(input = [SA~NahR], output = [NahR, LasR]){
+                PROCESS process1 = new ConstitutiveProteinExpression(promoter = PnahR, gene = nahR, protein = NahR)
+   }
+
+        DEVICE D2 = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
+                // how the parts are arranged
+                ATGC ARRANGE : Psal, xylS2
+                // rates
+                RATE myRates = new RATE(bindingRate = 10.0 s^-1, transcriptionRate = 3 min^-1)
+                // processes
+                PROCESS process1 = new UpRegulatedProteinExpression
+                        (regulator = SA~NahR, promoter = Psal, gene = xylS2, protein = XylS2, rates = myRates)
+                // properties should be allowed for device and cell levels
+                VERIFY [Xysl2 > 0 uM ] EVENTUALLY HOLDS
+        }
+
+        DEVICE D3 = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
+                PROCESS process1 = new DualPromoterProteinExpression(
+                        signal1 = SA~XylS2,
+                        promoter1 = Pm,
+                        signal2 = AHL~LasR,
+                        promoter2 = PlasR,
+                        gene = gFP,
+                        protein = GFP)
+                VERIFY [ [ NOT [ RFP > 50 uM ] ] IMPLIES [[ RFP < 40 uM ] AND [ RFP < 100 uM ] ]] EVENTUALLY HOLDS
+        }
+
+         // INSIDE and OUTSIDE
+
+         // additional rules
+         RULE R1 : signal + NahR <-> signal~NahR
+         R1.forwardRate = 1 s^-1
+         R1.reverseRate = 1 s^-1
+ 
+         RULE R2 : AHL + XylS2 <-> AHL~XylS2
+         R2.forwardRate = 1 s^-1
+         R2.reverseRate = 1 s^-1
+ 
+         RULE signalConsumption : OUTSIDE -> signal
+         signalConsumption.rate = 1 min^-1
+ 
+         RULE AHLConsumption : OUTSIDE -> AHL
+         AHLConsumption.rate = 1 min^-1
+ 
+         // atgc rules
+         ATGC ARRANGE : nahR, PnahR, Psal
+ 
+         // some example properties
+         
+         VERIFY [signal > 0 uM] EVENTUALLY HOLDS
+         VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
+         VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >=0.9
+         VERIFY [signal > 0 uM] NEVER HOLDS
+         VERIFY [signal > 0 uM] ALWAYS HOLDS
+         VERIFY [signal > 0 uM] HOLDS IN STEADY-STATE
+         VERIFY [signal > 0 uM] HOLDS INFINITELY OFTEN
+         VERIFY [RFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
+         VERIFY EXPECTED [RFP] AT 1000 s IS ?
+         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
+}

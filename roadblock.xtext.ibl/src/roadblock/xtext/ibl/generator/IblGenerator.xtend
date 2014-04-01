@@ -3,9 +3,28 @@
  */
 package roadblock.xtext.ibl.generator
 
+
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
+
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import roadblock.dataprocessing.modelbuilder.PropertyBuilder
+import roadblock.modelchecking.translation.property.PropertyTranslationManager
+import roadblock.modelchecking.translation.property.TranslationTarget
+import roadblock.xtext.ibl.ibl.PropertyDefinition
+import roadblock.emf.ibl.Ibl.IblPackage
+import roadblock.emf.ibl.Ibl.IblFactory
+import roadblock.emf.ibl.Ibl.Model
+import java.rmi.registry.Registry
+import java.util.Map
+import java.io.IOException
+import java.util.Collections
+import roadblock.xtext.ibl.ibl.FunctionDefinition
+
+import roadblock.dataprocessing.modelpopulation.ModelPopulation
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor
 
 /**
  * Generates code from your model files on save.
@@ -13,12 +32,60 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class IblGenerator implements IGenerator {
-	
+
+	private PropertyBuilder propertyBuilder = new PropertyBuilder();
+	private PropertyTranslationManager translationManager = PropertyTranslationManager::instance;
+
+
+
+// export an EMF model to XML
+// via http://techblog.goelite.org/sending-emf-models-via-soap/
+def public static String convertToXml(EObject eObject) throws IOException {
+        var resource = new XMLResourceImpl
+        var processor = new XMLProcessor
+       	resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+        resource.setEncoding("UTF-8");
+        resource.contents.add(eObject);
+        return processor.saveToString(resource, null);
+    }
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		
+//		val properties = resource.allContents.filter(PropertyDefinition).toList;
+//		println("Property count: " + properties.size);
+//
+//		for (PropertyDefinition  p : properties) {
+//			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
+//		}
+
+
+	    val ModelPopulation modelPopulater = new ModelPopulation();
+		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
+
+
+		println()
+		println("After population")
+		println("===============")
+		
+		var xml = convertToXml(emfModel)
+		println(xml)
+		
+
+		fsa.generateFile('EMFModel.xml', xml)
+		
+//		fsa.generateFile('unitTestingGenerator.xml', 'someContent')
+
+		
+
+
+
+
 	}
-}
+
+
+
+
+
+}	
+
+

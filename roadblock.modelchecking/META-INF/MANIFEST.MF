@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ModelChecking
+Bundle-SymbolicName: roadblock.modelchecking;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: roadblock.modelchecking.translation.property
+Import-Package: org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.impl,
+ roadblock.emf.ibl.Ibl,
+ roadblock.emf.ibl.Ibl.util

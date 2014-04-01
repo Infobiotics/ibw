@@ -1,0 +1,22 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+
+roadblock.xtext.ibl/bin
+roadblock.xtext.ibl/src-gen
+roadblock.xtext.ibl/xtend-gen
+
+roadblock.xtext.ibl.ui/bin
+roadblock.xtext.ibl.ui/src-gen
+roadblock.xtext.ibl.ui/xtend-gen
+
+roadblock.xtext.ibl.tests/xtend-gen
+
+roadblock.datapopulation/bin
+roadblock.datapopulation/xtend-gen/
