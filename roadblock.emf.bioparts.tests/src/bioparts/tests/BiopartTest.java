@@ -86,14 +86,6 @@ public class BiopartTest extends TestCase {
 		setFixture(null);
 	}
 	
-	public void smallConstructor(String ID, String repository){
-		this.setID(ID);
-		this.setRepositoryName(repository);
-	}
-	public void testConstructor(){
-		Biopart part = BiopartsFactory.eINSTANCE.createBiopart();
-		part.smallConstructor("myID","mRepo");		
-		
-	}
+
 	
 } //BiopartTest

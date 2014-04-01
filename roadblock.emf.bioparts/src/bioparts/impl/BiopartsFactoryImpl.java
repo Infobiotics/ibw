@@ -27,7 +27,7 @@ public class BiopartsFactoryImpl extends EFactoryImpl implements BiopartsFactory
 	 */
 	public static BiopartsFactory init() {
 		try {
-			BiopartsFactory theBiopartsFactory = (BiopartsFactory)EPackage.Registry.INSTANCE.getEFactory("http://roadblock.org"); 
+			BiopartsFactory theBiopartsFactory = (BiopartsFactory)EPackage.Registry.INSTANCE.getEFactory(BiopartsPackage.eNS_URI);
 			if (theBiopartsFactory != null) {
 				return theBiopartsFactory;
 			}
