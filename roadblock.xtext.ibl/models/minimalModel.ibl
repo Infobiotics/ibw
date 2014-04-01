@@ -7,8 +7,8 @@
 
 define factoryCell typeof CELL(){
         // define molecular elements
-        RIBOSOME ribosome : observable
-		RNA rnaP = new RNA(displayName = "XYZ") : observable
+        RIBOSOME ribosome = new RIBOSOME(concentration = 10 uM) : observable
+		RNA rnaP = new RNA(displayName = "XYZ", concentration = 5 uM) : observable
 
         CHASSIS chassis = new CHASSIS(organism = "ecoli")
 

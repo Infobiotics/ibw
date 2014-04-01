@@ -58,7 +58,7 @@ def public static String convertToXml(EObject eObject) throws IOException {
 		
 //		fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 
-		val sim = new Simulator()
+		val sim = new Simulator(xml)
 		sim.runSimulation()
 	}
 }	

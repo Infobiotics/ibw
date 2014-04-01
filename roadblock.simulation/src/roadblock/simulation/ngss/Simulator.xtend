@@ -1,58 +1,54 @@
 package roadblock.simulation.ngss
 
+import java.lang.Runtime
+import java.io.BufferedReader
+import java.io.InputStreamReader
+
 class Simulator {
-	var model_file = 'EMFModel.xml'
-	var parser = 'ngss'
-	var simulation_algorithm = 'nrm'
-	var max_time = 1200.0
-	var max_runtime = 0.0
-	var log_interval = 1.0
-	var runs = 100
-	var seed = 0
-	var output = 'csv'
-	var data_file = 'model.h5'
-	var parallel = 'false'
-	var compress = 'true'
-	var show_progress = 'false'
 	
-	new() {
-		super()
-		/* XXX create param file */
-		this.createParamsFile('XXX.params')
-	}
+	/* variables to alter the behavior of the simulator */
+	public var simulation_algorithm = 'nrm' // XXX enum instead of string?
+	public var max_time = 100.0
+	public var max_runtime = 0.0
+	public var log_interval = 1.0
+	public var runs = 1
+	public var seed = 0
 
-	def createParamsFile(String filename)
+	var String model
+	val ngss_exe = "/home/harold/uni/newc/roadblock/ngss/ngss"
+
+	new (String model)
 	{
-		val params = '''
-			<?xml version="1.0" encoding="utf-8" ?>
-
-			<parameters xmlns="http://www.cpib.ac.uk/~jpt"
-				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				xsi:schemaLocation="http://www.cpib.ac.uk/~jpt parameter.xsd">
-
-			<!-- parameter definitions -->
-			<parameterSet name="SimulationParameters">
-				<parameter name="parser" value="«this.parser»"/>
-				<parameter name="model_file" value="«this.model_file»"/>
-				<parameter name="max_time" value="«this.max_time»"/>
-				<parameter name="max_runtime" value="«this.max_runtime»"/>
-				<parameter name="simulation_algorithm" value="«this.simulation_algorithm»"/>
-				<parameter name="data_file" value="«this.data_file»"/>	
-				<parameter name="log_interval" value="«this.log_interval»"/>
-				<parameter name="runs" value="«this.runs»"/>
-				<parameter name="seed" value="«this.seed»"/>
-				<parameter name="output" value="«this.output»"/>
-				<parameter name="compress" value="«this.compress»"/>
-				<parameter name="parallel" value="«this.parallel»"/>
-				<parameter name="show_progress" value="«this.show_progress»"/>
-			</parameterSet>
-	
-			</parameters>
-		'''
-
-		println(params) // XXX save to FS
+		this.model = model
 	}
+
 	def runSimulation() {
-		/* XXX call ngss with params file */
+		val cmd = '''«this.ngss_exe» --emf parser=emf max_time=«this.max_time» max_runtime=«this.max_runtime» simulation_algorithm=«this.simulation_algorithm» data_file=model.csv log_interval=«this.log_interval» runs=«this.runs» seed=«this.seed» output=console compress=true parallel=true show_progress=false'''
+		println(cmd)
+		var process = Runtime.getRuntime().exec(cmd)
+		var thread = new Thread() {
+			// write emf model to process in
+			var input = process.getOutputStream()
+			input.write(this.model.getBytes())
+			input.close()
+			
+			// write process output to console
+			var String line
+			var output = new BufferedReader(new InputStreamReader(process.getInputStream()))
+			while ((line=output.readLine()) != null) println(line)
+			output.close()
+		}
+		thread.start()
+		var result = process.waitFor()
+		if (result!=0)
+		{
+			// write error message to console
+			var String line
+			var error = new BufferedReader(new InputStreamReader(process.getErrorStream()))
+			while ((line=error.readLine()) != null) println(line)
+			error.close()
+		}
+		thread.join()
+		println("done")
 	}
 }

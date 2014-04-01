@@ -102,8 +102,6 @@ class ModelPopulation extends IblSwitch<Object> {
 	
 	
 	override caseModel(Model xtextModel) {
-		println("in caseModel")
-		
 		emfModel.ID = "TheEMFmodel"
 		emfModel.displayName = "The EMF Model"
 	
@@ -128,7 +126,6 @@ class ModelPopulation extends IblSwitch<Object> {
 		// variable assignment resolution
 		// limited to rules and identical container for the time being
 		for(variableAssignment: emfModel.eAllContents.toList.filter(EMFVariableAssignment)){
-			println(variableAssignment.variableName)
 			val container = variableAssignment.eContainer
 			var EObject variable 
 			switch container {
@@ -175,7 +172,6 @@ class ModelPopulation extends IblSwitch<Object> {
 	}
 		
 	override caseCellBody(CellBody cellBody){
-		println("in caseCellBody")
 		var cell= modelFactory.createCell
 		for(member: cellBody.functionContent.members){
 			switch member {
@@ -190,7 +186,6 @@ class ModelPopulation extends IblSwitch<Object> {
 	}
 
 	override caseRegionBody(RegionBody regionBody){
-		println("in caseRegionBody")
 		var region = modelFactory.createRegion
 		for(member: regionBody.functionContent.members){
 			switch member {
