@@ -376,15 +376,34 @@ Outside:
 ////////////////
 // atgc rules //
 ////////////////
-
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command=ATGCCommand ':' arguments+=VariableName (',' arguments+=VariableName)*
+	'ATGC' command = ATGCArrange // (ATGCCloningsites | ATGCArrange | ATGCDirection)
 ;
 
-ATGCCommand:
-	'ARRANGE'
+ATGCArrange:
+	{ATGCArrange}
+	'ARRANGE' arguments+=VariableName  (',' arguments+=VariableName)*
 ;
+
+ATGCCloningsites:
+	{ATGCCloningsites}
+	'CLONING SITES' ':' cloningsite = INT
+;
+
+ATGCDirection: 
+	{ATGCDirection}
+	'DIRECTION' ':' direction = ('FORWARD' | 'BACKWARD')
+;
+
+//ATGCDefinition:
+//	{ATGCDefinition}
+//	'ATGC' command=ATGCCommand ':' arguments+=VariableName  (',' arguments+=VariableName)*
+//;
+//
+//ATGCCommand:
+//	'ARRANGE' 
+//;
 
 /////////////////////////
 // model checker rules //

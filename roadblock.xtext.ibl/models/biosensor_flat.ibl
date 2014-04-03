@@ -48,7 +48,7 @@ define SensorCell typeof CELL(){
 
         DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
         // produces XylS2, upregulated by SA~NahR
-			ATGC ARRANGE : Psal, xylS2
+			ATGC ARRANGE Psal, xylS2
 
 			RNA rna1	
 		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
@@ -100,7 +100,7 @@ define SensorCell typeof CELL(){
          AHLConsumption.rate = 1 min^-1
  
          // atgc rules
-         ATGC ARRANGE : nahR, PnahR, Psal
+         ATGC ARRANGE nahR, PnahR, Psal
  
          // some example properties
          
