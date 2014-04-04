@@ -23,6 +23,11 @@ import roadblock.xtext.ibl.ibl.SystemInstantiation
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
 import roadblock.xtext.ibl.ibl.RuleDefinition
 import roadblock.xtext.ibl.ibl.Outside
+import roadblock.xtext.ibl.ibl.CellBody
+import roadblock.emf.ibl.Ibl.ATGCDirective
+import roadblock.emf.ibl.Ibl.ATGCArrange
+import roadblock.emf.ibl.Ibl.ATGCDirection
+import roadblock.emf.ibl.Ibl.ATGCCloningSites
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -60,6 +65,8 @@ class IblValidator extends AbstractIblValidator {
 				error(errorMessage + v.displayName, feature)			
 		]
 	}	
+
+// =================================================================================
 	
 // Container checks for function body members
 	@Check
@@ -137,7 +144,9 @@ class IblValidator extends AbstractIblValidator {
 			IblPackage::eINSTANCE.systemInstantiation_Constructor
 		)
 		}
-	
+
+	// =================================================================================
+
 	@Check  // OUTSIDE must be used on its own, if used at all
 	def checkRuleOutside(RuleDefinition rule){
 		//number of OUTSIDE on the left hand side

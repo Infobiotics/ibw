@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<roadblock.emf.ibl:Model xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" displayName="The EMF Model" ID="TheEMFmodel">
+<roadblock.emf.ibl:Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" displayName="The EMF Model" ID="TheEMFmodel">
   <regionList displayName="site1">
     <moleculeList displayName="SA" amount="100.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="MOLECULE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="SA"/>
     <cellList displayName="myCell">
@@ -121,6 +121,10 @@
           <rightHandSide displayName="mrna1~ribosome" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
           <rightHandSide displayName="XylS2" amount="0.0" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="undefined" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         </ruleList>
+        <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
+          <partList displayName="Psal" URI="biofab://" amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROMOTER" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="biofab://"/>
+          <partList displayName="xylS2" amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="GENE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="xylS2"/>
+        </ATGCCommandList>
         <moleculeList displayName="rna1" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="RNA" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="rna1"/>
         <moleculeList displayName="SA~NahR" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
         <moleculeList displayName="SA~NahR~Psal" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
@@ -254,6 +258,11 @@
       <moleculeList displayName="RFP" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROTEIN" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="RFP"/>
       <moleculeList displayName="SA~NahR" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
       <moleculeList displayName="AHL~XylS2" amount="0.0" unit="uM" degradationRate="1.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="COMPLEX" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1"/>
+      <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
+        <partList displayName="nahR" URI="biofab://" amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="GENE" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="biofab://"/>
+        <partList displayName="PnahR" URI="biobricks://..." amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROMOTER" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="biobricks://..."/>
+        <partList displayName="Psal" URI="biofab://" amount="1.0" unit="molecule" degradationRate="0.0" bindingRate="1.0" unbindingRate="1.0" biologicalType="PROMOTER" degradationRateUnit="s^-1" bindingRateUnit="s^-1" unbindingRateUnit="s^-1" ID="biofab://"/>
+      </ATGCCommandList>
     </cellList>
   </regionList>
 </roadblock.emf.ibl:Model>

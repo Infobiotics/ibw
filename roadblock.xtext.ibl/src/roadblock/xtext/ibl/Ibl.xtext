@@ -378,7 +378,7 @@ Outside:
 ////////////////
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command = ATGCArrange // (ATGCCloningsites | ATGCArrange | ATGCDirection)
+	'ATGC' command = (ATGCCloningSites | ATGCArrange | ATGCDirection)
 ;
 
 ATGCArrange:
@@ -386,24 +386,15 @@ ATGCArrange:
 	'ARRANGE' arguments+=VariableName  (',' arguments+=VariableName)*
 ;
 
-ATGCCloningsites:
-	{ATGCCloningsites}
-	'CLONING SITES' ':' cloningsite = INT
+ATGCCloningSites:
+	{ATGCCloningSites}
+	'CLONING SITES' ':' cloningsites = INT
 ;
 
 ATGCDirection: 
 	{ATGCDirection}
 	'DIRECTION' ':' direction = ('FORWARD' | 'BACKWARD')
 ;
-
-//ATGCDefinition:
-//	{ATGCDefinition}
-//	'ATGC' command=ATGCCommand ':' arguments+=VariableName  (',' arguments+=VariableName)*
-//;
-//
-//ATGCCommand:
-//	'ARRANGE' 
-//;
 
 /////////////////////////
 // model checker rules //

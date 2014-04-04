@@ -216,11 +216,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="partList" upperBound="-1"
-        eType="#//MolecularSpecies" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Chromosome" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Plasmid" eSuperTypes="#//IVisitable"/>
@@ -359,5 +355,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCDirection" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCArrange" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partList" upperBound="-1"
+        eType="#//MolecularSpecies" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCCloningSites" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloningSites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

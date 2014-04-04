@@ -20,7 +20,6 @@ define SensorCell typeof CELL(){
         PROTEIN RFP = new PROTEIN()
 
 
-
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
 			RNA mrna1

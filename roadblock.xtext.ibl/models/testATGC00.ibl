@@ -1,0 +1,24 @@
+define myCell typeof CELL() {
+	PROMOTER p1aa = new PROMOTER(sequence = "ATTGTGT")
+    GENE g1bb = new GENE(sequence = "TTGTGTG")
+
+	PROMOTER p2aa = new PROMOTER(sequence = "ATTGTGT")
+    GENE g2bb = new GENE(sequence = "TTGTGTG")
+    GENE g2cc = new GENE(sequence = "TTGTGTG")
+	
+	DEVICE device1 = new DEVICE(parts = [p1aa, g1bb])(input = [], output = []){
+		ATGC CLONING SITES: 5
+		ATGC DIRECTION: BACKWARD
+		}
+
+	DEVICE device2 = new DEVICE(parts = [p2aa, g2bb,g2cc])(input = [], output = []){
+		ATGC ARRANGE g2cc, g2bb
+		}
+	ATGC ARRANGE p1aa,p2aa
+	}
+	
+			
+define myRegion typeof REGION(){
+	CELL foo = new myCell()	
+
+}

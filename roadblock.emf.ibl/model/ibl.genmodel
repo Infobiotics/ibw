@@ -189,10 +189,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/ID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/variableAssignmentList"/>
     </genClasses>
-    <genClasses ecoreClass="ibl.ecore#//ATGCDirective">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCDirective/command"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//ATGCDirective/partList"/>
-    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCDirective"/>
     <genClasses ecoreClass="ibl.ecore#//System"/>
     <genClasses ecoreClass="ibl.ecore#//Chromosome"/>
     <genClasses ecoreClass="ibl.ecore#//Plasmid"/>
@@ -278,6 +275,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableAttribute"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/unit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCDirection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCDirection/direction"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCArrange">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//ATGCArrange/partList"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCCloningSites">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCCloningSites/cloningSites"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -35,6 +35,11 @@ import roadblock.emf.ibl.Ibl.EMFVariableAssignment
 import roadblock.xtext.ibl.ibl.VariableAttribute
 import org.eclipse.emf.ecore.EObject
 import java.util.List
+import roadblock.xtext.ibl.ibl.ATGCDefinition
+import roadblock.emf.ibl.Ibl.ATGCDirective
+import roadblock.emf.ibl.Ibl.ATGCArrange
+import roadblock.emf.ibl.Ibl.ATGCDirection
+import roadblock.emf.ibl.Ibl.ATGCCloningSites
 
 class ModelPopulation extends IblSwitch<Object> {
 	var modelFactory = IblFactory::eINSTANCE;
@@ -81,6 +86,27 @@ class ModelPopulation extends IblSwitch<Object> {
 		}
 	}
 	
+	// helper to find first declaration of variable given its displayName from local container upwards
+	
+	def MolecularSpecies searchFirstDeclaration(EObject container, String displayName){
+		// look among molecularSpecies at current level
+		// return it if found
+		
+		switch(container){
+			Device: {val molecules = container.moleculeList.filter[it.displayName == displayName]; if(!molecules.empty) return molecules.head}
+			Cell:   {val molecules = container.moleculeList.filter[it.displayName == displayName]; if(!molecules.empty) return molecules.head}
+			Region: {val molecules = container.moleculeList.filter[it.displayName == displayName]; if(!molecules.empty) return molecules.head}
+			roadblock.emf.ibl.Ibl.Model: {
+				var molecule = modelFactory.createMolecularSpecies 
+				molecule.displayName = 'UNKNOWN REFERENCE: ' + displayName 
+				molecule.biologicalType = 'UNKNOWN'
+				return molecule
+			}			
+		}
+		
+		// else search in next container
+		return searchFirstDeclaration(container.eContainer, displayName)
+	}
 
 	//
 	def updateRule(Rule rule, EMFVariableAssignment variableAssignment){
@@ -133,7 +159,7 @@ class ModelPopulation extends IblSwitch<Object> {
 			var EObject variable 
 			switch container {
 				Region: variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].head
-				Cell: variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
+				Cell:   variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
 				Device: variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].head
 			}
 			
@@ -171,23 +197,60 @@ class ModelPopulation extends IblSwitch<Object> {
 			}
 			
 		}
+		
+		// ATGC: look up variables in container hierarchy
+		for(atgc: emfModel.eAllContents.toList.filter(ATGCArrange)){
+			for(part: atgc.partList){
+				val match = EcoreUtil.copy(searchFirstDeclaration(atgc.eContainer,part.displayName))
+				EcoreUtil.replace(part,match)				
+			}
+		}
+		
 		return emfModel;
 	}
+	
+	
 		
 	override caseCellBody(CellBody cellBody){
 		println("in caseCellBody")
 		var cell= modelFactory.createCell
 		for(member: cellBody.functionContent.members){
 			switch member {
-				RuleDefinition: cell.ruleList.add(member.doSwitch as Rule)
-				DeviceDefinition : cell.deviceList.add(member.doSwitch as Device)
+				RuleDefinition:		cell.ruleList.add(member.doSwitch as Rule)
+				DeviceDefinition:	cell.deviceList.add(member.doSwitch as Device)
 				VariableDefinition: cell.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment: cell.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
+				ATGCDefinition: 	cell.ATGCCommandList.add( member.command.doSwitch as ATGCDirective)
+							
 			}
 		}	
 		
 		return cell
 	}
+
+	
+	override caseATGCArrange(roadblock.xtext.ibl.ibl.ATGCArrange atgcArrange){
+		var emfAtgcArrange = modelFactory.createATGCArrange
+		
+		for(displayName: atgcArrange.arguments.map[it.buildVariableName]){
+			var emfPart = modelFactory.createMolecularSpecies
+			emfPart.displayName = displayName
+			emfAtgcArrange.partList.add(emfPart)
+		}
+		return emfAtgcArrange
+	}	
+
+	override caseATGCDirection(roadblock.xtext.ibl.ibl.ATGCDirection atgcDirection){
+		var emfAtgcDirection = modelFactory.createATGCDirection
+		emfAtgcDirection.direction =  atgcDirection.direction 
+		return emfAtgcDirection
+	}	
+	
+	override caseATGCCloningSites(roadblock.xtext.ibl.ibl.ATGCCloningSites atgcCloningSites){
+		var emfAtgcCloningSites = modelFactory.createATGCCloningSites
+		emfAtgcCloningSites.cloningSites = atgcCloningSites.cloningsites
+		return emfAtgcCloningSites
+	}	
 
 	override caseRegionBody(RegionBody regionBody){
 		println("in caseRegionBody")
@@ -239,9 +302,10 @@ class ModelPopulation extends IblSwitch<Object> {
 		
 		for(member: deviceDefinition.members){
 			switch member {
-				RuleDefinition: device.ruleList.add(member.doSwitch as Rule)
+				RuleDefinition: 	device.ruleList.add(member.doSwitch as Rule)
 				VariableDefinition: device.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment: device.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
+				ATGCDefinition : 	device.ATGCCommandList.add( member.command.doSwitch as ATGCDirective)
 				}
 			}
 		return device
