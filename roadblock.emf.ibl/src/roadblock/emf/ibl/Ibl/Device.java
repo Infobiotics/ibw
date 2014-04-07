@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getOutputList <em>Output List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getInputList <em>Input List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Device#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -175,6 +177,16 @@ public class Device extends EObjectImpl implements IVisitable {
 	 * @ordered
 	 */
 	protected EList<EMFVariableAssignment> variableAssignmentList;
+
+	/**
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<IProperty> properties;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -485,6 +497,27 @@ public class Device extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.IProperty}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_Properties()
+	 * @model
+	 * @generated
+	 */
+	public List<IProperty> getProperties() {
+		if (properties == null) {
+			properties = new EObjectResolvingEList<IProperty>(IProperty.class, this, IblPackage.DEVICE__PROPERTIES);
+		}
+		return properties;
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -554,6 +587,8 @@ public class Device extends EObjectImpl implements IVisitable {
 				return getInputList();
 			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
 				return getVariableAssignmentList();
+			case IblPackage.DEVICE__PROPERTIES:
+				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -608,6 +643,10 @@ public class Device extends EObjectImpl implements IVisitable {
 				getVariableAssignmentList().clear();
 				getVariableAssignmentList().addAll((Collection<? extends EMFVariableAssignment>)newValue);
 				return;
+			case IblPackage.DEVICE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends IProperty>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -653,6 +692,9 @@ public class Device extends EObjectImpl implements IVisitable {
 			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
 				getVariableAssignmentList().clear();
 				return;
+			case IblPackage.DEVICE__PROPERTIES:
+				getProperties().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -687,6 +729,8 @@ public class Device extends EObjectImpl implements IVisitable {
 				return inputList != null && !inputList.isEmpty();
 			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
 				return variableAssignmentList != null && !variableAssignmentList.isEmpty();
+			case IblPackage.DEVICE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

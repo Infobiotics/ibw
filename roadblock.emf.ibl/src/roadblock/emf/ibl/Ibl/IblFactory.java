@@ -75,7 +75,6 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.SYSTEM: return (EObject)createSystem();
 			case IblPackage.CHROMOSOME: return (EObject)createChromosome();
 			case IblPackage.PLASMID: return (EObject)createPlasmid();
-			case IblPackage.PROPERTY_INITIAL_CONDITION: return (EObject)createPropertyInitialCondition();
 			case IblPackage.CONCRETE_PROBABILITY_CONSTRAINT: return (EObject)createConcreteProbabilityConstraint();
 			case IblPackage.UNKNOWN_PROBABILITY_CONSTRAINT: return (EObject)createUnknownProbabilityConstraint();
 			case IblPackage.TIME_INTERVAL: return (EObject)createTimeInterval();
@@ -90,6 +89,8 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.STATE_EXPRESSION: return (EObject)createStateExpression();
 			case IblPackage.REGION: return (EObject)createRegion();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT: return (EObject)createEMFVariableAssignment();
+			case IblPackage.FLAT_MODEL: return (EObject)createFlatModel();
+			case IblPackage.PROPERTY_INITIAL_CONDITION: return (EObject)createPropertyInitialCondition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -113,6 +114,8 @@ public class IblFactory extends EFactoryImpl {
 				return createBooleanOperatorFromString(eDataType, initialValue);
 			case IblPackage.CONCENTRATION_UNIT:
 				return createConcentrationUnitFromString(eDataType, initialValue);
+			case IblPackage.RATE_UNIT:
+				return createRateUnitFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +139,8 @@ public class IblFactory extends EFactoryImpl {
 				return convertBooleanOperatorToString(eDataType, instanceValue);
 			case IblPackage.CONCENTRATION_UNIT:
 				return convertConcentrationUnitToString(eDataType, instanceValue);
+			case IblPackage.RATE_UNIT:
+				return convertRateUnitToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -239,16 +244,6 @@ public class IblFactory extends EFactoryImpl {
 	public Plasmid createPlasmid() {
 		Plasmid plasmid = new Plasmid();
 		return plasmid;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PropertyInitialCondition createPropertyInitialCondition() {
-		PropertyInitialCondition propertyInitialCondition = new PropertyInitialCondition();
-		return propertyInitialCondition;
 	}
 
 	/**
@@ -396,6 +391,26 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public FlatModel createFlatModel() {
+		FlatModel flatModel = new FlatModel();
+		return flatModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PropertyInitialCondition createPropertyInitialCondition() {
+		PropertyInitialCondition propertyInitialCondition = new PropertyInitialCondition();
+		return propertyInitialCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TimeUnit createTimeUnitFromString(EDataType eDataType, String initialValue) {
 		TimeUnit result = TimeUnit.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -488,6 +503,26 @@ public class IblFactory extends EFactoryImpl {
 	 * @generated
 	 */
 	public String convertConcentrationUnitToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RateUnit createRateUnitFromString(EDataType eDataType, String initialValue) {
+		RateUnit result = RateUnit.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRateUnitToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

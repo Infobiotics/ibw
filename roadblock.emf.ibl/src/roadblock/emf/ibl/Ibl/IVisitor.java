@@ -100,7 +100,7 @@ public interface IVisitor<TResult> {
 	 * @model
 	 * @generated
 	 */
-	TResult visit(PropertyInitialCondition expression);
+	TResult visit(EMFVariableAssignment expression);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,5 +197,29 @@ public interface IVisitor<TResult> {
 	 * @generated
 	 */
 	TResult visit(Plasmid plasmid);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(FlatModel flatModel);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(Region region);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(PropertyInitialCondition expression);
 
 } // IVisitor

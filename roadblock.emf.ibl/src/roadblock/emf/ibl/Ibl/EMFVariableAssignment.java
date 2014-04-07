@@ -11,24 +11,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Property Initial Condition</b></em>'.
+ * A representation of the model object '<em><b>EMF Variable Assignment</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute <em>Variable Attribute</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount <em>Amount</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnit <em>Unit</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}</li>
  * </ul>
  * </p>
  *
- * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
+ * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
  * @model kind="class"
  * @generated
  */
-public class PropertyInitialCondition extends EObjectImpl implements IVisitable {
+public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	/**
 	 * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -77,7 +77,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ConcentrationUnit UNIT_EDEFAULT = ConcentrationUnit.M;
+	protected static final String UNIT_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
@@ -87,7 +87,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * @generated
 	 * @ordered
 	 */
-	protected ConcentrationUnit unit = UNIT_EDEFAULT;
+	protected String unit = UNIT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getAmount() <em>Amount</em>}' attribute.
@@ -114,7 +114,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PropertyInitialCondition() {
+	protected EMFVariableAssignment() {
 		super();
 	}
 
@@ -125,7 +125,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IblPackage.Literals.PROPERTY_INITIAL_CONDITION;
+		return IblPackage.Literals.EMF_VARIABLE_ASSIGNMENT;
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Name</em>' attribute.
 	 * @see #setVariableName(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_VariableName()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_VariableName()
 	 * @model
 	 * @generated
 	 */
@@ -147,7 +147,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Variable Name</em>' attribute.
@@ -158,7 +158,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 		String oldVariableName = variableName;
 		variableName = newVariableName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME, oldVariableName, variableName));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME, oldVariableName, variableName));
 	}
 
 	/**
@@ -171,7 +171,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Attribute</em>' attribute.
 	 * @see #setVariableAttribute(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_VariableAttribute()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_VariableAttribute()
 	 * @model
 	 * @generated
 	 */
@@ -180,7 +180,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute <em>Variable Attribute</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Variable Attribute</em>' attribute.
@@ -191,12 +191,11 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 		String oldVariableAttribute = variableAttribute;
 		variableAttribute = newVariableAttribute;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE, oldVariableAttribute, variableAttribute));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE, oldVariableAttribute, variableAttribute));
 	}
 
 	/**
 	 * Returns the value of the '<em><b>Unit</b></em>' attribute.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.ConcentrationUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unit</em>' attribute isn't clear,
@@ -204,30 +203,28 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.ConcentrationUnit
-	 * @see #setUnit(ConcentrationUnit)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_Unit()
+	 * @see #setUnit(String)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_Unit()
 	 * @model
 	 * @generated
 	 */
-	public ConcentrationUnit getUnit() {
+	public String getUnit() {
 		return unit;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnit <em>Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.ConcentrationUnit
 	 * @see #getUnit()
 	 * @generated
 	 */
-	public void setUnit(ConcentrationUnit newUnit) {
-		ConcentrationUnit oldUnit = unit;
-		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
+	public void setUnit(String newUnit) {
+		String oldUnit = unit;
+		unit = newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -240,7 +237,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Amount</em>' attribute.
 	 * @see #setAmount(double)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_Amount()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_Amount()
 	 * @model
 	 * @generated
 	 */
@@ -249,7 +246,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount <em>Amount</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Amount</em>' attribute.
@@ -260,7 +257,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 		double oldAmount = amount;
 		amount = newAmount;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT, oldAmount, amount));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT, oldAmount, amount));
 	}
 
 	/**
@@ -281,13 +278,13 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME:
 				return getVariableName();
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				return getVariableAttribute();
-			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
 				return getUnit();
-			case IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				return getAmount();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -301,16 +298,16 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME:
 				setVariableName((String)newValue);
 				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				setVariableAttribute((String)newValue);
 				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
-				setUnit((ConcentrationUnit)newValue);
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
+				setUnit((String)newValue);
 				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				setAmount((Double)newValue);
 				return;
 		}
@@ -325,16 +322,16 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME:
 				setVariableName(VARIABLE_NAME_EDEFAULT);
 				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				setVariableAttribute(VARIABLE_ATTRIBUTE_EDEFAULT);
 				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				setAmount(AMOUNT_EDEFAULT);
 				return;
 		}
@@ -349,13 +346,13 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME:
 				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				return VARIABLE_ATTRIBUTE_EDEFAULT == null ? variableAttribute != null : !VARIABLE_ATTRIBUTE_EDEFAULT.equals(variableAttribute);
-			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
-				return unit != UNIT_EDEFAULT;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT:
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
+				return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				return amount != AMOUNT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -383,4 +380,4 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 		return result.toString();
 	}
 
-} // PropertyInitialCondition
+} // EMFVariableAssignment

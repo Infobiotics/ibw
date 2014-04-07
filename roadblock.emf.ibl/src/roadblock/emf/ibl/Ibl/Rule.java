@@ -152,7 +152,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
+	protected static final String ID_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute.
@@ -172,7 +172,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String FORWARD_RATE_UNIT_EDEFAULT = "";
+	protected static final RateUnit FORWARD_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
 
 	/**
 	 * The cached value of the '{@link #getForwardRateUnit() <em>Forward Rate Unit</em>}' attribute.
@@ -182,7 +182,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected String forwardRateUnit = FORWARD_RATE_UNIT_EDEFAULT;
+	protected RateUnit forwardRateUnit = FORWARD_RATE_UNIT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
@@ -192,7 +192,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String REVERSE_RATE_UNIT_EDEFAULT = "";
+	protected static final RateUnit REVERSE_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
 
 	/**
 	 * The cached value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
@@ -202,7 +202,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected String reverseRateUnit = REVERSE_RATE_UNIT_EDEFAULT;
+	protected RateUnit reverseRateUnit = REVERSE_RATE_UNIT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -399,6 +399,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>ID</b></em>' attribute.
+	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>ID</em>' attribute isn't clear,
@@ -408,7 +409,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>ID</em>' attribute.
 	 * @see #setID(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ID()
-	 * @model
+	 * @model default=""
 	 * @generated
 	 */
 	public String getID() {
@@ -432,7 +433,8 @@ public class Rule extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Forward Rate Unit</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"PER_SECOND"</code>.
+	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Forward Rate Unit</em>' attribute isn't clear,
@@ -440,12 +442,13 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Forward Rate Unit</em>' attribute.
-	 * @see #setForwardRateUnit(String)
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @see #setForwardRateUnit(RateUnit)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRateUnit()
-	 * @model default=""
+	 * @model default="PER_SECOND"
 	 * @generated
 	 */
-	public String getForwardRateUnit() {
+	public RateUnit getForwardRateUnit() {
 		return forwardRateUnit;
 	}
 
@@ -454,19 +457,21 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Forward Rate Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
 	 * @see #getForwardRateUnit()
 	 * @generated
 	 */
-	public void setForwardRateUnit(String newForwardRateUnit) {
-		String oldForwardRateUnit = forwardRateUnit;
-		forwardRateUnit = newForwardRateUnit;
+	public void setForwardRateUnit(RateUnit newForwardRateUnit) {
+		RateUnit oldForwardRateUnit = forwardRateUnit;
+		forwardRateUnit = newForwardRateUnit == null ? FORWARD_RATE_UNIT_EDEFAULT : newForwardRateUnit;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE_UNIT, oldForwardRateUnit, forwardRateUnit));
 	}
 
 	/**
 	 * Returns the value of the '<em><b>Reverse Rate Unit</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * The default value is <code>"PER_SECOND"</code>.
+	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reverse Rate Unit</em>' attribute isn't clear,
@@ -474,12 +479,13 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reverse Rate Unit</em>' attribute.
-	 * @see #setReverseRateUnit(String)
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @see #setReverseRateUnit(RateUnit)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRateUnit()
-	 * @model default=""
+	 * @model default="PER_SECOND"
 	 * @generated
 	 */
-	public String getReverseRateUnit() {
+	public RateUnit getReverseRateUnit() {
 		return reverseRateUnit;
 	}
 
@@ -488,12 +494,13 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Reverse Rate Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
 	 * @see #getReverseRateUnit()
 	 * @generated
 	 */
-	public void setReverseRateUnit(String newReverseRateUnit) {
-		String oldReverseRateUnit = reverseRateUnit;
-		reverseRateUnit = newReverseRateUnit;
+	public void setReverseRateUnit(RateUnit newReverseRateUnit) {
+		RateUnit oldReverseRateUnit = reverseRateUnit;
+		reverseRateUnit = newReverseRateUnit == null ? REVERSE_RATE_UNIT_EDEFAULT : newReverseRateUnit;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_UNIT, oldReverseRateUnit, reverseRateUnit));
 	}
@@ -587,10 +594,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				setID((String)newValue);
 				return;
 			case IblPackage.RULE__FORWARD_RATE_UNIT:
-				setForwardRateUnit((String)newValue);
+				setForwardRateUnit((RateUnit)newValue);
 				return;
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
-				setReverseRateUnit((String)newValue);
+				setReverseRateUnit((RateUnit)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -658,9 +665,9 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IblPackage.RULE__FORWARD_RATE_UNIT:
-				return FORWARD_RATE_UNIT_EDEFAULT == null ? forwardRateUnit != null : !FORWARD_RATE_UNIT_EDEFAULT.equals(forwardRateUnit);
+				return forwardRateUnit != FORWARD_RATE_UNIT_EDEFAULT;
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
-				return REVERSE_RATE_UNIT_EDEFAULT == null ? reverseRateUnit != null : !REVERSE_RATE_UNIT_EDEFAULT.equals(reverseRateUnit);
+				return reverseRateUnit != REVERSE_RATE_UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

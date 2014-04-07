@@ -668,13 +668,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int DEVICE__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEVICE__PROPERTIES = IVISITABLE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 11;
+	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -749,13 +758,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CELL__PROPERTIES = IVISITABLE_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Cell</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 8;
+	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -896,52 +914,6 @@ public class IblPackage extends EPackageImpl {
 	public static final int IPROBABILITY_CONSTRAINT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
-	 * @generated
-	 */
-	public static final int PROPERTY_INITIAL_CONDITION = 15;
-
-	/**
-	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PROPERTY_INITIAL_CONDITION__VARIABLE_NAME = IVISITABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PROPERTY_INITIAL_CONDITION__VALUE = IVISITABLE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PROPERTY_INITIAL_CONDITION__UNIT = IVISITABLE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Property Initial Condition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 3;
-
-	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint <em>Concrete Probability Constraint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -949,7 +921,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcreteProbabilityConstraint()
 	 * @generated
 	 */
-	public static final int CONCRETE_PROBABILITY_CONSTRAINT = 16;
+	public static final int CONCRETE_PROBABILITY_CONSTRAINT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -986,7 +958,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getUnknownProbabilityConstraint()
 	 * @generated
 	 */
-	public static final int UNKNOWN_PROBABILITY_CONSTRAINT = 17;
+	public static final int UNKNOWN_PROBABILITY_CONSTRAINT = 16;
 
 	/**
 	 * The number of structural features of the '<em>Unknown Probability Constraint</em>' class.
@@ -1005,7 +977,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getITimeConstraint()
 	 * @generated
 	 */
-	public static final int ITIME_CONSTRAINT = 18;
+	public static final int ITIME_CONSTRAINT = 17;
 
 	/**
 	 * The number of structural features of the '<em>ITime Constraint</em>' class.
@@ -1024,7 +996,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeInterval()
 	 * @generated
 	 */
-	public static final int TIME_INTERVAL = 19;
+	public static final int TIME_INTERVAL = 18;
 
 	/**
 	 * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -1070,7 +1042,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeInstant()
 	 * @generated
 	 */
-	public static final int TIME_INSTANT = 20;
+	public static final int TIME_INSTANT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1116,7 +1088,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getUnaryProbabilityProperty()
 	 * @generated
 	 */
-	public static final int UNARY_PROBABILITY_PROPERTY = 21;
+	public static final int UNARY_PROBABILITY_PROPERTY = 20;
 
 	/**
 	 * The feature id for the '<em><b>Time Constraint</b></em>' reference.
@@ -1180,7 +1152,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryProbabilityProperty()
 	 * @generated
 	 */
-	public static final int BINARY_PROBABILITY_PROPERTY = 22;
+	public static final int BINARY_PROBABILITY_PROPERTY = 21;
 
 	/**
 	 * The feature id for the '<em><b>Time Constraint</b></em>' reference.
@@ -1253,7 +1225,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRewardProperty()
 	 * @generated
 	 */
-	public static final int REWARD_PROPERTY = 23;
+	public static final int REWARD_PROPERTY = 22;
 
 	/**
 	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
@@ -1308,7 +1280,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getSteadyStateProperty()
 	 * @generated
 	 */
-	public static final int STEADY_STATE_PROPERTY = 24;
+	public static final int STEADY_STATE_PROPERTY = 23;
 
 	/**
 	 * The feature id for the '<em><b>State Formula</b></em>' reference.
@@ -1354,7 +1326,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationConstraint()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_CONSTRAINT = 25;
+	public static final int CONCENTRATION_CONSTRAINT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -1400,7 +1372,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIStateFormula()
 	 * @generated
 	 */
-	public static final int ISTATE_FORMULA = 26;
+	public static final int ISTATE_FORMULA = 25;
 
 	/**
 	 * The number of structural features of the '<em>IState Formula</em>' class.
@@ -1419,7 +1391,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryStateFormula()
 	 * @generated
 	 */
-	public static final int BINARY_STATE_FORMULA = 27;
+	public static final int BINARY_STATE_FORMULA = 26;
 
 	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' reference.
@@ -1465,7 +1437,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getNotStateFormula()
 	 * @generated
 	 */
-	public static final int NOT_STATE_FORMULA = 28;
+	public static final int NOT_STATE_FORMULA = 27;
 
 	/**
 	 * The feature id for the '<em><b>Negated Operand</b></em>' reference.
@@ -1493,7 +1465,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression()
 	 * @generated
 	 */
-	public static final int STATE_EXPRESSION = 29;
+	public static final int STATE_EXPRESSION = 28;
 
 	/**
 	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
@@ -1548,7 +1520,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion()
 	 * @generated
 	 */
-	public static final int REGION = 30;
+	public static final int REGION = 29;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -1630,7 +1602,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
 	 * @generated
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT = 31;
+	public static final int EMF_VARIABLE_ASSIGNMENT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
@@ -1639,7 +1611,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME = 0;
+	public static final int EMF_VARIABLE_ASSIGNMENT__VARIABLE_NAME = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Variable Attribute</b></em>' attribute.
@@ -1648,7 +1620,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE = 1;
+	public static final int EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE = IVISITABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Unit</b></em>' attribute.
@@ -1657,7 +1629,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT__UNIT = 2;
+	public static final int EMF_VARIABLE_ASSIGNMENT__UNIT = IVISITABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Amount</b></em>' attribute.
@@ -1666,7 +1638,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT__AMOUNT = 3;
+	public static final int EMF_VARIABLE_ASSIGNMENT__AMOUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>EMF Variable Assignment</em>' class.
@@ -1675,7 +1647,99 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT_FEATURE_COUNT = 4;
+	public static final int EMF_VARIABLE_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.FlatModel
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel()
+	 * @generated
+	 */
+	public static final int FLAT_MODEL = 31;
+
+	/**
+	 * The feature id for the '<em><b>Molecule List</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Rule List</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL__RULE_LIST = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Flat Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
+	 * @generated
+	 */
+	public static final int PROPERTY_INITIAL_CONDITION = 32;
+
+	/**
+	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPERTY_INITIAL_CONDITION__VARIABLE_NAME = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Variable Attribute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPERTY_INITIAL_CONDITION__UNIT = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Amount</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPERTY_INITIAL_CONDITION__AMOUNT = IVISITABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Property Initial Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
@@ -1685,7 +1749,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 32;
+	public static final int TIME_UNIT = 33;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1695,7 +1759,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 33;
+	public static final int TEMPORAL_OPERATOR = 34;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1705,7 +1769,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 34;
+	public static final int RELATIONAL_OPERATOR = 35;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1715,7 +1779,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 35;
+	public static final int BOOLEAN_OPERATOR = 36;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1725,7 +1789,17 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 36;
+	public static final int CONCENTRATION_UNIT = 37;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
+	 * @generated
+	 */
+	public static final int RATE_UNIT = 38;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1831,13 +1905,6 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass iProbabilityConstraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass propertyInitialConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1956,6 +2023,20 @@ public class IblPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass flatModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass propertyInitialConditionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum timeUnitEEnum = null;
 
 	/**
@@ -1985,6 +2066,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EEnum concentrationUnitEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum rateUnitEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -2749,6 +2837,20 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.Device#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Properties</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Device#getProperties()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	public EReference getDevice_Properties() {
+		return (EReference)deviceEClass.getEStructuralFeatures().get(11);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2862,6 +2964,20 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EReference getCell_VariableAssignmentList() {
 		return (EReference)cellEClass.getEStructuralFeatures().get(7);
+	}
+
+
+	/**
+	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Properties</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Cell#getProperties()
+	 * @see #getCell()
+	 * @generated
+	 */
+	public EReference getCell_Properties() {
+		return (EReference)cellEClass.getEStructuralFeatures().get(8);
 	}
 
 
@@ -3039,57 +3155,6 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EClass getIProbabilityConstraint() {
 		return iProbabilityConstraintEClass;
-	}
-
-	/**
-	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Property Initial Condition</em>'.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
-	 * @generated
-	 */
-	public EClass getPropertyInitialCondition() {
-		return propertyInitialConditionEClass;
-	}
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable Name</em>'.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName()
-	 * @see #getPropertyInitialCondition()
-	 * @generated
-	 */
-	public EAttribute getPropertyInitialCondition_VariableName() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getValue()
-	 * @see #getPropertyInitialCondition()
-	 * @generated
-	 */
-	public EAttribute getPropertyInitialCondition_Value() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unit</em>'.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit()
-	 * @see #getPropertyInitialCondition()
-	 * @generated
-	 */
-	public EAttribute getPropertyInitialCondition_Unit() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -3845,6 +3910,116 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Flat Model</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModel
+	 * @generated
+	 */
+	public EClass getFlatModel() {
+		return flatModelEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList <em>Molecule List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Molecule List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList()
+	 * @see #getFlatModel()
+	 * @generated
+	 */
+	public EReference getFlatModel_MoleculeList() {
+		return (EReference)flatModelEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getRuleList <em>Rule List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Rule List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModel#getRuleList()
+	 * @see #getFlatModel()
+	 * @generated
+	 */
+	public EReference getFlatModel_RuleList() {
+		return (EReference)flatModelEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Property Initial Condition</em>'.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
+	 * @generated
+	 */
+	public EClass getPropertyInitialCondition() {
+		return propertyInitialConditionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable Name</em>'.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName()
+	 * @see #getPropertyInitialCondition()
+	 * @generated
+	 */
+	public EAttribute getPropertyInitialCondition_VariableName() {
+		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute <em>Variable Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable Attribute</em>'.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute()
+	 * @see #getPropertyInitialCondition()
+	 * @generated
+	 */
+	public EAttribute getPropertyInitialCondition_VariableAttribute() {
+		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit()
+	 * @see #getPropertyInitialCondition()
+	 * @generated
+	 */
+	public EAttribute getPropertyInitialCondition_Unit() {
+		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount <em>Amount</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Amount</em>'.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount()
+	 * @see #getPropertyInitialCondition()
+	 * @generated
+	 */
+	public EAttribute getPropertyInitialCondition_Amount() {
+		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(3);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3903,6 +4078,19 @@ public class IblPackage extends EPackageImpl {
 	public EEnum getConcentrationUnit() {
 		return concentrationUnitEEnum;
 	}
+
+	/**
+	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @generated
+	 */
+	public EEnum getRateUnit() {
+		return rateUnitEEnum;
+	}
+
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3995,6 +4183,7 @@ public class IblPackage extends EPackageImpl {
 		createEReference(deviceEClass, DEVICE__OUTPUT_LIST);
 		createEReference(deviceEClass, DEVICE__INPUT_LIST);
 		createEReference(deviceEClass, DEVICE__VARIABLE_ASSIGNMENT_LIST);
+		createEReference(deviceEClass, DEVICE__PROPERTIES);
 
 		cellEClass = createEClass(CELL);
 		createEAttribute(cellEClass, CELL__DISPLAY_NAME);
@@ -4005,6 +4194,7 @@ public class IblPackage extends EPackageImpl {
 		createEReference(cellEClass, CELL__ATGC_COMMAND_LIST);
 		createEAttribute(cellEClass, CELL__ID);
 		createEReference(cellEClass, CELL__VARIABLE_ASSIGNMENT_LIST);
+		createEReference(cellEClass, CELL__PROPERTIES);
 
 		atgcDirectiveEClass = createEClass(ATGC_DIRECTIVE);
 		createEAttribute(atgcDirectiveEClass, ATGC_DIRECTIVE__COMMAND);
@@ -4024,11 +4214,6 @@ public class IblPackage extends EPackageImpl {
 		createEReference(probabilityPropertyEClass, PROBABILITY_PROPERTY__INITIAL_CONDITIONS);
 
 		iProbabilityConstraintEClass = createEClass(IPROBABILITY_CONSTRAINT);
-
-		propertyInitialConditionEClass = createEClass(PROPERTY_INITIAL_CONDITION);
-		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE_NAME);
-		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VALUE);
-		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__UNIT);
 
 		concreteProbabilityConstraintEClass = createEClass(CONCRETE_PROBABILITY_CONSTRAINT);
 		createEAttribute(concreteProbabilityConstraintEClass, CONCRETE_PROBABILITY_CONSTRAINT__OPERATOR);
@@ -4104,12 +4289,23 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__UNIT);
 		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__AMOUNT);
 
+		flatModelEClass = createEClass(FLAT_MODEL);
+		createEReference(flatModelEClass, FLAT_MODEL__MOLECULE_LIST);
+		createEReference(flatModelEClass, FLAT_MODEL__RULE_LIST);
+
+		propertyInitialConditionEClass = createEClass(PROPERTY_INITIAL_CONDITION);
+		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE_NAME);
+		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE);
+		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__UNIT);
+		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__AMOUNT);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalOperatorEEnum = createEEnum(TEMPORAL_OPERATOR);
 		relationalOperatorEEnum = createEEnum(RELATIONAL_OPERATOR);
 		booleanOperatorEEnum = createEEnum(BOOLEAN_OPERATOR);
 		concentrationUnitEEnum = createEEnum(CONCENTRATION_UNIT);
+		rateUnitEEnum = createEEnum(RATE_UNIT);
 	}
 
 	/**
@@ -4154,7 +4350,6 @@ public class IblPackage extends EPackageImpl {
 		iPropertyEClass.getESuperTypes().add(this.getIVisitable());
 		probabilityPropertyEClass.getESuperTypes().add(this.getIProperty());
 		iProbabilityConstraintEClass.getESuperTypes().add(this.getIVisitable());
-		propertyInitialConditionEClass.getESuperTypes().add(this.getIVisitable());
 		concreteProbabilityConstraintEClass.getESuperTypes().add(this.getIProbabilityConstraint());
 		unknownProbabilityConstraintEClass.getESuperTypes().add(this.getIProbabilityConstraint());
 		iTimeConstraintEClass.getESuperTypes().add(this.getIVisitable());
@@ -4170,6 +4365,9 @@ public class IblPackage extends EPackageImpl {
 		notStateFormulaEClass.getESuperTypes().add(this.getIStateFormula());
 		stateExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 		regionEClass.getESuperTypes().add(this.getIVisitable());
+		emfVariableAssignmentEClass.getESuperTypes().add(this.getIVisitable());
+		flatModelEClass.getESuperTypes().add(this.getIVisitable());
+		propertyInitialConditionEClass.getESuperTypes().add(this.getIVisitable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4236,7 +4434,7 @@ public class IblPackage extends EPackageImpl {
 		initEOperation(op, g1);
 
 		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getPropertyInitialCondition(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getEMFVariableAssignment(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(iVisitorEClass_TResult);
 		initEOperation(op, g1);
 
@@ -4300,6 +4498,21 @@ public class IblPackage extends EPackageImpl {
 		g1 = createEGenericType(iVisitorEClass_TResult);
 		initEOperation(op, g1);
 
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getFlatModel(), "flatModel", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getRegion(), "region", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getPropertyInitialCondition(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModel_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4326,15 +4539,15 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getRule_ReverseRate(), ecorePackage.getEDouble(), "reverseRate", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_LeftHandSide(), this.getMolecularSpecies(), null, "leftHandSide", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_RightHandSide(), this.getMolecularSpecies(), null, "rightHandSide", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRule_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRule_ForwardRateUnit(), ecorePackage.getEString(), "forwardRateUnit", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRule_ReverseRateUnit(), ecorePackage.getEString(), "reverseRateUnit", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ID(), ecorePackage.getEString(), "ID", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ForwardRateUnit(), this.getRateUnit(), "forwardRateUnit", "PER_SECOND", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ReverseRateUnit(), this.getRateUnit(), "reverseRateUnit", "PER_SECOND", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(molecularSpeciesEClass, MolecularSpecies.class, "MolecularSpecies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMolecularSpecies_DisplayName(), ecorePackage.getEString(), "DisplayName", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_URI(), ecorePackage.getEString(), "URI", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_DegradationRate(), ecorePackage.getEDouble(), "degradationRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_BindingRate(), ecorePackage.getEDoubleObject(), "bindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_UnbindingRate(), ecorePackage.getEDoubleObject(), "unbindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4357,6 +4570,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getDevice_OutputList(), this.getMolecularSpecies(), null, "outputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_InputList(), this.getMolecularSpecies(), null, "inputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4367,6 +4581,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getCell_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCell_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCell_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atgcDirectiveEClass, ATGCDirective.class, "ATGCDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getATGCDirective_Command(), ecorePackage.getEString(), "command", null, 0, 1, ATGCDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4386,11 +4601,6 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getProbabilityProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iProbabilityConstraintEClass, IProbabilityConstraint.class, "IProbabilityConstraint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPropertyInitialCondition_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyInitialCondition_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyInitialCondition_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(concreteProbabilityConstraintEClass, ConcreteProbabilityConstraint.class, "ConcreteProbabilityConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConcreteProbabilityConstraint_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, ConcreteProbabilityConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4466,6 +4676,16 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getEMFVariableAssignment_Unit(), ecorePackage.getEString(), "unit", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEMFVariableAssignment_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(flatModelEClass, FlatModel.class, "FlatModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFlatModel_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatModel_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPropertyInitialCondition_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyInitialCondition_VariableAttribute(), ecorePackage.getEString(), "variableAttribute", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyInitialCondition_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyInitialCondition_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
 		addEEnumLiteral(timeUnitEEnum, TimeUnit.SECOND);
@@ -4502,6 +4722,10 @@ public class IblPackage extends EPackageImpl {
 		addEEnumLiteral(concentrationUnitEEnum, ConcentrationUnit.PM);
 		addEEnumLiteral(concentrationUnitEEnum, ConcentrationUnit.FM);
 		addEEnumLiteral(concentrationUnitEEnum, ConcentrationUnit.MOLECULE);
+
+		initEEnum(rateUnitEEnum, RateUnit.class, "RateUnit");
+		addEEnumLiteral(rateUnitEEnum, RateUnit.PER_SECOND);
+		addEEnumLiteral(rateUnitEEnum, RateUnit.PER_MINUTE);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -4955,6 +5179,14 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference DEVICE__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getDevice_VariableAssignmentList();
 
 		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference DEVICE__PROPERTIES = eINSTANCE.getDevice_Properties();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5027,6 +5259,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference CELL__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getCell_VariableAssignmentList();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference CELL__PROPERTIES = eINSTANCE.getCell_Properties();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}' class.
@@ -5157,40 +5397,6 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EClass IPROBABILITY_CONSTRAINT = eINSTANCE.getIProbabilityConstraint();
-
-		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
-		 * @generated
-		 */
-		public static final EClass PROPERTY_INITIAL_CONDITION = eINSTANCE.getPropertyInitialCondition();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute PROPERTY_INITIAL_CONDITION__VARIABLE_NAME = eINSTANCE.getPropertyInitialCondition_VariableName();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute PROPERTY_INITIAL_CONDITION__VALUE = eINSTANCE.getPropertyInitialCondition_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute PROPERTY_INITIAL_CONDITION__UNIT = eINSTANCE.getPropertyInitialCondition_Unit();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint <em>Concrete Probability Constraint</em>}' class.
@@ -5689,6 +5895,74 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__AMOUNT = eINSTANCE.getEMFVariableAssignment_Amount();
 
 		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.FlatModel
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel()
+		 * @generated
+		 */
+		public static final EClass FLAT_MODEL = eINSTANCE.getFlatModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Molecule List</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL__MOLECULE_LIST = eINSTANCE.getFlatModel_MoleculeList();
+
+		/**
+		 * The meta object literal for the '<em><b>Rule List</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL__RULE_LIST = eINSTANCE.getFlatModel_RuleList();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
+		 * @generated
+		 */
+		public static final EClass PROPERTY_INITIAL_CONDITION = eINSTANCE.getPropertyInitialCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute PROPERTY_INITIAL_CONDITION__VARIABLE_NAME = eINSTANCE.getPropertyInitialCondition_VariableName();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Attribute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE = eINSTANCE.getPropertyInitialCondition_VariableAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute PROPERTY_INITIAL_CONDITION__UNIT = eINSTANCE.getPropertyInitialCondition_Unit();
+
+		/**
+		 * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute PROPERTY_INITIAL_CONDITION__AMOUNT = eINSTANCE.getPropertyInitialCondition_Amount();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5737,6 +6011,16 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EEnum CONCENTRATION_UNIT = eINSTANCE.getConcentrationUnit();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.RateUnit
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
+		 * @generated
+		 */
+		public static final EEnum RATE_UNIT = eINSTANCE.getRateUnit();
 
 	}
 

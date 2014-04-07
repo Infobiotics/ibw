@@ -56,7 +56,7 @@
     </eOperations>
     <eOperations name="visit">
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
-      <eParameters name="expression" eType="#//PropertyInitialCondition"/>
+      <eParameters name="expression" eType="#//EMFVariableAssignment"/>
     </eOperations>
     <eOperations name="visit">
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
@@ -106,6 +106,18 @@
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
       <eParameters name="plasmid" eType="#//Plasmid"/>
     </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="flatModel" eType="#//FlatModel"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="region" eType="#//Region"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//PropertyInitialCondition"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -146,17 +158,18 @@
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rightHandSide" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverseRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardRateUnit" eType="#//RateUnit"
+        defaultValueLiteral="PER_SECOND"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverseRateUnit" eType="#//RateUnit"
+        defaultValueLiteral="PER_SECOND"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MolecularSpecies" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="DisplayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="URI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
@@ -188,6 +201,8 @@
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//IProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell" eSuperTypes="#//IVisitable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -207,6 +222,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//IProperty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -228,11 +245,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IProbabilityConstraint" abstract="true"
       interface="true" eSuperTypes="#//IVisitable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyInitialCondition" eSuperTypes="#//IVisitable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConcreteProbabilityConstraint" eSuperTypes="#//IProbabilityConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//RelationalOperator"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bound" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
@@ -346,10 +358,26 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EMFVariableAssignment">
+  <eClassifiers xsi:type="ecore:EClass" name="EMFVariableAssignment" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlatModel" eSuperTypes="#//IVisitable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
+        eType="#//MolecularSpecies"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
+        eType="#//Rule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyInitialCondition" eSuperTypes="#//IVisitable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RateUnit">
+    <eLiterals name="PER_SECOND" value="1" literal="PER_SECOND"/>
+    <eLiterals name="PER_MINUTE" value="2" literal="PER_MINUTE"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -4,7 +4,6 @@ package roadblock.emf.ibl.Ibl.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
 
 import roadblock.emf.ibl.Ibl.ATGCDirective;
@@ -15,6 +14,8 @@ import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
+import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IStateFormula;
@@ -29,6 +30,7 @@ import roadblock.emf.ibl.Ibl.NotStateFormula;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.ProbabilityProperty;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
+import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.StateExpression;
@@ -37,8 +39,6 @@ import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
-import roadblock.emf.ibl.Ibl.*;
-import roadblock.emf.ibl.Ibl.System;
 
 /**
  * <!-- begin-user-doc -->
@@ -159,7 +159,7 @@ public class IblSwitch<T> extends Switch<T> {
 				return result;
 			}
 			case IblPackage.SYSTEM: {
-				System system = (System)theEObject;
+				roadblock.emf.ibl.Ibl.System system = (roadblock.emf.ibl.Ibl.System)theEObject;
 				T result = caseSystem(system);
 				if (result == null) result = caseIVisitable(system);
 				if (result == null) result = defaultCase(theEObject);
@@ -198,13 +198,6 @@ public class IblSwitch<T> extends Switch<T> {
 				IProbabilityConstraint iProbabilityConstraint = (IProbabilityConstraint)theEObject;
 				T result = caseIProbabilityConstraint(iProbabilityConstraint);
 				if (result == null) result = caseIVisitable(iProbabilityConstraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case IblPackage.PROPERTY_INITIAL_CONDITION: {
-				PropertyInitialCondition propertyInitialCondition = (PropertyInitialCondition)theEObject;
-				T result = casePropertyInitialCondition(propertyInitialCondition);
-				if (result == null) result = caseIVisitable(propertyInitialCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -329,6 +322,21 @@ public class IblSwitch<T> extends Switch<T> {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT: {
 				EMFVariableAssignment emfVariableAssignment = (EMFVariableAssignment)theEObject;
 				T result = caseEMFVariableAssignment(emfVariableAssignment);
+				if (result == null) result = caseIVisitable(emfVariableAssignment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.FLAT_MODEL: {
+				FlatModel flatModel = (FlatModel)theEObject;
+				T result = caseFlatModel(flatModel);
+				if (result == null) result = caseIVisitable(flatModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.PROPERTY_INITIAL_CONDITION: {
+				PropertyInitialCondition propertyInitialCondition = (PropertyInitialCondition)theEObject;
+				T result = casePropertyInitialCondition(propertyInitialCondition);
+				if (result == null) result = caseIVisitable(propertyInitialCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -452,7 +460,7 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSystem(System object) {
+	public T caseSystem(roadblock.emf.ibl.Ibl.System object) {
 		return null;
 	}
 
@@ -558,21 +566,6 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIProbabilityConstraint(IProbabilityConstraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Property Initial Condition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Property Initial Condition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePropertyInitialCondition(PropertyInitialCondition object) {
 		return null;
 	}
 
@@ -813,6 +806,36 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEMFVariableAssignment(EMFVariableAssignment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Flat Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Flat Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFlatModel(FlatModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Property Initial Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Property Initial Condition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePropertyInitialCondition(PropertyInitialCondition object) {
 		return null;
 	}
 

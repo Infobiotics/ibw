@@ -106,7 +106,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String UNIT_EDEFAULT = null;
+	protected static final ConcentrationUnit UNIT_EDEFAULT = ConcentrationUnit.M;
 
 	/**
 	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
@@ -116,7 +116,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected String unit = UNIT_EDEFAULT;
+	protected ConcentrationUnit unit = UNIT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDegradationRate() <em>Degradation Rate</em>}' attribute.
@@ -418,6 +418,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Unit</b></em>' attribute.
+	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.ConcentrationUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unit</em>' attribute isn't clear,
@@ -425,12 +426,13 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Unit</em>' attribute.
-	 * @see #setUnit(String)
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationUnit
+	 * @see #setUnit(ConcentrationUnit)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_Unit()
 	 * @model
 	 * @generated
 	 */
-	public String getUnit() {
+	public ConcentrationUnit getUnit() {
 		return unit;
 	}
 
@@ -439,12 +441,13 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationUnit
 	 * @see #getUnit()
 	 * @generated
 	 */
-	public void setUnit(String newUnit) {
-		String oldUnit = unit;
-		unit = newUnit;
+	public void setUnit(ConcentrationUnit newUnit) {
+		ConcentrationUnit oldUnit = unit;
+		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__UNIT, oldUnit, unit));
 	}
@@ -812,7 +815,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 				setAmount((Double)newValue);
 				return;
 			case IblPackage.MOLECULAR_SPECIES__UNIT:
-				setUnit((String)newValue);
+				setUnit((ConcentrationUnit)newValue);
 				return;
 			case IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE:
 				setDegradationRate((Double)newValue);
@@ -911,7 +914,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 			case IblPackage.MOLECULAR_SPECIES__AMOUNT:
 				return amount != AMOUNT_EDEFAULT;
 			case IblPackage.MOLECULAR_SPECIES__UNIT:
-				return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
+				return unit != UNIT_EDEFAULT;
 			case IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE:
 				return degradationRate != DEGRADATION_RATE_EDEFAULT;
 			case IblPackage.MOLECULAR_SPECIES__BINDING_RATE:

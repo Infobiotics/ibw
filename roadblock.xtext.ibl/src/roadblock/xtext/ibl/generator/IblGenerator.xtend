@@ -3,28 +3,21 @@
  */
 package roadblock.xtext.ibl.generator
 
-
-import org.eclipse.emf.ecore.resource.Resource
-
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.IGenerator
-import roadblock.dataprocessing.modelbuilder.PropertyBuilder
-import roadblock.modelchecking.translation.property.PropertyTranslationManager
-import roadblock.modelchecking.translation.property.TranslationTarget
-import roadblock.xtext.ibl.ibl.PropertyDefinition
-import roadblock.emf.ibl.Ibl.IblPackage
-import roadblock.emf.ibl.Ibl.IblFactory
-import roadblock.emf.ibl.Ibl.Model
-import java.rmi.registry.Registry
-import java.util.Map
 import java.io.IOException
-import java.util.Collections
-import roadblock.xtext.ibl.ibl.FunctionDefinition
-
-import roadblock.dataprocessing.modelpopulation.ModelPopulation
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import roadblock.dataprocessing.flatModel.FlatModelManager
+import roadblock.dataprocessing.model.ModelBuilder
+import roadblock.dataprocessing.model.PropertyBuilder
+import roadblock.emf.ibl.Ibl.FlatModel
+import roadblock.emf.ibl.Ibl.IProperty
+import roadblock.emf.ibl.Ibl.Model
+import roadblock.modelchecking.translation.TranslationManager
+import roadblock.modelchecking.translation.TranslationTarget
 
 /**
  * Generates code from your model files on save.
@@ -34,13 +27,11 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor
 class IblGenerator implements IGenerator {
 
 	private PropertyBuilder propertyBuilder = new PropertyBuilder();
-	private PropertyTranslationManager translationManager = PropertyTranslationManager::instance;
+	private TranslationManager translationManager = TranslationManager::instance;
 
-	private ModelPopulation modelPopulater = new ModelPopulation();
-
-// export an EMF model to XML
-// via http://techblog.goelite.org/sending-emf-models-via-soap/
-def public static String convertToXml(EObject eObject) throws IOException {
+	// export an EMF model to XML
+	// via http://techblog.goelite.org/sending-emf-models-via-soap/
+	def public static String convertToXml(EObject eObject) throws IOException {
         var resource = new XMLResourceImpl
         var processor = new XMLProcessor
         resource.setEncoding("UTF-8");
@@ -49,41 +40,38 @@ def public static String convertToXml(EObject eObject) throws IOException {
     }
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		
-//		val properties = resource.allContents.filter(PropertyDefinition).toList;
-//		println("Property count: " + properties.size);
-//
-//		for (PropertyDefinition  p : properties) {
-//			println(translationManager.Translate(propertyBuilder.build(p), TranslationTarget.PRISM));
-//		}
 
-		
+		var modelPopulater = new ModelBuilder();
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
 	
-
 		println()
 		println("After population")
 		println("===============")
 		
-		var xml = convertToXml(emfModel)
-		println(xml)
+		//var xml = convertToXml(emfModel)
+		//println(xml)
 		
-
-		fsa.generateFile('EMFModel.xml', xml)
+		//fsa.generateFile('EMFModel.xml', xml)
 		
 //		fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 
+		var flatModelManager = new FlatModelManager(emfModel);
+		var properties = flatModelManager.properties;
+		var property = properties.get(8);
+		var FlatModel flatModel = flatModelManager.getFlatModel(property);
 		
-
-
-
-
+		println("# of properties: " + properties.size);
+		println("# of molecules: " + flatModel.moleculeList.size);
+		println("# of rules: " + flatModel.ruleList.size);
+		
+		println("Translated Properties: \n");
+		
+		for(IProperty p : properties) {
+			println(translationManager.translate(p, TranslationTarget.PRISM));
+		}
+				
+		println("Model Translation: \n" + translationManager.translate(flatModel, property, TranslationTarget.PRISM));
 	}
-
-
-
-
-
 }	
 
 

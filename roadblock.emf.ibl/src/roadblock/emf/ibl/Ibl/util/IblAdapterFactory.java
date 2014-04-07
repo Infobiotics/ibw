@@ -4,9 +4,7 @@ package roadblock.emf.ibl.Ibl.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
 import roadblock.emf.ibl.Ibl.ATGCDirective;
@@ -17,6 +15,8 @@ import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
+import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IStateFormula;
@@ -31,6 +31,7 @@ import roadblock.emf.ibl.Ibl.NotStateFormula;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.ProbabilityProperty;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
+import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.StateExpression;
@@ -39,8 +40,6 @@ import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
-import roadblock.emf.ibl.Ibl.*;
-import roadblock.emf.ibl.Ibl.System;
 
 /**
  * <!-- begin-user-doc -->
@@ -135,7 +134,7 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 				return createATGCDirectiveAdapter();
 			}
 			@Override
-			public Adapter caseSystem(System object) {
+			public Adapter caseSystem(roadblock.emf.ibl.Ibl.System object) {
 				return createSystemAdapter();
 			}
 			@Override
@@ -157,10 +156,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIProbabilityConstraint(IProbabilityConstraint object) {
 				return createIProbabilityConstraintAdapter();
-			}
-			@Override
-			public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
-				return createPropertyInitialConditionAdapter();
 			}
 			@Override
 			public Adapter caseConcreteProbabilityConstraint(ConcreteProbabilityConstraint object) {
@@ -225,6 +220,14 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEMFVariableAssignment(EMFVariableAssignment object) {
 				return createEMFVariableAssignmentAdapter();
+			}
+			@Override
+			public Adapter caseFlatModel(FlatModel object) {
+				return createFlatModelAdapter();
+			}
+			@Override
+			public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
+				return createPropertyInitialConditionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -457,20 +460,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
-	 * @generated
-	 */
-	public Adapter createPropertyInitialConditionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint <em>Concrete Probability Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -691,6 +680,34 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEMFVariableAssignmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.FlatModel
+	 * @generated
+	 */
+	public Adapter createFlatModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
+	 * @generated
+	 */
+	public Adapter createPropertyInitialConditionAdapter() {
 		return null;
 	}
 

@@ -20,7 +20,6 @@ define SensorCell typeof CELL(){
         PROTEIN RFP = new PROTEIN()
 
 
-
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
 			RNA mrna1
@@ -38,7 +37,7 @@ define SensorCell typeof CELL(){
 			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
 			translationInitiation.forwardRate = 1 s^-1
 			translationInitiation.reverseRate = 1 s^-1
-		
+			
 			RULE translation : mrna1~ribosome -> mrna1~ribosome + NahR
 			translation.forwardRate = 1 s^-1
 
@@ -58,7 +57,7 @@ define SensorCell typeof CELL(){
 			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
 			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
 			
-            VERIFY [Xysl2 > 0 uM ] EVENTUALLY HOLDS
+            VERIFY [XySl2 > 0 uM ] EVENTUALLY HOLDS GIVEN XylS2 = 200 uM
         }
 
         DEVICE GFPProduction = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
@@ -85,19 +84,27 @@ define SensorCell typeof CELL(){
          // INSIDE and OUTSIDE
 
          // additional rules
-         RULE R1 : SA + NahR <-> SA~NahR
-         R1.forwardRate = 1 s^-1
-         R1.reverseRate = 1 s^-1
+         RULE R1 : SA + SA + NahR + NahR <-> SA + SA~NahR
+         R1.forwardRate = 1 min^-1
+         R1.reverseRate = 2 s^-1
  
-         RULE R2 : AHL + XylS2 <-> AHL~XylS2
-         R2.forwardRate = 1 s^-1
-         R2.reverseRate = 1 s^-1
+         RULE R2 : AHL + AHL + XylS2 <-> AHL + AHL + AHL + AHL~XylS2
+         R2.forwardRate = 2.3 s^-1
+         R2.reverseRate = 1 min^-1
+         
+         RULE R3 : SA + SA + SA + NahR <-> SA~NahR
+         R3.forwardRate = 1 min^-1
+         R3.reverseRate = 2 s^-1
+         
+         RULE R4 : NahR <-> SA + SA + SA~NahR
+         R4.forwardRate = 1 min^-1
+         R4.reverseRate = 2 s^-1
  
          RULE SAConsumption : OUTSIDE -> SA
-         signalConsumption.rate = 1 min^-1
+         SAConsumption.rate = 6.4 min^-1
  
          RULE AHLConsumption : OUTSIDE -> AHL
-         AHLConsumption.rate = 1 min^-1
+         AHLConsumption.rate = 3 min^-1
  
          // atgc rules
          ATGC ARRANGE : nahR, PnahR, Psal
@@ -112,10 +119,11 @@ define SensorCell typeof CELL(){
          VERIFY [signal > 0 uM] HOLDS IN STEADY-STATE
          VERIFY [signal > 0 uM] HOLDS INFINITELY OFTEN
          VERIFY [RFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
-         VERIFY EXPECTED [RFP] AT 1000 s IS ?
+         VERIFY EXPECTED [RFP] AT 1000 min IS ?
          VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
 }
+
 define site1 typeof REGION () {
-        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 10 uM)
         CELL myCell = new SensorCell()
 }
