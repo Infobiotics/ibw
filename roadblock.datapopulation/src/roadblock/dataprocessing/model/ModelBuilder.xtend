@@ -1,7 +1,10 @@
 package roadblock.dataprocessing.model
 
+import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.util.EcoreUtil
+import roadblock.emf.ibl.Ibl.ATGCArrange
+import roadblock.emf.ibl.Ibl.ATGCDirective
 import roadblock.emf.ibl.Ibl.Cell
 import roadblock.emf.ibl.Ibl.ConcentrationUnit
 import roadblock.emf.ibl.Ibl.Device
@@ -11,6 +14,9 @@ import roadblock.emf.ibl.Ibl.MolecularSpecies
 import roadblock.emf.ibl.Ibl.RateUnit
 import roadblock.emf.ibl.Ibl.Region
 import roadblock.emf.ibl.Ibl.Rule
+import roadblock.xtext.ibl.ibl.ATGCCloningSites
+import roadblock.xtext.ibl.ibl.ATGCDefinition
+import roadblock.xtext.ibl.ibl.ATGCDirection
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject
 import roadblock.xtext.ibl.ibl.CellBody
 import roadblock.xtext.ibl.ibl.CellInstantiation
@@ -36,9 +42,9 @@ import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 
 class ModelBuilder extends IblSwitch<Object> {
-	
+
 	var modelFactory = IblFactory::eINSTANCE;
-	
+
 	var propertyBuilder = new PropertyBuilder();
 
 	var emfModel = modelFactory.createModel;
@@ -48,6 +54,19 @@ class ModelBuilder extends IblSwitch<Object> {
 
 	def isPart(String molecule) {
 		return BIOLOGICALPART.contains(molecule)
+	}
+
+	def isComplex(String name) {
+		name.contains('~')
+	}
+
+	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
+		if (moleculeList.filter[displayName == complexName].size == 0) {
+			val complex = modelFactory.createMolecularSpecies
+			complex => [displayName = complexName biologicalType = 'COMPLEX' amount = 0.0
+				unit = ConcentrationUnit.UM]
+			moleculeList.add(complex)
+		}
 	}
 
 	//
@@ -68,23 +87,53 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 	}
 
+	// helper to find first declaration of variable given its displayName from local container upwards
+	def MolecularSpecies searchFirstDeclaration(EObject container, String displayName) {
+
+		// look among molecularSpecies at current level
+		// return it if found
+		switch (container) {
+			Device: {
+				val molecules = container.moleculeList.filter[it.displayName == displayName];
+				if(!molecules.empty) return molecules.head
+			}
+			Cell: {
+				val molecules = container.moleculeList.filter[it.displayName == displayName];
+				if(!molecules.empty) return molecules.head
+			}
+			Region: {
+				val molecules = container.moleculeList.filter[it.displayName == displayName];
+				if(!molecules.empty) return molecules.head
+			}
+			roadblock.emf.ibl.Ibl.Model: {
+				var molecule = modelFactory.createMolecularSpecies
+				molecule.displayName = 'UNKNOWN REFERENCE: ' + displayName
+				molecule.biologicalType = 'UNKNOWN'
+				return molecule
+			}
+		}
+
+		// else search in next container
+		return searchFirstDeclaration(container.eContainer, displayName)
+	}
+
 	//
 	def updateRule(Rule rule, EMFVariableAssignment variableAssignment) {
 
 		// update its properties
 		switch variableAssignment.variableAttribute {
-			case 'forwardRate': rule =>
-				[
+			case 'forwardRate':
+				rule => [
 					forwardRate = variableAssignment.amount;
 					forwardRateUnit = getRateUnit(variableAssignment.unit)
 				]
-			case 'reverseRate': rule =>
-				[
+			case 'reverseRate':
+				rule => [
 					reverseRate = variableAssignment.amount;
 					reverseRateUnit = getRateUnit(variableAssignment.unit)
 				]
-			case 'rate': rule =>
-				[
+			case 'rate':
+				rule => [
 					forwardRate = variableAssignment.amount;
 					forwardRateUnit = getRateUnit(variableAssignment.unit)
 				]
@@ -130,12 +179,14 @@ class ModelBuilder extends IblSwitch<Object> {
 			val container = variableAssignment.eContainer
 			var EObject variable
 			switch container {
-				Region: variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].
-					head
-				Cell: variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].
-					head
-				Device: variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].
-					head
+				Region:
+					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].
+						head
+				Cell:
+					variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
+				Device:
+					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].
+						head
 			}
 
 			switch variable {
@@ -144,6 +195,40 @@ class ModelBuilder extends IblSwitch<Object> {
 
 			EcoreUtil.delete(variableAssignment)
 
+		}
+
+		// create molecular species instances for complexes
+		// go through every rules		
+		for (rule : emfModel.eAllContents.toList.filter(Rule)) {
+
+			// build list of complexes
+			var complexList = rule.leftHandSide.filter[displayName.complex].map[displayName].toList
+			complexList.addAll(rule.rightHandSide.filter[displayName.complex].map[displayName])
+
+			for (molecule : complexList) { // add each complex to the rule's container				
+				switch rule.eContainer {
+					Device: {
+						val container = (rule.eContainer as Device)
+						container.moleculeList.addComplexToContainer(molecule)
+					}
+					Region: {
+						val container = (rule.eContainer as Region)
+						container.moleculeList.addComplexToContainer(molecule)
+					}
+					Cell: {
+						val container = (rule.eContainer as Cell)
+						container.moleculeList.addComplexToContainer(molecule)
+					}
+				}
+			}
+		}
+
+		// ATGC: look up variables in container hierarchy
+		for (atgc : emfModel.eAllContents.toList.filter(ATGCArrange)) {
+			for (part : atgc.partList) {
+				val match = EcoreUtil.copy(searchFirstDeclaration(atgc.eContainer, part.displayName))
+				EcoreUtil.replace(part, match)
+			}
 		}
 
 		return emfModel;
@@ -159,10 +244,34 @@ class ModelBuilder extends IblSwitch<Object> {
 				VariableDefinition: cell.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment: cell.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
 				PropertyDefinition: cell.properties.add(propertyBuilder.build(member.property))
+				ATGCDefinition: cell.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
 		}
 
 		return cell
+	}
+
+	override caseATGCArrange(roadblock.xtext.ibl.ibl.ATGCArrange atgcArrange) {
+		var emfAtgcArrange = modelFactory.createATGCArrange
+
+		for (displayName : atgcArrange.arguments.map[it.buildVariableName]) {
+			var emfPart = modelFactory.createMolecularSpecies
+			emfPart.displayName = displayName
+			emfAtgcArrange.partList.add(emfPart)
+		}
+		return emfAtgcArrange
+	}
+
+	override caseATGCDirection(ATGCDirection atgcDirection) {
+		var emfAtgcDirection = modelFactory.createATGCDirection
+		emfAtgcDirection.direction = atgcDirection.direction
+		return emfAtgcDirection
+	}
+
+	override caseATGCCloningSites(ATGCCloningSites atgcCloningSites) {
+		var emfAtgcCloningSites = modelFactory.createATGCCloningSites
+		emfAtgcCloningSites.cloningSites = atgcCloningSites.cloningsites
+		return emfAtgcCloningSites
 	}
 
 	override caseRegionBody(RegionBody regionBody) {
@@ -221,9 +330,10 @@ class ModelBuilder extends IblSwitch<Object> {
 				VariableDefinition: device.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment: device.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
 				PropertyDefinition: device.properties.add(propertyBuilder.build(member.property))
+				ATGCDefinition: device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
 		}
-		
+
 		return device
 	}
 
@@ -236,7 +346,6 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 
 		return molecule
-
 	}
 
 	override caseVariableDefinitionBuiltIn(VariableDefinitionBuiltIn variableDefinition) {
@@ -359,7 +468,7 @@ class ModelBuilder extends IblSwitch<Object> {
 			case "molecules": ConcentrationUnit.MOLECULE
 		}
 	}
-	
+
 	private def getRateUnit(String unit) {
 		switch unit {
 			case "s^-1": RateUnit.PER_SECOND

@@ -7,6 +7,9 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
+import roadblock.emf.ibl.Ibl.ATGCArrange;
+import roadblock.emf.ibl.Ibl.ATGCCloningSites;
+import roadblock.emf.ibl.Ibl.ATGCDirection;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
@@ -228,6 +231,18 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
 				return createPropertyInitialConditionAdapter();
+			}
+			@Override
+			public Adapter caseATGCDirection(ATGCDirection object) {
+				return createATGCDirectionAdapter();
+			}
+			@Override
+			public Adapter caseATGCArrange(ATGCArrange object) {
+				return createATGCArrangeAdapter();
+			}
+			@Override
+			public Adapter caseATGCCloningSites(ATGCCloningSites object) {
+				return createATGCCloningSitesAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -708,6 +723,48 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPropertyInitialConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ATGCDirection
+	 * @generated
+	 */
+	public Adapter createATGCDirectionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCArrange <em>ATGC Arrange</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ATGCArrange
+	 * @generated
+	 */
+	public Adapter createATGCArrangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ATGCCloningSites
+	 * @generated
+	 */
+	public Adapter createATGCCloningSitesAdapter() {
 		return null;
 	}
 

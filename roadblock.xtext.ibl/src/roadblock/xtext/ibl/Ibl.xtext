@@ -376,14 +376,24 @@ Outside:
 ////////////////
 // atgc rules //
 ////////////////
-
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command=ATGCCommand ':' arguments+=VariableName (',' arguments+=VariableName)*
+	'ATGC' command = (ATGCCloningSites | ATGCArrange | ATGCDirection)
 ;
 
-ATGCCommand:
-	'ARRANGE'
+ATGCArrange:
+	{ATGCArrange}
+	'ARRANGE' arguments+=VariableName  (',' arguments+=VariableName)*
+;
+
+ATGCCloningSites:
+	{ATGCCloningSites}
+	'CLONING SITES' ':' cloningsites = INT
+;
+
+ATGCDirection: 
+	{ATGCDirection}
+	'DIRECTION' ':' direction = ('FORWARD' | 'BACKWARD')
 ;
 
 /////////////////////////

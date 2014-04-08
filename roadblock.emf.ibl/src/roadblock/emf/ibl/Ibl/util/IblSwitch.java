@@ -6,6 +6,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
+import roadblock.emf.ibl.Ibl.ATGCArrange;
+import roadblock.emf.ibl.Ibl.ATGCCloningSites;
+import roadblock.emf.ibl.Ibl.ATGCDirection;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
@@ -337,6 +340,30 @@ public class IblSwitch<T> extends Switch<T> {
 				PropertyInitialCondition propertyInitialCondition = (PropertyInitialCondition)theEObject;
 				T result = casePropertyInitialCondition(propertyInitialCondition);
 				if (result == null) result = caseIVisitable(propertyInitialCondition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.ATGC_DIRECTION: {
+				ATGCDirection atgcDirection = (ATGCDirection)theEObject;
+				T result = caseATGCDirection(atgcDirection);
+				if (result == null) result = caseATGCDirective(atgcDirection);
+				if (result == null) result = caseIVisitable(atgcDirection);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.ATGC_ARRANGE: {
+				ATGCArrange atgcArrange = (ATGCArrange)theEObject;
+				T result = caseATGCArrange(atgcArrange);
+				if (result == null) result = caseATGCDirective(atgcArrange);
+				if (result == null) result = caseIVisitable(atgcArrange);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.ATGC_CLONING_SITES: {
+				ATGCCloningSites atgcCloningSites = (ATGCCloningSites)theEObject;
+				T result = caseATGCCloningSites(atgcCloningSites);
+				if (result == null) result = caseATGCDirective(atgcCloningSites);
+				if (result == null) result = caseIVisitable(atgcCloningSites);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -836,6 +863,51 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePropertyInitialCondition(PropertyInitialCondition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ATGC Direction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ATGC Direction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseATGCDirection(ATGCDirection object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ATGC Arrange</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ATGC Arrange</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseATGCArrange(ATGCArrange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ATGC Cloning Sites</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ATGC Cloning Sites</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseATGCCloningSites(ATGCCloningSites object) {
 		return null;
 	}
 

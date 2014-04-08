@@ -4,6 +4,7 @@ package roadblock.emf.ibl.Ibl;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -189,7 +191,7 @@ public class SteadyStateProperty extends EObjectImpl implements IProperty {
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Initial Conditions</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Initial Conditions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

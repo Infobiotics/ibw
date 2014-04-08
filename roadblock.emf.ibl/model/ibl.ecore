@@ -166,18 +166,25 @@
         defaultValueLiteral="PER_SECOND"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MolecularSpecies" eSuperTypes="#//IVisitable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DisplayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="URI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="1.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
+        defaultValueLiteral="1.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="biologicalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="s^-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="s^-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="s^-1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//IVisitable">
@@ -225,11 +232,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//IProperty"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="partList" upperBound="-1"
-        eType="#//MolecularSpecies" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Chromosome" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="Plasmid" eSuperTypes="#//IVisitable"/>
@@ -237,6 +240,15 @@
       eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProbabilityProperty" abstract="true"
       eSuperTypes="#//IProperty">
+    <eOperations name="accept">
+      <eGenericType eTypeParameter="#//ProbabilityProperty/accept/TResult"/>
+      <eTypeParameters name="TResult"/>
+      <eParameters name="visitor">
+        <eGenericType eClassifier="#//IVisitor">
+          <eTypeArguments eTypeParameter="#//ProbabilityProperty/accept/TResult"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeConstraint" eType="#//ITimeConstraint"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="probabilityConstraint"
         eType="#//IProbabilityConstraint"/>
@@ -379,5 +391,15 @@
   <eClassifiers xsi:type="ecore:EEnum" name="RateUnit">
     <eLiterals name="PER_SECOND" value="1" literal="PER_SECOND"/>
     <eLiterals name="PER_MINUTE" value="2" literal="PER_MINUTE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCDirection" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCArrange" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partList" upperBound="-1"
+        eType="#//MolecularSpecies" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCCloningSites" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloningSites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

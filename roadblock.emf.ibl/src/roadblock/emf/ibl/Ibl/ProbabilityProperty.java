@@ -4,9 +4,10 @@ package roadblock.emf.ibl.Ibl;
 
 import java.util.Collection;
 import java.util.List;
-import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -191,7 +193,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Initial Conditions</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Initial Conditions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

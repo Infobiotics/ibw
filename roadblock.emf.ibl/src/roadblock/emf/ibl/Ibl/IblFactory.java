@@ -91,6 +91,9 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT: return (EObject)createEMFVariableAssignment();
 			case IblPackage.FLAT_MODEL: return (EObject)createFlatModel();
 			case IblPackage.PROPERTY_INITIAL_CONDITION: return (EObject)createPropertyInitialCondition();
+			case IblPackage.ATGC_DIRECTION: return (EObject)createATGCDirection();
+			case IblPackage.ATGC_ARRANGE: return (EObject)createATGCArrange();
+			case IblPackage.ATGC_CLONING_SITES: return (EObject)createATGCCloningSites();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -404,6 +407,36 @@ public class IblFactory extends EFactoryImpl {
 	public PropertyInitialCondition createPropertyInitialCondition() {
 		PropertyInitialCondition propertyInitialCondition = new PropertyInitialCondition();
 		return propertyInitialCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ATGCDirection createATGCDirection() {
+		ATGCDirection atgcDirection = new ATGCDirection();
+		return atgcDirection;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ATGCArrange createATGCArrange() {
+		ATGCArrange atgcArrange = new ATGCArrange();
+		return atgcArrange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ATGCCloningSites createATGCCloningSites() {
+		ATGCCloningSites atgcCloningSites = new ATGCCloningSites();
+		return atgcCloningSites;
 	}
 
 	/**

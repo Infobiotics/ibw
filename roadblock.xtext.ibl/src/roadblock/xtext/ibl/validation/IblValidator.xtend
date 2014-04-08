@@ -1,28 +1,26 @@
 package roadblock.xtext.ibl.validation
-import org.eclipse.xtext.validation.Check
-import roadblock.xtext.ibl.ibl.ProcessBody
-import roadblock.xtext.ibl.ibl.VariableDefinition
-import roadblock.xtext.ibl.ibl.IblPackage
-import roadblock.xtext.ibl.ibl.PropertyDefinition
-import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
-import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
-import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
-import java.util.Map
+
 import org.eclipse.emf.ecore.EStructuralFeature
-import roadblock.xtext.ibl.ibl.FunctionBodyMember
-import roadblock.xtext.ibl.ibl.impl.ChromosomeBodyImpl
-import roadblock.xtext.ibl.ibl.impl.CellBodyImpl
-import roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyImpl
+import org.eclipse.xtext.validation.Check
 import roadblock.xtext.ibl.ibl.ATGCDefinition
 import roadblock.xtext.ibl.ibl.CellInstantiation
 import roadblock.xtext.ibl.ibl.ChromosomeInstantiation
 import roadblock.xtext.ibl.ibl.DeviceDefinition
+import roadblock.xtext.ibl.ibl.FunctionBodyMember
+import roadblock.xtext.ibl.ibl.IblPackage
+import roadblock.xtext.ibl.ibl.Outside
 import roadblock.xtext.ibl.ibl.PlasmidInstantiation
 import roadblock.xtext.ibl.ibl.ProcessInstantiation
-import roadblock.xtext.ibl.ibl.SystemInstantiation
-import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.PropertyDefinition
 import roadblock.xtext.ibl.ibl.RuleDefinition
-import roadblock.xtext.ibl.ibl.Outside
+import roadblock.xtext.ibl.ibl.SystemInstantiation
+import roadblock.xtext.ibl.ibl.impl.CellBodyImpl
+import roadblock.xtext.ibl.ibl.impl.ChromosomeBodyImpl
+import roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyImpl
+import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
+import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
+import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
+import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -60,6 +58,8 @@ class IblValidator extends AbstractIblValidator {
 				error(errorMessage + v.displayName, feature)			
 		]
 	}	
+
+// =================================================================================
 	
 // Container checks for function body members
 	@Check
@@ -137,7 +137,9 @@ class IblValidator extends AbstractIblValidator {
 			IblPackage::eINSTANCE.systemInstantiation_Constructor
 		)
 		}
-	
+
+	// =================================================================================
+
 	@Check  // OUTSIDE must be used on its own, if used at all
 	def checkRuleOutside(RuleDefinition rule){
 		//number of OUTSIDE on the left hand side

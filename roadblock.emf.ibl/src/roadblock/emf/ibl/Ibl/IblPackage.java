@@ -776,31 +776,13 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Command</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_DIRECTIVE__COMMAND = IVISITABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Part List</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_DIRECTIVE__PART_LIST = IVISITABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>ATGC Directive</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ATGC_DIRECTIVE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int ATGC_DIRECTIVE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -1742,6 +1724,90 @@ public class IblPackage extends EPackageImpl {
 	public static final int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ATGCDirection
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCDirection()
+	 * @generated
+	 */
+	public static final int ATGC_DIRECTION = 33;
+
+	/**
+	 * The feature id for the '<em><b>Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_DIRECTION__DIRECTION = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Direction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_DIRECTION_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCArrange <em>ATGC Arrange</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ATGCArrange
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCArrange()
+	 * @generated
+	 */
+	public static final int ATGC_ARRANGE = 34;
+
+	/**
+	 * The feature id for the '<em><b>Part List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_ARRANGE__PART_LIST = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Arrange</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_ARRANGE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ATGCCloningSites
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCCloningSites()
+	 * @generated
+	 */
+	public static final int ATGC_CLONING_SITES = 35;
+
+	/**
+	 * The feature id for the '<em><b>Cloning Sites</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_CLONING_SITES__CLONING_SITES = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Cloning Sites</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_CLONING_SITES_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1749,7 +1815,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 33;
+	public static final int TIME_UNIT = 36;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1759,7 +1825,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 34;
+	public static final int TEMPORAL_OPERATOR = 37;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1769,7 +1835,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 35;
+	public static final int RELATIONAL_OPERATOR = 38;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1779,7 +1845,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 36;
+	public static final int BOOLEAN_OPERATOR = 39;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1789,7 +1855,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 37;
+	public static final int CONCENTRATION_UNIT = 40;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -1799,7 +1865,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 38;
+	public static final int RATE_UNIT = 41;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2031,6 +2097,27 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass propertyInitialConditionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass atgcDirectionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass atgcArrangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass atgcCloningSitesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2991,32 +3078,6 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EClass getATGCDirective() {
 		return atgcDirectiveEClass;
-	}
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCDirective#getCommand <em>Command</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Command</em>'.
-	 * @see roadblock.emf.ibl.Ibl.ATGCDirective#getCommand()
-	 * @see #getATGCDirective()
-	 * @generated
-	 */
-	public EAttribute getATGCDirective_Command() {
-		return (EAttribute)atgcDirectiveEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.ATGCDirective#getPartList <em>Part List</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Part List</em>'.
-	 * @see roadblock.emf.ibl.Ibl.ATGCDirective#getPartList()
-	 * @see #getATGCDirective()
-	 * @generated
-	 */
-	public EReference getATGCDirective_PartList() {
-		return (EReference)atgcDirectiveEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -4020,6 +4081,87 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ATGC Direction</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCDirection
+	 * @generated
+	 */
+	public EClass getATGCDirection() {
+		return atgcDirectionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCDirection#getDirection <em>Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Direction</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCDirection#getDirection()
+	 * @see #getATGCDirection()
+	 * @generated
+	 */
+	public EAttribute getATGCDirection_Direction() {
+		return (EAttribute)atgcDirectionEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCArrange <em>ATGC Arrange</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ATGC Arrange</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCArrange
+	 * @generated
+	 */
+	public EClass getATGCArrange() {
+		return atgcArrangeEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.ATGCArrange#getPartList <em>Part List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Part List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCArrange#getPartList()
+	 * @see #getATGCArrange()
+	 * @generated
+	 */
+	public EReference getATGCArrange_PartList() {
+		return (EReference)atgcArrangeEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ATGC Cloning Sites</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCCloningSites
+	 * @generated
+	 */
+	public EClass getATGCCloningSites() {
+		return atgcCloningSitesEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites#getCloningSites <em>Cloning Sites</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cloning Sites</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCCloningSites#getCloningSites()
+	 * @see #getATGCCloningSites()
+	 * @generated
+	 */
+	public EAttribute getATGCCloningSites_CloningSites() {
+		return (EAttribute)atgcCloningSitesEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4197,8 +4339,6 @@ public class IblPackage extends EPackageImpl {
 		createEReference(cellEClass, CELL__PROPERTIES);
 
 		atgcDirectiveEClass = createEClass(ATGC_DIRECTIVE);
-		createEAttribute(atgcDirectiveEClass, ATGC_DIRECTIVE__COMMAND);
-		createEReference(atgcDirectiveEClass, ATGC_DIRECTIVE__PART_LIST);
 
 		systemEClass = createEClass(SYSTEM);
 
@@ -4299,6 +4439,15 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__UNIT);
 		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__AMOUNT);
 
+		atgcDirectionEClass = createEClass(ATGC_DIRECTION);
+		createEAttribute(atgcDirectionEClass, ATGC_DIRECTION__DIRECTION);
+
+		atgcArrangeEClass = createEClass(ATGC_ARRANGE);
+		createEReference(atgcArrangeEClass, ATGC_ARRANGE__PART_LIST);
+
+		atgcCloningSitesEClass = createEClass(ATGC_CLONING_SITES);
+		createEAttribute(atgcCloningSitesEClass, ATGC_CLONING_SITES__CLONING_SITES);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalOperatorEEnum = createEEnum(TEMPORAL_OPERATOR);
@@ -4368,6 +4517,9 @@ public class IblPackage extends EPackageImpl {
 		emfVariableAssignmentEClass.getESuperTypes().add(this.getIVisitable());
 		flatModelEClass.getESuperTypes().add(this.getIVisitable());
 		propertyInitialConditionEClass.getESuperTypes().add(this.getIVisitable());
+		atgcDirectionEClass.getESuperTypes().add(this.getATGCDirective());
+		atgcArrangeEClass.getESuperTypes().add(this.getATGCDirective());
+		atgcCloningSitesEClass.getESuperTypes().add(this.getATGCDirective());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4544,18 +4696,18 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getRule_ReverseRateUnit(), this.getRateUnit(), "reverseRateUnit", "PER_SECOND", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(molecularSpeciesEClass, MolecularSpecies.class, "MolecularSpecies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMolecularSpecies_DisplayName(), ecorePackage.getEString(), "DisplayName", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_URI(), ecorePackage.getEString(), "URI", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_Amount(), ecorePackage.getEDouble(), "amount", "0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_DegradationRate(), ecorePackage.getEDouble(), "degradationRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_BindingRate(), ecorePackage.getEDoubleObject(), "bindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_UnbindingRate(), ecorePackage.getEDoubleObject(), "unbindingRate", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_DegradationRate(), ecorePackage.getEDouble(), "degradationRate", "1.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_BindingRate(), ecorePackage.getEDoubleObject(), "bindingRate", "1.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_UnbindingRate(), ecorePackage.getEDoubleObject(), "unbindingRate", "1.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_BiologicalType(), ecorePackage.getEString(), "biologicalType", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Sequence(), ecorePackage.getEString(), "sequence", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_DegradationRateUnit(), ecorePackage.getEString(), "degradationRateUnit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_BindingRateUnit(), ecorePackage.getEString(), "bindingRateUnit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_UnbindingRateUnit(), ecorePackage.getEString(), "unbindingRateUnit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_DegradationRateUnit(), ecorePackage.getEString(), "degradationRateUnit", "s^-1", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_BindingRateUnit(), ecorePackage.getEString(), "bindingRateUnit", "s^-1", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_UnbindingRateUnit(), ecorePackage.getEString(), "unbindingRateUnit", "s^-1", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_ID(), ecorePackage.getEString(), "ID", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deviceEClass, Device.class, "Device", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4584,8 +4736,6 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getCell_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atgcDirectiveEClass, ATGCDirective.class, "ATGCDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getATGCDirective_Command(), ecorePackage.getEString(), "command", null, 0, 1, ATGCDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getATGCDirective_PartList(), this.getMolecularSpecies(), null, "partList", null, 0, -1, ATGCDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(systemEClass, roadblock.emf.ibl.Ibl.System.class, "System", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4599,6 +4749,15 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getProbabilityProperty_TimeConstraint(), this.getITimeConstraint(), null, "timeConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProbabilityProperty_ProbabilityConstraint(), this.getIProbabilityConstraint(), null, "probabilityConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProbabilityProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = addEOperation(probabilityPropertyEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "TResult");
+		g1 = createEGenericType(this.getIVisitor());
+		g2 = createEGenericType(t1);
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "visitor", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
 
 		initEClass(iProbabilityConstraintEClass, IProbabilityConstraint.class, "IProbabilityConstraint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4685,6 +4844,15 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getPropertyInitialCondition_VariableAttribute(), ecorePackage.getEString(), "variableAttribute", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyInitialCondition_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyInitialCondition_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(atgcDirectionEClass, ATGCDirection.class, "ATGCDirection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getATGCDirection_Direction(), ecorePackage.getEString(), "direction", null, 0, 1, ATGCDirection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(atgcArrangeEClass, ATGCArrange.class, "ATGCArrange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getATGCArrange_PartList(), this.getMolecularSpecies(), null, "partList", null, 0, -1, ATGCArrange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(atgcCloningSitesEClass, ATGCCloningSites.class, "ATGCCloningSites", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getATGCCloningSites_CloningSites(), ecorePackage.getEInt(), "cloningSites", null, 0, 1, ATGCCloningSites.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -5277,22 +5445,6 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EClass ATGC_DIRECTIVE = eINSTANCE.getATGCDirective();
-
-		/**
-		 * The meta object literal for the '<em><b>Command</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute ATGC_DIRECTIVE__COMMAND = eINSTANCE.getATGCDirective_Command();
-
-		/**
-		 * The meta object literal for the '<em><b>Part List</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EReference ATGC_DIRECTIVE__PART_LIST = eINSTANCE.getATGCDirective_PartList();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.System <em>System</em>}' class.
@@ -5961,6 +6113,60 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute PROPERTY_INITIAL_CONDITION__AMOUNT = eINSTANCE.getPropertyInitialCondition_Amount();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.ATGCDirection
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCDirection()
+		 * @generated
+		 */
+		public static final EClass ATGC_DIRECTION = eINSTANCE.getATGCDirection();
+
+		/**
+		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ATGC_DIRECTION__DIRECTION = eINSTANCE.getATGCDirection_Direction();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCArrange <em>ATGC Arrange</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.ATGCArrange
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCArrange()
+		 * @generated
+		 */
+		public static final EClass ATGC_ARRANGE = eINSTANCE.getATGCArrange();
+
+		/**
+		 * The meta object literal for the '<em><b>Part List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference ATGC_ARRANGE__PART_LIST = eINSTANCE.getATGCArrange_PartList();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.ATGCCloningSites
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCCloningSites()
+		 * @generated
+		 */
+		public static final EClass ATGC_CLONING_SITES = eINSTANCE.getATGCCloningSites();
+
+		/**
+		 * The meta object literal for the '<em><b>Cloning Sites</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ATGC_CLONING_SITES__CLONING_SITES = eINSTANCE.getATGCCloningSites_CloningSites();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
