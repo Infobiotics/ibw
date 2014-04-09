@@ -1,4 +1,5 @@
 // Flat version of the sensor cell: no process, no inheritance.
+
 define SensorCell typeof CELL(){
         // define molecular elements
         RIBOSOME ribosome: observable
@@ -102,7 +103,7 @@ define SensorCell typeof CELL(){
          ATGC ARRANGE nahR, PnahR, Psal
  
          // some example properties
-         
+          
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9

@@ -52,8 +52,8 @@ class ModelBuilder extends IblSwitch<Object> {
 	// useful constant
 	val BIOLOGICALPART = #{'PROMOTER', 'GENE', 'RBS', 'SPACER', 'TERMINATOR'}
 
-	def isPart(String molecule) {
-		return BIOLOGICALPART.contains(molecule)
+	def isPart(String biologicalType) {
+		return BIOLOGICALPART.contains(biologicalType)
 	}
 
 	def isComplex(String name) {
@@ -257,6 +257,8 @@ class ModelBuilder extends IblSwitch<Object> {
 		for (displayName : atgcArrange.arguments.map[it.buildVariableName]) {
 			var emfPart = modelFactory.createMolecularSpecies
 			emfPart.displayName = displayName
+			emfPart.unit = getConcentrationUnit('molecule')
+			emfPart.amount = 1.0
 			emfAtgcArrange.partList.add(emfPart)
 		}
 		return emfAtgcArrange
@@ -354,13 +356,13 @@ class ModelBuilder extends IblSwitch<Object> {
 		molecule => [
 			biologicalType = variableDefinition.type
 			displayName = variableDefinition.name.buildVariableName
-			degradationRateUnit = 's^-1'
-			bindingRateUnit = 's^-1'
-			unbindingRateUnit = 's^-1'
+			degradationRateUnit = getRateUnit("s^-1")
+			bindingRateUnit = getRateUnit("s^-1") 
+			unbindingRateUnit = getRateUnit("s^-1")
 		]
 
 		// Defaults for parts and molecules
-		if (isPart(molecule.biologicalType))
+		if (isPart(variableDefinition.type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');

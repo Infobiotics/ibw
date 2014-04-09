@@ -179,12 +179,12 @@
         defaultValueLiteral="1.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="biologicalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="s^-1"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="s^-1"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRateUnit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="s^-1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRateUnit" eType="#//RateUnit"
+        defaultValueLiteral="PER_SECOND"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRateUnit" eType="#//RateUnit"
+        defaultValueLiteral="PER_SECOND"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRateUnit" eType="#//RateUnit"
+        defaultValueLiteral="PER_SECOND"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//IVisitable">

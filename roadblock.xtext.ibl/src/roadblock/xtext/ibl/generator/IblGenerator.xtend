@@ -50,9 +50,9 @@ class IblGenerator implements IGenerator {
 		println("After population")
 		println("===============")
 
-		//var xml = convertToXml(emfModel)
+		var xml = convertToXml(emfModel)
 		//println(xml)
-		//fsa.generateFile('EMFModel.xml', xml)
+		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		generateTranslations(emfModel);
 	}
