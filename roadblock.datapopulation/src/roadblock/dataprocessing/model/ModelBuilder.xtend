@@ -361,6 +361,9 @@ class ModelBuilder extends IblSwitch<Object> {
 			degradationRateUnit = getRateUnit("s^-1")
 			bindingRateUnit = getRateUnit("s^-1") 
 			unbindingRateUnit = getRateUnit("s^-1")
+			degradationRate = 0.0;
+			bindingRate = 0.0;
+			unbindingRate = 0.0
 		]
 
 		// Defaults for parts and molecules
@@ -368,17 +371,12 @@ class ModelBuilder extends IblSwitch<Object> {
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
-				degradationRate = 0.0;
-				bindingRate = 0.0;
-				unbindingRate = 0.0
-			]
+				]
 		else
 			molecule => [
 				amount = 0.0;
 				unit = getConcentrationUnit('uM');
-				degradationRate = 0.0
-				bindingRate = 0.0;
-				unbindingRate = 0.0
+	
 			]
 
 		// defaults are overriden if specified in the constructor
