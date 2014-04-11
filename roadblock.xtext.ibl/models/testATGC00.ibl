@@ -1,10 +1,10 @@
 define myCell typeof CELL() {
-	PROMOTER p1aa = new PROMOTER(sequence = "ATTGTGT")
-    GENE g1bb = new GENE(sequence = "TTGTGTG")
+	p1aa = PROMOTER(sequence = "ATTGTGT")
+    g1bb = GENE(sequence = "TTGTGTG")
 
-	PROMOTER p2aa = new PROMOTER(sequence = "ATTGTGT")
-    GENE g2bb = new GENE(sequence = "TTGTGTG")
-    GENE g2cc = new GENE(sequence = "TTGTGTG")
+	p2aa = PROMOTER(sequence = "ATTGTGT")
+    g2bb = GENE(sequence = "TTGTGTG")
+    g2cc = GENE(sequence = "TTGTGTG")
 	
 	DEVICE device1 = new DEVICE(parts = [p1aa, g1bb])(input = [], output = []){
 		ATGC CLONING SITES: 5
@@ -19,6 +19,6 @@ define myCell typeof CELL() {
 	
 			
 define myRegion typeof REGION(){
-	CELL foo = new myCell()	
+	foo = new myCell()	
 
 }
