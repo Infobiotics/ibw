@@ -63,7 +63,9 @@ class ModelBuilder extends IblSwitch<Object> {
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
 		if (moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
-			complex => [displayName = complexName biologicalType = 'COMPLEX' amount = 0.0
+			complex => [displayName = complexName 
+				biologicalType = 'COMPLEX' 
+				amount = 0.0
 				unit = ConcentrationUnit.UM]
 			moleculeList.add(complex)
 		}
@@ -313,8 +315,8 @@ class ModelBuilder extends IblSwitch<Object> {
 			rule.rightHandSide.add(part.doSwitch as MolecularSpecies)
 
 		rule.isBidirectional = ruleDefinition.reversible
-		rule.setForwardRate(1.0)
-		if(rule.isBidirectional) rule.setReverseRate(1.0) else rule.setReverseRate(0.0)
+		rule.setForwardRate(0.0)
+		if(rule.isBidirectional) rule.setReverseRate(0.0) else rule.setReverseRate(0.0)
 		return rule
 	}
 
@@ -354,7 +356,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		val molecule = modelFactory.createMolecularSpecies
 
 		molecule => [
-			biologicalType = variableDefinition.type
+			biologicalType = variableDefinition.type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
 			degradationRateUnit = getRateUnit("s^-1")
 			bindingRateUnit = getRateUnit("s^-1") 
@@ -367,16 +369,16 @@ class ModelBuilder extends IblSwitch<Object> {
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
 				degradationRate = 0.0;
-				bindingRate = 1.0;
-				unbindingRate = 1.0
+				bindingRate = 0.0;
+				unbindingRate = 0.0
 			]
 		else
 			molecule => [
 				amount = 0.0;
 				unit = getConcentrationUnit('uM');
-				degradationRate = 1.0
-				bindingRate = 1.0;
-				unbindingRate = 1.0
+				degradationRate = 0.0
+				bindingRate = 0.0;
+				unbindingRate = 0.0
 			]
 
 		// defaults are overriden if specified in the constructor

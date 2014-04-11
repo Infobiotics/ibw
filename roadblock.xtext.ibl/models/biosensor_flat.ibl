@@ -118,4 +118,4 @@ define SensorCell typeof CELL(){
 define site1 typeof REGION () {
         MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new SensorCell()
-}
+} 
