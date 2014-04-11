@@ -313,8 +313,8 @@ class ModelBuilder extends IblSwitch<Object> {
 			rule.rightHandSide.add(part.doSwitch as MolecularSpecies)
 
 		rule.isBidirectional = ruleDefinition.reversible
-		rule.setForwardRate(1.0)
-		if(rule.isBidirectional) rule.setReverseRate(1.0) else rule.setReverseRate(0.0)
+		rule.setForwardRate(0.0)
+		if(rule.isBidirectional) rule.setReverseRate(0.0) else rule.setReverseRate(0.0)
 		return rule
 	}
 
@@ -354,7 +354,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		val molecule = modelFactory.createMolecularSpecies
 
 		molecule => [
-			biologicalType = variableDefinition.type
+			biologicalType = variableDefinition.type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
 			degradationRateUnit = getRateUnit('s^-1')
 			bindingRateUnit = getRateUnit('s^-1')
@@ -362,7 +362,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		]
 
 		// Defaults for parts and molecules
-		if (isPart(molecule.biologicalType))
+		if (isPart(variableDefinition.type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');

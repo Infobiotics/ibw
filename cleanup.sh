@@ -26,9 +26,12 @@ done
 
 
 # all the generated java in the EMF model
+# CAREFUL WITH THIS: java source contains generated and non-generated code.
+# e.g.:
+# grep "@generated NOT" roadblock.emf.ibl/src/roadblock/emf/ibl/Ibl/*.java
 
-for file in $(git ls-files | grep roadblock.emf.ibl/src | grep '\.java$')
-do
-	echo $file
-	git rm --cached $file
-done
+# for file in $(git ls-files | grep roadblock.emf.ibl/src | grep '\.java$')
+# do
+# 	echo $file
+# 	git rm --cached $file
+# done
