@@ -1,25 +1,25 @@
 // Minimal model
 // 1 device: constitutive promoter, produces XylS2
 // region contains AHL, which is consumed by XylS2 to produce AHL~XylS2 complex
-
+ 
 // simulation should show AHL concentration decreasing, being replaced by AHL~XylS2
 // and then unbound built-up of XylS2
 
 define factoryCell typeof CELL(){
         // define molecular elements
-        ribosome = RIBOSOME(): observable
-		rnaP = RNA(displayName = "XYZ") : observable
+        RIBOSOME ribosome = new RIBOSOME(): observable
+		RNA rnaP = new RNA(displayName = "XYZ") : observable
 
 //        chassis = CHASSIS(organism = "ecoli")
 
-        PnahR = PROMOTER(URI = "biobricks://...")
-        xylS2 = GENE(sequence = "ATTGTGT")
-        XylS2 = PROTEIN()
+        PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
+        GENE xylS2 = new GENE(sequence = "ATTGTGT")
+        PROTEIN XylS2 = new PROTEIN()
 
         // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
         DEVICE D1 = new DEVICE(parts = [PnahR, xylS2])(input=[], output = [XylS2]){
  				// constitutive promoter               
-				mrna1 = RNA()
+				RNA mrna1 = new RNA()
 		
 				RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
 				promoterBinding.forwardRate = 11 s^-1 
@@ -41,9 +41,9 @@ define factoryCell typeof CELL(){
 }
   
 define site typeof REGION () {
-        AHL =  MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM, URI ='metaboliteDB')
-        myCell = factoryCell()       
-		XylS2 = PROTEIN(URI = 'proteinDB')
+        MOLECULE AHL =  new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM, URI ='metaboliteDB')
+        CELL myCell = new factoryCell()       
+		PROTEIN XylS2 = new PROTEIN(URI = 'proteinDB')
 		
         RULE XylS2Consumption: AHL + XylS2 -> AHL~XylS2 
         XylS2Consumption.forwardRate = 42 s^-1
