@@ -84,13 +84,17 @@ class IblValidator extends AbstractIblValidator {
 // =================================================================================
 // forbid multiple declarations
 	@Check
-	def checkMultipleVariableDefinition(VariableDefinitionBuiltIn variableDefinition){
-		val variableName = variableDefinition.name.name
-		val container = variableDefinition.eContainer.eContainer
+	def checkMultipleVariableDefinition(VariableDefinition variableDefinition){
+		val variableName = variableDefinition.variableName
+		val container = variableDefinition.eContainer
 		if(container.getAllVariableDefinitions.filter[it.variableName == variableName].size > 1){
-			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinitionBuiltIn_Name)
-			
-		}
+			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinition_Definition)
+//			switch(variableDefinition){				
+//				VariableDefinitionBuiltIn: error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinition_Definition)
+//				VariableDefinitionUserDefined: error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinitionUserDefined_Name)
+//		}
+	}
+	
 	}
 
 

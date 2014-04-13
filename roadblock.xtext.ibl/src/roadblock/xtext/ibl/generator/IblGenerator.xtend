@@ -43,18 +43,18 @@ class IblGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 
-//		val ModelBuilder modelPopulater = new ModelBuilder();
-//		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
-//
-//		println()
-//		println("After population")
-//		println("===============")
-//
-//		var xml = convertToXml(emfModel)
-//		//println(xml)
-//		fsa.generateFile('EMFModel.xml', xml)
-//		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
-//		//generateTranslations(emfModel);
+		val ModelBuilder modelPopulater = new ModelBuilder();
+		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
+
+		println()
+		println("After population")
+		println("===============")
+
+		var xml = convertToXml(emfModel)
+		//println(xml)
+		fsa.generateFile('EMFModel.xml', xml)
+		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
+		//generateTranslations(emfModel);
 	}
 
 	def generateTranslations(Model emfModel) {

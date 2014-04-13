@@ -30,13 +30,52 @@ class IblValidatorTest {
 			
 	}'''.parse
 	
-	model.assertError(IblPackage::eINSTANCE.variableDefinitionBuiltIn,null,"Variable 'a' is declared twice in the same container.")
-	model.assertError(IblPackage::eINSTANCE.variableDefinitionBuiltIn,null, "Variable 'a' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null,"Variable 'a' is declared twice in the same container.")
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")	
 	}
 
+	@Test
+	def void testForbidMultipleVariableDeclarationsInCells(){
+		val model = '''
+		define myCell typeof CELL(){
+			MOLECULE a = new MOLECULE()
+			MOLECULE b = new MOLECULE()
+			MOLECULE a = new MOLECULE()
+			MOLECULE d = new MOLECULE()
+			
+	}'''.parse
+	
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null,"Variable 'a' is declared twice in the same container.")
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")	
+	}
 
+	@Test
+	def void testForbidMultipleVariableDeclarationsInDevices(){
+		val model = '''
+		define myCell typeof CELL(){
+			MOLECULE a1 = new MOLECULE()
+			MOLECULE b1 = new MOLECULE()
+			MOLECULE c1 = new MOLECULE()
+			MOLECULE d1 = new MOLECULE()
+			
+			DEVICE D1 = new DEVICE(parts=[])(input=[],output=[]){
+			MOLECULE a = new MOLECULE()
+			MOLECULE b = new MOLECULE()
+			MOLECULE a = new MOLECULE()
+			MOLECULE d = new MOLECULE()
+			}
+			
+	}'''.parse
+	
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null,"Variable 'a' is declared twice in the same container.")
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")	
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//						OUTSIDE must be used on its own, if used at all
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Test 
-	def void testRuleOutside(){ // OUTSIDE must be used on its own, if used at all
+	def void testRuleOutside(){ 
 		
 		'''
 		define dummyProcess typeof PROCESS(){
