@@ -11,11 +11,11 @@ define factoryCell typeof CELL(){
 		RNA rnaP = new RNA(displayName = "XYZ") : observable
 
 //        chassis = CHASSIS(organism = "ecoli")
- 
+
         PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
         GENE xylS2 = new GENE(sequence = "ATTGTGT")
+        PROTEIN XylS2 = new PROTEIN()
 
- 
         // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
         DEVICE D1 = new DEVICE(parts = [PnahR, xylS2])(input=[], output = [XylS2]){
  				// constitutive promoter               
@@ -36,7 +36,6 @@ define factoryCell typeof CELL(){
 				translation.forwardRate = 16 s^-1 
 			              
                 }
-
               RULE exportProtein: XylS2 -> OUTSIDE  
               exportProtein.forwardRate = 17 s^-1 
 }

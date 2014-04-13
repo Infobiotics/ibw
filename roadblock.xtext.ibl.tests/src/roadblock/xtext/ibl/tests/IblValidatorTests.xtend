@@ -120,7 +120,10 @@ class IblValidatorTest {
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used on its own")
 			
 	}
-
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//			allowed body members in different containers
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 	@Test // testing all possible function body members in PROCESS
 	def void testWrongMembersOfProcess() {
 		val model = '''
