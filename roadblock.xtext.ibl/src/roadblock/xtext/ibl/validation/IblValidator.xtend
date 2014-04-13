@@ -21,6 +21,12 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.VariableDefinition
+import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.resource.ILocationInFileProviderExtension.RegionDescription
+import roadblock.xtext.ibl.ibl.FunctionContent
+import roadblock.xtext.ibl.ibl.VariableDefinitionUserDefined
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -58,6 +64,35 @@ class IblValidator extends AbstractIblValidator {
 				error(errorMessage + v.displayName, feature)			
 		]
 	}	
+	
+	def getAllVariableDefinitions(EObject container){
+		switch(container){
+			FunctionContent: return (container as FunctionContent).members.filter(VariableDefinition)
+			DeviceDefinition: return (container as DeviceDefinition).members.filter(VariableDefinition)
+		}
+		
+	}
+	
+	def getVariableName(VariableDefinition variableDefinition){
+		switch(variableDefinition.definition){
+			VariableDefinitionBuiltIn: return (variableDefinition.definition as VariableDefinitionBuiltIn).name.name
+			VariableDefinitionUserDefined: return (variableDefinition.definition as VariableDefinitionUserDefined).name.name
+		}
+		"Couldn't work out variable name"
+	}
+
+// =================================================================================
+// forbid multiple declarations
+	@Check
+	def checkMultipleVariableDefinition(VariableDefinitionBuiltIn variableDefinition){
+		val variableName = variableDefinition.name.name
+		val container = variableDefinition.eContainer.eContainer
+		if(container.getAllVariableDefinitions.filter[it.variableName == variableName].size > 1){
+			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinitionBuiltIn_Name)
+			
+		}
+	}
+
 
 // =================================================================================
 	

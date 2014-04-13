@@ -43,7 +43,7 @@ class IblGeneratorTests {
 	
 	@Test 
 	def void testATGCDirectives(){
-		val source = readFile("../roadblock.xtext.ibl/models/testATGC00.ibl",Charset.defaultCharset())
-		source.assertCompilesTo(readFile("../roadblock.xtext.ibl/models/testATGC00.xml",Charset.defaultCharset()))
+		val source = readFile("testModels/testATGC00.ibl",Charset.defaultCharset())
+		source.assertCompilesTo(readFile("testModels/testATGC00.xml",Charset.defaultCharset()))
 	}
 }

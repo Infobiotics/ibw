@@ -157,7 +157,7 @@ DeviceDefinition:
 	')'
 	'('
 		('input' '=' input=List)?
-		(',' 'output' '=' outputput=List)?
+		(',' 'output' '=' output=List)?
 	')'
 	'{'
 		(members+=DeviceMembers*)
@@ -280,34 +280,21 @@ VariableQualifier:
 	'observable'
 ;
 
-//VariableDefinitionBuiltIn:
-//	{VariableDefinitionBuiltIn}
-//	type=VariableType name=VariableName
-//	(
-//	'=' 'new' constructor=VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-//	)?
-//;
+VariableDefinitionBuiltIn:
+	{VariableDefinitionBuiltIn}
+	type=VariableType name=VariableName
+	(
+	'=' 'new' constructor=VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
 VariableDefinitionUserDefined:
 	{VariableDefinitionUserDefined}
-	type=VariableName 
-	name=VariableName
+	type=VariableName name=VariableName
 	(
 	'=' 'new' constructor=VariableKind2'(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
 ;
-
-VariableDefinitionBuiltIn:
-	{VariableDefinitionBuiltIn}
-	name = VariableName '=' type = VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'	
-;
-
-//VariableDefinitionUserDefined:
-//	{VariableDefinitionUserDefined}
-//	name=VariableName
-//	(
-//	'=' 'new' type=VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-//	)?
-//;
 
 VariableDefinitionCollection:
 	{VariableDefinitionCollection}

@@ -10,6 +10,7 @@ import roadblock.xtext.ibl.ibl.Model
 import org.junit.Test
 import org.junit.runner.RunWith
 import roadblock.xtext.ibl.ibl.IblPackage
+import roadblock.xtext.ibl.ibl.VariableDefinition
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(IblInjectorProvider))
@@ -17,6 +18,22 @@ class IblValidatorTest {
 	
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
+
+	@Test
+	def void testForbidMultipleVariableDeclarationsInRegions(){
+		val model = '''
+		define myRegion typeof REGION(){
+			MOLECULE a = new MOLECULE()
+			MOLECULE b = new MOLECULE()
+			MOLECULE a = new MOLECULE()
+			MOLECULE d = new MOLECULE()
+			
+	}'''.parse
+	
+	model.assertError(IblPackage::eINSTANCE.variableDefinitionBuiltIn,null,"Variable 'a' is declared twice in the same container.")
+	model.assertError(IblPackage::eINSTANCE.variableDefinitionBuiltIn,null, "Variable 'a' is declared twice in the same container.")	
+	}
+
 
 	@Test 
 	def void testRuleOutside(){ // OUTSIDE must be used on its own, if used at all
