@@ -19,7 +19,7 @@ define SensorCell typeof CELL(){
         PROMOTER Pm = new PROMOTER(sequence = "ATTGTGT")
         GENE rFP = new GENE(sequence = "TTGTGTG")
         PROTEIN RFP = new PROTEIN()
-
+  
 
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
@@ -81,7 +81,7 @@ define SensorCell typeof CELL(){
 			
             VERIFY [ [ NOT [ RFP > 50 uM ] ] IMPLIES [[ RFP < 40 uM ] AND [ RFP < 100 uM ] ]] EVENTUALLY HOLDS
         }
-
+ 
          // INSIDE and OUTSIDE
 
          // additional rules
@@ -94,7 +94,7 @@ define SensorCell typeof CELL(){
          R2.reverseRate = 1 s^-1
  
          RULE SAConsumption : OUTSIDE -> SA
-         signalConsumption.rate = 1 min^-1
+         SAConsumption.rate = 1 min^-1
  
          RULE AHLConsumption : OUTSIDE -> AHL
          AHLConsumption.rate = 1 min^-1

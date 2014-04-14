@@ -19,6 +19,53 @@ class IblValidatorTest {
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//						Enforcing variable declaration
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// variable assignment
+	@Test
+	def void testDeclareBeforeAssigning(){
+		val model = '''
+		define myREGION typeof REGION(){
+			MOLECULE a = new MOLECULE()
+			a.bindingRate = 1 s^-1
+			b.bindingRate = 1 s^-1
+			f.bindingRate = 1 s^-1
+			c = 2 s^-1
+			
+			RULE simpleRule: a + b -> a~b + wat
+        	simpleRule.forwardRate = 42 s^-1
+			
+		}  
+		
+		define myCell typeof CELL(){
+			
+			DEVICE D1 = new DEVICE(parts = [pa, pb, pc])(input = [ia,ib], output = [oa,ob]){
+				MOLECULE D1a = new MOLECULE()
+				D1a.bindingRate = 1 s^-1		
+				pa.rate = 1 s^-1 // fine
+				ia.rate = 1 s^-1 // fine
+				oa.rate = 1 s^-1 // fine
+				d.rate = 1 s^-1 // error				
+			}
+			
+			}'''.parse		
+		
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'b' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'c' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'd' must be declared.")
+	}
+
+
+// device signature
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//						Multiple variable declarations
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	@Test
 	def void testForbidMultipleVariableDeclarationsInRegions(){
 		val model = '''
