@@ -63,7 +63,6 @@ class IblValidatorTest {
 	}
 	
 // in rules
-// device signature
 	@Test
 	def void testEnforcingDeclarationRule(){
 		val model = readFile("../roadblock.xtext.ibl.tests/testModels/testEnforcingDeclarationRule.ibl",Charset.defaultCharset()).parse		

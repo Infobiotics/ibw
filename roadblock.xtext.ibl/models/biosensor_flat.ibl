@@ -4,7 +4,7 @@ define SensorCell typeof CELL(){
         // define molecular elements
         RIBOSOME ribosome: observable
         RNA rnaP = new RNA(displayName = "XYZ") : observable
-
+        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
 //        CHASSIS chassis = new CHASSIS(organism = "ecoli") // NOT YET IMPLEMENTED
 //        INTEGER plasmidNumber = 500 // NOT YET IMPLEMENTED
 
@@ -19,8 +19,14 @@ define SensorCell typeof CELL(){
         PROMOTER Pm = new PROMOTER(sequence = "ATTGTGT")
         GENE rFP = new GENE(sequence = "TTGTGTG")
         PROTEIN RFP = new PROTEIN()
-  
-
+   
+   		PROMOTER PlasR = new PROMOTER()
+		GENE lasR = new GENE()
+		GENE gFP = new GENE()
+		MOLECULE LasR = new MOLECULE()
+		MOLECULE GFP = new MOLECULE()
+		MOLECULE AHL = new MOLECULE()
+		
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
 			RNA mrna1
@@ -42,15 +48,15 @@ define SensorCell typeof CELL(){
 			RULE translation : mrna1~ribosome -> mrna1~ribosome + NahR
 			translation.forwardRate = 1 s^-1
 
-			RULE translation : mrna1~ribosome -> mrna1~ribosome + LahR
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + LasR
 			translation.forwardRate = 1 s^-1
    }
 
-        DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
+        DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [NahR], output = [XylS2]){
         // produces XylS2, upregulated by SA~NahR
 			ATGC ARRANGE Psal, xylS2
 
-			RNA rna1	
+			RNA mrna1	
 		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
 			RULE promoterBinding : SA~NahR~Psal + rnaP <-> SA~NahR~Psal~rnaP	
 			RULE transcription : SA~NahR~Psal~rnaP -> SA~NahR~Psal~rnaP + mrna1
@@ -77,7 +83,7 @@ define SensorCell typeof CELL(){
 			// from there, usual steps for up regulation			
 			RULE mrnaDegradation : mrna1 ->
 			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
-			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + GFP
 			
             VERIFY [ [ NOT [ RFP > 50 uM ] ] IMPLIES [[ RFP < 40 uM ] AND [ RFP < 100 uM ] ]] EVENTUALLY HOLDS
         }
@@ -85,11 +91,11 @@ define SensorCell typeof CELL(){
          // INSIDE and OUTSIDE
 
          // additional rules
-         RULE R1 : SA + NahR <-> SA~NahR
+         RULE R1 : SA + XylS2 <-> SA~XylS2
          R1.forwardRate = 1 s^-1
          R1.reverseRate = 1 s^-1
  
-         RULE R2 : AHL + XylS2 <-> AHL~XylS2
+         RULE R2 : AHL + LasR <-> AHL~LasR
          R2.forwardRate = 1 s^-1
          R2.reverseRate = 1 s^-1
  
@@ -104,17 +110,18 @@ define SensorCell typeof CELL(){
  
          // some example properties
           
-         VERIFY [signal > 0 uM] EVENTUALLY HOLDS
-         VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
-         VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
-         VERIFY [signal > 0 uM] NEVER HOLDS
-         VERIFY [signal > 0 uM] ALWAYS HOLDS
-         VERIFY [signal > 0 uM] HOLDS IN STEADY-STATE
-         VERIFY [signal > 0 uM] HOLDS INFINITELY OFTEN
-         VERIFY [RFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
-         VERIFY EXPECTED [RFP] AT 1000 s IS ?
-         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
+         VERIFY [SA > 0 uM] EVENTUALLY HOLDS
+         VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
+         VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
+         VERIFY [SA > 0 uM] NEVER HOLDS
+         VERIFY [SA > 0 uM] ALWAYS HOLDS
+         VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
+         VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
+         VERIFY [GFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
+         VERIFY EXPECTED [GFP] AT 1000 s IS ?
+         VERIFY EXPECTED [GFP] WITHIN 1000 s IS ?
 }
+
 define site1 typeof REGION () {
         MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new SensorCell()

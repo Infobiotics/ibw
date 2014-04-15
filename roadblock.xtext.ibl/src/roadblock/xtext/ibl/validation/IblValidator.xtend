@@ -194,13 +194,14 @@ class IblValidator extends AbstractIblValidator {
 		//if complex: check if it is created by a rule
 		if(isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
 				return true
-				
+		
 		// otherwise check if it's been created somewhere else
 		
 		// check if locally declared
 		if(getAllVariableDefinitions(container).exists[it.variableName == variableName])
 			return true
 		
+		// check if it's a rule's name
 		if(getAllRules(container).exists[it.name.buildVariableName == variableName])
 			return true
 			
