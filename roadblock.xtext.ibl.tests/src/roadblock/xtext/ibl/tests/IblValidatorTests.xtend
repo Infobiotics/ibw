@@ -78,10 +78,25 @@ class IblValidatorTest {
 		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'b1' must be declared.")
 		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'a1' must be declared.")
 		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Complex 'b~c' must be created by a rule or passed on as a parameter.")
+	}
+	
+// in property definitions
+	@Test
+	def void testEnforcingDeclarationPropertyDefinition(){
+		val model = '''
+		define myRegion typeof REGION(){
+		VERIFY [a1 > 0 uM] EVENTUALLY HOLDS	
+		VERIFY [[b1 > 0 uM] OR [b2~b4 > 0 uM]] WILL HOLD UNTIL THEN [b3 > 0 uM]
+		VERIFY EXPECTED [a] WITHIN 1000 s IS ?
+		VERIFY EXPECTED [a~b] WITHIN 1000 s IS ?
+		}
+		'''.parse
 		
-		
-		
-
+		model.assertError(IblPackage::eINSTANCE.propertyDefinition,null,"Variable 'a1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.propertyDefinition,null,"Variable 'b1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.propertyDefinition,null,"Variable 'b3' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.propertyDefinition,null,"Complex 'b2~b4' must be created by a rule or passed on as a parameter.")		
+		model.assertError(IblPackage::eINSTANCE.propertyDefinition,null,"Complex 'a~b' must be created by a rule or passed on as a parameter.")
 	}
 
 

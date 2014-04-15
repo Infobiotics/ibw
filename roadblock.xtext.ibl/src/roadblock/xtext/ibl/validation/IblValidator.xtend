@@ -36,11 +36,15 @@ import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.RuleObject
 import roadblock.xtext.ibl.ibl.List
+import roadblock.xtext.ibl.ibl.RewardProperty
+import roadblock.xtext.ibl.ibl.ProbabilityProperty
 import java.nio.charset.Charset
 import java.io.IOException
 import java.nio.file.Paths
 import java.nio.ByteBuffer
 import java.nio.file.Files
+import roadblock.xtext.ibl.ibl.StateFormula
+import java.util.ArrayList
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -222,6 +226,7 @@ class IblValidator extends AbstractIblValidator {
 		"Variable '" + variableName + "' must be declared."
 	}
 	
+	// VariableAssignment
 	@Check
 	def checkEnforceVariableDeclaration(VariableAssignment variableAssignment){
 		val variableName = variableAssignment.buildVariableName		
@@ -229,6 +234,7 @@ class IblValidator extends AbstractIblValidator {
 			error(variableName.errorMessage,IblPackage::eINSTANCE.variableAssignment_Variable)
 	}
 
+	// Rule
 	@Check
 	def checkEnforceVariableDeclaration(RuleDefinition rule){
 		
@@ -246,6 +252,7 @@ class IblValidator extends AbstractIblValidator {
 				
 	}
 	
+	// Device's signature
 	@Check
 	def checkEnforceVariableDeclaration(DeviceDefinition device){
 		for(variableName: device.partsInDeviceSignature.map[buildVariableName]){
@@ -264,6 +271,47 @@ class IblValidator extends AbstractIblValidator {
 		}		
 	}
 	
+	
+	def ArrayList<VariableKind> getAllVariablesInStateFormula(StateFormula stateFormula){
+		if(stateFormula.isNegation) return stateFormula.negatedFormula.getAllVariablesInStateFormula
+
+		if(stateFormula.isConjunction || stateFormula.isDisjunction || stateFormula.isImplication){
+			var left = stateFormula.leftFormula.getAllVariablesInStateFormula
+			left.addAll(stateFormula.rightFormula.getAllVariablesInStateFormula)
+			return left
+		}
+		
+		newArrayList(stateFormula.atomicFormula.name)
+	}
+	
+	// Property definition
+	@Check
+	def checkEnforceVariableDeclaration(PropertyDefinition propertyDefinition){
+		val property = propertyDefinition.property
+		switch(property){
+			ProbabilityProperty: {
+				for(variableName: (property as ProbabilityProperty).stateFormula1.allVariablesInStateFormula.map[buildVariableName]){
+					if(!hasBeenDeclared(variableName,propertyDefinition.eContainer))
+								error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
+					}
+				if(property.isUntilThen || property.isFollowedBy)
+				for(variableName: (property as ProbabilityProperty).stateFormula2.allVariablesInStateFormula.map[buildVariableName]){
+					if(!hasBeenDeclared(variableName,propertyDefinition.eContainer))
+								error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
+					}
+				
+				}
+			RewardProperty: {
+				val variableName = (property as RewardProperty).name.buildVariableName
+				if(!hasBeenDeclared(variableName,propertyDefinition.eContainer))
+						error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
+			}
+			
+			
+		}
+		
+		
+	}
 
 
 // =================================================================================

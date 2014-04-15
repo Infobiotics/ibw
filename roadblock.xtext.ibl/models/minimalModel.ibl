@@ -39,7 +39,7 @@ define factoryCell typeof CELL(){
               RULE exportProtein: XylS2 -> OUTSIDE  
               exportProtein.forwardRate = 17 s^-1 
 } 
-   
+    
 define site typeof REGION () {
         MOLECULE AHL =  new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM, URI ='metaboliteDB')
         CELL myCell = new factoryCell()       
