@@ -11,6 +11,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import roadblock.xtext.ibl.ibl.IblPackage
 import roadblock.xtext.ibl.ibl.VariableDefinition
+import java.nio.charset.Charset
+import java.io.IOException
+import java.nio.file.Paths
+import java.nio.file.Files
+import java.nio.ByteBuffer
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(IblInjectorProvider))
@@ -19,47 +24,66 @@ class IblValidatorTest {
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper
 
-
+	// read file into a string
+	// from http://stackoverflow.com/questions/326390/how-to-create-a-java-string-from-the-contents-of-a-file
+	// yep, 3 lines and 5 imports just to read a text file. Java.
+	def static String readFile(String path, Charset encoding)  throws IOException 
+	{
+		var byte[] encoded = Files.readAllBytes(Paths.get(path)) 
+	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString
+	}
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //						Enforcing variable declaration
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // variable assignment
 	@Test
-	def void testDeclareBeforeAssigning(){
-		val model = '''
-		define myREGION typeof REGION(){
-			MOLECULE a = new MOLECULE()
-			a.bindingRate = 1 s^-1
-			b.bindingRate = 1 s^-1
-			f.bindingRate = 1 s^-1
-			c = 2 s^-1
-			
-			RULE simpleRule: a + b -> a~b + wat
-        	simpleRule.forwardRate = 42 s^-1
-			
-		}  
+	def void testEnforcingDeclarationVariableAssignment(){
+		val model = readFile("../roadblock.xtext.ibl.tests/testModels/testEnforcingDeclarationVariableAssignment.ibl",Charset.defaultCharset()).parse		
 		
-		define myCell typeof CELL(){
-			
-			DEVICE D1 = new DEVICE(parts = [pa, pb, pc])(input = [ia,ib], output = [oa,ob]){
-				MOLECULE D1a = new MOLECULE()
-				D1a.bindingRate = 1 s^-1		
-				pa.rate = 1 s^-1 // fine
-				ia.rate = 1 s^-1 // fine
-				oa.rate = 1 s^-1 // fine
-				d.rate = 1 s^-1 // error				
-			}
-			
-			}'''.parse		
-		
-		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'b' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Complex 'b~c' must be created by a rule or passed on as a parameter.")
+		model.assertError(IblPackage::eINSTANCE.deviceDefinition,null,"Variable 'f' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'de' must be declared.")		
 		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'c' must be declared.")
-		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'd' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Complex 'da~db' must be created by a rule or passed on as a parameter.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Variable 'f' must be declared.")		
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Complex 'b~c' must be created by a rule or passed on as a parameter.")
+
 	}
 
 
 // device signature
+	@Test
+	def void testEnforcingDeclarationDeviceSignature(){
+		val model = readFile("../roadblock.xtext.ibl.tests/testModels/testEnforcingDeclarationDeviceSignature.ibl",Charset.defaultCharset()).parse		
+		model.assertError(IblPackage::eINSTANCE.deviceDefinition,null,"Variable 'f' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.deviceDefinition,null,"Variable 'g' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.deviceDefinition,null,"Variable 'p' must be declared.")
+	}
+	
+// in rules
+// device signature
+	@Test
+	def void testEnforcingDeclarationRule(){
+		val model = readFile("../roadblock.xtext.ibl.tests/testModels/testEnforcingDeclarationRule.ibl",Charset.defaultCharset()).parse		
+
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Complex 'fa~fb~fb' must be created by a rule or passed on as a parameter.")		
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Complex 'da~db~db' must be created by a rule or passed on as a parameter.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'fa1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'fb1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Complex 'da~db~db' must be created by a rule or passed on as a parameter.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'db1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'da1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Complex 'a~b~b' must be created by a rule or passed on as a parameter.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'b1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.ruleDefinition,null,"Variable 'a1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.variableAssignment,null,"Complex 'b~c' must be created by a rule or passed on as a parameter.")
+		
+		
+		
+
+	}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,42 +150,57 @@ class IblValidatorTest {
 		
 		'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE aaa = new MOLECULE()
 			RULE myRule: aaa + OUTSIDE -> OUTSIDE			
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
 
 		'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE aaa = new MOLECULE()
+			MOLECULE ccc = new MOLECULE()
 			RULE myRule: aaa + OUTSIDE -> OUTSIDE + ccc			
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
 		
 		'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE ccc = new MOLECULE()
 			RULE myRule:  OUTSIDE -> OUTSIDE + ccc			
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
 
 		'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE aaa = new MOLECULE()
+			MOLECULE bbb = new MOLECULE()			
 			RULE myRule: aaa + bbb -> OUTSIDE 
 		}
 		'''.parse.assertNoErrors
 
 		'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE aaa = new MOLECULE()
+			MOLECULE bbb = new MOLECULE()			
 			RULE myRule: OUTSIDE -> aaa + bbb 
 		}
 		'''.parse.assertNoErrors
 		
 	'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE xxx = new MOLECULE()
+			MOLECULE aaa = new MOLECULE()
+			MOLECULE bbb = new MOLECULE()
 			RULE myRule: OUTSIDE + xxx -> aaa + bbb 
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used on its own")
 
 	'''
 		define dummyProcess typeof PROCESS(){
+			MOLECULE aaa = new MOLECULE()
+			MOLECULE bbb = new MOLECULE()
+			MOLECULE zzz = new MOLECULE()
+
 			RULE myRule: aaa + bbb -> OUTSIDE + zzz 
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used on its own")

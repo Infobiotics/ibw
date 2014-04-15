@@ -35,6 +35,12 @@ import roadblock.xtext.ibl.ibl.VariableComplex
 import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.RuleObject
+import roadblock.xtext.ibl.ibl.List
+import java.nio.charset.Charset
+import java.io.IOException
+import java.nio.file.Paths
+import java.nio.ByteBuffer
+import java.nio.file.Files
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -45,6 +51,7 @@ class ContainerData {
 
 class IblValidator extends AbstractIblValidator {
 
+	
 	def isComplex(String name) {
 		name.contains('~')
 	}
@@ -146,16 +153,25 @@ class IblValidator extends AbstractIblValidator {
 			}
 	}
 
+	def  extractVariableNames(List list){
+		list.entries.map[
+			switch(it){
+				VariableReference: (it as VariableReference).variable
+				VariableComplex : (it as VariableComplex).complex
+			}
+		]
+		
+	}
 	def getPartsInDeviceSignature(DeviceDefinition device){
-		device.parts.entries.filter(VariableReference).map[it.variable]			
+		device.parts.extractVariableNames
 	}	
 
 	def getInputsInDeviceSignature(DeviceDefinition device){
-		device.input.entries.filter(VariableReference).map[it.variable]			
+		device.input.extractVariableNames			
 	}	
 	
 	def getOutputsInDeviceSignature(DeviceDefinition device){
-		device.output.entries.filter(VariableReference).map[it.variable]			
+		device.output.extractVariableNames			
 	}	
 
 	def getAllArgumentsInDeviceSignature(DeviceDefinition device){
@@ -200,11 +216,16 @@ class IblValidator extends AbstractIblValidator {
 		return false
 	}
 	
+	def errorMessage(String variableName){
+		if(variableName.complex) return "Complex '" + variableName + "' must be created by a rule or passed on as a parameter."
+		"Variable '" + variableName + "' must be declared."
+	}
+	
 	@Check
 	def checkEnforceVariableDeclaration(VariableAssignment variableAssignment){
 		val variableName = variableAssignment.buildVariableName		
 		if(!hasBeenDeclared(variableName, variableAssignment.eContainer))
-			error("Variable '" + variableName + "' must be declared.",IblPackage::eINSTANCE.variableAssignment_Variable)
+			error(variableName.errorMessage,IblPackage::eINSTANCE.variableAssignment_Variable)
 	}
 
 	@Check
@@ -213,13 +234,13 @@ class IblValidator extends AbstractIblValidator {
 		// left hand-side
 		for(variableName: rule.lhs.filter(VariableKind).map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, rule.eContainer))
-				error("Variable '" + variableName + "' must be declared.",IblPackage::eINSTANCE.ruleDefinition_Name)
+				error(variableName.errorMessage,IblPackage::eINSTANCE.ruleDefinition_Name)
 		}
 		
 		// right hand-side
 		for(variableName: rule.rhs.filter(VariableKind).map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, rule.eContainer))
-				error("Variable '" + variableName + "' must be declared.",IblPackage::eINSTANCE.ruleDefinition_Name)
+				error(variableName.errorMessage,IblPackage::eINSTANCE.ruleDefinition_Name)
 			}				
 				
 	}
@@ -228,17 +249,17 @@ class IblValidator extends AbstractIblValidator {
 	def checkEnforceVariableDeclaration(DeviceDefinition device){
 		for(variableName: device.partsInDeviceSignature.map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, device.eContainer))
-				error("Variable '" + variableName + "' must be declared.",IblPackage::eINSTANCE.deviceDefinition_Parts)
+				error(variableName.errorMessage,IblPackage::eINSTANCE.deviceDefinition_Parts)
 		}
 		
 		for(variableName: device.inputsInDeviceSignature.map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, device.eContainer))
-				error("Variable '" + variableName + "' must be declared.",IblPackage::eINSTANCE.deviceDefinition_Output)
+				error(variableName.errorMessage,IblPackage::eINSTANCE.deviceDefinition_Input)
 		}
 		
 		for(variableName: device.outputsInDeviceSignature.map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, device.eContainer))
-				error("Variable '" + variableName + "' must be declared.",IblPackage::eINSTANCE.deviceDefinition_Input)
+				error(variableName.errorMessage,IblPackage::eINSTANCE.deviceDefinition_Output)
 		}		
 	}
 	
