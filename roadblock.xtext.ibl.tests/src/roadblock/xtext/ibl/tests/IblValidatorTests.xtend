@@ -113,10 +113,15 @@ class IblValidatorTest {
 			MOLECULE a = new MOLECULE()
 			MOLECULE d = new MOLECULE()
 			
+			RULE R1: a -> b
+			RULE R1: b -> c
+			RULE R2: c -> d
 	}'''.parse
 	
 	model.assertError(IblPackage::eINSTANCE.variableDefinition,null,"Variable 'a' is declared twice in the same container.")
-	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")
+	model.assertError(IblPackage::eINSTANCE.ruleDefinition,null, "Rule 'R1' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.ruleDefinition,null, "Rule 'R1' is declared twice in the same container.")	
 	}
 
 	@Test
@@ -128,10 +133,15 @@ class IblValidatorTest {
 			MOLECULE a = new MOLECULE()
 			MOLECULE d = new MOLECULE()
 			
+			RULE R1: a -> b
+			RULE R1: b -> c
+			RULE R2: c -> d
 	}'''.parse
 	
 	model.assertError(IblPackage::eINSTANCE.variableDefinition,null,"Variable 'a' is declared twice in the same container.")
 	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.ruleDefinition,null, "Rule 'R1' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.ruleDefinition,null, "Rule 'R1' is declared twice in the same container.")	
 	}
 
 	@Test
@@ -148,12 +158,18 @@ class IblValidatorTest {
 			MOLECULE b = new MOLECULE()
 			MOLECULE a = new MOLECULE()
 			MOLECULE d = new MOLECULE()
+						
+			RULE R1: a -> b
+			RULE R1: b -> c
+			RULE R2: c -> d
 			}
 			
 	}'''.parse
 	
 	model.assertError(IblPackage::eINSTANCE.variableDefinition,null,"Variable 'a' is declared twice in the same container.")
 	model.assertError(IblPackage::eINSTANCE.variableDefinition,null, "Variable 'a' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.ruleDefinition,null, "Rule 'R1' is declared twice in the same container.")	
+	model.assertError(IblPackage::eINSTANCE.ruleDefinition,null, "Rule 'R1' is declared twice in the same container.")	
 	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////

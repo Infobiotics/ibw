@@ -323,14 +323,22 @@ class IblValidator extends AbstractIblValidator {
 		val container = variableDefinition.eContainer
 		if(container.getAllVariableDefinitions.filter[it.variableName == variableName].size > 1){
 			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinition_Definition)
+		}
 	}
-	
+//def getAllRules
+
+	@Check
+	def checkMultipleRuleDefinition(RuleDefinition ruleDefinition){
+		val ruleName = ruleDefinition.name.buildVariableName
+		val container = ruleDefinition.eContainer
+		if(container.getAllRules.filter[it.name.buildVariableName == ruleName].size > 1){
+			error("Rule '" + ruleName + "' is declared twice in the same container.", IblPackage::eINSTANCE.ruleDefinition_Name)
+		}
 	}
-
-
 // =================================================================================
-	
-// Container checks for function body members
+// 						Container checks for function body members
+// =================================================================================
+
 	@Check
 	def checkContainerOfATGCDefinition(ATGCDefinition atgcDefinition){
 		atgcDefinition.generateWrongContainerError(

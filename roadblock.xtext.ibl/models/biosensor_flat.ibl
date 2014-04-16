@@ -45,11 +45,11 @@ define SensorCell typeof CELL(){
 			translationInitiation.forwardRate = 1 s^-1
 			translationInitiation.reverseRate = 1 s^-1
 		
-			RULE translation : mrna1~ribosome -> mrna1~ribosome + NahR
-			translation.forwardRate = 1 s^-1
+			RULE translation1 : mrna1~ribosome -> mrna1~ribosome + NahR
+			translation1.forwardRate = 1 s^-1
 
-			RULE translation : mrna1~ribosome -> mrna1~ribosome + LasR
-			translation.forwardRate = 1 s^-1
+			RULE translation2 : mrna1~ribosome -> mrna1~ribosome + LasR
+			translation2.forwardRate = 1 s^-1
    }
 
         DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [NahR], output = [XylS2]){
@@ -72,13 +72,13 @@ define SensorCell typeof CELL(){
 
 			RNA mrna1	
 			// binds with SA~Xyls2 and Pm
-		    RULE regulation : SA~XylS2 + Pm <-> SA~XylS2~Pm
-			RULE promoterBinding : SA~XylS2~Pm + rnaP <-> SA~XylS2~Pm~rnaP	
-			RULE transcription : SA~XylS2~Pm~rnaP -> SA~XylS2~Pm~rnaP + mrna1
+		    RULE regulation1 : SA~XylS2 + Pm <-> SA~XylS2~Pm
+			RULE promoterBinding1 : SA~XylS2~Pm + rnaP <-> SA~XylS2~Pm~rnaP	
+			RULE transcription1 : SA~XylS2~Pm~rnaP -> SA~XylS2~Pm~rnaP + mrna1
 			// binds with AHL~LasR and PlasR
-		    RULE regulation : AHL~LasR + PlasR <-> AHL~LasR~PlasR
-			RULE promoterBinding : AHL~LasR~PlasR + rnaP <-> AHL~LasR~PlasR~rnaP	
-			RULE transcription : AHL~LasR~PlasR~rnaP -> AHL~LasR~PlasR~rnaP + mrna1
+		    RULE regulation2 : AHL~LasR + PlasR <-> AHL~LasR~PlasR
+			RULE promoterBinding2 : AHL~LasR~PlasR + rnaP <-> AHL~LasR~PlasR~rnaP	
+			RULE transcription2 : AHL~LasR~PlasR~rnaP -> AHL~LasR~PlasR~rnaP + mrna1
 			
 			// from there, usual steps for up regulation			
 			RULE mrnaDegradation : mrna1 ->
@@ -94,7 +94,7 @@ define SensorCell typeof CELL(){
          RULE R1 : SA + XylS2 <-> SA~XylS2
          R1.forwardRate = 1 s^-1
          R1.reverseRate = 1 s^-1
- 
+          
          RULE R2 : AHL + LasR <-> AHL~LasR
          R2.forwardRate = 1 s^-1
          R2.reverseRate = 1 s^-1

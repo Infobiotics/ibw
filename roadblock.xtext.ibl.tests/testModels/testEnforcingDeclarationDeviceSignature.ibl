@@ -1,5 +1,6 @@
 // test for enforcing variable declaration for device's signature
 // any variable passed on must be declared or a complex created by a rule
+//
 // Don't fix the errors! They're here for testing purposes.
 
 define factoryCell typeof CELL(){
