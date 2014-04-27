@@ -20,6 +20,7 @@ import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
+import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IStateFormula;
@@ -243,6 +244,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseATGCCloningSites(ATGCCloningSites object) {
 				return createATGCCloningSitesAdapter();
+			}
+			@Override
+			public Adapter caseFlatModelPropertyPair(FlatModelPropertyPair object) {
+				return createFlatModelPropertyPairAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -765,6 +770,20 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createATGCCloningSitesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+	 * @generated
+	 */
+	public Adapter createFlatModelPropertyPairAdapter() {
 		return null;
 	}
 

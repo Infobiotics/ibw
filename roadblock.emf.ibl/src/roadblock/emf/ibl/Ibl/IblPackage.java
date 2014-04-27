@@ -1808,6 +1808,43 @@ public class IblPackage extends EPackageImpl {
 	public static final int ATGC_CLONING_SITES_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModelPropertyPair()
+	 * @generated
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR = 36;
+
+	/**
+	 * The feature id for the '<em><b>Flat Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR__PROPERTY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Flat Model Property Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1815,7 +1852,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 36;
+	public static final int TIME_UNIT = 37;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1825,7 +1862,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 37;
+	public static final int TEMPORAL_OPERATOR = 38;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1835,7 +1872,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 38;
+	public static final int RELATIONAL_OPERATOR = 39;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1845,7 +1882,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 39;
+	public static final int BOOLEAN_OPERATOR = 40;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1855,7 +1892,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 40;
+	public static final int CONCENTRATION_UNIT = 41;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -1865,7 +1902,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 41;
+	public static final int RATE_UNIT = 42;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2118,6 +2155,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass atgcCloningSitesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass flatModelPropertyPairEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4162,6 +4206,47 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Flat Model Property Pair</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+	 * @generated
+	 */
+	public EClass getFlatModelPropertyPair() {
+		return flatModelPropertyPairEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getFlatModel <em>Flat Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Flat Model</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getFlatModel()
+	 * @see #getFlatModelPropertyPair()
+	 * @generated
+	 */
+	public EReference getFlatModelPropertyPair_FlatModel() {
+		return (EReference)flatModelPropertyPairEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Property</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getProperty()
+	 * @see #getFlatModelPropertyPair()
+	 * @generated
+	 */
+	public EReference getFlatModelPropertyPair_Property() {
+		return (EReference)flatModelPropertyPairEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4447,6 +4532,10 @@ public class IblPackage extends EPackageImpl {
 
 		atgcCloningSitesEClass = createEClass(ATGC_CLONING_SITES);
 		createEAttribute(atgcCloningSitesEClass, ATGC_CLONING_SITES__CLONING_SITES);
+
+		flatModelPropertyPairEClass = createEClass(FLAT_MODEL_PROPERTY_PAIR);
+		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL);
+		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__PROPERTY);
 
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
@@ -4853,6 +4942,10 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(atgcCloningSitesEClass, ATGCCloningSites.class, "ATGCCloningSites", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getATGCCloningSites_CloningSites(), ecorePackage.getEInt(), "cloningSites", null, 0, 1, ATGCCloningSites.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(flatModelPropertyPairEClass, FlatModelPropertyPair.class, "FlatModelPropertyPair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFlatModelPropertyPair_FlatModel(), this.getFlatModel(), null, "flatModel", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatModelPropertyPair_Property(), this.getIProperty(), null, "property", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -6167,6 +6260,32 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute ATGC_CLONING_SITES__CLONING_SITES = eINSTANCE.getATGCCloningSites_CloningSites();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModelPropertyPair()
+		 * @generated
+		 */
+		public static final EClass FLAT_MODEL_PROPERTY_PAIR = eINSTANCE.getFlatModelPropertyPair();
+
+		/**
+		 * The meta object literal for the '<em><b>Flat Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL = eINSTANCE.getFlatModelPropertyPair_FlatModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL_PROPERTY_PAIR__PROPERTY = eINSTANCE.getFlatModelPropertyPair_Property();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

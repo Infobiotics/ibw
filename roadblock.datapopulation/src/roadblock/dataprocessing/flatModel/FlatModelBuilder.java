@@ -1,9 +1,11 @@
 package roadblock.dataprocessing.flatModel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import roadblock.dataprocessing.util.UnitConverter;
@@ -37,54 +39,52 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeUnit;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 
-public class FlatModelBuilder implements IVisitor<FlatModel> {
+public class FlatModelBuilder implements IVisitor<Void> {
 
-	private static FlatModelBuilder instance;
+	private Model model;
+	private IProperty property;
 
 	private FlatModel flatModel;
-	private Map<String, MolecularSpecies> molecules;
+	private IProperty flatProperty;
 
-	public static FlatModelBuilder getInstance() {
+	private Object propertyCompartment;
+	private Map<String, MolecularSpecies> moleculesByFlatName;
+	private Map<Object, Map<String, MolecularSpecies>> moleculesByCompartment;
+	private Map<Object, Object> parentsByCompartement;
+	private Map<Object, String> prefixByCompartment;
 
-		if (instance == null) {
-			instance = new FlatModelBuilder();
-		}
-
-		return instance;
-	}
-
-	public FlatModel build(Model model, IProperty property) {
+	public void build() {
 
 		this.flatModel = IblFactory.eINSTANCE.createFlatModel();
-		this.molecules = new HashMap<>();
+		this.flatProperty = (IProperty) EcoreUtil.copy((EObject) property);
 
-		flatModel = model.accept(this);
-		
-		applyInitialConcentrations(property);
+		this.moleculesByFlatName = new HashMap<>();
+		this.moleculesByCompartment = new HashMap<>();
+		this.parentsByCompartement = new HashMap<>();
+		this.prefixByCompartment = new HashMap<>();
 
+		model.accept(this);
+	}
+
+	public FlatModel getFlatModel() {
 		return flatModel;
 	}
-	
-	public FlatModel build(Model model) {
 
-		this.flatModel = IblFactory.eINSTANCE.createFlatModel();
-		this.molecules = new HashMap<>();
+	public IProperty getFlatProperty() {
+		return flatProperty;
+	}
 
-		flatModel = model.accept(this);
-
-		return flatModel;
+	public Map<String, MolecularSpecies> getMoleculesByFlatName() {
+		return moleculesByFlatName;
 	}
 
 	@Override
-	public FlatModel visit(Model model) {
+	public Void visit(Model model) {
 
-		for (Rule rule : model.getRuleList()) {
-			rule.accept(this);
-		}
-		
 		for (Region region : model.getRegionList()) {
 			region.accept(this);
 		}
@@ -101,147 +101,400 @@ public class FlatModelBuilder implements IVisitor<FlatModel> {
 			kinetics.accept(this);
 		}
 
-		return flatModel;
+		return null;
 	}
 
 	@Override
-	public FlatModel visit(Region region) {
+	public Void visit(Region region) {
 
-		for (MolecularSpecies molecule : region.getMoleculeList()) {
-			molecule.accept(this);
-		}
+		registerMolecules(region);
 
-		for (Rule rule : region.getRuleList()) {
-			rule.accept(this);
-		}
-		
+		register(region.getRuleList(), region);
+
 		for (Cell cell : region.getCellList()) {
+			parentsByCompartement.put(cell, region);
 			cell.accept(this);
 		}
 
-		return flatModel;
+		return null;
 	}
 
 	@Override
-	public FlatModel visit(Cell cell) {
+	public Void visit(Cell cell) {
 
-		for (MolecularSpecies molecule : cell.getMoleculeList()) {
-			molecule.accept(this);
+		registerMolecules(cell);
+
+		register(cell.getRuleList(), cell);
+
+		for (IProperty property : cell.getProperties()) {
+			handle(property, cell);
 		}
 
-		for (Rule rule : cell.getRuleList()) {
-			rule.accept(this);
-		}
-		
 		for (Device device : cell.getDeviceList()) {
+			parentsByCompartement.put(device, cell);
 			device.accept(this);
 		}
 
-		return flatModel;
+		return null;
 	}
 
 	@Override
-	public FlatModel visit(Device device) {
-		
-		for (MolecularSpecies molecule : device.getMoleculeList()) {
-			molecule.accept(this);
+	public Void visit(Device device) {
+
+		registerMolecules(device);
+
+		register(device.getRuleList(), device);
+
+		for (IProperty property : device.getProperties()) {
+			handle(property, device);
 		}
 
-		for (Rule rule : device.getRuleList()) {
-			rule.accept(this);
-		}
-		
 		for (Kinetics kinetics : device.getProcessList()) {
+			parentsByCompartement.put(kinetics, device);
 			kinetics.accept(this);
 		}
 
-		return flatModel;
+		return null;
 	}
 
 	@Override
-	public FlatModel visit(Kinetics kinetics) {
-		
-		for (MolecularSpecies molecule : kinetics.getMoleculeList()) {
-			molecule.accept(this);
-		}
+	public Void visit(Kinetics kinetics) {
 
-		for (Rule rule : kinetics.getRuleList()) {
-			rule.accept(this);
-		}
+		registerMolecules(kinetics);
 
-		return flatModel;
+		register(kinetics.getRuleList(), kinetics);
+
+		return null;
 	}
 
 	@Override
-	public FlatModel visit(MolecularSpecies molecularSpecies) {
+	public Void visit(UnaryProbabilityProperty expression) {
 
-		MolecularSpecies molecule = handleMolecule(molecularSpecies);
-		
+		if (expression.getTimeConstraint() != null) {
+			expression.getTimeConstraint().accept(this);
+		}
+
+		if (expression.getStateFormula() != null) {
+			expression.getStateFormula().accept(this);
+		}
+
+		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
+			initialCondition.accept(this);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(BinaryProbabilityProperty expression) {
+
+		if (expression.getTimeConstraint() != null) {
+			expression.getTimeConstraint().accept(this);
+		}
+
+		if (expression.getLeftOperand() != null) {
+			expression.getLeftOperand().accept(this);
+		}
+
+		if (expression.getRightOperand() != null) {
+			expression.getRightOperand().accept(this);
+		}
+
+		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
+			initialCondition.accept(this);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(RewardProperty expression) {
+
+		if (expression.getConcentrationConstraint() != null) {
+			expression.getConcentrationConstraint().accept(this);
+		}
+
+		if (expression.getTimeConstraint() != null) {
+			expression.getTimeConstraint().accept(this);
+		}
+
+		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
+			initialCondition.accept(this);
+		}
+
+		expression.setVariableName(moleculesByCompartment.get(propertyCompartment).get(expression.getVariableName()).getDisplayName());
+
+		return null;
+	}
+
+	@Override
+	public Void visit(SteadyStateProperty expression) {
+
+		if (expression.getStateFormula() != null) {
+			expression.getStateFormula().accept(this);
+		}
+
+		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
+			initialCondition.accept(this);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(NotStateFormula expression) {
+
+		if (expression.getNegatedOperand() != null) {
+			expression.getNegatedOperand().accept(this);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(BinaryStateFormula expression) {
+
+		if (expression.getLeftOperand() != null) {
+			expression.getLeftOperand().accept(this);
+		}
+
+		if (expression.getRightOperand() != null) {
+			expression.getRightOperand().accept(this);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(StateExpression expression) {
+
+		expression.setQuantity(UnitConverter.getInstance().getBaseConcentration(expression.getQuantity(), expression.getUnit()));
+		expression.setUnit(ConcentrationUnit.MOLECULE);
+
+		expression.setVariableName(moleculesByCompartment.get(propertyCompartment).get(expression.getVariableName()).getDisplayName());
+
+		return null;
+	}
+
+	@Override
+	public Void visit(TimeInterval expression) {
+
+		expression.setLowerBound(UnitConverter.getInstance().getBaseTime(expression.getLowerBound(), expression.getUnit()));
+		expression.setUpperBound(UnitConverter.getInstance().getBaseTime(expression.getUpperBound(), expression.getUnit()));
+		expression.setUnit(TimeUnit.SECOND);
+
+		return null;
+	}
+
+	@Override
+	public Void visit(TimeInstant expression) {
+
+		expression.setValue(UnitConverter.getInstance().getBaseTime(expression.getValue(), expression.getUnit()));
+		expression.setUnit(TimeUnit.SECOND);
+
+		return null;
+	}
+
+	@Override
+	public Void visit(PropertyInitialCondition expression) {
+
+		expression.setAmount(UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
+		expression.setUnit(ConcentrationUnit.MOLECULE);
+
+		return null;
+	}
+
+	@Override
+	public Void visit(ConcentrationConstraint expression) {
+
+		expression.setValue(UnitConverter.getInstance().getBaseConcentration(expression.getValue(), expression.getUnit()));
+		expression.setUnit(ConcentrationUnit.MOLECULE);
+
+		return null;
+	}
+
+	private void registerMolecules(Region region) {
+
+		Map<String, MolecularSpecies> molecules = new HashMap<>();
+		moleculesByCompartment.put(region, molecules);
+		prefixByCompartment.put(region, region.getDisplayName());
+
+		for (MolecularSpecies molecularSpecies : region.getMoleculeList()) {
+			register(molecularSpecies, region);
+		}
+	}
+
+	private void registerMolecules(Cell cell) {
+
+		Object parentCompartment = parentsByCompartement.get(cell);
+		Map<String, MolecularSpecies> molecules = new HashMap<>();
+
+		moleculesByCompartment.put(cell, molecules);
+		prefixByCompartment.put(cell, prefixByCompartment.get(parentCompartment) + "_" + cell.getDisplayName());
+
+		for (MolecularSpecies molecule : cell.getMoleculeList()) {
+			register(molecule, cell);
+		}
+	}
+
+	private void registerMolecules(Device device) {
+
+		Object parentCompartment = parentsByCompartement.get(device);
+		Map<String, MolecularSpecies> molecules = new HashMap<>(moleculesByCompartment.get(parentCompartment));
+		moleculesByCompartment.put(device, molecules);
+		prefixByCompartment.put(device, prefixByCompartment.get(parentCompartment) + "_" + device.getDisplayName());
+
+		for (MolecularSpecies molecule : device.getMoleculeList()) {
+			register(molecule, device);
+		}
+	}
+
+	private void registerMolecules(Kinetics process) {
+
+		Object parentCompartment = parentsByCompartement.get(process);
+		Map<String, MolecularSpecies> molecules = new HashMap<>(moleculesByCompartment.get(parentCompartment));
+		moleculesByCompartment.put(process, molecules);
+		prefixByCompartment.put(process, prefixByCompartment.get(parentCompartment) + "_" + process.getDisplayName());
+
+		for (MolecularSpecies molecule : process.getMoleculeList()) {
+			register(molecule, process);
+		}
+	}
+
+	private MolecularSpecies register(MolecularSpecies molecularSpecies, Object compartment) {
+
+		MolecularSpecies molecule = EcoreUtil.copy(molecularSpecies);
+
+		if (molecule.getDisplayName().contains("~")) {
+
+			String[] componentMolecules = molecule.getDisplayName().split("~");
+			String complexMoleculeName = "";
+
+			for (String moleculeName : componentMolecules) {
+				complexMoleculeName += moleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
+			}
+
+			molecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 1));
+		} else {
+			molecule.setDisplayName(prefixByCompartment.get(compartment) + "_" + molecularSpecies.getDisplayName());
+		}
+
 		molecule.setAmount(UnitConverter.getInstance().getBaseConcentration(molecularSpecies.getAmount(), molecularSpecies.getUnit()));
 		molecule.setUnit(ConcentrationUnit.MOLECULE);
-		
-		return flatModel;
-	}
 
-	@Override
-	public FlatModel visit(Rule rule) {
+		moleculesByCompartment.get(compartment).put(molecularSpecies.getDisplayName(), molecule);
 
-		for (MolecularSpecies molecule : rule.getLeftHandSide()) {
-			handleMolecule(molecule);
-		}
-		
-		for (MolecularSpecies molecule : rule.getRightHandSide()) {
-			handleMolecule(molecule);
-		}
-		
-		Rule clonedRule = EcoreUtil.copy(rule);
-		flatModel.getRuleList().add(clonedRule);
-		
-		clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit()));
-		clonedRule.setForwardRateUnit(RateUnit.PER_SECOND);
-		clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit()));
-		clonedRule.setReverseRateUnit(RateUnit.PER_SECOND);
-
-		return flatModel;
-	}
-	
-	private MolecularSpecies handleMolecule(MolecularSpecies molecularSpecies) {
-		
-		MolecularSpecies molecule = null;
-		
-		if(molecules.containsKey(molecularSpecies.getDisplayName())) {
-			molecule = molecules.get(molecularSpecies.getDisplayName());
-		}
-		else {
-			molecule = EcoreUtil.copy(molecularSpecies);
+		if (!moleculesByFlatName.containsKey(molecule.getDisplayName())) {
 			
-			molecules.put(molecule.getDisplayName(), molecule);
 			flatModel.getMoleculeList().add(molecule);
+
+			// store molecule by flat name also
+			moleculesByFlatName.put(molecule.getDisplayName(), molecularSpecies);
 		}
-		
+
 		return molecule;
 	}
 
-	private void applyInitialConcentrations(IProperty property) {
-		
+	private void register(List<Rule> rules, Object compartment) {
+
+		for (Rule rule : rules) {
+
+			List<MolecularSpecies> lhsMolecules = new ArrayList<>();
+			List<MolecularSpecies> rhsMolecules = new ArrayList<>();
+			boolean isLeftOutside = rule.getLeftHandSide().size() == 1 && rule.getLeftHandSide().get(0).getDisplayName().equals("OUTSIDE");
+			boolean isRightOutside = rule.getRightHandSide().size() == 1 && rule.getRightHandSide().get(0).getDisplayName().equals("OUTSIDE");
+
+			for (MolecularSpecies molecularSpecies : rule.getLeftHandSide()) {
+
+				if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
+
+					MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
+
+					if (molecule != null) {
+						lhsMolecules.add(EcoreUtil.copy(molecule));
+					}
+
+					if (isRightOutside) {
+
+						molecule = moleculesByCompartment.get(parentsByCompartement.get(compartment)).get(molecularSpecies.getDisplayName());
+
+						if (molecule != null) {
+							rhsMolecules.add(EcoreUtil.copy(molecule));
+						}
+					}
+				}
+			}
+
+			for (MolecularSpecies molecularSpecies : rule.getRightHandSide()) {
+
+				if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
+
+					MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
+
+					if (molecule != null) {
+						rhsMolecules.add(EcoreUtil.copy(molecule));
+					}
+
+					if (isLeftOutside) {
+
+						molecule = moleculesByCompartment.get(parentsByCompartement.get(compartment)).get(molecularSpecies.getDisplayName());
+
+						if (molecule != null) {
+							lhsMolecules.add(EcoreUtil.copy(molecule));
+						}
+					}
+				}
+			}
+
+			Rule clonedRule = EcoreUtil.copy(rule);
+			clonedRule.getLeftHandSide().clear();
+			clonedRule.getLeftHandSide().addAll(lhsMolecules);
+			clonedRule.getRightHandSide().clear();
+			clonedRule.getRightHandSide().addAll(rhsMolecules);
+
+			flatModel.getRuleList().add(clonedRule);
+
+			clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit()));
+			clonedRule.setForwardRateUnit(RateUnit.PER_SECOND);
+			clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit()));
+			clonedRule.setReverseRateUnit(RateUnit.PER_SECOND);
+		}
+
+	}
+
+	private void handle(IProperty property, Object compartment) {
+
+		if (this.property != null && this.property == property) {
+
+			propertyCompartment = compartment;
+
+			flatProperty.accept(this);
+
+			applyInitialConcentrations(flatProperty, compartment);
+		}
+	}
+
+	private void applyInitialConcentrations(IProperty property, Object propertyCompartment) {
+
 		List<PropertyInitialCondition> initialConditions = null;
-		
-		if(property instanceof ProbabilityProperty) {
-			initialConditions = ((ProbabilityProperty)property).getInitialConditions();
+
+		if (property instanceof ProbabilityProperty) {
+			initialConditions = ((ProbabilityProperty) property).getInitialConditions();
+		} else if (property instanceof SteadyStateProperty) {
+			initialConditions = ((SteadyStateProperty) property).getInitialConditions();
+		} else if (property instanceof RewardProperty) {
+			initialConditions = ((RewardProperty) property).getInitialConditions();
 		}
-		else if(property instanceof SteadyStateProperty) {
-			initialConditions = ((SteadyStateProperty)property).getInitialConditions();
-		}
-		else if(property instanceof RewardProperty) {
-			initialConditions = ((RewardProperty)property).getInitialConditions();
-		}
-		
-		if(initialConditions != null) {
-			for(PropertyInitialCondition initialCondition : initialConditions) {
-				
+
+		if (initialConditions != null) {
+
+			Map<String, MolecularSpecies> molecules = moleculesByCompartment.get(propertyCompartment);
+
+			for (PropertyInitialCondition initialCondition : initialConditions) {
+
 				String moleculeName = initialCondition.getVariableName();
-				if(molecules.containsKey(moleculeName)) {
-					
+				if (molecules.containsKey(moleculeName)) {
+
 					MolecularSpecies molecule = molecules.get(moleculeName);
 					molecule.setUnit(initialCondition.getUnit());
 					molecule.setAmount(initialCondition.getAmount());
@@ -250,100 +503,64 @@ public class FlatModelBuilder implements IVisitor<FlatModel> {
 		}
 	}
 
+	public FlatModelBuilder(Model model, IProperty property) {
+		this.model = model;
+		this.property = property;
+	}
+
+	public FlatModelBuilder(Model model) {
+		this.model = model;
+	}
+
 	/* unimplemented methods */
 
 	@Override
-	public FlatModel visit(UnaryProbabilityProperty expression) {
+	public Void visit(ConcreteProbabilityConstraint expression) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(BinaryProbabilityProperty expression) {
+	public Void visit(UnknownProbabilityConstraint expression) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(RewardProperty expression) {
+	public Void visit(FlatModel flatModel) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(StateExpression expression) {
+	public Void visit(ATGCDirective atgc) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(NotStateFormula expression) {
+	public Void visit(System system) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(BinaryStateFormula expression) {
+	public Void visit(Chromosome chromosome) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(ConcreteProbabilityConstraint expression) {
+	public Void visit(Plasmid plasmid) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(UnknownProbabilityConstraint expression) {
+	public Void visit(EMFVariableAssignment expression) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(TimeInterval expression) {
+	public Void visit(MolecularSpecies molecularSpecies) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public FlatModel visit(TimeInstant expression) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(PropertyInitialCondition expression) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(ConcentrationConstraint expression) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(SteadyStateProperty expression) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(FlatModel flatModel) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(ATGCDirective atgc) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(System system) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(Chromosome chromosome) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(Plasmid plasmid) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public FlatModel visit(EMFVariableAssignment expression) {
+	public Void visit(Rule rule) {
 		throw new UnsupportedOperationException();
 	}
 }

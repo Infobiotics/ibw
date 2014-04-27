@@ -1,0 +1,78 @@
+// Flat version of the sensor cell: no process, no inheritance.
+define SensorCell typeof CELL(){
+
+	MOLECULE a = new MOLECULE(displayID = "a", degradationRate = 1 s^-1, concentration = 10 uM)
+	GENE b = new GENE(URI = "biofab://")
+	PROTEIN c = new PROTEIN(URI = "db://...")
+	
+	PROMOTER d = new PROMOTER(URI = "biofab://")
+	GENE g1 = new GENE(sequence = "ATTGTGT")
+	PROTEIN f = new PROTEIN()
+	
+	PROMOTER g = new PROMOTER(sequence = "ATTGTGT")
+	GENE h = new GENE(sequence = "TTGTGTG")
+	PROTEIN i = new PROTEIN()
+
+	// some rules
+	
+	RULE R0 : OUTSIDE -> a
+    R0.rate = 6.4 min^-1
+    
+    RULE Rx : a -> OUTSIDE
+    Rx.rate = 2.4 min^-1
+	
+	RULE R1 : a + a + b + b <-> a + a~b
+	R1.forwardRate = 1 min^-1
+    R1.reverseRate = 2 s^-1
+ 
+	RULE R2 : b + c + d <-> c + c + c + c~d
+	R2.forwardRate = 2.3 s^-1
+	R2.reverseRate = 1 min^-1
+         
+         RULE R3 : a + a + a + d <-> a~d
+         R3.forwardRate = 1 min^-1
+         R3.reverseRate = 2 s^-1
+         
+         RULE R4 : a + f <-> c + c + a~d
+         R4.forwardRate = 1 min^-1
+         R4.reverseRate = 2 s^-1
+
+	// some example properties         
+	VERIFY [b > 0 uM] EVENTUALLY HOLDS
+	VERIFY [b > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
+	VERIFY [b > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
+	VERIFY [b > 0 uM] NEVER HOLDS
+	VERIFY [b > 0 uM] ALWAYS HOLDS
+	VERIFY [b > 0 uM] HOLDS IN STEADY-STATE
+	VERIFY [b > 0 uM] HOLDS INFINITELY OFTEN
+	VERIFY [c > 0 uM] WILL HOLD UNTIL THEN [d > 0 uM]
+	VERIFY EXPECTED [c] AT 1000 min IS ?
+	VERIFY EXPECTED [c] WITHIN 1000 s IS ?
+
+	DEVICE D1 = new DEVICE(parts = [c, d])(input = [a~b], output = [b]){
+	
+		RNA f	
+		
+	    RULE regulation : a~b + d <-> a~b~d
+		RULE promoterBinding : a~b~f + c <-> a~b~f~c	
+		RULE transcription : a~b~f~g1 -> a~b~f~g1 + h
+		RULE mrnaDegradation : f ->
+		
+	    VERIFY [f > 0 uM ] EVENTUALLY HOLDS GIVEN a = 200 uM
+	}
+
+	DEVICE D2 = new DEVICE(parts = [g1, f, g])(input = [a~d, f~g], output = [i]) {
+	
+		RNA mrna1	
+		
+	    RULE regulation : a~d + f <-> a~d~f	
+		RULE transcription : a~h~f~d -> a~h~f~d + g1
+		
+	    VERIFY [ [ NOT [ g1 > 50 uM ] ] IMPLIES [[ g1 < 40 uM ] AND [ g1 < 100 uM ] ]] EVENTUALLY HOLDS
+	}
+}
+
+define R1 typeof REGION () {
+		MOLECULE a = new MOLECULE(displayID = "a", degradationRate = 1 s^-1, concentration = 20 uM)
+		CELL cell = new SensorCell()
+}

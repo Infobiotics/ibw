@@ -1,109 +1,76 @@
 package roadblock.dataprocessing.flatModel;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import roadblock.emf.ibl.Ibl.FlatModel;
+import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
+import roadblock.emf.ibl.Ibl.IblFactory;
 import roadblock.emf.ibl.Ibl.Model;
-import roadblock.emf.ibl.Ibl.ProbabilityProperty;
-import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
-import roadblock.emf.ibl.Ibl.RewardProperty;
-import roadblock.emf.ibl.Ibl.SteadyStateProperty;
+import roadblock.emf.ibl.Ibl.MolecularSpecies;
 
 public class FlatModelManager {
 
 	private Model model;
-	private List<IProperty> properties;
+
 	private FlatModelBuilder flatModelBuilder;
+	private Map<IProperty, FlatModelBuilder> flatModelBuilderByProperty;
+	private FlatModel flatModel;
+	private Map<IProperty, FlatModelPropertyPair> flatDataByProperty;
 
-	private Map<IProperty, FlatModel> flatModelByProperty;
-	private Map<Integer, FlatModel> flatModelByHash;
+	public FlatModelPropertyPair getFlatData(IProperty property) {
 
-	private FlatModel buildFlatModel(IProperty property) {
+		return buildFlatData(property);
+	}
 
-		FlatModel flatModel = null;
+	public FlatModel getFlatModel() {
 
-		if (flatModelByProperty.containsKey(property)) {
-			flatModel = flatModelByProperty.get(property);
-		} else {
+		if (flatModel == null) {
 
-			Integer hash = new Integer(getHash(model, property));
+			flatModelBuilder = new FlatModelBuilder(this.model);
+			flatModelBuilder.build();
 
-			if (flatModelByHash.containsKey(hash)) {
-				flatModel = flatModelByHash.get(hash);
-			} else {
-				flatModel = flatModelBuilder.build(model, property);
-				flatModelByHash.put(hash, flatModel);
-			}
-
-			flatModelByProperty.put(property, flatModel);
+			flatModel = flatModelBuilder.getFlatModel();
 		}
 
 		return flatModel;
 	}
 
-	private int getHash(Model model, IProperty property) {
-
-		int hash = 0;
-		List<PropertyInitialCondition> initialConditions = null;
-		List<String> hashComponents = new ArrayList<>();
-
-		if (property instanceof ProbabilityProperty) {
-			initialConditions = ((ProbabilityProperty) property)
-					.getInitialConditions();
-		} else if (property instanceof SteadyStateProperty) {
-			initialConditions = ((SteadyStateProperty) property)
-					.getInitialConditions();
-		} else if (property instanceof RewardProperty) {
-			initialConditions = ((RewardProperty) property)
-					.getInitialConditions();
-		}
-
-		for (PropertyInitialCondition initialCondition : initialConditions) {
-			hashComponents.add(initialCondition.getVariableName() + "."
-					+ initialCondition.getVariableAttribute() + "="
-					+ initialCondition.getAmount());
-		}
-
-		if (hashComponents.size() > 0) {
-
-			Collections.sort(hashComponents);
-			String stringHash = "";
-			for (String hashComponent : hashComponents) {
-				stringHash += hashComponent + ",";
-			}
-
-			hash = stringHash.hashCode();
-		}
-
-		return hash;
+	public Map<String, MolecularSpecies> getMoleculesByFlatName() {
+		return flatModelBuilder != null ? flatModelBuilder.getMoleculesByFlatName() : null;
 	}
 
-	public List<IProperty> getProperties() {
-
-		return properties;
+	public Map<String, MolecularSpecies> getMoleculesByFlatName(IProperty property) {
+		return flatModelBuilderByProperty.containsKey(property) ? flatModelBuilderByProperty.get(property).getMoleculesByFlatName() : null;
 	}
 
-	public FlatModel getFlatModel(IProperty property) {
+	private FlatModelPropertyPair buildFlatData(IProperty property) {
 
-		return buildFlatModel(property);
-	}
+		FlatModelPropertyPair flatData = null;
 
-	public FlatModel getFlatModel() {
+		if (flatDataByProperty.containsKey(property)) {
+			flatData = flatDataByProperty.get(property);
+		} else {
 
-		return flatModelBuilder.build(model);
+			flatData = IblFactory.eINSTANCE.createFlatModelPropertyPair();
+
+			FlatModelBuilder flatModelBuilder = new FlatModelBuilder(model, property);
+			flatModelBuilder.build();
+
+			flatData.setFlatModel(flatModelBuilder.getFlatModel());
+			flatData.setProperty(flatModelBuilder.getFlatProperty());
+
+			flatDataByProperty.put(property, flatData);
+		}
+
+		return flatData;
 	}
 
 	public FlatModelManager(Model model) {
 
 		this.model = model;
-		this.properties = PropertyCollector.getInstance().getAll(model);
-		this.flatModelByProperty = new HashMap<>();
-		this.flatModelByHash = new HashMap<>();
-		this.flatModelBuilder = FlatModelBuilder.getInstance();
+		this.flatModelBuilderByProperty = new HashMap<>();
+		this.flatDataByProperty = new HashMap<>();
 	}
 }

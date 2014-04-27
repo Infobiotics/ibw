@@ -19,6 +19,7 @@ import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
+import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IStateFormula;
@@ -364,6 +365,12 @@ public class IblSwitch<T> extends Switch<T> {
 				T result = caseATGCCloningSites(atgcCloningSites);
 				if (result == null) result = caseATGCDirective(atgcCloningSites);
 				if (result == null) result = caseIVisitable(atgcCloningSites);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.FLAT_MODEL_PROPERTY_PAIR: {
+				FlatModelPropertyPair flatModelPropertyPair = (FlatModelPropertyPair)theEObject;
+				T result = caseFlatModelPropertyPair(flatModelPropertyPair);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -908,6 +915,21 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseATGCCloningSites(ATGCCloningSites object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Flat Model Property Pair</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Flat Model Property Pair</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFlatModelPropertyPair(FlatModelPropertyPair object) {
 		return null;
 	}
 

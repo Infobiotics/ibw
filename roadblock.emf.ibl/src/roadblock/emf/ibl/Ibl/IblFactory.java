@@ -94,6 +94,7 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.ATGC_DIRECTION: return (EObject)createATGCDirection();
 			case IblPackage.ATGC_ARRANGE: return (EObject)createATGCArrange();
 			case IblPackage.ATGC_CLONING_SITES: return (EObject)createATGCCloningSites();
+			case IblPackage.FLAT_MODEL_PROPERTY_PAIR: return (EObject)createFlatModelPropertyPair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -437,6 +438,16 @@ public class IblFactory extends EFactoryImpl {
 	public ATGCCloningSites createATGCCloningSites() {
 		ATGCCloningSites atgcCloningSites = new ATGCCloningSites();
 		return atgcCloningSites;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FlatModelPropertyPair createFlatModelPropertyPair() {
+		FlatModelPropertyPair flatModelPropertyPair = new FlatModelPropertyPair();
+		return flatModelPropertyPair;
 	}
 
 	/**
