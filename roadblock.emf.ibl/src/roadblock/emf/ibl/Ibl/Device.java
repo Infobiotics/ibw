@@ -3,8 +3,8 @@
 package roadblock.emf.ibl.Ibl;
 
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -179,7 +179,7 @@ public class Device extends EObjectImpl implements IVisitable {
 	protected EList<EMFVariableAssignment> variableAssignmentList;
 
 	/**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' reference list.
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProperties()
@@ -497,7 +497,7 @@ public class Device extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Properties</b></em>' reference list.
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.IProperty}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -505,14 +505,14 @@ public class Device extends EObjectImpl implements IVisitable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Properties</em>' reference list.
+	 * @return the value of the '<em>Properties</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_Properties()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public List<IProperty> getProperties() {
 		if (properties == null) {
-			properties = new EObjectResolvingEList<IProperty>(IProperty.class, this, IblPackage.DEVICE__PROPERTIES);
+			properties = new EObjectContainmentEList<IProperty>(IProperty.class, this, IblPackage.DEVICE__PROPERTIES);
 		}
 		return properties;
 	}
@@ -553,6 +553,8 @@ public class Device extends EObjectImpl implements IVisitable {
 				return ((InternalEList<?>)getInputList()).basicRemove(otherEnd, msgs);
 			case IblPackage.DEVICE__VARIABLE_ASSIGNMENT_LIST:
 				return ((InternalEList<?>)getVariableAssignmentList()).basicRemove(otherEnd, msgs);
+			case IblPackage.DEVICE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -120,7 +120,9 @@ FunctionContent:
 
 // See iblRefactoringGrammar.R for some automation
 FunctionBodyMember:
-	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation | ProcessInstantiation | PropertyDefinition | RuleDefinition | SystemInstantiation | VariableAssignment | VariableDefinition
+	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation | ProcessInstantiation | PropertyDefinition | 
+	RuleDefinition | SystemInstantiation | 
+	VariableAssignment | VariableDefinition
 ;
 
 //////////////////////
@@ -256,7 +258,7 @@ VariableKind2:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'CHASSIS' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' 
+	'MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' 
 ;
 
 
@@ -293,6 +295,7 @@ VariableDefinitionUserDefined:
 	'=' 'new' constructor=VariableKind2'(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
 ;
+
 
 VariableDefinitionCollection:
 	{VariableDefinitionCollection}

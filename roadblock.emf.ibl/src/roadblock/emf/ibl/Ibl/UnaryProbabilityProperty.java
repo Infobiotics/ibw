@@ -4,6 +4,7 @@ package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -29,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class UnaryProbabilityProperty extends ProbabilityProperty {
 	/**
-	 * The cached value of the '{@link #getStateFormula() <em>State Formula</em>}' reference.
+	 * The cached value of the '{@link #getStateFormula() <em>State Formula</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getStateFormula()
@@ -78,28 +79,20 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>State Formula</b></em>' reference.
+	 * Returns the value of the '<em><b>State Formula</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>State Formula</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>State Formula</em>' reference.
+	 * @return the value of the '<em>State Formula</em>' containment reference.
 	 * @see #setStateFormula(IStateFormula)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getUnaryProbabilityProperty_StateFormula()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public IStateFormula getStateFormula() {
-		if (stateFormula != null && ((EObject)stateFormula).eIsProxy()) {
-			InternalEObject oldStateFormula = (InternalEObject)stateFormula;
-			stateFormula = (IStateFormula)eResolveProxy(oldStateFormula);
-			if (stateFormula != oldStateFormula) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA, oldStateFormula, stateFormula));
-			}
-		}
 		return stateFormula;
 	}
 
@@ -108,23 +101,36 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IStateFormula basicGetStateFormula() {
-		return stateFormula;
+	public NotificationChain basicSetStateFormula(IStateFormula newStateFormula, NotificationChain msgs) {
+		IStateFormula oldStateFormula = stateFormula;
+		stateFormula = newStateFormula;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA, oldStateFormula, newStateFormula);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getStateFormula <em>State Formula</em>}' reference.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getStateFormula <em>State Formula</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>State Formula</em>' reference.
+	 * @param value the new value of the '<em>State Formula</em>' containment reference.
 	 * @see #getStateFormula()
 	 * @generated
 	 */
 	public void setStateFormula(IStateFormula newStateFormula) {
-		IStateFormula oldStateFormula = stateFormula;
-		stateFormula = newStateFormula;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA, oldStateFormula, stateFormula));
+		if (newStateFormula != stateFormula) {
+			NotificationChain msgs = null;
+			if (stateFormula != null)
+				msgs = ((InternalEObject)stateFormula).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA, null, msgs);
+			if (newStateFormula != null)
+				msgs = ((InternalEObject)newStateFormula).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA, null, msgs);
+			msgs = basicSetStateFormula(newStateFormula, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA, newStateFormula, newStateFormula));
 	}
 
 	/**
@@ -169,11 +175,24 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA:
+				return basicSetStateFormula(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IblPackage.UNARY_PROBABILITY_PROPERTY__STATE_FORMULA:
-				if (resolve) return getStateFormula();
-				return basicGetStateFormula();
+				return getStateFormula();
 			case IblPackage.UNARY_PROBABILITY_PROPERTY__OPERATOR:
 				return getOperator();
 		}

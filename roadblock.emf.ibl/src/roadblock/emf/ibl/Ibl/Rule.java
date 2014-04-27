@@ -291,6 +291,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Forward Rate</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Forward Rate</em>' attribute isn't clear,
@@ -300,7 +301,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Forward Rate</em>' attribute.
 	 * @see #setForwardRate(double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRate()
-	 * @model
+	 * @model default="0"
 	 * @generated
 	 */
 	public double getForwardRate() {
@@ -324,6 +325,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Returns the value of the '<em><b>Reverse Rate</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Reverse Rate</em>' attribute isn't clear,
@@ -333,7 +335,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @return the value of the '<em>Reverse Rate</em>' attribute.
 	 * @see #setReverseRate(double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRate()
-	 * @model
+	 * @model default="0"
 	 * @generated
 	 */
 	public double getReverseRate() {

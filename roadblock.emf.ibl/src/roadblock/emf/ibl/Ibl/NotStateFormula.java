@@ -4,6 +4,7 @@ package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -29,7 +30,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class NotStateFormula extends EObjectImpl implements IStateFormula {
 	/**
-	 * The cached value of the '{@link #getNegatedOperand() <em>Negated Operand</em>}' reference.
+	 * The cached value of the '{@link #getNegatedOperand() <em>Negated Operand</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNegatedOperand()
@@ -58,28 +59,20 @@ public class NotStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Negated Operand</b></em>' reference.
+	 * Returns the value of the '<em><b>Negated Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Negated Operand</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Negated Operand</em>' reference.
+	 * @return the value of the '<em>Negated Operand</em>' containment reference.
 	 * @see #setNegatedOperand(IStateFormula)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getNotStateFormula_NegatedOperand()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public IStateFormula getNegatedOperand() {
-		if (negatedOperand != null && ((EObject)negatedOperand).eIsProxy()) {
-			InternalEObject oldNegatedOperand = (InternalEObject)negatedOperand;
-			negatedOperand = (IStateFormula)eResolveProxy(oldNegatedOperand);
-			if (negatedOperand != oldNegatedOperand) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND, oldNegatedOperand, negatedOperand));
-			}
-		}
 		return negatedOperand;
 	}
 
@@ -88,23 +81,36 @@ public class NotStateFormula extends EObjectImpl implements IStateFormula {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IStateFormula basicGetNegatedOperand() {
-		return negatedOperand;
+	public NotificationChain basicSetNegatedOperand(IStateFormula newNegatedOperand, NotificationChain msgs) {
+		IStateFormula oldNegatedOperand = negatedOperand;
+		negatedOperand = newNegatedOperand;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND, oldNegatedOperand, newNegatedOperand);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.NotStateFormula#getNegatedOperand <em>Negated Operand</em>}' reference.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.NotStateFormula#getNegatedOperand <em>Negated Operand</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Negated Operand</em>' reference.
+	 * @param value the new value of the '<em>Negated Operand</em>' containment reference.
 	 * @see #getNegatedOperand()
 	 * @generated
 	 */
 	public void setNegatedOperand(IStateFormula newNegatedOperand) {
-		IStateFormula oldNegatedOperand = negatedOperand;
-		negatedOperand = newNegatedOperand;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND, oldNegatedOperand, negatedOperand));
+		if (newNegatedOperand != negatedOperand) {
+			NotificationChain msgs = null;
+			if (negatedOperand != null)
+				msgs = ((InternalEObject)negatedOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND, null, msgs);
+			if (newNegatedOperand != null)
+				msgs = ((InternalEObject)newNegatedOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND, null, msgs);
+			msgs = basicSetNegatedOperand(newNegatedOperand, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND, newNegatedOperand, newNegatedOperand));
 	}
 
 	/**
@@ -123,11 +129,24 @@ public class NotStateFormula extends EObjectImpl implements IStateFormula {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND:
+				return basicSetNegatedOperand(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IblPackage.NOT_STATE_FORMULA__NEGATED_OPERAND:
-				if (resolve) return getNegatedOperand();
-				return basicGetNegatedOperand();
+				return getNegatedOperand();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

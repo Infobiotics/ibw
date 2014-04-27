@@ -5,13 +5,17 @@ package roadblock.emf.ibl.Ibl;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +36,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class FlatModel extends EObjectImpl implements IVisitable {
 	/**
-	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' reference list.
+	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMoleculeList()
@@ -42,7 +46,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	protected EList<MolecularSpecies> moleculeList;
 
 	/**
-	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' reference list.
+	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRuleList()
@@ -71,7 +75,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Molecule List</b></em>' reference list.
+	 * Returns the value of the '<em><b>Molecule List</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -79,20 +83,20 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Molecule List</em>' reference list.
+	 * @return the value of the '<em>Molecule List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel_MoleculeList()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public List<MolecularSpecies> getMoleculeList() {
 		if (moleculeList == null) {
-			moleculeList = new EObjectResolvingEList<MolecularSpecies>(MolecularSpecies.class, this, IblPackage.FLAT_MODEL__MOLECULE_LIST);
+			moleculeList = new EObjectContainmentEList<MolecularSpecies>(MolecularSpecies.class, this, IblPackage.FLAT_MODEL__MOLECULE_LIST);
 		}
 		return moleculeList;
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Rule List</b></em>' reference list.
+	 * Returns the value of the '<em><b>Rule List</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Rule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -100,14 +104,14 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rule List</em>' reference list.
+	 * @return the value of the '<em>Rule List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel_RuleList()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public List<Rule> getRuleList() {
 		if (ruleList == null) {
-			ruleList = new EObjectResolvingEList<Rule>(Rule.class, this, IblPackage.FLAT_MODEL__RULE_LIST);
+			ruleList = new EObjectContainmentEList<Rule>(Rule.class, this, IblPackage.FLAT_MODEL__RULE_LIST);
 		}
 		return ruleList;
 	}
@@ -120,6 +124,22 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	 */
 	public <TResult> TResult accept(IVisitor<TResult> visitor) {
 		return visitor.visit(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.FLAT_MODEL__MOLECULE_LIST:
+				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
+			case IblPackage.FLAT_MODEL__RULE_LIST:
+				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

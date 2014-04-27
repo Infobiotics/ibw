@@ -38,6 +38,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinition
 import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
 import roadblock.xtext.ibl.ibl.VariableExpressionObject
 import roadblock.xtext.ibl.ibl.VariableKind
+import roadblock.xtext.ibl.ibl.VariableKind2
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 
@@ -52,8 +53,8 @@ class ModelBuilder extends IblSwitch<Object> {
 	// useful constant
 	val BIOLOGICALPART = #{'PROMOTER', 'GENE', 'RBS', 'SPACER', 'TERMINATOR'}
 
-	def isPart(String molecule) {
-		return BIOLOGICALPART.contains(molecule)
+	def isPart(String biologicalType) {
+		return BIOLOGICALPART.contains(biologicalType)
 	}
 
 	def isComplex(String name) {
@@ -63,7 +64,9 @@ class ModelBuilder extends IblSwitch<Object> {
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
 		if (moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
-			complex => [displayName = complexName biologicalType = 'COMPLEX' amount = 0.0
+			complex => [displayName = complexName 
+				biologicalType = 'COMPLEX' 
+				amount = 0.0
 				unit = ConcentrationUnit.UM]
 			moleculeList.add(complex)
 		}
@@ -84,6 +87,13 @@ class ModelBuilder extends IblSwitch<Object> {
 		switch variableKind {
 			VariableName: buildVariableName(variableKind)
 			VariableComplex: buildVariableName(variableKind)
+		}
+	}
+	
+	def buildVariableName(VariableKind2 variableKind) {
+		switch variableKind {
+			VariableName: buildVariableName(variableKind)
+			default: variableKind.toString
 		}
 	}
 
@@ -257,6 +267,8 @@ class ModelBuilder extends IblSwitch<Object> {
 		for (displayName : atgcArrange.arguments.map[it.buildVariableName]) {
 			var emfPart = modelFactory.createMolecularSpecies
 			emfPart.displayName = displayName
+			emfPart.unit = getConcentrationUnit('molecule')
+			emfPart.amount = 1.0
 			emfAtgcArrange.partList.add(emfPart)
 		}
 		return emfAtgcArrange
@@ -311,8 +323,8 @@ class ModelBuilder extends IblSwitch<Object> {
 			rule.rightHandSide.add(part.doSwitch as MolecularSpecies)
 
 		rule.isBidirectional = ruleDefinition.reversible
-		rule.setForwardRate(1.0)
-		if(rule.isBidirectional) rule.setReverseRate(1.0) else rule.setReverseRate(0.0)
+		rule.setForwardRate(0.0)
+		if(rule.isBidirectional) rule.setReverseRate(0.0) else rule.setReverseRate(0.0)
 		return rule
 	}
 
@@ -352,29 +364,27 @@ class ModelBuilder extends IblSwitch<Object> {
 		val molecule = modelFactory.createMolecularSpecies
 
 		molecule => [
-			biologicalType = variableDefinition.type
+			biologicalType = variableDefinition.type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
-			degradationRateUnit = 's^-1'
-			bindingRateUnit = 's^-1'
-			unbindingRateUnit = 's^-1'
+			degradationRateUnit = getRateUnit("s^-1")
+			bindingRateUnit = getRateUnit("s^-1") 
+			unbindingRateUnit = getRateUnit("s^-1")
+			degradationRate = 0.0;
+			bindingRate = 0.0;
+			unbindingRate = 0.0
 		]
 
 		// Defaults for parts and molecules
-		if (isPart(molecule.biologicalType))
+		if (isPart(variableDefinition.type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
-				degradationRate = 0.0;
-				bindingRate = 1.0;
-				unbindingRate = 1.0
-			]
+				]
 		else
 			molecule => [
 				amount = 0.0;
 				unit = getConcentrationUnit('uM');
-				degradationRate = 1.0
-				bindingRate = 1.0;
-				unbindingRate = 1.0
+	
 			]
 
 		// defaults are overriden if specified in the constructor

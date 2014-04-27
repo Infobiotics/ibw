@@ -4,6 +4,7 @@ package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -31,7 +32,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	/**
-	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}' reference.
+	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLeftOperand()
@@ -41,7 +42,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	protected IStateFormula leftOperand;
 
 	/**
-	 * The cached value of the '{@link #getRightOperand() <em>Right Operand</em>}' reference.
+	 * The cached value of the '{@link #getRightOperand() <em>Right Operand</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRightOperand()
@@ -90,28 +91,20 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Left Operand</b></em>' reference.
+	 * Returns the value of the '<em><b>Left Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Left Operand</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Left Operand</em>' reference.
+	 * @return the value of the '<em>Left Operand</em>' containment reference.
 	 * @see #setLeftOperand(IStateFormula)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryStateFormula_LeftOperand()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public IStateFormula getLeftOperand() {
-		if (leftOperand != null && ((EObject)leftOperand).eIsProxy()) {
-			InternalEObject oldLeftOperand = (InternalEObject)leftOperand;
-			leftOperand = (IStateFormula)eResolveProxy(oldLeftOperand);
-			if (leftOperand != oldLeftOperand) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND, oldLeftOperand, leftOperand));
-			}
-		}
 		return leftOperand;
 	}
 
@@ -120,48 +113,53 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IStateFormula basicGetLeftOperand() {
-		return leftOperand;
+	public NotificationChain basicSetLeftOperand(IStateFormula newLeftOperand, NotificationChain msgs) {
+		IStateFormula oldLeftOperand = leftOperand;
+		leftOperand = newLeftOperand;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND, oldLeftOperand, newLeftOperand);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getLeftOperand <em>Left Operand</em>}' reference.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getLeftOperand <em>Left Operand</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Left Operand</em>' reference.
+	 * @param value the new value of the '<em>Left Operand</em>' containment reference.
 	 * @see #getLeftOperand()
 	 * @generated
 	 */
 	public void setLeftOperand(IStateFormula newLeftOperand) {
-		IStateFormula oldLeftOperand = leftOperand;
-		leftOperand = newLeftOperand;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND, oldLeftOperand, leftOperand));
+		if (newLeftOperand != leftOperand) {
+			NotificationChain msgs = null;
+			if (leftOperand != null)
+				msgs = ((InternalEObject)leftOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND, null, msgs);
+			if (newLeftOperand != null)
+				msgs = ((InternalEObject)newLeftOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND, null, msgs);
+			msgs = basicSetLeftOperand(newLeftOperand, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND, newLeftOperand, newLeftOperand));
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Right Operand</b></em>' reference.
+	 * Returns the value of the '<em><b>Right Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Right Operand</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Right Operand</em>' reference.
+	 * @return the value of the '<em>Right Operand</em>' containment reference.
 	 * @see #setRightOperand(IStateFormula)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryStateFormula_RightOperand()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public IStateFormula getRightOperand() {
-		if (rightOperand != null && ((EObject)rightOperand).eIsProxy()) {
-			InternalEObject oldRightOperand = (InternalEObject)rightOperand;
-			rightOperand = (IStateFormula)eResolveProxy(oldRightOperand);
-			if (rightOperand != oldRightOperand) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND, oldRightOperand, rightOperand));
-			}
-		}
 		return rightOperand;
 	}
 
@@ -170,23 +168,36 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IStateFormula basicGetRightOperand() {
-		return rightOperand;
+	public NotificationChain basicSetRightOperand(IStateFormula newRightOperand, NotificationChain msgs) {
+		IStateFormula oldRightOperand = rightOperand;
+		rightOperand = newRightOperand;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND, oldRightOperand, newRightOperand);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getRightOperand <em>Right Operand</em>}' reference.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getRightOperand <em>Right Operand</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Right Operand</em>' reference.
+	 * @param value the new value of the '<em>Right Operand</em>' containment reference.
 	 * @see #getRightOperand()
 	 * @generated
 	 */
 	public void setRightOperand(IStateFormula newRightOperand) {
-		IStateFormula oldRightOperand = rightOperand;
-		rightOperand = newRightOperand;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND, oldRightOperand, rightOperand));
+		if (newRightOperand != rightOperand) {
+			NotificationChain msgs = null;
+			if (rightOperand != null)
+				msgs = ((InternalEObject)rightOperand).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND, null, msgs);
+			if (newRightOperand != null)
+				msgs = ((InternalEObject)newRightOperand).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND, null, msgs);
+			msgs = basicSetRightOperand(newRightOperand, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND, newRightOperand, newRightOperand));
 	}
 
 	/**
@@ -241,14 +252,28 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND:
+				return basicSetLeftOperand(null, msgs);
+			case IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND:
+				return basicSetRightOperand(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IblPackage.BINARY_STATE_FORMULA__LEFT_OPERAND:
-				if (resolve) return getLeftOperand();
-				return basicGetLeftOperand();
+				return getLeftOperand();
 			case IblPackage.BINARY_STATE_FORMULA__RIGHT_OPERAND:
-				if (resolve) return getRightOperand();
-				return basicGetRightOperand();
+				return getRightOperand();
 			case IblPackage.BINARY_STATE_FORMULA__OPERATOR:
 				return getOperator();
 		}

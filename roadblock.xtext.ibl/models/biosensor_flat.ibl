@@ -1,4 +1,5 @@
 // Flat version of the sensor cell: no process, no inheritance.
+
 define SensorCell typeof CELL(){
         // define molecular elements
         RIBOSOME ribosome: observable
@@ -102,7 +103,7 @@ define SensorCell typeof CELL(){
          ATGC ARRANGE nahR, PnahR, Psal
  
          // some example properties
-         
+          
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
          VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
@@ -114,6 +115,7 @@ define SensorCell typeof CELL(){
          VERIFY EXPECTED [RFP] AT 1000 s IS ?
          VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
 }
+
 define site1 typeof REGION () {
         MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new SensorCell()

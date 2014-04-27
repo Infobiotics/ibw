@@ -1,7 +1,7 @@
 // Flat version of the sensor cell: no process, no inheritance.
 define SensorCell typeof CELL(){
 
-	MOLECULE a = new MOLECULE(displayID = "a", degradationRate = 1 s^-1, concentration = 10 uM)
+	MOLECULE a = new MOLECULE(displayID = "a", degradationRate = 1 s^-1, concentration = 100 uM)
 	GENE b = new GENE(URI = "biofab://")
 	PROTEIN c = new PROTEIN(URI = "db://...")
 	
@@ -73,6 +73,6 @@ define SensorCell typeof CELL(){
 }
 
 define R1 typeof REGION () {
-		MOLECULE a = new MOLECULE(displayID = "a", degradationRate = 1 s^-1, concentration = 20 uM)
+		MOLECULE a = new MOLECULE(displayID = "a", degradationRate = 1 s^-1, concentration = 200 uM)
 		CELL cell = new SensorCell()
 }

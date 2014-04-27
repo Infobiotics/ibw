@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public abstract class ProbabilityProperty extends EObjectImpl implements IProperty {
 	/**
-	 * The cached value of the '{@link #getTimeConstraint() <em>Time Constraint</em>}' reference.
+	 * The cached value of the '{@link #getTimeConstraint() <em>Time Constraint</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTimeConstraint()
@@ -50,7 +50,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	protected ITimeConstraint timeConstraint;
 
 	/**
-	 * The cached value of the '{@link #getProbabilityConstraint() <em>Probability Constraint</em>}' reference.
+	 * The cached value of the '{@link #getProbabilityConstraint() <em>Probability Constraint</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProbabilityConstraint()
@@ -89,28 +89,20 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Time Constraint</b></em>' reference.
+	 * Returns the value of the '<em><b>Time Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Time Constraint</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Time Constraint</em>' reference.
+	 * @return the value of the '<em>Time Constraint</em>' containment reference.
 	 * @see #setTimeConstraint(ITimeConstraint)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getProbabilityProperty_TimeConstraint()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public ITimeConstraint getTimeConstraint() {
-		if (timeConstraint != null && ((EObject)timeConstraint).eIsProxy()) {
-			InternalEObject oldTimeConstraint = (InternalEObject)timeConstraint;
-			timeConstraint = (ITimeConstraint)eResolveProxy(oldTimeConstraint);
-			if (timeConstraint != oldTimeConstraint) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT, oldTimeConstraint, timeConstraint));
-			}
-		}
 		return timeConstraint;
 	}
 
@@ -119,48 +111,53 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ITimeConstraint basicGetTimeConstraint() {
-		return timeConstraint;
+	public NotificationChain basicSetTimeConstraint(ITimeConstraint newTimeConstraint, NotificationChain msgs) {
+		ITimeConstraint oldTimeConstraint = timeConstraint;
+		timeConstraint = newTimeConstraint;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT, oldTimeConstraint, newTimeConstraint);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getTimeConstraint <em>Time Constraint</em>}' reference.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getTimeConstraint <em>Time Constraint</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Time Constraint</em>' reference.
+	 * @param value the new value of the '<em>Time Constraint</em>' containment reference.
 	 * @see #getTimeConstraint()
 	 * @generated
 	 */
 	public void setTimeConstraint(ITimeConstraint newTimeConstraint) {
-		ITimeConstraint oldTimeConstraint = timeConstraint;
-		timeConstraint = newTimeConstraint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT, oldTimeConstraint, timeConstraint));
+		if (newTimeConstraint != timeConstraint) {
+			NotificationChain msgs = null;
+			if (timeConstraint != null)
+				msgs = ((InternalEObject)timeConstraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT, null, msgs);
+			if (newTimeConstraint != null)
+				msgs = ((InternalEObject)newTimeConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT, null, msgs);
+			msgs = basicSetTimeConstraint(newTimeConstraint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT, newTimeConstraint, newTimeConstraint));
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Probability Constraint</b></em>' reference.
+	 * Returns the value of the '<em><b>Probability Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Probability Constraint</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Probability Constraint</em>' reference.
+	 * @return the value of the '<em>Probability Constraint</em>' containment reference.
 	 * @see #setProbabilityConstraint(IProbabilityConstraint)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getProbabilityProperty_ProbabilityConstraint()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	public IProbabilityConstraint getProbabilityConstraint() {
-		if (probabilityConstraint != null && ((EObject)probabilityConstraint).eIsProxy()) {
-			InternalEObject oldProbabilityConstraint = (InternalEObject)probabilityConstraint;
-			probabilityConstraint = (IProbabilityConstraint)eResolveProxy(oldProbabilityConstraint);
-			if (probabilityConstraint != oldProbabilityConstraint) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT, oldProbabilityConstraint, probabilityConstraint));
-			}
-		}
 		return probabilityConstraint;
 	}
 
@@ -169,23 +166,36 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IProbabilityConstraint basicGetProbabilityConstraint() {
-		return probabilityConstraint;
+	public NotificationChain basicSetProbabilityConstraint(IProbabilityConstraint newProbabilityConstraint, NotificationChain msgs) {
+		IProbabilityConstraint oldProbabilityConstraint = probabilityConstraint;
+		probabilityConstraint = newProbabilityConstraint;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT, oldProbabilityConstraint, newProbabilityConstraint);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint <em>Probability Constraint</em>}' reference.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint <em>Probability Constraint</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Probability Constraint</em>' reference.
+	 * @param value the new value of the '<em>Probability Constraint</em>' containment reference.
 	 * @see #getProbabilityConstraint()
 	 * @generated
 	 */
 	public void setProbabilityConstraint(IProbabilityConstraint newProbabilityConstraint) {
-		IProbabilityConstraint oldProbabilityConstraint = probabilityConstraint;
-		probabilityConstraint = newProbabilityConstraint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT, oldProbabilityConstraint, probabilityConstraint));
+		if (newProbabilityConstraint != probabilityConstraint) {
+			NotificationChain msgs = null;
+			if (probabilityConstraint != null)
+				msgs = ((InternalEObject)probabilityConstraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT, null, msgs);
+			if (newProbabilityConstraint != null)
+				msgs = ((InternalEObject)newProbabilityConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT, null, msgs);
+			msgs = basicSetProbabilityConstraint(newProbabilityConstraint, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT, newProbabilityConstraint, newProbabilityConstraint));
 	}
 
 	/**
@@ -229,6 +239,10 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT:
+				return basicSetTimeConstraint(null, msgs);
+			case IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT:
+				return basicSetProbabilityConstraint(null, msgs);
 			case IblPackage.PROBABILITY_PROPERTY__INITIAL_CONDITIONS:
 				return ((InternalEList<?>)getInitialConditions()).basicRemove(otherEnd, msgs);
 		}
@@ -244,11 +258,9 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case IblPackage.PROBABILITY_PROPERTY__TIME_CONSTRAINT:
-				if (resolve) return getTimeConstraint();
-				return basicGetTimeConstraint();
+				return getTimeConstraint();
 			case IblPackage.PROBABILITY_PROPERTY__PROBABILITY_CONSTRAINT:
-				if (resolve) return getProbabilityConstraint();
-				return basicGetProbabilityConstraint();
+				return getProbabilityConstraint();
 			case IblPackage.PROBABILITY_PROPERTY__INITIAL_CONDITIONS:
 				return getInitialConditions();
 		}

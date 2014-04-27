@@ -40,12 +40,10 @@ public class ATGCDirective extends EObjectImpl implements IVisitable {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
-	 * @generated
+	 * @generated NOT
 	 */
 	public <TResult> TResult accept(IVisitor<TResult> visitor) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return visitor.visit(this);
 	}
 
 } // ATGCDirective
