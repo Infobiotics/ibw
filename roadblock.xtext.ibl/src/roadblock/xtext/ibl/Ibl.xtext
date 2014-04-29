@@ -280,6 +280,22 @@ VariableQualifier:
 	'observable'
 ;
 
+/*
+VariableDefinitionUserDefined:
+	{VariableDefinitionUserDefined}
+	type=VariableName 
+	name=VariableName
+	(
+	'=' 'new' constructor=VariableKind2'(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+VariableDefinitionBuiltIn:
+	{VariableDefinitionBuiltIn}
+	name = VariableName '=' type = VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'	
+;
+*/
+
 VariableDefinitionBuiltIn:
 	{VariableDefinitionBuiltIn}
 	type=VariableType name=VariableName
