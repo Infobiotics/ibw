@@ -668,7 +668,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int DEVICE__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 10;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' reference list.
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -758,7 +758,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' reference list.
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -841,7 +841,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int PROBABILITY_PROPERTY = 13;
 
 	/**
-	 * The feature id for the '<em><b>Time Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Time Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -850,7 +850,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int PROBABILITY_PROPERTY__TIME_CONSTRAINT = IPROPERTY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Probability Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Probability Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1073,7 +1073,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int UNARY_PROBABILITY_PROPERTY = 20;
 
 	/**
-	 * The feature id for the '<em><b>Time Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Time Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1082,7 +1082,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int UNARY_PROBABILITY_PROPERTY__TIME_CONSTRAINT = PROBABILITY_PROPERTY__TIME_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Probability Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Probability Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1100,7 +1100,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int UNARY_PROBABILITY_PROPERTY__INITIAL_CONDITIONS = PROBABILITY_PROPERTY__INITIAL_CONDITIONS;
 
 	/**
-	 * The feature id for the '<em><b>State Formula</b></em>' reference.
+	 * The feature id for the '<em><b>State Formula</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1137,7 +1137,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int BINARY_PROBABILITY_PROPERTY = 21;
 
 	/**
-	 * The feature id for the '<em><b>Time Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Time Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1146,7 +1146,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int BINARY_PROBABILITY_PROPERTY__TIME_CONSTRAINT = PROBABILITY_PROPERTY__TIME_CONSTRAINT;
 
 	/**
-	 * The feature id for the '<em><b>Probability Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Probability Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1164,7 +1164,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int BINARY_PROBABILITY_PROPERTY__INITIAL_CONDITIONS = PROBABILITY_PROPERTY__INITIAL_CONDITIONS;
 
 	/**
-	 * The feature id for the '<em><b>Left Operand</b></em>' reference.
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1173,7 +1173,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int BINARY_PROBABILITY_PROPERTY__LEFT_OPERAND = PROBABILITY_PROPERTY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Right Operand</b></em>' reference.
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1219,7 +1219,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int REWARD_PROPERTY__VARIABLE_NAME = IPROPERTY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Time Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Time Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1228,7 +1228,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int REWARD_PROPERTY__TIME_CONSTRAINT = IPROPERTY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Concentration Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Concentration Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1237,7 +1237,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int REWARD_PROPERTY__CONCENTRATION_CONSTRAINT = IPROPERTY_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Initial Conditions</b></em>' reference list.
+	 * The feature id for the '<em><b>Initial Conditions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1265,7 +1265,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int STEADY_STATE_PROPERTY = 23;
 
 	/**
-	 * The feature id for the '<em><b>State Formula</b></em>' reference.
+	 * The feature id for the '<em><b>State Formula</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1274,7 +1274,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int STEADY_STATE_PROPERTY__STATE_FORMULA = IPROPERTY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Probability Constraint</b></em>' reference.
+	 * The feature id for the '<em><b>Probability Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1283,7 +1283,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int STEADY_STATE_PROPERTY__PROBABILITY_CONSTRAINT = IPROPERTY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Initial Conditions</b></em>' reference list.
+	 * The feature id for the '<em><b>Initial Conditions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1376,7 +1376,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int BINARY_STATE_FORMULA = 26;
 
 	/**
-	 * The feature id for the '<em><b>Left Operand</b></em>' reference.
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1385,7 +1385,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int BINARY_STATE_FORMULA__LEFT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Right Operand</b></em>' reference.
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1422,7 +1422,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int NOT_STATE_FORMULA = 27;
 
 	/**
-	 * The feature id for the '<em><b>Negated Operand</b></em>' reference.
+	 * The feature id for the '<em><b>Negated Operand</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1642,7 +1642,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int FLAT_MODEL = 31;
 
 	/**
-	 * The feature id for the '<em><b>Molecule List</b></em>' reference list.
+	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1651,7 +1651,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int FLAT_MODEL__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Rule List</b></em>' reference list.
+	 * The feature id for the '<em><b>Rule List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1808,6 +1808,43 @@ public class IblPackage extends EPackageImpl {
 	public static final int ATGC_CLONING_SITES_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModelPropertyPair()
+	 * @generated
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR = 36;
+
+	/**
+	 * The feature id for the '<em><b>Flat Model</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR__PROPERTY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Flat Model Property Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1815,7 +1852,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 36;
+	public static final int TIME_UNIT = 37;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1825,7 +1862,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 37;
+	public static final int TEMPORAL_OPERATOR = 38;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1835,7 +1872,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 38;
+	public static final int RELATIONAL_OPERATOR = 39;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1845,7 +1882,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 39;
+	public static final int BOOLEAN_OPERATOR = 40;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1855,7 +1892,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 40;
+	public static final int CONCENTRATION_UNIT = 41;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -1865,7 +1902,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 41;
+	public static final int RATE_UNIT = 42;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2118,6 +2155,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass atgcCloningSitesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass flatModelPropertyPairEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2924,10 +2968,10 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.Device#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Properties</em>'.
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
 	 * @see roadblock.emf.ibl.Ibl.Device#getProperties()
 	 * @see #getDevice()
 	 * @generated
@@ -3055,10 +3099,10 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Properties</em>'.
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
 	 * @see roadblock.emf.ibl.Ibl.Cell#getProperties()
 	 * @see #getCell()
 	 * @generated
@@ -3168,10 +3212,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getTimeConstraint <em>Time Constraint</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getTimeConstraint <em>Time Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Time Constraint</em>'.
+	 * @return the meta object for the containment reference '<em>Time Constraint</em>'.
 	 * @see roadblock.emf.ibl.Ibl.ProbabilityProperty#getTimeConstraint()
 	 * @see #getProbabilityProperty()
 	 * @generated
@@ -3181,10 +3225,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint <em>Probability Constraint</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint <em>Probability Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Probability Constraint</em>'.
+	 * @return the meta object for the containment reference '<em>Probability Constraint</em>'.
 	 * @see roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint()
 	 * @see #getProbabilityProperty()
 	 * @generated
@@ -3395,10 +3439,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getStateFormula <em>State Formula</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getStateFormula <em>State Formula</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>State Formula</em>'.
+	 * @return the meta object for the containment reference '<em>State Formula</em>'.
 	 * @see roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getStateFormula()
 	 * @see #getUnaryProbabilityProperty()
 	 * @generated
@@ -3433,10 +3477,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getLeftOperand <em>Left Operand</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getLeftOperand <em>Left Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Left Operand</em>'.
+	 * @return the meta object for the containment reference '<em>Left Operand</em>'.
 	 * @see roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getLeftOperand()
 	 * @see #getBinaryProbabilityProperty()
 	 * @generated
@@ -3446,10 +3490,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getRightOperand <em>Right Operand</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getRightOperand <em>Right Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Right Operand</em>'.
+	 * @return the meta object for the containment reference '<em>Right Operand</em>'.
 	 * @see roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getRightOperand()
 	 * @see #getBinaryProbabilityProperty()
 	 * @generated
@@ -3497,10 +3541,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getTimeConstraint <em>Time Constraint</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getTimeConstraint <em>Time Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Time Constraint</em>'.
+	 * @return the meta object for the containment reference '<em>Time Constraint</em>'.
 	 * @see roadblock.emf.ibl.Ibl.RewardProperty#getTimeConstraint()
 	 * @see #getRewardProperty()
 	 * @generated
@@ -3510,10 +3554,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getConcentrationConstraint <em>Concentration Constraint</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getConcentrationConstraint <em>Concentration Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Concentration Constraint</em>'.
+	 * @return the meta object for the containment reference '<em>Concentration Constraint</em>'.
 	 * @see roadblock.emf.ibl.Ibl.RewardProperty#getConcentrationConstraint()
 	 * @see #getRewardProperty()
 	 * @generated
@@ -3523,10 +3567,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.RewardProperty#getInitialConditions <em>Initial Conditions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.RewardProperty#getInitialConditions <em>Initial Conditions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Initial Conditions</em>'.
+	 * @return the meta object for the containment reference list '<em>Initial Conditions</em>'.
 	 * @see roadblock.emf.ibl.Ibl.RewardProperty#getInitialConditions()
 	 * @see #getRewardProperty()
 	 * @generated
@@ -3549,10 +3593,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getStateFormula <em>State Formula</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getStateFormula <em>State Formula</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>State Formula</em>'.
+	 * @return the meta object for the containment reference '<em>State Formula</em>'.
 	 * @see roadblock.emf.ibl.Ibl.SteadyStateProperty#getStateFormula()
 	 * @see #getSteadyStateProperty()
 	 * @generated
@@ -3562,10 +3606,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getProbabilityConstraint <em>Probability Constraint</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getProbabilityConstraint <em>Probability Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Probability Constraint</em>'.
+	 * @return the meta object for the containment reference '<em>Probability Constraint</em>'.
 	 * @see roadblock.emf.ibl.Ibl.SteadyStateProperty#getProbabilityConstraint()
 	 * @see #getSteadyStateProperty()
 	 * @generated
@@ -3575,10 +3619,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getInitialConditions <em>Initial Conditions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getInitialConditions <em>Initial Conditions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Initial Conditions</em>'.
+	 * @return the meta object for the containment reference list '<em>Initial Conditions</em>'.
 	 * @see roadblock.emf.ibl.Ibl.SteadyStateProperty#getInitialConditions()
 	 * @see #getSteadyStateProperty()
 	 * @generated
@@ -3663,10 +3707,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getLeftOperand <em>Left Operand</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getLeftOperand <em>Left Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Left Operand</em>'.
+	 * @return the meta object for the containment reference '<em>Left Operand</em>'.
 	 * @see roadblock.emf.ibl.Ibl.BinaryStateFormula#getLeftOperand()
 	 * @see #getBinaryStateFormula()
 	 * @generated
@@ -3676,10 +3720,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getRightOperand <em>Right Operand</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getRightOperand <em>Right Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Right Operand</em>'.
+	 * @return the meta object for the containment reference '<em>Right Operand</em>'.
 	 * @see roadblock.emf.ibl.Ibl.BinaryStateFormula#getRightOperand()
 	 * @see #getBinaryStateFormula()
 	 * @generated
@@ -3714,10 +3758,10 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.NotStateFormula#getNegatedOperand <em>Negated Operand</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.NotStateFormula#getNegatedOperand <em>Negated Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Negated Operand</em>'.
+	 * @return the meta object for the containment reference '<em>Negated Operand</em>'.
 	 * @see roadblock.emf.ibl.Ibl.NotStateFormula#getNegatedOperand()
 	 * @see #getNotStateFormula()
 	 * @generated
@@ -3984,10 +4028,10 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList <em>Molecule List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList <em>Molecule List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Molecule List</em>'.
+	 * @return the meta object for the containment reference list '<em>Molecule List</em>'.
 	 * @see roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList()
 	 * @see #getFlatModel()
 	 * @generated
@@ -3998,10 +4042,10 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getRuleList <em>Rule List</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getRuleList <em>Rule List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Rule List</em>'.
+	 * @return the meta object for the containment reference list '<em>Rule List</em>'.
 	 * @see roadblock.emf.ibl.Ibl.FlatModel#getRuleList()
 	 * @see #getFlatModel()
 	 * @generated
@@ -4158,6 +4202,47 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EAttribute getATGCCloningSites_CloningSites() {
 		return (EAttribute)atgcCloningSitesEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Flat Model Property Pair</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+	 * @generated
+	 */
+	public EClass getFlatModelPropertyPair() {
+		return flatModelPropertyPairEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getFlatModel <em>Flat Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Flat Model</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getFlatModel()
+	 * @see #getFlatModelPropertyPair()
+	 * @generated
+	 */
+	public EReference getFlatModelPropertyPair_FlatModel() {
+		return (EReference)flatModelPropertyPairEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Property</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getProperty()
+	 * @see #getFlatModelPropertyPair()
+	 * @generated
+	 */
+	public EReference getFlatModelPropertyPair_Property() {
+		return (EReference)flatModelPropertyPairEClass.getEStructuralFeatures().get(1);
 	}
 
 
@@ -4448,6 +4533,10 @@ public class IblPackage extends EPackageImpl {
 		atgcCloningSitesEClass = createEClass(ATGC_CLONING_SITES);
 		createEAttribute(atgcCloningSitesEClass, ATGC_CLONING_SITES__CLONING_SITES);
 
+		flatModelPropertyPairEClass = createEClass(FLAT_MODEL_PROPERTY_PAIR);
+		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL);
+		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__PROPERTY);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalOperatorEEnum = createEEnum(TEMPORAL_OPERATOR);
@@ -4722,7 +4811,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getDevice_OutputList(), this.getMolecularSpecies(), null, "outputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_InputList(), this.getMolecularSpecies(), null, "inputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDevice_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4733,7 +4822,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getCell_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCell_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCell_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCell_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atgcDirectiveEClass, ATGCDirective.class, "ATGCDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4746,8 +4835,8 @@ public class IblPackage extends EPackageImpl {
 		initEClass(iPropertyEClass, IProperty.class, "IProperty", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(probabilityPropertyEClass, ProbabilityProperty.class, "ProbabilityProperty", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProbabilityProperty_TimeConstraint(), this.getITimeConstraint(), null, "timeConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getProbabilityProperty_ProbabilityConstraint(), this.getIProbabilityConstraint(), null, "probabilityConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProbabilityProperty_TimeConstraint(), this.getITimeConstraint(), null, "timeConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProbabilityProperty_ProbabilityConstraint(), this.getIProbabilityConstraint(), null, "probabilityConstraint", null, 0, 1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProbabilityProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, ProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(probabilityPropertyEClass, null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -4780,24 +4869,24 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getTimeInstant_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, TimeInstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unaryProbabilityPropertyEClass, UnaryProbabilityProperty.class, "UnaryProbabilityProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUnaryProbabilityProperty_StateFormula(), this.getIStateFormula(), null, "stateFormula", null, 0, 1, UnaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnaryProbabilityProperty_StateFormula(), this.getIStateFormula(), null, "stateFormula", null, 0, 1, UnaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUnaryProbabilityProperty_Operator(), this.getTemporalOperator(), "operator", null, 0, 1, UnaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(binaryProbabilityPropertyEClass, BinaryProbabilityProperty.class, "BinaryProbabilityProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBinaryProbabilityProperty_LeftOperand(), this.getIStateFormula(), null, "leftOperand", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBinaryProbabilityProperty_RightOperand(), this.getIStateFormula(), null, "rightOperand", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryProbabilityProperty_LeftOperand(), this.getIStateFormula(), null, "leftOperand", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryProbabilityProperty_RightOperand(), this.getIStateFormula(), null, "rightOperand", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBinaryProbabilityProperty_Operator(), this.getTemporalOperator(), "operator", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rewardPropertyEClass, RewardProperty.class, "RewardProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRewardProperty_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRewardProperty_TimeConstraint(), this.getTimeInstant(), null, "timeConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRewardProperty_ConcentrationConstraint(), this.getConcentrationConstraint(), null, "concentrationConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRewardProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRewardProperty_TimeConstraint(), this.getTimeInstant(), null, "timeConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRewardProperty_ConcentrationConstraint(), this.getConcentrationConstraint(), null, "concentrationConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRewardProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(steadyStatePropertyEClass, SteadyStateProperty.class, "SteadyStateProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSteadyStateProperty_StateFormula(), this.getIStateFormula(), null, "StateFormula", null, 0, 1, SteadyStateProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSteadyStateProperty_ProbabilityConstraint(), this.getIProbabilityConstraint(), null, "probabilityConstraint", null, 0, 1, SteadyStateProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSteadyStateProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, SteadyStateProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSteadyStateProperty_StateFormula(), this.getIStateFormula(), null, "StateFormula", null, 0, 1, SteadyStateProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSteadyStateProperty_ProbabilityConstraint(), this.getIProbabilityConstraint(), null, "probabilityConstraint", null, 0, 1, SteadyStateProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSteadyStateProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, SteadyStateProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(concentrationConstraintEClass, ConcentrationConstraint.class, "ConcentrationConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConcentrationConstraint_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, ConcentrationConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4807,12 +4896,12 @@ public class IblPackage extends EPackageImpl {
 		initEClass(iStateFormulaEClass, IStateFormula.class, "IStateFormula", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(binaryStateFormulaEClass, BinaryStateFormula.class, "BinaryStateFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBinaryStateFormula_LeftOperand(), this.getIStateFormula(), null, "leftOperand", null, 0, 1, BinaryStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBinaryStateFormula_RightOperand(), this.getIStateFormula(), null, "rightOperand", null, 0, 1, BinaryStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryStateFormula_LeftOperand(), this.getIStateFormula(), null, "leftOperand", null, 0, 1, BinaryStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryStateFormula_RightOperand(), this.getIStateFormula(), null, "rightOperand", null, 0, 1, BinaryStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBinaryStateFormula_Operator(), this.getBooleanOperator(), "operator", null, 0, 1, BinaryStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(notStateFormulaEClass, NotStateFormula.class, "NotStateFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNotStateFormula_NegatedOperand(), this.getIStateFormula(), null, "negatedOperand", null, 0, 1, NotStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNotStateFormula_NegatedOperand(), this.getIStateFormula(), null, "negatedOperand", null, 0, 1, NotStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateExpressionEClass, StateExpression.class, "StateExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStateExpression_VariableName(), ecorePackage.getEString(), "variableName", "", 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4836,8 +4925,8 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getEMFVariableAssignment_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(flatModelEClass, FlatModel.class, "FlatModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFlatModel_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFlatModel_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatModel_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatModel_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyInitialCondition_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4853,6 +4942,10 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(atgcCloningSitesEClass, ATGCCloningSites.class, "ATGCCloningSites", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getATGCCloningSites_CloningSites(), ecorePackage.getEInt(), "cloningSites", null, 0, 1, ATGCCloningSites.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(flatModelPropertyPairEClass, FlatModelPropertyPair.class, "FlatModelPropertyPair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFlatModelPropertyPair_FlatModel(), this.getFlatModel(), null, "flatModel", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatModelPropertyPair_Property(), this.getIProperty(), null, "property", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -5347,7 +5440,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference DEVICE__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getDevice_VariableAssignmentList();
 
 		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5429,7 +5522,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference CELL__VARIABLE_ASSIGNMENT_LIST = eINSTANCE.getCell_VariableAssignmentList();
 
 		/**
-		 * The meta object literal for the '<em><b>Properties</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5517,7 +5610,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass PROBABILITY_PROPERTY = eINSTANCE.getProbabilityProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Time Constraint</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Time Constraint</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5525,7 +5618,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference PROBABILITY_PROPERTY__TIME_CONSTRAINT = eINSTANCE.getProbabilityProperty_TimeConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Probability Constraint</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Probability Constraint</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5675,7 +5768,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass UNARY_PROBABILITY_PROPERTY = eINSTANCE.getUnaryProbabilityProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>State Formula</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>State Formula</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5701,7 +5794,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass BINARY_PROBABILITY_PROPERTY = eINSTANCE.getBinaryProbabilityProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Left Operand</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Left Operand</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5709,7 +5802,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference BINARY_PROBABILITY_PROPERTY__LEFT_OPERAND = eINSTANCE.getBinaryProbabilityProperty_LeftOperand();
 
 		/**
-		 * The meta object literal for the '<em><b>Right Operand</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Right Operand</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5743,7 +5836,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute REWARD_PROPERTY__VARIABLE_NAME = eINSTANCE.getRewardProperty_VariableName();
 
 		/**
-		 * The meta object literal for the '<em><b>Time Constraint</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Time Constraint</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5751,7 +5844,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference REWARD_PROPERTY__TIME_CONSTRAINT = eINSTANCE.getRewardProperty_TimeConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Concentration Constraint</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Concentration Constraint</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5759,7 +5852,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference REWARD_PROPERTY__CONCENTRATION_CONSTRAINT = eINSTANCE.getRewardProperty_ConcentrationConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Initial Conditions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Initial Conditions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5777,7 +5870,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass STEADY_STATE_PROPERTY = eINSTANCE.getSteadyStateProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>State Formula</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>State Formula</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5785,7 +5878,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference STEADY_STATE_PROPERTY__STATE_FORMULA = eINSTANCE.getSteadyStateProperty_StateFormula();
 
 		/**
-		 * The meta object literal for the '<em><b>Probability Constraint</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Probability Constraint</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5793,7 +5886,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference STEADY_STATE_PROPERTY__PROBABILITY_CONSTRAINT = eINSTANCE.getSteadyStateProperty_ProbabilityConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>Initial Conditions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Initial Conditions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5855,7 +5948,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass BINARY_STATE_FORMULA = eINSTANCE.getBinaryStateFormula();
 
 		/**
-		 * The meta object literal for the '<em><b>Left Operand</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Left Operand</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5863,7 +5956,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference BINARY_STATE_FORMULA__LEFT_OPERAND = eINSTANCE.getBinaryStateFormula_LeftOperand();
 
 		/**
-		 * The meta object literal for the '<em><b>Right Operand</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Right Operand</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5889,7 +5982,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass NOT_STATE_FORMULA = eINSTANCE.getNotStateFormula();
 
 		/**
-		 * The meta object literal for the '<em><b>Negated Operand</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Negated Operand</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6057,7 +6150,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass FLAT_MODEL = eINSTANCE.getFlatModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Molecule List</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Molecule List</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6065,7 +6158,7 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference FLAT_MODEL__MOLECULE_LIST = eINSTANCE.getFlatModel_MoleculeList();
 
 		/**
-		 * The meta object literal for the '<em><b>Rule List</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Rule List</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6167,6 +6260,32 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute ATGC_CLONING_SITES__CLONING_SITES = eINSTANCE.getATGCCloningSites_CloningSites();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModelPropertyPair()
+		 * @generated
+		 */
+		public static final EClass FLAT_MODEL_PROPERTY_PAIR = eINSTANCE.getFlatModelPropertyPair();
+
+		/**
+		 * The meta object literal for the '<em><b>Flat Model</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL = eINSTANCE.getFlatModelPropertyPair_FlatModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL_PROPERTY_PAIR__PROPERTY = eINSTANCE.getFlatModelPropertyPair_Property();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

@@ -3,7 +3,6 @@
  */
 package roadblock.xtext.ibl.generator
 
-import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -14,8 +13,9 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import roadblock.dataprocessing.flatModel.FlatModelManager
+import roadblock.dataprocessing.flatModel.PropertyCollector
 import roadblock.dataprocessing.model.ModelBuilder
-import roadblock.emf.ibl.Ibl.FlatModel
+import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.modelchecking.translation.TranslationManager
@@ -54,13 +54,14 @@ class IblGenerator implements IGenerator {
 		//println(xml)
 		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
+		
 		//generateTranslations(emfModel);
 	}
 
 	def generateTranslations(Model emfModel) {
 
 		var flatModelManager = new FlatModelManager(emfModel);
-		var properties = flatModelManager.properties;
+		var properties = PropertyCollector::instance.getAll(emfModel);
 		var index = 0;
 		
 		var directoryName = System.getProperty("user.dir") + "/ibw/translations/"
@@ -77,9 +78,9 @@ class IblGenerator implements IGenerator {
 
 		for (IProperty property : properties) {
 
-			var FlatModel flatModel = flatModelManager.getFlatModel(property);
-			var propetyTranslation = translationManager.translate(property, TranslationTarget.PRISM);
-			var modelTranslation = translationManager.translate(flatModel, property, TranslationTarget.PRISM);
+			var FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
+			var propetyTranslation = translationManager.translate(flatData.property, TranslationTarget.PRISM);
+			var modelTranslation = translationManager.translate(flatData.flatModel, flatData.property, TranslationTarget.PRISM);
 
 			index = index + 1;
 			var fileName = directoryName + "model#" + index + ".pm";

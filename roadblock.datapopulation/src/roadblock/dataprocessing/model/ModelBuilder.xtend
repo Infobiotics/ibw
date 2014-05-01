@@ -38,6 +38,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinition
 import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
 import roadblock.xtext.ibl.ibl.VariableExpressionObject
 import roadblock.xtext.ibl.ibl.VariableKind
+import roadblock.xtext.ibl.ibl.VariableKind2
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 
@@ -86,6 +87,13 @@ class ModelBuilder extends IblSwitch<Object> {
 		switch variableKind {
 			VariableName: buildVariableName(variableKind)
 			VariableComplex: buildVariableName(variableKind)
+		}
+	}
+	
+	def buildVariableName(VariableKind2 variableKind) {
+		switch variableKind {
+			VariableName: buildVariableName(variableKind)
+			default: variableKind.toString
 		}
 	}
 
@@ -354,9 +362,10 @@ class ModelBuilder extends IblSwitch<Object> {
 
 	override caseVariableDefinitionBuiltIn(VariableDefinitionBuiltIn variableDefinition) {
 		val molecule = modelFactory.createMolecularSpecies
+		val type = buildVariableName(variableDefinition.type)
 
 		molecule => [
-			biologicalType = variableDefinition.type.toUpperCase
+			biologicalType = type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
 			degradationRateUnit = getRateUnit("s^-1")
 			bindingRateUnit = getRateUnit("s^-1") 
@@ -367,7 +376,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		]
 
 		// Defaults for parts and molecules
-		if (isPart(variableDefinition.type))
+		if (isPart(type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');

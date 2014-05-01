@@ -2,34 +2,34 @@
 
 define SensorCell typeof CELL(){
         // define molecular elements
-        RIBOSOME ribosome: observable
-        RNA rnaP = new RNA(displayName = "XYZ") : observable
-        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+        ribosome = RIBOSOME() : observable
+        rnaP = RNA(displayName = "XYZ") : observable
+        SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
 //        CHASSIS chassis = new CHASSIS(organism = "ecoli") // NOT YET IMPLEMENTED
 //        INTEGER plasmidNumber = 500 // NOT YET IMPLEMENTED
 
-        PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
-        GENE nahR = new GENE(URI = "biofab://")
-        PROTEIN NahR = new PROTEIN(URI = "db://...")
+        PnahR = PROMOTER(URI = "biobricks://...")
+        nahR = GENE(URI = "biofab://")
+        NahR = PROTEIN(URI = "db://...")
 
-        PROMOTER Psal = new PROMOTER(URI = "biofab://")
-        GENE xylS2 = new GENE(sequence = "ATTGTGT")
-        PROTEIN XylS2 = new PROTEIN()
+        Psal = PROMOTER(URI = "biofab://")
+        xylS2 = GENE(sequence = "ATTGTGT")
+        XylS2 = PROTEIN()
 
-        PROMOTER Pm = new PROMOTER(sequence = "ATTGTGT")
-        GENE rFP = new GENE(sequence = "TTGTGTG")
-        PROTEIN RFP = new PROTEIN()
+        Pm = PROMOTER(sequence = "ATTGTGT")
+        rFP = GENE(sequence = "TTGTGTG")
+        RFP = PROTEIN()
    
-   		PROMOTER PlasR = new PROMOTER()
-		GENE lasR = new GENE()
-		GENE gFP = new GENE()
-		MOLECULE LasR = new MOLECULE()
-		MOLECULE GFP = new MOLECULE()
-		MOLECULE AHL = new MOLECULE()
+   		PlasR = PROMOTER()
+		lasR = GENE()
+		gFP = GENE()
+		LasR = MOLECULE()
+		GFP = MOLECULE()
+		AHL = MOLECULE()
 		
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
-			RNA mrna1
+			mrna1 = RNA()
 		
 			RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
 			promoterBinding.forwardRate = 1 s^-1 
@@ -56,7 +56,8 @@ define SensorCell typeof CELL(){
         // produces XylS2, upregulated by SA~NahR
 			ATGC ARRANGE Psal, xylS2
 
-			RNA mrna1	
+			mrna1 = RNA()
+			
 		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
 			RULE promoterBinding : SA~NahR~Psal + rnaP <-> SA~NahR~Psal~rnaP	
 			RULE transcription : SA~NahR~Psal~rnaP -> SA~NahR~Psal~rnaP + mrna1
@@ -70,7 +71,8 @@ define SensorCell typeof CELL(){
         DEVICE GFPProduction = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
         // produces GFP, upregulated by SA~XylS2 OR AHL~LasR (dual promoter)
 
-			RNA mrna1	
+			mrna1 = RNA() 	
+			
 			// binds with SA~Xyls2 and Pm
 		    RULE regulation1 : SA~XylS2 + Pm <-> SA~XylS2~Pm
 			RULE promoterBinding1 : SA~XylS2~Pm + rnaP <-> SA~XylS2~Pm~rnaP	
@@ -123,6 +125,6 @@ define SensorCell typeof CELL(){
 }
 
 define site1 typeof REGION () {
-        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+        SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new SensorCell()
 }

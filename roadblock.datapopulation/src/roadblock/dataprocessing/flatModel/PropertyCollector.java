@@ -3,17 +3,12 @@ package roadblock.dataprocessing.flatModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import roadblock.dataprocessing.util.UnitConverter;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationUnit;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -34,7 +29,6 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
-import roadblock.emf.ibl.Ibl.TimeUnit;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 
@@ -98,9 +92,7 @@ public class PropertyCollector implements IVisitor<Void> {
 	public Void visit(Cell cell) {
 
 		for (IProperty property : cell.getProperties()) {
-
-			IProperty clonnedProperty = (IProperty) EcoreUtil.copy((EObject) property);
-			clonnedProperty.accept(this);
+			properties.add(property);
 		}
 
 		for (Device device : cell.getDeviceList()) {
@@ -114,9 +106,7 @@ public class PropertyCollector implements IVisitor<Void> {
 	public Void visit(Device device) {
 
 		for (IProperty property : device.getProperties()) {
-
-			IProperty clonnedProperty = (IProperty) EcoreUtil.copy((EObject) property);
-			clonnedProperty.accept(this);
+			properties.add(property);
 		}
 
 		for (Kinetics kinetics : device.getProcessList()) {
@@ -132,158 +122,63 @@ public class PropertyCollector implements IVisitor<Void> {
 		return null;
 	}
 
+	/* unimplemented methods */
+
 	@Override
 	public Void visit(UnaryProbabilityProperty expression) {
-
-		properties.add(expression);
-
-		if (expression.getTimeConstraint() != null) {
-			expression.getTimeConstraint().accept(this);
-		}
-
-		if (expression.getStateFormula() != null) {
-			expression.getStateFormula().accept(this);
-		}
-
-		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
-			initialCondition.accept(this);
-		}
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(BinaryProbabilityProperty expression) {
-
-		properties.add(expression);
-
-		if (expression.getTimeConstraint() != null) {
-			expression.getTimeConstraint().accept(this);
-		}
-
-		if (expression.getLeftOperand() != null) {
-			expression.getLeftOperand().accept(this);
-		}
-
-		if (expression.getRightOperand() != null) {
-			expression.getRightOperand().accept(this);
-		}
-
-		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
-			initialCondition.accept(this);
-		}
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(RewardProperty expression) {
-
-		properties.add(expression);
-
-		if (expression.getConcentrationConstraint() != null) {
-			expression.getConcentrationConstraint().accept(this);
-		}
-
-		if (expression.getTimeConstraint() != null) {
-			expression.getTimeConstraint().accept(this);
-		}
-
-		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
-			initialCondition.accept(this);
-		}
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(SteadyStateProperty expression) {
-
-		properties.add(expression);
-
-		if (expression.getStateFormula() != null) {
-			expression.getStateFormula().accept(this);
-		}
-
-		for (PropertyInitialCondition initialCondition : expression.getInitialConditions()) {
-			initialCondition.accept(this);
-		}
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(NotStateFormula expression) {
-
-		if (expression.getNegatedOperand() != null) {
-			expression.getNegatedOperand().accept(this);
-		}
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(BinaryStateFormula expression) {
-
-		if (expression.getLeftOperand() != null) {
-			expression.getLeftOperand().accept(this);
-		}
-
-		if (expression.getRightOperand() != null) {
-			expression.getRightOperand().accept(this);
-		}
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(StateExpression expression) {
-
-		expression.setQuantity(UnitConverter.getInstance().getBaseConcentration(expression.getQuantity(), expression.getUnit()));
-		expression.setUnit(ConcentrationUnit.MOLECULE);
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(TimeInterval expression) {
-
-		expression.setLowerBound(UnitConverter.getInstance().getBaseTime(expression.getLowerBound(), expression.getUnit()));
-		expression.setUpperBound(UnitConverter.getInstance().getBaseTime(expression.getUpperBound(), expression.getUnit()));
-		expression.setUnit(TimeUnit.SECOND);
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(TimeInstant expression) {
-
-		expression.setValue(UnitConverter.getInstance().getBaseTime(expression.getValue(), expression.getUnit()));
-		expression.setUnit(TimeUnit.SECOND);
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(PropertyInitialCondition expression) {
-
-		expression.setAmount(UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
-		expression.setUnit(ConcentrationUnit.MOLECULE);
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Void visit(ConcentrationConstraint expression) {
-
-		expression.setValue(UnitConverter.getInstance().getBaseConcentration(expression.getValue(), expression.getUnit()));
-		expression.setUnit(ConcentrationUnit.MOLECULE);
-
-		return null;
+		throw new UnsupportedOperationException();
 	}
-
-	/* unimplemented methods */
-
+	
 	@Override
 	public Void visit(ConcreteProbabilityConstraint expression) {
 		throw new UnsupportedOperationException();

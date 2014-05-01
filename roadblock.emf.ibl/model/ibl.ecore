@@ -211,7 +211,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//IProperty"/>
+        eType="#//IProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell" eSuperTypes="#//IVisitable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -232,7 +232,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//IProperty"/>
+        eType="#//IProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//IVisitable"/>
@@ -251,9 +251,10 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="timeConstraint" eType="#//ITimeConstraint"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeConstraint" eType="#//ITimeConstraint"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="probabilityConstraint"
-        eType="#//IProbabilityConstraint"/>
+        eType="#//IProbabilityConstraint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialConditions" upperBound="-1"
         eType="#//PropertyInitialCondition" containment="true"/>
   </eClassifiers>
@@ -291,28 +292,33 @@
     <eLiterals name="EVENTUALLY_ALWAYS" value="8"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryProbabilityProperty" eSuperTypes="#//ProbabilityProperty">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stateFormula" eType="#//IStateFormula"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateFormula" eType="#//IStateFormula"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//TemporalOperator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryProbabilityProperty" eSuperTypes="#//ProbabilityProperty">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IStateFormula"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IStateFormula"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IStateFormula"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IStateFormula"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//TemporalOperator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RewardProperty" eSuperTypes="#//IProperty">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="timeConstraint" eType="#//TimeInstant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeConstraint" eType="#//TimeInstant"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concentrationConstraint"
-        eType="#//ConcentrationConstraint"/>
+        eType="#//ConcentrationConstraint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialConditions" upperBound="-1"
-        eType="#//PropertyInitialCondition"/>
+        eType="#//PropertyInitialCondition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SteadyStateProperty" eSuperTypes="#//IProperty">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="StateFormula" eType="#//IStateFormula"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="StateFormula" eType="#//IStateFormula"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="probabilityConstraint"
-        eType="#//IProbabilityConstraint"/>
+        eType="#//IProbabilityConstraint" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialConditions" upperBound="-1"
-        eType="#//PropertyInitialCondition"/>
+        eType="#//PropertyInitialCondition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConcentrationConstraint" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//RelationalOperator"/>
@@ -322,12 +328,15 @@
   <eClassifiers xsi:type="ecore:EClass" name="IStateFormula" abstract="true" interface="true"
       eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryStateFormula" eSuperTypes="#//IStateFormula">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IStateFormula"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IStateFormula"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IStateFormula"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IStateFormula"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//BooleanOperator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NotStateFormula" eSuperTypes="#//IStateFormula">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="negatedOperand" eType="#//IStateFormula"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="negatedOperand" eType="#//IStateFormula"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StateExpression" eSuperTypes="#//IStateFormula">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -380,9 +389,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FlatModel" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
-        eType="#//MolecularSpecies"/>
+        eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
-        eType="#//Rule"/>
+        eType="#//Rule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyInitialCondition" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -403,5 +412,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATGCCloningSites" eSuperTypes="#//ATGCDirective">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cloningSites" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FlatModelPropertyPair">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flatModel" eType="#//FlatModel"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//IProperty"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
