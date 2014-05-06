@@ -3,10 +3,9 @@
 package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -73,7 +72,7 @@ public class FlatModelPropertyPair extends EObjectImpl {
 	 * Returns the value of the '<em><b>Flat Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Flat Model</em>' reference isn't clear,
+	 * If the meaning of the '<em>Flat Model</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -128,7 +127,7 @@ public class FlatModelPropertyPair extends EObjectImpl {
 	 * Returns the value of the '<em><b>Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Property</em>' reference isn't clear,
+	 * If the meaning of the '<em>Property</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

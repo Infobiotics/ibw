@@ -4,9 +4,9 @@
 // Don't fix the errors! They're here for testing purposes.
 
 define factoryCell typeof CELL(){
-	MOLECULE fa = new MOLECULE()
-	MOLECULE fb = new MOLECULE()
-	MOLECULE fc = new MOLECULE()
+	fa = MOLECULE()
+	fb = MOLECULE()
+	fc = MOLECULE()
 	
 	RULE abComplex: fa + fb -> fa~fb // a~b not declared but fine because complex and created
 	RULE cdComplex: fa + fc~fa <-> fa // c~d  not declared but fine because complex and created
@@ -18,16 +18,16 @@ define factoryCell typeof CELL(){
 	
 	RULE simple: fa1 + fa <-> fb1 + fb // error with a1 and b1: not declared
 		
-	MOLECULE a = new MOLECULE(): observable
-	MOLECULE b = new MOLECULE()
-	MOLECULE c = new MOLECULE()
-	MOLECULE d = new MOLECULE(): observable
+	a = MOLECULE(): observable
+	b = MOLECULE()
+	c = MOLECULE()
+	d = MOLECULE(): observable
 	
-	PROMOTER pa = new PROMOTER()
-	PROMOTER pb = new PROMOTER()
+	pa = PROMOTER()
+	pb = PROMOTER()
 
-	PROTEIN qa = new PROTEIN()
-	PROTEIN qb = new PROTEIN()	
+	qa = PROTEIN()
+	qb = PROTEIN()	
 			
 	qa.rate = 1 s^-1 // fine
 
@@ -39,9 +39,9 @@ define factoryCell typeof CELL(){
 	
 	DEVICE D1 = new DEVICE(parts=[pa, pb])(input=[a], output=[b]){ // error with pc, f, g
 	
-		MOLECULE da = new MOLECULE()
-		MOLECULE db = new MOLECULE()
-		MOLECULE dc = new MOLECULE()
+		da = MOLECULE()
+		db = MOLECULE()
+		dc = MOLECULE()
 	
 		RULE abComplex: da + db -> da~db // a~b not declared but fine because complex and created
 		RULE cdComplex: da + dc~da <-> da // c~d  not declared but fine because complex and created
@@ -61,9 +61,9 @@ define factoryCell typeof CELL(){
 }
 
 define myRegion typeof REGION(){
-	MOLECULE a = new MOLECULE()
-	MOLECULE b = new MOLECULE()
-	MOLECULE c = new MOLECULE()
+	a = MOLECULE()
+	b = MOLECULE()
+	c = MOLECULE()
 			
 	RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
 	RULE cdComplex: a + c~a <-> a // c~d  not declared but fine because complex and created

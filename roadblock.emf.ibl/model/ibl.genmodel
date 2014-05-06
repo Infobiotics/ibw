@@ -309,5 +309,9 @@
     <genClasses ecoreClass="ibl.ecore#//ATGCCloningSites">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCCloningSites/cloningSites"/>
     </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//FlatModelPropertyPair">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/flatModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/property"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

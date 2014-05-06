@@ -5,16 +5,16 @@
 
 define factoryCell typeof CELL(){
 	
-	MOLECULE a = new MOLECULE(): observable
-	MOLECULE b = new MOLECULE()
-	MOLECULE c = new MOLECULE()
-	MOLECULE d = new MOLECULE(): observable
+	a = MOLECULE(): observable
+	b = MOLECULE()
+	c = MOLECULE()
+	d = MOLECULE(): observable
 	
-	PROMOTER pa = new PROMOTER()
-	PROMOTER pb = new PROMOTER()
+	pa = PROMOTER()
+	pb = PROMOTER()
 
-	PROTEIN qa = new PROTEIN()
-	PROTEIN qb = new PROTEIN()	
+	qa = PROTEIN()
+	qb = PROTEIN()	
 			
 	qa.rate = 1 s^-1 // fine
 
@@ -27,9 +27,9 @@ define factoryCell typeof CELL(){
 	
 	DEVICE D1 = new DEVICE(parts=[pa, pb])(input=[a,f], output=[b]){ // error with f
 		
-		MOLECULE da = new MOLECULE()
-		MOLECULE db = new MOLECULE()
-		MOLECULE dc = new MOLECULE()
+		da = MOLECULE()
+		db = MOLECULE()
+		dc = MOLECULE()
 		
 		f.rate = 1 s^-1 // fine because in signature
 		de.rate = 1 s^-1 // error
@@ -49,9 +49,9 @@ define factoryCell typeof CELL(){
 }
 
 define myRegion typeof REGION(){
-	MOLECULE a = new MOLECULE()
-	MOLECULE b = new MOLECULE()
-	MOLECULE c = new MOLECULE()
+	a = MOLECULE()
+	b = MOLECULE()
+	c = MOLECULE()
 		
 	a.rate = 1 s^-1 // fine
 	f.rate = 1 s^-1 // error: f not declared

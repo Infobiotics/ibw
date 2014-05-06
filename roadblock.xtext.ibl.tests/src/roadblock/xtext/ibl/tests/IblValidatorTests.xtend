@@ -108,10 +108,10 @@ class IblValidatorTest {
 	def void testForbidMultipleVariableDeclarationsInRegions(){
 		val model = '''
 		define myRegion typeof REGION(){
-			MOLECULE a = new MOLECULE()
-			MOLECULE b = new MOLECULE()
-			MOLECULE a = new MOLECULE()
-			MOLECULE d = new MOLECULE()
+			a = MOLECULE()
+			b = MOLECULE()
+			a = MOLECULE()
+			d = MOLECULE()
 			
 			RULE R1: a -> b
 			RULE R1: b -> c
@@ -128,10 +128,10 @@ class IblValidatorTest {
 	def void testForbidMultipleVariableDeclarationsInCells(){
 		val model = '''
 		define myCell typeof CELL(){
-			MOLECULE a = new MOLECULE()
-			MOLECULE b = new MOLECULE()
-			MOLECULE a = new MOLECULE()
-			MOLECULE d = new MOLECULE()
+			a = MOLECULE()
+			b = MOLECULE()
+			a = MOLECULE()
+			d = MOLECULE()
 			
 			RULE R1: a -> b
 			RULE R1: b -> c
@@ -148,16 +148,16 @@ class IblValidatorTest {
 	def void testForbidMultipleVariableDeclarationsInDevices(){
 		val model = '''
 		define myCell typeof CELL(){
-			MOLECULE a1 = new MOLECULE()
-			MOLECULE b1 = new MOLECULE()
-			MOLECULE c1 = new MOLECULE()
-			MOLECULE d1 = new MOLECULE()
+			a1 = MOLECULE()
+			b1 =  MOLECULE()
+			c1 =  MOLECULE()
+			d1 =  MOLECULE()
 			
 			DEVICE D1 = new DEVICE(parts=[])(input=[],output=[]){
-			MOLECULE a = new MOLECULE()
-			MOLECULE b = new MOLECULE()
-			MOLECULE a = new MOLECULE()
-			MOLECULE d = new MOLECULE()
+			a = MOLECULE()
+			b = MOLECULE()
+			a = MOLECULE()
+			d = MOLECULE()
 						
 			RULE R1: a -> b
 			RULE R1: b -> c
@@ -180,56 +180,56 @@ class IblValidatorTest {
 		
 		'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE aaa = new MOLECULE()
+			aaa = MOLECULE()
 			RULE myRule: aaa + OUTSIDE -> OUTSIDE			
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
 
 		'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE aaa = new MOLECULE()
-			MOLECULE ccc = new MOLECULE()
+			aaa = MOLECULE()
+			ccc = MOLECULE()
 			RULE myRule: aaa + OUTSIDE -> OUTSIDE + ccc			
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
 		
 		'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE ccc = new MOLECULE()
+			ccc = MOLECULE()
 			RULE myRule:  OUTSIDE -> OUTSIDE + ccc			
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used at most once")
 
 		'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE aaa = new MOLECULE()
-			MOLECULE bbb = new MOLECULE()			
+			aaa = MOLECULE()
+			bbb = MOLECULE()			
 			RULE myRule: aaa + bbb -> OUTSIDE 
 		}
 		'''.parse.assertNoErrors
 
 		'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE aaa = new MOLECULE()
-			MOLECULE bbb = new MOLECULE()			
+			aaa = MOLECULE()
+			bbb = MOLECULE()			
 			RULE myRule: OUTSIDE -> aaa + bbb 
 		}
 		'''.parse.assertNoErrors
 		
 	'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE xxx = new MOLECULE()
-			MOLECULE aaa = new MOLECULE()
-			MOLECULE bbb = new MOLECULE()
+			xxx = MOLECULE()
+			aaa = MOLECULE()
+			bbb = MOLECULE()
 			RULE myRule: OUTSIDE + xxx -> aaa + bbb 
 		}
 		'''.parse.assertError(IblPackage::eINSTANCE.ruleDefinition, null, "OUTSIDE must be used on its own")
 
 	'''
 		define dummyProcess typeof PROCESS(){
-			MOLECULE aaa = new MOLECULE()
-			MOLECULE bbb = new MOLECULE()
-			MOLECULE zzz = new MOLECULE()
+			aaa = MOLECULE()
+			bbb = MOLECULE()
+			zzz = MOLECULE()
 
 			RULE myRule: aaa + bbb -> OUTSIDE + zzz 
 		}
