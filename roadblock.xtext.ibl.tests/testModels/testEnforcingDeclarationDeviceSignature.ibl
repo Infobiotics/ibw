@@ -5,16 +5,16 @@
 
 define factoryCell typeof CELL(){
 	
-	MOLECULE a = new MOLECULE(): observable
-	MOLECULE b = new MOLECULE()
-	MOLECULE c = new MOLECULE()
-	MOLECULE d = new MOLECULE(): observable
+	a = MOLECULE(): observable
+	b = MOLECULE()
+	c = MOLECULE()
+	d = MOLECULE(): observable
 	
-	PROMOTER pa = new PROMOTER()
-	PROMOTER pb = new PROMOTER()
+	pa = PROMOTER()
+	pb = PROMOTER()
 
-	PROTEIN qa = new PROTEIN()
-	PROTEIN qb = new PROTEIN()	
+	qa = PROTEIN()
+	qb = PROTEIN()	
 			
 
 	RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
@@ -23,9 +23,9 @@ define factoryCell typeof CELL(){
  		
 	DEVICE D1 = new DEVICE(parts=[pa, pb, p])(input=[a,f, a~b], output=[b,g, c~d, a~b~c]){ // error with p, f, g
 		
-		MOLECULE da = new MOLECULE()
-		MOLECULE db = new MOLECULE()
-		MOLECULE dc = new MOLECULE()
+		da = MOLECULE()
+		db = MOLECULE()
+		dc = MOLECULE()
 
  		a~b~c.rate = 1 s^-1
 		RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
@@ -34,3 +34,4 @@ define factoryCell typeof CELL(){
 	}
 	
 }
+ 

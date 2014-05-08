@@ -122,9 +122,10 @@ define SensorCell typeof CELL(){
          VERIFY [GFP > 0 uM] WILL HOLD UNTIL THEN [SA > 0 uM]
          VERIFY EXPECTED [GFP] AT 1000 s IS ?
          VERIFY EXPECTED [GFP] WITHIN 1000 s IS ?
-}
+}  
 
 define site1 typeof REGION () {
         SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new SensorCell()
 }
+ 

@@ -37,7 +37,7 @@ class IblGeneratorTests {
 	
 	@Test
 	def void testBioSensorFlat(){
-		val source = readFile("../roadblock.xtext.ibl/models/biosensor_flat.ibl",Charset.defaultCharset())
+		val source = readFile("../roadblock.xtext.ibl/models/biosensor_flat_valid.ibl",Charset.defaultCharset())
 		source.assertCompilesTo(readFile("../roadblock.xtext.ibl/models/biosensor_flat.xml",Charset.defaultCharset()))		
 	}
 	

@@ -239,7 +239,7 @@ VariableComplex:
 ;
 
 VariableKind2:
-	{VariableKind2}
+//	{VariableKind2}
 	VariableType | VariableName
 ;
 
@@ -258,7 +258,8 @@ VariableKind2:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' 
+	{VariableType}
+	name = ('MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' )
 ;
 
 

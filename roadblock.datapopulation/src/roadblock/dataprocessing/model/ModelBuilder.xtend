@@ -39,6 +39,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
 import roadblock.xtext.ibl.ibl.VariableExpressionObject
 import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableKind2
+import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 
@@ -58,7 +59,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	}
 
 	def isComplex(String name) {
-		name.contains('~')
+			name.contains('~')
 	}
 
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
@@ -67,8 +68,9 @@ class ModelBuilder extends IblSwitch<Object> {
 			complex => [displayName = complexName 
 				biologicalType = 'COMPLEX' 
 				amount = 0.0
-				unit = ConcentrationUnit.UM]
-			moleculeList.add(complex)
+				unit = ConcentrationUnit.UM
+				]
+			moleculeList.add(complex)			
 		}
 	}
 
@@ -93,7 +95,8 @@ class ModelBuilder extends IblSwitch<Object> {
 	def buildVariableName(VariableKind2 variableKind) {
 		switch variableKind {
 			VariableName: buildVariableName(variableKind)
-			default: variableKind.toString
+			VariableType: variableKind.name
+			default:"UNKNOWNTYPEFROMbuildVariableNameVK2"
 		}
 	}
 

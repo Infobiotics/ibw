@@ -4,7 +4,7 @@
  
 // simulation should show AHL concentration decreasing, being replaced by AHL~XylS2
 // and then unbound built-up of XylS2
-
+ 
 define factoryCell typeof CELL(){
         // define molecular elements
         ribosome = RIBOSOME(): observable
