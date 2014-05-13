@@ -55,7 +55,7 @@ class IblGenerator implements IGenerator {
 		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
-		//generateTranslations(emfModel);
+		generateTranslations(emfModel);
 	}
 
 	def generateTranslations(Model emfModel) {

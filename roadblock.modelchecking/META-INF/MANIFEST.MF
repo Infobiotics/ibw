@@ -6,7 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: roadblock.modelchecking.translation
+Export-Package: roadblock.modelchecking.translation,
+ roadblock.modelchecking.translation.model,
+ roadblock.modelchecking.translation.property
 Import-Package: org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.impl,
  roadblock.emf.ibl.Ibl,

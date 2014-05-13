@@ -128,4 +128,3 @@ define site1 typeof REGION () {
         SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
         CELL myCell = new SensorCell()
 }
- 

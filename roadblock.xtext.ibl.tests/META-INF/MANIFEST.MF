@@ -20,6 +20,12 @@ Import-Package: org.apache.log4j,
  org.junit.runner.manipulation;version="4.5.0",
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
- org.junit.runners.model;version="4.5.0"
+ org.junit.runners.model;version="4.5.0",
+ roadblock.dataprocessing.flatModel,
+ roadblock.dataprocessing.model,
+ roadblock.emf.ibl.Ibl,
+ roadblock.modelchecking.translation,
+ roadblock.modelchecking.translation.model,
+ roadblock.modelchecking.translation.property
 Bundle-ActivationPolicy: lazy
 Export-Package: roadblock.xtext.ibl

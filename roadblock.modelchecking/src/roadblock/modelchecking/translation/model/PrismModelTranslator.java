@@ -21,7 +21,7 @@ import roadblock.modelchecking.translation.TranslationTarget;
 
 public class PrismModelTranslator implements IModelTranslator {
 
-	private static STGroup prismTemplates = new STGroupFile("/roadblock/modelchecking/translation/templates/prism.stg");
+	private static STGroup prismTemplates = new STGroupFile(PrismModelTranslator.class.getResource("../templates/prism.stg").getFile());
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();
@@ -298,5 +298,4 @@ public class PrismModelTranslator implements IModelTranslator {
 	public TranslationTarget getTarget() {
 		return TranslationTarget.PRISM;
 	}
-
 }
