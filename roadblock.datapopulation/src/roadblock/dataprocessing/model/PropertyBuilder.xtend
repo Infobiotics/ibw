@@ -1,39 +1,42 @@
-package roadblock.dataprocessing.modelbuilder
+package roadblock.dataprocessing.model
 
-import roadblock.emf.ibl.Ibl.IProperty
-import roadblock.emf.ibl.Ibl.IblFactory
-import roadblock.xtext.ibl.ibl.ProbabilityProperty
-import roadblock.xtext.ibl.ibl.PropertyDefinition
-import roadblock.xtext.ibl.ibl.RewardProperty
-import roadblock.xtext.ibl.ibl.util.IblSwitch
-import roadblock.emf.ibl.Ibl.IStateFormula
-import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty
+import org.eclipse.emf.ecore.EObject
+import roadblock.dataprocessing.util.UnitConverter
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty
+import roadblock.emf.ibl.Ibl.BooleanOperator
+import roadblock.emf.ibl.Ibl.ConcentrationUnit
+import roadblock.emf.ibl.Ibl.IProbabilityConstraint
+import roadblock.emf.ibl.Ibl.IProperty
+import roadblock.emf.ibl.Ibl.IStateFormula
+import roadblock.emf.ibl.Ibl.ITimeConstraint
+import roadblock.emf.ibl.Ibl.IblFactory
+import roadblock.emf.ibl.Ibl.RelationalOperator
 import roadblock.emf.ibl.Ibl.SteadyStateProperty
 import roadblock.emf.ibl.Ibl.TemporalOperator
-import roadblock.emf.ibl.Ibl.ITimeConstraint
+import roadblock.emf.ibl.Ibl.TimeUnit
+import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty
+import roadblock.xtext.ibl.ibl.ConcentrationConstraint
+import roadblock.xtext.ibl.ibl.ProbabilityConstraint
+import roadblock.xtext.ibl.ibl.ProbabilityProperty
+import roadblock.xtext.ibl.ibl.PropertyDefinition
+import roadblock.xtext.ibl.ibl.PropertyInitialCondition
+import roadblock.xtext.ibl.ibl.RewardProperty
+import roadblock.xtext.ibl.ibl.RewardTimeInstant
+import roadblock.xtext.ibl.ibl.StateExpression
+import roadblock.xtext.ibl.ibl.StateFormula
 import roadblock.xtext.ibl.ibl.TimeInstant
 import roadblock.xtext.ibl.ibl.TimeInterval
-import roadblock.emf.ibl.Ibl.RelationalOperator
-import roadblock.emf.ibl.Ibl.TimeUnit
-import roadblock.emf.ibl.Ibl.IProbabilityConstraint
-import roadblock.xtext.ibl.ibl.ProbabilityConstraint
-import roadblock.xtext.ibl.ibl.PropertyInitialCondition
-import roadblock.emf.ibl.Ibl.ConcentrationUnit
-import roadblock.xtext.ibl.ibl.RewardTimeInstant
-import roadblock.xtext.ibl.ibl.ConcentrationConstraint
-import roadblock.xtext.ibl.ibl.StateFormula
-import roadblock.xtext.ibl.ibl.StateExpression
-import roadblock.emf.ibl.Ibl.BooleanOperator
-import roadblock.xtext.ibl.ibl.VariableName
+import roadblock.xtext.ibl.ibl.VariableAttribute
 import roadblock.xtext.ibl.ibl.VariableComplex
 import roadblock.xtext.ibl.ibl.VariableKind
+import roadblock.xtext.ibl.ibl.VariableName
+import roadblock.xtext.ibl.ibl.util.IblSwitch
 
 public class PropertyBuilder extends IblSwitch<Object> {
 
 	var modelFactory = IblFactory::eINSTANCE;
 
-// helpers to build the name of a variableKind (either VariableName or VariableComplex)
+	// helpers to build the name of a variableKind (either VariableName or VariableComplex)
 
 	def buildVariableName(VariableName variableName){
 		variableName.name
@@ -50,11 +53,15 @@ public class PropertyBuilder extends IblSwitch<Object> {
 		}
 	}
 
-// property checking population  
-
-	def build(PropertyDefinition propertyDefinition) {
-		return doSwitch(propertyDefinition) as IProperty;
+	// property checking population  
+	
+	def build(EObject property) {
 		
+		switch property {
+			PropertyDefinition: (property as PropertyDefinition).doSwitch() as IProperty
+			ProbabilityProperty: (property as ProbabilityProperty).doSwitch() as IProperty
+			RewardProperty: (property as RewardProperty).doSwitch() as IProperty
+		}
 	}
 
 	override casePropertyDefinition(PropertyDefinition property) {
@@ -106,7 +113,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			}
 
 			unaryProperty.initialConditions.addAll(
-				probabilityProperty.initialConditions.map[i|doSwitch(i) as PropertyInitialCondition]);
+				probabilityProperty.initialConditions.map[i|doSwitch(i) as roadblock.emf.ibl.Ibl.PropertyInitialCondition]);
 
 		} else if (property instanceof BinaryProbabilityProperty) {
 
@@ -164,19 +171,20 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			timeConstraint.operator = RelationalOperator.GE;
 		}
 
-		timeConstraint.value = timeInstant.timeInstant;
-		timeConstraint.unit = getTimeUnit(timeInstant.timeUnit);
-
+		timeConstraint.value = UnitConverter.instance.getBaseTime(timeInstant.timeInstant, getTimeUnit(timeInstant.timeUnit));
+		timeConstraint.unit = TimeUnit.SECOND;
+		
 		return timeConstraint;
 	}
 
 	override caseTimeInterval(TimeInterval timeInterval) {
 
 		var timeConstraint = modelFactory.createTimeInterval;
-
-		timeConstraint.lowerBound = timeInterval.lowerBound;
-		timeConstraint.upperBound = timeInterval.upperBound;
-		timeConstraint.unit = getTimeUnit(timeInterval.timeUnit);
+		var unit = getTimeUnit(timeInterval.timeUnit);
+		
+		timeConstraint.lowerBound = UnitConverter.instance.getBaseTime(timeInterval.lowerBound, unit);
+		timeConstraint.upperBound = UnitConverter.instance.getBaseTime(timeInterval.upperBound, unit);
+		timeConstraint.unit = TimeUnit.SECOND;
 
 		return timeConstraint;
 	}
@@ -191,8 +199,8 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			timeConstraint.operator = RelationalOperator.LE;
 		}
 
-		timeConstraint.value = timeInstant.timeValue;
-		timeConstraint.unit = getTimeUnit(timeInstant.timeUnit);
+		timeConstraint.value = UnitConverter.instance.getBaseTime(timeInstant.timeValue, getTimeUnit(timeInstant.timeUnit));
+		timeConstraint.unit = TimeUnit.SECOND;
 
 		return timeConstraint;
 	}
@@ -264,9 +272,26 @@ public class PropertyBuilder extends IblSwitch<Object> {
 	override casePropertyInitialCondition(PropertyInitialCondition propertyInitialCondition) {
 
 		var initialCondition = modelFactory.createPropertyInitialCondition;
+		//propertyInitialCondition.variable.
 
-		initialCondition.variableName = doSwitch(propertyInitialCondition.variable) as String;
-		initialCondition.value = Double.parseDouble(propertyInitialCondition.value.value);
+		val variable = propertyInitialCondition.variable;
+
+		switch variable {
+			VariableName:
+				initialCondition => [
+					variableName = variable.name
+					variableAttribute = ''
+				]
+			VariableAttribute:
+				initialCondition => [
+					variableName = variable.name.buildVariableName
+					variableAttribute = variable.attribute.name
+				]
+			default:
+				initialCondition => [variableName = 'NOT IMPLEMENTED'; variableAttribute = 'NOT IMPLEMENTED']
+		}
+		
+		initialCondition.amount = Double.parseDouble(propertyInitialCondition.value.value);
 		initialCondition.unit = getConcentrationUnit(propertyInitialCondition.value.unit);
 
 		return initialCondition;
@@ -330,5 +355,4 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			case "molecules": ConcentrationUnit.MOLECULE
 		}
 	}
-
 }

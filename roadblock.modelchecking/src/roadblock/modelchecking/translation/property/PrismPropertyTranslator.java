@@ -1,8 +1,5 @@
 package roadblock.modelchecking.translation.property;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import roadblock.emf.ibl.Ibl.ATGCDirective;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
@@ -10,9 +7,10 @@ import roadblock.emf.ibl.Ibl.BooleanOperator;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationUnit;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
+import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.Kinetics;
@@ -21,6 +19,7 @@ import roadblock.emf.ibl.Ibl.MolecularSpecies;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
+import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.RelationalOperator;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
@@ -30,9 +29,9 @@ import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TemporalOperator;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
-import roadblock.emf.ibl.Ibl.TimeUnit;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.modelchecking.translation.TranslationTarget;
 
 public class PrismPropertyTranslator implements IPropertyTranslator {
 
@@ -48,22 +47,14 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String temporalOperator = Translate(expression.getOperator());
 		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
-		List<String> initialConditions = new ArrayList<String>();
 
-		for (PropertyInitialCondition initialCondition : expression
-				.getInitialConditions()) {
-			initialConditions.add(initialCondition.accept(this));
-		}
-
-		// initial conditions?
-
-		return String.format(pattern, probabilityConstraint, temporalOperator,
-				timeConstraint, stateFormula);
+		return String.format(pattern, probabilityConstraint, temporalOperator, timeConstraint, stateFormula);
 
 	}
 
 	@Override
 	public String visit(BinaryProbabilityProperty expression) {
+		
 		String pattern = "P%s [ (%s) %s%s (%s) ]";
 
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
@@ -74,17 +65,8 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String leftStateFormula = expression.getLeftOperand().accept(this);
 		String rightStateFormula = expression.getRightOperand().accept(this);
-		List<String> initialConditions = new ArrayList<String>();
 
-		for (PropertyInitialCondition initialCondition : expression
-				.getInitialConditions()) {
-			initialConditions.add(initialCondition.accept(this));
-		}
-
-		// initial conditions?
-
-		return String.format(pattern, probabilityConstraint, leftStateFormula,
-				temporalOperator, timeConstraint, rightStateFormula);
+		return String.format(pattern, probabilityConstraint, leftStateFormula, temporalOperator, timeConstraint, rightStateFormula);
 	}
 
 	@Override
@@ -96,14 +78,6 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 
 		String probabilityConstraint = pc != null ? pc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
-		List<String> initialConditions = new ArrayList<String>();
-
-		for (PropertyInitialCondition initialCondition : expression
-				.getInitialConditions()) {
-			initialConditions.add(initialCondition.accept(this));
-		}
-
-		// initial conditions?
 
 		return String.format(pattern, probabilityConstraint, stateFormula);
 	}
@@ -111,39 +85,25 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(RewardProperty expression) {
 
-		String pattern = expression.getTimeConstraint().getOperator() == RelationalOperator.EQ ? "R{\"%s\"}=? [ I%s ]"
-				: "R{\"%s\"}=? [ I%s ]";
+		String pattern = expression.getTimeConstraint().getOperator() == RelationalOperator.EQ ? "R{\"%s\"}%s [ I%s ]" : "R{\"%s\"}%s [ C%s ]";
 
 		ConcentrationConstraint cc = expression.getConcentrationConstraint();
 
-		String rewardExpression = expression.getVariableName();
+		String rewardExpression = doTranslateName(expression.getVariableName()) + "_rew";
 		String timeConstraint = expression.getTimeConstraint().accept(this);
-		String concentrationConstraint = cc != null ? cc.accept(this) : "";
+		String concentrationConstraint = cc != null ? cc.accept(this) : "=?";
 
-		List<String> initialConditions = new ArrayList<String>();
-
-		for (PropertyInitialCondition initialCondition : expression
-				.getInitialConditions()) {
-			initialConditions.add(initialCondition.accept(this));
-		}
-
-		// initial conditions?
-		// variable and concentration?
-
-		return String.format(pattern, rewardExpression, timeConstraint);
+		return String.format(pattern, rewardExpression, concentrationConstraint, timeConstraint);
 	}
 
 	@Override
 	public String visit(StateExpression expression) {
 
-		String pattern = "%s %s %s %s";
+		String pattern = "%s %s %s";
+		String variableName = doTranslateName(expression.getVariableName());
 		String relationalOperator = Translate(expression.getOperator());
-		String unit = Translate(expression.getUnit());
 
-		// unit?
-
-		return String.format(pattern, expression.getVariableName(),
-				relationalOperator, expression.getQuantity(), unit);
+		return String.format(pattern, variableName, relationalOperator, expression.getQuantity());
 	}
 
 	@Override
@@ -163,8 +123,7 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String rightFormula = expression.getRightOperand().accept(this);
 		String relationalOperator = Translate(expression.getOperator());
 
-		return String.format(pattern, leftFormula, relationalOperator,
-				rightFormula);
+		return String.format(pattern, leftFormula, relationalOperator, rightFormula);
 	}
 
 	@Override
@@ -173,8 +132,7 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String pattern = "%s%.2f";
 		String relationalOperator = Translate(expression.getOperator());
 
-		return String
-				.format(pattern, relationalOperator, expression.getBound());
+		return String.format(pattern, relationalOperator, expression.getBound());
 	}
 
 	@Override
@@ -186,42 +144,24 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 	public String visit(TimeInterval expression) {
 
 		String pattern = "[ %d, %d ]";
-		String timeUnit = Translate(expression.getUnit());
 
-		// unit?
-
-		return String.format(pattern, expression.getLowerBound(),
-				expression.getUpperBound());
+		return String.format(pattern, expression.getLowerBound(), expression.getUpperBound());
 	}
 
 	@Override
 	public String visit(TimeInstant expression) {
 		String pattern = "%s%d";
 		String relationalOperator = Translate(expression.getOperator());
-		String timeUnit = Translate(expression.getUnit());
 
-		// unit?
-
-		return String
-				.format(pattern, relationalOperator, expression.getValue());
-	}
-
-	@Override
-	public String visit(PropertyInitialCondition expression) {
-		// TODO Auto-generated method stub
-		return null;
+		return String.format(pattern, relationalOperator, expression.getValue());
 	}
 
 	@Override
 	public String visit(ConcentrationConstraint expression) {
 		String pattern = "%s%f";
 		String relationalOperator = Translate(expression.getOperator());
-		String timeUnit = Translate(expression.getUnit());
 
-		// unit?
-
-		return String
-				.format(pattern, relationalOperator, expression.getValue());
+		return String.format(pattern, relationalOperator, expression.getValue());
 	}
 
 	private String Translate(TemporalOperator operator) {
@@ -258,7 +198,7 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		case LE:
 			return "<=";
 		case EQ:
-			return "==";
+			return "=";
 		case NE:
 			return "!=";
 		default:
@@ -279,21 +219,9 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 			return "";
 		}
 	}
-
-	private String Translate(TimeUnit unit) {
-
-		switch (unit) {
-		default:
-			return "";
-		}
-	}
-
-	private String Translate(ConcentrationUnit unit) {
-
-		switch (unit) {
-		default:
-			return "";
-		}
+	
+	private String doTranslateName(String moleculeName) {
+		return moleculeName.replace("~", "_");
 	}
 
 	@Override
@@ -351,4 +279,23 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public String visit(FlatModel flatModel) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(Region region) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(PropertyInitialCondition expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(EMFVariableAssignment expression) {
+		throw new UnsupportedOperationException();
+	}
 }

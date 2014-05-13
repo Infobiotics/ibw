@@ -1,0 +1,37 @@
+// test for enforcing variable declaration for device's signature
+// any variable passed on must be declared or a complex created by a rule
+//
+// Don't fix the errors! They're here for testing purposes.
+
+define factoryCell typeof CELL(){
+	
+	a = MOLECULE(): observable
+	b = MOLECULE()
+	c = MOLECULE()
+	d = MOLECULE(): observable
+	
+	pa = PROMOTER()
+	pb = PROMOTER()
+
+	qa = PROTEIN()
+	qb = PROTEIN()	
+			
+
+	RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
+	RULE cdComplex: a + c~d <-> a // c~d not declared but fine because complex and created
+	RULE abcComplex: a + b + c -> a~b~c
+ 		
+	DEVICE D1 = new DEVICE(parts=[pa, pb, p])(input=[a,f, a~b], output=[b,g, c~d, a~b~c]){ // error with p, f, g
+		
+		da = MOLECULE()
+		db = MOLECULE()
+		dc = MOLECULE()
+
+ 		a~b~c.rate = 1 s^-1
+		RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
+		RULE cdComplex: a + c~d <-> a // c~d  not declared but fine because complex and created
+		
+	}
+	
+}
+ 

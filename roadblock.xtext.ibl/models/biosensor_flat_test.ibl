@@ -1,0 +1,129 @@
+// Flat version of the sensor cell: no process, no inheritance.
+define SensorCell typeof CELL(){
+        // define molecular elements
+        RIBOSOME ribosome: observable
+        RNA rnaP = new RNA(displayName = "XYZ") : observable
+
+//        CHASSIS chassis = new CHASSIS(organism = "ecoli") // NOT YET IMPLEMENTED
+//        INTEGER plasmidNumber = 500 // NOT YET IMPLEMENTED
+
+        PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
+        GENE nahR = new GENE(URI = "biofab://")
+        PROTEIN NahR = new PROTEIN(URI = "db://...")
+
+        PROMOTER Psal = new PROMOTER(URI = "biofab://")
+        GENE xylS2 = new GENE(sequence = "ATTGTGT")
+        PROTEIN XylS2 = new PROTEIN()
+
+        PROMOTER Pm = new PROMOTER(sequence = "ATTGTGT")
+        GENE rFP = new GENE(sequence = "TTGTGTG")
+        PROTEIN RFP = new PROTEIN()
+
+
+        DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
+       	// constitutively produces NahR and LasR
+			RNA mrna1
+		
+			RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
+			promoterBinding.forwardRate = 1 s^-1 
+			promoterBinding.reverseRate = 1 s^-1
+		
+			RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
+			transcription.forwardRate = 1 s^-1
+		
+			RULE mrnaDegradation : mrna1 ->
+			mrnaDegradation.forwardRate = 1 s^-1
+		
+			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+			translationInitiation.forwardRate = 1 s^-1
+			translationInitiation.reverseRate = 1 s^-1
+			
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + NahR
+			translation.forwardRate = 1 s^-1
+
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + LahR
+			translation.forwardRate = 1 s^-1
+   }
+
+        DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [SA~NahR], output = [XylS2]){
+        // produces XylS2, upregulated by SA~NahR
+			ATGC ARRANGE Psal, xylS2
+
+			RNA rna1	
+		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
+			RULE promoterBinding : SA~NahR~Psal + rnaP <-> SA~NahR~Psal~rnaP	
+			RULE transcription : SA~NahR~Psal~rnaP -> SA~NahR~Psal~rnaP + mrna1
+			RULE mrnaDegradation : mrna1 ->
+			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
+			
+            VERIFY [XySl2 > 0 uM ] EVENTUALLY HOLDS GIVEN XylS2 = 200 uM
+        }
+
+        DEVICE GFPProduction = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
+        // produces GFP, upregulated by SA~XylS2 OR AHL~LasR (dual promoter)
+
+			RNA mrna1	
+			// binds with SA~Xyls2 and Pm
+		    RULE regulation : SA~XylS2 + Pm <-> SA~XylS2~Pm
+			RULE promoterBinding : SA~XylS2~Pm + rnaP <-> SA~XylS2~Pm~rnaP	
+			RULE transcription : SA~XylS2~Pm~rnaP -> SA~XylS2~Pm~rnaP + mrna1
+			// binds with AHL~LasR and PlasR
+		    RULE regulation : AHL~LasR + PlasR <-> AHL~LasR~PlasR
+			RULE promoterBinding : AHL~LasR~PlasR + rnaP <-> AHL~LasR~PlasR~rnaP	
+			RULE transcription : AHL~LasR~PlasR~rnaP -> AHL~LasR~PlasR~rnaP + mrna1
+			
+			// from there, usual steps for up regulation			
+			RULE mrnaDegradation : mrna1 ->
+			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
+			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
+			
+            VERIFY [ [ NOT [ RFP > 50 uM ] ] IMPLIES [[ RFP < 40 uM ] AND [ RFP < 100 uM ] ]] EVENTUALLY HOLDS
+        }
+
+         // INSIDE and OUTSIDE
+
+         // additional rules
+         RULE R1 : SA + SA + NahR + NahR <-> SA + SA~NahR
+         R1.forwardRate = 1 min^-1
+         R1.reverseRate = 2 s^-1
+ 
+         RULE R2 : AHL + AHL + XylS2 <-> AHL + AHL + AHL + AHL~XylS2
+         R2.forwardRate = 2.3 s^-1
+         R2.reverseRate = 1 min^-1
+         
+         RULE R3 : SA + SA + SA + NahR <-> SA~NahR
+         R3.forwardRate = 1 min^-1
+         R3.reverseRate = 2 s^-1
+         
+         RULE R4 : NahR <-> SA + SA + SA~NahR
+         R4.forwardRate = 1 min^-1
+         R4.reverseRate = 2 s^-1
+ 
+         RULE SAConsumption : OUTSIDE -> SA
+         SAConsumption.rate = 6.4 min^-1
+ 
+         RULE AHLConsumption : OUTSIDE -> AHL
+         AHLConsumption.rate = 3 min^-1
+ 
+         // atgc rules
+         ATGC ARRANGE nahR, PnahR, Psal
+ 
+         // some example properties
+         
+         VERIFY [signal > 0 uM] EVENTUALLY HOLDS
+         VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
+         VERIFY [signal > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
+         VERIFY [signal > 0 uM] NEVER HOLDS
+         VERIFY [signal > 0 uM] ALWAYS HOLDS
+         VERIFY [signal > 0 uM] HOLDS IN STEADY-STATE
+         VERIFY [signal > 0 uM] HOLDS INFINITELY OFTEN
+         VERIFY [RFP > 0 uM] WILL HOLD UNTIL THEN [signal > 0 uM]
+         VERIFY EXPECTED [RFP] AT 1000 min IS ?
+         VERIFY EXPECTED [RFP] WITHIN 1000 s IS ?
+}
+
+define site1 typeof REGION () {
+        MOLECULE SA = new MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 10 uM)
+        CELL myCell = new SensorCell()
+}

@@ -120,7 +120,9 @@ FunctionContent:
 
 // See iblRefactoringGrammar.R for some automation
 FunctionBodyMember:
-	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation | ProcessInstantiation | PropertyDefinition | RuleDefinition | SystemInstantiation | VariableAssignment | VariableDefinition
+	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation | ProcessInstantiation | PropertyDefinition | 
+	RuleDefinition | SystemInstantiation | 
+	VariableAssignment | VariableDefinition
 ;
 
 //////////////////////
@@ -155,7 +157,7 @@ DeviceDefinition:
 	')'
 	'('
 		('input' '=' input=List)?
-		(',' 'output' '=' outputput=List)?
+		(',' 'output' '=' output=List)?
 	')'
 	'{'
 		(members+=DeviceMembers*)
@@ -237,7 +239,7 @@ VariableComplex:
 ;
 
 VariableKind2:
-	{VariableKind2}
+//	{VariableKind2}
 	VariableType | VariableName
 ;
 
@@ -256,7 +258,8 @@ VariableKind2:
 
 // variable types
 VariableType:
-	'MOLECULE' | 'CHASSIS' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' 
+	{VariableType}
+	name = ('MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' )
 ;
 
 
@@ -278,6 +281,20 @@ VariableQualifier:
 	'observable'
 ;
 
+VariableDefinitionUserDefined:
+	{VariableDefinitionUserDefined}
+	type=VariableName name=VariableName
+	(
+	'=' 'new' constructor=VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
+	)?
+;
+
+VariableDefinitionBuiltIn:
+	{VariableDefinitionBuiltIn}
+	name = VariableName '=' type = VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'	
+;
+
+/*
 VariableDefinitionBuiltIn:
 	{VariableDefinitionBuiltIn}
 	type=VariableType name=VariableName
@@ -293,7 +310,7 @@ VariableDefinitionUserDefined:
 	'=' 'new' constructor=VariableKind2'(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
 	)?
 ;
-
+*/
 VariableDefinitionCollection:
 	{VariableDefinitionCollection}
 	(collection=CollectionID '<' type=VariableKind2 '>' name=VariableName)
@@ -376,14 +393,24 @@ Outside:
 ////////////////
 // atgc rules //
 ////////////////
-
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command=ATGCCommand ':' arguments+=VariableName (',' arguments+=VariableName)*
+	'ATGC' command = (ATGCCloningSites | ATGCArrange | ATGCDirection)
 ;
 
-ATGCCommand:
-	'ARRANGE'
+ATGCArrange:
+	{ATGCArrange}
+	'ARRANGE' arguments+=VariableName  (',' arguments+=VariableName)*
+;
+
+ATGCCloningSites:
+	{ATGCCloningSites}
+	'CLONING SITES' ':' cloningsites = INT
+;
+
+ATGCDirection: 
+	{ATGCDirection}
+	'DIRECTION' ':' direction = ('FORWARD' | 'BACKWARD')
 ;
 
 /////////////////////////
