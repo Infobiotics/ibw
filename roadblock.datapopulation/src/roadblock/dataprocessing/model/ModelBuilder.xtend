@@ -410,6 +410,10 @@ class ModelBuilder extends IblSwitch<Object> {
 					val q = parameter.value.doSwitch as Quantity;
 					molecule => [unbindingRate = Double.parseDouble(q.value); unit = getConcentrationUnit(q.units)]
 				}
+				case 'sequence': {
+					val q =  parameter.value.doSwitch as String
+					molecule.sequence = q
+				}
 			}
 
 		}

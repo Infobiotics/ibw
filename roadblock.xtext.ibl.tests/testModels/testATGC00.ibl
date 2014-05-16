@@ -1,10 +1,10 @@
 define myCell typeof CELL() {
-	p1aa = PROMOTER(sequence = "ATTGTGT")
-    g1bb = GENE(sequence = "TTGTGTG")
+	p1aa = PROMOTER(sequence = "AAA")
+    g1bb = GENE(sequence = "TTT")
 
-	p2aa = PROMOTER(sequence = "ATTGTGT")
-    g2bb = GENE(sequence = "TTGTGTG")
-    g2cc = GENE(sequence = "TTGTGTG")
+	p2aa = PROMOTER(sequence = "CCC")
+    g2bb = GENE(sequence = "GGG")
+    g2cc = GENE(sequence = "ATATAT")
 	
 	DEVICE device1 = new DEVICE(parts = [p1aa, g1bb])(input = [], output = []){
 		ATGC CLONING SITES: 5
