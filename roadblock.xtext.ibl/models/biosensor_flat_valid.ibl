@@ -1,5 +1,5 @@
 // Flat version of the sensor cell: no process, no inheritance.
-
+ 
 define SensorCell typeof CELL(){
         // define molecular elements
         ribosome = RIBOSOME() : observable

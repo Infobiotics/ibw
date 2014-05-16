@@ -62,7 +62,7 @@
       <moleculeList displayName="ribosome" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RIBOSOME" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="ribosome"/>
       <moleculeList displayName="rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RNA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="rnaP"/>
       <moleculeList displayName="PnahR" URI="biobricks://..." amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="biobricks://..."/>
-      <moleculeList displayName="xylS2" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="xylS2"/>
+      <moleculeList displayName="xylS2" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="ATTGTGT" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="xylS2"/>
       <moleculeList displayName="XylS2" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROTEIN" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="XylS2"/>
     </cellList>
   </regionList>
