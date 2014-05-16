@@ -21,6 +21,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
   org.eclipse.emf.ecore.xmi
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
+ roadblock.biocompiler,
  roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,

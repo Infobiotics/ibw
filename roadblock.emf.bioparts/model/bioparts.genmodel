@@ -4,10 +4,11 @@
     modelName="Bioparts" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false">
   <foreignModel>bioparts.ecore</foreignModel>
-  <genPackages prefix="Bioparts" disposableProviderFactory="true" ecorePackage="bioparts.ecore#/">
-    <genClasses ecoreClass="bioparts.ecore#//Catalogue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Catalogue/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bioparts.ecore#//Catalogue/biopartList"/>
+  <genPackages prefix="Bioparts" basePackage="roadblock.emf.bioparts" disposableProviderFactory="true"
+      ecorePackage="bioparts.ecore#/">
+    <genClasses ecoreClass="bioparts.ecore#//bagOfParts">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//bagOfParts/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bioparts.ecore#//bagOfParts/biopartList"/>
     </genClasses>
     <genClasses ecoreClass="bioparts.ecore#//Biopart">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Biopart/ID"/>
@@ -18,6 +19,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Biopart/repositoryName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Biopart/accessionURL"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Biopart/biologicalFunction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Biopart/cellName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//Biopart/deviceName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

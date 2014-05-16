@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: bioparts,
- bioparts.impl,
- bioparts.util
+Export-Package: roadblock.emf.bioparts.Bioparts,
+ roadblock.emf.bioparts.Bioparts.impl,
+ roadblock.emf.bioparts.Bioparts.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

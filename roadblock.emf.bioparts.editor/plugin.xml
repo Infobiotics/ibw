@@ -7,13 +7,14 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated bioparts -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="bioparts.presentation.BiopartsModelWizardID"
+            id="roadblock.emf.bioparts.Bioparts.presentation.BiopartsModelWizardID"
             name="%_UI_BiopartsModelWizard_label"
-            class="bioparts.presentation.BiopartsModelWizard"
+            class="roadblock.emf.bioparts.Bioparts.presentation.BiopartsModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/BiopartsModelFile.gif">
          <description>%_UI_BiopartsModelWizard_description</description>
@@ -22,13 +23,14 @@
    </extension>
 
    <extension point="org.eclipse.ui.editors">
+      <!-- @generated bioparts -->
       <editor
-            id="bioparts.presentation.BiopartsEditorID"
+            id="roadblock.emf.bioparts.Bioparts.presentation.BiopartsEditorID"
             name="%_UI_BiopartsEditor_label"
             icon="icons/full/obj16/BiopartsModelFile.gif"
             extensions="bioparts"
-            class="bioparts.presentation.BiopartsEditor"
-            contributorClass="bioparts.presentation.BiopartsActionBarContributor">
+            class="roadblock.emf.bioparts.Bioparts.presentation.BiopartsEditor"
+            contributorClass="roadblock.emf.bioparts.Bioparts.presentation.BiopartsActionBarContributor">
       </editor>
    </extension>
 

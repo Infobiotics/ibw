@@ -4,11 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: roadblock.emf.bioparts.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: bioparts.presentation.BiopartsEditorPlugin$Implementation
+Bundle-Activator: roadblock.emf.bioparts.Bioparts.presentation.BiopartsEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: bioparts.presentation
+Export-Package: roadblock.emf.bioparts.Bioparts.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  roadblock.emf.bioparts.edit;visibility:=reexport,

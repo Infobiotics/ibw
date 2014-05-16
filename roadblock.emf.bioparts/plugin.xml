@@ -13,4 +13,12 @@
             genModel="model/bioparts.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated bioparts -->
+      <package
+            uri="http://www.roadblock.org/bioparts.ecore"
+            class="roadblock.emf.bioparts.Bioparts.BiopartsPackage"
+            genModel="model/bioparts.genmodel"/>
+   </extension>
+
 </plugin>

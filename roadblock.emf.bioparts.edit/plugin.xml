@@ -7,9 +7,10 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated bioparts -->
       <factory
-            uri="http://roadblock.org"
-            class="bioparts.provider.BiopartsItemProviderAdapterFactory"
+            uri="http://www.roadblock.org/bioparts.ecore"
+            class="roadblock.emf.bioparts.Bioparts.provider.BiopartsItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

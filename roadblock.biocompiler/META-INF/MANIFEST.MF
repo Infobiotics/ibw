@@ -6,8 +6,18 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: roadblock.biocompiler.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.junit
+ org.junit,
+ com.google.guava,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.emf.ecore;bundle-version="2.9.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.junit,
- org.junit.runner;version="4.11.0"
+ org.junit.runner;version="4.11.0",
+ roadblock.emf.bioparts.Bioparts,
+ roadblock.emf.bioparts.Bioparts.impl,
+ roadblock.emf.bioparts.Bioparts.util,
+ roadblock.emf.ibl.Ibl
+Export-Package: roadblock.biocompiler
+

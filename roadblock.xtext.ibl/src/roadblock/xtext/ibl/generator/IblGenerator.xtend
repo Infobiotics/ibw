@@ -20,7 +20,7 @@ import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.modelchecking.translation.TranslationManager
 import roadblock.modelchecking.translation.TranslationTarget
-
+import roadblock.biocompiler.Biocompiler
 /**
  * Generates code from your model files on save.
  * 
@@ -56,6 +56,10 @@ class IblGenerator implements IGenerator {
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
 		//generateTranslations(emfModel);
+		
+		var Biocompiler biocompiler = new Biocompiler(emfModel)
+		biocompiler.gatherParts
+		println("end")
 	}
 
 	def generateTranslations(Model emfModel) {
