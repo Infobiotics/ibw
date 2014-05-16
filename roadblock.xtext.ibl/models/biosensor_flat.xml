@@ -60,6 +60,9 @@
           <rightHandSide displayName="mrna1~ribosome" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
           <rightHandSide displayName="LasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         </ruleList>
+        <partList displayName="PnahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="nahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="lasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <moleculeList displayName="mrna1" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RNA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="mrna1"/>
         <moleculeList displayName="PnahR~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <moleculeList displayName="mrna1~ribosome" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
@@ -121,6 +124,8 @@
           <rightHandSide displayName="mrna1~ribosome" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
           <rightHandSide displayName="XylS2" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         </ruleList>
+        <partList displayName="Psal" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="xylS2" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
           <partList displayName="Psal" URI="biofab://" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="biofab://"/>
           <partList displayName="xylS2" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="ATTGTGT" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="xylS2"/>
@@ -221,6 +226,9 @@
           <rightHandSide displayName="mrna1~ribosome" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
           <rightHandSide displayName="GFP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         </ruleList>
+        <partList displayName="Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="PlasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="gFP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <moleculeList displayName="mrna1" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RNA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="mrna1"/>
         <moleculeList displayName="SA~XylS2" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <moleculeList displayName="SA~XylS2~Pm" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>

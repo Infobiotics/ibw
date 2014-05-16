@@ -3,10 +3,15 @@
   <regionList displayName="myRegion">
     <cellList displayName="foo">
       <deviceList displayName="device1">
+        <partList displayName="p1aa" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="g1bb" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCCloningSites" cloningSites="5"/>
         <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCDirection" direction="BACKWARD"/>
       </deviceList>
       <deviceList displayName="device2">
+        <partList displayName="p2aa" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="g2bb" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="g2cc" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
         <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
           <partList displayName="g2cc" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="ATATAT" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g2cc"/>
           <partList displayName="g2bb" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="GGG" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g2bb"/>

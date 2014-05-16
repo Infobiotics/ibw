@@ -42,6 +42,7 @@ import roadblock.xtext.ibl.ibl.VariableKind2
 import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
+import roadblock.xtext.ibl.ibl.VariableReference
 
 class ModelBuilder extends IblSwitch<Object> {
 
@@ -343,6 +344,18 @@ class ModelBuilder extends IblSwitch<Object> {
 				PropertyDefinition: device.properties.add(propertyBuilder.build(member.property))
 				ATGCDefinition: device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
+		}
+		
+		for (part: deviceDefinition.parts.entries.map[
+						switch(it){
+								VariableReference: (it as VariableReference).variable.buildVariableName
+								VariableComplex : (it as VariableComplex).complex.buildVariableName
+			}]){
+			// create an empty part, just for reference. Validation should have ensured that the part has already been declared.
+			var biopart = modelFactory.createMolecularSpecies
+			biopart.displayName = part				
+			device.partList.add(biopart)
+			
 		}
 
 		return device
