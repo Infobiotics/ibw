@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:BinaryProbabilityProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore">
+  <leftOperand xsi:type="roadblock.emf.ibl:StateExpression" variableName="a" quantity="2.0" unit="fM"/>
+  <rightOperand xsi:type="roadblock.emf.ibl:StateExpression" variableName="b" quantity="4.0" unit="uM"/>
+</roadblock.emf.ibl:BinaryProbabilityProperty>

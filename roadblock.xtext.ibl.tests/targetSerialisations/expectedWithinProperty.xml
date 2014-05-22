@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:RewardProperty xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" variableName="a">
+  <timeConstraint value="100" operator="LE"/>
+</roadblock.emf.ibl:RewardProperty>

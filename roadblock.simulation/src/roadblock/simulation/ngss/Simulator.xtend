@@ -15,7 +15,7 @@ class Simulator {
 	public var seed = 0
 
 	var String model
-	val ngss_exe = "/home/harold/uni/newc/roadblock/ngss/ngss"
+	val ngss_exe = "/home/dvs/code/ngss/ngss"
 
 	new (String model)
 	{

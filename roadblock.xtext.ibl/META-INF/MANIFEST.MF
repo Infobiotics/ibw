@@ -21,12 +21,12 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.ecore.xmi
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
- roadblock.dataprocessing.modelbuilder,
- roadblock.dataprocessing.modelpopulation,
+ roadblock.dataprocessing.flatModel,
+ roadblock.dataprocessing.model,
  roadblock.simulation.ngss,
  roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util,
- roadblock.modelchecking.translation.property
+ roadblock.modelchecking.translation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.xtext.ibl,
  roadblock.xtext.ibl.services,

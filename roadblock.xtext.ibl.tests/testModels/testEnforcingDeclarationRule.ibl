@@ -1,0 +1,84 @@
+// test for enforcing variable declaration for rules
+// any variable used in a rule must be declared or a complex created by a rule
+//
+// Don't fix the errors! They're here for testing purposes.
+
+define factoryCell typeof CELL(){
+	fa = MOLECULE()
+	fb = MOLECULE()
+	fc = MOLECULE()
+	
+	RULE abComplex: fa + fb -> fa~fb // a~b not declared but fine because complex and created
+	RULE cdComplex: fa + fc~fa <-> fa // c~d  not declared but fine because complex and created
+
+	RULE cannnotCreate: fa~fb~fb -> fa + fc // error: complex but can't be created
+
+	RULE createHere	: fa + fb + fc -> fa~fb~fc + fb
+	RULE useHere : fa~fb~fc + fc -> fc // fine: created elsewhere 
+	
+	RULE simple: fa1 + fa <-> fb1 + fb // error with a1 and b1: not declared
+		
+	a = MOLECULE(): observable
+	b = MOLECULE()
+	c = MOLECULE()
+	d = MOLECULE(): observable
+	
+	pa = PROMOTER()
+	pb = PROMOTER()
+
+	qa = PROTEIN()
+	qb = PROTEIN()	
+			
+	qa.rate = 1 s^-1 // fine
+
+	RULE abComplex2: a + b -> a~b // a~b not declared but fine because complex and created
+	RULE cdComplex2: a + c~d <-> a // c~d  not declared but fine because complex and created
+	
+	a~b.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	c~d.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	
+	DEVICE D1 = new DEVICE(parts=[pa, pb])(input=[a], output=[b]){ // error with pc, f, g
+	
+		da = MOLECULE()
+		db = MOLECULE()
+		dc = MOLECULE()
+	
+		RULE abComplex: da + db -> da~db // a~b not declared but fine because complex and created
+		RULE cdComplex: da + dc~da <-> da // c~d  not declared but fine because complex and created
+	 
+		RULE cannnotCreate: da~db~db -> da + dc // error: complex but can't be created
+	
+		RULE createHere	: da + db + dc -> da~db~dc + db
+		RULE useHere : da~db~dc + dc -> dc // fine: created elsewhere 
+		
+		RULE simple: da1 + da <-> db1 + db // error with da1 and db1: not declared		
+				
+		RULE abComplex2: da + db -> da~db // a~b not declared but fine because complex and created
+		RULE cdComplex2: da + dc~dd <-> da // c~d  not declared but fine because complex and created
+		
+	}
+	
+}
+ 
+define myRegion typeof REGION(){
+	a = MOLECULE()
+	b = MOLECULE()
+	c = MOLECULE()
+			
+	RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
+	RULE cdComplex: a + c~a <-> a // c~d  not declared but fine because complex and created
+
+	RULE cannnotCreate: a~b~b -> a + c // error: complex but can't be created
+
+	RULE createHere	: a + b + c -> a~b~c + b
+	RULE useHere : a~b~c + c -> c // fine: created elsewhere 
+	
+	RULE simple: a1 + a <-> b1 + b // error with a1 and b1: not declared
+	
+	a~b.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	c~a.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	b~c.rate = 1 s^-1 // error: complex but not created
+	
+	CELL mycell = new factoryCell()
+	
+}

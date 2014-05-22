@@ -1,33 +1,33 @@
 // Minimal model
 // 1 device: constitutive promoter, produces XylS2
 // region contains AHL, which is consumed by XylS2 to produce AHL~XylS2 complex
-
+ 
 // simulation should show AHL concentration decreasing, being replaced by AHL~XylS2
 // and then unbound built-up of XylS2
-
+ 
 define factoryCell typeof CELL(){
         // define molecular elements
-        RIBOSOME ribosome = new RIBOSOME(concentration = 10 uM) : observable
-		RNA rnaP = new RNA(displayName = "XYZ", concentration = 5 uM) : observable
+        ribosome = RIBOSOME(): observable
+		rnaP = RNA(displayName = "XYZ") : observable
 
-        CHASSIS chassis = new CHASSIS(organism = "ecoli")
-
-        PROMOTER PnahR = new PROMOTER(URI = "biobricks://...")
-        GENE xylS2 = new GENE(sequence = "ATTGTGT")
-        PROTEIN XylS2 = new PROTEIN()
-
+//        chassis = CHASSIS(organism = "ecoli")
+  
+        PnahR = PROMOTER(URI = "biobricks://...")
+        xylS2 = GENE(sequence = "ATTGTGT")
+        XylS2 = PROTEIN()
+  
         // devices have two sets of arguments: genetic parts and lists of molecules consumed or produced by the device
-        DEVICE D1 = new DEVICE(parts = [PnahR, xylS2])(input=[], output = [XylS2]){
+        DEVICE D1 = new DEVICE(parts = [PnahR, xylS2])(input=[], output = [XylS2]){        	  
  				// constitutive promoter               
-				RNA mrna1
-		
+		 		mrna1 = RNA()
+ 
 				RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
-				promoterBinding.forwardRate = 11 s^-1 
+ 				promoterBinding.forwardRate = 11 s^-1 
 				promoterBinding.reverseRate = 12 s^-1 
 			
 				RULE transcription : PnahR~rnaP -> PnahR~rnaP + mrna1
 				transcription.forwardRate = 13 s^-1
-					
+	 				
 				RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
 				translationInitiation.forwardRate = 14 s^-1
 				translationInitiation.reverseRate = 15 s^-1
@@ -35,20 +35,21 @@ define factoryCell typeof CELL(){
 				RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
 				translation.forwardRate = 16 s^-1 
 			              
-                }
+                } 
               RULE exportProtein: XylS2 -> OUTSIDE  
-              exportProtein.forwardRate = 17 s^-1 
-}
-   
- 
+              exportProtein.forwardRate = 17 s^-1         
+} 
+    
 define site typeof REGION () {
-        MOLECULE AHL = new MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM, URI ='metaboliteDB')
+        AHL =  MOLECULE(displayID = "AHL", degradationRate = 1 s^-1, concentration = 100 uM, URI ='metaboliteDB')
         CELL myCell = new factoryCell()       
-		PROTEIN XylS2 = new PROTEIN(URI = 'proteinDB')
+		XylS2 = PROTEIN(URI = 'proteinDB')
 		
         RULE XylS2Consumption: AHL + XylS2 -> AHL~XylS2 
         XylS2Consumption.forwardRate = 42 s^-1
         
         VERIFY [AHL < 5 uM] EVENTUALLY HOLDS // should be TRUE
         VERIFY [AHL~XylS2 < 50 uM] ALWAYS HOLDS // should be FALSE
+        
+ 
 }

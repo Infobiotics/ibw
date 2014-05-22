@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:UnaryProbabilityProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" operator="EVENTUALLY">
+  <timeConstraint xsi:type="roadblock.emf.ibl:TimeInterval" lowerBound="100" upperBound="200"/>
+  <probabilityConstraint xsi:type="roadblock.emf.ibl:ConcreteProbabilityConstraint" operator="GE" bound="0.9"/>
+  <stateFormula xsi:type="roadblock.emf.ibl:StateExpression" variableName="a" unit="uM"/>
+</roadblock.emf.ibl:UnaryProbabilityProperty>
