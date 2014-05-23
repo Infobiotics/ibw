@@ -18,7 +18,7 @@ class Biocompiler {
 	val Model model 
 	
 	var biopartsFactory = BiopartsFactory::eINSTANCE
-	var bag = biopartsFactory.createbagOfParts
+	var public bag = biopartsFactory.createbagOfParts
 	
 	var modelFactory = IblFactory::eINSTANCE
 	
