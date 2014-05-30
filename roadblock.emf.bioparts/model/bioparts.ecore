@@ -17,5 +17,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="biologicalFunction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cellName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deviceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" eType="#//IntVar"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BiocompilerCell">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devices" eType="#//BiocompilerDevice"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="IntVar" instanceClassName="org.jacop.core.IntVar"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BiocompilerDevice">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minPosition" eType="#//IntVar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxPosition" eType="#//IntVar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//IntVar"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" eType="#//Biopart"/>
   </eClassifiers>
 </ecore:EPackage>
