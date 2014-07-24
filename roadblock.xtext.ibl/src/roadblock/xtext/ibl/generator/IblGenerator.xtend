@@ -18,8 +18,8 @@ import roadblock.dataprocessing.model.ModelBuilder
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
+import roadblock.modelchecking.ModelcheckingTarget
 import roadblock.modelchecking.translation.TranslationManager
-import roadblock.modelchecking.translation.TranslationTarget
 
 /**
  * Generates code from your model files on save.
@@ -79,8 +79,8 @@ class IblGenerator implements IGenerator {
 		for (IProperty property : properties) {
 
 			var FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
-			var propetyTranslation = translationManager.translate(flatData.property, TranslationTarget.PRISM);
-			var modelTranslation = translationManager.translate(flatData.flatModel, flatData.property, TranslationTarget.PRISM);
+			var propetyTranslation = translationManager.translate(flatData.property, ModelcheckingTarget.PRISM);
+			var modelTranslation = translationManager.translate(flatData.flatModel, flatData.property, ModelcheckingTarget.PRISM);
 
 			index = index + 1;
 			var fileName = directoryName + "model#" + index + ".pm";

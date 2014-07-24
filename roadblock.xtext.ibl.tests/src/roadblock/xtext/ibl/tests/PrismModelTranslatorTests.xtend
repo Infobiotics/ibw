@@ -15,8 +15,8 @@ import org.junit.runner.RunWith
 import roadblock.dataprocessing.flatModel.FlatModelManager
 import roadblock.dataprocessing.flatModel.PropertyCollector
 import roadblock.dataprocessing.model.ModelBuilder
+import roadblock.modelchecking.ModelcheckingTarget
 import roadblock.modelchecking.translation.TranslationManager
-import roadblock.modelchecking.translation.TranslationTarget
 import roadblock.xtext.ibl.IblInjectorProvider
 import roadblock.xtext.ibl.ibl.Model
 
@@ -109,7 +109,7 @@ class PrismModelTranslatorTests {
 		val flatModelManager = new FlatModelManager(model)
 		val flatModelData = flatModelManager.getFlatData(property)
 		
-		val candidate = TranslationManager::instance.translate(flatModelData.flatModel, flatModelData.property, TranslationTarget.PRISM)
+		val candidate = TranslationManager::instance.translate(flatModelData.flatModel, flatModelData.property, ModelcheckingTarget.PRISM)
 		val target = readFile(translationPath, Charset.defaultCharset())
 		
 		Assert::assertEquals(target, candidate)
