@@ -31,7 +31,7 @@ import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
-import roadblock.modelchecking.translation.TranslationTarget;
+import roadblock.modelchecking.ModelcheckingTarget;
 
 public class PrismPropertyTranslator implements IPropertyTranslator {
 
@@ -43,7 +43,7 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 		ITimeConstraint tc = expression.getTimeConstraint();
 
-		String probabilityConstraint = pc != null ? pc.accept(this) : "";
+		String probabilityConstraint = pc != null ? pc.accept(this) : ">0";
 		String temporalOperator = Translate(expression.getOperator());
 		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
@@ -60,7 +60,7 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 		ITimeConstraint tc = expression.getTimeConstraint();
 
-		String probabilityConstraint = pc != null ? pc.accept(this) : "";
+		String probabilityConstraint = pc != null ? pc.accept(this) : ">0";
 		String temporalOperator = Translate(expression.getOperator());
 		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String leftStateFormula = expression.getLeftOperand().accept(this);
@@ -76,7 +76,7 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 
-		String probabilityConstraint = pc != null ? pc.accept(this) : "";
+		String probabilityConstraint = pc != null ? pc.accept(this) : ">0";
 		String stateFormula = expression.getStateFormula().accept(this);
 
 		return String.format(pattern, probabilityConstraint, stateFormula);
@@ -225,8 +225,8 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 	}
 
 	@Override
-	public TranslationTarget getTarget() {
-		return TranslationTarget.PRISM;
+	public ModelcheckingTarget getTarget() {
+		return ModelcheckingTarget.PRISM;
 	}
 
 	@Override

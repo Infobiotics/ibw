@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Infobiotics Workbench" uid="IBW" id="org.eclipse.equinox.p2.reconciler.dropins.product" application="org.eclipse.ui.ide.workbench" version="1.0" useFeatures="false" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <splash
+      location="roadblock.ibw"
+      startupProgressRect="5,275,445,15" />
+   <launcher>
+      <linux icon="/roadblock.ibw/icons/ibw-256x256.xpm"/>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+
+</product>
