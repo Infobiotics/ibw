@@ -37,9 +37,9 @@ public class PrismExecutor implements IModelcheckingExecutor {
 		writeFile(filename, modelTranslation);
 
 		String[] verificationCommand = new String[] { "prism", filename, "-csl", propetyTranslation };
-		// String[] verificationCommand = new String[] { "ping", "google.ro" };
+		//String[] verificationCommand = new String[] { "ping", "google.ro", "-c", "10" };
 
-		System.out.println(verificationCommand[0] + " " + verificationCommand[1] + " " + verificationCommand[2] + " " + verificationCommand[3]);
+		System.out.println(verificationCommand[0] + " " + verificationCommand[1] + " " + verificationCommand[2] + " \'" + verificationCommand[3] + "\'");
 
 		return Runtime.getRuntime().exec(verificationCommand);
 	}

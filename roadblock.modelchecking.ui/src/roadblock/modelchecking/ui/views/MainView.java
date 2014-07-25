@@ -1,6 +1,7 @@
 package roadblock.modelchecking.ui.views;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,6 +47,10 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.console.ConsolePlugin;
+import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.MessageConsole;
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -71,6 +76,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Configuration config;
 	private XtextResource currentIblResource;
 
+	private MessageConsole verificationConsole;
+	
 	private CheckboxTreeViewer propertyTreeViewer;
 	private Text modelFile;
 	private Text dataFile;
@@ -90,6 +97,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// add change listener model
 		final Composite parentComposite = parent;
 		getSite().getPage().addPartListener(this);
+		
+		verificationConsole = new MessageConsole("Verification Results", null);
+		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { verificationConsole });
+		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(verificationConsole);
 
 		// make temporary directory
 		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID + ".tmp";
@@ -227,7 +238,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 				}
 
 				if (iblResource.getErrors().size() == 0) {
-					model = ModelcheckingUtil.getInstance().getModel(currentIblResource);
 					updateUi();
 				}
 			}
@@ -246,7 +256,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 			modelcheckingButton.setEnabled(false);
 		} else {
 
+			model = ModelcheckingUtil.getInstance().getModel(currentIblResource);
+
 			if (model != null) {
+
 				((IblLabelProvider) propertyTreeViewer.getLabelProvider()).resetIndex();
 				propertyTreeViewer.setInput(model);
 			}
@@ -346,7 +359,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 							IProperty property = (IProperty) checkedProperty;
 							String exportFilename = String.format("%s%s%s", filenameWithoutExtension, ++exportIndex, fileExtension);
-
+							
 							VerificationManager.getInstance().export(model, property, target, exportFilename);
 						}
 					}
@@ -376,6 +389,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
 		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 
+		final MessageConsoleStream consoleStream = verificationConsole.newMessageStream();
+		
 		IRunnableWithProgress verificationTask = new IRunnableWithProgress() {
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -387,31 +402,51 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof IProperty) {
 
 							IProperty property = (IProperty) checkedProperty;
-							String exportFilename = String.format("%s%s%s", filenameWithoutExtension, ++exportIndex, fileExtension);
+							final String exportFilename = String.format("%s%s%s", filenameWithoutExtension, ++exportIndex, fileExtension);
 
-							Process verificationProcess = VerificationManager.getInstance().verify(model, property, target, exportFilename);
+							final Process verificationProcess = VerificationManager.getInstance().verify(model, property, target, exportFilename);
 
-							BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
+							Thread streamingThread = new Thread(new Runnable() {
+								public void run() {
 
-							PrintWriter writer = new PrintWriter(filenameWithoutExtension + ".result");							
-							
-							while (!monitor.isCanceled()) {
-								if (in.ready()) {
-									//System.out.println(in.readLine());
-									writer.write(in.read());
-									writer.flush();
+									try {
+										
+										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
+										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFilename + ".result"));
+
+										String part = null;
+										while ((part = in.readLine()) != null) {
+											fileStream.write(part);
+											fileStream.newLine();
+											consoleStream.println(part);
+											fileStream.flush();
+										}
+
+										in.close();
+										fileStream.close();
+										
+									} catch (IOException e) { }
 								}
+							});
+
+							streamingThread.start();
+
+							while (!monitor.isCanceled() && streamingThread.isAlive()) {
 							}
 							
-							in.close();
-							writer.close();
+							if(streamingThread.isAlive()) {
+								streamingThread.interrupt();
+								break;
+							}
 
-							monitor.done();
+							verificationProcess.destroy();
 						}
 					}
+
+					monitor.done();
+
 				} catch (IOException e) {
 					errorDialogWithStackTrace("Failed verifying the " + config.modelName + " model", e);
-					System.out.println(e.getMessage());
 				}
 			}
 		};
