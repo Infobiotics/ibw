@@ -21,14 +21,22 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BiocompilerCell">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="devices" eType="#//BiocompilerDevice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="devices" upperBound="-1"
+        eType="#//BiocompilerDevice" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="IntVar" instanceClassName="org.jacop.core.IntVar"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="BooleanVar" instanceClassName="org.jacop.core.BooleanVar"/>
   <eClassifiers xsi:type="ecore:EClass" name="BiocompilerDevice">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minPosition" eType="#//IntVar"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxPosition" eType="#//IntVar"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//IntVar"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" eType="#//Biopart"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//BooleanVar"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
+        eType="#//Biopart" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BiocompilerModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+        eType="#//BiocompilerCell" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

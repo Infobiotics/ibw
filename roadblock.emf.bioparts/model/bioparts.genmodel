@@ -7,6 +7,7 @@
   <genPackages prefix="Bioparts" basePackage="roadblock.emf.bioparts" disposableProviderFactory="true"
       ecorePackage="bioparts.ecore#/">
     <genDataTypes ecoreDataType="bioparts.ecore#//IntVar"/>
+    <genDataTypes ecoreDataType="bioparts.ecore#//BooleanVar"/>
     <genClasses ecoreClass="bioparts.ecore#//bagOfParts">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//bagOfParts/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference bioparts.ecore#//bagOfParts/biopartList"/>
@@ -34,6 +35,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//BiocompilerDevice/maxPosition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//BiocompilerDevice/direction"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bioparts.ecore#//BiocompilerDevice/parts"/>
+    </genClasses>
+    <genClasses ecoreClass="bioparts.ecore#//BiocompilerModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute bioparts.ecore#//BiocompilerModel/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference bioparts.ecore#//BiocompilerModel/cells"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

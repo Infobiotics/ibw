@@ -55,7 +55,6 @@ define SensorCell typeof CELL(){
         DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [NahR], output = [XylS2]){
         // produces XylS2, upregulated by SA~NahR
 			ATGC ARRANGE Psal, xylS2
-
 			mrna1 = RNA()
 			
 		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
