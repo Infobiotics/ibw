@@ -59,18 +59,19 @@ class ModelBuilder extends IblSwitch<Object> {
 	}
 
 	def isComplex(String name) {
-			name.contains('~')
+		name.contains('~')
 	}
 
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
 		if (moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
-			complex => [displayName = complexName 
-				biologicalType = 'COMPLEX' 
+			complex => [
+				displayName = complexName
+				biologicalType = 'COMPLEX'
 				amount = 0.0
 				unit = ConcentrationUnit.UM
-				]
-			moleculeList.add(complex)			
+			]
+			moleculeList.add(complex)
 		}
 	}
 
@@ -91,12 +92,12 @@ class ModelBuilder extends IblSwitch<Object> {
 			VariableComplex: buildVariableName(variableKind)
 		}
 	}
-	
+
 	def buildVariableName(VariableKind2 variableKind) {
 		switch variableKind {
 			VariableName: buildVariableName(variableKind)
 			VariableType: variableKind.name
-			default:"UNKNOWNTYPEFROMbuildVariableNameVK2"
+			default: "UNKNOWNTYPEFROMbuildVariableNameVK2"
 		}
 	}
 
@@ -153,8 +154,6 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 	}
 
-	//
-	//
 	// 
 	def populate(Model xtextModel) {
 		return doSwitch(xtextModel) as roadblock.emf.ibl.Ibl.Model;
@@ -250,6 +249,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	override caseCellBody(CellBody cellBody) {
 		println("in caseCellBody")
 		var cell = modelFactory.createCell
+		
 		for (member : cellBody.functionContent.members) {
 			switch member {
 				RuleDefinition: cell.ruleList.add(member.doSwitch as Rule)
@@ -292,6 +292,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	override caseRegionBody(RegionBody regionBody) {
 		println("in caseRegionBody")
 		var region = modelFactory.createRegion
+
 		for (member : regionBody.functionContent.members) {
 			switch member {
 				CellInstantiation: region.cellList.add(member.doSwitch as Cell)
@@ -335,10 +336,6 @@ class ModelBuilder extends IblSwitch<Object> {
 		var device = modelFactory.createDevice
 		device.displayName = deviceDefinition.name.buildVariableName
 
-		for (rule : deviceDefinition.members.filter(RuleDefinition)) {
-			device.ruleList.add(rule.doSwitch as Rule)
-		}
-
 		for (member : deviceDefinition.members) {
 			switch member {
 				RuleDefinition: device.ruleList.add(member.doSwitch as Rule)
@@ -371,7 +368,7 @@ class ModelBuilder extends IblSwitch<Object> {
 			biologicalType = type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
 			degradationRateUnit = getRateUnit("s^-1")
-			bindingRateUnit = getRateUnit("s^-1") 
+			bindingRateUnit = getRateUnit("s^-1")
 			unbindingRateUnit = getRateUnit("s^-1")
 			degradationRate = 0.0;
 			bindingRate = 0.0;
@@ -383,12 +380,11 @@ class ModelBuilder extends IblSwitch<Object> {
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
-				]
+			]
 		else
 			molecule => [
 				amount = 0.0;
 				unit = getConcentrationUnit('uM');
-	
 			]
 
 		// defaults are overriden if specified in the constructor

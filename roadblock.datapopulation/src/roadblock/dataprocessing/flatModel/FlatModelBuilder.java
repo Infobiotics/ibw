@@ -52,6 +52,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	private IProperty flatProperty;
 
 	private Object propertyCompartment;
+	private boolean belongsToPropertyCompartment;
 	private Map<String, MolecularSpecies> moleculesByFlatName;
 	private Map<Object, Map<String, MolecularSpecies>> moleculesByCompartment;
 	private Map<Object, Object> parentsByCompartement;
@@ -107,13 +108,28 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(Region region) {
 
+		boolean isThePropertyCompartment = false;
+
+		if (belongsToCompartment(property, region)) {
+			propertyCompartment = region;
+			isThePropertyCompartment = belongsToPropertyCompartment = true;
+		}
+
 		registerMolecules(region);
 
-		register(region.getRuleList(), region);
+		if (belongsToPropertyCompartment) {
+			register(region.getRuleList(), region);
+		}
 
 		for (Cell cell : region.getCellList()) {
 			parentsByCompartement.put(cell, region);
 			cell.accept(this);
+		}
+
+		// stop the flattening process for rules not in the property
+		// compartments or its child compartments
+		if (isThePropertyCompartment) {
+			belongsToPropertyCompartment = false;
 		}
 
 		return null;
@@ -122,17 +138,33 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(Cell cell) {
 
+		boolean isThePropertyCompartment = false;
+
+		if (belongsToCompartment(property, cell)) {
+			propertyCompartment = cell;
+			isThePropertyCompartment = belongsToPropertyCompartment = true;
+		}
+
 		registerMolecules(cell);
 
-		register(cell.getRuleList(), cell);
+		if (belongsToPropertyCompartment) {
 
-		for (IProperty property : cell.getProperties()) {
-			handle(property, cell);
+			register(cell.getRuleList(), cell);
+
+			for (IProperty property : cell.getProperties()) {
+				handle(property, cell);
+			}
 		}
 
 		for (Device device : cell.getDeviceList()) {
 			parentsByCompartement.put(device, cell);
 			device.accept(this);
+		}
+
+		// stop the flattening process for rules not in the property
+		// compartments or its child compartments
+		if (isThePropertyCompartment) {
+			belongsToPropertyCompartment = false;
 		}
 
 		return null;
@@ -141,17 +173,33 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(Device device) {
 
+		boolean isThePropertyCompartment = false;
+
+		if (belongsToCompartment(property, device)) {
+			propertyCompartment = device;
+			isThePropertyCompartment = belongsToPropertyCompartment = true;
+		}
+
 		registerMolecules(device);
 
-		register(device.getRuleList(), device);
+		if (belongsToPropertyCompartment) {
 
-		for (IProperty property : device.getProperties()) {
-			handle(property, device);
+			register(device.getRuleList(), device);
+
+			for (IProperty property : device.getProperties()) {
+				handle(property, device);
+			}
 		}
 
 		for (Kinetics kinetics : device.getProcessList()) {
 			parentsByCompartement.put(kinetics, device);
 			kinetics.accept(this);
+		}
+
+		// stop the flattening process for rules not in the property
+		// compartments or its child compartments
+		if (isThePropertyCompartment) {
+			belongsToPropertyCompartment = false;
 		}
 
 		return null;
@@ -162,7 +210,9 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 		registerMolecules(kinetics);
 
-		register(kinetics.getRuleList(), kinetics);
+		if (belongsToPropertyCompartment) {
+			register(kinetics.getRuleList(), kinetics);
+		}
 
 		return null;
 	}
@@ -385,7 +435,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		moleculesByCompartment.get(compartment).put(molecularSpecies.getDisplayName(), molecule);
 
 		if (!moleculesByFlatName.containsKey(molecule.getDisplayName())) {
-			
+
 			flatModel.getMoleculeList().add(molecule);
 
 			// store molecule by flat name also
@@ -501,6 +551,19 @@ public class FlatModelBuilder implements IVisitor<Void> {
 				}
 			}
 		}
+	}
+
+	private boolean belongsToCompartment(IProperty property, Object compartment) {
+
+		boolean result = false;
+
+		if (compartment instanceof Cell) {
+			result = ((Cell) compartment).getProperties().indexOf(property) != -1;
+		} else if (compartment instanceof Device) {
+			result = ((Device) compartment).getProperties().indexOf(property) != -1;
+		}
+
+		return result;
 	}
 
 	public FlatModelBuilder(Model model, IProperty property) {

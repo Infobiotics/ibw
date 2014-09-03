@@ -30,6 +30,10 @@ rule(guard, rate, updates) ::= <<
 [] <guard> -> <rate> : <updates>;
 >>
 
+ruleWithoutRate(guard, updates) ::= <<
+[] <guard> -> <updates>;
+>>
+
 ruleGuard(molecules) ::= <<
 <molecules:{molecule | <molecule.name> > <molecule.multiplicity>}; separator=" & ">
 >>

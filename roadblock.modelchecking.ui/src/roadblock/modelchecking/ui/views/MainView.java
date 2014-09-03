@@ -77,7 +77,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private XtextResource currentIblResource;
 
 	private MessageConsole verificationConsole;
-	
+
 	private CheckboxTreeViewer propertyTreeViewer;
 	private Text modelFile;
 	private Text dataFile;
@@ -95,9 +95,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 	public void createPartControl(Composite parent) {
 
 		// add change listener model
-		final Composite parentComposite = parent;
+		//final Composite parentComposite = parent;
 		getSite().getPage().addPartListener(this);
-		
+
 		verificationConsole = new MessageConsole("Verification Results", null);
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { verificationConsole });
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(verificationConsole);
@@ -359,7 +359,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 							IProperty property = (IProperty) checkedProperty;
 							String exportFilename = String.format("%s%s%s", filenameWithoutExtension, ++exportIndex, fileExtension);
-							
+
 							VerificationManager.getInstance().export(model, property, target, exportFilename);
 						}
 					}
@@ -390,7 +390,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 
 		final MessageConsoleStream consoleStream = verificationConsole.newMessageStream();
-		
+
 		IRunnableWithProgress verificationTask = new IRunnableWithProgress() {
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
@@ -410,7 +410,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 								public void run() {
 
 									try {
-										
+
 										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
 										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFilename + ".result"));
 
@@ -424,8 +424,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 										in.close();
 										fileStream.close();
-										
-									} catch (IOException e) { }
+
+									} catch (IOException e) {
+									}
 								}
 							});
 
@@ -433,8 +434,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 							while (!monitor.isCanceled() && streamingThread.isAlive()) {
 							}
-							
-							if(streamingThread.isAlive()) {
+
+							if (streamingThread.isAlive()) {
 								streamingThread.interrupt();
 								break;
 							}

@@ -18,7 +18,7 @@ public class ModelcheckingUtil {
 		roadblock.xtext.ibl.ibl.Model semanticModel = (roadblock.xtext.ibl.ibl.Model) iblResource.getContents().get(0);
 		ModelBuilder modelBuilder = new ModelBuilder();
 		Model model = semanticModel != null ? modelBuilder.populate(semanticModel) : null;
-		
+
 		return model;
 	}
 }
