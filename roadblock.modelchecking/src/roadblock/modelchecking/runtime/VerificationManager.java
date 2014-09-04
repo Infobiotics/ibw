@@ -39,6 +39,9 @@ public class VerificationManager {
 		case PRISM:
 			executor = new PrismExecutor();
 			break;
+		case NUSMV:
+			executor = new NuSmvExecutor();
+			break;
 		default:
 			break;
 		}

@@ -4,9 +4,9 @@ import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.translation.model.IModelTranslator;
-import roadblock.modelchecking.translation.model.PrismModelTranslator;
+import roadblock.modelchecking.translation.model.NuSmvTranslator;
+import roadblock.modelchecking.translation.model.PrismTranslator;
 import roadblock.modelchecking.translation.property.IPropertyTranslator;
-import roadblock.modelchecking.translation.property.PrismPropertyTranslator;
 
 public class TranslationManager {
 
@@ -45,7 +45,7 @@ public class TranslationManager {
 
 		switch (target) {
 		case PRISM:
-			propertyTranslator = new PrismPropertyTranslator();
+			propertyTranslator = new roadblock.modelchecking.translation.property.PrismTranslator();
 			break;
 		default:
 			break;
@@ -60,7 +60,10 @@ public class TranslationManager {
 
 		switch (target) {
 		case PRISM:
-			modelTranslator = new PrismModelTranslator();
+			modelTranslator = new PrismTranslator();
+			break;
+		case NUSMV: 
+			modelTranslator = new NuSmvTranslator();
 			break;
 		default:
 			break;

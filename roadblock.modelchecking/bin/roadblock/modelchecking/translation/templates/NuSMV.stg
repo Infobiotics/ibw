@@ -1,0 +1,55 @@
+model(name, molecules, initialConcentrations, updateRules) ::= <<
+
+MODULE main
+VAR
+	--*******************
+	-- molecular species
+	--*******************
+	<molecules:{molecule | <molecule>}; separator="\n">
+
+ASSIGN
+	--*******************
+	-- initial molecule concentrations
+	--*******************
+	<initialConcentrations:{concentration | <concentration>}; separator="\n">
+
+	--*******************
+	-- update rules
+	--*******************
+	<updateRules:{updateRule | <updateRule>}; separator="\n">
+>>
+
+initialConcentration(name, concentration) ::= <<
+init(<name>) := <concentration>;
+>>
+
+molecule(name, maxConcentration) ::= <<
+<name> : 0..<maxConcentration>;
+>>
+
+variableUpdate(name, value) ::= <<
+next(<name>) := <value>;
+>>
+
+caseExpression(variable, branches) ::= <<
+case 
+	<branches:{branch | <branch>}; separator="\n">
+	TRUE : <variable>;
+esac
+>>
+
+caseBranch(guard, value) ::= <<
+<guard> : <value>;
+>>
+
+guard(ruleIndex, molecules) ::= <<
+(_choice = <ruleIndex>) <molecules:{molecule | & (<molecule.name> > <molecule.multiplicity>)}; separator=" ">
+>>
+
+moleculeConsumption(molecule) ::= <<
+<molecule.name> - <molecule.multiplicity>
+>>
+
+moleculeProduction(molecule) ::= <<
+<molecule.name> + <molecule.multiplicity>
+>>

@@ -10,7 +10,7 @@ import roadblock.emf.ibl.Ibl.Model;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.translation.TranslationManager;
 
-public class PrismExecutor implements IModelcheckingExecutor {
+public class NuSmvExecutor implements IModelcheckingExecutor {
 
 	private TranslationManager translationManager = TranslationManager.getInstance();
 
@@ -22,26 +22,13 @@ public class PrismExecutor implements IModelcheckingExecutor {
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
 
-		writeFile(filename + ".sm", modelTranslation);
+		writeFile(filename + ".smv", modelTranslation);
 	}
 
 	@Override
 	public Process verify(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException {
 
-		FlatModelManager flatModelManager = new FlatModelManager(model);
-
-		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
-		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
-		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
-
-		writeFile(filename + ".sm", modelTranslation);
-
-		String[] verificationCommand = new String[] { "prism", filename, "-csl", propetyTranslation };
-		//String[] verificationCommand = new String[] { "ping", "google.ro", "-c", "10" };
-
-		System.out.println(verificationCommand[0] + " " + verificationCommand[1] + " " + verificationCommand[2] + " \'" + verificationCommand[3] + "\'");
-
-		return Runtime.getRuntime().exec(verificationCommand);
+		return null;
 	}
 
 	private void writeFile(String fileName, String content) throws IOException {

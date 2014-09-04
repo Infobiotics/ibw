@@ -19,9 +19,9 @@ import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.modelchecking.ModelcheckingTarget;
 
-public class PrismModelTranslator implements IModelTranslator {
+public class PrismTranslator implements IModelTranslator {
 
-	private static STGroup prismTemplates = new STGroupFile(PrismModelTranslator.class.getResource("../templates/prism.stg").getFile());
+	private static STGroup prismTemplates = new STGroupFile(PrismTranslator.class.getResource("../templates/PRISM.stg").getFile());
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();

@@ -33,7 +33,7 @@ import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.modelchecking.ModelcheckingTarget;
 
-public class PrismPropertyTranslator implements IPropertyTranslator {
+public class PrismTranslator implements IPropertyTranslator {
 
 	@Override
 	public String visit(UnaryProbabilityProperty expression) {

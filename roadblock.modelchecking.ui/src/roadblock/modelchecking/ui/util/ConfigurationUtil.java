@@ -55,7 +55,7 @@ public class ConfigurationUtil {
 
 		loadCurrentConfig();
 		config.modelName = modelName;
-		config.dataFile = modelName + ".sm";
+		config.dataFile = modelName;
 		config.modelFile = modelFilename;
 		config.dataDirectory = workspacePath + resourcePath;
 

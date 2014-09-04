@@ -95,7 +95,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	public void createPartControl(Composite parent) {
 
 		// add change listener model
-		//final Composite parentComposite = parent;
+		// final Composite parentComposite = parent;
 		getSite().getPage().addPartListener(this);
 
 		verificationConsole = new MessageConsole("Verification Results", null);
@@ -145,8 +145,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		modelChecker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		modelChecker.add("PRISM");
 		modelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
-		modelChecker.add("MC2");
-		modelChecker.setData("MC2", ModelcheckingTarget.MC2);
+		modelChecker.add("NuSMV");
+		modelChecker.setData("NuSMV", ModelcheckingTarget.NUSMV);
 
 		// create confidence value widget
 		Label confidenceLabel = new Label(parent, SWT.NONE);
@@ -194,7 +194,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		// create export to PRISM button
 		exportPrismButton = new Button(parent, SWT.PUSH);
-		exportPrismButton.setText("Export to PRISM");
+		exportPrismButton.setText("Export Model");
 		exportPrismButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -344,8 +344,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 		final ModelcheckingTarget target = (ModelcheckingTarget) modelChecker.getData(modelChecker.getText());
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
-		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 
 		IRunnableWithProgress exportTask = new IRunnableWithProgress() {
 			@Override
@@ -358,7 +356,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof IProperty) {
 
 							IProperty property = (IProperty) checkedProperty;
-							String exportFilename = String.format("%s%s%s", filenameWithoutExtension, ++exportIndex, fileExtension);
+							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
 							VerificationManager.getInstance().export(model, property, target, exportFilename);
 						}
