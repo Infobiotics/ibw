@@ -1,5 +1,7 @@
 package roadblock.biocompiler
 
+import java.util.UUID
+import java.util.Random
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.emf.ibl.Ibl.ATGCDirective
 import org.eclipse.emf.ecore.EObject
@@ -35,6 +37,21 @@ import org.jacop.constraints.XgtY
 import org.jacop.constraints.XplusCeqZ
 import roadblock.emf.bioparts.Bioparts.Biopart
 import roadblock.emf.ibl.Ibl.ATGCArrange
+import org.sbolstandard.core.DnaComponent
+import org.sbolstandard.core.DnaSequence
+import org.sbolstandard.core.SBOLDocument
+import org.sbolstandard.core.SBOLFactory
+import org.sbolstandard.core.SequenceAnnotation
+import org.sbolstandard.core.StrandType
+import org.sbolstandard.core.util.SBOLPrettyWriter
+import org.sbolstandard.core.util.SequenceOntology
+import org.sbolstandard.core.SBOLValidationException
+import org.sbolstandard.core.impl.DnaComponentImpl.DnaSequenceWrapper
+import java.net.URI
+import java.io.FileOutputStream
+import com.almworks.sqlite4java.SQLiteConnection
+import java.io.File
+import roadblock.emf.ibl.Ibl.ATGCDirection
 
 class Biocompiler {
 	val Model model 
@@ -91,7 +108,8 @@ class Biocompiler {
 		}
 	}
 	println(convertToXml(biocompilerModel))
-	}
+
+}
 
 	def completeDevices(){
 		for(cell: biocompilerModel.cells){
@@ -219,9 +237,63 @@ class Biocompiler {
 		
 	}
 
+	def findPart(String cellName, String deviceName, String partName){
+		return biocompilerModel.cells.findFirst[name==cellName]?.devices.findFirst[name==deviceName]?.parts.findFirst[name==partName]
+	}
+
+	def findPart(String cellName, String partName){
+		val cell = biocompilerModel.cells.findFirst[name==cellName]
+		for(device: cell.devices){
+			var part = device.parts.findFirst[name==partName]
+			if(part != null) return part
+		}
+		return null
+	}
+	
+	def findDevice(String cellName, String deviceName){
+		return biocompilerModel.cells.findFirst[name==cellName]?.devices.findFirst[name==deviceName]	
+	}
+	
+	
+	def constraintARRANGE(){
+		for(region: model.regionList)
+		for(cell: region.cellList){
+			// at cell level
+			for(arrange: cell.ATGCCommandList.filter[class == ATGCArrange].map[it as ATGCArrange]){
+				val partList = arrange.partList.map[displayName]
+				for(k: 1..(partList.length-1)){
+					val part1 = findPart(cell.displayName, partList.get(k - 1))
+					val part2 = findPart(cell.displayName, partList.get(k))
+					store.impose(new XltY(part1.position,part2.position))
+				}
+			}
+			for(device: cell.deviceList){
+				// at device level
+			for(arrange: device.ATGCCommandList.filter[class == ATGCArrange].map[it as ATGCArrange]){
+				val partList = arrange.partList.map[displayName]
+				for(k: 1..(partList.length-1)){
+					val part1 = findPart(cell.displayName, device.displayName, partList.get(k - 1))
+					val part2 = findPart(cell.displayName, device.displayName, partList.get(k))
+					store.impose(new XltY(part1.position,part2.position))
+				}
+			}			
+			}
+		}
+	}
+	
+	
+		
 	def constraintDirection(){
-//		store.impose(new XeqC(biocompilerModel.cells.get(0).devices.get(0).direction,0))
-			
+		for(region: model.regionList)
+		for(cell: region.cellList){
+			for(device: cell.deviceList){
+			for(command: device.ATGCCommandList.filter[class == ATGCDirection].map[it as ATGCDirection]){
+				val biocompilerDevice = findDevice(cell.displayName,device.displayName)
+				if(biocompilerDevice != null)
+						store.impose(new XeqC(biocompilerDevice.direction, if(command.direction == ' BACKWARD') 1 else 0))
+			}
+			}
+		}
 	}
 
 	def allCombinations(Integer n){ // produces all combinations of n items
@@ -263,8 +335,50 @@ class Biocompiler {
 			println(allParts.sortBy[position.value].map[name])
 		}
 		
+	}
+	
+	def findTerminatorSequence(){
+		// how many needed
+		var numberTerminator = 0
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices)
+				numberTerminator = numberTerminator + device.parts.filter[biologicalFunction =='TERMINATOR'].length
 		
-	}		
+		// pick some from the DB
+		val databaseLocation = "resources/partRegistry.db"
+		var db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		
+		var sql = db.prepare("SELECT * FROM partRegistry WHERE BiologicalFunction=='terminator' ORDER BY RANDOM() LIMIT " + numberTerminator)
+		
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices)
+				for(part: device.parts.filter[biologicalFunction =='TERMINATOR']){
+					sql.step
+					part.sequence = sql.columnString(3)
+					part.accessionURL = 'http://roadblock.com/atgc/terminator/computerGenerated/seq#' + part.sequence
+					part.name = sql.columnString(1)
+				}
+		
+		// tidying up
+		sql.dispose
+		db.dispose		
+		
+	}
+	
+	def findRBSSequence(){
+		// RBS is ShineDelgarno + arbitrary sequence 8bp
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices)
+				for(part: device.parts.filter[biologicalFunction =='RBS']){
+					part => [
+						sequence = 'AGGAGGT' + randomDNA(8)
+						accessionURL = 'http://roadblock.com/atgc/rbs/computerGenerated/seq#' + sequence
+				]
+				}
+	}
+	
+			
 		// helper to find first declaration of variable given its displayName from local container upwards
 	def MolecularSpecies searchFirstDeclaration(EObject container, String displayName) {
 
@@ -305,4 +419,83 @@ class Biocompiler {
 		resource.contents.add(eObject);
 		return processor.saveToString(resource, null);
 	}
+	
+	// export biocompiler model to an SBOL document
+	def SBOLDocument makeSBOLDocument(){
+		var document = SBOLFactory.createDocument
+		for(cell: biocompilerModel.cells){
+			var dnaComponent = SBOLFactory.createDnaComponent
+			dnaComponent.URI = URI.create('ATGC://' + cell.name)	
+			dnaComponent => [
+				description = 'Cell: '+ cell.name
+				name = cell.name
+				displayId = cell.name
+				]
+			dnaComponent.addType = URI.create('http://www.w3.org/1999/02/22-rdf-syntax-ns#')		
+			// gather all parts in that cell
+			val ArrayList<Biopart> allParts = new ArrayList()
+			for(device: cell.devices)
+				allParts.addAll(device.parts)
+				
+			var wholeSequence = SBOLFactory.createDnaSequence
+			wholeSequence.nucleotides = allParts.sortBy[position.value].map[sequence].reduce[ a, b | a + b].toLowerCase
+			wholeSequence.URI = URI.create('http://sbols.org/seq#d23749adb3a7e0e2f09168cb7267a6113b238973')
+			dnaComponent.dnaSequence = wholeSequence
+			
+			var sequenceStart = 1
+			for(part :allParts.sortBy[position.value]){
+				dnaComponent.addAnnotation(makeAnnotation(part, sequenceStart, sequenceStart + part.sequence.length -1 ))
+				sequenceStart = sequenceStart + part.sequence.length -1						
+			}
+
+		document.addContent(dnaComponent )		
+
+		}
+		
+		return document // only export construct for the last cell for the time being
+	}
+	
+	def private static SequenceAnnotation makeAnnotation(Biopart part, int sequenceStart, int sequenceEnd){
+		var annotation = SBOLFactory.createSequenceAnnotation
+		annotation.URI = URI.create("http://sbols.org/anot#" + randomHashLookingString)
+		annotation =>[
+			bioStart = 1 //sequenceStart
+			bioEnd = 4 // sequenceEnd
+			strand = StrandType.POSITIVE
+		]
+		var dnaComponent = SBOLFactory.createDnaComponent()
+		println('\t' + part.accessionURL)
+		if(part.accessionURL==null || part.accessionURL == '' )
+			dnaComponent.URI = URI.create("http://sbols.org/" + part.name + "/dnaComponent")
+		else
+			dnaComponent.URI = URI.create(part.accessionURL)
+		dnaComponent =>[
+			displayId = part.ID
+			name = part.name ]
+		
+		// use the predefined SequenceOntology constant
+		switch(part.biologicalFunction){
+			case 'PROMOTER': dnaComponent.addType(SequenceOntology.PROMOTER)	
+			case 'GENE': dnaComponent.addType(SequenceOntology.CDS)
+			case 'RBS': dnaComponent.addType(SequenceOntology.type("SO_0000139"))	
+			case 'TERMINATOR': dnaComponent.addType(SequenceOntology.TERMINATOR)
+			default: dnaComponent.addType(URI.create("http://purl.obolibrary.org/obo/SO_0000110"))
+			
+		}
+
+		annotation.setSubComponent(dnaComponent);
+		return annotation;
+		
+	}
+	
+	def private static randomHashLookingString(){		
+		return UUID.randomUUID.toString
+		
+	}
+	
+	def private static String randomDNA(int stringLength){
+		val rng = new Random
+		return (1..stringLength).map["atgc".charAt(rng.nextInt(4)).toString].reduce[a,b | a + b]
+	}
+	
 }
