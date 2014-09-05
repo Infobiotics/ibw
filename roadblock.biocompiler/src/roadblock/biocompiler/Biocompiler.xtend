@@ -54,6 +54,7 @@ import java.io.File
 import roadblock.emf.ibl.Ibl.ATGCDirection
 import java.net.URL
 import org.apache.commons.io.IOUtils
+import org.sbolstandard.core.Collection
 
 class Biocompiler {
 	val Model model 
@@ -292,7 +293,7 @@ class Biocompiler {
 			for(command: device.ATGCCommandList.filter[class == ATGCDirection].map[it as ATGCDirection]){
 				val biocompilerDevice = findDevice(cell.displayName,device.displayName)
 				if(biocompilerDevice != null)
-						store.impose(new XeqC(biocompilerDevice.direction, if(command.direction == ' BACKWARD') 1 else 0))
+						store.impose(new XeqC(biocompilerDevice.direction, if(command.direction == 'BACKWARD') 1 else 0))
 			}
 			}
 		}
@@ -394,8 +395,13 @@ class Biocompiler {
 	}
 
 	def private static getSequenceFromNCL(String partName){
-		println("\t getSequenceFromNCL " + partName)
-		return 'gggg'
+		var url = new URL("http://sbol.ncl.ac.uk:8081/part/"+ partName + "/sbol").openStream
+		var reader = SBOLFactory.createReader
+		var sbol = reader.read(url)
+				
+		val sequence = ((sbol?.contents?.get(0) as Collection)?.components?.get(0) as DnaComponent)?.dnaSequence?.nucleotides 
+		
+		return if(sequence==null) "sequence not found" else sequence
 	}
 	
 	def findTerminatorSequence(){

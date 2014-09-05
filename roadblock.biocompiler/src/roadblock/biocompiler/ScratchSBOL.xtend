@@ -20,6 +20,7 @@ import org.sbolstandard.core.util.SequenceOntology
 import org.sbolstandard.core.SBOLValidationException
 import org.apache.commons.io.IOUtils
 import java.net.URL
+import org.sbolstandard.core.Collection
 
 class ScratchSBOL {
 	
@@ -153,7 +154,7 @@ def buildingOneDevice(){
 		// print the contents of the SBOL document in a more readable format
 		println("Read back the contents of the SBOL document from " + file);
 
-		new SBOLPrettyWriter().write(newDocument, System.out);
+		new SBOLPrettyWriter().write(newDocument, System.out)
 	}
 
 	/**
@@ -340,10 +341,12 @@ def Example03_Validation(){
 @Test 
 	def readOnlineSBOL(){
 		var url = new URL("http://sbol.ncl.ac.uk:8081/part/BO_2689/sbol").openStream
-		var content = IOUtils.toString(url)
-		IOUtils.closeQuietly(url)
-		
-		
+		var reader = SBOLFactory.createReader
+		var sbol = reader.read(url)
+				
+		new SBOLPrettyWriter().write(sbol, System.out)
+		val sequence = ((sbol?.contents?.get(0) as Collection)?.components?.get(0) as DnaComponent)?.dnaSequence?.nucleotides 
+		println(sequence)
 		assertTrue(false)
 	}	
 }
