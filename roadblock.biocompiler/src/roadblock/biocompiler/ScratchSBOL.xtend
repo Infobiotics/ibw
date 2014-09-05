@@ -18,6 +18,8 @@ import org.sbolstandard.core.StrandType
 import org.sbolstandard.core.util.SBOLPrettyWriter
 import org.sbolstandard.core.util.SequenceOntology
 import org.sbolstandard.core.SBOLValidationException
+import org.apache.commons.io.IOUtils
+import java.net.URL
 
 class ScratchSBOL {
 	
@@ -322,5 +324,26 @@ def Example03_Validation(){
 		SBOLFactory.validate(document);
 		System.out.println("Validation successful");			
 }	
-	
+
+@Test
+	def readingURL(){
+		var url = new URL("http://parts.igem.org/fasta/parts/BBa_K592009").openStream
+		var result = IOUtils.toString(url)
+		IOUtils.closeQuietly(url)
+		println("??? " + result)
+		
+		result = result.substring(result.indexOf("\n")).replace("\n","")
+		
+		println(result)
+		assertTrue(true)
+	}
+@Test 
+	def readOnlineSBOL(){
+		var url = new URL("http://sbol.ncl.ac.uk:8081/part/BO_2689/sbol").openStream
+		var content = IOUtils.toString(url)
+		IOUtils.closeQuietly(url)
+		
+		
+		assertTrue(false)
+	}	
 }

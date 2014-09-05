@@ -22,6 +22,9 @@ import org.sbolstandard.core.SBOLFactory
 import java.io.FileOutputStream
 import org.sbolstandard.core.SBOLValidationException
 
+import org.apache.commons.io.IOUtils
+import java.net.URL;
+
 class PartGatheringTests {
 	
 	// export an EMF model to XML
@@ -110,6 +113,68 @@ class PartGatheringTests {
 //		
 		
 	}
+	
+	@Test
+	def void testLookUpSequence(){
+		val mp = IblPackage.eINSTANCE // necessary for registering the URI
+		val XMLsource = readFile("../roadblock.xtext.ibl.tests/testModels/testSequenceLookup.xml",Charset.defaultCharset())
+		val model = convertToEObject(XMLsource) as Model
+		var biocompiler = new Biocompiler(model)
+		biocompiler.gatherParts	
+
+		biocompiler.lookUpSequence
+		
+		for(cell: biocompiler.biocompilerModel.cells)
+			for(device: cell.devices){
+				println("cell: " + cell.name + ", device: " + device.name)
+				for(part: device.parts)
+					println("\t " + part.name + ": URI: " + part.accessionURL + ", seq: " + part.sequence)
+				
+			}
+		
+		
+		// 	user-submitted
+		var parts = biocompiler.biocompilerModel.cells.get(0).devices.get(0).parts
+		assertEquals(parts.get(0).name,'puser')	
+		assertEquals(parts.get(0).accessionURL,'ATGC://user-submitted/seq#AAA')
+		assertEquals(parts.get(0).sequence,'AAA')	
+
+		assertEquals(parts.get(1).name,'guser')	
+		assertEquals(parts.get(1).accessionURL,'ATGC://user-submitted/seq#TTT')
+		assertEquals(parts.get(1).sequence,'TTT')
+		
+		// DB 	
+		parts = biocompiler.biocompilerModel.cells.get(0).devices.get(1).parts
+		assertEquals(parts.get(0).name,'pbiofab')	
+		assertEquals(parts.get(0).accessionURL,'ATGC://biofab/part/PLTETo1')
+		assertEquals(parts.get(0).sequence,'tccctatcagtgatagagattgacatccctatcagtgatagagatactgagcacatcagcaggacgcactgacc')	
+
+		assertEquals(parts.get(1).name,'gbiofab')	
+		assertEquals(parts.get(1).accessionURL,'ATGC://user-submitted/part/lasr')
+		assertEquals(parts.get(1).sequence,'taccggaaccaactgccaaaagaactcgaccttgcgagttcaccttttaacctcacctcgcggtaggacgtcttctaccgctcgctggaacctaagagcttctaggacaagccggacaacggattcctgtcggtcctgatgctcttgcggaagtagcagccgttgatgggccggcggaccgcgctcgtaatgctggcccgaccgatgcgcgcccagctgggctgccagtcagtgacatgggtctcgcatgacggctaaaagacccttggcaggtagatggtctgcgctttcgtcgtgctcaagaagctccttcggagccggcggccggaccacatacccgactggtacggcgacgtaccacgagcgccgcttgagccgcgcgactcggagtcgcaccttcgccttttggcccggctccggttggcaaagtacctcagccaggacggctgggacacctacgagttcctgatgcgtgacgtctcgccacggcctgaccggaagcttgtaggccagtcgtttggccaccaagactggtcggccctcttccttcacaacgtcaccacgcggtagccgttctggtcaaccctttatagccaatagacgttgacgagccttcggttacacttgaaggtataccctttataagccgccttcaagccacactggagggcggcgcatcgccggtaataccggcaattaaacccagaataatgagagact')
+		
+		// parts registry
+		parts = biocompiler.biocompilerModel.cells.get(0).devices.get(2).parts
+		assertEquals(parts.get(0).name,'ppartsregistry')	
+		assertEquals(parts.get(0).accessionURL,'http://parts.igem.org/Part:BBa_I14033')
+		assertEquals(parts.get(0).sequence,'ggcacgtaagaggttccaactttcaccataatgaaaca')	
+
+		assertEquals(parts.get(1).name,'gpartsregistry')	
+		assertEquals(parts.get(1).accessionURL,'http://parts.igem.org/Part:BBa_K592009')
+		assertEquals(parts.get(1).sequence,'atgagtgtgatcgctaaacaaatgacctacaaggtttatatgtcaggcacggtcaatggacactactttgaggtcgaaggcgatggaaaaggtaagccctacgagggggagcagacggtaaagctcactgtcaccaagggcggacctctgccatttgcttgggatattttatcaccacagtgtcagtacggaagcataccattcaccaagtaccctgaagacatccctgactatgtaaagcagtcattcccggagggctatacatgggagaggatcatgaactttgaagatggtgcagtgtgtactgtcagcaatgattccagcatccaaggcaactgtttcatctaccatgtcaagttctctggtttgaactttcctcccaatggacctgtcatgcagaagaagacacagggctgggaacccaacactgagcgtctctttgcacgagatggaatgctgctaggaaacaactttatggctctgaagttagaaggaggcggtcactatttgtgtgaatttaaaactacttacaaggcaaagaagcctgtgaagatgccagggtatcactatgttgaccgcaaactggatgtaaccaatcacaacaaggattacacttcggttgagcagtgtgaaatttccattgcacgcaaacctgtggtcgcctaataa')
+		
+		// SBOL NCL
+		parts = biocompiler.biocompilerModel.cells.get(0).devices.get(3).parts
+		assertEquals(parts.get(0).name,'pncl')	
+		assertEquals(parts.get(0).accessionURL,'http://sbol.ncl.ac.uk:8081/part/BO_2689')
+		assertEquals(parts.get(0).sequence,'')	
+
+		assertEquals(parts.get(1).name,'gncl')	
+		assertEquals(parts.get(1).accessionURL,'http://sbol.ncl.ac.uk:8081/part/BO_28536')
+		assertEquals(parts.get(1).sequence,'')
+		
+	}
+	
 	
 	@Test
 	def void partsOnlyTests(){

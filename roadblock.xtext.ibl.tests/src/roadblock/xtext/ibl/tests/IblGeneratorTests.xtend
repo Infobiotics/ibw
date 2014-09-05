@@ -46,4 +46,12 @@ class IblGeneratorTests {
 		val source = readFile("testModels/testATGC00.ibl",Charset.defaultCharset())
 		source.assertCompilesTo(readFile("testModels/testATGC00.xml",Charset.defaultCharset()))
 	}
+	
+	@Test 
+	def void compileTestLookupSequence(){
+		val source = readFile("testModels/testSequenceLookup.ibl",Charset.defaultCharset())
+		source.assertCompilesTo(readFile("testModels/testSequenceLookup.xml",Charset.defaultCharset()))
+	}
+	
+	
 }

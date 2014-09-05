@@ -52,6 +52,8 @@ import java.io.FileOutputStream
 import com.almworks.sqlite4java.SQLiteConnection
 import java.io.File
 import roadblock.emf.ibl.Ibl.ATGCDirection
+import java.net.URL
+import org.apache.commons.io.IOUtils
 
 class Biocompiler {
 	val Model model 
@@ -337,6 +339,65 @@ class Biocompiler {
 		
 	}
 	
+	def lookUpSequence(){
+		// look up sequences in built-in database or online database
+		var ArrayList<Biopart> allParts = new ArrayList()
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices)
+				allParts.addAll(device.parts.filter[#['PROMOTER', 'GENE'].contains(biologicalFunction)])
+		val builtinBiofab = 'atgc://biofab/part/'
+		val builtinUser = 'atgc://user-submitted/part/'
+		val partsregistry = 'http://parts.igem.org/part:'
+		val ncl = 'http://sbol.ncl.ac.uk:8081/part/'
+		for(part: allParts){
+			if(part.sequence == null || part.sequence == ''){
+				val url = part.accessionURL
+				// look up sequence from URI
+				switch (url){
+					case url.toLowerCase.startsWith(builtinBiofab):{part.sequence = getSequenceFromDatabase(url.substring(builtinBiofab.length),'biofab')}
+					case url.toLowerCase.startsWith(builtinUser):{part.sequence = getSequenceFromDatabase(url.substring(builtinUser.length),'user-submitted')}
+					case url.toLowerCase.startsWith(partsregistry):{part.sequence = getSequenceFromPartsRegistry(url.substring(partsregistry.length))}
+					case url.toLowerCase.startsWith(ncl):{part.sequence = getSequenceFromNCL(url.substring(ncl.length))}
+					default : {part.sequence = 'Repository not found'}
+				}			
+			}
+			else {
+				part.accessionURL = 'ATGC://user-submitted/seq#' + part.sequence
+			}
+			
+		}
+	}
+	
+	def private  getSequenceFromDatabase(String partName, String collection){
+		// pick some from the DB
+		val databaseLocation = "resources/partRegistry.db"
+		var db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		
+		var sql = db.prepare("SELECT sequence FROM partRegistry WHERE LOWER(name) = '"+ partName.toLowerCase +"' AND Origin ='" + collection + "'")
+		
+		var sequence = if(sql.step) sql.columnString(0).toLowerCase else 'part not found'
+		
+		// tidying up
+		sql.dispose
+		db.dispose		
+		
+		return sequence
+	}
+
+	def private static getSequenceFromPartsRegistry(String partName){
+		var url = new URL('http://parts.igem.org/fasta/parts/' + partName).openStream
+		var result = IOUtils.toString(url)
+		IOUtils.closeQuietly(url);
+		
+		return result.substring(result.indexOf("\n")).replace("\n","")
+	}
+
+	def private static getSequenceFromNCL(String partName){
+		println("\t getSequenceFromNCL " + partName)
+		return 'gggg'
+	}
+	
 	def findTerminatorSequence(){
 		// how many needed
 		var numberTerminator = 0
@@ -419,6 +480,7 @@ class Biocompiler {
 		resource.contents.add(eObject);
 		return processor.saveToString(resource, null);
 	}
+	
 	
 	// export biocompiler model to an SBOL document
 	def SBOLDocument makeSBOLDocument(){
