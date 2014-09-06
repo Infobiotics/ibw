@@ -21,6 +21,8 @@ import org.sbolstandard.core.SBOLValidationException
 import org.apache.commons.io.IOUtils
 import java.net.URL
 import org.sbolstandard.core.Collection
+import java.io.InputStreamReader
+import java.io.BufferedReader
 
 class ScratchSBOL {
 	
@@ -347,6 +349,35 @@ def Example03_Validation(){
 		new SBOLPrettyWriter().write(sbol, System.out)
 		val sequence = ((sbol?.contents?.get(0) as Collection)?.components?.get(0) as DnaComponent)?.dnaSequence?.nucleotides 
 		println(sequence)
-		assertTrue(false)
+		assertTrue(true)
+	}
+	
+@Test
+	def optimiseRBS(){
+		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh","CTAGGTACAGTGCTAGCTtctaga", "atggtgaatgtgaaaccagtaacgttatacgatgt","1000").start()
+//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh").start()
+		var is = process.getInputStream
+		var is2 = process.errorStream
+		var isr = new InputStreamReader(is)
+		var isr2 = new InputStreamReader(is2)
+		var br = new BufferedReader(isr)
+		var br2 = new BufferedReader(isr2)
+		var line=''
+
+		while ((line = br2.readLine()) != null) {
+		  println("RBS Calculator / Standard error:" + line);
+		}
+
+		var lineNumber = 1
+		var sequence = ''
+		while ((line = br.readLine()) != null) {
+		  if(lineNumber==2) sequence = line
+		  lineNumber++
+		}
+		
+		
+		println('done: ' + sequence)
+		
+		assertTrue(false)	
 	}	
 }

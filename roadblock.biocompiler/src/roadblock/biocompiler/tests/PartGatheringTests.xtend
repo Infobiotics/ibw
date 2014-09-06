@@ -267,4 +267,22 @@ class PartGatheringTests {
 </roadblock.emf.bioparts:BiocompilerModel>
 ')
 	}
+	
+	@Test
+	def testOptimiseRBS(){
+		println("Testing optimiseRBS")
+		val preSequence = "CTAGGTACAGTGCTAGCTtctaga"
+		val postSequence = "atggtgaatgtgaaaccagtaacgttatacgatgt"
+		val rate = 550.80
+		try {
+			var sequence = Biocompiler.optimiseRBS(preSequence, postSequence, rate)
+			println("RBS: " + sequence)
+			assertTrue(true)
+			assertTrue(sequence.length > 0)
+		}
+		catch (Exception e) {
+			println("\t Problem with optimiseRBS: " + e.toString)
+			assertTrue(false)
+		}
+	}
 }

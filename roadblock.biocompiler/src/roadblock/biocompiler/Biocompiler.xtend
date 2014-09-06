@@ -55,6 +55,8 @@ import roadblock.emf.ibl.Ibl.ATGCDirection
 import java.net.URL
 import org.apache.commons.io.IOUtils
 import org.sbolstandard.core.Collection
+import java.io.InputStreamReader
+import java.io.BufferedReader
 
 class Biocompiler {
 	val Model model 
@@ -445,7 +447,31 @@ class Biocompiler {
 				}
 	}
 	
-			
+	def static optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate){
+		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh","CTAGGTACAGTGCTAGCTtctaga", "atggtgaatgtgaaaccagtaacgttatacgatgt","1000").start()
+//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh","","","100").start()
+		var is = process.getInputStream
+		var is2 = process.errorStream
+		var isr = new InputStreamReader(is)
+		var isr2 = new InputStreamReader(is2)
+		var br = new BufferedReader(isr)
+		var br2 = new BufferedReader(isr2)
+		var line=''
+
+		while ((line = br2.readLine()) != null) {
+		  println("RBS Calculator / Standard error:" + line);
+		}
+
+		var lineNumber = 1
+		var sequence = ''
+		while ((line = br.readLine()) != null) {
+		  if(lineNumber==2) sequence = line
+		  lineNumber++
+		}
+		
+		return sequence
+	}
+	
 		// helper to find first declaration of variable given its displayName from local container upwards
 	def MolecularSpecies searchFirstDeclaration(EObject container, String displayName) {
 
