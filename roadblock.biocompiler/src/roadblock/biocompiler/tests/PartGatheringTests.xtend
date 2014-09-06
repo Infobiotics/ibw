@@ -80,6 +80,8 @@ class PartGatheringTests {
 		
 		println("===========")
 		println("Find sequences")
+		biocompiler.lookUpSequence
+		biocompiler.addStartCodonToCDS
 		biocompiler.findRBSSequence
 		biocompiler.findTerminatorSequence
 		

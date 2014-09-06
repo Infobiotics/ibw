@@ -371,6 +371,15 @@ class Biocompiler {
 		}
 	}
 	
+	def addStartCodonToCDS(){ // add a start codon to GENEs if not present
+//	valid start codons: 'ATG' 'GTG'
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices)
+				for(part: device.parts.filter[biologicalFunction == 'GENE'])
+					if(!#['ATG','GTG'].contains(part.sequence.substring(0,2).toUpperCase))
+						part.sequence = 'ATG' + part.sequence
+		
+	}
 	def private  getSequenceFromDatabase(String partName, String collection){
 		// pick some from the DB
 		val databaseLocation = "resources/partRegistry.db"
@@ -440,16 +449,24 @@ class Biocompiler {
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
 				for(part: device.parts.filter[biologicalFunction =='RBS']){
-					part => [
-						sequence = 'AGGAGGT' + randomDNA(8)
-						accessionURL = 'http://roadblock.com/atgc/rbs/computerGenerated/seq#' + sequence
-				]
+					val positionRBS = part.position.value
+					var preSequence = device.parts.filter[position.value == (positionRBS - 1 ) ].get(0).sequence
+					preSequence = preSequence.substring(preSequence.length-15)
+					var postSequence = device.parts.filter[position.value == (positionRBS + 1 ) ].get(0).sequence.substring(0,14)
+					val rate = 1000.00
+					part.sequence = optimiseRBS(preSequence,postSequence, rate)
+					part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 
 				}
 	}
 	
 	def static optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate){
-		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh","CTAGGTACAGTGCTAGCTtctaga", "atggtgaatgtgaaaccagtaacgttatacgatgt","1000").start()
-//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh","","","100").start()
+		println("RBS optimisation in process...")
+		println("\tpre: "+ preSequence)
+		println("\tpost: "+ postSequence)
+		println("\trate: "+ translationInitiationRate)
+		
+		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+		//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh","","","100").start()
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)
@@ -468,6 +485,7 @@ class Biocompiler {
 		  if(lineNumber==2) sequence = line
 		  lineNumber++
 		}
+		println('\t\tDone.')
 		
 		return sequence
 	}
