@@ -380,6 +380,52 @@ class Biocompiler {
 						part.sequence = 'ATG' + part.sequence
 		
 	}
+	
+	def static findNNoncuttingRestrictionEnzymes(int n, String preSequence, String postSequence){
+		// find n non-cutting RE from the database to be inserted between preSequence and postSequence
+		var left = preSequence.toUpperCase
+		val right = postSequence.toUpperCase
+		val databaseLocation = "resources/partRegistry.db"
+		var db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		
+		var sql = db.prepare("SELECT Name, Sequence FROM partRegistry WHERE biologicalFunction = 'restrictionenzyme'  AND LENGTH(Sequence)>3 ORDER BY  LENGTH(Sequence)")
+	
+		var ArrayList<String> restrictionEnzymeList = new ArrayList
+		for(k: 1..n){
+			var stillSearching = true
+			while( stillSearching && sql.step){
+				var name = sql.columnString(0)
+				val candidate = sql.columnString(1)
+				val left2 = left
+				
+				// for the candidate RE to be accepted, the resulting string must contain exactly one instance of the RE, as well as exactly one instance of the selected RE so far
+				
+				val nonCuttingPrevious = restrictionEnzymeList.map[(left2 + candidate + right).exactlyOneMatch(it)].reduce[a , b | a && b]
+				val nonCuttingCandidate= (left2 + candidate + right).exactlyOneMatch(candidate)
+	
+				if(nonCuttingCandidate && (if(nonCuttingPrevious==null) true else nonCuttingPrevious)){
+					restrictionEnzymeList.add(candidate)
+					left = left + candidate	
+					stillSearching = false
+					}
+				}
+			
+		}
+		
+		// tidying up
+		sql.dispose
+		db.dispose
+		println("Done")
+		return restrictionEnzymeList
+	}
+	
+	def static exactlyOneMatch(String s, String match){
+		// replace N by . 
+		val pattern = "(?=(" + match.toUpperCase.replace('N','.') + "))"
+		return ('x' + s.toUpperCase).split(pattern,-1).size == 2 // ?= is the lookahead operator, for overlapping matches
+	}
+	
 	def private  getSequenceFromDatabase(String partName, String collection){
 		// pick some from the DB
 		val databaseLocation = "resources/partRegistry.db"
@@ -445,7 +491,7 @@ class Biocompiler {
 	}
 	
 	def findRBSSequence(){
-		// RBS is ShineDelgarno + arbitrary sequence 8bp
+		// RBS is optmised by Salis' RBS calculator
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
 				for(part: device.parts.filter[biologicalFunction =='RBS']){

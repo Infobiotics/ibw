@@ -23,6 +23,7 @@ import java.net.URL
 import org.sbolstandard.core.Collection
 import java.io.InputStreamReader
 import java.io.BufferedReader
+import java.util.regex.Pattern
 
 class ScratchSBOL {
 	
@@ -352,6 +353,32 @@ def Example03_Validation(){
 		assertTrue(true)
 	}
 	
+@Test
+	def testExactlyOneMatch(){ //counting occurences of a string within another string
+
+		assertTrue(Biocompiler.exactlyOneMatch("AAATTTGGG","AAA"))
+		assertTrue(Biocompiler.exactlyOneMatch("AAATTTGGG","TGG"))
+		
+		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGGATTG","ATT"))		
+		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGG","AA"))
+		
+		assertTrue( Biocompiler.exactlyOneMatch("AAATTTGGG","TTTNG"))
+		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGGG","TTNG")) // 2 matches: TTTG and TTGG
+		
+	}
+	
+@Test 
+	def testNoncuttingRE(){
+		val preSequence = "AAA"
+		val postSequence = "TTT"
+		val list = Biocompiler.findNNoncuttingRestrictionEnzymes(20,preSequence,postSequence)
+
+		val finalSequence = preSequence + list.reduce[ a , b | a + b] + postSequence
+
+		// none of the RE cut the final sequence
+		assertTrue(list.map[Biocompiler.exactlyOneMatch(finalSequence,it)].reduce[a , b | a && b])		
+	}
+
 @Test
 	def optimiseRBS(){
 		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh","CTAGGTACAGTGCTAGCTtctaga", "atggtgaatgtgaaaccagtaacgttatacgatgt","1000").start()
