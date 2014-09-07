@@ -70,8 +70,8 @@ class PartGatheringTests {
 		biocompiler.constraintAllDifferent
 		biocompiler.constraintNonOverlapping
 		biocompiler.constraintPositionByType
-		biocompiler.constraintARRANGE
-		biocompiler.constraintDirection
+		biocompiler.constraintATGCARRANGE
+		biocompiler.constraintATGCDIRECTION
 //		
 		println("===========")
 		println("Find arrangement")
@@ -84,12 +84,13 @@ class PartGatheringTests {
 		biocompiler.addStartCodonToCDS
 		biocompiler.findRBSSequence
 		biocompiler.findTerminatorSequence
+		biocompiler.reverseComplementParts
 		biocompiler.findNoncuttingRestrictionEnzymes
 		
 		for(cell: biocompiler.biocompilerModel.cells){
 			println("Cell: " + cell.name)
 			for(device: cell.devices){
-				println("Device: " + device.name)
+				println("Device: " + device.name + " (direction = " + device.direction.value + ")")
 				for(part: device.parts.sortBy[position.value])
 					println("part:" + part.name + ", type:" + part.biologicalFunction + ", sequence:" + part.sequence + ", URI:" + part.accessionURL)
 			}
@@ -242,7 +243,7 @@ class PartGatheringTests {
 		biocompiler.constraintAllDifferent
 		biocompiler.constraintNonOverlapping
 		biocompiler.constraintPositionByType
-		biocompiler.constraintDirection
+		biocompiler.constraintATGCDIRECTION
 		
 		println("===========")
 		biocompiler.findArrangement

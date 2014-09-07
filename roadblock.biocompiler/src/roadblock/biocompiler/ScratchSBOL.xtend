@@ -407,6 +407,10 @@ def Example03_Validation(){
 		
 		assertTrue(false)	
 	}
-
+	
+@Test
+	def testReverseComplement(){
+		assertEquals("NGCAT",Biocompiler.reverseComplement("ATGCN"))
+	}
 		
 }

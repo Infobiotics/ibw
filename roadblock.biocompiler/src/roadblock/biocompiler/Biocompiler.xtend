@@ -303,7 +303,7 @@ class Biocompiler {
 	}
 	
 	
-	def constraintARRANGE(){
+	def constraintATGCARRANGE(){
 		for(region: model.regionList)
 		for(cell: region.cellList){
 			// at cell level
@@ -331,14 +331,17 @@ class Biocompiler {
 	
 	
 		
-	def constraintDirection(){
+	def constraintATGCDIRECTION(){
 		for(region: model.regionList)
 		for(cell: region.cellList){
 			for(device: cell.deviceList){
 			for(command: device.ATGCCommandList.filter[class == ATGCDirection].map[it as ATGCDirection]){
 				val biocompilerDevice = findDevice(cell.displayName,device.displayName)
+				println("ATGC DIRECTION: Found one in " + cell.displayName + "/" + device.displayName)
+				println("\t Device in biocompilerDevice:" + biocompilerDevice)
+				println("\t direction:" + command.direction)
 				if(biocompilerDevice != null)
-						store.impose(new XeqC(biocompilerDevice.direction, if(command.direction == 'BACKWARD') 1 else 0))
+						store.impose(new XeqC(biocompilerDevice.direction, if(command.direction == 'BACKWARD') 0 else 1))
 			}
 			}
 		}
@@ -431,10 +434,8 @@ class Biocompiler {
 				if(!sites.empty){
 					val minPosition = sites.get(0).position.value
 					val maxPosition = sites.last.position.value
-					var preSequence = device.parts.filter[position.value < minPosition].sortBy[position.value].map[sequence].reduce[a,b | a + b]
-					var postSequence = device.parts.filter[maxPosition < position.value ].sortBy[position.value].map[sequence].reduce[a,b | a + b]
-					println("pre:" + preSequence)
-					println("post:" + postSequence)
+					var preSequence = device.parts.filter[position.value < minPosition].sortBy[position.value].map[sequence].join
+					var postSequence = device.parts.filter[maxPosition < position.value ].sortBy[position.value].map[sequence].join
 					
 					var nonCuttingRestrictionEnzymes = findNNoncuttingRestrictionEnzymes(sites.size,preSequence, postSequence)
 					
@@ -468,7 +469,8 @@ class Biocompiler {
 				val candidate = sql.columnString(1)
 				val left2 = left
 				
-				// for the candidate RE to be accepted, the resulting string must contain exactly one instance of the RE, as well as exactly one instance of the selected RE so far
+				// for the candidate RE to be accepted, the resulting string must contain exactly one instance of the RE, 
+				// as well as exactly one instance of the previously selected RE's so far
 				
 				val nonCuttingPrevious = restrictionEnzymeList.map[(left2 + candidate + right).exactlyOneMatch(it.sequence)].reduce[a , b | a && b]
 				val nonCuttingCandidate= (left2 + candidate + right).exactlyOneMatch(candidate)
@@ -478,8 +480,7 @@ class Biocompiler {
 					left = left + candidate	
 					stillSearching = false
 					}
-				}
-			
+				}			
 		}
 		
 		// tidying up
@@ -492,7 +493,7 @@ class Biocompiler {
 	def static exactlyOneMatch(String s, String match){
 		// replace N by . 
 		val pattern = "(?=(" + match.toUpperCase.replace('N','.') + "))"
-		return ('x' + s.toUpperCase).split(pattern,-1).size == 2 // ?= is the lookahead operator, for overlapping matches
+		return ('x' + s.toUpperCase).split(pattern,-1).size == 2 // ?= is the look-ahead operator, for overlapping matches
 	}
 	
 	def private  getSequenceFromDatabase(String partName, String collection){
@@ -573,6 +574,12 @@ class Biocompiler {
 					part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 
 				}
 	}
+	def reverseComplementParts(){
+		for(cell:biocompilerModel.cells)
+			for(device: cell.devices)
+				if(device.direction.value == 0)
+					device.parts.filter[sequence!=null].forEach[sequence = reverseComplement(sequence)]
+	}
 	
 	def static optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate){
 		println("RBS optimisation in process...")
@@ -580,8 +587,9 @@ class Biocompiler {
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
-		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
-		//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh","","","100").start()
+//		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh").start()
+		println("\t*** FAKE RBS, FOR TESTS ONLY ***")
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)
@@ -724,5 +732,20 @@ class Biocompiler {
 		val rng = new Random
 		return (1..stringLength).map["atgc".charAt(rng.nextInt(4)).toString].reduce[a,b | a + b]
 	}
+	
+	def static char complement(char x){
+		var char t = x
+		switch(x.toString) {
+			case 'A' : t = 'T'
+			case 'T' : t = 'A'
+			case 'G' : t = 'C'
+			case 'C' : t = 'G'
+			}
+		return t	
+	}
+	
+	def static reverseComplement(String dna){
+		return dna.toUpperCase.toCharArray.reverse.map[complement].join
+		}
 	
 }

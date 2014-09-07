@@ -1,4 +1,4 @@
-sleep 10
+#sleep 10
 echo Program Executed
 echo TCCTGATACTCCGCCTGTCCTTCCTCATATATTTC
 echo 101.254131308
