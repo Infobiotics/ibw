@@ -84,6 +84,7 @@ class PartGatheringTests {
 		biocompiler.addStartCodonToCDS
 		biocompiler.findRBSSequence
 		biocompiler.findTerminatorSequence
+		biocompiler.findNoncuttingRestrictionEnzymes
 		
 		for(cell: biocompiler.biocompilerModel.cells){
 			println("Cell: " + cell.name)

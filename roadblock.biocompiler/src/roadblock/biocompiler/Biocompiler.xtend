@@ -57,6 +57,13 @@ import org.apache.commons.io.IOUtils
 import org.sbolstandard.core.Collection
 import java.io.InputStreamReader
 import java.io.BufferedReader
+import roadblock.emf.ibl.Ibl.ATGCCloningSites
+
+
+@Data class RestrictionEnzyme {
+    String name
+    String sequence
+    }
 
 class Biocompiler {
 	val Model model 
@@ -82,9 +89,7 @@ class Biocompiler {
 				var biocompilerCell = biopartsFactory.createBiocompilerCell
 				biocompilerCell.name = cell.displayName
 				println("\t\tcell: " + cell.displayName)
-				for(device: cell.deviceList){
-//					println(device.ATGCCommandList.filter[ATGCArrange].size)
-					
+				for(device: cell.deviceList){	
 					var biocompilerDevice = biopartsFactory.createBiocompilerDevice
 					biocompilerDevice.name = device.displayName
 					println("\t\t\tDevice:" + device.displayName)
@@ -105,7 +110,26 @@ class Biocompiler {
 						
 						// add to device
 						biocompilerDevice.parts.add(biopart)
-				}
+					}
+					// adding cloning sites if need be
+					var commands = device.ATGCCommandList.filter[it.class == ATGCCloningSites]
+					if(!commands.empty) {
+						var n = commands.map[(it as ATGCCloningSites).cloningSites].reduce[a,b | a +b]
+						if(n > 0)
+							for(k: 1..n){
+								var biopart = biopartsFactory.createBiopart
+								biopart => [
+									name = cell.displayName + "/" + device.displayName + "/RE_" + k 
+									sequence = null
+									biologicalFunction = 'CLONINGSITE'
+									cellName = cell.displayName
+									deviceName = device.displayName
+									accessionURL = null
+								]
+								// add to device
+								biocompilerDevice.parts.add(biopart)							
+							}
+					}
 				biocompilerCell.devices.add(biocompilerDevice)
 							
 			}
@@ -144,7 +168,9 @@ class Biocompiler {
 						deviceName = device.name
 						accessionURL = ""
 					] 
-				device.parts.add(biopart)	
+				device.parts.add(biopart)
+				
+
 			}
 			
 		}
@@ -236,8 +262,25 @@ class Biocompiler {
 						new And(new XltY(gene,terminator), new XeqC(device.direction,1)),
 						new And(new XgtY(gene,terminator), new XeqC(device.direction,0))
 						)
-					)				
-
+					)
+					
+			// GENE < CLONING SITES
+			for(gene: device.parts.filter[biologicalFunction == "GENE"].map[position])		
+				for(cloningSite: device.parts.filter[biologicalFunction == "CLONINGSITE"].map[position])
+				store.impose(new Or(
+						new And(new XltY(gene,cloningSite), new XeqC(device.direction,1)),
+						new And(new XgtY(gene,cloningSite), new XeqC(device.direction,0))
+						)
+					)
+			
+			// CLONING SITES < TERMINATOR 				
+			for(cloningSite: device.parts.filter[biologicalFunction == "CLONINGSITE"].map[position])		
+				for(terminator: device.parts.filter[biologicalFunction == "TERMINATOR"].map[position])
+				store.impose(new Or(
+						new And(new XltY(cloningSite,terminator), new XeqC(device.direction,1)),
+						new And(new XgtY(cloningSite,terminator), new XeqC(device.direction,0))
+						)
+					)
 		}
 		
 	}
@@ -381,6 +424,32 @@ class Biocompiler {
 		
 	}
 	
+	def findNoncuttingRestrictionEnzymes(){
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices){
+				var sites = device.parts.filter[biologicalFunction == 'CLONINGSITE'].sortBy[position.value]
+				if(!sites.empty){
+					val minPosition = sites.get(0).position.value
+					val maxPosition = sites.last.position.value
+					var preSequence = device.parts.filter[position.value < minPosition].sortBy[position.value].map[sequence].reduce[a,b | a + b]
+					var postSequence = device.parts.filter[maxPosition < position.value ].sortBy[position.value].map[sequence].reduce[a,b | a + b]
+					println("pre:" + preSequence)
+					println("post:" + postSequence)
+					
+					var nonCuttingRestrictionEnzymes = findNNoncuttingRestrictionEnzymes(sites.size,preSequence, postSequence)
+					
+					var c = 0
+					for(part: sites){		
+						part.name = nonCuttingRestrictionEnzymes.get(c).name
+						part.sequence = nonCuttingRestrictionEnzymes.get(c).sequence
+						part.accessionURL = "ATGC://REbase/RestrictionEnzyme/"+ part.name
+						c++
+					}					
+				}
+			}
+		
+	}
+	
 	def static findNNoncuttingRestrictionEnzymes(int n, String preSequence, String postSequence){
 		// find n non-cutting RE from the database to be inserted between preSequence and postSequence
 		var left = preSequence.toUpperCase
@@ -391,7 +460,7 @@ class Biocompiler {
 		
 		var sql = db.prepare("SELECT Name, Sequence FROM partRegistry WHERE biologicalFunction = 'restrictionenzyme'  AND LENGTH(Sequence)>3 ORDER BY  LENGTH(Sequence)")
 	
-		var ArrayList<String> restrictionEnzymeList = new ArrayList
+		var ArrayList<RestrictionEnzyme> restrictionEnzymeList = new ArrayList
 		for(k: 1..n){
 			var stillSearching = true
 			while( stillSearching && sql.step){
@@ -401,11 +470,11 @@ class Biocompiler {
 				
 				// for the candidate RE to be accepted, the resulting string must contain exactly one instance of the RE, as well as exactly one instance of the selected RE so far
 				
-				val nonCuttingPrevious = restrictionEnzymeList.map[(left2 + candidate + right).exactlyOneMatch(it)].reduce[a , b | a && b]
+				val nonCuttingPrevious = restrictionEnzymeList.map[(left2 + candidate + right).exactlyOneMatch(it.sequence)].reduce[a , b | a && b]
 				val nonCuttingCandidate= (left2 + candidate + right).exactlyOneMatch(candidate)
 	
 				if(nonCuttingCandidate && (if(nonCuttingPrevious==null) true else nonCuttingPrevious)){
-					restrictionEnzymeList.add(candidate)
+					restrictionEnzymeList.add(new RestrictionEnzyme(name, candidate))
 					left = left + candidate	
 					stillSearching = false
 					}

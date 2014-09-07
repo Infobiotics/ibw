@@ -373,10 +373,10 @@ def Example03_Validation(){
 		val postSequence = "TTT"
 		val list = Biocompiler.findNNoncuttingRestrictionEnzymes(20,preSequence,postSequence)
 
-		val finalSequence = preSequence + list.reduce[ a , b | a + b] + postSequence
+		val finalSequence = preSequence + list.map[sequence].reduce[ a , b | a + b] + postSequence
 
 		// none of the RE cut the final sequence
-		assertTrue(list.map[Biocompiler.exactlyOneMatch(finalSequence,it)].reduce[a , b | a && b])		
+		assertTrue(list.map[Biocompiler.exactlyOneMatch(finalSequence,it.sequence)].reduce[a , b | a && b])		
 	}
 
 @Test
@@ -406,5 +406,7 @@ def Example03_Validation(){
 		println('done: ' + sequence)
 		
 		assertTrue(false)	
-	}	
+	}
+
+		
 }
