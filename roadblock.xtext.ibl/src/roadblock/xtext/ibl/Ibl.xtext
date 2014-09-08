@@ -259,7 +259,7 @@ VariableKind2:
 // variable types
 VariableType:
 	{VariableType}
-	name = ('MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' )
+	name = ('MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'RBS' | 'TERMINATOR' | 'CLONINGSITE' )
 ;
 
 

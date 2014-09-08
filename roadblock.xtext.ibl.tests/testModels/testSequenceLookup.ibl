@@ -14,7 +14,7 @@ define myCell typeof CELL() {
 	// virtual parts repository Newcastle
 	pncl = PROMOTER(URI = "http://sbol.ncl.ac.uk:8081/part/BO_2689")
 	gncl = GENE(URI = "http://sbol.ncl.ac.uk:8081/part/BO_28536")
-	
+     
 	
 	DEVICE userSubmitted = new DEVICE(parts = [puser, guser])(input = [], output = []){
 		}
@@ -28,7 +28,7 @@ define myCell typeof CELL() {
 	DEVICE newcastle = new DEVICE(parts = [pncl, gncl])(input = [], output = []){
 		}
 } 
-		
+ 	 	
 define myRegion typeof REGION(){
 	CELL foo = new myCell()	
 

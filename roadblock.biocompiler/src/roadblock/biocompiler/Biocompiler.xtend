@@ -459,12 +459,12 @@ class Biocompiler {
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
-		var sql = db.prepare("SELECT Name, Sequence FROM partRegistry WHERE biologicalFunction = 'restrictionenzyme'  AND LENGTH(Sequence)>3 ORDER BY  LENGTH(Sequence)")
+		val sql = db.prepare("SELECT Name, Sequence FROM partRegistry WHERE biologicalFunction = 'restrictionenzyme'  AND LENGTH(Sequence)>3 ORDER BY  LENGTH(Sequence)")
 	
 		var ArrayList<RestrictionEnzyme> restrictionEnzymeList = new ArrayList
 		for(k: 1..n){
 			var stillSearching = true
-			while( stillSearching && sql.step){
+			while( stillSearching && sql.step()){
 				var name = sql.columnString(0)
 				val candidate = sql.columnString(1)
 				val left2 = left
@@ -587,9 +587,9 @@ class Biocompiler {
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
-//		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
-		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh").start()
-		println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh").start()
+//		println("\t*** FAKE RBS, FOR TESTS ONLY ***")
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)
@@ -599,7 +599,7 @@ class Biocompiler {
 		var line=''
 
 		while ((line = br2.readLine()) != null) {
-		  println("RBS Calculator / Standard error:" + line);
+		  println("RBS Calculator /  error output:" + line);
 		}
 
 		var lineNumber = 1

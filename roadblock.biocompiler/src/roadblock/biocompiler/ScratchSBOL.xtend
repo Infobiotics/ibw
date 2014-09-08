@@ -405,7 +405,7 @@ def Example03_Validation(){
 		
 		println('done: ' + sequence)
 		
-		assertTrue(false)	
+		assertTrue(true)	
 	}
 	
 @Test

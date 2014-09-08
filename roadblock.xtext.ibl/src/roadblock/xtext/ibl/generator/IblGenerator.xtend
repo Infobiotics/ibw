@@ -42,7 +42,7 @@ class IblGenerator implements IGenerator {
 	}
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-
+		println("hi there")
 		val ModelBuilder modelPopulater = new ModelBuilder();
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
 
@@ -51,14 +51,15 @@ class IblGenerator implements IGenerator {
 		println("===============")
 
 		var xml = convertToXml(emfModel)
-		//println(xml)
+		println(xml)
 		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
-		//generateTranslations(emfModel);
+//		generateTranslations(emfModel);
 		
-		var Biocompiler biocompiler = new Biocompiler(emfModel)
-		biocompiler.gatherParts
+		println("biocompiler starting")
+//		var Biocompiler biocompiler = new Biocompiler(emfModel)
+//		biocompiler.gatherParts
 		println("end")
 	}
 

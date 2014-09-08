@@ -28,11 +28,11 @@ class IblGeneratorTests {
 		var byte[] encoded = Files.readAllBytes(Paths.get(path)) 
 	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString
 	}
-
+ 
 	@Test
 	def void testMinimalModel(){
 		val source = readFile("../roadblock.xtext.ibl/models/minimalModel.ibl",Charset.defaultCharset())
-		source.assertCompilesTo(readFile("../roadblock.xtext.ibl/models/minimalModel.xml",Charset.defaultCharset()))		
+		source.assertCompilesTo(readFile("../roadblock.xtext.ibl/models/minimalModel.xml",Charset.defaultCharset()))				
 	}
 	
 	@Test
