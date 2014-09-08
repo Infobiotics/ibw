@@ -566,9 +566,10 @@ class Biocompiler {
 			for(device: cell.devices)
 				for(part: device.parts.filter[biologicalFunction =='RBS']){
 					val positionRBS = part.position.value
-					var preSequence = device.parts.filter[position.value == (positionRBS - 1 ) ].get(0).sequence
+					val relativePosition = if(device.direction.value == 0) -1 else 1
+					var preSequence  = device.parts.filter[position.value == (positionRBS - relativePosition ) ].get(0).sequence
 					preSequence = preSequence.substring(preSequence.length-15)
-					var postSequence = device.parts.filter[position.value == (positionRBS + 1 ) ].get(0).sequence.substring(0,14)
+					var postSequence = device.parts.filter[position.value == (positionRBS + relativePosition ) ].get(0).sequence.substring(0,14)
 					val rate = 1000.00
 					part.sequence = optimiseRBS(preSequence,postSequence, rate)
 					part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 

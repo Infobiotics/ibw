@@ -58,7 +58,7 @@ class IblGenerator implements IGenerator {
 //		generateTranslations(emfModel);
 		
 		println("biocompiler starting")
-//		var Biocompiler biocompiler = new Biocompiler(emfModel)
+		var Biocompiler biocompiler = new Biocompiler(emfModel)
 //		biocompiler.gatherParts
 		println("end")
 	}

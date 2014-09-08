@@ -13,6 +13,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.ByteBuffer
 
+import static org.junit.Assert.*
+
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(IblInjectorProvider))
 
@@ -20,13 +22,18 @@ class IblGeneratorTests {
 	
 	@Inject extension CompilationTestHelper
 	
-	// read file into a string
+		// read file into a string
 	// from http://stackoverflow.com/questions/326390/how-to-create-a-java-string-from-the-contents-of-a-file
 	// yep, 3 lines and 5 imports just to read a text file. Java.
 	def static String readFile(String path, Charset encoding)  throws IOException 
 	{
 		var byte[] encoded = Files.readAllBytes(Paths.get(path)) 
 	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString
+	}
+@Test
+	def testiftrue(){
+		assertTrue(true)
+		
 	}
  
 	@Test
