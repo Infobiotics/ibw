@@ -455,11 +455,11 @@ class Biocompiler {
 		// find n non-cutting RE from the database to be inserted between preSequence and postSequence
 		var left = preSequence.toUpperCase
 		val right = postSequence.toUpperCase
-		val databaseLocation = "resources/partRegistry.db"
+		val databaseLocation = "resources/restrictionEnzymes.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
-		val sql = db.prepare("SELECT Name, Sequence FROM partRegistry WHERE biologicalFunction = 'restrictionenzyme'  AND LENGTH(Sequence)>3 ORDER BY  LENGTH(Sequence)")
+		val sql = db.prepare(" SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence) ,cutSite")
 	
 		var ArrayList<RestrictionEnzyme> restrictionEnzymeList = new ArrayList
 		for(k: 1..n){
@@ -491,9 +491,27 @@ class Biocompiler {
 	}
 	
 	def static exactlyOneMatch(String s, String match){
-		// replace N by . 
-		val pattern = "(?=(" + match.toUpperCase.replace('N','.') + "))"
-		return ('x' + s.toUpperCase).split(pattern,-1).size == 2 // ?= is the look-ahead operator, for overlapping matches
+		// replace N by . etc.
+		val wildCard = #[ 
+			#['N', 'ATGC'], 
+			#['M', 'AC'], 
+			#['R', 'AG'],
+			#['W', 'AT'],
+			#['Y', 'CT'],
+			#['S', 'CG'],
+			#['K', 'GT'],
+			#['H', 'ACT'],
+			#['B', 'CGT'],
+			#['V', 'ACG'],
+			#['D', 'AGT']]
+			
+		var pattern = match.toUpperCase			
+
+		for(v: wildCard) {
+			pattern = pattern.replace(v.get(0), "[" + v.get(1) + "]")
+		}
+		pattern = "(?=(" + pattern + "))"					// ?= is the look-ahead operator, for overlapping matches
+		return ('x' + s.toUpperCase).split(pattern,-1).size == 2 
 	}
 	
 	def private  getSequenceFromDatabase(String partName, String collection){

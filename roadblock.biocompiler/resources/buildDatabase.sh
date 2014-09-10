@@ -16,13 +16,15 @@ do
 	sequence=$(echo $line |cut -d',' -f4)
 	echo "INSERT INTO partRegistry VALUES(NULL,'$name','$biologicalFunction','$sequence','','biofab');" |sqlite3 partRegistry.db
 done < biofabCleaned.csv
-echo "Adding REBase catalogue"
-wget -O rebase.txt "ftp://ftp.neb.com/pub/rebase/genepro.txt"
-sed '1,10d' rebase.txt > rebase2.txt
-while read line
-do
-	name=$(echo $line|cut -f1 -d$)
-	sequence=$(echo $line|cut -f2 -d$ | sed -e 's/[^ACGTN]//g')
-	notes=$(echo $line |cut -f2 -d$)
-	echo "INSERT INTO partRegistry VALUES(NULL,'$name','restrictionenzyme','$sequence','$notes','REBase, ftp://ftp.neb.com/pub/rebase/genepro.txt');" |sqlite3 partRegistry.db
-done < rebase2.txt 
+
+
+#echo "Adding REBase catalogue"
+#wget -O rebase.txt "ftp://ftp.neb.com/pub/rebase/genepro.txt"
+#sed '1,10d' rebase.txt > rebase2.txt
+#while read line
+#do
+#	name=$(echo $line|cut -f1 -d$)
+#	sequence=$(echo $line|cut -f2 -d$ | sed -e 's/[^ACGTN]//g')
+#	notes=$(echo $line |cut -f2 -d$)
+#	echo "INSERT INTO partRegistry VALUES(NULL,'$name','restrictionenzyme','$sequence','$notes','REBase, ftp://ftp.neb.com/pub/rebase/genepro.txt');" |sqlite3 partRegistry.db
+#done < rebase2.txt 

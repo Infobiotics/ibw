@@ -353,31 +353,7 @@ def Example03_Validation(){
 		assertTrue(true)
 	}
 	
-@Test
-	def testExactlyOneMatch(){ //counting occurences of a string within another string
 
-		assertTrue(Biocompiler.exactlyOneMatch("AAATTTGGG","AAA"))
-		assertTrue(Biocompiler.exactlyOneMatch("AAATTTGGG","TGG"))
-		
-		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGGATTG","ATT"))		
-		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGG","AA"))
-		
-		assertTrue( Biocompiler.exactlyOneMatch("AAATTTGGG","TTTNG"))
-		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGGG","TTNG")) // 2 matches: TTTG and TTGG
-		
-	}
-	
-@Test 
-	def testNoncuttingRE(){
-		val preSequence = "AAA"
-		val postSequence = "TTT"
-		val list = Biocompiler.findNNoncuttingRestrictionEnzymes(20,preSequence,postSequence)
-
-		val finalSequence = preSequence + list.map[sequence].reduce[ a , b | a + b] + postSequence
-
-		// none of the RE cut the final sequence
-		assertTrue(list.map[Biocompiler.exactlyOneMatch(finalSequence,it.sequence)].reduce[a , b | a && b])		
-	}
 
 @Test
 	def optimiseRBS(){
