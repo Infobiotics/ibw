@@ -64,41 +64,24 @@ class PartGatheringTests {
 		val model = convertToEObject(XMLsource) as Model
 		println(model)
 		var biocompiler = new Biocompiler(model)
-		biocompiler.gatherParts
-		biocompiler.completeDevices
-		biocompiler.createIntVarForAllparts
-		biocompiler.constraintAllDifferent
-		biocompiler.constraintNonOverlapping
-		biocompiler.constraintPositionByType
-		biocompiler.constraintATGCARRANGE
-		biocompiler.constraintATGCDIRECTION
-//		
-		println("===========")
-		println("Find arrangement")
 		
-		biocompiler.findArrangement
-		
-		println("===========")
-		println("Find sequences")
-		biocompiler.lookUpSequence
-		biocompiler.addStartCodonToCDS
-		biocompiler.findRBSSequence
-		biocompiler.findTerminatorSequence
-		biocompiler.reverseComplementParts
-		biocompiler.findNoncuttingRestrictionEnzymes
-		
-		for(cell: biocompiler.biocompilerModel.cells){
-			println("Cell: " + cell.name)
-			for(device: cell.devices){
-				println("Device: " + device.name + " (direction = " + device.direction.value + ")")
-				for(part: device.parts.sortBy[position.value])
-					println("part:" + part.name + ", type:" + part.biologicalFunction + ", sequence:" + part.sequence + ", URI:" + part.accessionURL)
+		if(biocompiler.compile){
+			println("Biocompilation completed successfully.")
+			for(cell: biocompiler.biocompilerModel.cells){
+				println("Cell: " + cell.name)
+				for(device: cell.devices){
+					println("Device: " + device.name + " (direction = " + device.direction.value + ")")
+					for(part: device.parts.sortBy[position.value])
+						println("part:" + part.name + ", type:" + part.biologicalFunction + ", sequence:" + part.sequence + ", URI:" + part.accessionURL)
+				}
 			}
 		}
+		else
+			println("Biocompilation was unsuccessful.")
 		//
 		// export to SBOL
-		println("===========")
-		println("Exporting to SBOL")
+//		println("===========")
+//		println("Exporting to SBOL")
 		
 //		val sbol = biocompiler.makeSBOLDocument
 //		new SBOLPrettyWriter().write(sbol, System.out)

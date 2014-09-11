@@ -49,7 +49,7 @@ class UtilitiesTests {
 		val postSequence = "TTT"
 		val list = Biocompiler.findNNoncuttingRestrictionEnzymes(20,preSequence,postSequence)
 
-		val finalSequence = preSequence + list.map[sequence].reduce[ a , b | a + b] + postSequence
+		val finalSequence = preSequence + list.map[sequence].join + postSequence
 
 		// none of the RE cut the final sequence
 		assertTrue(list.map[Biocompiler.exactlyOneMatch(finalSequence,it.sequence)].reduce[a , b | a && b])		

@@ -65,6 +65,10 @@ import roadblock.emf.ibl.Ibl.ATGCCloningSites
     String sequence
     }
 
+class NoJacopSolution extends Exception{}
+class RBSOptimisationIssue extends Exception{}
+
+
 class Biocompiler {
 	val Model model 
 	
@@ -81,6 +85,54 @@ class Biocompiler {
 		model = emfModel
 	}
 	
+	def boolean compile(){ // the whole process
+		try {
+			// get explicit parts
+			gatherParts
+			
+			// complete devices
+			completeDevices 
+			createIntVarForAllparts
+			constraintAllDifferent
+			constraintNonOverlapping
+			constraintPositionByType
+			constraintATGCARRANGE
+			constraintATGCDIRECTION
+	//		
+			println("===========")
+			println("Find arrangement")
+			
+			findArrangement
+			
+			println("===========")
+			println("Find sequences")
+			lookUpSequence
+			addStartCodonToCDS
+			findRBSSequence
+			findTerminatorSequence
+			reverseComplementParts
+			findNoncuttingRestrictionEnzymes
+		}
+		catch(NoJacopSolution e){
+			// add this in the log
+			return false
+		}
+		catch(RBSOptimisationIssue e){
+			// add this in the log
+			return false
+		}
+		catch(Exception e){
+			// add this in log
+			println("Something when wrong. Please contact the author.")
+			println("Error: " + e.message)
+//			e.printStackTrace
+			return false
+		}
+		
+		return true
+	}
+
+
 	def gatherParts(){
 		println("ATGC: gathering parts")
 		for(region: model.regionList){
@@ -365,7 +417,7 @@ class Biocompiler {
 		combinations		
 	}
 	
-	def findArrangement(){
+	def findArrangement() throws NoJacopSolution {
 		val ArrayList<IntVar> allPartPositions = new ArrayList()
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
@@ -377,6 +429,8 @@ class Biocompiler {
             new InputOrderSelect<IntVar>(store, allPartPositions, 
                                          new IndomainMin<IntVar>()); 
         var boolean result = search.labeling(store, select); 
+        
+        if(!result) throw new NoJacopSolution
         
 		for(cell: biocompilerModel.cells){
 			// gather all parts in that cell
