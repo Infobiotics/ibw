@@ -58,16 +58,34 @@ import org.sbolstandard.core.Collection
 import java.io.InputStreamReader
 import java.io.BufferedReader
 import roadblock.emf.ibl.Ibl.ATGCCloningSites
-
+import roadblock.emf.bioparts.Bioparts.BiocompilerDevice
+import java.util.regex.Pattern
+import roadblock.emf.bioparts.Bioparts.BiocompilerCell
+import java.util.List
 
 @Data class RestrictionEnzyme {
     String name
     String sequence
     }
 
+@Data class Interval {
+    Integer x1
+    Integer x2
+    }
+
 class NoJacopSolution extends Exception{}
 class RBSOptimisationIssue extends Exception{}
+class RBSREConflict extends Exception{}
+class CDSREConflict extends Exception{}
+class NoFittingRE extends Exception{
+	var public List<Interval> conflictList = new ArrayList
+	
+	new(List<Interval> conflictList){
+		this.conflictList = conflictList
+	}
+}
 
+class AbortRESearch	extends Exception{}
 
 class Biocompiler {
 	val Model model 
@@ -110,19 +128,23 @@ class Biocompiler {
 			addStartCodonToCDS
 			findRBSSequence
 			findTerminatorSequence
-			reverseComplementParts
+//			reverseComplementParts
 			findNoncuttingRestrictionEnzymes
 		}
 		catch(NoJacopSolution e){
-			// add this in the log
+			// add this to the log
 			return false
 		}
 		catch(RBSOptimisationIssue e){
-			// add this in the log
+			// add this to the log
+			return false
+		}
+		catch(AbortRESearch e){
+			// add this to the log
 			return false
 		}
 		catch(Exception e){
-			// add this in log
+			// add this to the log
 			println("Something when wrong. Please contact the author.")
 			println("Error: " + e.message)
 //			e.printStackTrace
@@ -266,19 +288,21 @@ class Biocompiler {
 	def constraintNonOverlapping(){
 		for(cell: biocompilerModel.cells){
 			val devicesNumber = cell.devices.size
-			var ArrayList<PrimitiveConstraint> nonOverlappingConstraints = newArrayList()
-			for(combination: allCombinations(devicesNumber)){
-				var ArrayList<PrimitiveConstraint> configurationIndividualConstraints = newArrayList()
-				for(k: 1..(devicesNumber-1)){
-					val k1 = combination.get(k-1)
-					val k2 = combination.get(k)
-					configurationIndividualConstraints.add(new XltY(cell.devices.get(k1 - 1).maxPosition, cell.devices.get(k2 -1).minPosition))	
+			if(devicesNumber > 1){
+				var ArrayList<PrimitiveConstraint> nonOverlappingConstraints = newArrayList()
+				for(combination: allCombinations(devicesNumber)){
+					var ArrayList<PrimitiveConstraint> configurationIndividualConstraints = newArrayList()
+					for(k: 1..(devicesNumber-1)){
+						val k1 = combination.get(k-1)
+						val k2 = combination.get(k)
+						configurationIndividualConstraints.add(new XltY(cell.devices.get(k1 - 1).maxPosition, cell.devices.get(k2 -1).minPosition))	
+				}
+				nonOverlappingConstraints.add(new And(configurationIndividualConstraints))
+					
+					
+				}
+				store.impose(new Or(nonOverlappingConstraints))	
 			}
-			nonOverlappingConstraints.add(new And(configurationIndividualConstraints))
-				
-				
-			}
-			store.impose(new Or(nonOverlappingConstraints))	
 		}
 				
 	}
@@ -354,6 +378,10 @@ class Biocompiler {
 		return biocompilerModel.cells.findFirst[name==cellName]?.devices.findFirst[name==deviceName]	
 	}
 	
+	def static direction(Biopart part){ // look up direction of containing device
+	val device = part.eContainer as BiocompilerDevice
+		return device.direction.value
+	}
 	
 	def constraintATGCARRANGE(){
 		for(region: model.regionList)
@@ -498,11 +526,218 @@ class Biocompiler {
 						part.name = nonCuttingRestrictionEnzymes.get(c).name
 						part.sequence = nonCuttingRestrictionEnzymes.get(c).sequence
 						part.accessionURL = "ATGC://REbase/RestrictionEnzyme/"+ part.name
-						c++
+						c = c + 1
 					}					
 				}
 			}
 		
+	}
+	
+//	def findNonCuttingRestrictionEnzymes(String suppliers){
+//		for(cell: biocompilerModel.cells){
+//			var keepSearching = true
+//			var ArrayList<RestrictionEnzyme> currentSelection
+//			
+//			while(keepSearching){
+//				// set RE sequence to '#' to avoid undue matches
+//				var cloningSites = cell.devices.map[parts.filter[biologicalFunction == 'CLONINGSITE']].flatten.sortBy[position.value]
+//				cloningSites.forEach[sequence='#']
+//				
+//				currentSelection = new ArrayList // empty list
+//
+//				try {
+//					for(cloningSite: cloningSites){
+//						val sitePosition = cloningSite.position.value
+//						// build pre- and post sequence 
+//						val preSequence  = cell.devices.map[parts.filter[position.value < sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
+//						val postSequence = cell.devices.map[parts.filter[position.value > sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
+//						
+//						val re = findNonCuttingRestrictionEnzyme(preSequence,postSequence,suppliers, currentSelection)
+//						// Non cutting RE found: add RE to curentSelection, set value and move on the next one
+//						cloningSite => [
+//							sequence = re.sequence
+//							accessionURL = "ATGC://REbase/RestrictionEnzyme/"+ re.name
+//							]
+//						currentSelection.add(re)
+//					}
+//				}
+//				catch(NoFittingRE e)
+//					// if conflict with RBS, recalculate RBS and start over
+//					println(e.re.sequence)
+//					
+//					// else give up
+//					// make a note in console
+//					// keep the RE found so far, but discard un-assigned RE
+//					keepSearching = false
+//				}
+//			
+//			}
+//		
+//	}
+
+	def static RestrictionEnzyme findNonCuttingRestrictionEnzyme(String preSequence, String postSequence, String suppliers, ArrayList<RestrictionEnzyme> currentSelection) throws NoFittingRE {
+		// find a non-cutting RE from the database to be inserted between preSequence and postSequence
+		// throw NoFittingRE if none can be found
+		var left = preSequence.toUpperCase
+		val right = postSequence.toUpperCase
+		val databaseLocation = "resources/restrictionEnzymes.db"
+		var db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		
+		val sql = db.prepare(" SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence) ,cutSite")
+		var stillSearching = true
+		var RestrictionEnzyme re 
+		
+		var List<Interval> conflictList = new ArrayList
+		 
+		while(stillSearching && sql.step()){
+			
+			var name = sql.columnString(0)
+			val candidate = sql.columnString(1)
+			val left2 = left
+			re = new RestrictionEnzyme(name, candidate)	
+			// for the candidate RE to be accepted, the resulting string must contain exactly one instance of the RE, 
+			// as well as exactly one instance of the previously selected RE's so far
+			val nonCuttingPrevious = currentSelection.map[(left2 + candidate + right).exactlyOneMatch(it.sequence)].reduce[a , b | a && b]
+
+			val conflicts = matchIndices((left2 + candidate + right), candidate).map[new Interval(it,it + candidate.length -1 )]
+			val nonCuttingCandidate = conflicts.size > 1
+										
+			if(nonCuttingCandidate && (if(nonCuttingPrevious==null) true else nonCuttingPrevious))
+				stillSearching = false
+			else
+				conflictList.addAll(conflicts.filter[it.x1 != left2.length])	// add conflict locations, remove the RE current location
+		}
+
+		// tidying up
+		sql.dispose
+		db.dispose
+
+		if(stillSearching) throw new NoFittingRE(conflictList) // exhausted the list of RE, returns the location of the conflicts
+		return re
+	}
+	
+	
+		def findRE(BiocompilerCell cell) throws AbortRESearch {
+
+			val maximumAttempts = 2
+			var numberOfAttempts = 0
+			var keepSearching = true
+			var ArrayList<RestrictionEnzyme> currentSelection
+		// randomly shuffle the list of RE while giving linear priority to shorter sequences
+//			val sql = db.prepare("SELECT name, LENGTH(sequence) FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence)*ABS(RANDOM()/9223372036854775807.0)")
+		
+			while(keepSearching && (numberOfAttempts <= maximumAttempts)){
+				numberOfAttempts = numberOfAttempts + 1
+				println("Attempt #" + numberOfAttempts)
+				keepSearching = false // only one pass if all goes well
+				
+				// set sequence of RE's to '#'
+				cell.devices.map[parts.filter[biologicalFunction == 'CLONINGSITE']].flatten.forEach[sequence = '#'; accessionURL = null]
+
+				// count the number of required REs
+				val n = cell.devices.map[parts.filter[biologicalFunction == 'CLONINGSITE']].flatten.size
+				
+				// look for non-cutting RE
+				for(cloningSite: cell.devices.map[parts.filter[biologicalFunction == 'CLONINGSITE']].flatten.sortBy[position.value]){
+						val sitePosition = cloningSite.position.value
+						val preSequence  = cell.devices.map[parts.filter[position.value < sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
+						val postSequence = cell.devices.map[parts.filter[position.value > sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
+						try{
+						val re = findNonCuttingRestrictionEnzyme(preSequence,postSequence,'.',currentSelection)
+						cloningSite => [
+							sequence = re.sequence
+							accessionURL = "ATGC://REbase/RestrictionEnzyme/"+ re.name
+							]
+						currentSelection.add(re)
+						}
+						catch(NoFittingRE e){
+							
+							// find problematic parts
+							val changeableParts = cell.devices.map[parts.filter[biologicalFunction == 'RBS']].flatten
+							var conflictScore = (1..changeableParts.size).map[0]
+							
+							// count number of conflicts for each part		
+							for(k: 0..(changeableParts.size -1 )){
+								val part = changeableParts.get(k)
+								
+								// check whether there is a conflict with the RE	
+								for(interval: e.conflictList){
+									// working out the part's location
+									var x1 = 0
+									var x2 = 0
+									if(part.position.value < sitePosition){
+										x1 = cell.devices.map[parts.filter[position.value < part.position.value]].flatten.sortBy[position.value].map[sequence].join.length
+										x2 = x1 + part.sequence.length - 1									
+									}
+									else {
+										x1 = preSequence.length  + (interval.x2 - interval.x1 + 1 ) +  cell.devices.map[parts.filter[ sitePosition < position.value &&  position.value < part.position.value]].flatten.sortBy[position.value].map[sequence].join.length
+										x2 = x1 + part.sequence.length - 1
+									}
+									// is there a conflict?
+									if(!(( interval.x2 < x1) || (x2 < interval.x1 ))) // intervals do intersect
+										conflictScore.set(k,conflictScore.get(k) + 1)										
+								}
+							}
+							
+							// change the part with most conflicts
+							val max = conflictScore.reduce[a,b | if(a<b) b else a]
+							if(max==0){
+								// no part change can fix the conflicts
+								// throw AbortRESearch
+								throw new AbortRESearch
+							}
+							else {
+								// recompute the conflicting RBS and try again
+								var index = 0
+								for(k: 0..(changeableParts.size -1 ))
+									if(conflictScore.get(k) == max) index = k
+								// recompute RBS
+								changeableParts.get(index).findSingleRBSSequence		
+								// Start over
+								keepSearching = true
+							}								
+							
+						}
+						
+				}
+					
+								
+				
+			}
+			
+		}
+	
+	
+		def static matchIndices(String s, String match){
+		// returns the indices of the occurrences of match in s
+		// replace N by . etc.
+		val wildCard = #[ 
+			#['N', 'ATGC'], 
+			#['M', 'AC'], 
+			#['R', 'AG'],
+			#['W', 'AT'],
+			#['Y', 'CT'],
+			#['S', 'CG'],
+			#['K', 'GT'],
+			#['H', 'ACT'],
+			#['B', 'CGT'],
+			#['V', 'ACG'],
+			#['D', 'AGT']]
+			
+		var pattern = match.toUpperCase			
+
+		for(v: wildCard) {
+			pattern = pattern.replace(v.get(0), "[" + v.get(1) + "]")
+		}
+		pattern = "(?=(" + pattern + "))"					// ?= is the look-ahead operator, for overlapping matches
+
+		var index = Pattern.compile(pattern).matcher(s.toUpperCase) 
+		
+		var ArrayList<Integer> indices = new ArrayList
+		while(index.find) indices.add(index.start)
+		
+		return indices	
 	}
 	
 	def static findNNoncuttingRestrictionEnzymes(int n, String preSequence, String postSequence){
@@ -543,7 +778,9 @@ class Biocompiler {
 		println("Done")
 		return restrictionEnzymeList
 	}
-	
+
+
+
 	def static exactlyOneMatch(String s, String match){
 		// replace N by . etc.
 		val wildCard = #[ 
@@ -647,6 +884,20 @@ class Biocompiler {
 					part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 
 				}
 	}
+	
+	def findSingleRBSSequence(Biopart part){
+		val device = part.eContainer as BiocompilerDevice
+		val positionRBS = part.position.value
+		val relativePosition = if(device.direction.value == 0) -1 else 1
+		var preSequence  = device.parts.filter[position.value == (positionRBS - relativePosition ) ].get(0).sequence
+		preSequence = preSequence.substring(preSequence.length-15)
+		var postSequence = device.parts.filter[position.value == (positionRBS + relativePosition ) ].get(0).sequence.substring(0,14)
+		val rate = 1000.00
+		part.sequence = optimiseRBS(preSequence,postSequence, rate)
+		part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 		
+		
+	}
+
 	def reverseComplementParts(){
 		for(cell:biocompilerModel.cells)
 			for(device: cell.devices)
@@ -679,7 +930,7 @@ class Biocompiler {
 		var sequence = ''
 		while ((line = br.readLine()) != null) {
 		  if(lineNumber==2) sequence = line
-		  lineNumber++
+		  lineNumber = lineNumber + 1
 		}
 		println('\t\tDone.')
 		
@@ -763,6 +1014,19 @@ class Biocompiler {
 		return document // only export construct for the last cell for the time being
 	}
 	
+	def void print(){
+		for(cell: biocompilerModel.cells){
+			println("Cell: " + cell.name)
+			for(device: cell.devices){
+				println("\tDevice: " + device.name)
+				for(part: device.parts.sortBy[position.value])
+					println("\t\t " + part.name + " ( " + part.biologicalFunction + " ) : " + part.sequence)
+				
+			}
+			
+		}
+		
+	}
 	def private static SequenceAnnotation makeAnnotation(Biopart part, int sequenceStart, int sequenceEnd){
 		var annotation = SBOLFactory.createSequenceAnnotation
 		annotation.URI = URI.create("http://sbols.org/anot#" + randomHashLookingString)

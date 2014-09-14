@@ -23,6 +23,7 @@ import org.jacop.constraints.Or
 import org.jacop.constraints.Min
 import org.jacop.constraints.Max
 import roadblock.emf.bioparts.Bioparts.BiopartsFactory
+import java.util.regex.Pattern
 
 class Scratch {
 	
@@ -183,5 +184,107 @@ class Scratch {
 		
 		combinations		
 	}
+
+@Test
+	def testFlow(){
+		
+		var x = 5.0
+		var keepSearching = true
+		while(keepSearching){
+			try{
+				x= x - 1
+				println(x+" -> " + 1/x)
+				if(x == -6) keepSearching = false
+			}
+			catch(Exception e){
+				println("Exception caught. Starting over")
+				x = 5
+			}
+		}
+	assertTrue(false)
+		
+		
+	}	
+@Test 
+	def testMatch(){
+		
+		var pattern = Pattern.compile("(?=(" + "22" + "))")			
+
+//		pattern = "(?=(" + pattern + "))"					// ?= is the look-ahead operator, for overlapping matches
+
+		var index = pattern.matcher("01234567223XXX") 
+		
+		var ArrayList<Integer> indices = new ArrayList
+		while(index.find) indices.add(index.start)
+		
+		var indices2 = indices.filter[it != 8 ]
+
+		println("Found at: " + indices2.join(' / '))
+		
+		assertTrue(false)			
 	
+}	
+
+@Test 
+	def arraylist(){
+		var List<Integer> myList = new ArrayList
+		myList.add(1)
+		myList.add(2)
+		myList.add(3)
+		
+		println("Content: " + myList.join(' / '))
+		
+		myList = myList.filter[it!=2].toList
+
+		println("Content: " + myList.join(' / '))
+		
+		assertTrue(false)
+		
+	
+	}	
+
+@Test 
+	def checkInterval(){
+		val lengths = #[5,12,8,8,4,7]
+		
+		
+		var List<Integer> cumulative = newArrayOfSize(lengths.size)
+
+		cumulative.set(0,lengths.get(0))
+		for(k: 1..(lengths.size-1))
+			cumulative.set(k,lengths.get(k) + cumulative.get(k-1))		
+		cumulative = cumulative.map[it-1]
+
+		println("lengths: " +  lengths.join(' / '))
+		println("Cumulative: " +  cumulative.join(' / '))
+		
+		val x1 = 3
+		val x2 = 20
+		
+		println(cumulative.map[x1<it].join(' / '))
+		println(cumulative.map[it<x2].join(' / '))
+		
+		assertTrue(true)
+	}
+	
+	def partFrequency(List<Integer> partLength, List<List<Integer>> intervalList){
+		val n = partLength.size
+		
+		// from part lengths to locations
+		var List<Integer> cumulative = newArrayOfSize(n)
+		cumulative.set(0,partLength.get(0))
+		for(k: 1..(partLength.size-1))
+			cumulative.set(k,partLength.get(k) + cumulative.get(k-1))		
+		cumulative = cumulative.map[it-1]
+		
+		// 
+		
+	}
+	
+	@Test
+	def checkloop(){
+		
+		for(k: 1..-1) println(k)
+		assertTrue(false)
+	}
 }

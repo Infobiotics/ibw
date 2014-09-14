@@ -64,7 +64,7 @@ class PartGatheringTests {
 		val model = convertToEObject(XMLsource) as Model
 		println(model)
 		var biocompiler = new Biocompiler(model)
-		
+		 
 		if(biocompiler.compile){
 			println("Biocompilation completed successfully.")
 			for(cell: biocompiler.biocompilerModel.cells){
@@ -72,10 +72,14 @@ class PartGatheringTests {
 				for(device: cell.devices){
 					println("Device: " + device.name + " (direction = " + device.direction.value + ")")
 					for(part: device.parts.sortBy[position.value])
-						println("part:" + part.name + ", type:" + part.biologicalFunction + ", sequence:" + part.sequence + ", URI:" + part.accessionURL)
+						println("part:" + part.name + 
+						", type:" + part.biologicalFunction + 
+						", sequence:" + (if(Biocompiler.direction(part) == 0) part.sequence else Biocompiler.reverseComplement(part.sequence)) + 
+						", URI:" + part.accessionURL)
 				}
 			}
 		}
+		
 		else
 			println("Biocompilation was unsuccessful.")
 		//

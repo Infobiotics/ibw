@@ -42,7 +42,7 @@ public class JacopTests {
                                          new IndomainMin<IntVar>()); 
         
         boolean result = search.labeling(store, select); 
- 
+      
         assertTrue(result);
         assertEquals(1, v[0].value());
         assertEquals(2, v[1].value());

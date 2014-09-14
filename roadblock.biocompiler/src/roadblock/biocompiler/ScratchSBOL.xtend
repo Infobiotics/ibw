@@ -375,7 +375,7 @@ def Example03_Validation(){
 		var sequence = ''
 		while ((line = br.readLine()) != null) {
 		  if(lineNumber==2) sequence = line
-		  lineNumber++
+		  lineNumber = lineNumber + 1
 		}
 		
 		
