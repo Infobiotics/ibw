@@ -584,12 +584,12 @@ class Biocompiler {
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
-		val sql = db.prepare(" SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence) ,cutSite")
+//		val sql = db.prepare(" SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence) ,cutSite")
+		val sql = db.prepare("SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite AND supplier LIKE '%B%' ORDER BY LENGTH(sequence)*ABS(RANDOM()/9223372036854775807.0)")
 		var stillSearching = true
 		var RestrictionEnzyme re 
 		
 		var List<Interval> conflictList = new ArrayList
-		 
 		while(stillSearching && sql.step()){
 			
 			var name = sql.columnString(0)
@@ -598,11 +598,10 @@ class Biocompiler {
 			re = new RestrictionEnzyme(name, candidate)	
 			// for the candidate RE to be accepted, the resulting string must contain exactly one instance of the RE, 
 			// as well as exactly one instance of the previously selected RE's so far
-			val nonCuttingPrevious = currentSelection.map[(left2 + candidate + right).exactlyOneMatch(it.sequence)].reduce[a , b | a && b]
+			var nonCuttingPrevious = currentSelection?.map[(left2 + candidate + right)?.exactlyOneMatch(it.sequence)]?.reduce[a , b | a && b]
 
 			val conflicts = matchIndices((left2 + candidate + right), candidate).map[new Interval(it,it + candidate.length -1 )]
-			val nonCuttingCandidate = conflicts.size > 1
-										
+			val nonCuttingCandidate = (conflicts.size == 1)
 			if(nonCuttingCandidate && (if(nonCuttingPrevious==null) true else nonCuttingPrevious))
 				stillSearching = false
 			else
@@ -613,7 +612,11 @@ class Biocompiler {
 		sql.dispose
 		db.dispose
 
-		if(stillSearching) throw new NoFittingRE(conflictList) // exhausted the list of RE, returns the location of the conflicts
+		if(stillSearching) {
+			println("throwing NoFittingRE with conflictList of size " + conflictList?.size)
+			throw new NoFittingRE(conflictList) // exhausted the list of RE, returns the location of the conflicts
+			}
+		println("\t\tOk, found one. returning it")
 		return re
 	}
 	
@@ -623,11 +626,12 @@ class Biocompiler {
 			val maximumAttempts = 2
 			var numberOfAttempts = 0
 			var keepSearching = true
-			var ArrayList<RestrictionEnzyme> currentSelection
+			var ArrayList<RestrictionEnzyme> currentSelection = newArrayList()
 		// randomly shuffle the list of RE while giving linear priority to shorter sequences
 //			val sql = db.prepare("SELECT name, LENGTH(sequence) FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence)*ABS(RANDOM()/9223372036854775807.0)")
 		
 			while(keepSearching && (numberOfAttempts <= maximumAttempts)){
+				currentSelection = newArrayList // 
 				numberOfAttempts = numberOfAttempts + 1
 				println("Attempt #" + numberOfAttempts)
 				keepSearching = false // only one pass if all goes well
@@ -640,6 +644,7 @@ class Biocompiler {
 				
 				// look for non-cutting RE
 				for(cloningSite: cell.devices.map[parts.filter[biologicalFunction == 'CLONINGSITE']].flatten.sortBy[position.value]){
+						println("\t Looking for a non-cutting RE for" + cloningSite.name)
 						val sitePosition = cloningSite.position.value
 						val preSequence  = cell.devices.map[parts.filter[position.value < sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
 						val postSequence = cell.devices.map[parts.filter[position.value > sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
@@ -652,10 +657,10 @@ class Biocompiler {
 						currentSelection.add(re)
 						}
 						catch(NoFittingRE e){
-							
 							// find problematic parts
 							val changeableParts = cell.devices.map[parts.filter[biologicalFunction == 'RBS']].flatten
-							var conflictScore = (1..changeableParts.size).map[0]
+							var  Integer[] conflictScore = newArrayOfSize(changeableParts.size)
+							for(k: 1..changeableParts.size) conflictScore.set(k - 1,0)	
 							
 							// count number of conflicts for each part		
 							for(k: 0..(changeableParts.size -1 )){
@@ -674,12 +679,14 @@ class Biocompiler {
 										x1 = preSequence.length  + (interval.x2 - interval.x1 + 1 ) +  cell.devices.map[parts.filter[ sitePosition < position.value &&  position.value < part.position.value]].flatten.sortBy[position.value].map[sequence].join.length
 										x2 = x1 + part.sequence.length - 1
 									}
+									val intersection = !(( interval.x2 < x1) || (x2 < interval.x1 ))
+									
 									// is there a conflict?
-									if(!(( interval.x2 < x1) || (x2 < interval.x1 ))) // intervals do intersect
-										conflictScore.set(k,conflictScore.get(k) + 1)										
+									if(intersection){ // intervals do intersect
+										conflictScore.set(k,conflictScore.get(k) + 1)
+										}										
 								}
 							}
-							
 							// change the part with most conflicts
 							val max = conflictScore.reduce[a,b | if(a<b) b else a]
 							if(max==0){
@@ -1065,7 +1072,7 @@ class Biocompiler {
 		
 	}
 	
-	def private static String randomDNA(int stringLength){
+	def  static String randomDNA(int stringLength){
 		val rng = new Random
 		return (1..stringLength).map["atgc".charAt(rng.nextInt(4)).toString].reduce[a,b | a + b]
 	}

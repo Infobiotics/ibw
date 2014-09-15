@@ -283,8 +283,17 @@ class Scratch {
 	
 	@Test
 	def checkloop(){
+		var ArrayList<Integer> r = newArrayList()
 		
-		for(k: 1..-1) println(k)
+		for(k: 0..3) r.add(1)	
+		
+		println("Content: " + r.join(' / '))	
+		
+		r = newArrayList()
+		println("Content: " + r.join(' / '))	
+		
 		assertTrue(false)
 	}
+	
+	
 }
