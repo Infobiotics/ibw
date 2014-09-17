@@ -1,7 +1,15 @@
 package roadblock.biocompiler
-import org.jacop.constraints.XltY
-import org.jacop.constraints.XneqY
-import org.jacop.core.Domain
+
+import java.util.ArrayList
+import java.util.List
+import org.jacop.constraints.Element
+import org.jacop.constraints.Or
+import org.jacop.constraints.PrimitiveConstraint
+import org.jacop.constraints.Reified
+import org.jacop.constraints.Sum
+import org.jacop.constraints.XeqC
+import org.jacop.constraints.XgteqC
+import org.jacop.core.BooleanVar
 import org.jacop.core.IntVar
 import org.jacop.core.Store
 import org.jacop.search.DepthFirstSearch
@@ -9,25 +17,14 @@ import org.jacop.search.IndomainMin
 import org.jacop.search.InputOrderSelect
 import org.jacop.search.Search
 import org.jacop.search.SelectChoicePoint
-import org.jacop.search.SimpleSelect
-import org.jacop.search.SmallestDomain
-
 import org.junit.Test
+
 import static org.junit.Assert.*
-import java.util.ArrayList
-import org.jacop.core.BooleanVar
-import org.jacop.constraints.Reified
-import org.jacop.constraints.XeqC
-import java.util.List
-import org.jacop.constraints.Or
-import org.jacop.constraints.PrimitiveConstraint
-import org.jacop.constraints.Sum
-import org.jacop.constraints.XgtC
-import org.jacop.constraints.XgteqC
 
 @Data
 class CodonAlternatives {
-    List<Integer> form			
+    List<Integer> form
+    List<Integer> cost			
     }
 
 @Data
@@ -44,20 +41,20 @@ class ScratchCodonOptimisation {
 		
 		
 		// codons and their alternatives
-		var codons = #[								// codon id
-			new CodonAlternatives(#[1,2,3]), 		// 0
-			new CodonAlternatives(#[1,2]) ,			// 1
-			new CodonAlternatives(#[1,2,3,4]),		// 2
-			new CodonAlternatives(#[1,2])			// 3
+		var codons = #[											// codon id
+			new CodonAlternatives(#[1,2,3]  , #[10,0,2]), 		// 0
+			new CodonAlternatives(#[1,2]    , #[1, 0]) ,		// 1
+			new CodonAlternatives(#[1,2,3,4], #[1,5,5, 0]),		// 2
+			new CodonAlternatives(#[1,2]    , #[5, 0])			// 3
 		] 
 		
 		// How RE can be freed up
 		var re = #[							// RE id
 			new AcceptableForms(0,#[3]),	// 0
 			new AcceptableForms(0,#[1,2]),	// 1
-			new AcceptableForms(1,#[2]),	// 2
+			new AcceptableForms(2,#[3]),	// 2
 			new AcceptableForms(1,#[1,3]),	// 3
-			new AcceptableForms(2,#[1]),	// 4
+			new AcceptableForms(2,#[3]),	// 4
 			new AcceptableForms(3,#[2])		// 5
 			]
 			
@@ -68,6 +65,15 @@ class ScratchCodonOptimisation {
 		var IntVar[] jcodons = newArrayOfSize(codons.size)
 		for(k: 0..(codons.size - 1))
 			jcodons.set(k, new IntVar(store, "codon_" + k, 1,codons.get(k).form.last))
+			
+		// declare costs
+		var IntVar[] jcosts = newArrayOfSize(codons.size)
+		for(k: 0..(codons.size -1)){
+			jcosts.set(k, new IntVar(store, "cost_" + k, 0, 100000))
+			store.impose(new Element(jcodons.get(k),codons.get(k).cost,jcosts.get(k)))
+		}
+		var globalCost = new IntVar(store, "globalCost",0, 100000)
+		store.impose(new Sum(jcosts,globalCost))		
 
 		// declare the RE
 		var IntVar[] jre = newArrayOfSize(re.size)
@@ -96,24 +102,29 @@ class ScratchCodonOptimisation {
  		
 		var allVar = newArrayList
 		allVar.addAll(jcodons)
+		allVar.addAll(jcosts)
 		allVar.addAll(jre)
 		allVar.addAll(numberFreeRE)
-		
+		allVar.addAll(globalCost)
 		
 		var Search<IntVar> search = new DepthFirstSearch<IntVar> 
         var SelectChoicePoint<IntVar> select = new InputOrderSelect<IntVar>(store, allVar, new IndomainMin<IntVar>) 
-        var boolean result = search.labeling(store, select); 
+        var boolean result = search.labeling(store, select, globalCost); 
  
         if ( result ) {
-            println("Solution: \n\tNumber of fitting RE:" + numberFreeRE + "\n\tRE:" + jre.join(' / ') + "\n\tCodons: " + jcodons.join(" / "))
+            println("Solution:" +
+            	"\n\tGlobal Cost: " + globalCost +        
+				"\n\tNumber of fitting RE:" + numberFreeRE + 
+				"\n\tRE:" + jre.join(' / ') + 
+				"\n\tCodons: " + jcodons.join(" / ") + 
+				"\n\tCosts: " + jcosts.join(" / ")
+            )
             var n = 0
             for(k:0..(re.size-1)){
 				var doesFit = (jre.get(k).value == 1)
 				assertEquals(re.get(k).form.contains(jcodons.get(re.get(k).codonID).value), doesFit)
 				if(doesFit) n = n + 1
 				}
-			println(n)
-			println(numberFreeRE.value)
 			assertEquals(n, numberFreeRE.value)
 			assertTrue(numberFreeRE.value >= minimumFreeRE)
             }

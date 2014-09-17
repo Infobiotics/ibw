@@ -1,5 +1,6 @@
 package roadblock.biocompiler.tests;
 
+import org.jacop.constraints.Sum;
 import org.jacop.constraints.XltY;
 import org.jacop.constraints.XneqY;
 import org.jacop.core.Domain;
@@ -89,6 +90,46 @@ public class JacopTests {
             }
             System.out.println(); 
          }
-		assertTrue(false);
+		assertTrue(true);
+	}
+	
+		
+	
+
+@Test 
+	public void minimisation(){ // turns out jacop4.1.0 has issues with minimisation. reverting to jacaop4.0.0
+    Store store = new Store();  // define FD store 
+    int size = 4; 
+    // define finite domain variables 
+    IntVar[] v = new IntVar[size]; 
+    for (int i=0; i<size; i++) 
+        v[i] = new IntVar(store, "v"+i, 1, size); 
+    // define constraints 
+    store.impose( new XneqY(v[0], v[1]) ); 
+    store.impose( new XneqY(v[0], v[2]) ); 
+    store.impose( new XneqY(v[1], v[2]) ); 
+    store.impose( new XneqY(v[1], v[3]) ); 
+    store.impose( new XneqY(v[2], v[3]) ); 
+
+    IntVar cost = new IntVar(store, "globalCost",0,100);
+    
+    store.impose(new Sum(v,cost));
+    // search for a solution and print results 
+    Search<IntVar> search = new DepthFirstSearch<IntVar>(); 
+    SelectChoicePoint<IntVar> select = 
+        new InputOrderSelect<IntVar>(store, v, 
+                                     new IndomainMin<IntVar>()); 
+    boolean result = search.labeling(store, select, cost); 
+
+    if ( result ) {
+        System.out.println("Solution: " + v[0]+", "+v[1] +", "+ 
+                                          v[2] +", "+v[3]); 
+        System.out.println("Cost:" + cost);
+    }
+    else 
+        System.out.println("*** No"); 
+    
+    assertTrue(true);
+	
 	}
 }
