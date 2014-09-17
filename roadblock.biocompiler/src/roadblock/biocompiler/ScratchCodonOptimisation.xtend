@@ -23,6 +23,7 @@ import org.jacop.constraints.Or
 import org.jacop.constraints.PrimitiveConstraint
 import org.jacop.constraints.Sum
 import org.jacop.constraints.XgtC
+import org.jacop.constraints.XgteqC
 
 @Data
 class CodonAlternatives {
@@ -55,9 +56,9 @@ class ScratchCodonOptimisation {
 			new AcceptableForms(0,#[3]),	// 0
 			new AcceptableForms(0,#[1,2]),	// 1
 			new AcceptableForms(1,#[2]),	// 2
-			new AcceptableForms(2,#[2,4]),	// 3
-			new AcceptableForms(2,#[1,4]),	// 4
-			new AcceptableForms(3,#[1])		// 5
+			new AcceptableForms(1,#[1,3]),	// 3
+			new AcceptableForms(2,#[1]),	// 4
+			new AcceptableForms(3,#[2])		// 5
 			]
 			
 		// mapping to Jacop	
@@ -75,9 +76,10 @@ class ScratchCodonOptimisation {
 		
 		// defines the RE
 		for(k1: 0..(re.size - 1)){
+			println("\tConstraint for RE " + k1)
 			
 			var ArrayList<PrimitiveConstraint> allAcceptableValues = newArrayList // all acceptable forms of codon re.get(k1).codonID for re k1
-			for(i: re.get(0).form)
+			for(i: re.get(k1).form)
 				allAcceptableValues.add(new XeqC(jcodons.get(re.get(k1).codonID),i))
 			store.impose( new Reified( new Or(allAcceptableValues), jre.get(k1)))				
 		}
@@ -88,27 +90,37 @@ class ScratchCodonOptimisation {
 		var numberFreeRE = new IntVar(store, "numberFreeRE",0,re.size)
 		store.impose(new Sum(jre,numberFreeRE))
 		
-		store.impose(new XgtC(numberFreeRE,minimumFreeRE))
+		store.impose(new XgteqC(numberFreeRE,minimumFreeRE))
 		
-		store.print
  		if(store.consistency) println("The model is consistent. ")	else println("The model is not consistent.")	
  		
-		println("Solving")
 		var allVar = newArrayList
 		allVar.addAll(jcodons)
 		allVar.addAll(jre)
 		allVar.addAll(numberFreeRE)
 		
+		
 		var Search<IntVar> search = new DepthFirstSearch<IntVar> 
         var SelectChoicePoint<IntVar> select = new InputOrderSelect<IntVar>(store, allVar, new IndomainMin<IntVar>) 
         var boolean result = search.labeling(store, select); 
  
-        if ( result ) 
+        if ( result ) {
             println("Solution: \n\tNumber of fitting RE:" + numberFreeRE + "\n\tRE:" + jre.join(' / ') + "\n\tCodons: " + jcodons.join(" / "))
-        else 
+            var n = 0
+            for(k:0..(re.size-1)){
+				var doesFit = (jre.get(k).value == 1)
+				assertEquals(re.get(k).form.contains(jcodons.get(re.get(k).codonID).value), doesFit)
+				if(doesFit) n = n + 1
+				}
+			println(n)
+			println(numberFreeRE.value)
+			assertEquals(n, numberFreeRE.value)
+			assertTrue(numberFreeRE.value >= minimumFreeRE)
+            }
+        else {
             println("*** No Solution found"); 
-   
+			assertTrue(true)
+   		}
 		
-		assertTrue(false)
 	}
 }
