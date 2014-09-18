@@ -44,7 +44,7 @@ codonTable = {
 'Tyrosine': ['TAT', 'TAC'],
 'STOP':['TAA', 'TGA', 'TAG'],
 'Histidine':['CAT', 'CAC'],
-'Glutamine':['GAA', 'GAG'],
+'Glutamine':['CAA', 'CAG'],
 'Asparagine': ['AAT', 'AAC'],
 'Lysine': ['AAA', 'AAG'],
 'Aspartic acid': ['GAT', 'GAC'],

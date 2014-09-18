@@ -22,7 +22,7 @@ import org.junit.Test
 import static org.junit.Assert.*
 
 @Data
-class CodonAlternatives {
+class CodonAlternatives2 {
     List<Integer> form
     List<Integer> cost			
     }
@@ -42,10 +42,10 @@ class ScratchCodonOptimisation {
 		
 		// codons and their alternatives
 		var codons = #[											// codon id
-			new CodonAlternatives(#[1,2,3]  , #[10,0,2]), 		// 0
-			new CodonAlternatives(#[1,2]    , #[1, 0]) ,		// 1
-			new CodonAlternatives(#[1,2,3,4], #[1,5,5, 0]),		// 2
-			new CodonAlternatives(#[1,2]    , #[5, 0])			// 3
+			new CodonAlternatives2(#[1,2,3]  , #[10,0,2]), 		// 0
+			new CodonAlternatives2(#[1,2]    , #[1, 0]) ,		// 1
+			new CodonAlternatives2(#[1,2,3,4], #[1,5,5, 0]),		// 2
+			new CodonAlternatives2(#[1,2]    , #[5, 0])			// 3
 		] 
 		
 		// How RE can be freed up

@@ -295,5 +295,20 @@ class Scratch {
 		assertTrue(false)
 	}
 	
+	@Test
+	def quickie(){
+		
+		var x = #[10,12,1,1,3,4,1,4,10,10]
+
+		// unique elements
+		var y = x.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
+	
+		println(y.join(' / '))
+		assertTrue(true)
+		
+		var myMap = newLinkedHashMap()
+		myMap.put('a',3)
+	}
+	
 	
 }
