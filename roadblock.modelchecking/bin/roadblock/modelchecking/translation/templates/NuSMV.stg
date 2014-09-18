@@ -1,4 +1,4 @@
-model(name, molecules, initialConcentrations, updateRules) ::= <<
+model(name, molecules, invariant, choiceConstraints, initialConcentrations, updateRules) ::= <<
 
 MODULE main
 VAR
@@ -6,8 +6,19 @@ VAR
 	-- molecular species
 	--*******************
 	<molecules:{molecule | <molecule>}; separator="\n">
+	
+INVAR
+	--*******************
+	-- invariant states
+	--*******************
+	<invariant>
 
 ASSIGN
+	--*******************
+	-- discover the set of executable rules
+	--*******************
+	<choiceConstraints>
+
 	--*******************
 	-- initial molecule concentrations
 	--*******************
@@ -32,18 +43,23 @@ next(<name>) := <value>;
 >>
 
 caseExpression(variable, branches) ::= <<
-case 
-	<branches:{branch | <branch>}; separator="\n">
-	TRUE : <variable>;
-esac
+	
+	case 
+		<branches:{branch | <branch>}; separator="\n">
+		TRUE : <variable>;
+	esac
 >>
 
 caseBranch(guard, value) ::= <<
 <guard> : <value>;
 >>
 
-guard(ruleIndex, molecules) ::= <<
-(_choice = <ruleIndex>) <molecules:{molecule | & (<molecule.name> > <molecule.multiplicity>)}; separator=" ">
+choiceGuard(ruleIndex, molecules) ::= <<
+(_choice = <ruleIndex>)<molecules:{molecule |  & (<molecule.name> > <molecule.multiplicity>)}; separator=" ">
+>>
+
+guard(molecules) ::= <<
+<molecules:{molecule | (<molecule.name> > <molecule.multiplicity>)}; separator=" & ">
 >>
 
 moleculeConsumption(molecule) ::= <<
@@ -53,3 +69,22 @@ moleculeConsumption(molecule) ::= <<
 moleculeProduction(molecule) ::= <<
 <molecule.name> + <molecule.multiplicity>
 >>
+
+guardedInvariant(constraints) ::= <<
+case
+	<constraints:{constraint | (<constraint>)}; separator=" | "> : _choice != 0;
+	TRUE : _choice = 0;
+esac;
+>>
+
+invariant() ::= <<
+_choice != 0;
+>>
+
+choiceConstraints(constraints) ::= <<
+_choice := <constraints:{constraint | 
+	case 
+		(<constraint.guard>) : {<constraint.ruleIndex>\};
+		TRUE : {0\};
+	esac}; separator=" union">;
+>> 
