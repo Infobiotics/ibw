@@ -7,6 +7,8 @@ import static org.junit.Assert.*
 import roadblock.biocompiler.CodonOptimisationForRestrictionEnzymes
 import roadblock.biocompiler.RestrictionEnzyme
 import roadblock.biocompiler.Codon
+import java.util.LinkedHashMap
+import roadblock.biocompiler.CodonUsageTableElement
 
 class CodonOptimisationForRestrictionEnzymesTests {
 	// codons and their alternatives, costs
@@ -53,12 +55,33 @@ class CodonOptimisationForRestrictionEnzymesTests {
 
 	}
 	
+	@Test 
+	def prepareFormsAndCostsTableTests(){
+		val species = 'w3110'
+		
+		val result = CodonOptimisationForRestrictionEnzymes.prepareFormsAndCostsTable(species) 
+		
+		// all amino acids are present
+		val allAminoAcids = #['Lysine','Alanine','Glycine','Glutamine','STOP','Arginine','Glutamic acid','Phenylalanine','Asparagine','Tryptophan','Leucine','Aspartic acid','Methionine','Histidine','Valine','Cysteine','Isoleucine','Threonine','Proline','Serine','Tyrosine']
+		
+		assertEquals(allAminoAcids.sort,result.keySet.sort)
+		
+		// check IsoLeucine
+		val element = result.get('Isoleucine') as CodonUsageTableElement
+		assertEquals(#['ATA','ATC', 'ATT'], element.forms)
+		
+		assertEquals(-2.6598093	, element.costs.get(0) as Double, 0.01)	
+		assertEquals(-0.8631199	, element.costs.get(1) as Double, 0.01)	
+		assertEquals(-0.6768910	, element.costs.get(2) as Double, 0.01)			
+	}
+	
 	@Test
 	def computeFormsAndCostsTests(){
 		val codon = 'ATT' // isoleucine
 		val species = 'w3110'
 		
-		val result = CodonOptimisationForRestrictionEnzymes.computeFormsAndCosts(codon, species)
+		val codonUsageTable = CodonOptimisationForRestrictionEnzymes.prepareFormsAndCostsTable(species) 
+		val result = CodonOptimisationForRestrictionEnzymes.computeFormsAndCosts(codon,codonUsageTable)
 		var forms = result.get(0)
 		var costs = result.get(1)
 
@@ -66,7 +89,7 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		// which gives a cost of change of resp.: 1.9829183 0.1862289  0.0
 		assertEquals(#['ATA','ATC', 'ATT'], forms )
 		assertTrue(forms.size==costs.size)
-		val precision = 0.000001
+		val precision = 0.000001  
 		assertEquals(1.9829183, costs.get(0) as Double, precision)	
 		assertEquals(0.1862289, costs.get(1) as Double, precision)	
 		assertEquals(0.0      , costs.get(2) as Double, precision)			

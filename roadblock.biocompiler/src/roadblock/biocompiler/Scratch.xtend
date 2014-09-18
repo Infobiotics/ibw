@@ -304,10 +304,13 @@ class Scratch {
 		var y = x.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
 	
 		println(y.join(' / '))
-		assertTrue(true)
 		
-		var myMap = newLinkedHashMap()
-		myMap.put('a',3)
+		
+		var myMap = newLinkedHashMap
+		myMap.put('a',#[3])
+		var tmp = myMap.get('a')
+		tmp.add(2)
+		assertTrue(true)
 	}
 	
 	

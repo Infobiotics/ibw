@@ -5,6 +5,7 @@ import org.jacop.core.IntVar
 import org.jacop.core.Store
 import com.almworks.sqlite4java.SQLiteConnection
 import java.io.File
+import java.util.LinkedHashMap
 
 @Data
 class Codon {
@@ -16,6 +17,12 @@ class Codon {
 //    IntVar jCost
    }
 
+
+@Data 
+class CodonUsageTableElement{
+	List<String> forms
+	List<Double> costs
+}
 @Data
 class AcceptableForms {
 	Integer codonID
@@ -31,7 +38,7 @@ class ConflictingRestrictionEnzyme{
 class CodonOptimisationForRestrictionEnzymes {
 	
 	var public List<Codon> codonList
-	
+	var LinkedHashMap<String, CodonUsageTableElement> codonUsageTable
 	
 	// constructor
 	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
@@ -40,39 +47,53 @@ class CodonOptimisationForRestrictionEnzymes {
 		codonList = findUniqueCodons(cdsList, reList)
 		
 		// for each codon, compute the forms and costs
-		
+		codonUsageTable = prepareFormsAndCostsTable(species)
 	}
 	
-	def static computeFormsAndCosts(String codon, String species){
-		val aminoAcid = codonToAminoAcid(codon)
+	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
+		
+		var LinkedHashMap<String, CodonUsageTableElement> table = newLinkedHashMap
 		
 		val databaseLocation = "resources/codonUsage.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
-		val sql = db.prepare("SELECT CodonUsage.codon, usage FROM CodonUsage JOIN CodonTable ON CodonTable.codon=CodonUsage.codon WHERE CodonTable.aminoAcid='"+ aminoAcid + "' AND CodonUsage.species LIKE '%"+species+"%' ORDER BY CodonUsage.codon")
 		
-		var List<String> forms = newArrayList
-		var List<Double> costs = newArrayList
-		
-		while(sql.step){
-			forms.add(sql.columnString(0))
-			costs.add(sql.columnInt(1) * 1.0)
+		val allAminoAcids = #['Lysine','Alanine','Glycine','Glutamine','STOP','Arginine','Glutamic acid','Phenylalanine','Asparagine','Tryptophan','Leucine','Aspartic acid','Methionine','Histidine','Valine','Cysteine','Isoleucine','Threonine','Proline','Serine','Tyrosine']
+				
+		for(aminoAcid: allAminoAcids){
+			var sql = db.prepare("SELECT CodonUsage.codon, usage FROM CodonUsage JOIN CodonTable ON CodonTable.codon=CodonUsage.codon WHERE CodonUsage.species LIKE '%"+species+"%' AND aminoAcid ='" + aminoAcid + "' ORDER BY CodonUsage.codon")
+			var codons = newArrayList
+			var List<Double> usages = newArrayList
+			
+			while(sql.step){
+				codons.add(sql.columnString(0))
+				usages.add(sql.columnInt(1) * 1.0)
+			}
+			
+			val sum = usages.reduce[a,b|a+b]
+			usages = usages.map[Math.log(it/sum)] 
+			table.put(aminoAcid,new CodonUsageTableElement(codons, usages))
+			sql.dispose
 		}
-		
-		val sum = costs.reduce[a,b|a+b]
-		costs = costs.map[Math.log(it/sum)]
-		
-		var i = -1
-		for(k: 0..(forms.size -1)) if(forms.get(k) == codon) i = k
-		val baseline = costs.get(i)
-		costs = costs.map[baseline - it ]
-		
+
 		// tidying up
-		sql.dispose
 		db.dispose
 		
-		return #[forms, costs]
+		return table	
+	}
+	
+	def static computeFormsAndCosts(String codon, LinkedHashMap<String, CodonUsageTableElement> codonUsageTable){
+		val aminoAcid = codonToAminoAcid(codon)
+		
+		val v = codonUsageTable.get(aminoAcid)	
+		
+		var i = -1
+		for(k: 0..(v.forms.size -1)) if(v.forms.get(k) == codon) i = k
+		val baseline = v.costs.get(i)
+		var costs = v.costs.map[baseline - it ]
+		
+		return #[v.forms, costs]
 	}
 	
 	def static findUniqueCodons(List<String> cdsList, List<RestrictionEnzyme> reList){
@@ -86,7 +107,7 @@ class CodonOptimisationForRestrictionEnzymes {
 						for(codonPosition: (i..(i + re.sequence.length -1)).map[it/3].toList.uniqueInteger){
 							codonList.add(new Codon(cdsId, codonPosition, newArrayList, newArrayList))
 							
-							}
+							} 
 					}
 				}
 			}
