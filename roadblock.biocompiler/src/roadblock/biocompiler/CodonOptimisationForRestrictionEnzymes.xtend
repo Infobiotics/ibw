@@ -8,6 +8,7 @@ import java.io.File
 import java.util.LinkedHashMap
 import roadblock.biocompiler.Codon
 import org.jacop.constraints.Element
+import org.jacop.constraints.Sum
 
 @Data 
 class CodonUsageTableElement{
@@ -31,6 +32,7 @@ class CodonOptimisationForRestrictionEnzymes {
 	var public List<Codon> codonList
 	var public Store store = new Store
 	var LinkedHashMap<String, CodonUsageTableElement> codonUsageTable
+	var public IntVar globalCost
 	
 	// constructor
 	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
@@ -55,12 +57,15 @@ class CodonOptimisationForRestrictionEnzymes {
 
 		println("Creating the jForm and jCost for all codons")
 		for(k: 0..(codonList.size-1))
-			codonList.get(k).jCodon = new IntVar(store, "codon_" + k, 1, codonList.get(k).forms.size)
+			codonList.get(k).jCodon = new IntVar(store, "codon_" + k, 0, codonList.get(k).forms.size -1 )
 
 		for(k: 0..(codonList.size -1)){
 			codonList.get(k).jCost = new IntVar(store, "cost_" + k, -1000000000, 1000000000)
-			store.impose(new Element(codonList.get(k).jCodon, codonList.get(k).costs.map[(10000.0 * it).intValue], codonList.get(k).jCodon))
+			store.impose(new Element(codonList.get(k).jCodon, codonList.get(k).costs.map[(10000.0 * it).intValue], codonList.get(k).jCost))
 		}	
+		
+		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
+		store.impose(new Sum(codonList.map[jCost],globalCost))	
 		
 		store.print
 	}
