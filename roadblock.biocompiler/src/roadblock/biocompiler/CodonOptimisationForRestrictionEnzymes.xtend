@@ -67,9 +67,51 @@ class CodonOptimisationForRestrictionEnzymes {
 		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
 		store.impose(new Sum(codonList.map[jCost],globalCost))	
 		
+		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
 		store.print
+		
+		println("Trying out all combinations of conflicting codons")
+		tryAllCodonCombination(codonList, cdsList, reList)
 	}
 	
+	def static tryAllCodonCombination(List<Codon> codonList, List<String> cdsList, List<RestrictionEnzyme> reList){
+		var formSizes = codonList.map[forms.size]
+		var cumulativeProduct = cumulativeProduct(formSizes)
+		var List<String> cdsListCopy = cdsList.clone
+		
+		for(k: 0..(cumulativeProduct.last -1 )){
+			var combination = newArrayOfSize(formSizes.size)
+			for(i: 0..(formSizes.size - 1))
+				combination.set(i,(k/cumulativeProduct.get(i)) % formSizes.get(i))
+//			println("Combination # " + k + ", using forms:" + combination.join(' / '))
+		
+			for(i: 0..(codonList.size -1 )){
+				var codon = codonList.get(i)
+				var form = codon.forms.get(combination.get(i))
+				var sequence = changeCodonInSequence(cdsListCopy.get(codon.cdsID), form, codon.position)
+	
+				cdsListCopy.set(codon.cdsID, sequence)
+			}
+			
+			var wholeSequence = cdsListCopy.join('x')
+			println("\t" + wholeSequence)
+			
+			var List<String> fittingRE = newArrayList
+			
+			// check which RE don't cut
+			for(re: reList){
+				if(!Biocompiler.restrictionEnzymeCuts(wholeSequence,re.sequence))
+					fittingRE.add(re.name)						
+			}
+			println("\t\tFitting: " + fittingRE.join(', '))
+			
+		}
+		
+	}
+	
+	def static changeCodonInSequence(String sequence, String codon, Integer codonNumber){
+		return sequence.substring(0,codonNumber * 3) + codon + sequence.substring((codonNumber + 1 )*3)
+	}
 
 	def static computeFormsAndCostsForCodonList(List<Codon> codonList, List<String> cdsList,  LinkedHashMap<String, CodonUsageTableElement> codonUsageTable){
 		for(codon: codonList){
@@ -79,6 +121,10 @@ class CodonOptimisationForRestrictionEnzymes {
 			codon.costs = formsAndCosts.costs
 		}	
 		return codonList
+	}
+	
+	def static cumulativeProduct(List<Integer> nList){ // starts with 1 
+		return nList.fold({var List<Integer> a = newArrayList; a.add(1); a })[a,b | {a.add(a.last * b); a}]
 	}
 		
 	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){

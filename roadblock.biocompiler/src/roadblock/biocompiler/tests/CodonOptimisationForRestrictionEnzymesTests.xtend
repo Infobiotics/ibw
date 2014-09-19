@@ -14,13 +14,34 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		// some CDS
 		val cdsList = #['CCC ATG CCC CAA TGT', 'CCC CAA ATT TGG GCC CTT'].map[it.replace(' ','')]
 		// some RE
-		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','ATG'), new RestrictionEnzyme('RE2','TNGG')]
+		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','CCC'), new RestrictionEnzyme('RE2','TTGG')]
+		// RE0 will never fits because it matches ATG, which has 1 form only.
+		// RE1 can fit when, e.g., CCC -> CCT
+		// RE2 can fit when, e.g., TGG -> TTT
+
 
 		val species = "w3110"
 		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
 		
-		assertTrue(false)
+		assertEquals("finished?","nope")
 	}
+	
+	
+	@Test
+	def changeCodonInSequenceTests(){
+		var String sequence = 'XXXYYYZZZ'
+		 
+		var result = CodonOptimisationForRestrictionEnzymes.changeCodonInSequence(sequence, "BBB",1)
+		assertEquals("XXXBBBZZZ", result)
+		
+		result = CodonOptimisationForRestrictionEnzymes.changeCodonInSequence(sequence, "AAA", 0)
+		assertEquals("AAAYYYZZZ", result)	
+
+		result = CodonOptimisationForRestrictionEnzymes.changeCodonInSequence(sequence, "CCC", 2)
+		assertEquals("XXXYYYCCC", result)	
+			
+	}
+	
 	
 	@Test
 	def computeFormsAndCostsForCodonListTests(){

@@ -4,6 +4,14 @@ import static org.junit.Assert.*
 import roadblock.biocompiler.Biocompiler
 
 class UtilitiesTests {
+	
+	
+	@Test
+	def testRestrictionEnzymeCuts(){
+		assertTrue( Biocompiler.restrictionEnzymeCuts("AAAGGGG","AAA"))
+		assertFalse(Biocompiler.restrictionEnzymeCuts("TTTGGGG","AAA"))
+	}
+	
 	@Test
 	def testExactlyOneMatch(){ //counting occurences of a DNA string within another string
 

@@ -812,6 +812,30 @@ class Biocompiler {
 		return ('x' + s.toUpperCase).split(pattern,-1).size == 2 
 	}
 	
+	def static boolean restrictionEnzymeCuts(String sequence, String reSequence){
+		// replace N by . etc.
+		val wildCard = #[ 
+			#['N', 'ATGC'], 
+			#['M', 'AC'], 
+			#['R', 'AG'],
+			#['W', 'AT'],
+			#['Y', 'CT'],
+			#['S', 'CG'],
+			#['K', 'GT'],
+			#['H', 'ACT'],
+			#['B', 'CGT'],
+			#['V', 'ACG'],
+			#['D', 'AGT']]
+			
+		var pattern = reSequence.toUpperCase			
+
+		for(v: wildCard) {
+			pattern = pattern.replace(v.get(0), "[" + v.get(1) + "]")
+		}
+		
+		return ((sequence.toUpperCase).split("(" + pattern + ")").size > 1)
+		
+	}
 	def private  getSequenceFromDatabase(String partName, String collection){
 		// pick some from the DB
 		val databaseLocation = "resources/partRegistry.db"

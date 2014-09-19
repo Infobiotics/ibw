@@ -185,6 +185,51 @@ class Scratch {
 		combinations		
 	}
 
+	def getNthCombination(Integer n, List<Integer> nList){ // get the nth of the n1*n2...*nk combinations of (0..n1-1) x (0..n2-1)...
+	
+		var cumulativeProduct = nList.take(nList.size -1).fold({var List<Integer> a = newArrayList; a.add(1); a })[a,b | {a.add(a.last * b); a}]
+		println(cumulativeProduct.join(' / '))
+		
+		var result = newArrayOfSize(nList.size)
+		for(i: 0..(nList.size - 1))
+			result.set(i,(n/cumulativeProduct.get(i)) % nList.get(i))
+			
+		result
+	}
+
+@Test
+	def testAllCombinationsSizes(){
+		
+		var nList = #[4,2,1,3]	
+		var total = nList.reduce[a,b | a * b]
+		var List<List<Integer>> matrix = newArrayList
+
+		for(k: 0..(nList.size-1)){
+			val sizeList = nList
+			val factor = if(k == 0) 1 else sizeList.take(k).reduce[a,b | a*b]
+			matrix.add((0..(total -1)).map[(it / factor) % sizeList.get(k)].toList)
+		}
+		
+		for(list: matrix){
+			println(list.join(' / '))
+		}
+		
+		
+		println("The 10th combination:" + matrix.map[it.get(23)].join(' / '))
+		println("The 10th combination:" + getNthCombination(23,nList).join(' / '))
+		
+		println("---")
+		println((0..(total -1)).map[it % 4].join(' / '))						
+		println((0..(total -1)).map[ (it / 4)  % (2)].join(' / '))						
+		println((0..(total -1)).map[ (it / (4*2)) %(3)].join(' / '))						
+		
+		println("---")
+		println(nList.take(nList.size -1).fold({var List<Integer> a = newArrayList; a.add(1); a })[a,b | {a.add(a.last * b); a}].join(' # '))
+
+		assertEquals("finished",'nope')
+		
+	}
+
 @Test
 	def testFlow(){
 		
@@ -296,7 +341,7 @@ class Scratch {
 	}
 	
 	@Test
-	def quickie(){
+	def quickie(){ // my kingdom for a console
 		
 		var x = #[10,12,1,1,3,4,1,4,10,10]
 
@@ -304,12 +349,19 @@ class Scratch {
 		var y = x.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
 	
 		println(y.join(' / '))
+	
+	
+		var cdsList = #['AAABBBCCC', 'DDDEEEFFFGGG']
+		var List<String> cdsListCopy = cdsList.clone
+	
+		println(cdsListCopy.join(' / '))
+		
+		cdsListCopy.set(0, "eeee")
+		println(cdsListCopy.join(' / '))
 		
 		
-		var myMap = newLinkedHashMap
-		myMap.put('a',#[3])
-		var tmp = myMap.get('a')
-		tmp.add(2)
+		var xx = "AAABBBCC"
+		assertFalse(xx.split("(BBB)").empty)		
 		assertTrue(true)
 	}
 	
