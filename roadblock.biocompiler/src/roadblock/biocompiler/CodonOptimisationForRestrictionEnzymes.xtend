@@ -7,16 +7,7 @@ import com.almworks.sqlite4java.SQLiteConnection
 import java.io.File
 import java.util.LinkedHashMap
 import roadblock.biocompiler.Codon
-
-//@Data
-//class Codon {
-//    Integer cdsID
-//    Integer position
-//    List<String> forms
-//    List<Double> costs
-////    IntVar jCodon
-////    IntVar jCost 
-//   }
+import org.jacop.constraints.Element
 
 @Data 
 class CodonUsageTableElement{
@@ -38,6 +29,7 @@ class ConflictingRestrictionEnzyme{
 class CodonOptimisationForRestrictionEnzymes {
 	
 	var public List<Codon> codonList
+	var public Store store = new Store
 	var LinkedHashMap<String, CodonUsageTableElement> codonUsageTable
 	
 	// constructor
@@ -60,6 +52,17 @@ class CodonOptimisationForRestrictionEnzymes {
 			println("\t has the forms: " + codon.forms.join(' / '))
 			println("\t has the costs: " + codon.costs.join(' / '))
 		}
+
+		println("Creating the jForm and jCost for all codons")
+		for(k: 0..(codonList.size-1))
+			codonList.get(k).jCodon = new IntVar(store, "codon_" + k, 1, codonList.get(k).forms.size)
+
+		for(k: 0..(codonList.size -1)){
+			codonList.get(k).jCost = new IntVar(store, "cost_" + k, -1000000000, 1000000000)
+			store.impose(new Element(codonList.get(k).jCodon, codonList.get(k).costs.map[(10000.0 * it).intValue], codonList.get(k).jCodon))
+		}	
+		
+		store.print
 	}
 	
 
