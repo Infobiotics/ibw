@@ -36,9 +36,6 @@ class CodonTests {
 		assertEquals("AAA / BBB / CCC / DDD",codon.forms.join(" / "))
 		assertEquals(0.0, codon.costs.reduce[a,b | a + b], 0.00001)
 			
-		var x = new Codon(1,3)	
-		var y = new Codon(1,3)
-		
 	}
 	
 }

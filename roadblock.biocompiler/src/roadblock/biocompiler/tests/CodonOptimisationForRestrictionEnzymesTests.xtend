@@ -6,26 +6,9 @@ import static org.junit.Assert.*
 import roadblock.biocompiler.CodonOptimisationForRestrictionEnzymes
 import roadblock.biocompiler.RestrictionEnzyme
 import roadblock.biocompiler.Codon
+import java.util.List
 
 class CodonOptimisationForRestrictionEnzymesTests {
-//	// codons and their alternatives, costs
-//		var codons = #[						// codon id
-//			#[#[1,2,3]  , #[10,0,2]], 		// 0
-//			#[#[1,2]    , #[1, 0]] ,		// 1
-//			#[#[1,2,3,4], #[1,5,5, 0]],		// 2
-//			#[#[1,2]    , #[5, 0]]			// 3
-//		] 
-//		
-//		// How RE can be freed up
-//		var re = #[							// RE id
-//			new AcceptableForms(0,#[3]),	// 0
-//			new AcceptableForms(0,#[1,2]),	// 1
-//			new AcceptableForms(2,#[3]),	// 2
-//			new AcceptableForms(1,#[1,3]),	// 3
-//			new AcceptableForms(2,#[3]),	// 4
-//			new AcceptableForms(3,#[2])		// 5
-//			]
-	
 	@Test 
 	def wholeShebang(){
 		// some CDS
@@ -37,6 +20,43 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
 		
 		assertTrue(false)
+	}
+	
+	@Test
+	def computeFormsAndCostsForCodonListTests(){
+		// some CDS
+		val cdsList = #['CCC ATG CCC CAA TGT', 'CCC CAA ATT TGG GCC CTT'].map[it.replace(' ','')]
+		// some RE
+		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','ATG'), new RestrictionEnzyme('RE2','TNGG')]
+
+		val species = "w3110"
+		
+		var List<Codon> codonList = CodonOptimisationForRestrictionEnzymes.findUniqueCodons(cdsList, reList)
+
+		// for each codon, compute the forms and costs
+		println("Building codonUsageTable")		
+		var codonUsageTable = CodonOptimisationForRestrictionEnzymes.prepareFormsAndCostsTable(species)
+		
+		println("Computing forms and costs for each codon")		
+		codonList = CodonOptimisationForRestrictionEnzymes.computeFormsAndCostsForCodonList(codonList, cdsList, codonUsageTable)
+		
+		for(codon:codonList){
+			println("codon on CDS# " + codon.cdsID)
+			println("\t has the forms: " + codon.forms.join(' / '))
+			println("\t has the costs: " + codon.costs.join(' / '))
+		}
+		
+		assertEquals(7, codonList.size)
+		
+		// find codon ATT (isoleucine, 2nd on CDS#1)
+		val isoleucine = codonList.findFirst[it.cdsID == 1 && it.position == 2]
+		val allForms = #['ATA' ,'ATC', 'ATT'] // 
+		val allCosts = #[1.9829183466862612,0.18622890198287445,0.0] // because usage is 5733, 34568 and 41644 and original codon is ATT
+		for(i: 0..(isoleucine.forms.size -1)){
+			assertEquals(allForms.get(i),isoleucine.forms.get(i))
+			assertEquals(allCosts.get(i),isoleucine.costs.get(i), 0.00001)
+		}
+			
 	}
 	
 	@Test 

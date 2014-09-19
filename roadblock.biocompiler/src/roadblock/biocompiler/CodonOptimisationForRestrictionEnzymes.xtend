@@ -15,7 +15,7 @@ import roadblock.biocompiler.Codon
 //    List<String> forms
 //    List<Double> costs
 ////    IntVar jCodon
-////    IntVar jCost
+////    IntVar jCost 
 //   }
 
 @Data 
@@ -52,21 +52,26 @@ class CodonOptimisationForRestrictionEnzymes {
 		codonUsageTable = prepareFormsAndCostsTable(species)
 		
 		println("Computing forms and costs for each codon")		
-		for(codon: codonList){
-			val codonSequence = cdsList.get(codon.cdsID).substring(codon.position * 3, codon.position * 3 + 3)
-			var formsAndCosts = computeFormsAndCosts(codonSequence, codonUsageTable)
-			codon.forms = formsAndCosts.forms
-			codon.costs = formsAndCosts.costs
-		}
+		codonList = computeFormsAndCostsForCodonList(codonList, cdsList, codonUsageTable)
+
 		println("Content of codonList")
 		for(codon:codonList){
-			println("codon on CDS #" + codon.cdsID)
+			println("codon on CDS# " + codon.cdsID)
 			println("\t has the forms: " + codon.forms.join(' / '))
 			println("\t has the costs: " + codon.costs.join(' / '))
 		}
 	}
 	
 
+	def static computeFormsAndCostsForCodonList(List<Codon> codonList, List<String> cdsList,  LinkedHashMap<String, CodonUsageTableElement> codonUsageTable){
+		for(codon: codonList){
+			val codonSequence = cdsList.get(codon.cdsID).substring(codon.position * 3, codon.position * 3 + 3)
+			var formsAndCosts = computeFormsAndCosts(codonSequence, codonUsageTable)
+			codon.forms = formsAndCosts.forms
+			codon.costs = formsAndCosts.costs
+		}	
+		return codonList
+	}
 		
 	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
 		
