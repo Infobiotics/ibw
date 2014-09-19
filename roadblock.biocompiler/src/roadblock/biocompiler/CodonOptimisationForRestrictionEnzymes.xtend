@@ -6,16 +6,17 @@ import org.jacop.core.Store
 import com.almworks.sqlite4java.SQLiteConnection
 import java.io.File
 import java.util.LinkedHashMap
+import roadblock.biocompiler.Codon
 
-@Data
-class Codon {
-    Integer cdsID
-    Integer position
-    List<String> forms
-    List<Double> costs
-//    IntVar jCodon
-//    IntVar jCost
-   }
+//@Data
+//class Codon {
+//    Integer cdsID
+//    Integer position
+//    List<String> forms
+//    List<Double> costs
+////    IntVar jCodon
+////    IntVar jCost
+//   }
 
 @Data 
 class CodonUsageTableElement{
@@ -53,28 +54,19 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("Computing forms and costs for each codon")		
 		for(codon: codonList){
 			val codonSequence = cdsList.get(codon.cdsID).substring(codon.position * 3, codon.position * 3 + 3)
-			println("\tCodon sequence: " + codonSequence)
 			var formsAndCosts = computeFormsAndCosts(codonSequence, codonUsageTable)
-			println("\t\tforms:" + formsAndCosts.forms)
-			println("\t\tcosts:" + formsAndCosts.costs)
-			var tmp = new Codon(codon.cdsID, codon.position, formsAndCosts.forms, formsAndCosts.costs)
-//			codon.forms = formsAndCosts.forms
-//			codon.costs = formsAndCosts.costs
+			codon.forms = formsAndCosts.forms
+			codon.costs = formsAndCosts.costs
 		}
 		println("Content of codonList")
 		for(codon:codonList){
-			println("codon on CDS" + codon.cdsID)
+			println("codon on CDS #" + codon.cdsID)
 			println("\t has the forms: " + codon.forms.join(' / '))
 			println("\t has the costs: " + codon.costs.join(' / '))
 		}
 	}
 	
-	def setForms(Codon codon, List<String> formList) {
-		codon.forms = formList
-	}
-	def setCosts(Codon codon, List<Double> costList) {
-		codon.costs = costList
-	}
+
 		
 	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
 		
@@ -123,7 +115,7 @@ class CodonOptimisationForRestrictionEnzymes {
 	}
 	
 	def static findUniqueCodons(List<String> cdsList, List<RestrictionEnzyme> reList){
-		var codonList = newArrayList
+		var List<Codon> codonList = newArrayList
 		for(re: reList){
 			println("re: " + re.name)
 			for(cdsId: 0..(cdsList.size -1)){
@@ -131,7 +123,7 @@ class CodonOptimisationForRestrictionEnzymes {
 				if(indices.size >0){
 					for(i: indices){
 						for(codonPosition: (i..(i + re.sequence.length -1)).map[it/3].toList.uniqueInteger){
-							codonList.add(new Codon(cdsId, codonPosition, newArrayList, newArrayList))
+							codonList.add(new Codon(cdsId, codonPosition))
 							
 							} 
 					}
@@ -139,12 +131,12 @@ class CodonOptimisationForRestrictionEnzymes {
 			}
 			
 		}
-		
+
 		return codonList.uniqueCodons 		
 	}
 	
 	def static uniqueCodons(List<Codon> cl){ // returns the unique elements
-		cl.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]		
+		cl.fold(newArrayList)[a,b | if(a.exists[(it as Codon).cdsID == b.cdsID && (it as Codon).position == b.position]) a else {a.add(b);a}] 		
 	}
 	
 	def static uniqueInteger(List<Integer> i){
