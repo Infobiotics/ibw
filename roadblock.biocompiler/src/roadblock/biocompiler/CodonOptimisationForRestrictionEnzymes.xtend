@@ -11,12 +11,11 @@ import java.util.LinkedHashMap
 class Codon {
     Integer cdsID
     Integer position
-    List<Integer> form
-    List<Integer> cost
+    List<String> forms
+    List<Double> costs
 //    IntVar jCodon
 //    IntVar jCost
    }
-
 
 @Data 
 class CodonUsageTableElement{
@@ -43,13 +42,40 @@ class CodonOptimisationForRestrictionEnzymes {
 	// constructor
 	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
 		
+		println("Finding unique Codons")
 		// going through the list of RE to build the list of unique conflicting codons		
 		codonList = findUniqueCodons(cdsList, reList)
-		
+
 		// for each codon, compute the forms and costs
+		println("Building codonUsageTable")		
 		codonUsageTable = prepareFormsAndCostsTable(species)
+		
+		println("Computing forms and costs for each codon")		
+		for(codon: codonList){
+			val codonSequence = cdsList.get(codon.cdsID).substring(codon.position * 3, codon.position * 3 + 3)
+			println("\tCodon sequence: " + codonSequence)
+			var formsAndCosts = computeFormsAndCosts(codonSequence, codonUsageTable)
+			println("\t\tforms:" + formsAndCosts.forms)
+			println("\t\tcosts:" + formsAndCosts.costs)
+			var tmp = new Codon(codon.cdsID, codon.position, formsAndCosts.forms, formsAndCosts.costs)
+//			codon.forms = formsAndCosts.forms
+//			codon.costs = formsAndCosts.costs
+		}
+		println("Content of codonList")
+		for(codon:codonList){
+			println("codon on CDS" + codon.cdsID)
+			println("\t has the forms: " + codon.forms.join(' / '))
+			println("\t has the costs: " + codon.costs.join(' / '))
+		}
 	}
 	
+	def setForms(Codon codon, List<String> formList) {
+		codon.forms = formList
+	}
+	def setCosts(Codon codon, List<Double> costList) {
+		codon.costs = costList
+	}
+		
 	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
 		
 		var LinkedHashMap<String, CodonUsageTableElement> table = newLinkedHashMap
@@ -83,7 +109,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		return table	
 	}
 	
-	def static computeFormsAndCosts(String codon, LinkedHashMap<String, CodonUsageTableElement> codonUsageTable){
+	def static CodonUsageTableElement computeFormsAndCosts(String codon, LinkedHashMap<String, CodonUsageTableElement> codonUsageTable){
 		val aminoAcid = codonToAminoAcid(codon)
 		
 		val v = codonUsageTable.get(aminoAcid)	
@@ -93,7 +119,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		val baseline = v.costs.get(i)
 		var costs = v.costs.map[baseline - it ]
 		
-		return #[v.forms, costs]
+		return new CodonUsageTableElement(v.forms, costs)
 	}
 	
 	def static findUniqueCodons(List<String> cdsList, List<RestrictionEnzyme> reList){

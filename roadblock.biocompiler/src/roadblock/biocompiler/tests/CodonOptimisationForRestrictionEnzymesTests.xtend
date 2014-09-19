@@ -29,6 +29,18 @@ class CodonOptimisationForRestrictionEnzymesTests {
 			new AcceptableForms(3,#[2])		// 5
 			]
 	
+	@Test 
+	def wholeShebang(){
+		// some CDS
+		val cdsList = #['CCC ATG CCC CAA TGT', 'CCC CAA ATT TGG GCC CTT'].map[it.replace(' ','')]
+		// some RE
+		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','ATG'), new RestrictionEnzyme('RE2','TNGG')]
+
+		val species = "w3110"
+		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
+		
+		assertTrue(false)
+	}
 	
 	@Test 
 	def uniqueCodonList(){
@@ -67,7 +79,7 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		assertEquals(allAminoAcids.sort,result.keySet.sort)
 		
 		// check IsoLeucine
-		val element = result.get('Isoleucine') as CodonUsageTableElement
+		val element = result.get('Isoleucine') //as CodonUsageTableElement
 		assertEquals(#['ATA','ATC', 'ATT'], element.forms)
 		
 		assertEquals(-2.6598093	, element.costs.get(0) as Double, 0.01)	
@@ -82,8 +94,8 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		
 		val codonUsageTable = CodonOptimisationForRestrictionEnzymes.prepareFormsAndCostsTable(species) 
 		val result = CodonOptimisationForRestrictionEnzymes.computeFormsAndCosts(codon,codonUsageTable)
-		var forms = result.get(0)
-		var costs = result.get(1)
+		var forms = result.forms
+		var costs = result.costs
 
 		// we should have 3 forms: ATA, ATC and ATT, with counts 5733, 34568 and 41644
 		// which gives a cost of change of resp.: 1.9829183 0.1862289  0.0
