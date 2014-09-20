@@ -63,50 +63,64 @@ class CodonOptimisationForRestrictionEnzymes {
 			println("\t has the costs: " + codon.costs.join(' / '))
 		}
 
-		println("Creating the jForm and jCost for all codons")
+		println("Creating the jCodon and jCost")
 		for(k: 0..(codonList.size-1))
-			codonList.get(k).jCodon = new IntVar(store, "codon_" + k, 0, codonList.get(k).forms.size -1 )
-
+			codonList.get(k).jCodon = new IntVar(store, "codon_" + k, 1, codonList.get(k).forms.size  )
+		
 		for(k: 0..(codonList.size -1)){
-			codonList.get(k).jCost = new IntVar(store, "cost_" + k, -1000000000, 1000000000)
-			store.impose(new Element(codonList.get(k).jCodon, codonList.get(k).costs.map[(10000.0 * it).intValue], codonList.get(k).jCost))
+			codonList.get(k).jCost = new IntVar(store, "cost_" + k, 0, 1000000000)
+			store.impose(new Element(codonList.get(k).jCodon, codonList.get(k).costs.map[Math.abs((10000.0 * it)).intValue ], codonList.get(k).jCost))
 		}	
+		store.consistency
 		
-		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
-		store.impose(new Sum(codonList.map[jCost],globalCost))	
+		println("jCodon:")
+		codonList.forEach[println("\t" + it.jCodon.domain)]
+		println("jCost:")
+		codonList.forEach[println("\t" + it.jCost.domain)]
 		
-		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
-		store.print
-		
-		println("Trying out all combinations of conflicting codons")
-		
-		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
-		for(fre: fittingRestrictionEnzymes){
-			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
-		}
-		
-		println("Create the jRE")
-		// creates jRE
-		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty])
-			fre.jRE = new BooleanVar(store, "jRE_" + fre.reID)
+//		println("\nAdding the globalCost")		
+//		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
+//		store.impose(new Sum(codonList.map[jCost],globalCost))	
+//		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
 
-		println("Create the rules")		
-		// create rules		
-		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty]){
-			
-			var List<PrimitiveConstraint> andList = newArrayList
-			// create an AND for each combination		
-			for(combinationID: fre.fittingCombinationID){
-				var codonValues = getNthCombination(combinationID, codonList.map[forms.size])
-				var List<PrimitiveConstraint> setCodonValue = newArrayOfSize(codonList.size)
-				for(i:0..(codonList.size -1)) 
-					setCodonValue.set(i,new XeqC(codonList.get(i).jCodon,codonValues.get(i))) // set jCodon i to its value in combination (at location i)				
-				andList.add(new And(andList))
-			}	
+		
+//		println("Trying out all combinations of conflicting codons")
+//		
+//		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
+//
+//		for(fre: fittingRestrictionEnzymes){
+//			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
+//		}
+//		
+//		println("Create the jRE")
+//		// creates jRE
+//		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty])
+//			fre.jRE = new BooleanVar(store, "jRE_" + fre.reID)
+//
+//		println("Create the rules")		
+//		// create rules		
+//		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty]){
+//			println("\tProcessing: " + fre.reID)
+//			var List<PrimitiveConstraint> andList = newArrayList
+//			// create an AND for each combination		
+//			for(combinationID: fre.fittingCombinationID){
+////				println("\t\t"+combinationID)
+//				var codonValues = getNthCombination(combinationID, codonList.map[forms.size])
+//				var List<PrimitiveConstraint> setCodonValue = newArrayOfSize(codonList.size)
+//				for(i:0..(codonList.size -1)) 
+//					setCodonValue.set(i,new XeqC(codonList.get(i).jCodon,codonValues.get(i))) // set jCodon i to its value in combination (at location i)				
+//				andList.add(new And(andList))
+//			}
+//			println("\tSize andList: " + andList.size)
+//			var long startTime = System.nanoTime
 //			store.impose( new Reified( new Or(andList), fre.jRE))		
-		}
-			
-//		if(store.consistency) println("The model is consistent. ")	else println("The model is not consistent.")
+//			var long endTime = System.nanoTime
+//			println("\t\tIt took " + (endTime-startTime)/1000000)
+//			
+//		}
+		
+		println("Checking consistency")	
+		if(store.consistency) println("The model is consistent. ")	else println("The model is not consistent.")
 		println("Done.")
 	}
 	

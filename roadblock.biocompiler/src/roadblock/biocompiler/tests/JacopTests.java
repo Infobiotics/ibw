@@ -1,8 +1,14 @@
 package roadblock.biocompiler.tests;
 
+import org.jacop.constraints.And;
+import org.jacop.constraints.Or;
+import org.jacop.constraints.PrimitiveConstraint;
+import org.jacop.constraints.Reified;
 import org.jacop.constraints.Sum;
+import org.jacop.constraints.XeqC;
 import org.jacop.constraints.XltY;
 import org.jacop.constraints.XneqY;
+import org.jacop.core.BooleanVar;
 import org.jacop.core.Domain;
 import org.jacop.core.IntVar;
 import org.jacop.core.Store;
@@ -131,5 +137,34 @@ public class JacopTests {
     
     assertTrue(true);
 	
+	}
+
+	@Test
+	public void testLargeAnd(){
+	    Store store = new Store();  // define FD store 
+	    int codonNumber = 6;
+	    int combinationNumber = 50;
+	    
+	    // define finite domain variables 
+	    IntVar[] v = new IntVar[codonNumber]; 
+	    for (int i=0; i<codonNumber; i++) 
+	        v[i] = new IntVar(store, "v"+i, 0, 100000000); 
+
+	    // define constraints
+	    PrimitiveConstraint[] andList = new PrimitiveConstraint[combinationNumber];
+	    
+	    for(int i=0; i<combinationNumber; i++){
+		    PrimitiveConstraint[] constraintList = new PrimitiveConstraint[codonNumber];
+		    for (int j=0; j<codonNumber; j++){
+		    	constraintList[j] = new XeqC(v[j], (j+1)*(i+1));
+		    }
+		    andList[i] = new And(constraintList);
+	    }
+	    
+	    IntVar fitting = new BooleanVar(store, "fitting");
+	    System.out.println("Storing the final constraint" );
+	    store.impose(new Reified(new Or(andList),fitting));
+	    store.print();
+	    assertEquals("finished?","nope");
 	}
 }

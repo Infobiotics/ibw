@@ -12,7 +12,9 @@ class CodonOptimisationForRestrictionEnzymesTests {
 	@Test 
 	def wholeShebang(){
 		// some CDS
-		val cdsList = #['CCC ATG CCC CAA TGT', 'CCC CAA ATT TGG GCC CTT'].map[it.replace(' ','')]
+//		val cdsList = #['CCC ATG CCC CAA TGT', 'CCC CAA ATT TGG GCC CTT'].map[it.replace(' ','')]
+		val cdsList = #['CCC ATG CCC CAA TGT'].map[it.replace(' ','')]
+
 		// some RE
 		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','CCC'), new RestrictionEnzyme('RE2','TTGG')]
 		// RE0 will never fits because it matches ATG, which has 1 form only.
