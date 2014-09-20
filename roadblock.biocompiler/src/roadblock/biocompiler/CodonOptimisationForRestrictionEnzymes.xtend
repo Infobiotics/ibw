@@ -9,23 +9,31 @@ import java.util.LinkedHashMap
 import roadblock.biocompiler.Codon
 import org.jacop.constraints.Element
 import org.jacop.constraints.Sum
+import org.jacop.core.BooleanVar
+import org.jacop.constraints.PrimitiveConstraint
+import org.jacop.constraints.Reified
+import org.jacop.constraints.Or
+import org.jacop.constraints.XeqC
+import org.jacop.constraints.And
 
 @Data 
 class CodonUsageTableElement{
 	List<String> forms
 	List<Double> costs
 }
-@Data
-class AcceptableForms {
-	Integer codonID
-    List<Integer> form			
-    }
+//@Data
+//class AcceptableForms {
+//	Integer codonID
+//    List<Integer> form			
+//    }
     
-@Data
-class ConflictingRestrictionEnzyme{
-	List<AcceptableForms> acceptableForm
-	IntVar jRE	
-}
+//@Data
+//class ConflictingRestrictionEnzyme{
+//	List<AcceptableForms> acceptableForm
+//	IntVar jRE	
+//}
+
+
 
 class CodonOptimisationForRestrictionEnzymes {
 	
@@ -33,7 +41,7 @@ class CodonOptimisationForRestrictionEnzymes {
 	var public Store store = new Store
 	var LinkedHashMap<String, CodonUsageTableElement> codonUsageTable
 	var public IntVar globalCost
-	
+	var public List<FittingRestrictionEnzyme> fittingRestrictionEnzymes
 	// constructor
 	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
 		
@@ -71,13 +79,55 @@ class CodonOptimisationForRestrictionEnzymes {
 		store.print
 		
 		println("Trying out all combinations of conflicting codons")
-		tryAllCodonCombination(codonList, cdsList, reList)
+		
+		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
+		for(fre: fittingRestrictionEnzymes){
+			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
+		}
+		
+		println("Create the jRE")
+		// creates jRE
+		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty])
+			fre.jRE = new BooleanVar(store, "jRE_" + fre.reID)
+
+		println("Create the rules")		
+		// create rules		
+		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty]){
+			
+			var List<PrimitiveConstraint> andList = newArrayList
+			// create an AND for each combination		
+			for(combinationID: fre.fittingCombinationID){
+				var codonValues = getNthCombination(combinationID, codonList.map[forms.size])
+				var List<PrimitiveConstraint> setCodonValue = newArrayOfSize(codonList.size)
+				for(i:0..(codonList.size -1)) 
+					setCodonValue.set(i,new XeqC(codonList.get(i).jCodon,codonValues.get(i))) // set jCodon i to its value in combination (at location i)				
+				andList.add(new And(andList))
+			}	
+//			store.impose( new Reified( new Or(andList), fre.jRE))		
+		}
+			
+//		if(store.consistency) println("The model is consistent. ")	else println("The model is not consistent.")
+		println("Done.")
 	}
 	
-	def static tryAllCodonCombination(List<Codon> codonList, List<String> cdsList, List<RestrictionEnzyme> reList){
+	def static List<Integer> getNthCombination(Integer combinationID, List<Integer> sizes){
+		var List<Integer> cumulativeProduct = cumulativeProduct(sizes)
+		var List<Integer> combination = newArrayOfSize(sizes.size)
+			for(i: 0..(sizes.size - 1))
+				combination.set(i,(combinationID/cumulativeProduct.get(i)) % sizes.get(i))
+		return combination
+		}
+		
+	def static List<FittingRestrictionEnzyme> tryAllCodonCombination(List<Codon> codonList, List<String> cdsList, List<RestrictionEnzyme> reList){
 		var formSizes = codonList.map[forms.size]
 		var cumulativeProduct = cumulativeProduct(formSizes)
 		var List<String> cdsListCopy = cdsList.clone
+		
+		var List<FittingRestrictionEnzyme> fittingRestrictionEnzymes = newArrayOfSize(reList.size)
+		for(i: 0..(fittingRestrictionEnzymes.size - 1))
+			fittingRestrictionEnzymes.set(i, new FittingRestrictionEnzyme(i))
+		println("Form sizes:" + formSizes.join(' x '))
+		println("So a total of " + cumulativeProduct.last)
 		
 		for(k: 0..(cumulativeProduct.last -1 )){
 			var combination = newArrayOfSize(formSizes.size)
@@ -94,20 +144,18 @@ class CodonOptimisationForRestrictionEnzymes {
 			}
 			
 			var wholeSequence = cdsListCopy.join('x')
-			println("\t" + wholeSequence)
-			
-			var List<String> fittingRE = newArrayList
+//			println("\t" + wholeSequence)
 			
 			// check which RE don't cut
-			for(re: reList){
-				if(!Biocompiler.restrictionEnzymeCuts(wholeSequence,re.sequence))
-					fittingRE.add(re.name)						
-			}
-			println("\t\tFitting: " + fittingRE.join(', '))
-			
+			for(i: 0..(reList.size - 1))
+				if(!Biocompiler.restrictionEnzymeCuts(wholeSequence,reList.get(i).sequence))
+					fittingRestrictionEnzymes.get(i).fittingCombinationID.add(k)						
 		}
 		
+	return fittingRestrictionEnzymes		
 	}
+	
+	
 	
 	def static changeCodonInSequence(String sequence, String codon, Integer codonNumber){
 		return sequence.substring(0,codonNumber * 3) + codon + sequence.substring((codonNumber + 1 )*3)
