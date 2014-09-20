@@ -202,7 +202,7 @@ class CodonOptimisationForRestrictionEnzymes {
 				
 		for(aminoAcid: allAminoAcids){
 			var sql = db.prepare("SELECT CodonUsage.codon, usage FROM CodonUsage JOIN CodonTable ON CodonTable.codon=CodonUsage.codon WHERE CodonUsage.species LIKE '%"+species+"%' AND aminoAcid ='" + aminoAcid + "' ORDER BY CodonUsage.codon")
-			var codons = newArrayList
+			var List<String> codons = newArrayList
 			var List<Double> usages = newArrayList
 			
 			while(sql.step){
@@ -211,7 +211,7 @@ class CodonOptimisationForRestrictionEnzymes {
 			}
 			
 			val sum = usages.reduce[a,b|a+b]
-			usages = usages.map[Math.log(it/sum)] 
+			usages = usages.map[-Math.log(it/sum)] 
 			table.put(aminoAcid,new CodonUsageTableElement(codons, usages))
 			sql.dispose
 		}
@@ -226,12 +226,10 @@ class CodonOptimisationForRestrictionEnzymes {
 		val aminoAcid = codonToAminoAcid(codon)
 		
 		val v = codonUsageTable.get(aminoAcid)	
-		
-		var i = -1
-		for(k: 0..(v.forms.size -1)) if(v.forms.get(k) == codon) i = k
-		val baseline = v.costs.get(i)
-		var costs = v.costs.map[baseline - it ]
-		
+
+		var j = v.forms.indexOf(codon)
+		var costs = v.costs.clone
+		costs.set(j, 0.0)
 		return new CodonUsageTableElement(v.forms, costs)
 	}
 	

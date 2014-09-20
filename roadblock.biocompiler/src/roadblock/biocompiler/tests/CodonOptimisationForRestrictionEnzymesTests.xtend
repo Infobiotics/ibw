@@ -123,9 +123,9 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		val element = result.get('Isoleucine') //as CodonUsageTableElement
 		assertEquals(#['ATA','ATC', 'ATT'], element.forms)
 		
-		assertEquals(-2.6598093	, element.costs.get(0) as Double, 0.01)	
-		assertEquals(-0.8631199	, element.costs.get(1) as Double, 0.01)	
-		assertEquals(-0.6768910	, element.costs.get(2) as Double, 0.01)			
+		assertEquals(2.6598093	, element.costs.get(0) as Double, 0.01)	
+		assertEquals(0.8631199	, element.costs.get(1) as Double, 0.01)	
+		assertEquals(0.6768910	, element.costs.get(2) as Double, 0.01)			
 	}
 	
 	@Test
@@ -139,12 +139,12 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		var costs = result.costs
 
 		// we should have 3 forms: ATA, ATC and ATT, with counts 5733, 34568 and 41644
-		// which gives a cost of change of resp.: 1.9829183 0.1862289  0.0
+		// which gives a cost of change of resp.: 2.6598093  0.8631199 0.0
 		assertEquals(#['ATA','ATC', 'ATT'], forms )
 		assertTrue(forms.size==costs.size)
 		val precision = 0.000001  
-		assertEquals(1.9829183, costs.get(0) as Double, precision)	
-		assertEquals(0.1862289, costs.get(1) as Double, precision)	
+		assertEquals(2.6598093, costs.get(0) as Double, precision)	
+		assertEquals(0.8631199, costs.get(1) as Double, precision)	
 		assertEquals(0.0      , costs.get(2) as Double, precision)			
 		
 	}
