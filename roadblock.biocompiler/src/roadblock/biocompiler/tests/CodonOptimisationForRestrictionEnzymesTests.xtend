@@ -7,24 +7,40 @@ import roadblock.biocompiler.CodonOptimisationForRestrictionEnzymes
 import roadblock.biocompiler.RestrictionEnzyme
 import roadblock.biocompiler.Codon
 import java.util.List
+import com.almworks.sqlite4java.SQLiteConnection
+import java.io.File
 
 class CodonOptimisationForRestrictionEnzymesTests {
 	@Test 
 	def wholeShebang(){
 		// some CDS
 //		val cdsList = #['CCC ATG CCC CAA TGT', 'CCC CAA ATT TGG GCC CTT'].map[it.replace(' ','')]
-		val cdsList = #['CCC ATG CCC CAA TGT'].map[it.replace(' ','')]
 
 		// some RE
-		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','CCC'), new RestrictionEnzyme('RE2','TTGG')]
+//		val reList = #[new RestrictionEnzyme('RE0','ANN'), new RestrictionEnzyme('RE1','CCC'), new RestrictionEnzyme('RE2','TTGG')]
 		// RE0 will never fits because it matches ATG, which has 1 form only.
 		// RE1 can fit when, e.g., CCC -> CCT
 		// RE2 can fit when, e.g., TGG -> TTT
 
-
+		// nahr
+		val cdsList = #['taccttgggtgtgggatacggcgcgtagaccggctcgggcagtgaagccggtacgtgcgtgacgcgttgcgggatgtcgtggtactttcgaagctaggcgactggtcgctcgcatggaagtgggaccggtactggctgtaaccgctctagatgaagtacggcgccgactacctacacgaccgagtggtccgggggttaacgcactagtcatgccacgcgctgtcaagctactcggactacgtccggaacgtcttgccttggcacctgaaccggcacccggacgaagggttagacgtttgaccgaagaaagtcgcggccgacgaggtcttagtgatgcacacggatacagcgttcctggtaggtcagtgggcgcttggggactgagacctcgcgaagacaaggatgccggtgcacgcacagtagcggcgaccgtggccggtgccgctccacctgtgcatgtactgtgcccagccgtaggccgcgctgtaggcagaccttcacggcgtgaagcggcggcaaccggtgtaggaggtcgcgtggctagacgagcggtgacacggctatgcaaatcggctgacgacgcacctcgggaagccggattcgcggaacggcgtgggtcagcagaacggactttatcggtagttgtacaagaccgtacgcttcatggtgttcctggatcggttataaaccaacgccgttgactacaaactggacaaa'].map[toUpperCase]
+		// 10 RE from NEB
+		var List<RestrictionEnzyme> reList = newArrayList 
+		
+		val databaseLocation = "resources/restrictionEnzymes.db"
+		var db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		var sql = db.prepare("SELECT name,sequence FROM RestrictionEnzyme WHERE supplier LIKE '%b%' AND LENGTH(sequence)> cutSite LIMIT 10")
+		while(sql.step) reList.add(new RestrictionEnzyme(sql.columnString(0),sql.columnString(1)))
+		sql.dispose
+		db.dispose	
+			
+		
+		
 		val species = "w3110"
 		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
-		
+		println("searching")
+		cofre.findAtLeastNRestrictionEnzymes(10)
 		assertEquals("finished?","nope")
 	}
 	

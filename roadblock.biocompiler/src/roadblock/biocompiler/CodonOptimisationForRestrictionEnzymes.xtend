@@ -15,25 +15,18 @@ import org.jacop.constraints.Reified
 import org.jacop.constraints.Or
 import org.jacop.constraints.XeqC
 import org.jacop.constraints.And
+import org.jacop.constraints.XgteqC
+import org.jacop.search.Search
+import org.jacop.search.DepthFirstSearch
+import org.jacop.search.SelectChoicePoint
+import org.jacop.search.InputOrderSelect
+import org.jacop.search.IndomainMin
 
 @Data 
 class CodonUsageTableElement{
 	List<String> forms
 	List<Double> costs
 }
-//@Data
-//class AcceptableForms {
-//	Integer codonID
-//    List<Integer> form			
-//    }
-    
-//@Data
-//class ConflictingRestrictionEnzyme{
-//	List<AcceptableForms> acceptableForm
-//	IntVar jRE	
-//}
-
-
 
 class CodonOptimisationForRestrictionEnzymes {
 	
@@ -41,6 +34,7 @@ class CodonOptimisationForRestrictionEnzymes {
 	var public Store store = new Store
 	var LinkedHashMap<String, CodonUsageTableElement> codonUsageTable
 	var public IntVar globalCost
+	var public IntVar jNumberFreeRE 
 	var public List<FittingRestrictionEnzyme> fittingRestrictionEnzymes
 	// constructor
 	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
@@ -56,12 +50,12 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("Computing forms and costs for each codon")		
 		codonList = computeFormsAndCostsForCodonList(codonList, cdsList, codonUsageTable)
 
-		println("Content of codonList")
-		for(codon:codonList){
-			println("codon on CDS# " + codon.cdsID)
-			println("\t has the forms: " + codon.forms.join(' / '))
-			println("\t has the costs: " + codon.costs.join(' / '))
-		}
+//		println("Content of codonList")
+//		for(codon:codonList){
+//			println("codon on CDS# " + codon.cdsID)
+//			println("\t has the forms: " + codon.forms.join(' / '))
+//			println("\t has the costs: " + codon.costs.join(' / '))
+//		}
 
 		println("Creating the jCodon and jCost")
 		for(k: 0..(codonList.size-1))
@@ -73,55 +67,82 @@ class CodonOptimisationForRestrictionEnzymes {
 		}	
 		store.consistency
 		
-		println("jCodon:")
-		codonList.forEach[println("\t" + it.jCodon.domain)]
-		println("jCost:")
-		codonList.forEach[println("\t" + it.jCost.domain)]
+//		println("jCodon:")
+//		codonList.forEach[println("\t" + it.jCodon.domain)]
+//		println("jCost:")
+//		codonList.forEach[println("\t" + it.jCost.domain)]
 		
-//		println("\nAdding the globalCost")		
-//		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
-//		store.impose(new Sum(codonList.map[jCost],globalCost))	
-//		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
+		println("\nAdding the globalCost")		
+		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
+		store.impose(new Sum(codonList.map[jCost],globalCost))	
+		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
 
 		
-//		println("Trying out all combinations of conflicting codons")
-//		
-//		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
-//
-//		for(fre: fittingRestrictionEnzymes){
-//			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
-//		}
-//		
-//		println("Create the jRE")
-//		// creates jRE
-//		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty])
-//			fre.jRE = new BooleanVar(store, "jRE_" + fre.reID)
-//
-//		println("Create the rules")		
-//		// create rules		
-//		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty]){
-//			println("\tProcessing: " + fre.reID)
-//			var List<PrimitiveConstraint> andList = newArrayList
-//			// create an AND for each combination		
-//			for(combinationID: fre.fittingCombinationID){
-////				println("\t\t"+combinationID)
-//				var codonValues = getNthCombination(combinationID, codonList.map[forms.size])
-//				var List<PrimitiveConstraint> setCodonValue = newArrayOfSize(codonList.size)
-//				for(i:0..(codonList.size -1)) 
-//					setCodonValue.set(i,new XeqC(codonList.get(i).jCodon,codonValues.get(i))) // set jCodon i to its value in combination (at location i)				
-//				andList.add(new And(andList))
-//			}
-//			println("\tSize andList: " + andList.size)
-//			var long startTime = System.nanoTime
-//			store.impose( new Reified( new Or(andList), fre.jRE))		
-//			var long endTime = System.nanoTime
-//			println("\t\tIt took " + (endTime-startTime)/1000000)
-//			
-//		}
+		println("Trying out all combinations of conflicting codons")
 		
-		println("Checking consistency")	
-		if(store.consistency) println("The model is consistent. ")	else println("The model is not consistent.")
+		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
+
+		for(fre: fittingRestrictionEnzymes){
+			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
+		}
+		
+		println("Create the jRE")
+		// creates jRE
+		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty])
+			fre.jRE = new BooleanVar(store, "jRE_" + fre.reID)
+
+		println("Create the rules")		
+		// create rules		
+		for(fre: fittingRestrictionEnzymes.filter[!fittingCombinationID.empty]){
+			println("\tProcessing: " + fre.reID)
+			var List<PrimitiveConstraint> andList = newArrayList
+			// create an AND for each combination		
+			for(combinationID: fre.fittingCombinationID){
+				var codonValues = getNthCombination(combinationID, codonList.map[forms.size])
+				var List<PrimitiveConstraint> setCodonValue = newArrayOfSize(codonList.size)
+				for(i:0..(codonList.size -1)) 
+					setCodonValue.set(i,new XeqC(codonList.get(i).jCodon,codonValues.get(i) + 1 )) // set jCodon i to its value in combination (at location i)				
+				andList.add(new And(setCodonValue))
+			}
+			store.impose( new Reified( new Or(andList), fre.jRE))		
+		}
+		
+		println("Create variable for number of free RE")
+		jNumberFreeRE = new IntVar(store, "numberFreeRE",0,reList.size)
+		store.impose(new Sum(fittingRestrictionEnzymes.filter[!fittingCombinationID.empty].map[jRE],jNumberFreeRE))
+		
 		println("Done.")
+	}
+	
+	def findAtLeastNRestrictionEnzymes(Integer n){
+		
+		store.impose(new XgteqC(jNumberFreeRE,n))
+		
+		var allVar = newArrayList
+		allVar.addAll(codonList.map[jCodon])
+		allVar.addAll(codonList.map[jCost])
+		allVar.addAll(fittingRestrictionEnzymes.filter[!it.fittingCombinationID.empty].map[jRE])
+		allVar.addAll(jNumberFreeRE)
+		allVar.addAll(globalCost)
+		
+		var Search<IntVar> search = new DepthFirstSearch<IntVar> 
+        var SelectChoicePoint<IntVar> select = new InputOrderSelect<IntVar>(store, allVar, new IndomainMin<IntVar>) 
+        var boolean result = search.labeling(store, select, globalCost); 
+ 
+        if ( result ) {
+            println("Solution:" +
+            	"\n\tGlobal Cost: " + globalCost +        
+				"\n\tNumber of fitting RE:" + jNumberFreeRE + 
+				"\n\tRE:" + fittingRestrictionEnzymes.filter[!it.fittingCombinationID.empty].map[jRE].join(' / ') + 
+				"\n\tCodons: " + codonList.map[jCodon].join(" / ") + 
+				"\n\tCosts: " + codonList.map[jCost].join(" / ")
+            )
+            }
+        else {
+            println("*** No Solution found"); 
+   		}
+		
+		
 	}
 	
 	def static List<Integer> getNthCombination(Integer combinationID, List<Integer> sizes){
