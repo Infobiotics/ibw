@@ -8,6 +8,8 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.modelchecking,
  roadblock.modelchecking.runtime,
+ roadblock.modelchecking.runtime.nusmv,
+ roadblock.modelchecking.runtime.prism,
  roadblock.modelchecking.translation,
  roadblock.modelchecking.translation.model,
  roadblock.modelchecking.translation.property

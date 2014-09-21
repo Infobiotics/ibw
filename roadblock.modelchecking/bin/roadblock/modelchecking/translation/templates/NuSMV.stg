@@ -84,7 +84,7 @@ _choice != 0;
 choiceConstraints(constraints) ::= <<
 _choice := <constraints:{constraint | 
 	case 
-		(<constraint.guard>) : {<constraint.ruleIndex>\};
+		<constraint.guard> : {<constraint.ruleIndex>\};
 		TRUE : {0\};
 	esac}; separator=" union">;
 >> 

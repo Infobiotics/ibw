@@ -20,4 +20,6 @@ Import-Package: roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
  roadblock.modelchecking,
  roadblock.modelchecking.runtime,
+ roadblock.modelchecking.runtime.nusmv,
+ roadblock.modelchecking.runtime.prism,
  roadblock.xtext.ibl.ibl

@@ -5,6 +5,10 @@ import java.io.IOException;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.modelchecking.ModelcheckingTarget;
+import roadblock.modelchecking.runtime.nusmv.NuSmvConfiguration;
+import roadblock.modelchecking.runtime.nusmv.NuSmvExecutor;
+import roadblock.modelchecking.runtime.prism.PrismConfiguration;
+import roadblock.modelchecking.runtime.prism.PrismExecutor;
 
 public class VerificationManager {
 
@@ -20,20 +24,35 @@ public class VerificationManager {
 	}
 
 	public void export(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException {
-		
-		IModelcheckingExecutor executor = getExecutor(target);
+
+		IModelcheckingExecutor<? extends IModelcheckingConfiguration> executor = getExecutor(target);
 		executor.export(model, property, target, filename);
 	}
-	
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException {
-		
-		IModelcheckingExecutor executor = getExecutor(target);
-		return executor.verify(model, property, target, filename);
+
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, IModelcheckingConfiguration config) throws IOException {
+
+		IModelcheckingExecutor<? extends IModelcheckingConfiguration> executor = getExecutor(target);
+		Process verificationProcess = null;
+
+		switch (target) {
+		case PRISM:
+			PrismExecutor prismExecutor = (PrismExecutor) executor;
+			verificationProcess = prismExecutor.verify(model, property, target, (PrismConfiguration) config);
+			break;
+		case NUSMV:
+			NuSmvExecutor nuSmvExecutor = (NuSmvExecutor) executor;
+			verificationProcess = nuSmvExecutor.verify(model, property, target, (NuSmvConfiguration) config);
+			break;
+		default:
+			break;
+		}
+
+		return verificationProcess;
 	}
-	
-	private IModelcheckingExecutor getExecutor(ModelcheckingTarget target) {
-		
-		IModelcheckingExecutor executor = null;
+
+	private IModelcheckingExecutor<? extends IModelcheckingConfiguration> getExecutor(ModelcheckingTarget target) {
+
+		IModelcheckingExecutor<? extends IModelcheckingConfiguration> executor = null;
 
 		switch (target) {
 		case PRISM:
