@@ -24,6 +24,7 @@ Import-Package: org.apache.log4j,
  roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
+ roadblock.modelchecking,
  roadblock.modelchecking.translation,
  roadblock.modelchecking.translation.model,
  roadblock.modelchecking.translation.property

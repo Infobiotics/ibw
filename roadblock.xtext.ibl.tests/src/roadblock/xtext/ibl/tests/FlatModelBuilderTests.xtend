@@ -9,6 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import roadblock.dataprocessing.flatModel.FlatModelManager
 import roadblock.dataprocessing.model.ModelBuilder
+import roadblock.emf.ibl.Ibl.MolecularSpecies
 import roadblock.xtext.ibl.IblInjectorProvider
 import roadblock.xtext.ibl.ibl.Model
 
@@ -48,14 +49,44 @@ class PropertyBuilderTests {
 				CELL cell = new TestCell()
 			}
 		'''.parse
-		
+
 		val ModelBuilder modelBuilder = new ModelBuilder();
 		val model = modelBuilder.populate(semanticModel);
-		
+
 		val flatModelManager = new FlatModelManager(model);
 		val flatModel = flatModelManager.flatModel
-		
+
 		Assert::assertEquals(flatModel.moleculeList.size, 9);
 		Assert::assertEquals(flatModel.ruleList.size, 5);
+	}
+
+	@Test
+	def void testFlatModelMoleculeAmounts() {
+		val semanticModel = '''
+			define TestCell typeof CELL() {
+				a = MOLECULE(displayID = "a", degradationRate = 1 min^-1, concentration = 1e-8 M)
+				b = MOLECULE(displayID = "b", degradationRate = 1 s^-1, concentration = 1e-5 mM)
+				c = MOLECULE(displayID = "c", degradationRate = 1 min^-1, concentration = 1e-2 uM)
+				d = MOLECULE(displayID = "d", degradationRate = 1 s^-1, concentration = 1e+1 nM)
+				f = MOLECULE(displayID = "f", degradationRate = 1 min^-1, concentration = 1e+4 pM)
+				g = MOLECULE(displayID = "g", degradationRate = 1 s^-1, concentration = 1e+7 fM)
+				h = MOLECULE(displayID = "h", degradationRate = 1 min^-1, concentration = 6 molecules)
+			}
+			
+			define region typeof REGION () {
+				CELL cell = new TestCell()
+			}
+		'''.parse
+
+		val ModelBuilder modelBuilder = new ModelBuilder();
+		val model = modelBuilder.populate(semanticModel);
+
+		val flatModelManager = new FlatModelManager(model);
+		val flatModel = flatModelManager.flatModel
+
+		for (MolecularSpecies m : flatModel.moleculeList) {
+			Assert::assertTrue(Math.floor(flatModel.moleculeList.get(0).amount) == 6.0);
+		}
+
 	}
 }

@@ -1,10 +1,10 @@
 package roadblock.modelchecking.translation.property;
 
 import roadblock.emf.ibl.Ibl.IVisitor;
-import roadblock.modelchecking.translation.TranslationTarget;
+import roadblock.modelchecking.ModelcheckingTarget;
 
 public interface IPropertyTranslator extends IVisitor<String> {
 
-	public TranslationTarget getTarget();
+	public ModelcheckingTarget getTarget();
 	
 }

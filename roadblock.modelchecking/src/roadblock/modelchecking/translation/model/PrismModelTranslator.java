@@ -17,7 +17,7 @@ import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
-import roadblock.modelchecking.translation.TranslationTarget;
+import roadblock.modelchecking.ModelcheckingTarget;
 
 public class PrismModelTranslator implements IModelTranslator {
 
@@ -295,7 +295,7 @@ public class PrismModelTranslator implements IModelTranslator {
 	}
 
 	@Override
-	public TranslationTarget getTarget() {
-		return TranslationTarget.PRISM;
+	public ModelcheckingTarget getTarget() {
+		return ModelcheckingTarget.PRISM;
 	}
 }

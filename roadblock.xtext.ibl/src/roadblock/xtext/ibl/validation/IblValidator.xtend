@@ -1,5 +1,7 @@
 package roadblock.xtext.ibl.validation
 
+import java.util.ArrayList
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.validation.Check
 import roadblock.xtext.ibl.ibl.ATGCDefinition
@@ -7,13 +9,27 @@ import roadblock.xtext.ibl.ibl.CellInstantiation
 import roadblock.xtext.ibl.ibl.ChromosomeInstantiation
 import roadblock.xtext.ibl.ibl.DeviceDefinition
 import roadblock.xtext.ibl.ibl.FunctionBodyMember
+import roadblock.xtext.ibl.ibl.FunctionContent
 import roadblock.xtext.ibl.ibl.IblPackage
+import roadblock.xtext.ibl.ibl.List
 import roadblock.xtext.ibl.ibl.Outside
 import roadblock.xtext.ibl.ibl.PlasmidInstantiation
+import roadblock.xtext.ibl.ibl.ProbabilityProperty
 import roadblock.xtext.ibl.ibl.ProcessInstantiation
 import roadblock.xtext.ibl.ibl.PropertyDefinition
+import roadblock.xtext.ibl.ibl.RewardProperty
 import roadblock.xtext.ibl.ibl.RuleDefinition
+import roadblock.xtext.ibl.ibl.StateFormula
 import roadblock.xtext.ibl.ibl.SystemInstantiation
+import roadblock.xtext.ibl.ibl.VariableAssignment
+import roadblock.xtext.ibl.ibl.VariableAttribute
+import roadblock.xtext.ibl.ibl.VariableComplex
+import roadblock.xtext.ibl.ibl.VariableDefinition
+import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
+import roadblock.xtext.ibl.ibl.VariableDefinitionUserDefined
+import roadblock.xtext.ibl.ibl.VariableKind
+import roadblock.xtext.ibl.ibl.VariableName
+import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.impl.CellBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ChromosomeBodyImpl
 import roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyImpl
@@ -21,30 +37,6 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
-import roadblock.xtext.ibl.ibl.VariableDefinition
-import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.resource.ILocationInFileProviderExtension.RegionDescription
-import roadblock.xtext.ibl.ibl.FunctionContent
-import roadblock.xtext.ibl.ibl.VariableDefinitionUserDefined
-import roadblock.xtext.ibl.ibl.RegionBody
-import roadblock.xtext.ibl.ibl.VariableAssignment
-import roadblock.xtext.ibl.ibl.VariableName
-import roadblock.xtext.ibl.ibl.VariableAttribute
-import roadblock.xtext.ibl.ibl.VariableComplex
-import roadblock.xtext.ibl.ibl.VariableKind
-import roadblock.xtext.ibl.ibl.VariableReference
-import roadblock.xtext.ibl.ibl.RuleObject
-import roadblock.xtext.ibl.ibl.List
-import roadblock.xtext.ibl.ibl.RewardProperty
-import roadblock.xtext.ibl.ibl.ProbabilityProperty
-import java.nio.charset.Charset
-import java.io.IOException
-import java.nio.file.Paths
-import java.nio.ByteBuffer
-import java.nio.file.Files
-import roadblock.xtext.ibl.ibl.StateFormula
-import java.util.ArrayList
 
 // utility class, used for checking forbidden containers
 @Data 

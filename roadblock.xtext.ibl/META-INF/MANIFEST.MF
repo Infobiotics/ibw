@@ -26,6 +26,7 @@ Import-Package: org.apache.log4j,
  roadblock.simulation.ngss,
  roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util,
+ roadblock.modelchecking,
  roadblock.modelchecking.translation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.xtext.ibl,

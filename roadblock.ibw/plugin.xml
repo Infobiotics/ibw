@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="IBW"
+         name="Infobiotics Workbench"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="IBW">
+      </product>
+   </extension>
+   <extension
+         id="roadblock.ibw.perspectives.modelchecking"
+         name="Model Checking Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Modelchecking"
+            id="roadblock.ibw.perspectives.modelchecking"
+            name="Model Checking">
+      </perspective>
+   </extension>
+
+</plugin>
