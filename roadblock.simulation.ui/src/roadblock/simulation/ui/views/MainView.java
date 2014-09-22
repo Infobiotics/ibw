@@ -81,31 +81,23 @@ public class MainView extends ViewPart implements IPartListener2 {
 	//private CheckboxTreeViewer propertyTreeViewer;
 	private Text modelFile;
 	private Text dataFile;
-	private Combo SSAlgorithm;
+	private Text maxTime;
+	// XXX private Text maxRunTime;
+	private Text logInterval;
+	// XXX private Text seed;
 	private Text sampleNumber;
+	private Combo SSAlgorithm;
 	private Button simulationButton;
-	private Button exportSBMLButton;
-
-	//private String tmpDirPath;
-	//private File tmpDir;
 
 	@Override
 	public void createPartControl(Composite parent) {
 
 		// add change listener model
-		// XXX final Composite parentComposite = parent;
 		getSite().getPage().addPartListener(this);
 		
 		simulationConsole = new MessageConsole("Simulation Results", null);
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { simulationConsole });
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
-
-		// make temporary directory
-		/*
-		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID + ".tmp";
-		tmpDir = new File(tmpDirPath);
-		tmpDir.mkdir();
-		*/
 
 		// create widget layout
 		GridLayout layout = new GridLayout(3, false);
@@ -137,17 +129,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 			}
 		});
 
-		// create stochastic simulation algorithm widget
-		Label SSLabel = new Label(parent, SWT.NONE);
-		SSLabel.setText("Simulation algorithm: ");
-		SSLabel.setToolTipText("simulation algorithm to use");
-		SSAlgorithm = new Combo(parent, SWT.NONE);
-		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		SSAlgorithm.add("XXX PRISM");
-		SSAlgorithm.add("XXX MC2");
-
-		// XXX more widgets
+		Label maxTimeLabel = new Label(parent, SWT.NONE);
+		maxTimeLabel.setText("Max. Time: ");
+		maxTimeLabel.setToolTipText("end time of the simulation");
+		maxTime = new Text(parent, SWT.BORDER);
+		maxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		
+		Label logIntervalLabel = new Label(parent, SWT.NONE);
+		logIntervalLabel.setText("Interval: ");
+		logIntervalLabel.setToolTipText("interval with which trajectories are sampled");
+		logInterval = new Text(parent, SWT.BORDER);
+		logInterval.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+
 		// number of samples
 		Label samplesLabel = new Label(parent, SWT.NONE);
 		samplesLabel.setText("Samples: ");
@@ -158,18 +151,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
 		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 
-		// create export SBML button
-		exportSBMLButton = new Button(parent, SWT.PUSH);
-		exportSBMLButton.setText("Export SBML");
-		exportSBMLButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				exportSBML();
-			}
-		});
-		exportSBMLButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-		exportSBMLButton.setEnabled(false);
-
+		// create stochastic simulation algorithm widget
+		Label SSLabel = new Label(parent, SWT.NONE);
+		SSLabel.setText("Simulation algorithm: ");
+		SSLabel.setToolTipText("simulation algorithm to use");
+		SSAlgorithm = new Combo(parent, SWT.NONE);
+		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		SSAlgorithm.add("PRISM"); // XXX
+		SSAlgorithm.add("MC2");		
+		
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
 		simulationButton.setText("Simulate");
@@ -231,7 +221,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 			}
 */
 			simulationButton.setEnabled(true);
-			exportSBMLButton.setEnabled(true);
 			modelFile.setText(config.getModelFile());
 			dataFile.setText(config.getDataFile());
 			SSAlgorithm.setText(config.getSSAlgorithm());
@@ -300,47 +289,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 		if (config == null) {
 			config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
 		}
-	}
-
-	private void exportSBML() {
-		/*
-		final Object[] selectedProperties = propertyTreeViewer.getCheckedElements();
-		final SimulationTarget target = (SimulationTarget) modelChecker.getData(modelChecker.getText());
-
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
-		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
-
-		IRunnableWithProgress exportTask = new IRunnableWithProgress() {
-			@Override
-			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-
-				try {
-					int exportIndex = 0;
-
-					for (Object checkedProperty : selectedProperties) {
-						if (checkedProperty instanceof IProperty) {
-
-							IProperty property = (IProperty) checkedProperty;
-							String exportFilename = String.format("%s%s%s", filenameWithoutExtension, ++exportIndex, fileExtension);
-							
-							VerificationManager.getInstance().export(model, property, target, exportFilename);
-						}
-					}
-				} catch (IOException e) {
-					errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " + modelChecker.getText(), e);
-				}
-			}
-		};
-
-		try {
-			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName() + " to " + modelChecker.getText() + "...");
-			progressDialog.run(true, true, exportTask);
-		} catch (InvocationTargetException | InterruptedException e) {
-			errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " + modelChecker.getText(), e);
-		}
-		*/
 	}
 
 	// launch simulator

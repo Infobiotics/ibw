@@ -21,8 +21,6 @@ import roadblock.emf.ibl.Ibl.Model
 import roadblock.modelchecking.ModelcheckingTarget
 import roadblock.modelchecking.translation.TranslationManager
 
-import roadblock.simulation.ngss.Simulator
-
 /**
  * Generates code from your model files on save.
  * 
@@ -60,11 +58,7 @@ class IblGenerator implements IGenerator {
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
 		generateTranslations(emfModel);
-
-		val sim = new Simulator(xml)
-		sim.runSimulation()
 	}
-//}	
 	
     def generateTranslations(Model emfModel) {
 
