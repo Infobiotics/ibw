@@ -28,12 +28,17 @@ import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
+import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.jface.window.ToolTip;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -52,29 +57,36 @@ import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
-import roadblock.emf.ibl.Ibl.Model;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.runtime.VerificationManager;
 import roadblock.modelchecking.runtime.prism.PrismConfiguration;
 import roadblock.modelchecking.ui.Activator;
-import roadblock.modelchecking.ui.components.IblLabelProvider;
+import roadblock.modelchecking.ui.components.IblColumnLabelProvider;
 import roadblock.modelchecking.ui.components.IblTreeContentProvider;
 import roadblock.modelchecking.ui.model.Configuration;
+import roadblock.modelchecking.ui.model.ModelData;
+import roadblock.modelchecking.ui.model.PropertySemanticEntityPair;
 import roadblock.modelchecking.ui.util.ConfigurationUtil;
 import roadblock.modelchecking.ui.util.ModelcheckingUtil;
+
+import com.google.inject.Inject;
 
 public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.modelchecking.ui.views.mainView";
 
-	private Model model;
+	private ModelData modelData;
 	private Configuration config;
+	private XtextEditor iblEditor;
 	private XtextResource currentIblResource;
 
 	private MessageConsole verificationConsole;
@@ -86,11 +98,14 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Text txtConfidenceValue;
 	private Text txtPathLength;
 	private Text txtSampleNumber;
-	private Button btnModelcheckingButton;
-	private Button btnExportPrismButton;
+	private Button btnVerify;
+	private Button btnExport;
 
 	private String tmpDirPath;
 	private File tmpDir;
+
+	@Inject
+	private IHighlightedPositionAcceptor highlightedPositionAcceptor;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -173,12 +188,24 @@ public class MainView extends ViewPart implements IPartListener2 {
 		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
 		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 
-		ctvPropertyTreeViewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.V_SCROLL);
-		ctvPropertyTreeViewer.setLabelProvider(new IblLabelProvider());
+		Label propertiesLabel = new Label(parent, SWT.CENTER);
+		propertiesLabel.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		propertiesLabel.setText("Properties");
+
+		Label separator2 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+		separator2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+
+		ctvPropertyTreeViewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.NO_SCROLL | SWT.V_SCROLL);
+		// ctvPropertyTreeViewer.setLabelProvider(new IblLabelProvider());
 		ctvPropertyTreeViewer.setContentProvider(new IblTreeContentProvider());
 		ctvPropertyTreeViewer.setAutoExpandLevel(4);
 		Tree tree = ctvPropertyTreeViewer.getTree();
 		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 3, 3));
+		TreeViewerColumn column = new TreeViewerColumn(ctvPropertyTreeViewer, SWT.NONE);
+		column.getColumn().setWidth(500);
+		column.getColumn().setResizable(false);
+		column.setLabelProvider(new IblColumnLabelProvider());
+		ColumnViewerToolTipSupport.enableFor(ctvPropertyTreeViewer, ToolTip.RECREATE);
 		ctvPropertyTreeViewer.addCheckStateListener(new ICheckStateListener() {
 			public void checkStateChanged(CheckStateChangedEvent event) {
 
@@ -189,40 +216,61 @@ public class MainView extends ViewPart implements IPartListener2 {
 				}
 			}
 		});
+		tree.addSelectionListener(new SelectionListener() {
 
-		Label separator2 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
-		separator2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (iblEditor != null && modelData != null) {
+					PropertySemanticEntityPair selection = (PropertySemanticEntityPair) e.item.getData();
+
+					INode propertyNode = NodeModelUtils.getNode(selection.semanticEntity);
+					ISourceViewer textViewer = iblEditor.getInternalSourceViewer();
+					// textViewer.setRangeIndication(propertyNode.getOffset(),
+					// propertyNode.getLength(), false);
+					textViewer.revealRange(propertyNode.getOffset(), propertyNode.getLength());
+					textViewer.setSelectedRange(propertyNode.getOffset(), propertyNode.getLength());
+				}
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+
+		Label separator3 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+		separator3.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 
 		// create export to PRISM button
-		btnExportPrismButton = new Button(parent, SWT.PUSH);
-		btnExportPrismButton.setText("Export Model");
-		btnExportPrismButton.addSelectionListener(new SelectionAdapter() {
+		btnExport = new Button(parent, SWT.PUSH);
+		btnExport.setText("Export Model");
+		btnExport.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				exportVerificationModel();
 			}
 		});
-		btnExportPrismButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-		btnExportPrismButton.setEnabled(false);
+		btnExport.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		btnExport.setEnabled(false);
 
 		// create model checking button
-		btnModelcheckingButton = new Button(parent, SWT.PUSH);
-		btnModelcheckingButton.setText("Verify");
-		btnModelcheckingButton.addSelectionListener(new SelectionAdapter() {
+		btnVerify = new Button(parent, SWT.PUSH);
+		btnVerify.setText("Verify");
+		btnVerify.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				performModelChecking();
 			}
 		});
-		btnModelcheckingButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-		btnModelcheckingButton.setEnabled(false);
+		btnVerify.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		btnVerify.setEnabled(false);
 	}
 
 	@Override
 	public void partActivated(IWorkbenchPartReference partRef) {
 		IWorkbenchPart part = partRef.getPart(true);
 		if (part instanceof XtextEditor) {
-			XtextEditor iblEditor = (XtextEditor) part;
+			iblEditor = (XtextEditor) part;
 			if (iblEditor.getLanguageName().equals("roadblock.xtext.ibl.Ibl")) {
 				IXtextDocument iblDocument = iblEditor.getDocument();
 				XtextResource iblResource = iblDocument.readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
@@ -234,8 +282,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				if (iblResource != currentIblResource) {
 					currentIblResource = iblResource;
-					ensureConfig();
-					bindValues();
+					if (config == null) {
+						ensureConfig();
+						bindValues();
+					}
 				}
 
 				if (iblResource.getErrors().size() == 0) {
@@ -253,20 +303,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 	protected void updateUi() {
 
 		if (currentIblResource == null) {
-			btnModelcheckingButton.setEnabled(false);
-			btnModelcheckingButton.setEnabled(false);
+			btnVerify.setEnabled(false);
+			btnVerify.setEnabled(false);
 		} else {
 
-			model = ModelcheckingUtil.getInstance().getModel(currentIblResource);
+			modelData = ModelcheckingUtil.getInstance().getModel(currentIblResource);
 
-			if (model != null) {
-
-				((IblLabelProvider) ctvPropertyTreeViewer.getLabelProvider()).resetIndex();
-				ctvPropertyTreeViewer.setInput(model);
+			if (modelData != null) {
+				ctvPropertyTreeViewer.setInput(modelData);
 			}
 
-			btnModelcheckingButton.setEnabled(true);
-			btnExportPrismButton.setEnabled(true);
+			btnVerify.setEnabled(true);
+			btnExport.setEnabled(true);
 			txtModelFile.setText(config.getModelFile());
 			txtDataFile.setText(config.getDataFile());
 			ddlModelChecker.setText(config.getModelChecker());
@@ -274,6 +322,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 			txtPathLength.setText(config.getPathLength().toString());
 			txtSampleNumber.setText(config.getSampleNumber().toString());
 		}
+
+		getSite().getShell().layout(true, true);
 	}
 
 	// bind class entries to widget entries
@@ -331,6 +381,88 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// model checker value widget
+		widgetValue = WidgetProperties.selection().observe(ddlModelChecker);
+		modelValue = BeanProperties.value(Configuration.class, "modelChecker").observe(config);
+
+		strategy = new UpdateValueStrategy();
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+
+		// confidence value widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtConfidenceValue);
+		modelValue = BeanProperties.value(Configuration.class, "confidenceValue").observe(config);
+
+		// add a validator so can only be a decimal number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// sample number value widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtSampleNumber);
+		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
+
+		// add a validator so can only be an integer number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Integer) {
+					Integer intValue = (Integer) value;
+					if (intValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not an integer number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// path length value widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtPathLength);
+		modelValue = BeanProperties.value(Configuration.class, "pathLength").observe(config);
+
+		// add a validator so can only be an integer number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Integer) {
+					Integer intValue = (Integer) value;
+					if (intValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not an integer number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 	}
 
 	private void ensureConfig() {
@@ -341,7 +473,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private void exportVerificationModel() {
 
-		final Object[] selectedProperties = ctvPropertyTreeViewer.getCheckedElements();
+		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
 		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
@@ -353,13 +485,13 @@ public class MainView extends ViewPart implements IPartListener2 {
 				try {
 					int exportIndex = 0;
 
-					for (Object checkedProperty : selectedProperties) {
-						if (checkedProperty instanceof IProperty) {
+					for (Object checkedProperty : selectedPropertyPairs) {
+						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
-							IProperty property = (IProperty) checkedProperty;
+							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
-							VerificationManager.getInstance().export(model, property, target, exportFilename);
+							VerificationManager.getInstance().export(modelData.model, property, target, exportFilename);
 						}
 					}
 				} catch (IOException e) {
@@ -381,7 +513,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	// launch model checking
 	private void performModelChecking() {
 
-		final Object[] selectedProperties = ctvPropertyTreeViewer.getCheckedElements();
+		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
 		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
@@ -399,10 +531,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 				try {
 					int exportIndex = 0;
 
-					for (Object checkedProperty : selectedProperties) {
-						if (checkedProperty instanceof IProperty) {
+					for (Object checkedProperty : selectedPropertyPairs) {
+						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
-							IProperty property = (IProperty) checkedProperty;
+							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 							final String exportFilename = String.format("%s%s", filenameWithoutExtension, ++exportIndex);
 							PrismConfiguration config = new PrismConfiguration();
 							config.modelFileName = exportFilename;
@@ -410,7 +542,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 							config.pathLength = pathLength;
 							config.samples = samples;
 
-							final Process verificationProcess = VerificationManager.getInstance().verify(model, property, target, config);
+							final Process verificationProcess = VerificationManager.getInstance().verify(modelData.model, property, target, config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {

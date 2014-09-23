@@ -22,4 +22,8 @@ Import-Package: roadblock.dataprocessing.model,
  roadblock.modelchecking.runtime,
  roadblock.modelchecking.runtime.nusmv,
  roadblock.modelchecking.runtime.prism,
- roadblock.xtext.ibl.ibl
+ roadblock.xtext.ibl.ibl,
+ roadblock.xtext.ibl.ui.contentassist,
+ roadblock.xtext.ibl.ui.contentassist.antlr,
+ roadblock.xtext.ibl.ui.internal,
+ roadblock.xtext.ibl.ui.quickfix
