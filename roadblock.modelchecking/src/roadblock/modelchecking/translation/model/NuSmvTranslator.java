@@ -345,7 +345,7 @@ public class NuSmvTranslator implements IModelTranslator {
 					currentMultiplicity = moleculeMultiplicities.get(translatedMoleculeName);
 				}
 
-				moleculeMultiplicities.put(translatedMoleculeName, currentMultiplicity + 1);
+				moleculeMultiplicities.put(translatedMoleculeName, currentMultiplicity + (int)molecule.getAmount());
 			}
 		}
 
@@ -368,7 +368,6 @@ public class NuSmvTranslator implements IModelTranslator {
 
 			moleculeMaxConcentrations.put(molecule.getKey(), maxConcentration);
 		}
-
 	}
 
 	private void adjustMaxConcentration(MolecularSpecies molecule) {
