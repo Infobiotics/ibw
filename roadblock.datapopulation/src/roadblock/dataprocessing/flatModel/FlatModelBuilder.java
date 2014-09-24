@@ -555,7 +555,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 	private boolean belongsToCompartment(IProperty property, Object compartment) {
 
-		boolean result = false;
+		boolean result = property == null;
 
 		if (compartment instanceof Cell) {
 			result = ((Cell) compartment).getProperties().indexOf(property) != -1;
