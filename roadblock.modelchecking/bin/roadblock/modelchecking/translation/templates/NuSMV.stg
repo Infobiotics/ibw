@@ -54,12 +54,20 @@ caseBranch(guard, value) ::= <<
 <guard> : <value>;
 >>
 
-choiceGuard(ruleIndex, molecules) ::= <<
-(_choice = <ruleIndex>)<molecules:{molecule |  & (<molecule.name> > <molecule.multiplicity>)}; separator=" ">
+choiceConsumptionGuard(ruleIndex, consumedMolecules) ::= <<
+(_choice = <ruleIndex>)<consumedMolecules:{molecule |  & (<molecule.name> > <molecule.multiplicity>)}; separator="">
 >>
 
-guard(molecules) ::= <<
-<molecules:{molecule | (<molecule.name> > <molecule.multiplicity>)}; separator=" & ">
+choiceProductionGuard(ruleIndex, producedMolecule, consumedMolecules) ::= <<
+(_choice = <ruleIndex>)<consumedMolecules:{molecule |  & (<molecule.name> > <molecule.multiplicity>)}; separator=""> & (<moleculeProduction(producedMolecule)> \<= <producedMolecule.maxConcentration>)
+>>
+
+productionGuard(producedMolecule, consumedMolecules) ::= <<
+<consumedMolecules:{molecule | (<molecule.name> > <molecule.multiplicity>)}; separator=" & "> & (<moleculeProduction(producedMolecule)> \<= <producedMolecule.maxConcentration>)
+>>
+
+consumptionGuard(consumedMolecules) ::= <<
+<consumedMolecules:{molecule | (<molecule.name> > <molecule.multiplicity>)}; separator=" & ">
 >>
 
 moleculeConsumption(molecule) ::= <<

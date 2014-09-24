@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
@@ -22,7 +23,7 @@ public class NuSmvTranslator implements IModelTranslator {
 
 	private class UpdateRule {
 		public int ruleIndex;
-		public List<MolecularSpecies> guardComponents;
+		public Map<String, Integer> guardComponents;
 		public boolean isProduction;
 		public int multiplicity;
 	}
@@ -111,11 +112,14 @@ public class NuSmvTranslator implements IModelTranslator {
 				for (UpdateRule updateRule : updateRulesByMolecule.get(molecule)) {
 					if (updateRule.guardComponents.size() > 0) {
 
-						ST guardTemplate = nusmvTemplates.getInstanceOf("guard");
+						ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "productionGuard" : "consumptionGuard");
 
-						for (MolecularSpecies consumedMolecule : updateRule.guardComponents) {
-							guardTemplate.addAggr("molecules.{name, multiplicity}", getTranslatedName(consumedMolecule),
-									(int) consumedMolecule.getAmount());
+						if (updateRule.isProduction) {
+							guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity,
+									moleculeMaxConcentrations.get(molecule));
+						}
+						for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
+							guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
 						}
 
 						guardList.add(guardTemplate.render());
@@ -137,11 +141,14 @@ public class NuSmvTranslator implements IModelTranslator {
 			for (UpdateRule updateRule : updateRulesByMolecule.get(molecule)) {
 				if (updateRule.guardComponents.size() > 0) {
 
-					ST guardTemplate = nusmvTemplates.getInstanceOf("guard");
+					ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "productionGuard" : "consumptionGuard");
 
-					for (MolecularSpecies consumedMolecule : updateRule.guardComponents) {
-						guardTemplate.addAggr("molecules.{name, multiplicity}", getTranslatedName(consumedMolecule),
-								(int) consumedMolecule.getAmount());
+					if (updateRule.isProduction) {
+						guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity,
+								moleculeMaxConcentrations.get(molecule));
+					}
+					for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
+						guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
 					}
 
 					choiceConstraintsTemplate.addAggr("constraints.{guard, ruleIndex}", guardTemplate.render(), updateRule.ruleIndex);
@@ -158,9 +165,10 @@ public class NuSmvTranslator implements IModelTranslator {
 
 		for (MolecularSpecies molecule : model.getMoleculeList()) {
 
-			if (!restrictedMoleculeNames.contains(molecule.getDisplayName())) {
+			String moleculeTranslatedName = getTranslatedName(molecule);
 
-				String moleculeTranslatedName = getTranslatedName(molecule);
+			if (!restrictedMoleculeNames.contains(molecule.getDisplayName()) && moleculeMaxConcentrations.get(moleculeTranslatedName) > 0) {
+
 				int initialConcentration = (int) molecule.getAmount();
 
 				ST moleculeTemplate = nusmvTemplates.getInstanceOf("initialConcentration");
@@ -180,36 +188,38 @@ public class NuSmvTranslator implements IModelTranslator {
 
 		for (String molecule : updateRulesByMolecule.keySet()) {
 
-			String translatedMolecule = getTranslatedName(molecule);
-
 			ST variableUpdateTemplate = nusmvTemplates.getInstanceOf("variableUpdate");
 			ST caseExpressionTemplate = nusmvTemplates.getInstanceOf("caseExpression");
 
-			variableUpdateTemplate.add("name", translatedMolecule);
+			variableUpdateTemplate.add("name", molecule);
 
 			List<String> branchList = new LinkedList<>();
 
 			for (UpdateRule updateRule : updateRulesByMolecule.get(molecule)) {
 
 				ST caseBranchTemplate = nusmvTemplates.getInstanceOf("caseBranch");
-				ST guardTemplate = nusmvTemplates.getInstanceOf("choiceGuard");
+				ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "choiceProductionGuard" : "choiceConsumptionGuard"); 
 
 				guardTemplate.add("ruleIndex", updateRule.ruleIndex);
-				for (MolecularSpecies consumedMolecule : updateRule.guardComponents) {
-					guardTemplate.addAggr("molecules.{name, multiplicity}", getTranslatedName(consumedMolecule), (int) consumedMolecule.getAmount());
+				if (updateRule.isProduction) {
+					guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity,
+							moleculeMaxConcentrations.get(molecule));
+				}
+				for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
+					guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
 				}
 
 				caseBranchTemplate.add("guard", guardTemplate.render());
 				caseBranchTemplate.add(
 						"value",
 						(updateRule.isProduction ? nusmvTemplates.getInstanceOf("moleculeProduction") : nusmvTemplates
-								.getInstanceOf("moleculeConsumption")).addAggr("molecule.{name, multiplicity}", translatedMolecule,
-								updateRule.multiplicity).render());
+								.getInstanceOf("moleculeConsumption")).addAggr("molecule.{name, multiplicity}", molecule, updateRule.multiplicity)
+								.render());
 
 				branchList.add(caseBranchTemplate.render());
 			}
 
-			caseExpressionTemplate.add("variable", translatedMolecule);
+			caseExpressionTemplate.add("variable", molecule);
 			caseExpressionTemplate.add("branches", branchList);
 			variableUpdateTemplate.add("value", caseExpressionTemplate.render());
 
@@ -233,29 +243,11 @@ public class NuSmvTranslator implements IModelTranslator {
 		return translatedName;
 	}
 
-	private String getTranslatedName(String moleculeName) {
-
-		String translatedName = null;
-
-		if (moleculeNameTranslations.containsKey(moleculeName)) {
-			translatedName = moleculeNameTranslations.get(moleculeName);
-		} else {
-			translatedName = doTranslateName(moleculeName);
-			moleculeNameTranslations.put(moleculeName, translatedName);
-		}
-
-		return translatedName;
-	}
-
 	private String doTranslateName(String moleculeName) {
 		return moleculeName.replace("~", "_");
 	}
 
 	private void initDataStructures(FlatModel model) {
-
-		for (MolecularSpecies molecule : model.getMoleculeList()) {
-			adjustMaxConcentration(molecule);
-		}
 
 		for (Rule rule : model.getRuleList()) {
 
@@ -265,66 +257,76 @@ public class NuSmvTranslator implements IModelTranslator {
 			adjustMaxConcentration(consumedMolecules);
 			adjustMaxConcentration(producedMolecules);
 
-			registerUpdateRules(++ruleCount, rule.getLeftHandSide(), rule.getRightHandSide(), consumedMolecules, producedMolecules);
+			registerUpdateRules(++ruleCount, consumedMolecules, producedMolecules);
 
 			if (rule.isIsBidirectional()) {
-				registerUpdateRules(++ruleCount, rule.getRightHandSide(), rule.getLeftHandSide(), producedMolecules, consumedMolecules);
+				registerUpdateRules(++ruleCount, producedMolecules, consumedMolecules);
 			}
+		}
+
+		for (MolecularSpecies molecule : model.getMoleculeList()) {
+			adjustMaxConcentration(molecule);
 		}
 	}
 
-	private void registerUpdateRules(int ruleIndex, List<MolecularSpecies> lhsMolecules, List<MolecularSpecies> rhsMolecules,
-			Map<String, Integer> consumedMolecules, Map<String, Integer> producedMolecules) {
+	private void registerUpdateRules(int ruleIndex, Map<String, Integer> consumedMolecules, Map<String, Integer> producedMolecules) {
 
-		if (lhsMolecules.size() == 0) {
+		Map<String, Integer> consumed = new ConcurrentHashMap<>(consumedMolecules);
+
+		if (consumedMolecules.size() == 0) {
 			hasPureProductionRules = true;
 		}
 
 		// register update rules for the set of consumed molecules
-		for (MolecularSpecies molecule : lhsMolecules) {
+		for (String molecule : consumedMolecules.keySet()) {
 
-			String translatedMoleculeName = getTranslatedName(molecule);
-			Integer correspondingRhsMultiplicity = producedMolecules.get(translatedMoleculeName);
+			Integer lhsMultiplicity = consumedMolecules.get(molecule);
+			Integer rhsMultiplicity = producedMolecules.get(molecule);
 
-			if (correspondingRhsMultiplicity == null || molecule.getAmount() > correspondingRhsMultiplicity) {
+			if (rhsMultiplicity == null || lhsMultiplicity > rhsMultiplicity) {
 
-				List<UpdateRule> updateRules = updateRulesByMolecule.get(molecule.getDisplayName());
+				int multiplicity = rhsMultiplicity != null ? lhsMultiplicity - rhsMultiplicity : lhsMultiplicity;
+				consumed.put(molecule, multiplicity);
+
+				List<UpdateRule> updateRules = updateRulesByMolecule.get(molecule);
 
 				if (updateRules == null) {
-					updateRulesByMolecule.put(molecule.getDisplayName(), updateRules = new LinkedList<>());
+					updateRulesByMolecule.put(molecule, updateRules = new LinkedList<>());
 				}
 
 				UpdateRule updateRule = new UpdateRule();
 				updateRule.ruleIndex = ruleIndex;
-				updateRule.guardComponents = lhsMolecules;
+				updateRule.guardComponents = consumedMolecules;
 				updateRule.isProduction = false;
-				updateRule.multiplicity = correspondingRhsMultiplicity != null ? consumedMolecules.get(translatedMoleculeName)
-						- correspondingRhsMultiplicity : consumedMolecules.get(translatedMoleculeName);
+				updateRule.multiplicity = multiplicity;
 
 				updateRules.add(updateRule);
+			} else {
+				consumed.remove(molecule);
 			}
 		}
 
 		// register update rules for the set of produced molecules
-		for (MolecularSpecies molecule : rhsMolecules) {
+		for (String molecule : producedMolecules.keySet()) {
 
-			String translatedMoleculeName = getTranslatedName(molecule);
-			Integer correspondingLhsMultiplicity = consumedMolecules.get(translatedMoleculeName);
+			Integer lhsMultiplicity = consumedMolecules.get(molecule);
+			Integer rhsMultiplicity = producedMolecules.get(molecule);
 
-			if (correspondingLhsMultiplicity == null || molecule.getAmount() > correspondingLhsMultiplicity) {
+			if (lhsMultiplicity == null || rhsMultiplicity > lhsMultiplicity) {
 
-				List<UpdateRule> updateRules = updateRulesByMolecule.get(molecule.getDisplayName());
+				int multiplicity = lhsMultiplicity != null ? rhsMultiplicity - lhsMultiplicity : rhsMultiplicity;
+
+				List<UpdateRule> updateRules = updateRulesByMolecule.get(molecule);
 
 				if (updateRules == null) {
-					updateRulesByMolecule.put(molecule.getDisplayName(), updateRules = new LinkedList<>());
+					updateRulesByMolecule.put(molecule, updateRules = new LinkedList<>());
 				}
 
 				UpdateRule updateRule = new UpdateRule();
 				updateRule.ruleIndex = ruleIndex;
-				updateRule.guardComponents = lhsMolecules;
+				updateRule.guardComponents = consumedMolecules;
 				updateRule.isProduction = true;
-				updateRule.multiplicity = correspondingLhsMultiplicity != null ? producedMolecules.get(translatedMoleculeName)
-						- correspondingLhsMultiplicity : producedMolecules.get(translatedMoleculeName);
+				updateRule.multiplicity = multiplicity;
 
 				updateRules.add(updateRule);
 			}
@@ -345,7 +347,7 @@ public class NuSmvTranslator implements IModelTranslator {
 					currentMultiplicity = moleculeMultiplicities.get(translatedMoleculeName);
 				}
 
-				moleculeMultiplicities.put(translatedMoleculeName, currentMultiplicity + (int)molecule.getAmount());
+				moleculeMultiplicities.put(translatedMoleculeName, currentMultiplicity + 1);
 			}
 		}
 
@@ -375,17 +377,13 @@ public class NuSmvTranslator implements IModelTranslator {
 		String moleculeName = getTranslatedName(molecule);
 		int moleculeAmount = (int) molecule.getAmount();
 
-		int maxConcentration = 1;
+		int currentConcentration = 0;
 
 		if (moleculeMaxConcentrations.containsKey(moleculeName)) {
-			maxConcentration = moleculeMaxConcentrations.get(moleculeName);
+			currentConcentration = moleculeMaxConcentrations.get(moleculeName);
 		}
 
-		if (moleculeAmount > maxConcentration) {
-			maxConcentration = moleculeAmount;
-		}
-
-		moleculeMaxConcentrations.put(moleculeName, maxConcentration);
+		moleculeMaxConcentrations.put(moleculeName, currentConcentration + moleculeAmount);
 	}
 
 	@Override

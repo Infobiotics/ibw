@@ -176,9 +176,6 @@ public class PrismTranslator implements IModelTranslator {
 		Map<String, Integer> consumed = new ConcurrentHashMap<>(consumedMolecules);
 		Map<String, Integer> produced = new ConcurrentHashMap<>(producedMolecules);
 
-		// consumed.putAll(consumedMolecules);
-		// produced.putAll(producedMolecules);
-
 		// eliminate superfluous molecules
 		for (String moleculeName : consumed.keySet()) {
 
