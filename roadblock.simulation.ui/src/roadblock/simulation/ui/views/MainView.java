@@ -1,5 +1,6 @@
 package roadblock.simulation.ui.views;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -140,8 +141,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSLabel.setToolTipText("simulation algorithm to use");
 		SSAlgorithm = new Combo(parent, SWT.NONE);
 		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		SSAlgorithm.add("PRISM"); // XXX ngss algorithm options
-		SSAlgorithm.add("MC2");		
+		SSAlgorithm.add("dm");
+		SSAlgorithm.add("frm");
+		SSAlgorithm.add("cr");
+		SSAlgorithm.add("tl");
+		SSAlgorithm.add("nrm");
+		SSAlgorithm.add("pdm");
+		SSAlgorithm.add("ldm");
+		SSAlgorithm.add("sdm");
+		SSAlgorithm.add("odm");
 		
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
@@ -279,12 +287,16 @@ public class MainView extends ViewPart implements IPartListener2 {
 	// launch simulator
 	private void performSimulation() {
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
-		
-		/* ideally, the flat model should only be regenerated when the source code changes */
-		FlatModelManager flatModelManager = new FlatModelManager(model);
 
-		String xml = "";
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
+		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
+		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
+
+		String xml = null;
 		try {
+			/* ideally, the model xml should only be regenerated when the source code changes */
+			FlatModelManager flatModelManager = new FlatModelManager(model);
 			xml = convertToXml(flatModelManager.getFlatModel());
 		} catch (IOException e) {
 			errorDialogWithStackTrace("Failed to export model to xml", e);
@@ -296,7 +308,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		simulator.runs = config.getSampleNumber();
 		//simulator.max_runtime = 0.0;
 		//simulator.seed = 0;
-		simulator.runSimulation(consoleStream);
+		simulator.runSimulation(exportFilename, consoleStream);
 	}
 
 	// export an EMF model to XML

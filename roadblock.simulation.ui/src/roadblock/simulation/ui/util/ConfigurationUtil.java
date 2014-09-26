@@ -47,7 +47,6 @@ public class ConfigurationUtil {
 	}
 
 	public Configuration getConfig(XtextResource iblResource) {
-
 		String modelName = iblResource.getURI().trimFileExtension().lastSegment();
 		String modelFilename = iblResource.getURI().lastSegment();
 		String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
@@ -55,7 +54,7 @@ public class ConfigurationUtil {
 
 		loadCurrentConfig();
 		config.modelName = modelName;
-		config.dataFile = modelName + ".sm";
+		config.dataFile = modelName + ".csv";
 		config.modelFile = modelFilename;
 		config.dataDirectory = workspacePath + resourcePath;
 
