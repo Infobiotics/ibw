@@ -2,24 +2,26 @@ package roadblock.simulation.ngss
 
 import java.lang.Runtime
 import java.io.BufferedReader
+import java.io.OutputStream
 import java.io.InputStreamReader
 
 class SimulationThread extends Thread {
-	var String model
+	var String xml_model
 	public var Process process
 	
-	new (String model, String cmd) {
-		this.model = model
+	new (String xml_model, String cmd) {
+		this.xml_model = xml_model
 		this.process = Runtime.getRuntime().exec(cmd)
 	}
 
 	override run() {
 		// write emf model to process in
 		var input = this.process.getOutputStream()
-		input.write(this.model.getBytes())
+		input.write(this.xml_model.getBytes())
 		input.close()
-			
+		
 		// write process output to console
+		// XXX write to file
 		var String line
 		var output = new BufferedReader(new InputStreamReader(process.getInputStream()))
 		while ((line=output.readLine()) != null) println(line)
@@ -30,7 +32,7 @@ class SimulationThread extends Thread {
 class Simulator {
 	
 	/* variables to alter the behavior of the simulator */
-	public var simulation_algorithm = 'nrm' // XXX enum instead of string?
+	public var simulation_algorithm = 'nrm'
 	public var max_time = 100.0
 	public var max_runtime = 0.0
 	public var log_interval = 1.0
@@ -45,10 +47,10 @@ class Simulator {
 		this.model = model
 	}
 
-	def runSimulation() {
+	def runSimulation(OutputStream errorStream) {
 		val cmd = '''«this.ngss_exe» --emf parser=emf max_time=«this.max_time» max_runtime=«this.max_runtime» simulation_algorithm=«this.simulation_algorithm» data_file=model.csv log_interval=«this.log_interval» runs=«this.runs» seed=«this.seed» output=console compress=true parallel=true show_progress=false'''
-		println(cmd)
 
+		// run simulation
 		var thread = new SimulationThread(this.model,cmd)
 		thread.start()
 
@@ -58,11 +60,9 @@ class Simulator {
 			// write error message to console
 			var String line
 			var error = new BufferedReader(new InputStreamReader(thread.process.getErrorStream()))
-			while ((line=error.readLine()) != null) println(line)
+			while ((line=error.readLine()) != null) errorStream.write(line.getBytes())
 			error.close()
 		}
-
 		thread.join()
-		println("done")
 	}
 }

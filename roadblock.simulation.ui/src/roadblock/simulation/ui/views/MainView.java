@@ -1,13 +1,8 @@
 package roadblock.simulation.ui.views;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,19 +13,12 @@ import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
-import org.eclipse.jface.viewers.CheckboxTreeViewer;
-import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -43,7 +31,6 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
@@ -53,18 +40,16 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-
-import roadblock.emf.ibl.Ibl.IProperty;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 import roadblock.emf.ibl.Ibl.Model;
-import roadblock.xtext.ibl.generator.IblGenerator;
+import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.simulation.ngss.Simulator;
 import roadblock.simulation.ui.Activator;
-//import roadblock.simulation.ui.components.IblLabelProvider;
-//import roadblock.simulation.ui.components.IblTreeContentProvider;
 import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
 import roadblock.simulation.ui.util.SimulationUtil;
@@ -82,9 +67,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Text modelFile;
 	private Text dataFile;
 	private Text maxTime;
-	// XXX private Text maxRunTime;
 	private Text logInterval;
-	// XXX private Text seed;
 	private Text sampleNumber;
 	private Combo SSAlgorithm;
 	private Button simulationButton;
@@ -125,7 +108,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		fileDialogButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				config.setDataDirectory(directoryDialog.open());
+				config.dataDirectory = directoryDialog.open();
 			}
 		});
 
@@ -143,7 +126,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		// number of samples
 		Label samplesLabel = new Label(parent, SWT.NONE);
-		samplesLabel.setText("Samples: ");
+		samplesLabel.setText("Number of runs: ");
 		samplesLabel.setToolTipText("number of samples for stochastic simulation");
 		sampleNumber = new Text(parent, SWT.BORDER);
 		sampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
@@ -157,7 +140,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSLabel.setToolTipText("simulation algorithm to use");
 		SSAlgorithm = new Combo(parent, SWT.NONE);
 		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		SSAlgorithm.add("PRISM"); // XXX
+		SSAlgorithm.add("PRISM"); // XXX ngss algorithm options
 		SSAlgorithm.add("MC2");		
 		
 		// create simulation button
@@ -221,10 +204,12 @@ public class MainView extends ViewPart implements IPartListener2 {
 			}
 */
 			simulationButton.setEnabled(true);
-			modelFile.setText(config.getModelFile());
-			dataFile.setText(config.getDataFile());
-			SSAlgorithm.setText(config.getSSAlgorithm());
-			sampleNumber.setText(config.getSampleNumber().toString());
+			modelFile.setText(config.modelFile);
+			dataFile.setText(config.dataFile);
+			maxTime.setText(config.maxTime.toString());
+			logInterval.setText(config.logInterval.toString());
+			sampleNumber.setText(config.sampleNumber.toString());
+			SSAlgorithm.setText(config.SSAlgorithm);
 		}
 	}
 
@@ -294,21 +279,35 @@ public class MainView extends ViewPart implements IPartListener2 {
 	// launch simulator
 	private void performSimulation() {
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
+		
+		/* ideally, the flat model should only be regenerated when the source code changes */
+		FlatModelManager flatModelManager = new FlatModelManager(model);
 
-/*
-		IblGenerator generator = new IblGenerator();
-		IFileSystemAccess fsa = new IFileSystemAccess();
-		generator.doGenerate(currentIblResource, fsa);
-*/
-		Simulator simulator = new Simulator("EMFModel.xml"); // XXX hard wired...
-		consoleStream.println(modelFile.getText());
-		// XXX read config from Configuration or widgets
-		simulator.max_time = 100.0;
-		simulator.max_runtime = 0.0;
-		simulator.log_interval = 1.0;
-		simulator.runs = 1;
-		simulator.seed = 0;
-		// XXX simulator.runSimulation();
+		String xml = "";
+		try {
+			xml = convertToXml(flatModelManager.getFlatModel());
+		} catch (IOException e) {
+			errorDialogWithStackTrace("Failed to export model to xml", e);
+		}
+		
+		Simulator simulator = new Simulator(xml);
+		simulator.max_time = config.getMaxTime();
+		simulator.log_interval = config.getLogInterval();
+		simulator.runs = config.getSampleNumber();
+		//simulator.max_runtime = 0.0;
+		//simulator.seed = 0;
+		simulator.runSimulation(consoleStream);
+	}
+
+	// export an EMF model to XML
+	// via http://techblog.goelite.org/sending-emf-models-via-soap/
+	public static String convertToXml(EObject eObject) throws IOException {
+		XMLResourceImpl resource = new XMLResourceImpl();
+		XMLProcessor processor = new XMLProcessor();
+		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+		resource.setEncoding("UTF-8");
+		resource.getContents().add(eObject);
+		return processor.saveToString(resource, null);
 	}
 
 	private static void errorDialogWithStackTrace(String msg, Throwable t) {
@@ -333,43 +332,43 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	@Override
 	public void setFocus() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void partBroughtToTop(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void partClosed(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void partOpened(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void partHidden(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void partVisible(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	@Override
 	public void partInputChanged(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 }

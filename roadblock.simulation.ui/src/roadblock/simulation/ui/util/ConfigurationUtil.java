@@ -63,8 +63,10 @@ public class ConfigurationUtil {
 		setModelFile(config.modelFile);
 		setDataFile(config.dataFile);
 		setDataDirectory(config.dataDirectory);
-		setSSAlgorithm(config.ssAlgorithm);
+		setMaxTime(config.maxTime);
+		setLogInterval(config.logInterval);
 		setSampleNumber(config.sampleNumber);
+		setSSAlgorithm(config.SSAlgorithm);
 
 		return config;
 	}
@@ -79,8 +81,10 @@ public class ConfigurationUtil {
 		config.modelFile = "";
 		config.dataFile = "";
 		config.dataDirectory = "";
-		config.ssAlgorithm = "nrm";
-		config.sampleNumber = 100;
+		config.logInterval = 0.1;
+		config.maxTime = 100.;
+		config.sampleNumber = 1;
+		config.SSAlgorithm = "nrm";
 		
 		return config;
 	}
@@ -90,8 +94,10 @@ public class ConfigurationUtil {
 		setModelFile(config.modelFile);
 		setDataFile(config.dataFile);
 		setDataDirectory(config.dataDirectory);
-		setSSAlgorithm(config.ssAlgorithm);
+		setMaxTime(config.maxTime);
+		setLogInterval(config.logInterval);
 		setSampleNumber(config.sampleNumber);
+		setSSAlgorithm(config.SSAlgorithm);
 	}
 
 	private void loadCurrentConfig() {
@@ -99,8 +105,10 @@ public class ConfigurationUtil {
 		config.modelFile = getModelFile();
 		config.dataFile = getDataFile();
 		config.dataDirectory = getDataDirectory();
-		config.ssAlgorithm = getSSAlgorithm();
+		config.maxTime = getMaxTime();
+		config.logInterval = getLogInterval();
 		config.sampleNumber = getSampleNumber();
+		config.SSAlgorithm = getSSAlgorithm();
 	}
 
 	private static String getConfigQualifier(String projectName, String modelName) {
@@ -143,20 +151,36 @@ public class ConfigurationUtil {
 		writeParameterToConfiguration("dataDirectory", dataDirectory);
 	}
 
-	private String getSSAlgorithm() {
-		return readParameterFromConfiguration("ssAlgorithm");
+	private Double getMaxTime() {
+		return readDoubleParameterFromConfiguration("maxTime");
 	}
-
-	private void setSSAlgorithm(String ssAlgorithm) {
-		writeParameterToConfiguration("ssAlgorithm", ssAlgorithm);
+	
+	private void setMaxTime(Double max_time) {
+		writeParameterToConfiguration("maxTime", max_time);
 	}
-
+	
+	private Double getLogInterval() {
+		return readDoubleParameterFromConfiguration("logInterval");
+	}
+	
+	private void setLogInterval(Double interval) {
+		writeParameterToConfiguration("logInterval", interval);
+	}
+	
 	private int getSampleNumber() {
 		return readIntParameterFromConfiguration("sampleNumber");
 	}
 
 	private void setSampleNumber(Integer sampleNumber) {
 		writeParameterToConfiguration("sampleNumber", sampleNumber);
+	}
+
+	private String getSSAlgorithm() {
+		return readParameterFromConfiguration("ssAlgorithm");
+	}
+
+	private void setSSAlgorithm(String ssAlgorithm) {
+		writeParameterToConfiguration("ssAlgorithm", ssAlgorithm);
 	}
 
 	private String readParameterFromConfiguration(String parameter) {
