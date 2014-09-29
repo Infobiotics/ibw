@@ -40,7 +40,7 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		val species = "w3110"
 		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
 		println("searching")
-		cofre.findAtLeastNRestrictionEnzymes(10)
+		cofre.findAtLeastNRestrictionEnzymes(3)
 		assertEquals("finished?","nope")
 	}
 	

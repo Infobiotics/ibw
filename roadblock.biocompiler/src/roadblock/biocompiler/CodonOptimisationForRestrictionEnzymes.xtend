@@ -75,16 +75,16 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("\nAdding the globalCost")		
 		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
 		store.impose(new Sum(codonList.map[jCost],globalCost))	
-		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
+//		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
 
 		
-		println("Trying out all combinations of conflicting codons")
+//		println("Trying out all combinations of conflicting codons")
 		
 		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
 
-		for(fre: fittingRestrictionEnzymes){
-			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
-		}
+//		for(fre: fittingRestrictionEnzymes){
+//			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
+//		}
 		
 		println("Create the jRE")
 		// creates jRE
@@ -161,8 +161,8 @@ class CodonOptimisationForRestrictionEnzymes {
 		var List<FittingRestrictionEnzyme> fittingRestrictionEnzymes = newArrayOfSize(reList.size)
 		for(i: 0..(fittingRestrictionEnzymes.size - 1))
 			fittingRestrictionEnzymes.set(i, new FittingRestrictionEnzyme(i))
-		println("Form sizes:" + formSizes.join(' x '))
-		println("So a total of " + cumulativeProduct.last)
+//		println("Form sizes:" + formSizes.join(' x '))
+//		println("So a total of " + cumulativeProduct.last)
 		
 		for(k: 0..(cumulativeProduct.last -1 )){
 			var combination = newArrayOfSize(formSizes.size)

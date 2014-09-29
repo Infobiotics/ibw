@@ -3,6 +3,7 @@
 # example of query: SELECT CodonUsage.codon, usage,species FROM CodonUsage JOIN CodonTable ON CodonTable.codon=CodonUsage.codon WHERE CodonTable.aminoAcid='Glycine' AND CodonUsage.species LIKE '%w3110%'
 # C. Ladroue
 
+
 import sqlite3
 import urllib2
 import itertools
