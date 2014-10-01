@@ -47,6 +47,9 @@ public class TranslationManager {
 		case PRISM:
 			propertyTranslator = new roadblock.modelchecking.translation.property.PrismTranslator();
 			break;
+		case NUSMV:
+			propertyTranslator = new roadblock.modelchecking.translation.property.NuSmvTranslator();
+			break;
 		default:
 			break;
 		}
@@ -62,7 +65,7 @@ public class TranslationManager {
 		case PRISM:
 			modelTranslator = new PrismTranslator();
 			break;
-		case NUSMV: 
+		case NUSMV:
 			modelTranslator = new NuSmvTranslator();
 			break;
 		default:

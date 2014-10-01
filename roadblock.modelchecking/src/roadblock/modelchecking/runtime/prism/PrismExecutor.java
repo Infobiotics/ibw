@@ -55,11 +55,11 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
 
-	private void writeFile(String fileName, String content) throws IOException {
+	private void writeFile(String fileName, String model) throws IOException {
 
 		PrintWriter writer = new PrintWriter(fileName);
 
-		writer.write(content);
+		writer.write(model);
 		writer.flush();
 		writer.close();
 	}

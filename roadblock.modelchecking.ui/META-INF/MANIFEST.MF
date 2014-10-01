@@ -19,6 +19,8 @@ Export-Package: roadblock.modelchecking.ui.views
 Import-Package: roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
  roadblock.modelchecking,
+ roadblock.modelchecking.filtering,
+ roadblock.modelchecking.filtering.property,
  roadblock.modelchecking.runtime,
  roadblock.modelchecking.runtime.nusmv,
  roadblock.modelchecking.runtime.prism,

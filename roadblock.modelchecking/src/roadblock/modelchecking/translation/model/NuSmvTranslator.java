@@ -119,7 +119,8 @@ public class NuSmvTranslator implements IModelTranslator {
 									moleculeMaxConcentrations.get(molecule));
 						}
 						for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
-							guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
+							guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(),
+									consumedMolecule.getValue() - 1);
 						}
 
 						guardList.add(guardTemplate.render());
@@ -198,7 +199,7 @@ public class NuSmvTranslator implements IModelTranslator {
 			for (UpdateRule updateRule : updateRulesByMolecule.get(molecule)) {
 
 				ST caseBranchTemplate = nusmvTemplates.getInstanceOf("caseBranch");
-				ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "choiceProductionGuard" : "choiceConsumptionGuard"); 
+				ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "choiceProductionGuard" : "choiceConsumptionGuard");
 
 				guardTemplate.add("ruleIndex", updateRule.ruleIndex);
 				if (updateRule.isProduction) {

@@ -18,37 +18,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Cell</b></em>'. <!-- end-user-doc -->
- * 
- * <!-- begin-model-doc --> Attempt at generating javadoc from EMF. <!--
- * end-model-doc -->
- * 
+ *
+ * <!-- begin-model-doc -->
+ * Attempt at generating javadoc from EMF.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName <em>Display Name</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getDeviceList <em>Device List</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getRuleList <em>Rule List</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getMoleculeList <em>Molecule List</em>}
- * </li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getATGCCommandList <em>ATGC Command
- * List</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getVariableAssignmentList <em>Variable
- * Assignment List</em>}</li>
- * <li>{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName <em>Display Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getDeviceList <em>Device List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getRuleList <em>Rule List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getMoleculeList <em>Molecule List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getATGCCommandList <em>ATGC Command List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getCell()
  * @model kind="class"
  * @generated
  */
 public class Cell extends EObjectImpl implements IVisitable {
 	/**
-	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}
-	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDisplayName()
 	 * @generated
 	 * @ordered
@@ -56,9 +53,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected static final String DISPLAY_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDisplayName()
 	 * @generated
 	 * @ordered
@@ -66,9 +62,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected String displayName = DISPLAY_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDeviceList() <em>Device List</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getDeviceList() <em>Device List</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDeviceList()
 	 * @generated
 	 * @ordered
@@ -76,9 +71,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected EList<Device> deviceList;
 
 	/**
-	 * The cached value of the '{@link #getKinetics() <em>Kinetics</em>}'
-	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getKinetics() <em>Kinetics</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getKinetics()
 	 * @generated
 	 * @ordered
@@ -86,9 +80,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected Kinetics kinetics;
 
 	/**
-	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRuleList()
 	 * @generated
 	 * @ordered
@@ -96,10 +89,9 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected EList<Rule> ruleList;
 
 	/**
-	 * The cached value of the '{@link #getMoleculeList()
-	 * <em>Molecule List</em>}' containment reference list. <!-- begin-user-doc
+	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @see #getMoleculeList()
 	 * @generated
 	 * @ordered
@@ -149,9 +141,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected EList<EMFVariableAssignment> variableAssignmentList;
 
 	/**
-	 * The cached value of the '{@link #getProperties() <em>Properties</em>}'
-	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getProperties()
 	 * @generated
 	 * @ordered
@@ -160,7 +151,6 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected Cell() {
@@ -169,7 +159,6 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -197,12 +186,10 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName
-	 * <em>Display Name</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName <em>Display Name</em>}' attribute.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Display Name</em>' attribute.
+	 * @param value the new value of the '<em>Display Name</em>' attribute.
 	 * @see #getDisplayName()
 	 * @generated
 	 */
@@ -214,17 +201,15 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Device List</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link roadblock.emf.ibl.Ibl.Device}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Device List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Device}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Device List</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Device List</em>' containment reference
-	 *         list.
+	 * @return the value of the '<em>Device List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_DeviceList()
 	 * @model containment="true"
 	 * @generated
@@ -237,14 +222,13 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Kinetics</b></em>' containment
-	 * reference. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Kinetics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kinetics</em>' containment reference isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Kinetics</em>' containment reference.
 	 * @see #setKinetics(Kinetics)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_Kinetics()
@@ -257,7 +241,6 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetKinetics(Kinetics newKinetics, NotificationChain msgs) {
@@ -265,22 +248,16 @@ public class Cell extends EObjectImpl implements IVisitable {
 		kinetics = newKinetics;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.CELL__KINETICS, oldKinetics, newKinetics);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getKinetics
-	 * <em>Kinetics</em>}' containment reference. <!-- begin-user-doc --> <!--
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Kinetics</em>' containment
-	 *            reference.
+	 * @param value the new value of the '<em>Kinetics</em>' containment reference.
 	 * @see #getKinetics()
 	 * @generated
 	 */
@@ -288,26 +265,25 @@ public class Cell extends EObjectImpl implements IVisitable {
 		if (newKinetics != kinetics) {
 			NotificationChain msgs = null;
 			if (kinetics != null)
-				msgs = ((InternalEObject) kinetics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.CELL__KINETICS, null, msgs);
+				msgs = ((InternalEObject)kinetics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.CELL__KINETICS, null, msgs);
 			if (newKinetics != null)
-				msgs = ((InternalEObject) newKinetics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.CELL__KINETICS, null, msgs);
+				msgs = ((InternalEObject)newKinetics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.CELL__KINETICS, null, msgs);
 			msgs = basicSetKinetics(newKinetics, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.CELL__KINETICS, newKinetics, newKinetics));
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Rule List</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link roadblock.emf.ibl.Ibl.Rule}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Rule List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Rule}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rule List</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Rule List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_RuleList()
 	 * @model containment="true"
@@ -321,17 +297,15 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Molecule List</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link roadblock.emf.ibl.Ibl.MolecularSpecies}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Molecule List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Molecule List</em>' containment reference list
 	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Molecule List</em>' containment reference
-	 *         list.
+	 * @return the value of the '<em>Molecule List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_MoleculeList()
 	 * @model containment="true"
 	 * @generated
@@ -344,17 +318,15 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>ATGC Command List</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link roadblock.emf.ibl.Ibl.ATGCDirective}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>ATGC Command List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.ATGCDirective}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>ATGC Command List</em>' containment reference
 	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>ATGC Command List</em>' containment
-	 *         reference list.
+	 * @return the value of the '<em>ATGC Command List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_ATGCCommandList()
 	 * @model containment="true"
 	 * @generated
@@ -386,11 +358,9 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getID
-	 * <em>ID</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>ID</em>' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @param value the new value of the '<em>ID</em>' attribute.
 	 * @see #getID()
 	 * @generated
 	 */
@@ -402,9 +372,9 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Variable Assignment List</b></em>'
-	 * containment reference list. The list contents are of type
-	 * {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment}. <!-- begin-user-doc
+	 * Returns the value of the '<em><b>Variable Assignment List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment}.
+	 * <!-- begin-user-doc
 	 * -->
 	 * <p>
 	 * If the meaning of the '<em>Variable Assignment List</em>' containment
@@ -412,33 +382,28 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Variable Assignment List</em>' containment
-	 *         reference list.
+	 * @return the value of the '<em>Variable Assignment List</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_VariableAssignmentList()
 	 * @model containment="true"
 	 * @generated
 	 */
 	public List<EMFVariableAssignment> getVariableAssignmentList() {
 		if (variableAssignmentList == null) {
-			variableAssignmentList = new EObjectContainmentEList<EMFVariableAssignment>(EMFVariableAssignment.class, this,
-					IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST);
+			variableAssignmentList = new EObjectContainmentEList<EMFVariableAssignment>(EMFVariableAssignment.class, this, IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST);
 		}
 		return variableAssignmentList;
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Properties</b></em>' containment
-	 * reference list. The list contents are of type
-	 * {@link roadblock.emf.ibl.Ibl.IProperty}. <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.IProperty}.
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Properties</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Properties</em>' containment reference
-	 *         list.
+	 * @return the value of the '<em>Properties</em>' containment reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_Properties()
 	 * @model containment="true"
 	 * @generated
@@ -462,184 +427,177 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case IblPackage.CELL__DEVICE_LIST:
-			return ((InternalEList<?>) getDeviceList()).basicRemove(otherEnd, msgs);
-		case IblPackage.CELL__KINETICS:
-			return basicSetKinetics(null, msgs);
-		case IblPackage.CELL__RULE_LIST:
-			return ((InternalEList<?>) getRuleList()).basicRemove(otherEnd, msgs);
-		case IblPackage.CELL__MOLECULE_LIST:
-			return ((InternalEList<?>) getMoleculeList()).basicRemove(otherEnd, msgs);
-		case IblPackage.CELL__ATGC_COMMAND_LIST:
-			return ((InternalEList<?>) getATGCCommandList()).basicRemove(otherEnd, msgs);
-		case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
-			return ((InternalEList<?>) getVariableAssignmentList()).basicRemove(otherEnd, msgs);
-		case IblPackage.CELL__PROPERTIES:
-			return ((InternalEList<?>) getProperties()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__DEVICE_LIST:
+				return ((InternalEList<?>)getDeviceList()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__KINETICS:
+				return basicSetKinetics(null, msgs);
+			case IblPackage.CELL__RULE_LIST:
+				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__MOLECULE_LIST:
+				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__ATGC_COMMAND_LIST:
+				return ((InternalEList<?>)getATGCCommandList()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				return ((InternalEList<?>)getVariableAssignmentList()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case IblPackage.CELL__DISPLAY_NAME:
-			return getDisplayName();
-		case IblPackage.CELL__DEVICE_LIST:
-			return getDeviceList();
-		case IblPackage.CELL__KINETICS:
-			return getKinetics();
-		case IblPackage.CELL__RULE_LIST:
-			return getRuleList();
-		case IblPackage.CELL__MOLECULE_LIST:
-			return getMoleculeList();
-		case IblPackage.CELL__ATGC_COMMAND_LIST:
-			return getATGCCommandList();
-		case IblPackage.CELL__ID:
-			return getID();
-		case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
-			return getVariableAssignmentList();
-		case IblPackage.CELL__PROPERTIES:
-			return getProperties();
+			case IblPackage.CELL__DISPLAY_NAME:
+				return getDisplayName();
+			case IblPackage.CELL__DEVICE_LIST:
+				return getDeviceList();
+			case IblPackage.CELL__KINETICS:
+				return getKinetics();
+			case IblPackage.CELL__RULE_LIST:
+				return getRuleList();
+			case IblPackage.CELL__MOLECULE_LIST:
+				return getMoleculeList();
+			case IblPackage.CELL__ATGC_COMMAND_LIST:
+				return getATGCCommandList();
+			case IblPackage.CELL__ID:
+				return getID();
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				return getVariableAssignmentList();
+			case IblPackage.CELL__PROPERTIES:
+				return getProperties();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case IblPackage.CELL__DISPLAY_NAME:
-			setDisplayName((String) newValue);
-			return;
-		case IblPackage.CELL__DEVICE_LIST:
-			getDeviceList().clear();
-			getDeviceList().addAll((Collection<? extends Device>) newValue);
-			return;
-		case IblPackage.CELL__KINETICS:
-			setKinetics((Kinetics) newValue);
-			return;
-		case IblPackage.CELL__RULE_LIST:
-			getRuleList().clear();
-			getRuleList().addAll((Collection<? extends Rule>) newValue);
-			return;
-		case IblPackage.CELL__MOLECULE_LIST:
-			getMoleculeList().clear();
-			getMoleculeList().addAll((Collection<? extends MolecularSpecies>) newValue);
-			return;
-		case IblPackage.CELL__ATGC_COMMAND_LIST:
-			getATGCCommandList().clear();
-			getATGCCommandList().addAll((Collection<? extends ATGCDirective>) newValue);
-			return;
-		case IblPackage.CELL__ID:
-			setID((String) newValue);
-			return;
-		case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
-			getVariableAssignmentList().clear();
-			getVariableAssignmentList().addAll((Collection<? extends EMFVariableAssignment>) newValue);
-			return;
-		case IblPackage.CELL__PROPERTIES:
-			getProperties().clear();
-			getProperties().addAll((Collection<? extends IProperty>) newValue);
-			return;
+			case IblPackage.CELL__DISPLAY_NAME:
+				setDisplayName((String)newValue);
+				return;
+			case IblPackage.CELL__DEVICE_LIST:
+				getDeviceList().clear();
+				getDeviceList().addAll((Collection<? extends Device>)newValue);
+				return;
+			case IblPackage.CELL__KINETICS:
+				setKinetics((Kinetics)newValue);
+				return;
+			case IblPackage.CELL__RULE_LIST:
+				getRuleList().clear();
+				getRuleList().addAll((Collection<? extends Rule>)newValue);
+				return;
+			case IblPackage.CELL__MOLECULE_LIST:
+				getMoleculeList().clear();
+				getMoleculeList().addAll((Collection<? extends MolecularSpecies>)newValue);
+				return;
+			case IblPackage.CELL__ATGC_COMMAND_LIST:
+				getATGCCommandList().clear();
+				getATGCCommandList().addAll((Collection<? extends ATGCDirective>)newValue);
+				return;
+			case IblPackage.CELL__ID:
+				setID((String)newValue);
+				return;
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				getVariableAssignmentList().clear();
+				getVariableAssignmentList().addAll((Collection<? extends EMFVariableAssignment>)newValue);
+				return;
+			case IblPackage.CELL__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends IProperty>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case IblPackage.CELL__DISPLAY_NAME:
-			setDisplayName(DISPLAY_NAME_EDEFAULT);
-			return;
-		case IblPackage.CELL__DEVICE_LIST:
-			getDeviceList().clear();
-			return;
-		case IblPackage.CELL__KINETICS:
-			setKinetics((Kinetics) null);
-			return;
-		case IblPackage.CELL__RULE_LIST:
-			getRuleList().clear();
-			return;
-		case IblPackage.CELL__MOLECULE_LIST:
-			getMoleculeList().clear();
-			return;
-		case IblPackage.CELL__ATGC_COMMAND_LIST:
-			getATGCCommandList().clear();
-			return;
-		case IblPackage.CELL__ID:
-			setID(ID_EDEFAULT);
-			return;
-		case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
-			getVariableAssignmentList().clear();
-			return;
-		case IblPackage.CELL__PROPERTIES:
-			getProperties().clear();
-			return;
+			case IblPackage.CELL__DISPLAY_NAME:
+				setDisplayName(DISPLAY_NAME_EDEFAULT);
+				return;
+			case IblPackage.CELL__DEVICE_LIST:
+				getDeviceList().clear();
+				return;
+			case IblPackage.CELL__KINETICS:
+				setKinetics((Kinetics)null);
+				return;
+			case IblPackage.CELL__RULE_LIST:
+				getRuleList().clear();
+				return;
+			case IblPackage.CELL__MOLECULE_LIST:
+				getMoleculeList().clear();
+				return;
+			case IblPackage.CELL__ATGC_COMMAND_LIST:
+				getATGCCommandList().clear();
+				return;
+			case IblPackage.CELL__ID:
+				setID(ID_EDEFAULT);
+				return;
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				getVariableAssignmentList().clear();
+				return;
+			case IblPackage.CELL__PROPERTIES:
+				getProperties().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case IblPackage.CELL__DISPLAY_NAME:
-			return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
-		case IblPackage.CELL__DEVICE_LIST:
-			return deviceList != null && !deviceList.isEmpty();
-		case IblPackage.CELL__KINETICS:
-			return kinetics != null;
-		case IblPackage.CELL__RULE_LIST:
-			return ruleList != null && !ruleList.isEmpty();
-		case IblPackage.CELL__MOLECULE_LIST:
-			return moleculeList != null && !moleculeList.isEmpty();
-		case IblPackage.CELL__ATGC_COMMAND_LIST:
-			return atgcCommandList != null && !atgcCommandList.isEmpty();
-		case IblPackage.CELL__ID:
-			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
-			return variableAssignmentList != null && !variableAssignmentList.isEmpty();
-		case IblPackage.CELL__PROPERTIES:
-			return properties != null && !properties.isEmpty();
+			case IblPackage.CELL__DISPLAY_NAME:
+				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
+			case IblPackage.CELL__DEVICE_LIST:
+				return deviceList != null && !deviceList.isEmpty();
+			case IblPackage.CELL__KINETICS:
+				return kinetics != null;
+			case IblPackage.CELL__RULE_LIST:
+				return ruleList != null && !ruleList.isEmpty();
+			case IblPackage.CELL__MOLECULE_LIST:
+				return moleculeList != null && !moleculeList.isEmpty();
+			case IblPackage.CELL__ATGC_COMMAND_LIST:
+				return atgcCommandList != null && !atgcCommandList.isEmpty();
+			case IblPackage.CELL__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case IblPackage.CELL__VARIABLE_ASSIGNMENT_LIST:
+				return variableAssignmentList != null && !variableAssignmentList.isEmpty();
+			case IblPackage.CELL__PROPERTIES:
+				return properties != null && !properties.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (displayName: ");

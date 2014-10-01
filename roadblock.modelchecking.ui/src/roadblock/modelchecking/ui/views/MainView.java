@@ -62,19 +62,22 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
+import roadblock.modelchecking.runtime.IModelcheckingConfiguration;
 import roadblock.modelchecking.runtime.VerificationManager;
+import roadblock.modelchecking.runtime.nusmv.NuSmvConfiguration;
 import roadblock.modelchecking.runtime.prism.PrismConfiguration;
 import roadblock.modelchecking.ui.Activator;
 import roadblock.modelchecking.ui.components.IblColumnLabelProvider;
 import roadblock.modelchecking.ui.components.IblTreeContentProvider;
 import roadblock.modelchecking.ui.model.Configuration;
-import roadblock.modelchecking.ui.model.ModelData;
 import roadblock.modelchecking.ui.model.PropertySemanticEntityPair;
+import roadblock.modelchecking.ui.model.PropertyTreeData;
 import roadblock.modelchecking.ui.util.ConfigurationUtil;
 import roadblock.modelchecking.ui.util.ModelcheckingUtil;
 
@@ -84,7 +87,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.modelchecking.ui.views.mainView";
 
-	private ModelData modelData;
+	private PropertyTreeData propertyTreeData;
 	private Configuration config;
 	private XtextEditor iblEditor;
 	private XtextResource currentIblResource;
@@ -138,7 +141,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		// create data file widget
 		Label dataFileLabel = new Label(parent, SWT.NONE);
-		dataFileLabel.setText("Data file: ");
+		dataFileLabel.setText("Generated file: ");
 		dataFileLabel.setToolTipText("file to save model checking data to");
 		txtDataFile = new Text(parent, SWT.BORDER);
 		txtDataFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
@@ -157,12 +160,34 @@ public class MainView extends ViewPart implements IPartListener2 {
 		Label modelCheckerLabel = new Label(parent, SWT.NONE);
 		modelCheckerLabel.setText("Model checker: ");
 		modelCheckerLabel.setToolTipText("model checker to use");
-		ddlModelChecker = new Combo(parent, SWT.NONE);
+		ddlModelChecker = new Combo(parent, SWT.READ_ONLY);
 		ddlModelChecker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		ddlModelChecker.add("PRISM");
 		ddlModelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
 		ddlModelChecker.add("NuSMV");
 		ddlModelChecker.setData("NuSMV", ModelcheckingTarget.NUSMV);
+		ddlModelChecker.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				if(ddlModelChecker.getText() == "PRISM") {
+					txtConfidenceValue.setEnabled(true);
+					txtPathLength.setEnabled(true);
+					txtSampleNumber.setEnabled(true);
+				}
+				else {
+					txtConfidenceValue.setEnabled(false);
+					txtPathLength.setEnabled(false);
+					txtSampleNumber.setEnabled(false);
+				}
+				updateUi();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+		});
 
 		// create confidence value widget
 		Label confidenceLabel = new Label(parent, SWT.NONE);
@@ -208,11 +233,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ColumnViewerToolTipSupport.enableFor(ctvPropertyTreeViewer, ToolTip.RECREATE);
 		ctvPropertyTreeViewer.addCheckStateListener(new ICheckStateListener() {
 			public void checkStateChanged(CheckStateChangedEvent event) {
-
 				if (event.getChecked()) {
 					ctvPropertyTreeViewer.setSubtreeChecked(event.getElement(), true);
+					btnExport.setEnabled(true);
+					btnVerify.setEnabled(true);
 				} else {
 					ctvPropertyTreeViewer.setSubtreeChecked(event.getElement(), false);
+					boolean isAnyPropertyChecked = ctvPropertyTreeViewer.getCheckedElements().length > 0;
+					btnExport.setEnabled(isAnyPropertyChecked);
+					btnVerify.setEnabled(isAnyPropertyChecked);
 				}
 			}
 		});
@@ -220,7 +249,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (iblEditor != null && modelData != null) {
+				if (iblEditor != null && propertyTreeData != null) {
 					PropertySemanticEntityPair selection = (PropertySemanticEntityPair) e.item.getData();
 
 					INode propertyNode = NodeModelUtils.getNode(selection.semanticEntity);
@@ -273,6 +302,16 @@ public class MainView extends ViewPart implements IPartListener2 {
 			iblEditor = (XtextEditor) part;
 			if (iblEditor.getLanguageName().equals("roadblock.xtext.ibl.Ibl")) {
 				IXtextDocument iblDocument = iblEditor.getDocument();
+				iblDocument.addModelListener(new IXtextModelListener() {
+
+					@Override
+					public void modelChanged(XtextResource resource) {
+						if (resource != currentIblResource) {
+							System.out.println("Changed!");
+						}
+					}
+
+				});
 				XtextResource iblResource = iblDocument.readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
 					@Override
 					public XtextResource exec(XtextResource state) throws Exception {
@@ -302,19 +341,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	protected void updateUi() {
 
-		if (currentIblResource == null) {
-			btnVerify.setEnabled(false);
-			btnVerify.setEnabled(false);
-		} else {
+		btnExport.setEnabled(false);
+		btnVerify.setEnabled(false);
 
-			modelData = ModelcheckingUtil.getInstance().getModel(currentIblResource);
+		if (currentIblResource != null) {
 
-			if (modelData != null) {
-				ctvPropertyTreeViewer.setInput(modelData);
+			ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
+			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource, target);
+
+			if (propertyTreeData != null) {
+				ctvPropertyTreeViewer.setInput(propertyTreeData);
 			}
 
-			btnVerify.setEnabled(true);
-			btnExport.setEnabled(true);
 			txtModelFile.setText(config.getModelFile());
 			txtDataFile.setText(config.getDataFile());
 			ddlModelChecker.setText(config.getModelChecker());
@@ -491,7 +529,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
-							VerificationManager.getInstance().export(modelData.model, property, target, exportFilename);
+							VerificationManager.getInstance().export(propertyTreeData.model, property, target, exportFilename);
 						}
 					}
 				} catch (IOException e) {
@@ -518,6 +556,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
 		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
+		
 		final double confidence = Double.parseDouble(txtConfidenceValue.getText());
 		final long pathLength = Long.parseLong(txtPathLength.getText());
 		final long samples = Long.parseLong(txtSampleNumber.getText());
@@ -535,14 +574,27 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							final String exportFilename = String.format("%s%s", filenameWithoutExtension, ++exportIndex);
-							PrismConfiguration config = new PrismConfiguration();
-							config.modelFileName = exportFilename;
-							config.confidence = confidence;
-							config.pathLength = pathLength;
-							config.samples = samples;
+							final String exportFileName = String.format("%s%s", filenameWithoutExtension, ++exportIndex);
+							IModelcheckingConfiguration config = null;
 
-							final Process verificationProcess = VerificationManager.getInstance().verify(modelData.model, property, target, config);
+							switch (target) {
+							case PRISM:
+								PrismConfiguration prismConfig = new PrismConfiguration();
+								prismConfig.modelFileName = exportFileName;
+								prismConfig.confidence = confidence;
+								prismConfig.pathLength = pathLength;
+								prismConfig.samples = samples;
+								config = prismConfig;
+								break;
+							case NUSMV:
+								NuSmvConfiguration nuSmvConfig = new NuSmvConfiguration();
+								nuSmvConfig.modelFileName = exportFileName;
+								config = nuSmvConfig;
+								break;
+							}
+
+							final Process verificationProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target,
+									config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
@@ -550,7 +602,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 									try {
 
 										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
-										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFilename + ".result"));
+										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFileName + ".result"));
 
 										String part = null;
 										while ((part = in.readLine()) != null) {
@@ -612,6 +664,28 @@ public class MainView extends ViewPart implements IPartListener2 {
 		}
 		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
+	}
+
+	private IModelcheckingConfiguration getModelcheckingConfiguration(String exportFileName, ModelcheckingTarget target) {
+
+		IModelcheckingConfiguration config = null;
+
+		switch (target) {
+		case PRISM:
+			PrismConfiguration prismConfig = new PrismConfiguration();
+			prismConfig.modelFileName = exportFileName;
+			prismConfig.confidence = Double.parseDouble(txtConfidenceValue.getText());
+			prismConfig.pathLength = Long.parseLong(txtPathLength.getText());
+			prismConfig.samples = Long.parseLong(txtSampleNumber.getText());
+			config = prismConfig;
+		case NUSMV:
+			NuSmvConfiguration nuSmvConfig = new NuSmvConfiguration();
+			nuSmvConfig.modelFileName = exportFileName;
+			config = nuSmvConfig;
+			break;
+		}
+
+		return config;
 	}
 
 	@Override
