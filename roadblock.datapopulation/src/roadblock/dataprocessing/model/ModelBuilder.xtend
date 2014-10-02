@@ -1,5 +1,6 @@
 package roadblock.dataprocessing.model
 
+import java.util.HashMap
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.util.EcoreUtil
@@ -9,6 +10,7 @@ import roadblock.emf.ibl.Ibl.Cell
 import roadblock.emf.ibl.Ibl.ConcentrationUnit
 import roadblock.emf.ibl.Ibl.Device
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment
+import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.emf.ibl.Ibl.MolecularSpecies
 import roadblock.emf.ibl.Ibl.RateUnit
@@ -39,38 +41,56 @@ import roadblock.xtext.ibl.ibl.VariableDefinitionBuiltIn
 import roadblock.xtext.ibl.ibl.VariableExpressionObject
 import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableKind2
-import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.VariableName
+import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 
 class ModelBuilder extends IblSwitch<Object> {
 
 	var modelFactory = IblFactory::eINSTANCE;
 
+	var emfModel = modelFactory.createModel;
+
 	var propertyBuilder = new PropertyBuilder();
 
-	var emfModel = modelFactory.createModel;
+	var semanticEntityByProperty = new HashMap<IProperty, EObject>();
 
 	// useful constant
 	val BIOLOGICALPART = #{'PROMOTER', 'GENE', 'RBS', 'SPACER', 'TERMINATOR'}
+
+	def getPropertySemanticEntityMapper() {
+
+		val mapper = new HashMap<IProperty, EObject>();
+
+		for (concreteProperty : emfModel.eAllContents.toList.filter(IProperty)) {
+			for (entry : semanticEntityByProperty.entrySet) {
+				if (EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
+					mapper.put(concreteProperty, entry.value);
+				}
+			}
+		}
+
+		return mapper;
+	}
 
 	def isPart(String biologicalType) {
 		return BIOLOGICALPART.contains(biologicalType)
 	}
 
 	def isComplex(String name) {
-			name.contains('~')
+		name.contains('~')
 	}
 
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
 		if (moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
-			complex => [displayName = complexName 
-				biologicalType = 'COMPLEX' 
+			complex => [
+				displayName = complexName
+				biologicalType = 'COMPLEX'
 				amount = 0.0
 				unit = ConcentrationUnit.UM
-				]
-			moleculeList.add(complex)			
+			]
+			moleculeList.add(complex)
 		}
 	}
 
@@ -91,12 +111,12 @@ class ModelBuilder extends IblSwitch<Object> {
 			VariableComplex: buildVariableName(variableKind)
 		}
 	}
-	
+
 	def buildVariableName(VariableKind2 variableKind) {
 		switch variableKind {
 			VariableName: buildVariableName(variableKind)
 			VariableType: variableKind.name
-			default:"UNKNOWNTYPEFROMbuildVariableNameVK2"
+			default: "UNKNOWNTYPEFROMbuildVariableNameVK2"
 		}
 	}
 
@@ -153,8 +173,6 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 	}
 
-	//
-	//
 	// 
 	def populate(Model xtextModel) {
 		return doSwitch(xtextModel) as roadblock.emf.ibl.Ibl.Model;
@@ -250,14 +268,24 @@ class ModelBuilder extends IblSwitch<Object> {
 	override caseCellBody(CellBody cellBody) {
 		println("in caseCellBody")
 		var cell = modelFactory.createCell
+
 		for (member : cellBody.functionContent.members) {
 			switch member {
-				RuleDefinition: cell.ruleList.add(member.doSwitch as Rule)
-				DeviceDefinition: cell.deviceList.add(member.doSwitch as Device)
-				VariableDefinition: cell.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
-				VariableAssignment: cell.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
-				PropertyDefinition: cell.properties.add(propertyBuilder.build(member.property))
-				ATGCDefinition: cell.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
+				RuleDefinition:
+					cell.ruleList.add(member.doSwitch as Rule)
+				DeviceDefinition:
+					cell.deviceList.add(member.doSwitch as Device)
+				VariableDefinition:
+					cell.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
+				VariableAssignment:
+					cell.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
+				PropertyDefinition: {
+					var property = propertyBuilder.build(member.property);
+					cell.properties.add(property);
+					semanticEntityByProperty.put(property, member);
+				}
+				ATGCDefinition:
+					cell.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
 		}
 
@@ -292,6 +320,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	override caseRegionBody(RegionBody regionBody) {
 		println("in caseRegionBody")
 		var region = modelFactory.createRegion
+
 		for (member : regionBody.functionContent.members) {
 			switch member {
 				CellInstantiation: region.cellList.add(member.doSwitch as Cell)
@@ -335,17 +364,21 @@ class ModelBuilder extends IblSwitch<Object> {
 		var device = modelFactory.createDevice
 		device.displayName = deviceDefinition.name.buildVariableName
 
-		for (rule : deviceDefinition.members.filter(RuleDefinition)) {
-			device.ruleList.add(rule.doSwitch as Rule)
-		}
-
 		for (member : deviceDefinition.members) {
 			switch member {
-				RuleDefinition: device.ruleList.add(member.doSwitch as Rule)
-				VariableDefinition: device.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
-				VariableAssignment: device.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
-				PropertyDefinition: device.properties.add(propertyBuilder.build(member.property))
-				ATGCDefinition: device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
+				RuleDefinition:
+					device.ruleList.add(member.doSwitch as Rule)
+				VariableDefinition:
+					device.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
+				VariableAssignment:
+					device.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
+				PropertyDefinition: {
+					var property = propertyBuilder.build(member.property);
+					device.properties.add(property)
+					semanticEntityByProperty.put(property, member);
+				}
+				ATGCDefinition:
+					device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
 		}
 
@@ -371,7 +404,7 @@ class ModelBuilder extends IblSwitch<Object> {
 			biologicalType = type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
 			degradationRateUnit = getRateUnit("s^-1")
-			bindingRateUnit = getRateUnit("s^-1") 
+			bindingRateUnit = getRateUnit("s^-1")
 			unbindingRateUnit = getRateUnit("s^-1")
 			degradationRate = 0.0;
 			bindingRate = 0.0;
@@ -383,12 +416,11 @@ class ModelBuilder extends IblSwitch<Object> {
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
-				]
+			]
 		else
 			molecule => [
 				amount = 0.0;
 				unit = getConcentrationUnit('uM');
-	
 			]
 
 		// defaults are overriden if specified in the constructor

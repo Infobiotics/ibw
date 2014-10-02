@@ -283,7 +283,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TemporalOperator">
     <eLiterals name="UNTIL" value="1"/>
-    <eLiterals name="WEAK_UNTIL" value="2"/>
+    <eLiterals name="FOLLOWED_BY" value="2" literal="FOLLOWED_BY"/>
     <eLiterals name="EVENTUALLY" value="3"/>
     <eLiterals name="STEADY_STATE" value="6"/>
     <eLiterals name="NOT_EVENTUALLY" value="5"/>

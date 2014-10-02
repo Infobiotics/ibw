@@ -1,4 +1,4 @@
-package roadblock.modelchecking.runtime;
+package roadblock.modelchecking.runtime.nusmv;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,9 +8,10 @@ import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.modelchecking.ModelcheckingTarget;
+import roadblock.modelchecking.runtime.IModelcheckingExecutor;
 import roadblock.modelchecking.translation.TranslationManager;
 
-public class PrismExecutor implements IModelcheckingExecutor {
+public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration> {
 
 	private TranslationManager translationManager = TranslationManager.getInstance();
 
@@ -22,11 +23,13 @@ public class PrismExecutor implements IModelcheckingExecutor {
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
 
-		writeFile(filename, modelTranslation);
+		writeFile(filename + ".smv", modelTranslation);
 	}
 
 	@Override
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException {
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, NuSmvConfiguration config) throws IOException {
+
+		String verificationModelFileName = config.modelFileName + ".smv";
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
 
@@ -34,21 +37,30 @@ public class PrismExecutor implements IModelcheckingExecutor {
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
 
-		writeFile(filename, modelTranslation);
+		writeFile(verificationModelFileName, modelTranslation, propetyTranslation);
 
-		String[] verificationCommand = new String[] { "prism", filename, "-csl", propetyTranslation };
-		//String[] verificationCommand = new String[] { "ping", "google.ro", "-c", "10" };
-
-		System.out.println(verificationCommand[0] + " " + verificationCommand[1] + " " + verificationCommand[2] + " \'" + verificationCommand[3] + "\'");
-
+		String[] verificationCommand = new String[] { "NuSMV", verificationModelFileName };
+		
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
 
-	private void writeFile(String fileName, String content) throws IOException {
+	private void writeFile(String fileName, String model) throws IOException {
 
 		FileWriter writer = new FileWriter(fileName);
 
-		writer.write(content);
+		writer.write(model);
+		writer.flush();
+		writer.close();
+	}
+	
+	private void writeFile(String fileName, String model, String property) throws IOException {
+
+		FileWriter writer = new FileWriter(fileName);
+
+		writer.write(model);
+		writer.write(System.getProperty("line.separator"));
+		writer.write(System.getProperty("line.separator"));
+		writer.write(String.format("SPEC %s", property));
 		writer.flush();
 		writer.close();
 	}

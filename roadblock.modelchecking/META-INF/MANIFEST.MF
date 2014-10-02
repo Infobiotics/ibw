@@ -7,7 +7,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.modelchecking,
+ roadblock.modelchecking.filtering,
+ roadblock.modelchecking.filtering.property,
  roadblock.modelchecking.runtime,
+ roadblock.modelchecking.runtime.nusmv,
+ roadblock.modelchecking.runtime.prism,
  roadblock.modelchecking.translation,
  roadblock.modelchecking.translation.model,
  roadblock.modelchecking.translation.property

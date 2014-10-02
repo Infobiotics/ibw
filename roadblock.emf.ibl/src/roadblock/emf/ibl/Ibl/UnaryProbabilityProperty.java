@@ -3,18 +3,14 @@
 package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Unary Probability Property</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Unary Probability Property</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -41,8 +37,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 
 	/**
 	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -51,8 +46,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 
 	/**
 	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -60,8 +54,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	protected TemporalOperator operator = OPERATOR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected UnaryProbabilityProperty() {
@@ -69,8 +62,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -97,8 +89,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetStateFormula(IStateFormula newStateFormula, NotificationChain msgs) {
@@ -138,8 +129,8 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.TemporalOperator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operator</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Operator</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operator</em>' attribute.
@@ -154,10 +145,13 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getOperator <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operator</em>' attribute.
+	 * Sets the value of the '
+	 * {@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getOperator
+	 * <em>Operator</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Operator</em>' attribute.
 	 * @see roadblock.emf.ibl.Ibl.TemporalOperator
 	 * @see #getOperator()
 	 * @generated
@@ -170,8 +164,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -184,8 +177,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -200,8 +192,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -218,8 +209,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -236,8 +226,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -252,8 +241,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -266,10 +254,10 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 		result.append(')');
 		return result.toString();
 	}
-	
+
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated NOT
 	 */

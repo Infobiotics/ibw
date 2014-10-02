@@ -51,7 +51,7 @@ class PrismPropertyTranslatorTests {
 			}
 		'''.parse
 
-		val targetTranslation = "P [ G ! (region_cell_a > 0.0) ]"
+		val targetTranslation = "P>0 [ G ! (region_cell_a > 0.0) ]"
 		
 		testPropertyTranslation(semanticModel, targetTranslation);
 	}
@@ -69,7 +69,7 @@ class PrismPropertyTranslatorTests {
 			}
 		'''.parse
 
-		val targetTranslation = "P [ G (region_cell_a > 0.0) ]"
+		val targetTranslation = "P>0 [ G (region_cell_a > 0.0) ]"
 		
 		testPropertyTranslation(semanticModel, targetTranslation);
 	}
@@ -87,7 +87,7 @@ class PrismPropertyTranslatorTests {
 			}
 		'''.parse
 
-		val targetTranslation = "S [ (region_cell_a > 0.0) ]"
+		val targetTranslation = "S>0 [ (region_cell_a > 0.0) ]"
 		
 		testPropertyTranslation(semanticModel, targetTranslation);
 	}
@@ -105,7 +105,7 @@ class PrismPropertyTranslatorTests {
 			}
 		'''.parse
 
-		val targetTranslation = "P [ G F (region_cell_a > 1.4400000000000002E10) ]"
+		val targetTranslation = "P>0 [ G F (region_cell_a > 1.4400000000000002E10) ]"
 		
 		testPropertyTranslation(semanticModel, targetTranslation);
 	}
@@ -124,7 +124,7 @@ class PrismPropertyTranslatorTests {
 			}
 		'''.parse
 
-		val targetTranslation = "P [ (region_cell_a > 1.2000000000000002E-6) U (region_cell_b > 2400.0000000000005) ]"
+		val targetTranslation = "P>0 [ (region_cell_a > 1.2000000000000002E-6) U (region_cell_b > 2400.0000000000005) ]"
 		
 		testPropertyTranslation(semanticModel, targetTranslation);
 	}

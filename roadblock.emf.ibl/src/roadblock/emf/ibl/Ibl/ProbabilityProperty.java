@@ -7,23 +7,17 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Probability Property</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Probability Property</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -50,9 +44,10 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	protected ITimeConstraint timeConstraint;
 
 	/**
-	 * The cached value of the '{@link #getProbabilityConstraint() <em>Probability Constraint</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getProbabilityConstraint()
+	 * <em>Probability Constraint</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getProbabilityConstraint()
 	 * @generated
 	 * @ordered
@@ -60,9 +55,10 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	protected IProbabilityConstraint probabilityConstraint;
 
 	/**
-	 * The cached value of the '{@link #getInitialConditions() <em>Initial Conditions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInitialConditions()
+	 * <em>Initial Conditions</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInitialConditions()
 	 * @generated
 	 * @ordered
@@ -70,8 +66,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	protected EList<PropertyInitialCondition> initialConditions;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected ProbabilityProperty() {
@@ -79,8 +74,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -107,8 +101,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetTimeConstraint(ITimeConstraint newTimeConstraint, NotificationChain msgs) {
@@ -147,8 +140,8 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	 * Returns the value of the '<em><b>Probability Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Probability Constraint</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Probability Constraint</em>' reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Probability Constraint</em>' containment reference.
@@ -162,8 +155,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetProbabilityConstraint(IProbabilityConstraint newProbabilityConstraint, NotificationChain msgs) {
@@ -177,10 +169,14 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint <em>Probability Constraint</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Probability Constraint</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint
+	 * <em>Probability Constraint</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Probability Constraint</em>'
+	 *            containment reference.
 	 * @see #getProbabilityConstraint()
 	 * @generated
 	 */
@@ -199,15 +195,18 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Initial Conditions</b></em>' containment reference list.
-	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Initial Conditions</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Initial Conditions</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Initial Conditions</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initial Conditions</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Initial Conditions</em>' containment
+	 *         reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getProbabilityProperty_InitialConditions()
 	 * @model containment="true"
 	 * @generated
@@ -220,8 +219,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @model
 	 * @generated
 	 */
@@ -232,8 +230,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -250,8 +247,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -268,8 +264,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -291,8 +286,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -312,8 +306,7 @@ public abstract class ProbabilityProperty extends EObjectImpl implements IProper
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

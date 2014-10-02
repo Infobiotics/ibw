@@ -19,9 +19,9 @@ import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.modelchecking.ModelcheckingTarget;
 
-public class PrismModelTranslator implements IModelTranslator {
+public class PrismTranslator implements IModelTranslator {
 
-	private static STGroup prismTemplates = new STGroupFile(PrismModelTranslator.class.getResource("../templates/prism.stg").getFile());
+	private static STGroup prismTemplates = new STGroupFile(PrismTranslator.class.getResource("../templates/PRISM.stg").getFile());
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();
@@ -49,8 +49,8 @@ public class PrismModelTranslator implements IModelTranslator {
 		modelTemplate.add("name", "PRISMModel");
 		modelTemplate.add("rules", getTranslatedRules(model));
 		modelTemplate.add("molecules", getTranslatedMolecules(model));
-		modelTemplate.add("rewards", property != null && property instanceof RewardProperty ? 
-				getTranslatedReward((RewardProperty) property) : "// n/a");
+		modelTemplate.add("rewards", property != null && property instanceof RewardProperty ? getTranslatedReward((RewardProperty) property)
+				: "// n/a");
 
 		return modelTemplate.render();
 	}
@@ -125,9 +125,11 @@ public class PrismModelTranslator implements IModelTranslator {
 			adjustMaxConcentration(producedMolecules);
 
 			// translating the forward version of the rule
-			ST ruleTemplate = prismTemplates.getInstanceOf("rule");
+			ST ruleTemplate = rule.getForwardRate() != 0 ? prismTemplates.getInstanceOf("rule") : prismTemplates.getInstanceOf("ruleWithoutRate");
 			ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules));
-			ruleTemplate.add("rate", rule.getForwardRate());
+			if (rule.getForwardRate() != 0) {
+				ruleTemplate.add("rate", rule.getForwardRate());
+			}
 			ruleTemplate.add("updates", getTranslatedRuleUpdates(consumedMolecules, producedMolecules));
 
 			translatedRules.add(ruleTemplate.render());
@@ -135,9 +137,11 @@ public class PrismModelTranslator implements IModelTranslator {
 			// translating the reversed version, in case of bidirectional rules
 			if (rule.isIsBidirectional()) {
 
-				ruleTemplate = prismTemplates.getInstanceOf("rule");
+				ruleTemplate = rule.getReverseRate() != 0 ? prismTemplates.getInstanceOf("rule") : prismTemplates.getInstanceOf("ruleWithoutRate");
 				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules));
-				ruleTemplate.add("rate", rule.getReverseRate());
+				if (rule.getReverseRate() != 0) {
+					ruleTemplate.add("rate", rule.getReverseRate());
+				}
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(producedMolecules, consumedMolecules));
 
 				translatedRules.add(ruleTemplate.render());
@@ -171,9 +175,6 @@ public class PrismModelTranslator implements IModelTranslator {
 
 		Map<String, Integer> consumed = new ConcurrentHashMap<>(consumedMolecules);
 		Map<String, Integer> produced = new ConcurrentHashMap<>(producedMolecules);
-
-		// consumed.putAll(consumedMolecules);
-		// produced.putAll(producedMolecules);
 
 		// eliminate superfluous molecules
 		for (String moleculeName : consumed.keySet()) {

@@ -95,7 +95,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			property = binaryProperty;
 		} else if (probabilityProperty.isFollowedBy) {
 			var binaryProperty = modelFactory.createBinaryProbabilityProperty;
-			binaryProperty.operator = TemporalOperator.WEAK_UNTIL;
+			binaryProperty.operator = TemporalOperator.FOLLOWED_BY;
 			property = binaryProperty;
 		} else if (probabilityProperty.isSteadyState) {
 			var steadyStateProperty = modelFactory.createSteadyStateProperty;

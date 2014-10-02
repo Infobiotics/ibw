@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/roadblock.emf.ibl/src" modelPluginID="roadblock.emf.ibl"
+    modelName="Ibl" rootExtendsInterface="" rootImplementsInterface="" suppressEMFTypes="true"
+    suppressInterfaces="true" featureMapWrapperInternalInterface="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="7.0" copyrightFields="false">
+  <foreignModel>ibl.ecore</foreignModel>
+  <genPackages prefix="Ibl" basePackage="roadblock.emf.ibl" disposableProviderFactory="true"
+      ecorePackage="ibl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//TimeUnit">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TimeUnit/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TimeUnit/MINUTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//TemporalOperator">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/UNTIL"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/WEAK_UNTIL"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/EVENTUALLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/STEADY_STATE"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/NOT_EVENTUALLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/ALWAYS_EVENTUALLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/ALWAYS"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/EVENTUALLY_ALWAYS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RelationalOperator">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/GT"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/LT"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/LE"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/NE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//BooleanOperator">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//BooleanOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//BooleanOperator/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//BooleanOperator/IMPLIES"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//ConcentrationUnit">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/M"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/mM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/uM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/nM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/pM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/fM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/MOLECULE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RateUnit">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateUnit/PER_SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateUnit/PER_MINUTE"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IVisitable">
+      <genOperations ecoreOperation="ibl.ecore#//IVisitable/accept">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitable/accept/visitor"/>
+        <genTypeParameters ecoreTypeParameter="ibl.ecore#//IVisitable/accept/TResult"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IVisitor">
+      <genTypeParameters ecoreTypeParameter="ibl.ecore#//IVisitor/TResult"/>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.1">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.1/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.2">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.2/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.3">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.3/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.4">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.4/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.5">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.5/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.6">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.6/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.7">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.7/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.8">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.8/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.9">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.9/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.10">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.10/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.11">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.11/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.12">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.12/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.13">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.13/model"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.14">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.14/kinetics"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.15">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.15/rule"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.16">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.16/molecularSpecies"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.17">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.17/device"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.18">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.18/cell"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.19">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.19/atgc"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.20">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.20/system"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.21">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.21/chromosome"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.22">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.22/plasmid"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.23">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.23/flatModel"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.24">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.24/region"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.25">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.25/expression"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/processList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/cellList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/deviceList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/moleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/ATGCcommandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Model/regionList"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Kinetics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Kinetics/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/MoleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/outputList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Kinetics/optionList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Kinetics/ID"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Rule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/displayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/isBidirectional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/forwardRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/reverseRate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/leftHandSide"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/rightHandSide"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/forwardRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/reverseRateUnit"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//MolecularSpecies">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/displayName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/URI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/amount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/degradationRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/bindingRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unbindingRate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/biologicalType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/sequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/degradationRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/bindingRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unbindingRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/ID"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Device">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/processList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/partList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/ATGCCommandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/kinetics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/moleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/outputList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/inputList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/variableAssignmentList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Cell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/deviceList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/Kinetics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/moleculeList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/ATGCCommandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/variableAssignmentList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCDirective"/>
+    <genClasses ecoreClass="ibl.ecore#//System"/>
+    <genClasses ecoreClass="ibl.ecore#//Chromosome"/>
+    <genClasses ecoreClass="ibl.ecore#//Plasmid"/>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IProperty"/>
+    <genClasses image="false" ecoreClass="ibl.ecore#//ProbabilityProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//ProbabilityProperty/timeConstraint"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//ProbabilityProperty/probabilityConstraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//ProbabilityProperty/initialConditions"/>
+      <genOperations ecoreOperation="ibl.ecore#//ProbabilityProperty/accept">
+        <genParameters ecoreParameter="ibl.ecore#//ProbabilityProperty/accept/visitor"/>
+        <genTypeParameters ecoreTypeParameter="ibl.ecore#//ProbabilityProperty/accept/TResult"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IProbabilityConstraint"/>
+    <genClasses ecoreClass="ibl.ecore#//ConcreteProbabilityConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcreteProbabilityConstraint/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcreteProbabilityConstraint/bound"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//UnknownProbabilityConstraint"/>
+    <genClasses image="false" ecoreClass="ibl.ecore#//ITimeConstraint"/>
+    <genClasses ecoreClass="ibl.ecore#//TimeInterval">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//TimeInterval/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//TimeInterval/upperBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//TimeInterval/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//TimeInstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//TimeInstant/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//TimeInstant/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//TimeInstant/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//UnaryProbabilityProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//UnaryProbabilityProperty/stateFormula"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//UnaryProbabilityProperty/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//BinaryProbabilityProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//BinaryProbabilityProperty/leftOperand"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//BinaryProbabilityProperty/rightOperand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//BinaryProbabilityProperty/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//RewardProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//RewardProperty/variableName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/timeConstraint"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/concentrationConstraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/initialConditions"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//SteadyStateProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//SteadyStateProperty/StateFormula"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//SteadyStateProperty/probabilityConstraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//SteadyStateProperty/initialConditions"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ConcentrationConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcentrationConstraint/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcentrationConstraint/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcentrationConstraint/unit"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IStateFormula"/>
+    <genClasses ecoreClass="ibl.ecore#//BinaryStateFormula">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//BinaryStateFormula/leftOperand"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//BinaryStateFormula/rightOperand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//BinaryStateFormula/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//NotStateFormula">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//NotStateFormula/negatedOperand"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//StateExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//StateExpression/variableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//StateExpression/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//StateExpression/quantity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//StateExpression/unit"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Region">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Region/displayName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/Kinetics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/moleculeList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Region/ID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/cellList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Region/variableAssignmentList"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//EMFVariableAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//FlatModel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModel/moleculeList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModel/ruleList"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//PropertyInitialCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/variableName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/variableAttribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCDirection">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCDirection/direction"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCArrange">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//ATGCArrange/partList"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCCloningSites">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCCloningSites/cloningSites"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//FlatModelPropertyPair">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/flatModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/property"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -7,20 +7,15 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Flat Model</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Flat Model</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -37,8 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class FlatModel extends EObjectImpl implements IVisitable {
 	/**
 	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getMoleculeList()
 	 * @generated
 	 * @ordered
@@ -47,8 +42,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRuleList()
 	 * @generated
 	 * @ordered
@@ -56,8 +50,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	protected EList<Rule> ruleList;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected FlatModel() {
@@ -65,8 +58,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -79,8 +71,8 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Molecule List</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Molecule List</em>' reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Molecule List</em>' containment reference list.
@@ -117,8 +109,8 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated NOT
 	 */
@@ -127,8 +119,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -143,8 +134,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -159,8 +149,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -180,8 +169,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -198,8 +186,7 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

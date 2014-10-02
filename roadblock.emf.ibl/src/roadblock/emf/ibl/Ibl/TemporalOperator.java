@@ -29,16 +29,14 @@ public enum TemporalOperator implements Enumerator {
 	UNTIL(1, "UNTIL", "UNTIL"),
 
 	/**
-	 * The '<em><b>WEAK UNTIL</b></em>' literal object.
+	 * The '<em><b>FOLLOWED BY</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #WEAK_UNTIL_VALUE
+	 * @see #FOLLOWED_BY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	WEAK_UNTIL(2, "WEAK_UNTIL", "WEAK_UNTIL"),
-
-	/**
+	FOLLOWED_BY(2, "FOLLOWED_BY", "FOLLOWED_BY"), /**
 	 * The '<em><b>EVENTUALLY</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,19 +112,19 @@ public enum TemporalOperator implements Enumerator {
 	public static final int UNTIL_VALUE = 1;
 
 	/**
-	 * The '<em><b>WEAK UNTIL</b></em>' literal value.
+	 * The '<em><b>FOLLOWED BY</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>WEAK UNTIL</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>FOLLOWED BY</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #WEAK_UNTIL
+	 * @see #FOLLOWED_BY
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int WEAK_UNTIL_VALUE = 2;
+	public static final int FOLLOWED_BY_VALUE = 2;
 
 	/**
 	 * The '<em><b>EVENTUALLY</b></em>' literal value.
@@ -227,7 +225,7 @@ public enum TemporalOperator implements Enumerator {
 	private static final TemporalOperator[] VALUES_ARRAY =
 		new TemporalOperator[] {
 			UNTIL,
-			WEAK_UNTIL,
+			FOLLOWED_BY,
 			EVENTUALLY,
 			STEADY_STATE,
 			NOT_EVENTUALLY,
@@ -285,7 +283,7 @@ public enum TemporalOperator implements Enumerator {
 	public static TemporalOperator get(int value) {
 		switch (value) {
 			case UNTIL_VALUE: return UNTIL;
-			case WEAK_UNTIL_VALUE: return WEAK_UNTIL;
+			case FOLLOWED_BY_VALUE: return FOLLOWED_BY;
 			case EVENTUALLY_VALUE: return EVENTUALLY;
 			case STEADY_STATE_VALUE: return STEADY_STATE;
 			case NOT_EVENTUALLY_VALUE: return NOT_EVENTUALLY;
