@@ -89,8 +89,8 @@ define SensorCell typeof CELL(){
             VERIFY [ [ NOT [ GFP > 50 uM ] ] IMPLIES [[ GFP < 40 uM ] AND [ GFP < 100 uM ] ]] EVENTUALLY HOLDS
         }
  
-         // INSIDE and OUTSIDE
-
+         // INSIDE and OUTSIDE  
+    
          // additional rules
          RULE R1 : SA + XylS2 <-> SA~XylS2
          R1.forwardRate = 1 s^-1
@@ -110,7 +110,7 @@ define SensorCell typeof CELL(){
          ATGC ARRANGE nahR, PnahR, Psal
  
          // some example properties 
-          
+           
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
