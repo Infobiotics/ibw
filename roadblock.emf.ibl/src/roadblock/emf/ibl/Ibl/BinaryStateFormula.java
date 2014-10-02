@@ -3,19 +3,15 @@
 package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Binary State Formula</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Binary State Formula</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -33,8 +29,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	/**
 	 * The cached value of the '{@link #getLeftOperand() <em>Left Operand</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLeftOperand()
 	 * @generated
 	 * @ordered
@@ -53,8 +48,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 
 	/**
 	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -63,8 +57,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 
 	/**
 	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOperator()
 	 * @generated
 	 * @ordered
@@ -72,8 +65,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	protected BooleanOperator operator = OPERATOR_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected BinaryStateFormula() {
@@ -81,8 +73,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -109,8 +100,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetLeftOperand(IStateFormula newLeftOperand, NotificationChain msgs) {
@@ -164,8 +154,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetRightOperand(IStateFormula newRightOperand, NotificationChain msgs) {
@@ -205,8 +194,8 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.BooleanOperator}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operator</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Operator</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operator</em>' attribute.
@@ -221,10 +210,13 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getOperator <em>Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operator</em>' attribute.
+	 * Sets the value of the '
+	 * {@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getOperator
+	 * <em>Operator</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Operator</em>' attribute.
 	 * @see roadblock.emf.ibl.Ibl.BooleanOperator
 	 * @see #getOperator()
 	 * @generated
@@ -237,8 +229,8 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated NOT
 	 */
@@ -247,8 +239,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -263,8 +254,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -281,8 +271,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -302,8 +291,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -323,8 +311,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -341,8 +328,7 @@ public class BinaryStateFormula extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

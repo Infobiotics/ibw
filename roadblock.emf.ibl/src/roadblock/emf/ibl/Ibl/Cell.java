@@ -7,23 +7,17 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Cell</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Cell</b></em>'. <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
  * Attempt at generating javadoc from EMF.
@@ -51,8 +45,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class Cell extends EObjectImpl implements IVisitable {
 	/**
 	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDisplayName()
 	 * @generated
 	 * @ordered
@@ -61,8 +54,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDisplayName()
 	 * @generated
 	 * @ordered
@@ -71,8 +63,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getDeviceList() <em>Device List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDeviceList()
 	 * @generated
 	 * @ordered
@@ -81,8 +72,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getKinetics() <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getKinetics()
 	 * @generated
 	 * @ordered
@@ -91,8 +81,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getRuleList()
 	 * @generated
 	 * @ordered
@@ -101,8 +90,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
 	 * @see #getMoleculeList()
 	 * @generated
 	 * @ordered
@@ -110,9 +99,10 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected EList<MolecularSpecies> moleculeList;
 
 	/**
-	 * The cached value of the '{@link #getATGCCommandList() <em>ATGC Command List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getATGCCommandList()
+	 * <em>ATGC Command List</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getATGCCommandList()
 	 * @generated
 	 * @ordered
@@ -120,9 +110,9 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected EList<ATGCDirective> atgcCommandList;
 
 	/**
-	 * The default value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getID() <em>ID</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getID()
 	 * @generated
 	 * @ordered
@@ -130,9 +120,9 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getID()
 	 * @generated
 	 * @ordered
@@ -140,9 +130,10 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getVariableAssignmentList() <em>Variable Assignment List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getVariableAssignmentList()
+	 * <em>Variable Assignment List</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getVariableAssignmentList()
 	 * @generated
 	 * @ordered
@@ -151,8 +142,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getProperties()
 	 * @generated
 	 * @ordered
@@ -160,8 +150,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	protected EList<IProperty> properties;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected Cell() {
@@ -169,8 +158,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -179,13 +167,14 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Display Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Display Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Display Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Display Name</em>' attribute.
 	 * @see #setDisplayName(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_DisplayName()
@@ -198,8 +187,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName <em>Display Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Display Name</em>' attribute.
 	 * @see #getDisplayName()
 	 * @generated
@@ -216,8 +205,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Device}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Device List</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Device List</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Device List</em>' containment reference list.
@@ -236,8 +225,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * Returns the value of the '<em><b>Kinetics</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Kinetics</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Kinetics</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Kinetics</em>' containment reference.
@@ -251,8 +240,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetKinetics(Kinetics newKinetics, NotificationChain msgs) {
@@ -267,8 +255,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Kinetics</em>' containment reference.
 	 * @see #getKinetics()
 	 * @generated
@@ -292,8 +280,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Rule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Rule List</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Rule List</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rule List</em>' containment reference list.
@@ -313,8 +301,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Molecule List</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Molecule List</em>' containment reference list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Molecule List</em>' containment reference list.
@@ -334,8 +322,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.ATGCDirective}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>ATGC Command List</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>ATGC Command List</em>' containment reference
+	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>ATGC Command List</em>' containment reference list.
@@ -351,13 +339,14 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>ID</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>ID</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>ID</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>ID</em>' attribute.
 	 * @see #setID(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_ID()
@@ -370,8 +359,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 
 	/**
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>ID</em>' attribute.
 	 * @see #getID()
 	 * @generated
@@ -386,10 +374,12 @@ public class Cell extends EObjectImpl implements IVisitable {
 	/**
 	 * Returns the value of the '<em><b>Variable Assignment List</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment}.
-	 * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc
+	 * -->
 	 * <p>
-	 * If the meaning of the '<em>Variable Assignment List</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Variable Assignment List</em>' containment
+	 * reference list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Assignment List</em>' containment reference list.
@@ -426,8 +416,8 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated NOT
 	 */
@@ -436,8 +426,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -462,8 +451,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -492,8 +480,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -538,8 +525,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -577,8 +563,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -607,8 +592,7 @@ public class Cell extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

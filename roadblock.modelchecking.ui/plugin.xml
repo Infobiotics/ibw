@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="IBW Modelchecking"
+            id="roadblock.modelchecking.ui">
+      </category>
+      <view
+            category="roadblock.modelchecking.ui"
+            class="roadblock.modelchecking.ui.views.MainView"
+            id="roadblock.modelchecking.ui.views.mainView"
+            name="Model Checking">
+      </view>
+      </extension>
+</plugin>

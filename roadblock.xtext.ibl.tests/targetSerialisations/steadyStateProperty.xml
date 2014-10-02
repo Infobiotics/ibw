@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:SteadyStateProperty xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore">
+  <StateFormula xsi:type="roadblock.emf.ibl:StateExpression" variableName="a" unit="MOLECULE"/>
+</roadblock.emf.ibl:SteadyStateProperty>

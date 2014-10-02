@@ -4954,7 +4954,7 @@ public class IblPackage extends EPackageImpl {
 
 		initEEnum(temporalOperatorEEnum, TemporalOperator.class, "TemporalOperator");
 		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.UNTIL);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.WEAK_UNTIL);
+		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.FOLLOWED_BY);
 		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.EVENTUALLY);
 		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.STEADY_STATE);
 		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.NOT_EVENTUALLY);

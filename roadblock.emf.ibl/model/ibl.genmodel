@@ -13,7 +13,7 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//TemporalOperator">
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/UNTIL"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/WEAK_UNTIL"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/FOLLOWED_BY"/>
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/EVENTUALLY"/>
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/STEADY_STATE"/>
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/NOT_EVENTUALLY"/>

@@ -11,8 +11,6 @@ import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
-import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
-import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
@@ -26,74 +24,74 @@ import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
-import roadblock.emf.ibl.Ibl.TemporalOperator;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
-import roadblock.modelchecking.translation.TranslationTarget;
+import roadblock.modelchecking.ModelcheckingTarget;
 
-public class PrismPropertyTranslator implements IPropertyTranslator {
+public class NuSmvTranslator implements IPropertyTranslator {
 
 	@Override
 	public String visit(UnaryProbabilityProperty expression) {
 
-		String pattern = "P%s [ %s%s (%s) ]";
+		String pattern = null;
 
-		IProbabilityConstraint pc = expression.getProbabilityConstraint();
-		ITimeConstraint tc = expression.getTimeConstraint();
+		switch (expression.getOperator()) {
+		case ALWAYS:
+			pattern = "AG (%s)";
+			break;
+		case EVENTUALLY:
+			pattern = "EF (%s)";
+			break;
+		case ALWAYS_EVENTUALLY:
+			pattern = "AG (EF (%s))";
+			break;
+		case NOT_EVENTUALLY:
+			pattern = "!(EF (%s))";
+			break;
+		case EVENTUALLY_ALWAYS:
+			pattern = "AF (AG (%s))";
+			break;
+		default:
+			break;
+		}
 
-		String probabilityConstraint = pc != null ? pc.accept(this) : "";
-		String temporalOperator = Translate(expression.getOperator());
-		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
 
-		return String.format(pattern, probabilityConstraint, temporalOperator, timeConstraint, stateFormula);
-
+		return String.format(pattern, stateFormula);
 	}
 
 	@Override
 	public String visit(BinaryProbabilityProperty expression) {
-		
-		String pattern = "P%s [ (%s) %s%s (%s) ]";
 
-		IProbabilityConstraint pc = expression.getProbabilityConstraint();
-		ITimeConstraint tc = expression.getTimeConstraint();
+		String pattern = null;
 
-		String probabilityConstraint = pc != null ? pc.accept(this) : "";
-		String temporalOperator = Translate(expression.getOperator());
-		String timeConstraint = tc != null ? tc.accept(this) : "";
+		switch (expression.getOperator()) {
+		case UNTIL:
+			pattern = "A [(%s) U (%s)]";
+			break;
+		case FOLLOWED_BY:
+			pattern = "AG ((%s) -> EF (%s))";
+			break;
+		default:
+			break;
+		}
+
 		String leftStateFormula = expression.getLeftOperand().accept(this);
 		String rightStateFormula = expression.getRightOperand().accept(this);
 
-		return String.format(pattern, probabilityConstraint, leftStateFormula, temporalOperator, timeConstraint, rightStateFormula);
+		return String.format(pattern, leftStateFormula, rightStateFormula);
 	}
 
 	@Override
 	public String visit(SteadyStateProperty expression) {
 
-		String pattern = "S%s [ (%s) ]";
+		String pattern = "AF (AG (%s))";
 
-		IProbabilityConstraint pc = expression.getProbabilityConstraint();
-
-		String probabilityConstraint = pc != null ? pc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
 
-		return String.format(pattern, probabilityConstraint, stateFormula);
-	}
-
-	@Override
-	public String visit(RewardProperty expression) {
-
-		String pattern = expression.getTimeConstraint().getOperator() == RelationalOperator.EQ ? "R{\"%s\"}%s [ I%s ]" : "R{\"%s\"}%s [ C%s ]";
-
-		ConcentrationConstraint cc = expression.getConcentrationConstraint();
-
-		String rewardExpression = doTranslateName(expression.getVariableName()) + "_rew";
-		String timeConstraint = expression.getTimeConstraint().accept(this);
-		String concentrationConstraint = cc != null ? cc.accept(this) : "=?";
-
-		return String.format(pattern, rewardExpression, concentrationConstraint, timeConstraint);
+		return String.format(pattern, stateFormula);
 	}
 
 	@Override
@@ -103,13 +101,13 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String variableName = doTranslateName(expression.getVariableName());
 		String relationalOperator = Translate(expression.getOperator());
 
-		return String.format(pattern, variableName, relationalOperator, expression.getQuantity());
+		return String.format(pattern, variableName, relationalOperator, (int)expression.getQuantity());
 	}
 
 	@Override
 	public String visit(NotStateFormula expression) {
 
-		String pattern = "! (%s)";
+		String pattern = "!(%s)";
 		String stateFormula = expression.getNegatedOperand().accept(this);
 
 		return String.format(pattern, stateFormula);
@@ -124,66 +122,6 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		String relationalOperator = Translate(expression.getOperator());
 
 		return String.format(pattern, leftFormula, relationalOperator, rightFormula);
-	}
-
-	@Override
-	public String visit(ConcreteProbabilityConstraint expression) {
-
-		String pattern = "%s%.2f";
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, relationalOperator, expression.getBound());
-	}
-
-	@Override
-	public String visit(UnknownProbabilityConstraint expression) {
-		return "=?";
-	}
-
-	@Override
-	public String visit(TimeInterval expression) {
-
-		String pattern = "[ %d, %d ]";
-
-		return String.format(pattern, expression.getLowerBound(), expression.getUpperBound());
-	}
-
-	@Override
-	public String visit(TimeInstant expression) {
-		String pattern = "%s%d";
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, relationalOperator, expression.getValue());
-	}
-
-	@Override
-	public String visit(ConcentrationConstraint expression) {
-		String pattern = "%s%f";
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, relationalOperator, expression.getValue());
-	}
-
-	private String Translate(TemporalOperator operator) {
-
-		switch (operator) {
-		case ALWAYS:
-			return "G";
-		case EVENTUALLY:
-			return "F";
-		case ALWAYS_EVENTUALLY:
-			return "G F";
-		case NOT_EVENTUALLY:
-			return "G !";
-		case UNTIL:
-			return "U";
-		case WEAK_UNTIL:
-			return "W";
-		case EVENTUALLY_ALWAYS:
-			return "F G";
-		default:
-			return "";
-		}
 	}
 
 	private String Translate(RelationalOperator operator) {
@@ -214,19 +152,49 @@ public class PrismPropertyTranslator implements IPropertyTranslator {
 		case OR:
 			return "|";
 		case IMPLIES:
-			return "=>";
+			return "->";
 		default:
 			return "";
 		}
 	}
-	
+
 	private String doTranslateName(String moleculeName) {
 		return moleculeName.replace("~", "_");
 	}
 
 	@Override
-	public TranslationTarget getTarget() {
-		return TranslationTarget.PRISM;
+	public ModelcheckingTarget getTarget() {
+		return ModelcheckingTarget.NUSMV;
+	}
+
+	@Override
+	public String visit(RewardProperty expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(ConcreteProbabilityConstraint expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(UnknownProbabilityConstraint expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(TimeInterval expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(TimeInstant expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(ConcentrationConstraint expression) {
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

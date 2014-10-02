@@ -18,8 +18,8 @@ import roadblock.dataprocessing.model.ModelBuilder
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
-//import roadblock.modelchecking.translation.TranslationManager
-//import roadblock.modelchecking.translation.TranslationTarget
+import roadblock.modelchecking.translation.TranslationManager
+import roadblock.modelchecking.translation.TranslationTarget
 import roadblock.biocompiler.Biocompiler
 /**
  * Generates code from your model files on save.
@@ -28,7 +28,7 @@ import roadblock.biocompiler.Biocompiler
  */
 class IblGenerator implements IGenerator {
 
-//	private TranslationManager translationManager = TranslationManager::instance;
+	private TranslationManager translationManager = TranslationManager::instance;
 
 	// export an EMF model to XML
 	// via http://techblog.goelite.org/sending-emf-models-via-soap/
@@ -42,7 +42,7 @@ class IblGenerator implements IGenerator {
 	}
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		println("hi there")
+
 		val ModelBuilder modelPopulater = new ModelBuilder();
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
 
@@ -51,11 +51,11 @@ class IblGenerator implements IGenerator {
 		println("===============")
 
 		var xml = convertToXml(emfModel)
-		println(xml)
+		//println(xml)
 		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
-//		generateTranslations(emfModel);
+		generateTranslations(emfModel);
 		
 		println("biocompiler starting")
 		var Biocompiler biocompiler = new Biocompiler(emfModel)
@@ -63,38 +63,38 @@ class IblGenerator implements IGenerator {
 		println("end")
 	}
 
-//	def generateTranslations(Model emfModel) {
-//
-//		var flatModelManager = new FlatModelManager(emfModel);
-//		var properties = PropertyCollector::instance.getAll(emfModel);
-//		var index = 0;
-//		
-//		var directoryName = System.getProperty("user.dir") + "/ibw/translations/"
-//		var directory = new File(directoryName);
-//
-//		if (!directory.exists() && !directory.mkdirs()) {
-//			throw new IllegalStateException("Couldn't create dir: " + directory);
-//		}
-//
-//		var files = directory.listFiles;
-//		for (File file : files) {
-//			file.delete();
-//		}
-//
-//		for (IProperty property : properties) {
-//
-//			var FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
-//			var propetyTranslation = translationManager.translate(flatData.property, TranslationTarget.PRISM);
-//			var modelTranslation = translationManager.translate(flatData.flatModel, flatData.property, TranslationTarget.PRISM);
-//
-//			index = index + 1;
-//			var fileName = directoryName + "model#" + index + ".pm";
-//
-//			writeTextFile(fileName, "//" + propetyTranslation + "\n\n" + modelTranslation);
-//		}
-//
-//		println("*** translation files have been save to " + directory.absolutePath + " ***")
-//	}
+	def generateTranslations(Model emfModel) {
+
+		var flatModelManager = new FlatModelManager(emfModel);
+		var properties = PropertyCollector::instance.getAll(emfModel);
+		var index = 0;
+		
+		var directoryName = System.getProperty("user.dir") + "/ibw/translations/"
+		var directory = new File(directoryName);
+
+		if (!directory.exists() && !directory.mkdirs()) {
+			throw new IllegalStateException("Couldn't create dir: " + directory);
+		}
+
+		var files = directory.listFiles;
+		for (File file : files) {
+			file.delete();
+		}
+
+		for (IProperty property : properties) {
+
+			var FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
+			var propetyTranslation = translationManager.translate(flatData.property, ModelcheckingTarget.PRISM);
+			var modelTranslation = translationManager.translate(flatData.flatModel, flatData.property, ModelcheckingTarget.PRISM);
+
+			index = index + 1;
+			var fileName = directoryName + "model#" + index + ".pm";
+
+			writeTextFile(fileName, "//" + propetyTranslation + "\n\n" + modelTranslation);
+		}
+
+		println("*** translation files have been save to " + directory.absolutePath + " ***")
+	}
 
 	def writeTextFile(String fileName, String s) {
 

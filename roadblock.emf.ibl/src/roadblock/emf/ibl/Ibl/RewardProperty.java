@@ -6,25 +6,18 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Reward Property</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Reward Property</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -43,8 +36,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class RewardProperty extends EObjectImpl implements IProperty {
 	/**
 	 * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getVariableName()
 	 * @generated
 	 * @ordered
@@ -53,8 +46,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 
 	/**
 	 * The cached value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getVariableName()
 	 * @generated
 	 * @ordered
@@ -72,9 +65,10 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	protected TimeInstant timeConstraint;
 
 	/**
-	 * The cached value of the '{@link #getConcentrationConstraint() <em>Concentration Constraint</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getConcentrationConstraint()
+	 * <em>Concentration Constraint</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConcentrationConstraint()
 	 * @generated
 	 * @ordered
@@ -82,9 +76,10 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	protected ConcentrationConstraint concentrationConstraint;
 
 	/**
-	 * The cached value of the '{@link #getInitialConditions() <em>Initial Conditions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInitialConditions()
+	 * <em>Initial Conditions</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInitialConditions()
 	 * @generated
 	 * @ordered
@@ -92,8 +87,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	protected EList<PropertyInitialCondition> initialConditions;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected RewardProperty() {
@@ -101,8 +95,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -111,13 +104,14 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Variable Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Variable Name</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Variable Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Variable Name</em>' attribute.
 	 * @see #setVariableName(String)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRewardProperty_VariableName()
@@ -130,8 +124,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 
 	/**
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariableName <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Variable Name</em>' attribute.
 	 * @see #getVariableName()
 	 * @generated
@@ -162,8 +156,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetTimeConstraint(TimeInstant newTimeConstraint, NotificationChain msgs) {
@@ -202,8 +195,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	 * Returns the value of the '<em><b>Concentration Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Concentration Constraint</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Concentration Constraint</em>' reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Concentration Constraint</em>' containment reference.
@@ -217,8 +210,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetConcentrationConstraint(ConcentrationConstraint newConcentrationConstraint, NotificationChain msgs) {
@@ -232,10 +224,14 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.RewardProperty#getConcentrationConstraint <em>Concentration Constraint</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concentration Constraint</em>' containment reference.
+	 * Sets the value of the '
+	 * {@link roadblock.emf.ibl.Ibl.RewardProperty#getConcentrationConstraint
+	 * <em>Concentration Constraint</em>}' containment reference. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Concentration Constraint</em>'
+	 *            containment reference.
 	 * @see #getConcentrationConstraint()
 	 * @generated
 	 */
@@ -254,15 +250,18 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Initial Conditions</b></em>' containment reference list.
-	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Initial Conditions</b></em>' containment
+	 * reference list. The list contents are of type
+	 * {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Initial Conditions</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Initial Conditions</em>' reference list isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initial Conditions</em>' containment reference list.
+	 * 
+	 * @return the value of the '<em>Initial Conditions</em>' containment
+	 *         reference list.
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRewardProperty_InitialConditions()
 	 * @model containment="true"
 	 * @generated
@@ -275,8 +274,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
 	 * @generated NOT
 	 */
@@ -285,8 +284,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -303,8 +301,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -323,8 +320,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -349,8 +345,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -373,8 +368,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -393,8 +387,7 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
