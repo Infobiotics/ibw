@@ -18,8 +18,8 @@ import roadblock.dataprocessing.model.ModelBuilder
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
-import roadblock.modelchecking.translation.TranslationManager
-import roadblock.modelchecking.translation.TranslationTarget
+import roadblock.modelchecking.ModelcheckingTarget
+import roadblock.modelchecking.translation.TranslationManager 
 import roadblock.biocompiler.Biocompiler
 /**
  * Generates code from your model files on save.

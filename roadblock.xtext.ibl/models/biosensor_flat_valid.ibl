@@ -109,7 +109,7 @@ define SensorCell typeof CELL(){
          // atgc rules
          ATGC ARRANGE nahR, PnahR, Psal
  
-         // some example properties
+         // some example properties 
           
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
