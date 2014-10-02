@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Infobiotics Workbench" uid="IBW" id="org.eclipse.equinox.p2.reconciler.dropins.product" application="org.eclipse.ui.ide.workbench" version="1.0" useFeatures="false" includeLaunchers="true">
+<product name="Infobiotics Workbench" uid="IBW" id="roadblock.ibw.IBW" application="org.eclipse.ui.ide.workbench" version="1.0" useFeatures="false" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
