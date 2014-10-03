@@ -508,6 +508,56 @@ class Biocompiler {
 						part.sequence = 'ATG' + part.sequence
 		
 	}
+
+	def Integer populatingPotentialRETable(String suppliers){
+		// build a table of potential restriction enzymes, i.e. RE that don't cut on unchangeable parts and whether they cut a CDS or an RBS
+		// returns the number of potential RE
+		
+		var List<List<Integer>> potentialRE = newArrayList()	
+		val databaseLocation = "resources/restrictionEnzymes.db"
+		val db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		db.exec("DELETE FROM PotentialRE")	
+	
+		var totalPotentialRE = 0
+		val sql = db.prepare("SELECT id, name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite AND supplier LIKE '%" + suppliers + "%' ORDER BY LENGTH(sequence)*ABS(RANDOM()/9223372036854775807.0)")
+		while(sql.step){
+			val reid = sql.columnInt(0)
+			val reName = sql.columnString(1)
+			val reSequence = sql.columnString(2)
+			
+			var fitsRBS = 1
+			var fitsCDS = 1
+			var cutsSomewhereElse = false
+			
+			for(cell: biocompilerModel.cells)
+				for(device: cell.devices)
+					for(part: device.parts){
+						var partSequence = part.sequence
+						if(partSequence != null){
+							if(device.direction.value == 0){ partSequence = partSequence.reverseComplement}
+							if(restrictionEnzymeCuts(part.sequence, reSequence))
+								switch(part.biologicalFunction){
+									case 'RBS':  fitsRBS = 0
+									case 'GENE': fitsCDS = 0
+									default : cutsSomewhereElse = true
+								}
+						}				
+					}
+			if(!cutsSomewhereElse){
+				totalPotentialRE = totalPotentialRE + 1
+				potentialRE.add(#[reid,fitsRBS,fitsCDS])
+				}
+
+		}
+	
+		potentialRE.forEach[
+			db.exec("INSERT INTO PotentialRE VALUES(" + it.get(0) + "," + it.get(1) + "," + it.get(2)+ ")")	
+		]
+		
+		db.dispose
+		return totalPotentialRE
+	}
 	
 	def findNoncuttingRestrictionEnzymes(){
 		for(cell: biocompilerModel.cells)
@@ -533,48 +583,8 @@ class Biocompiler {
 		
 	}
 	
-//	def findNonCuttingRestrictionEnzymes(String suppliers){
-//		for(cell: biocompilerModel.cells){
-//			var keepSearching = true
-//			var ArrayList<RestrictionEnzyme> currentSelection
-//			
-//			while(keepSearching){
-//				// set RE sequence to '#' to avoid undue matches
-//				var cloningSites = cell.devices.map[parts.filter[biologicalFunction == 'CLONINGSITE']].flatten.sortBy[position.value]
-//				cloningSites.forEach[sequence='#']
-//				
-//				currentSelection = new ArrayList // empty list
-//
-//				try {
-//					for(cloningSite: cloningSites){
-//						val sitePosition = cloningSite.position.value
-//						// build pre- and post sequence 
-//						val preSequence  = cell.devices.map[parts.filter[position.value < sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
-//						val postSequence = cell.devices.map[parts.filter[position.value > sitePosition]].flatten.sortBy[position.value].map[if(it.direction == 1) sequence else sequence.reverseComplement].join
-//						
-//						val re = findNonCuttingRestrictionEnzyme(preSequence,postSequence,suppliers, currentSelection)
-//						// Non cutting RE found: add RE to curentSelection, set value and move on the next one
-//						cloningSite => [
-//							sequence = re.sequence
-//							accessionURL = "ATGC://REbase/RestrictionEnzyme/"+ re.name
-//							]
-//						currentSelection.add(re)
-//					}
-//				}
-//				catch(NoFittingRE e)
-//					// if conflict with RBS, recalculate RBS and start over
-//					println(e.re.sequence)
-//					
-//					// else give up
-//					// make a note in console
-//					// keep the RE found so far, but discard un-assigned RE
-//					keepSearching = false
-//				}
-//			
-//			}
-//		
-//	}
 
+	
 	def static RestrictionEnzyme findNonCuttingRestrictionEnzyme(String preSequence, String postSequence, String suppliers, ArrayList<RestrictionEnzyme> currentSelection) throws NoFittingRE {
 		// find a non-cutting RE from the database to be inserted between preSequence and postSequence
 		// throw NoFittingRE if none can be found

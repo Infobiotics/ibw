@@ -30,6 +30,12 @@ except:
 	None
 c.execute('CREATE TABLE Suppliers (id INTEGER PRIMARY KEY AUTOINCREMENT, supplierID text, name text)')
 
+try:
+	c.execute('DROP TABLE PotentialRE')
+except:
+	None
+c.execute('CREATE TABLE PotentialRE (REid INTEGER PRIMARY KEY, fitsRBS INTEGER, fitsCDS INTEGER)')
+
 # populate the suppliers table
 print "Populating the suppliers table"
 pattern = re.compile("^CC\s*[A-Z]=")

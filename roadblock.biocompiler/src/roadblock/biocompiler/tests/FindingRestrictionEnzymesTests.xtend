@@ -75,6 +75,72 @@ class FindingRestrictionEnzymesTests {
 	
 
 	@Test
+	def populatingPotentialRETableTest(){ // simple device promoter - rbs - gene - re - re - re - terminator.
+		var biocompiler = simpleDevice
+		var totalPotentialRE = -1
+		var cell = biocompiler.biocompilerModel.cells.get(0)
+		// Set all sequences to 10 X's
+		cell.devices.get(0).parts.filter[biologicalFunction != "CLONINGSITE"].forEach[sequence = "XXXXXXXX"]
+		biocompiler.print
+		
+		totalPotentialRE = biocompiler.populatingPotentialRETable('b')
+		
+		// all REs fit, so there should be 39 of them
+		val databaseLocation = "resources/restrictionEnzymes.db"
+		var db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		var sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
+		sql.step
+		assertEquals(39, totalPotentialRE)
+		assertEquals(39, sql.columnInt(0))
+		db.dispose
+			
+		
+		// putting 5 RE in the promoter sequence
+		cell.devices.get(0).parts.filter[biologicalFunction == "PROMOTER"].forEach[sequence = "ACGCGTxTTTAAAxGAATTCxGGCCxAAGCTT"]
+		totalPotentialRE = biocompiler.populatingPotentialRETable('b')
+		db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
+		sql.step
+		assertEquals(39 - 5 , totalPotentialRE)		
+		assertEquals(39 - 5, sql.columnInt(0))
+		db.dispose
+		
+		// putting 5 RE in CDS
+		cell.devices.get(0).parts.filter[biologicalFunction != "CLONINGSITE"].forEach[sequence = "XXXXXXXX"]
+		cell.devices.get(0).parts.filter[biologicalFunction == "GENE"].forEach[sequence = "ACGCGTxTTTAAAxGAATTCxGGCCxAAGCTT"]
+		totalPotentialRE = biocompiler.populatingPotentialRETable('b')
+		db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
+		sql.step
+		assertEquals(39, totalPotentialRE)
+		assertEquals(39, sql.columnInt(0))
+		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE WHERE fitsCDS == 0")		
+		sql.step
+		assertEquals(5, sql.columnInt(0))
+		db.dispose
+		
+		// putting 5 RE in RBS
+		cell.devices.get(0).parts.filter[biologicalFunction != "CLONINGSITE"].forEach[sequence = "XXXXXXXX"]		
+		cell.devices.get(0).parts.filter[biologicalFunction == "RBS"].forEach[sequence = "ACGCGTxTTTAAAxGAATTCxGGCCxAAGCTT"]
+		biocompiler.populatingPotentialRETable('b')
+		db = new SQLiteConnection(new File(databaseLocation))
+		if (!db.isOpen) db.open()
+		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
+		sql.step
+		assertEquals(39, sql.columnInt(0))
+		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE WHERE fitsRBS == 0")		
+		sql.step
+		assertEquals(5, sql.columnInt(0))
+		
+		db.dispose
+		
+		
+}
+
+	@Test
 	def noConflicts(){ // simple device promoter - rbs - gene - re - re - re - terminator, all sequences are made of 10 X's. Fitting RE are easy to find.
 		var biocompiler = simpleDevice
 		
@@ -108,7 +174,7 @@ class FindingRestrictionEnzymesTests {
 	}
 		
 	@Test
-	def RBSNeedsUpdating(){ // original RBS contains all RBS so there won't be any fit. Should be fine after RBS is updated
+	def RBSNeedsUpdating(){ // original RBS contains all REs so there won't be any fit. Should be fine after RBS is updated
 		var biocompiler = simpleDevice
 		
 		var cell = biocompiler.biocompilerModel.cells.get(0)

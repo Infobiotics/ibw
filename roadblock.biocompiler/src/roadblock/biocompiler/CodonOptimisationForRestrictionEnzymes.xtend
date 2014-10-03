@@ -75,16 +75,16 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("\nAdding the globalCost")		
 		globalCost = new IntVar(store, "globalCost",-1000000000, 1000000000)	
 		store.impose(new Sum(codonList.map[jCost],globalCost))	
-//		println("Number of combinations to process: " + codonList.map[forms.size].reduce[a,b | a*b])
+		println("Number of combinations to process: " + codonList.map[forms.size as long].reduce[a,b | a*b])
 
 		
 //		println("Trying out all combinations of conflicting codons")
 		
 		fittingRestrictionEnzymes = tryAllCodonCombination(codonList, cdsList, reList)
 
-//		for(fre: fittingRestrictionEnzymes){
-//			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
-//		}
+		for(fre: fittingRestrictionEnzymes){
+			println("reID:" + fre.reID + ", fitting combinations:" + fre.fittingCombinationID.size)
+		}
 		
 		println("Create the jRE")
 		// creates jRE
