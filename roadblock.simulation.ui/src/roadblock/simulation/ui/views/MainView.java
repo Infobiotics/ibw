@@ -55,6 +55,8 @@ import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
 import roadblock.simulation.ui.util.SimulationUtil;
 
+// XXX mimick changes in modelchecking.ui
+
 public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.simulation.ui.views.mainView";
@@ -286,6 +288,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	// launch simulator
 	private void performSimulation() {
+		// XXX read model from EMFModel.xml rather than regenerating it
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());

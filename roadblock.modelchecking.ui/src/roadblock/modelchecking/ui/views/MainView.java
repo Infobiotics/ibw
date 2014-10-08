@@ -265,7 +265,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
+				// Auto-generated method stub
 			}
 		});
 
