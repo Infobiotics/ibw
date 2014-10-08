@@ -1,28 +1,30 @@
 package roadblock.biocompiler.tests
 import org.junit.Test
 import static org.junit.Assert.*
-import roadblock.biocompiler.Biocompiler
+import roadblock.biocompiler.util.BiocompilerUtil
+import static roadblock.biocompiler.tests.UtilitiesTests.*
 
 class UtilitiesTests {
 	
+	val static utils = new BiocompilerUtil
 	
 	@Test
 	def testRestrictionEnzymeCuts(){
-		assertTrue( Biocompiler.restrictionEnzymeCuts("AAAGGGG","AAA"))
-		assertFalse(Biocompiler.restrictionEnzymeCuts("TTTGGGG","AAA"))
+		assertTrue( utils.restrictionEnzymeCuts("AAAGGGG","AAA"))
+		assertFalse(utils.restrictionEnzymeCuts("TTTGGGG","AAA"))
 	}
 	
 	@Test
 	def testExactlyOneMatch(){ //counting occurences of a DNA string within another string
 
-		assertTrue(Biocompiler.exactlyOneMatch("AAATTTGGG","AAA"))
-		assertTrue(Biocompiler.exactlyOneMatch("AAATTTGGG","TGG"))
+		assertTrue(utils.exactlyOneMatch("AAATTTGGG","AAA"))
+		assertTrue(utils.exactlyOneMatch("AAATTTGGG","TGG"))
 		
-		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGGATTG","ATT")) 	// 2 matches		
-		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGG","AA"))		// 2 matches, overlapping
+		assertFalse(utils.exactlyOneMatch("AAATTTGGATTG","ATT")) 	// 2 matches		
+		assertFalse(utils.exactlyOneMatch("AAATTTGG","AA"))		// 2 matches, overlapping
 
-		assertTrue( Biocompiler.exactlyOneMatch("AAATTTGGG","TTTNG"))
-		assertFalse(Biocompiler.exactlyOneMatch("AAATTTGGG","TTNG")) // 2 matches: TTTG and TTGG
+		assertTrue( utils.exactlyOneMatch("AAATTTGGG","TTTNG"))
+		assertFalse(utils.exactlyOneMatch("AAATTTGGG","TTNG")) // 2 matches: TTTG and TTGG
 		// With wild cards
 		val wildCard = #[ 
 			#['M', 'AC'], 
@@ -42,25 +44,14 @@ class UtilitiesTests {
 			
 			// one match only: 1w2
 			for(w: doesMatch)
-					assertTrue(Biocompiler.exactlyOneMatch("XXX1" + w +"2YYY", "1" + v.get(0) + "2"))
+					assertTrue(utils.exactlyOneMatch("XXX1" + w +"2YYY", "1" + v.get(0) + "2"))
 			
 			// no match
 			for(w: doesNotMatch)
-					assertFalse(Biocompiler.exactlyOneMatch("XXX1" + w +"2YYY", "1" + v.get(0) + "2"))
+					assertFalse(utils.exactlyOneMatch("XXX1" + w +"2YYY", "1" + v.get(0) + "2"))
 		}	
 	
 	}
 	
-@Test 
-	def testNoncuttingRE(){
-		val preSequence = "AAA"
-		val postSequence = "TTT"
-		val list = Biocompiler.findNNoncuttingRestrictionEnzymes(20,preSequence,postSequence)
-
-		val finalSequence = preSequence + list.map[sequence].join + postSequence
-
-		// none of the RE cut the final sequence
-		assertTrue(list.map[Biocompiler.exactlyOneMatch(finalSequence,it.sequence)].reduce[a , b | a && b])		
-	}
 
 }

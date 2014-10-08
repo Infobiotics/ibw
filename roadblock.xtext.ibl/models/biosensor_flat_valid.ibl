@@ -1,6 +1,6 @@
 // Flat version of the sensor cell: no process, no inheritance.
  
-define SensorCell typeof CELL(){
+define SensorCell typeof CELL(){ 
         // define molecular elements
         ribosome = RIBOSOME() : observable
         rnaP = RNA(displayName = "XYZ") : observable
@@ -15,22 +15,22 @@ define SensorCell typeof CELL(){
         Psal = PROMOTER(URI = "biofab://")
         xylS2 = GENE(sequence = "ATTGTGT")
         XylS2 = PROTEIN()
-
+ 
         Pm = PROMOTER(sequence = "ATTGTGT")
         rFP = GENE(sequence = "TTGTGTG")
         RFP = PROTEIN()
-   
+         
    		PlasR = PROMOTER()
-		lasR = GENE()
+		lasR = GENE() 
 		gFP = GENE()
 		LasR = MOLECULE()
 		GFP = MOLECULE()
-		AHL = MOLECULE()
-	 	  
+		AHL = MOLECULE() 
+	 	              
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
 			mrna1 = RNA()
-		
+		 
 			RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP	
 			promoterBinding.forwardRate = 1 s^-1 
 			promoterBinding.reverseRate = 1 s^-1

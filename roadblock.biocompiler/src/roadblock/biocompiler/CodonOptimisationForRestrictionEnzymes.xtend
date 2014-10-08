@@ -21,6 +21,7 @@ import org.jacop.search.DepthFirstSearch
 import org.jacop.search.SelectChoicePoint
 import org.jacop.search.InputOrderSelect
 import org.jacop.search.IndomainMin
+import roadblock.biocompiler.util.BiocompilerUtil
 
 @Data 
 class CodonUsageTableElement{
@@ -30,6 +31,7 @@ class CodonUsageTableElement{
 
 class CodonOptimisationForRestrictionEnzymes {
 	
+	val static utils = new BiocompilerUtil
 	var public List<Codon> codonList
 	var public Store store = new Store
 	var LinkedHashMap<String, CodonUsageTableElement> codonUsageTable
@@ -114,7 +116,8 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("Done.")
 	}
 	
-	def findAtLeastNRestrictionEnzymes(Integer n){
+	def List<RestrictionEnzyme> findAtLeastNRestrictionEnzymes(Integer n){
+		var List<RestrictionEnzyme> fittingREList = newArrayList
 		
 		store.impose(new XgteqC(jNumberFreeRE,n))
 		
@@ -142,7 +145,7 @@ class CodonOptimisationForRestrictionEnzymes {
             println("*** No Solution found"); 
    		}
 		
-		
+		return fittingREList
 	}
 	
 	def static List<Integer> getNthCombination(Integer combinationID, List<Integer> sizes){
@@ -183,7 +186,7 @@ class CodonOptimisationForRestrictionEnzymes {
 			
 			// check which RE don't cut
 			for(i: 0..(reList.size - 1))
-				if(!Biocompiler.restrictionEnzymeCuts(wholeSequence,reList.get(i).sequence))
+				if(!utils.restrictionEnzymeCuts(wholeSequence,reList.get(i).sequence))
 					fittingRestrictionEnzymes.get(i).fittingCombinationID.add(k)						
 		}
 		
@@ -259,7 +262,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		for(re: reList){
 			println("re: " + re.name)
 			for(cdsId: 0..(cdsList.size -1)){
-				var indices = Biocompiler.matchIndices(cdsList.get(cdsId),re.sequence)
+				var indices = utils.matchIndices(cdsList.get(cdsId),re.sequence)
 				if(indices.size >0){
 					for(i: indices){
 						for(codonPosition: (i..(i + re.sequence.length -1)).map[it/3].toList.uniqueInteger){
@@ -311,11 +314,5 @@ class CodonOptimisationForRestrictionEnzymes {
 		}
 		return "UNKNOWN AMINOACID FOR CODON " + codon 		
 	}
-	
-	
-//	new(Model emfModel){
-//		println(new Date())
-//		println("ATGC: Compiling")
-//		model = emfModel
-//	}
+
 }
