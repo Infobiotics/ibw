@@ -6,6 +6,9 @@ import java.util.regex.Pattern
 import java.util.ArrayList
 import roadblock.emf.bioparts.Bioparts.Biopart
 import roadblock.emf.bioparts.Bioparts.BiocompilerDevice
+import java.io.FileOutputStream
+import java.io.ObjectOutputStream
+import java.io.IOException
 
 class BiocompilerUtil {
 	val static wildCard = #[ 
@@ -103,5 +106,19 @@ class BiocompilerUtil {
 		
 		return indices	
 	}
+
+	// file IO
+	def toFile(String filename, String content){
+		try{
+			var fileOut = new FileOutputStream("filename")
+			var out = new ObjectOutputStream(fileOut);
+			out.writeObject(content)
+			out.close()
+			fileOut.close()
+		}
+		catch(IOException i){
+			i.printStackTrace()
+		}	
+	}	 
 	
 }
