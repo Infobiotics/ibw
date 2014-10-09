@@ -38,8 +38,14 @@ class CodonOptimisationForRestrictionEnzymes {
 	var public IntVar globalCost
 	var public IntVar jNumberFreeRE 
 	var public List<FittingRestrictionEnzyme> fittingRestrictionEnzymes
+	
+	var public List<String> cdsList
+	var public List<RestrictionEnzyme> reList
 	// constructor
 	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
+		
+		this.cdsList = cdsList
+		this.reList = reList
 		
 		println("Finding unique Codons")
 		// going through the list of RE to build the list of unique conflicting codons		
@@ -116,7 +122,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("Done.")
 	}
 	
-	def List<Integer> findAtLeastNRestrictionEnzymes(Integer n){
+	def  findAtLeastNRestrictionEnzymes(Integer n){
 		
 		store.impose(new XgteqC(jNumberFreeRE,n))
 		
@@ -144,10 +150,18 @@ class CodonOptimisationForRestrictionEnzymes {
             println("*** No Solution found"); 
    		}
 		
-		var fittingREListID = fittingRestrictionEnzymes.filter[!it.fittingCombinationID.empty].filter[it.jRE.value == 1].map[it.reID].toList
+		// stitching the results back to the list of CDSs and RBSs
+		var fittingREIDList = fittingRestrictionEnzymes.filter[!it.fittingCombinationID.empty].filter[it.jRE.value == 1].map[it.reID].toList
+
+		println("fittingREListID:" + fittingREIDList.join(', '))
+		var List<RestrictionEnzyme> fittingREList = newArrayList
+		for(k: 0..(fittingREIDList.size - 1))
+			fittingREList.add(reList.get(fittingREIDList.get(k)))
 		
-		println("fittingREListID:" + fittingREListID.join(', '))
-		return fittingREListID
+		var fittingCodonList = codonList.filter[jCost.value != 0].map[new SequenceUpdate(it.cdsID,it.position,it.forms.get(it.jCodon.value))].toList
+		
+		println("Information about codons: " + fittingCodonList)
+		return #[fittingREList, fittingCodonList]
 	}
 	
 	def static List<Integer> getNthCombination(Integer combinationID, List<Integer> sizes){
@@ -178,7 +192,7 @@ class CodonOptimisationForRestrictionEnzymes {
 			for(i: 0..(codonList.size -1 )){
 				var codon = codonList.get(i)
 				var form = codon.forms.get(combination.get(i))
-				var sequence = changeCodonInSequence(cdsListCopy.get(codon.cdsID), form, codon.position)
+				var sequence = utils.changeCodonInSequence(cdsListCopy.get(codon.cdsID), form, codon.position)
 	
 				cdsListCopy.set(codon.cdsID, sequence)
 			}
@@ -195,12 +209,6 @@ class CodonOptimisationForRestrictionEnzymes {
 	return fittingRestrictionEnzymes		
 	}
 	
-	
-	
-	def static changeCodonInSequence(String sequence, String codon, Integer codonNumber){
-		return sequence.substring(0,codonNumber * 3) + codon + sequence.substring((codonNumber + 1 )*3)
-	}
-
 	def static computeFormsAndCostsForCodonList(List<Codon> codonList, List<String> cdsList,  LinkedHashMap<String, CodonUsageTableElement> codonUsageTable){
 		for(codon: codonList){
 			val codonSequence = cdsList.get(codon.cdsID).substring(codon.position * 3, codon.position * 3 + 3)
@@ -267,7 +275,7 @@ class CodonOptimisationForRestrictionEnzymes {
 				var indices = utils.matchIndices(cdsList.get(cdsId),re.sequence)
 				if(indices.size >0){
 					for(i: indices){
-						for(codonPosition: (i..(i + re.sequence.length -1)).map[it/3].toList.uniqueInteger){
+						for(codonPosition: utils.uniqueInteger((i..(i + re.sequence.length -1)).map[it/3].toList)){
 							codonList.add(new Codon(cdsId, codonPosition))
 							
 							} 
@@ -280,13 +288,10 @@ class CodonOptimisationForRestrictionEnzymes {
 		return codonList.uniqueCodons 		
 	}
 	
-	def static uniqueCodons(List<Codon> cl){ // returns the unique elements
-		cl.fold(newArrayList)[a,b | if(a.exists[(it as Codon).cdsID == b.cdsID && (it as Codon).position == b.position]) a else {a.add(b);a}] 		
+	def static List<Codon> uniqueCodons(List<Codon> cl){ // returns the unique elements
+		cl.fold(<Codon>newArrayList)[a,b | if(a.exists[(it as Codon).cdsID == b.cdsID && (it as Codon).position == b.position]) a else {a.add(b);a}] 		
 	}
 	
-	def static uniqueInteger(List<Integer> i){
-		i.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
-	}
 	
 	def static String codonToAminoAcid(String codon){
 		switch(codon){

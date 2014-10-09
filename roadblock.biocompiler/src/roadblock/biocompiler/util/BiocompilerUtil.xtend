@@ -21,6 +21,7 @@ import org.xml.sax.InputSource
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor
 import java.io.File
 import java.nio.file.StandardOpenOption
+import java.util.List
 
 class BiocompilerUtil {
 	val static wildCard = #[ // Nucleic acid notation by the International Union of Pure and Applied Chemistry 
@@ -59,6 +60,14 @@ class BiocompilerUtil {
 	def reverseComplement(String dna){
 		return dna.toUpperCase.toCharArray.reverse.map[complement].join
 		}
+
+	def changeCodonInSequence(String sequence, String codon, Integer codonNumber){
+		return sequence.substring(0,codonNumber * 3) + codon + sequence.substring((codonNumber + 1 )*3)
+	}
+	
+	def changeSubsequenceInSequence(String sequence, String subSequence, Integer location){
+		return sequence.substring(0,location) + subSequence + sequence.substring(location + subSequence.length)
+	}
 		
 	// 
 	// part manipulation
@@ -155,6 +164,12 @@ class BiocompilerUtil {
 		resource.contents.add(eObject)
 		return processor.saveToString(resource, null)
 	}
+  
+  //
+  	def List<Integer> uniqueInteger(List<Integer> i){
+		return i.fold(<Integer>newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
+	}
+  
     
 	
 }

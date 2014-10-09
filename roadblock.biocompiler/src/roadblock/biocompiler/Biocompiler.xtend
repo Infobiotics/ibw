@@ -606,8 +606,6 @@ class Biocompiler {
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
-//		val sql = db.prepare(" SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite ORDER BY LENGTH(sequence) ,cutSite")
-//		val sql = db.prepare("SELECT name, sequence FROM RestrictionEnzyme WHERE LENGTH(sequence)>cutSite AND supplier LIKE '%B%' ORDER BY LENGTH(sequence)*ABS(RANDOM()/9223372036854775807.0)")
 		val sql = db.prepare("SELECT RE.name, RE.sequence FROM RestrictionEnzyme RE INNER JOIN PotentialRE PRE ON PRE.REid=RE.id WHERE fitsRBS=1 AND fitsCDS=1 ORDER BY LENGTH(RE.sequence)")
 		var stillSearching = true
 		var RestrictionEnzyme re 

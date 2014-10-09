@@ -53,5 +53,20 @@ class UtilitiesTests {
 	
 	}
 	
+	@Test
+	def testChangeCodonInSequence(){
+		var String sequence = 'XXXYYYZZZ'
+		 
+		var result = utils.changeCodonInSequence(sequence, "BBB",1)
+		assertEquals("XXXBBBZZZ", result)
+		
+		result = utils.changeCodonInSequence(sequence, "AAA", 0)
+		assertEquals("AAAYYYZZZ", result)	
+
+		result = utils.changeCodonInSequence(sequence, "CCC", 2)
+		assertEquals("XXXYYYCCC", result)	
+			
+	}
+	
 
 }

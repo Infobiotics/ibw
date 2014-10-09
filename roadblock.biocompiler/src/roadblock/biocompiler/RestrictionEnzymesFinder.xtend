@@ -97,16 +97,31 @@ class RestrictionEnzymesFinder {
 		var species = "w3110"
 		var cofre = new CodonOptimisationForRestrictionEnzymes(CDSList, reList ,species)
 		
-		var fittingREID = cofre.findAtLeastNRestrictionEnzymes(numberRequested)
+		var results = cofre.findAtLeastNRestrictionEnzymes(numberRequested)
 		
-		if(fittingREID.empty){
+		val List<RestrictionEnzyme> fittingREList = results.get(0) as List<RestrictionEnzyme> 
+		val List<SequenceUpdate> codonToUpdateList = results.get(1) as List<SequenceUpdate> 
+		
+		if(fittingREList.empty){
 			// failed
 			return false
 		}
 		else{
 			// fix the codons
+			
 			// set the cloning sites to fittingREs found
+			val iteratorRE = fittingREList.iterator
+			cell.devices.forEach[parts.filter[biologicalFunction == 'CLONINGSITE']?.filter[sequence == ''].forEach[
+				var re = iteratorRE.next
+				it.sequence = re.sequence 
+				it.name = re.name
+				it.accessionURL = 'ATGC://' + re.name
+			]]
+			
 			// log the affected CDS
+			for(k: utils.uniqueInteger(codonToUpdateList.map[it.partID])){
+				log = log + "\n Codon Optimised: " + CDSList.get(k)
+			}
 			return true
 		}
 	}

@@ -9,8 +9,11 @@ import roadblock.biocompiler.Codon
 import java.util.List
 import com.almworks.sqlite4java.SQLiteConnection
 import java.io.File
+import roadblock.biocompiler.SequenceUpdate
+import roadblock.biocompiler.util.BiocompilerUtil
 
 class CodonOptimisationForRestrictionEnzymesTests {
+	val utils = new BiocompilerUtil
 	@Test 
 	def wholeShebang(){
 		// some CDS
@@ -38,30 +41,33 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		val species = "w3110"
 		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
 		println("searching")
-		var fittingREIDList = cofre.findAtLeastNRestrictionEnzymes(2)
-		var List<RestrictionEnzyme> fittingREList = newArrayList
-		for(k: 0..(fittingREIDList.size - 1))
-			fittingREList.add(reList.get(fittingREIDList.get(k)))
+		var results = cofre.findAtLeastNRestrictionEnzymes(2)
+		
+		println("outside cofre")
+		var List<RestrictionEnzyme> fittingREList = results.get(0) as List<RestrictionEnzyme> 
+		var List<SequenceUpdate> codonToUpdateList = results.get(1) as List<SequenceUpdate>
 			
-		println("RE selected: " + fittingREList.map[name].join(', '))
+		println("RE selected: " + fittingREList.map[it.name].join(', '))
+		println("Codons:" + codonToUpdateList)
+		println("Original sequences:")
+		println(cdsList)
+		// update sequences
+		var cdsList2 = cdsList.toList.clone
+		for(codon: codonToUpdateList){
+			var cdsID = codon.partID
+			var location = 3 * codon.location
+			var form = codon.sequence
+			println(cdsID + ", " + location + ", " + form)
+			var newSequence = utils.changeSubsequenceInSequence(cdsList2.get(cdsID),form, location)
+			cdsList2.set(cdsID,newSequence)
+		}
+		println("After change:")
+		println(cdsList2.toList)
+				
 		assertEquals("finished?","nope")
 	}
 	
 	
-	@Test
-	def changeCodonInSequenceTests(){
-		var String sequence = 'XXXYYYZZZ'
-		 
-		var result = CodonOptimisationForRestrictionEnzymes.changeCodonInSequence(sequence, "BBB",1)
-		assertEquals("XXXBBBZZZ", result)
-		
-		result = CodonOptimisationForRestrictionEnzymes.changeCodonInSequence(sequence, "AAA", 0)
-		assertEquals("AAAYYYZZZ", result)	
-
-		result = CodonOptimisationForRestrictionEnzymes.changeCodonInSequence(sequence, "CCC", 2)
-		assertEquals("XXXYYYCCC", result)	
-			
-	}
 	
 	
 	@Test
