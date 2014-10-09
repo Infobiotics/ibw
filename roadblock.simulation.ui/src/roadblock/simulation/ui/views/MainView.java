@@ -134,6 +134,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSLabel.setToolTipText("simulation algorithm to use");
 		SSAlgorithm = new Combo(parent, SWT.NONE);
 		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		// XXX use human readable names and map them to acronyms.
 		SSAlgorithm.add("dm");
 		SSAlgorithm.add("frm");
 		SSAlgorithm.add("cr");
@@ -212,141 +213,100 @@ public class MainView extends ViewPart implements IPartListener2 {
 		}
 	}
 
+	private class NonEmptyStringValidator implements IValidator {
+		@Override
+		public IStatus validate(Object value) {
+			if (value instanceof String) {
+				String stringValue = String.valueOf(value);
+				if (stringValue.isEmpty()) {
+					return ValidationStatus.error("cannot be empty");
+				}
+				return ValidationStatus.ok();
+			}
+			return ValidationStatus.error("not a string");
+		}
+	};
+	
+	private class IntegerValidator implements IValidator {
+		@Override
+		public IStatus validate(Object value) {
+			if (value instanceof Integer) {
+				Integer intValue = (Integer) value;
+				if (intValue <= 0) {
+					return ValidationStatus.error("should be greater than 0");
+				}
+				return ValidationStatus.ok();
+			}
+			return ValidationStatus.error("not an integer number");
+		}
+	};
+	
+	private class DecimalValidator implements IValidator {
+		@Override
+		public IStatus validate(Object value) {
+			if (value instanceof Double) {
+				Double doubleValue = (Double) value;
+				if (doubleValue <= 0) {
+					return ValidationStatus.error("should be greater than 0");
+				}
+				return ValidationStatus.ok();
+			}
+			return ValidationStatus.error("not a decimal number");
+		}
+	};
+	
 	// bind class entries to widget entries
 	private void bindValues() {
 
 		DataBindingContext ctx = new DataBindingContext();
 		IObservableValue widgetValue;
 		IObservableValue modelValue;
-		IValidator validator;
 		UpdateValueStrategy strategy;
 		Binding bindValue;
 
 		// model file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
 		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
-
-		// add a validator so can only be a non-empty string
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof String) {
-					String stringValue = String.valueOf(value);
-					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a string");
-			}
-		};
 		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
+		strategy.setBeforeSetValidator(new NonEmptyStringValidator());
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// data file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(dataFile);
 		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
-
-		// add a validator so can only be a non-empty string
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof String) {
-					String stringValue = String.valueOf(value);
-					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a string");
-			}
-		};
 		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
+		strategy.setBeforeSetValidator(new NonEmptyStringValidator());
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// maxTime widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(maxTime);
 		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
-
-		// add a validator so can only be a decimal number
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof Double) {
-					Double doubleValue = (Double) value;
-					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
-					}
-
-					return ValidationStatus.ok();
-				}
-
-				return ValidationStatus.error("not a decimal number");
-			}
-		};
 		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
+		strategy.setBeforeSetValidator(new DecimalValidator());
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// logInterval widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(logInterval);
 		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
-
-		// add a validator so can only be a decimal number
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof Double) {
-					Double doubleValue = (Double) value;
-					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
-					}
-
-					return ValidationStatus.ok();
-				}
-
-				return ValidationStatus.error("not a decimal number");
-			}
-		};
 		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
+		strategy.setBeforeSetValidator(new DecimalValidator());
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// sample number value widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(sampleNumber);
 		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
-
-		// add a validator so can only be an integer number
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof Integer) {
-					Integer intValue = (Integer) value;
-					if (intValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
-					}
-
-					return ValidationStatus.ok();
-				}
-
-				return ValidationStatus.error("not an integer number");
-			}
-		};
 		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
+		strategy.setBeforeSetValidator(new IntegerValidator());
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// stochastic simulation algorithm value widget
 		widgetValue = WidgetProperties.selection().observe(SSAlgorithm);
 		modelValue = BeanProperties.value(Configuration.class, "SSAlgorithm").observe(config);
-
 		strategy = new UpdateValueStrategy();
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 
