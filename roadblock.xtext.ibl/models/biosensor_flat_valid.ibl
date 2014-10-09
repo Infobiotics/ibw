@@ -15,7 +15,11 @@ define SensorCell typeof CELL(){
         Psal = PROMOTER(URI = "biofab://")
         xylS2 = GENE(sequence = "ATTGTGT")
         XylS2 = PROTEIN()
+<<<<<<< HEAD
   
+=======
+   
+>>>>>>> 421e78690115a407591e5861a1c0ca196093d2a8
         Pm = PROMOTER(sequence = "ATTGTGT")
         rFP = GENE(sequence = "TTGTGTG")
         RFP = PROTEIN()
@@ -26,7 +30,7 @@ define SensorCell typeof CELL(){
 		LasR = MOLECULE()
 		GFP = MOLECULE()
 		AHL = MOLECULE() 
-	 	              
+	 	               
         DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
        	// constitutively produces NahR and LasR
 			mrna1 = RNA()

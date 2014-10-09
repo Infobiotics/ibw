@@ -60,6 +60,7 @@ class IblGenerator implements IGenerator {
 		println("biocompiler starting")
 		var Biocompiler biocompiler = new Biocompiler(emfModel)
 		biocompiler.gatherParts
+		//biocompiler.makeResultPage
 		println("end")
 	}
 

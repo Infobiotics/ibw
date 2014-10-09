@@ -991,4 +991,46 @@ class Biocompiler {
 		
 	}
 	
+	def makeResultPage(){
+		val List<String> colours = newArrayList		
+		colours.add("#A6611A")
+		colours.add("#DFC27D")
+		colours.add("#F5F5F5")
+		colours.add("#80CDC1")
+		colours.add("#018571")
+
+		val imageNames = <String,String>newHashMap() // from type+direction to image filename
+		imageNames.put("promoter0","promoterReversed.png")
+		imageNames.put("promoter1","promoter.png")
+		imageNames.put("rbs0","rbsReversed.png")
+		imageNames.put("rbs1","rbs.png")
+		imageNames.put("gene0","geneReversed.png")
+		imageNames.put("gene1","gene.png")
+		imageNames.put("cloningsite0","cloningSiteReversed.png")
+		imageNames.put("cloningsite1","cloningSite.png")
+		imageNames.put("terminator0","terminatorReversed.png")
+		imageNames.put("terminator1","terminator.png") 
+		
+		var List<String> source = newArrayList
+		source.add("<HTML>")
+		source.add("<BODY BGCOLOR='#ffffff'>")
+		
+		for(cell:biocompilerModel.cells){
+			source.add("<H2>Cell: " + cell.name + "</H2>") 
+			for(device: cell.devices.sortBy[parts.get(0).position.value]){
+				for(part: device.parts){
+					source.add("part:" + part.name)
+				}
+			}
+		}
+		
+		source.add("</BODY>")	
+		source.add('</HTML>')
+		
+		// temporary: save to file
+		utils.toFile("resultsATGC.html",source.join)
+		return source.join
+		
+	}
+	
 }
