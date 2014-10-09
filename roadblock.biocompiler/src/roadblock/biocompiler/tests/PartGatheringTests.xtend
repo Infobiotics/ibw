@@ -3,6 +3,7 @@ package roadblock.biocompiler.tests
 import org.junit.Test
 import static org.junit.Assert.*
 import roadblock.biocompiler.Biocompiler
+import roadblock.biocompiler.util.BiocompilerUtil
 import roadblock.emf.ibl.Ibl.IblFactory
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
@@ -25,7 +26,10 @@ import org.sbolstandard.core.SBOLValidationException
 import org.apache.commons.io.IOUtils
 import java.net.URL;
 
+
+
 class PartGatheringTests {
+	val utils = new BiocompilerUtil
 	
 	// export an EMF model to XML
 	// via http://techblog.goelite.org/sending-emf-models-via-soap/
@@ -74,7 +78,7 @@ class PartGatheringTests {
 					for(part: device.parts.sortBy[position.value])
 						println("part:" + part.name + 
 						", type:" + part.biologicalFunction + 
-						", sequence:" + (if(Biocompiler.direction(part) == 0) part.sequence else Biocompiler.reverseComplement(part.sequence)) + 
+						", sequence:" + (if(Biocompiler.direction(part) == 0) part.sequence else utils.reverseComplement(part.sequence)) + 
 						", URI:" + part.accessionURL)
 				}
 			}

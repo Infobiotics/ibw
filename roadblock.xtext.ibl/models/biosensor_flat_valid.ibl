@@ -11,11 +11,11 @@ define SensorCell typeof CELL(){
         PnahR = PROMOTER(URI = "biobricks://...")
         nahR = GENE(URI = "biofab://")
         NahR = PROTEIN(URI = "db://...")
- 
+   
         Psal = PROMOTER(URI = "biofab://")
         xylS2 = GENE(sequence = "ATTGTGT")
         XylS2 = PROTEIN()
- 
+  
         Pm = PROMOTER(sequence = "ATTGTGT")
         rFP = GENE(sequence = "TTGTGTG")
         RFP = PROTEIN()
