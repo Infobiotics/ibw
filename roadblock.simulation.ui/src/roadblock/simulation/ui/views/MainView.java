@@ -43,14 +43,11 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-
 import roadblock.caching.ModelCache;
 import roadblock.simulation.ngss.Simulator;
 import roadblock.simulation.ui.Activator;
 import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
-
-// XXX mimick changes in modelchecking.ui
 
 public class MainView extends ViewPart implements IPartListener2 {
 
@@ -270,6 +267,89 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// maxTime widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(maxTime);
+		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
+
+		// add a validator so can only be a decimal number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// logInterval widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(logInterval);
+		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
+
+		// add a validator so can only be a decimal number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// sample number value widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(sampleNumber);
+		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
+
+		// add a validator so can only be an integer number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Integer) {
+					Integer intValue = (Integer) value;
+					if (intValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not an integer number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// stochastic simulation algorithm value widget
+		widgetValue = WidgetProperties.selection().observe(SSAlgorithm);
+		modelValue = BeanProperties.value(Configuration.class, "SSAlgorithm").observe(config);
+
+		strategy = new UpdateValueStrategy();
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+
 	}
 
 	private void ensureConfig() {
