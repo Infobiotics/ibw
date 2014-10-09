@@ -1,71 +1,24 @@
 package roadblock.biocompiler.tests
 
+import java.nio.charset.Charset
 import org.junit.Test
-import static org.junit.Assert.*
 import roadblock.biocompiler.Biocompiler
 import roadblock.biocompiler.util.BiocompilerUtil
 import roadblock.emf.ibl.Ibl.IblFactory
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
-import org.eclipse.emf.ecore.xmi.util.XMLProcessor
-import java.io.IOException
-import java.nio.charset.Charset
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.nio.ByteBuffer
-import java.io.StringReader
-import org.xml.sax.InputSource
-import roadblock.emf.ibl.Ibl.Model
-import org.eclipse.emf.common.util.URI
 import roadblock.emf.ibl.Ibl.IblPackage
-import org.sbolstandard.core.util.SBOLPrettyWriter
-import org.sbolstandard.core.SBOLFactory
-import java.io.FileOutputStream
-import org.sbolstandard.core.SBOLValidationException
+import roadblock.emf.ibl.Ibl.Model
 
-import org.apache.commons.io.IOUtils
-import java.net.URL;
-
-
+import static org.junit.Assert.*
 
 class PartGatheringTests {
 	val utils = new BiocompilerUtil
-	
-	// export an EMF model to XML
-	// via http://techblog.goelite.org/sending-emf-models-via-soap/
-	def public static String convertToXml(EObject eObject) throws IOException {
-		var resource = new XMLResourceImpl
-		var processor = new XMLProcessor
-		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
-		resource.setEncoding("UTF-8");
-		resource.contents.add(eObject);
-		return processor.saveToString(resource, null);
-	}
-	
-    def EObject convertToEObject(String xmlString) throws IOException {
-        var XMLResourceImpl resource = new XMLResourceImpl();
-       	resource.setURI(URI.createURI("someURI"))
-        resource.setEncoding("UTF-8");
-        resource.load(new InputSource(new StringReader(xmlString)), null);
- 
-        return resource.getContents().get(0);
-    }
-	
-	// read file into a string
-	// from http://stackoverflow.com/questions/326390/how-to-create-a-java-string-from-the-contents-of-a-file
-	// yep, 3 lines and 5 imports just to read a text file. Java.
-	def static String readFile(String path, Charset encoding)  throws IOException 
-	{
-		var byte[] encoded = Files.readAllBytes(Paths.get(path)) 
-	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString
-	}
 	
 	@Test
 	def void biocompilationTestATGC00(){
 		// 
 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
-		val XMLsource = readFile("../roadblock.xtext.ibl.tests/testModels/testATGC00.xml",Charset.defaultCharset())
-		val model = convertToEObject(XMLsource) as Model
+		val XMLsource = utils.readFile("../roadblock.xtext.ibl.tests/testModels/testATGC00.xml",Charset.defaultCharset())
+		val model = utils.convertToEObject(XMLsource) as Model
 		println(model)
 		var biocompiler = new Biocompiler(model)
 		 
@@ -112,8 +65,8 @@ class PartGatheringTests {
 	@Test
 	def void testLookUpSequence(){
 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
-		val XMLsource = readFile("../roadblock.xtext.ibl.tests/testModels/testSequenceLookup.xml",Charset.defaultCharset())
-		val model = convertToEObject(XMLsource) as Model
+		val XMLsource = utils.readFile("../roadblock.xtext.ibl.tests/testModels/testSequenceLookup.xml",Charset.defaultCharset())
+		val model = utils.convertToEObject(XMLsource) as Model
 		var biocompiler = new Biocompiler(model)
 		biocompiler.gatherParts	
 
@@ -225,7 +178,7 @@ class PartGatheringTests {
 		}
 		
 		
-		println(convertToXml(model))
+		println(utils.convertToXml(model))
 		// gather parts
 		var biocompiler = new Biocompiler(model)
 		biocompiler.gatherParts
@@ -241,7 +194,7 @@ class PartGatheringTests {
 		println("===========")
 				
 		// test if correct
-		assertEquals(convertToXml(biocompiler.biocompilerModel),'<?xml version="1.0" encoding="UTF-8"?>
+		assertEquals(utils.convertToXml(biocompiler.biocompilerModel),'<?xml version="1.0" encoding="UTF-8"?>
 <roadblock.emf.bioparts:BiocompilerModel xmlns:roadblock.emf.bioparts="http://www.roadblock.org/bioparts.ecore">
   <cells name="myCell">
     <devices name="device1" minPosition="myCell/device1/minPosition = 1" maxPosition="myCell/device1/maxPosition = 4" direction="myCell/device1/direction=1">

@@ -9,6 +9,18 @@ import roadblock.emf.bioparts.Bioparts.BiocompilerDevice
 import java.io.FileOutputStream
 import java.io.ObjectOutputStream
 import java.io.IOException
+import java.nio.charset.Charset
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.ByteBuffer
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
+import org.eclipse.emf.common.util.URI
+import java.io.StringReader
+import org.xml.sax.InputSource
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor
+import java.io.File
+import java.nio.file.StandardOpenOption
 
 class BiocompilerUtil {
 	val static wildCard = #[ 
@@ -31,7 +43,7 @@ class BiocompilerUtil {
 	
 	def String randomDNA(int stringLength){
 		val rng = new Random
-		return (1..stringLength).map["atgc".charAt(rng.nextInt(4)).toString].reduce[a,b | a + b]
+		return (1..stringLength).map["ATGC".charAt(rng.nextInt(4))].join
 	}
 	
 	def char complement(char x){
@@ -109,16 +121,54 @@ class BiocompilerUtil {
 
 	// file IO
 	def toFile(String filename, String content){
-		try{
-			var fileOut = new FileOutputStream("filename")
-			var out = new ObjectOutputStream(fileOut);
-			out.writeObject(content)
-			out.close()
-			fileOut.close()
-		}
-		catch(IOException i){
-			i.printStackTrace()
-		}	
-	}	 
+			
+			Files.write(
+				Paths.get(new File(filename).toURI), 
+				content.getBytes("utf-8"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)		
+		
+			
+	}
+
+//	def toFile(String filename, String content){
+//		try{
+//			var fileOut = new FileOutputStream(filename)
+//			var out = new ObjectOutputStream(fileOut);
+//			out.writeObject(content)
+//			out.close()
+//			fileOut.close()
+//		}
+//		catch(IOException i){
+//			i.printStackTrace()
+//		}	
+//	}
+	
+	// read file into a string
+	def String readFile(String path, Charset encoding)  throws IOException 
+	{
+		var byte[] encoded = Files.readAllBytes(Paths.get(path)) 
+	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString
+	}
+		 
+	// from xml to EObject. Do explicitly cast after the call
+	def EObject convertToEObject(String xmlString) throws IOException {
+        var XMLResourceImpl resource = new XMLResourceImpl()
+       	resource.setURI(URI.createURI("someURI"))
+        resource.setEncoding("UTF-8")
+        resource.load(new InputSource(new StringReader(xmlString)), null)
+ 
+        return resource.getContents().get(0)
+    }
+    
+    // export an EMF model to XML
+	// via http://techblog.goelite.org/sending-emf-models-via-soap/
+	def String convertToXml(EObject eObject) throws IOException {
+		var resource = new XMLResourceImpl
+		var processor = new XMLProcessor
+		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE)
+		resource.setEncoding("UTF-8")
+		resource.contents.add(eObject)
+		return processor.saveToString(resource, null)
+	}
+    
 	
 }

@@ -219,7 +219,7 @@ class Biocompiler {
 			biocompilerModel.cells.add(biocompilerCell)
 		}
 	}
-	println(convertToXml(biocompilerModel))
+	println(utils.convertToXml(biocompilerModel))
 
 }
 
@@ -282,7 +282,7 @@ class Biocompiler {
 			store.impose(new Max(device.parts.map[position],device.maxPosition))			
 		}
 		
-		println(convertToXml(biocompilerModel))
+		println(utils.convertToXml(biocompilerModel))
 	}
 	
 	def constraintAllDifferent(){
@@ -898,18 +898,6 @@ class Biocompiler {
 		return searchFirstDeclaration(container.eContainer, displayName)
 	}
 	
-		// export an EMF model to XML
-	// via http://techblog.goelite.org/sending-emf-models-via-soap/
-	def public static String convertToXml(EObject eObject) throws IOException {
-		var resource = new XMLResourceImpl
-		var processor = new XMLProcessor
-		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
-		resource.setEncoding("UTF-8");
-		resource.contents.add(eObject);
-		return processor.saveToString(resource, null);
-	}
-	
-	
 	// export biocompiler model to an SBOL document
 	def SBOLDocument makeSBOLDocument(){
 		var document = SBOLFactory.createDocument
@@ -991,7 +979,7 @@ class Biocompiler {
 		
 	}
 	
-	def makeResultPage(){
+	def  makeResultPage(){
 		val List<String> colours = newArrayList		
 		colours.add("#A6611A")
 		colours.add("#DFC27D")
@@ -999,7 +987,7 @@ class Biocompiler {
 		colours.add("#80CDC1")
 		colours.add("#018571")
 
-		val imageNames = <String,String>newHashMap() // from type+direction to image filename
+		val imageNames = <String,String>newHashMap // from type+direction to image filename
 		imageNames.put("promoter0","promoterReversed.png")
 		imageNames.put("promoter1","promoter.png")
 		imageNames.put("rbs0","rbsReversed.png")
@@ -1013,24 +1001,75 @@ class Biocompiler {
 		
 		var List<String> source = newArrayList
 		source.add("<HTML>")
-		source.add("<BODY BGCOLOR='#ffffff'>")
+		source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
+		
+		val path = 'resources/images/'
+		
 		
 		for(cell:biocompilerModel.cells){
-			source.add("<H2>Cell: " + cell.name + "</H2>") 
-			for(device: cell.devices.sortBy[parts.get(0).position.value]){
-				for(part: device.parts){
-					source.add("part:" + part.name)
-				}
-			}
-		}
+			source.add("<H2>Cell: " + cell.name + "</H2>")
+			var col = -1
+			var deviceLength = 0
+			var template='''
+				<TABLE cellpadding=0px cellspacing=0px >
+				<TR align=center>
+				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
+				«{col = (col+1) % colours.size; ''}»
+				«{deviceLength = device.parts.size; ''}»
+				<TD COLSPAN = «deviceLength» bgcolor='«colours.get(col)»'>
+				«device.name»
+				</TD>
+				«ENDFOR»
+				</TR>
+				«{col = -1; ''}»
+
+				<TR>
+				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
+				«{col = (col+1) % colours.size; ''}»
+				«FOR part: device.parts.sortBy[position.value]»
+				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «part.sequence.substring(0,6)»(...)«part.sequence.substring(part.sequence.length-6)» ' SRC='«path+imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=76px></TD>
+				«ENDFOR»
+				«ENDFOR»
+				</TR>
+
+				«{col = -1; ''}»
+				<TR align=center>
+				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
+				«{col = (col+1) % colours.size; ''}»
+				«{deviceLength = device.parts.size; ''}»
+				<TD COLSPAN = «deviceLength» bgcolor='«colours.get(col)»'>
+				&nbsp;
+				</TD>
+				«ENDFOR»
+				</TR>
+				
+				</TABLE>
+				
+				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
+				<h3>«device.name»</h3>
+				<UL>
+				«FOR part: device.parts.sortBy[position.value]»
+				<LI>
+				<b>«part.name»</b> («part.biologicalFunction») = «part.sequence»
+				</LI>
+				«ENDFOR»
+				</UL>
+				«ENDFOR»
+				''' 
+	source.add(template)
+	}
+
+	
 		
 		source.add("</BODY>")	
 		source.add('</HTML>')
-		
-		// temporary: save to file
-		utils.toFile("resultsATGC.html",source.join)
-		return source.join
+		return source.join('\n')
 		
 	}
 	
+	
+	// for tests only
+	def fillUpWithRandomSequences(){
+		biocompilerModel.cells.forEach[devices.forEach[parts.forEach[sequence = utils.randomDNA(15)]]]	
+	}
 }
