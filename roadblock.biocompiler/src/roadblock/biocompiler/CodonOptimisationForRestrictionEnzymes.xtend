@@ -116,8 +116,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		println("Done.")
 	}
 	
-	def List<RestrictionEnzyme> findAtLeastNRestrictionEnzymes(Integer n){
-		var List<RestrictionEnzyme> fittingREList = newArrayList
+	def List<Integer> findAtLeastNRestrictionEnzymes(Integer n){
 		
 		store.impose(new XgteqC(jNumberFreeRE,n))
 		
@@ -145,7 +144,10 @@ class CodonOptimisationForRestrictionEnzymes {
             println("*** No Solution found"); 
    		}
 		
-		return fittingREList
+		var fittingREListID = fittingRestrictionEnzymes.filter[!it.fittingCombinationID.empty].filter[it.jRE.value == 1].map[it.reID].toList
+		
+		println("fittingREListID:" + fittingREListID.join(', '))
+		return fittingREListID
 	}
 	
 	def static List<Integer> getNthCombination(Integer combinationID, List<Integer> sizes){
@@ -285,8 +287,6 @@ class CodonOptimisationForRestrictionEnzymes {
 	def static uniqueInteger(List<Integer> i){
 		i.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
 	}
-	
-	
 	
 	def static String codonToAminoAcid(String codon){
 		switch(codon){

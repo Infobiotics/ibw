@@ -92,14 +92,14 @@ class RestrictionEnzymesFinder {
 		var CDSList = cell.devices.map[parts.filter[biologicalFunction == 'GENE']].flatten.map[utils.finalSequence(it)].toList
 		
 		// build list of restriction enzymes
-		var reList = getRestrictionEnzymesList("fitsRBS = 1 AND fitsCDS = 0")
+		var reList = getRestrictionEnzymesList("fitsRBS = 1 AND fitsCDS = 0") // conflict with CDS only
 		
 		var species = "w3110"
 		var cofre = new CodonOptimisationForRestrictionEnzymes(CDSList, reList ,species)
 		
-		var fittingRE = cofre.findAtLeastNRestrictionEnzymes(numberRequested)
+		var fittingREID = cofre.findAtLeastNRestrictionEnzymes(numberRequested)
 		
-		if(fittingRE.empty){
+		if(fittingREID.empty){
 			// failed
 			return false
 		}

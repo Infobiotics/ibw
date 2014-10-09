@@ -132,7 +132,6 @@ class Biocompiler {
 			findRBSSequence
 			findTerminatorSequence
 			
-//			reverseComplementParts
 			//findNoncuttingRestrictionEnzymes
 			for(cell: biocompilerModel.cells){
 				var ref = new RestrictionEnzymesFinder(cell,"b")
@@ -568,8 +567,7 @@ class Biocompiler {
 	
 	
 	def buildWholeSequence(BiocompilerCell cell){
-		var w = cell.devices.map[parts].flatten.sortBy[position.value].map[sequence].join
-		
+		var w = cell.devices.map[parts].flatten.sortBy[position.value].map[utils.finalSequence(it)].join
 	}
 
 	

@@ -23,7 +23,7 @@ import java.io.File
 import java.nio.file.StandardOpenOption
 
 class BiocompilerUtil {
-	val static wildCard = #[ 
+	val static wildCard = #[ // Nucleic acid notation by the International Union of Pure and Applied Chemistry 
 		#['N', 'ATGC'], 
 		#['M', 'AC'], 
 		#['R', 'AG'],
@@ -38,7 +38,6 @@ class BiocompilerUtil {
 	
 	def randomHashLookingString(){		
 		return UUID.randomUUID.toString
-		
 	}
 	
 	def String randomDNA(int stringLength){
@@ -60,11 +59,12 @@ class BiocompilerUtil {
 	def reverseComplement(String dna){
 		return dna.toUpperCase.toCharArray.reverse.map[complement].join
 		}
+		
 	// 
 	// part manipulation
 	//
 	
-	def String finalSequence(Biopart part){ // gets the sequence of a part. Reverse complement if necessary.
+	def String finalSequence(Biopart part){ // return the sequence of a part. Reverse complement if necessary.
 		if(part.sequence == null) return ''
 		
 		val containingDevice = part.eContainer as BiocompilerDevice
@@ -125,22 +125,8 @@ class BiocompilerUtil {
 			Files.write(
 				Paths.get(new File(filename).toURI), 
 				content.getBytes("utf-8"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)		
-		
-			
 	}
 
-//	def toFile(String filename, String content){
-//		try{
-//			var fileOut = new FileOutputStream(filename)
-//			var out = new ObjectOutputStream(fileOut);
-//			out.writeObject(content)
-//			out.close()
-//			fileOut.close()
-//		}
-//		catch(IOException i){
-//			i.printStackTrace()
-//		}	
-//	}
 	
 	// read file into a string
 	def String readFile(String path, Charset encoding)  throws IOException 
