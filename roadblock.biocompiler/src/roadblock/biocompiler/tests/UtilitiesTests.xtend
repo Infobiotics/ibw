@@ -162,4 +162,22 @@ class UtilitiesTests {
 		assertEquals(#['myCell/device1/RE_2','myCell/device1/RE_3','myCell/device1/RE_4'].join(', '), names)	
 	}
 
+	@Test
+	def testOptimiseRBS(){
+		println("Testing optimiseRBS")
+		val preSequence = "CTAGGTACAGTGCTAGCTtctaga"
+		val postSequence = "atggtgaatgtgaaaccagtaacgttatacgatgt"
+		val rate = 550.80
+		try {
+			var sequence = utils.optimiseRBS(preSequence, postSequence, rate)
+			println("RBS: " + sequence)
+			assertTrue(true)
+			assertTrue(sequence.length > 0)
+		}
+		catch (Exception e) {
+			println("\t Problem with optimiseRBS: " + e.toString)
+			assertTrue(false)
+		}
+	}
+
 }

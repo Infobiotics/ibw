@@ -16,7 +16,7 @@ class htmlOutputTests {
 	@Test
 	def testATGC00(){	
 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
-		val XMLsource = utils.readFile("testATGC00.xml",Charset.defaultCharset())
+		val XMLsource = utils.readFile("../roadblock.xtext.ibl.tests/testModels/testATGC00.xml",Charset.defaultCharset())
 		val model = utils.convertToEObject(XMLsource) as Model
 		println(model)
 		var biocompiler = new Biocompiler(model)
@@ -32,6 +32,7 @@ class htmlOutputTests {
 			biocompiler.constraintATGCARRANGE
 			biocompiler.constraintATGCDIRECTION
 			biocompiler.findArrangement
+			
 			biocompiler.fillUpWithRandomSequences
 		}
 		else {

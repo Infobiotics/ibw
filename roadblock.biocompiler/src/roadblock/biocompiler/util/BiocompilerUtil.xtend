@@ -24,6 +24,8 @@ import java.nio.file.StandardOpenOption
 import java.util.List
 import roadblock.emf.bioparts.Bioparts.BiocompilerCell
 import org.eclipse.emf.ecore.util.EcoreUtil
+import java.io.InputStreamReader
+import java.io.BufferedReader
 
 class BiocompilerUtil {
 	val static wildCard = #[ // Nucleic acid notation by the International Union of Pure and Applied Chemistry 
@@ -106,6 +108,55 @@ class BiocompilerUtil {
 		]
 		return cell
 	}
+	
+	// RBS Optimisation
+	def Biopart optimiseRBS(Biopart part, Double rate){
+		val device = part.eContainer as BiocompilerDevice
+		val positionRBS = part.position.value
+		val relativePosition = if(device.direction.value == 0) -1 else 1
+		
+		var preSequence  = device.parts.filter[position.value == (positionRBS - relativePosition ) ].get(0).sequence
+		preSequence = preSequence.substring(preSequence.length-15)
+		var postSequence = device.parts.filter[position.value == (positionRBS + relativePosition ) ].get(0).sequence.substring(0,14)
+		
+		part.sequence = optimiseRBS(preSequence,postSequence, rate)
+		part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 
+				
+		return part
+	}
+	
+	def String optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate){
+		println("RBS optimisation in process...")
+		println("\tpre: "+ preSequence)
+		println("\tpost: "+ postSequence)
+		println("\trate: "+ translationInitiationRate)
+		
+		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh").start()
+//		println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+		var is = process.getInputStream
+		var is2 = process.errorStream
+		var isr = new InputStreamReader(is)
+		var isr2 = new InputStreamReader(is2)
+		var br = new BufferedReader(isr)
+		var br2 = new BufferedReader(isr2)
+		var line=''
+
+		while ((line = br2.readLine()) != null) {
+		  println("RBS Calculator /  error output:" + line);
+		}
+
+		var lineNumber = 1
+		var sequence = ''
+		while ((line = br.readLine()) != null) {
+		  if(lineNumber==2) sequence = line
+		  lineNumber = lineNumber + 1
+		}
+		println('\t\tDone.')
+		
+		return sequence
+	}
+	
 		
 	//	
 	// utilities for Restriction enzymes

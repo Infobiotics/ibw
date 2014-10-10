@@ -5,7 +5,6 @@ import roadblock.biocompiler.Biocompiler
 import roadblock.biocompiler.RestrictionEnzymesFinder
 import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.emf.ibl.Ibl.ATGCCloningSites
-import roadblock.biocompiler.AbortRESearch
 import com.almworks.sqlite4java.SQLiteConnection
 import java.io.File 
 import roadblock.biocompiler.util.BiocompilerUtil
