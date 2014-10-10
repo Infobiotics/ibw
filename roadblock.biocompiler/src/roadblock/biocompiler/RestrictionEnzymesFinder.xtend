@@ -93,13 +93,13 @@ class RestrictionEnzymesFinder {
 	
 	def boolean findFittingREWithCodonOptimisation(Integer numberRequested){
 		// build list of CDS
-		var CDSList = cell.devices.map[parts.filter[biologicalFunction == 'GENE']].flatten.map[utils.finalSequence(it)].toList
+		var CDSList = cell.devices.map[parts.filter[biologicalFunction == 'GENE']].flatten//.map[utils.finalSequence(it)].toList
 		
 		// build list of restriction enzymes
 		var reList = getRestrictionEnzymesList("fitsRBS = 1 AND fitsCDS = 0") // conflict with CDS only
 		
 		var species = "w3110"
-		var cofre = new CodonOptimisationForRestrictionEnzymes(CDSList, reList ,species)
+		var cofre = new CodonOptimisationForRestrictionEnzymes(CDSList.map[utils.finalSequence(it)].toList, reList ,species)
 		
 		var results = cofre.findAtLeastNRestrictionEnzymes(numberRequested)
 		
@@ -111,9 +111,13 @@ class RestrictionEnzymesFinder {
 			return false
 		}
 		else{
-			// TODO fix the codons
-			
-			// set the cloning sites to fittingREs found
+			// fix the codons
+			for(sequenceUpdate: codonToUpdateList){
+				var originalSequence = CDSList.get(sequenceUpdate.partID).sequence
+				CDSList.get(sequenceUpdate.partID).sequence = utils.changeSubsequenceInSequence(originalSequence, sequenceUpdate.sequence, sequenceUpdate.location)
+			}
+
+			// set the cloning sites to the fittingREs found
 			val iteratorRE = fittingREList.iterator
 			cell.devices.forEach[parts.filter[biologicalFunction == 'CLONINGSITE']?.filter[sequence == ''].forEach[
 				var re = iteratorRE.next
