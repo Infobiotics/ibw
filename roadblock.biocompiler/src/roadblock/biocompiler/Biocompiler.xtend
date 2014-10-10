@@ -74,7 +74,7 @@ import roadblock.biocompiler.util.BiocompilerUtil
     Integer x2
     }
 
-class NoJacopSolution extends Exception{}
+class NoArrangementFound extends Exception{}
 class RBSOptimisationIssue extends Exception{}
 class RBSREConflict extends Exception{}
 class CDSREConflict extends Exception{}
@@ -123,7 +123,7 @@ class Biocompiler {
 			println("===========")
 			println("Find arrangement")
 			
-			findArrangement
+			findArrangement // throws NoArrangementFound
 			
 			println("===========")
 			println("Find sequences")
@@ -139,16 +139,14 @@ class Biocompiler {
 	
 			}
 		}
-		catch(NoJacopSolution e){
+		catch(NoArrangementFound e){
 			// add this to the log
+			println("No possible arrangement found")
 			return false
 		}
 		catch(RBSOptimisationIssue e){
 			// add this to the log
-			return false
-		}
-		catch(AbortRESearch e){
-			// add this to the log
+			println("Problem with the RBS calculator.")
 			return false
 		}
 		catch(Exception e){
@@ -453,7 +451,7 @@ class Biocompiler {
 		combinations		
 	}
 	
-	def findArrangement() throws NoJacopSolution {
+	def findArrangement() throws NoArrangementFound {
 		val ArrayList<IntVar> allPartPositions = new ArrayList()
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
@@ -466,7 +464,7 @@ class Biocompiler {
                                          new IndomainMin<IntVar>()); 
         var boolean result = search.labeling(store, select); 
         
-        if(!result) throw new NoJacopSolution
+        if(!result) throw new NoArrangementFound
         
 		for(cell: biocompilerModel.cells){
 			// gather all parts in that cell
@@ -824,13 +822,6 @@ class Biocompiler {
 		part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 		
 		
 	}
-
-	def reverseComplementParts(){
-		for(cell:biocompilerModel.cells)
-			for(device: cell.devices)
-				if(device.direction.value == 0)
-					device.parts.filter[sequence!=null].forEach[sequence = utils.reverseComplement(sequence)]
-	}
 	
 	def static optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate){
 		println("RBS optimisation in process...")
@@ -1023,7 +1014,7 @@ class Biocompiler {
 				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
 				«{col = (col+1) % colours.size; ''}»
 				«FOR part: device.parts.sortBy[position.value]»
-				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «part.sequence.substring(0,6)»(...)«part.sequence.substring(part.sequence.length-6)» ' SRC='«path+imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=76px></TD>
+				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«path+imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=76px></TD>
 				«ENDFOR»
 				«ENDFOR»
 				</TR>

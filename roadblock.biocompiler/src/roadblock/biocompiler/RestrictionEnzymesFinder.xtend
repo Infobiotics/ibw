@@ -7,7 +7,7 @@ import java.util.List
 import roadblock.biocompiler.util.BiocompilerUtil
 import roadblock.biocompiler.CodonOptimisationForRestrictionEnzymes
 import java.util.ArrayList
-
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 class NotEnoughFittingRE extends Exception{}
 
@@ -39,6 +39,7 @@ class RestrictionEnzymesFinder {
 		if(numberRequested > numberPotentialRE) {
 			// failure
 			//remove empty REs
+			cell = utils.removeUnassignedCloningSites(cell)
 			log = log + '\nThere is not enough non-cutting restriction enzymes.'
 			return log
 		}
@@ -61,8 +62,10 @@ class RestrictionEnzymesFinder {
 				if(numberPotentialRE >= numberRequested){
 					// there's a chance to have those RE fitting with new RBSs
 					log = log + "Trying to fit more restriction enzymes by recomputing the RBSs."
-					// recalculate the RBSs
+					// TODO recalculate the RBSs
+					
 					// set the RE sequences back to zero
+					cell = utils.setAllCloningSitesToUnassigned(cell)
 					// start over
 					updateRBS = updateRBS + 1
 					
@@ -81,6 +84,7 @@ class RestrictionEnzymesFinder {
 		else{
 			// failure
 			// remove empty REs
+			cell = utils.removeUnassignedCloningSites(cell)
 			log = log + "There is not enough non-cutting restriction enzymes."
 			return log
 		}
@@ -107,7 +111,7 @@ class RestrictionEnzymesFinder {
 			return false
 		}
 		else{
-			// fix the codons
+			// TODO fix the codons
 			
 			// set the cloning sites to fittingREs found
 			val iteratorRE = fittingREList.iterator
@@ -245,5 +249,6 @@ class RestrictionEnzymesFinder {
 		return reList		
 		
 	}
+	
 		
 }

@@ -67,9 +67,6 @@ class CodonOptimisationForRestrictionEnzymesTests {
 		assertEquals("finished?","nope")
 	}
 	
-	
-	
-	
 	@Test
 	def computeFormsAndCostsForCodonListTests(){
 		// some CDS

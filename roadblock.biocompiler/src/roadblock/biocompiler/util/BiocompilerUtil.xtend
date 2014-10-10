@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor
 import java.io.File
 import java.nio.file.StandardOpenOption
 import java.util.List
+import roadblock.emf.bioparts.Bioparts.BiocompilerCell
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 class BiocompilerUtil {
 	val static wildCard = #[ // Nucleic acid notation by the International Union of Pure and Applied Chemistry 
@@ -68,6 +70,12 @@ class BiocompilerUtil {
 	def changeSubsequenceInSequence(String sequence, String subSequence, Integer location){
 		return sequence.substring(0,location) + subSequence + sequence.substring(location + subSequence.length)
 	}
+	
+	def String sequenceToolTip(String sequence){
+		if(sequence.length>12)
+			return sequence.substring(0,6) +'(...)' + sequence.substring(sequence.length-6)
+		return sequence
+	}
 		
 	// 
 	// part manipulation
@@ -83,6 +91,21 @@ class BiocompilerUtil {
 		
 	}
 	
+	def BiocompilerCell removeUnassignedCloningSites(BiocompilerCell cell){
+		cell.devices.forEach[parts.removeAll(parts.filter[biologicalFunction == 'CLONINGSITE' && sequence == ''])]
+		return cell
+	}
+	
+	def BiocompilerCell setAllCloningSitesToUnassigned(BiocompilerCell cell){
+		cell.devices.forEach[d | d.parts.filter[biologicalFunction == 'CLONINGSITE'].
+			forEach[it => [
+						sequence = ''; 
+						accessionURL = ''; 
+						name = #[cell.name, d.name, 'RE_' + d.parts.indexOf(it)].join('/')
+			]]
+		]
+		return cell
+	}
 		
 	//	
 	// utilities for Restriction enzymes

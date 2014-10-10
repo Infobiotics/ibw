@@ -16,24 +16,30 @@ class htmlOutputTests {
 	@Test
 	def testATGC00(){	
 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
-		val XMLsource = utils.readFile("../roadblock.xtext.ibl.tests/testModels/testATGC00.xml",Charset.defaultCharset())
+		val XMLsource = utils.readFile("testATGC00.xml",Charset.defaultCharset())
 		val model = utils.convertToEObject(XMLsource) as Model
 		println(model)
 		var biocompiler = new Biocompiler(model)
 		
-		biocompiler.gatherParts
-		biocompiler.completeDevices 
-		biocompiler.createIntVarForAllparts
-		biocompiler.constraintAllDifferent
-		biocompiler.constraintNonOverlapping
-		biocompiler.constraintPositionByType
-		biocompiler.constraintATGCARRANGE
-		biocompiler.constraintATGCDIRECTION
-		biocompiler.findArrangement
 		
-		biocompiler.fillUpWithRandomSequences
+		if(1==2){
+			biocompiler.gatherParts
+			biocompiler.completeDevices 
+			biocompiler.createIntVarForAllparts
+			biocompiler.constraintAllDifferent
+			biocompiler.constraintNonOverlapping
+			biocompiler.constraintPositionByType
+			biocompiler.constraintATGCARRANGE
+			biocompiler.constraintATGCDIRECTION
+			biocompiler.findArrangement
+			biocompiler.fillUpWithRandomSequences
+		}
+		else {
+			biocompiler.compile			
+			
+		}
 		
-		biocompiler.print
+//		biocompiler.print
 		var result = biocompiler.makeResultPage
 		utils.toFile("resultsATGC.html",result)		
 		assertEquals('finished?','nope')
