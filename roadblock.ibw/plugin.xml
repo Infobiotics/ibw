@@ -43,5 +43,14 @@
             name="Simulation">
       </perspective>
    </extension>
-
+   <extension
+         id="roadblock.ibw.perspectives.biocompiler"
+         name="Biocompiler Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Biocompiler"
+            id="roadblock.ibw.perspectives.biocompiler"
+            name="Biocompiler">
+      </perspective>
+   </extension>
 </plugin>

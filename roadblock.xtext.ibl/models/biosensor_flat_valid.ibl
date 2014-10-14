@@ -15,11 +15,7 @@ define SensorCell typeof CELL(){
         Psal = PROMOTER(URI = "biofab://")
         xylS2 = GENE(sequence = "ATTGTGT")
         XylS2 = PROTEIN()
-<<<<<<< HEAD
-  
-=======
-   
->>>>>>> 421e78690115a407591e5861a1c0ca196093d2a8
+
         Pm = PROMOTER(sequence = "ATTGTGT")
         rFP = GENE(sequence = "TTGTGTG")
         RFP = PROTEIN()
