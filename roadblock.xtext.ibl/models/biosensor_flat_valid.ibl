@@ -94,7 +94,7 @@ define SensorCell typeof CELL(){
         }
  
          // INSIDE and OUTSIDE  
-    
+     
          // additional rules
          RULE R1 : SA + XylS2 <-> SA~XylS2
          R1.forwardRate = 1 s^-1

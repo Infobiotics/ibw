@@ -20,7 +20,7 @@ import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.modelchecking.ModelcheckingTarget
 import roadblock.modelchecking.translation.TranslationManager 
-import roadblock.biocompiler.Biocompiler
+
 /**
  * Generates code from your model files on save.
  * 
@@ -60,8 +60,8 @@ class IblGenerator implements IGenerator {
 		generateTranslations(emfModel);
 		
 		println("biocompiler starting")
-		var Biocompiler biocompiler = new Biocompiler(emfModel)
-		biocompiler.gatherParts
+//		var Biocompiler biocompiler = new Biocompiler(emfModel)
+//		biocompiler.gatherParts
 		//biocompiler.makeResultPage
 		println("end")
 	}
