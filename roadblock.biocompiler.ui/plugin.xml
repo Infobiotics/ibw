@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="IBW Biocompiler"
+            id="roadblock.biocompiler.ui">
+      </category>
+      <view
+            category="roadblock.biocompiler.ui"
+            class="roadblock.biocompiler.ui.views.MainView"
+            id="roadblock.biocompiler.ui.views.mainView"
+            name="Biocompiler">
+      </view>
+      </extension>
+</plugin>
