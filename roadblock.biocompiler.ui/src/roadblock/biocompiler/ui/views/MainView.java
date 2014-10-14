@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,8 @@ import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -35,6 +38,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.MessageConsole;
@@ -47,6 +51,7 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.simulation.ngss.Simulator;
@@ -63,106 +68,110 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Model model;
 	private Configuration config;
 	private XtextResource currentIblResource;
-	private MessageConsole simulationConsole;
+//	private MessageConsole simulationConsole;
 	
-	//private CheckboxTreeViewer propertyTreeViewer;
-	private Text modelFile;
-	private Text dataFile;
-	private Text maxTime;
-	private Text logInterval;
-	private Text sampleNumber;
-	private Combo SSAlgorithm;
-	private Button simulationButton;
-
+//	private Text modelFile;
+//	private Text dataFile;
+//	private Text maxTime;
+//	private Text logInterval;
+//	private Text sampleNumber;
+//	private Combo SSAlgorithm;
+	private Button compilationButton;
+	private Browser browser;
+	
 	@Override
 	public void createPartControl(Composite parent) {
 
 		// add change listener model
 		getSite().getPage().addPartListener(this);
 		
-		simulationConsole = new MessageConsole("Simulation Results", null);
-		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { simulationConsole });
-		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
+//		simulationConsole = new MessageConsole("Simulation Results", null);
+//		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { simulationConsole });
+//		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
 
 		// create widget layout
 		GridLayout layout = new GridLayout(3, false);
 		layout.marginRight = 5;
 		parent.setLayout(layout);
-
-		// create model file widget
-		Label modelFileLabel = new Label(parent, SWT.NONE);
-		modelFileLabel.setText("Model file: ");
-		modelFileLabel.setToolTipText("filename of sbml/xml model");
-		modelFile = new Text(parent, SWT.BORDER);
-		modelFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		modelFile.setEnabled(false); // disable
+//
+//		// create model file widget
+//		Label modelFileLabel = new Label(parent, SWT.NONE);
+//		modelFileLabel.setText("Model file: ");
+//		modelFileLabel.setToolTipText("filename of sbml/xml model");
+//		modelFile = new Text(parent, SWT.BORDER);
+//		modelFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+//		modelFile.setEnabled(false); // disable
 
 		// create data file widget
-		Label dataFileLabel = new Label(parent, SWT.NONE);
-		dataFileLabel.setText("Data file: ");
-		dataFileLabel.setToolTipText("file to save simulation data to");
-		dataFile = new Text(parent, SWT.BORDER);
-		dataFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-		Button fileDialogButton = new Button(parent, SWT.PUSH);
-		fileDialogButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-		fileDialogButton.setText("Directory...");
-		final DirectoryDialog directoryDialog = new DirectoryDialog(parent.getShell());
-		fileDialogButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				config.dataDirectory = directoryDialog.open();
-			}
-		});
+//		Label dataFileLabel = new Label(parent, SWT.NONE);
+//		dataFileLabel.setText("Data file: ");
+//		dataFileLabel.setToolTipText("file to save simulation data to");
+//		dataFile = new Text(parent, SWT.BORDER);
+//		dataFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+//		Button fileDialogButton = new Button(parent, SWT.PUSH);
+//		fileDialogButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+//		fileDialogButton.setText("Directory...");
+//		final DirectoryDialog directoryDialog = new DirectoryDialog(parent.getShell());
+//		fileDialogButton.addSelectionListener(new SelectionAdapter() {
+//			@Override
+//			public void widgetSelected(SelectionEvent e) {
+//				config.dataDirectory = directoryDialog.open();
+//			}
+//		});
 
-		Label maxTimeLabel = new Label(parent, SWT.NONE);
-		maxTimeLabel.setText("Max. Time: ");
-		maxTimeLabel.setToolTipText("end time of the simulation");
-		maxTime = new Text(parent, SWT.BORDER);
-		maxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+//		Label maxTimeLabel = new Label(parent, SWT.NONE);
+//		maxTimeLabel.setText("Max. Time: ");
+//		maxTimeLabel.setToolTipText("end time of the simulation");
+//		maxTime = new Text(parent, SWT.BORDER);
+//		maxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+//		
+//		Label logIntervalLabel = new Label(parent, SWT.NONE);
+//		logIntervalLabel.setText("Interval: ");
+//		logIntervalLabel.setToolTipText("interval with which trajectories are sampled");
+//		logInterval = new Text(parent, SWT.BORDER);
+//		logInterval.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+//
+//		// number of samples
+//		Label samplesLabel = new Label(parent, SWT.NONE);
+//		samplesLabel.setText("Number of runs: ");
+//		samplesLabel.setToolTipText("number of samples for stochastic simulation");
+//		sampleNumber = new Text(parent, SWT.BORDER);
+//		sampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+//
+//		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
+//		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+//
+//		// create stochastic simulation algorithm widget
+//		Label SSLabel = new Label(parent, SWT.NONE);
+//		SSLabel.setText("Simulation algorithm: ");
+//		SSLabel.setToolTipText("simulation algorithm to use");
+//		SSAlgorithm = new Combo(parent, SWT.NONE);
+//		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+//		SSAlgorithm.add("dm");
+//		SSAlgorithm.add("frm");
+//		SSAlgorithm.add("cr");
+//		SSAlgorithm.add("tl");
+//		SSAlgorithm.add("nrm");
+//		SSAlgorithm.add("pdm");
+//		SSAlgorithm.add("ldm");
+//		SSAlgorithm.add("sdm");
+//		SSAlgorithm.add("odm");
 		
-		Label logIntervalLabel = new Label(parent, SWT.NONE);
-		logIntervalLabel.setText("Interval: ");
-		logIntervalLabel.setToolTipText("interval with which trajectories are sampled");
-		logInterval = new Text(parent, SWT.BORDER);
-		logInterval.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-
-		// number of samples
-		Label samplesLabel = new Label(parent, SWT.NONE);
-		samplesLabel.setText("Number of runs: ");
-		samplesLabel.setToolTipText("number of samples for stochastic simulation");
-		sampleNumber = new Text(parent, SWT.BORDER);
-		sampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-
-		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
-		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-
-		// create stochastic simulation algorithm widget
-		Label SSLabel = new Label(parent, SWT.NONE);
-		SSLabel.setText("Simulation algorithm: ");
-		SSLabel.setToolTipText("simulation algorithm to use");
-		SSAlgorithm = new Combo(parent, SWT.NONE);
-		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		SSAlgorithm.add("dm");
-		SSAlgorithm.add("frm");
-		SSAlgorithm.add("cr");
-		SSAlgorithm.add("tl");
-		SSAlgorithm.add("nrm");
-		SSAlgorithm.add("pdm");
-		SSAlgorithm.add("ldm");
-		SSAlgorithm.add("sdm");
-		SSAlgorithm.add("odm");
-		
-		// create simulation button
-		simulationButton = new Button(parent, SWT.PUSH);
-		simulationButton.setText("Simulate");
-		simulationButton.addSelectionListener(new SelectionAdapter() {
+		// create compilation button
+		compilationButton = new Button(parent, SWT.PUSH);
+		compilationButton.setText("Compile");
+		compilationButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				performSimulation();
 			}
 		});
-		simulationButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-		simulationButton.setEnabled(false);
+		compilationButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		compilationButton.setEnabled(false);
+		
+		// browser
+		browser = new Browser(parent, SWT.FILL);
+		browser.setText("<BODY > Hello</BODY>");
 	}
 
 	@Override
@@ -181,8 +190,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				if (iblResource != currentIblResource) {
 					currentIblResource = iblResource;
-					ensureConfig();
-					bindValues();
+//					ensureConfig();
+//					bindValues();
 				}
 
 				if (iblResource.getErrors().size() == 0) {
@@ -200,84 +209,76 @@ public class MainView extends ViewPart implements IPartListener2 {
 	protected void updateUi() {
 
 		if (currentIblResource == null) {
-			simulationButton.setEnabled(false);
-			simulationButton.setEnabled(false);
+			compilationButton.setEnabled(false);
 		} else {
 
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
-/*
-			if (model != null) {
-
-				((IblLabelProvider) propertyTreeViewer.getLabelProvider()).resetIndex();
-				propertyTreeViewer.setInput(model);
-			}
-*/
-			simulationButton.setEnabled(true);
-			modelFile.setText(config.modelFile);
-			dataFile.setText(config.dataFile);
-			maxTime.setText(config.maxTime.toString());
-			logInterval.setText(config.logInterval.toString());
-			sampleNumber.setText(config.sampleNumber.toString());
-			SSAlgorithm.setText(config.SSAlgorithm);
+			compilationButton.setEnabled(true);
+//			modelFile.setText(config.modelFile);
+//			dataFile.setText(config.dataFile);
+//			maxTime.setText(config.maxTime.toString());
+//			logInterval.setText(config.logInterval.toString());
+//			sampleNumber.setText(config.sampleNumber.toString());
+//			SSAlgorithm.setText(config.SSAlgorithm);
 		}
 	}
 
 	// bind class entries to widget entries
-	private void bindValues() {
-
-		DataBindingContext ctx = new DataBindingContext();
-		IObservableValue widgetValue;
-		IObservableValue modelValue;
-		IValidator validator;
-		UpdateValueStrategy strategy;
-		Binding bindValue;
-
-		// model file widget
-		widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
-		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
-
-		// add a validator so can only be a non-empty string
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof String) {
-					String stringValue = String.valueOf(value);
-					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a string");
-			}
-		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
-		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-
-		// data file widget
-		widgetValue = WidgetProperties.text(SWT.Modify).observe(dataFile);
-		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
-
-		// add a validator so can only be a non-empty string
-		validator = new IValidator() {
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof String) {
-					String stringValue = String.valueOf(value);
-					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a string");
-			}
-		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
-		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-	}
+//	private void bindValues() {
+//
+//		DataBindingContext ctx = new DataBindingContext();
+//		IObservableValue widgetValue;
+//		IObservableValue modelValue;
+//		IValidator validator;
+//		UpdateValueStrategy strategy;
+//		Binding bindValue;
+//
+//		// model file widget
+//		widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
+//		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
+//
+//		// add a validator so can only be a non-empty string
+//		validator = new IValidator() {
+//			@Override
+//			public IStatus validate(Object value) {
+//				if (value instanceof String) {
+//					String stringValue = String.valueOf(value);
+//					if (stringValue.isEmpty()) {
+//						return ValidationStatus.error("cannot be empty");
+//					}
+//					return ValidationStatus.ok();
+//				}
+//				return ValidationStatus.error("not a string");
+//			}
+//		};
+//		strategy = new UpdateValueStrategy();
+//		strategy.setBeforeSetValidator(validator);
+//		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+//		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+//
+//		// data file widget
+//		widgetValue = WidgetProperties.text(SWT.Modify).observe(dataFile);
+//		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
+//
+//		// add a validator so can only be a non-empty string
+//		validator = new IValidator() {
+//			@Override
+//			public IStatus validate(Object value) {
+//				if (value instanceof String) {
+//					String stringValue = String.valueOf(value);
+//					if (stringValue.isEmpty()) {
+//						return ValidationStatus.error("cannot be empty");
+//					}
+//					return ValidationStatus.ok();
+//				}
+//				return ValidationStatus.error("not a string");
+//			}
+//		};
+//		strategy = new UpdateValueStrategy();
+//		strategy.setBeforeSetValidator(validator);
+//		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+//		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+//	}
 
 	private void ensureConfig() {
 		if (config == null) {
@@ -287,30 +288,37 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	// launch simulator
 	private void performSimulation() {
-		// XXX read model from EMFModel.xml rather than regenerating it
-		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
-
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
-		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
-		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
-
-		String xml = null;
-		try {
-			/* ideally, the model xml should only be regenerated when the source code changes */
-			FlatModelManager flatModelManager = new FlatModelManager(model);
-			xml = convertToXml(flatModelManager.getFlatModel());
-		} catch (IOException e) {
-			errorDialogWithStackTrace("Failed to export model to xml", e);
-		}
+		ConsoleView myConsole;
+		myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
+		myConsole.addText("Timestamp:" + (new Date())); 
 		
-		Simulator simulator = new Simulator(xml);
-		simulator.max_time = config.getMaxTime();
-		simulator.log_interval = config.getLogInterval();
-		simulator.runs = config.getSampleNumber();
-		//simulator.max_runtime = 0.0;
-		//simulator.seed = 0;
-		simulator.runSimulation(exportFilename, consoleStream);
+		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.resultsView");
+		resultsView.setContent("Timestamp:" + (new Date())); 
+		
+		// XXX read model from EMFModel.xml rather than regenerating it
+//		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
+
+//		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+//		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
+//		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
+//		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
+//
+//		String xml = null;
+//		try {
+//			/* ideally, the model xml should only be regenerated when the source code changes */
+//			FlatModelManager flatModelManager = new FlatModelManager(model);
+//			xml = convertToXml(flatModelManager.getFlatModel());
+//		} catch (IOException e) {
+//			errorDialogWithStackTrace("Failed to export model to xml", e);
+//		}
+//		
+//		Simulator simulator = new Simulator(xml);
+//		simulator.max_time = config.getMaxTime();
+//		simulator.log_interval = config.getLogInterval();
+//		simulator.runs = config.getSampleNumber();
+//		//simulator.max_runtime = 0.0;
+//		//simulator.seed = 0;
+////		simulator.runSimulation(exportFilename, consoleStream);
 	}
 
 	// export an EMF model to XML

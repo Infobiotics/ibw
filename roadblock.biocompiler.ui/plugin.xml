@@ -13,5 +13,18 @@
             id="roadblock.biocompiler.ui.views.mainView"
             name="Biocompiler">
       </view>
+      <view
+            category="roadblock.biocompiler.ui"
+            class="roadblock.biocompiler.ui.views.ConsoleView"
+            id="roadblock.biocompiler.ui.views.consoleView"
+            name="Console view">
+      </view>
+      <view
+            category="roadblock.biocompiler.ui"
+            class="roadblock.biocompiler.ui.views.ResultsView"
+            id="roadblock.biocompiler.ui.views.resultsView"
+            name="Results view">
+      </view>
+      
       </extension>
 </plugin>

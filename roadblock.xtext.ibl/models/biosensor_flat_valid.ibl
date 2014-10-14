@@ -7,7 +7,7 @@ define SensorCell typeof CELL(){
         SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
 //        CHASSIS chassis = new CHASSIS(organism = "ecoli") // NOT YET IMPLEMENTED
 //        INTEGER plasmidNumber = 500 // NOT YET IMPLEMENTED
-
+ 
         PnahR = PROMOTER(URI = "biobricks://...")
         nahR = GENE(URI = "biofab://")
         NahR = PROTEIN(URI = "db://...")
