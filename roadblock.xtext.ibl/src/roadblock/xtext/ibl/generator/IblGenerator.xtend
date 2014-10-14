@@ -46,12 +46,14 @@ class IblGenerator implements IGenerator {
 		val ModelBuilder modelPopulater = new ModelBuilder();
 		var Model emfModel = modelPopulater.populate(resource.allContents.filter(roadblock.xtext.ibl.ibl.Model).head)
 
+		var flatModelManager = new FlatModelManager(emfModel);
+
 		println()
 		println("After population")
 		println("===============")
 
-		var xml = convertToXml(emfModel)
-		//println(xml)
+		var xml = convertToXml(flatModelManager.getFlatModel())
+		println(xml)
 		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
@@ -63,8 +65,8 @@ class IblGenerator implements IGenerator {
 		//biocompiler.makeResultPage
 		println("end")
 	}
-
-	def generateTranslations(Model emfModel) {
+	
+    def generateTranslations(Model emfModel) {
 
 		var flatModelManager = new FlatModelManager(emfModel);
 		var properties = PropertyCollector::instance.getAll(emfModel);
@@ -102,7 +104,6 @@ class IblGenerator implements IGenerator {
 		var output = null as FileWriter;
 
 		try {
-
 			output = new FileWriter(fileName);
 			output.write(s);
 

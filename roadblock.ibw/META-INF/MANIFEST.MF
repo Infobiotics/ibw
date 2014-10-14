@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: roadblock.ibw.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- roadblock.modelchecking.ui;bundle-version="1.0.0"
+ roadblock.modelchecking.ui;bundle-version="1.0.0",
+ roadblock.simulation.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.almworks.sqlite4java,

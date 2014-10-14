@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Simulation UI
+Bundle-SymbolicName: roadblock.simulation.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: roadblock.simulation.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.ui;bundle-version="2.5.4",
+ org.eclipse.xtext.generator;bundle-version="2.5.4",
+ org.eclipse.core.databinding;bundle-version="1.4.1",
+ org.eclipse.jface.databinding;bundle-version="1.6.0",
+ org.eclipse.core.databinding.beans;bundle-version="1.2.200",
+ org.eclipse.core.databinding.property;bundle-version="1.4.100",
+ org.eclipse.ui.console;bundle-version="3.5.100"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: roadblock.simulation.ui.views
+Import-Package: roadblock.dataprocessing.flatModel,
+ roadblock.dataprocessing.model,
+ roadblock.emf.ibl.Ibl,
+ roadblock.simulation.ngss,
+ roadblock.xtext.ibl.generator,
+ roadblock.xtext.ibl.ibl

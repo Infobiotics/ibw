@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: roadblock.simulation
+Bundle-SymbolicName: roadblock.simulation;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: roadblock.simulation.ngss
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.eclipse.xtext.xbase.lib
+Bundle-ActivationPolicy: lazy

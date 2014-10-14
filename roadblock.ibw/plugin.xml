@@ -33,5 +33,15 @@
             name="Model Checking">
       </perspective>
    </extension>
+   <extension
+         id="roadblock.ibw.perspectives.simulation"
+         name="Simulation Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Simulation"
+            id="roadblock.ibw.perspectives.simulation"
+            name="Simulation">
+      </perspective>
+   </extension>
 
 </plugin>
