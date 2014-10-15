@@ -15,12 +15,12 @@ define SensorCell typeof CELL(){
         Psal = PROMOTER(URI = "biofab://")
         xylS2 = GENE(sequence = "ATTGTGT")
         XylS2 = PROTEIN()
-
+ 
         Pm = PROMOTER(sequence = "ATTGTGT")
         rFP = GENE(sequence = "TTGTGTG")
         RFP = PROTEIN()
-         
-   		PlasR = PROMOTER()
+          
+   		PlasR = PROMOTER() 
 		lasR = GENE() 
 		gFP = GENE()
 		LasR = MOLECULE()
@@ -90,7 +90,7 @@ define SensorCell typeof CELL(){
         }
  
          // INSIDE and OUTSIDE  
-     
+         
          // additional rules
          RULE R1 : SA + XylS2 <-> SA~XylS2
          R1.forwardRate = 1 s^-1

@@ -97,8 +97,8 @@ class Biocompiler {
 	
 	def boolean compile(){ // the whole process
 		try {
-			// get explicit parts
-			gatherParts
+//			// get explicit parts
+//			gatherParts
 			
 			// complete devices
 			completeDevices 
@@ -121,12 +121,11 @@ class Biocompiler {
 			findRBSSequence
 			findTerminatorSequence
 			
-			//findNoncuttingRestrictionEnzymes
-			for(cell: biocompilerModel.cells){
-				var ref = new RestrictionEnzymesFinder(cell,"b")
-				var log = ref.searchRE 
-	
-			}
+//			for(cell: biocompilerModel.cells){
+//				var ref = new RestrictionEnzymesFinder(cell,"b")
+//				var log = ref.searchRE 
+//	
+//			}
 		}
 		catch(NoArrangementFound e){
 			// add this to the log
@@ -208,6 +207,7 @@ class Biocompiler {
 	println(utils.convertToXml(biocompilerModel))
 
 }
+
 
 	def completeDevices(){
 		for(cell: biocompilerModel.cells){
@@ -697,6 +697,34 @@ class Biocompiler {
 		
 	}
 	
+	
+	def String identifiedPartsHtml(){
+		
+		var content = <String>newArrayList
+		
+		//content.add("<HTML>")
+		content.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
+		content.add("<TT>Generated on: " + (new Date) + "</TT>")
+		var template = '''
+		«FOR cell:biocompilerModel.cells»
+		<H2>CELL: «cell.name»</H2>
+		
+		«FOR device:cell.devices»
+		<H3>Device: «device.name»</H3>
+		<UL>
+		«FOR part: device.parts»
+		<LI>Part: «part.name» («part.biologicalFunction»)</LI>
+		«ENDFOR»
+		</UL>	
+		«ENDFOR»
+		«ENDFOR»
+		'''
+		content.add(template)
+		content.add("</BODY>")
+		//content.add("</HTML>")
+		
+		return content.join('\n')
+	}
 	def  makeResultPage(){
 		val List<String> colours = newArrayList		
 		colours.add("#A6611A")
