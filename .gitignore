@@ -6,7 +6,7 @@
 *.exe
 *.o
 *.so
-
+*.orig
 
 roadblock.xtext.ibl/bin
 roadblock.xtext.ibl/src-gen
@@ -20,3 +20,7 @@ roadblock.xtext.ibl.tests/xtend-gen
 
 roadblock.datapopulation/bin
 roadblock.datapopulation/xtend-gen/
+
+roadblock.biocompiler/xtend-gen/
+roadblock.simulation/xtend-gen/
+
