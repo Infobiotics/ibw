@@ -24,8 +24,10 @@ define SentinelCell typeof CELL(){
 	RULE XylSActivation: XylS2 + SA <-> XylS2~SA
 	RULE XylSActivatedDimerization: XylS2~SA + XylS2 <-> XylS2~XylS2~SA
 
-	// LasR activation by SA
-	RULE LasRActivation: LasR + AHL <-> LasR~AHL
+	// LasR dimerization, spontaneous and activated by AHL
+	RULE LasRDimerization: LasR + LasR <-> LasR~LasR
+	RULE LasRActivation: LasR + SA <-> LasR~SA
+	RULE LasRActivatedDimerization: LasR~SA + LasR <-> LasR~LasR~SA
 
 	// protein and metabolite degradations
 	RULE SADegradation: SA ->
@@ -107,11 +109,16 @@ define SentinelCell typeof CELL(){
 		RULE XylSInitiation2 : XylS2~XylS2~SA~Pm + rnaP <-> XylS2~XylS2~SA~Pm~rnaP	
 		RULE XylS2Transcription2 : XylS2~XylS2~SA~Pm~rnaP -> Pm + rnaP + mrna + XylS2~XylS2~SA
 
-		// upregulated transcription by AHL
-		RULE AHLBinding : AHL~LasR + PlasR <-> AHL~LasR~PlasR
-		RULE AHLInitiation : AHL~LasR~PlasR + rnaP <-> AHL~LasR~PlasR~rnaP	
-		RULE AHLTranscription : AHL~LasR~PlasR~rnaP -> AHL~LasR~PlasR + rnaP + mrna
+		// upregulated transcription by LasR dimer
+		RULE AHLBinding : LasR~LasR + PlasR <-> LasR~LasR~PlasR
+		RULE AHLInitiation : LasR~LasR~PlasR + rnaP <-> LasR~LasR~PlasR~rnaP	
+		RULE AHLTranscription : LasR~LasR~PlasR~rnaP -> LasR~LasR + PlasR + rnaP + mrna
 			
+		// upregulated transcription by LasR~SA dimer
+		RULE AHLBinding : LasR~LasR~SA + PlasR <-> LasR~LasR~SA~PlasR
+		RULE AHLInitiation : LasR~LasR~SA~PlasR + rnaP <-> LasR~LasR~SA~PlasR~rnaP	
+		RULE AHLTranscription : LasR~LasR~SA~PlasR~rnaP -> LasR~LasR~SA + PlasR + rnaP + mrna
+
 		// protein translation
 		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
 		RULE translation : mrna~ribosome -> mrna + ribosome + Lux 		
