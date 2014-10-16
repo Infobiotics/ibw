@@ -59,7 +59,7 @@ import roadblock.biocompiler.ui.Activator;
 import roadblock.biocompiler.ui.model.Configuration;
 import roadblock.biocompiler.ui.util.ConfigurationUtil;
 import roadblock.biocompiler.ui.util.SimulationUtil;
-
+import roadblock.biocompiler.*;
 
 public class MainView extends ViewPart implements IPartListener2 {
 
@@ -78,6 +78,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 //	private Combo SSAlgorithm;
 	private Button compilationButton;
 	private Browser browser;
+	private Biocompiler biocompiler;
 	
 	@Override
 	public void createPartControl(Composite parent) {
@@ -163,7 +164,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		compilationButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				performSimulation();
+				performCompilation();
 			}
 		});
 		compilationButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
@@ -171,7 +172,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		
 		// browser
 		browser = new Browser(parent, SWT.FILL);
-		browser.setText("<BODY > Hello</BODY>");
+		browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1));
+		browser.setText("<BODY > empty model</BODY>");
 	}
 
 	@Override
@@ -214,6 +216,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
 			compilationButton.setEnabled(true);
+			biocompiler = new Biocompiler(model);
+			biocompiler.gatherParts();
+			browser.setText(biocompiler.identifiedPartsHtml());
+			
 //			modelFile.setText(config.modelFile);
 //			dataFile.setText(config.dataFile);
 //			maxTime.setText(config.maxTime.toString());
@@ -286,8 +292,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		}
 	}
 
-	// launch simulator
-	private void performSimulation() {
+	// Compile
+	private void performCompilation() {
 		ConsoleView myConsole;
 		myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
 		myConsole.addText("Timestamp:" + (new Date())); 

@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: roadblock.emf.bioparts;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ resources/jacop-4.0.0.jar
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
