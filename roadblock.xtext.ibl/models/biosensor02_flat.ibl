@@ -1,0 +1,127 @@
+///////////////////////
+//  biosensor02.ibl  //
+///////////////////////
+
+// created 08/10/14 by
+// Harold Fellermann (harold.fellermann@newcastle.ac.uk)
+// and Omer Markovitch
+// after discussion with Felix Dafhnis-Calas and Stephan Heeb
+
+
+define SentinelCell typeof CELL(){
+	ribosome = RIBOSOME() : observable
+	rnaP = RNA() : observable
+
+	SA = MOLECULE()
+	AHL = MOLECULE()
+
+	// diffusion rules
+	RULE SADiffusion: SA <-> OUTSIDE
+	RULE AHLDiffusion: AHL <-> OUTSIDE
+
+	// XylS2 dimerization, spontaneous and activated by SA
+	RULE XylSDimerization: XylS2 + XylS2 <-> XylS2~XylS2
+	RULE XylSActivation: XylS2 + SA <-> XylS2~SA
+	RULE XylSActivatedDimerization: XylS2~SA + XylS2 <-> XylS2~XylS2~SA
+
+	// LasR activation by SA
+	RULE LasRActivation: LasR + AHL <-> LasR~AHL
+
+	// protein and metabolite degradations
+	RULE SADegradation: SA ->
+	RULE AHLDegradation: AHL ->
+	RULE NahRDegradation: NahR ->
+	RULE LasRDegradation: LasR ->
+	RULE XylS2Degradation: XylS2 ->
+	RULE LuxDegradation: Lux ->
+
+	// components of the NahRLasRProduction device
+	PnahR = PROMOTER()
+	nahR = GENE()
+	lasR = GENE()
+	NahR = PROTEIN()
+	LasR = PROTEIN()
+
+	DEVICE NahRLasRProduction = new DEVICE(parts=[PnahR,nahR,lasR])(input=[], output=[NahR,LasR]) {
+		mrna = RNA()
+		
+		// constitutive transcription
+		RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP			
+		RULE transcription : PnahR~rnaP -> PnahR + rnaP + mrna
+
+		// protein translations
+		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
+		RULE translationNahR : mrna~ribosome -> mrna + ribosome + NahR
+		RULE translationLasR : mrna~ribosome -> mrna + ribosome + LasR
+
+		// rna degradation
+		RULE mrnaDegradation : mrna ->
+	}
+
+	// components of the XylS2Production device
+	Psal = PROMOTER()
+	xylS2 = GENE()
+	XylS2 = PROTEIN()
+
+	DEVICE XylS2Production = new DEVICE(parts=[Psal,xylS2])(input=[NahR,SA], output=[XylS2]){
+		mrna = RNA()
+
+		// background translation
+		RULE backgroundPromoterBinding : Psal + rnaP <-> Psal~rnaP	
+		RULE backgroundTranscription : Psal~rnaP -> Psal + rnaP + mrna
+
+		// upregulated transcription
+		RULE NahRBinding: NahR + Psal <-> NahR~Psal
+		RULE NahRActivation: NahR~Psal + SA <-> NahR~SA~Psal
+		RULE regulatedPromoterBinding : NahR~SA~Psal + rnaP <-> NahR~SA~Psal~rnaP	
+		RULE regulatedTranscription : NahR~SA~Psal~rnaP -> NahR~SA + Psal + rnaP + mrna
+
+		// protein translations
+		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
+		RULE translation : mrna~ribosome -> mrna + ribosome + XylS2
+		RULE mrnaDegradation : mrna ->
+	}
+
+	// components of the LuxProduction device
+	Pm = PROMOTER()
+	PlasR = PROMOTER()
+	lux = GENE()
+	Lux = PROTEIN()
+
+	DEVICE LuxProduction = new DEVICE(parts=[Pm,PlasR,lux])(input=[XylS2~SA,LasR~AHL], output=[Lux]){
+		mrna = RNA() 	
+
+		// background transcriptions
+		RULE backgroundBinding1 : Pm + rnaP <-> Pm~rnaP	
+		RULE backgroundInitiation1 : Pm~rnaP -> Pm + rnaP + mrna
+		RULE backgroundBinding2 : PlasR + rnaP <-> PlasR~rnaP	
+		RULE backgroundInitiation2 : PlasR~rnaP -> PlasR + rnaP + mrna
+
+		// upregulated transcription by XylS2 dimer
+		RULE XylS2Binding1 : XylS2~XylS2 + Pm <-> XylS2~XylS2~Pm
+		RULE XylS2Initiation1 : XylS2~XylS2~Pm + rnaP <-> XylS2~XylS2~Pm~rnaP	
+		RULE XylS2Transcription1 : XylS2~XylS2~Pm~rnaP -> Pm + rnaP + mrna + XylS2~XylS2
+
+		// upregulated transcription by XylS2~SA dimer
+		RULE XylSBinding2 : XylS2~XylS2~SA + Pm <-> XylS2~XylS2~SA~Pm
+		RULE XylSInitiation2 : XylS2~XylS2~SA~Pm + rnaP <-> XylS2~XylS2~SA~Pm~rnaP	
+		RULE XylS2Transcription2 : XylS2~XylS2~SA~Pm~rnaP -> Pm + rnaP + mrna + XylS2~XylS2~SA
+
+		// upregulated transcription by AHL
+		RULE AHLBinding : AHL~LasR + PlasR <-> AHL~LasR~PlasR
+		RULE AHLInitiation : AHL~LasR~PlasR + rnaP <-> AHL~LasR~PlasR~rnaP	
+		RULE AHLTranscription : AHL~LasR~PlasR~rnaP -> AHL~LasR~PlasR + rnaP + mrna
+			
+		// protein translation
+		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
+		RULE translation : mrna~ribosome -> mrna + ribosome + Lux 		
+		RULE mrnaDegradation : mrna ->
+	}
+}
+
+define site typeof REGION() {
+	AHL = MOLECULE()
+	SA = NOLECULE()
+
+	CELL cell = new SentinelCell()
+}
