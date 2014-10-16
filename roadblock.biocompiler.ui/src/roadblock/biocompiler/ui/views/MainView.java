@@ -294,6 +294,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	// Compile
 	private void performCompilation() {
+		biocompiler.compile();
 		ConsoleView myConsole;
 		myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
 		myConsole.addText("Timestamp:" + (new Date())); 
