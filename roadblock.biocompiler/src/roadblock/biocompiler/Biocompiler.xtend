@@ -86,6 +86,7 @@ class Biocompiler {
 	var public biocompilerModel = biopartsFactory.createBiocompilerModel
 	var public store = new Store
 		
+	var HtmlLog log = new HtmlLog(500)
 	
 	var modelFactory = IblFactory::eINSTANCE
 	
@@ -93,9 +94,10 @@ class Biocompiler {
 		println(new Date())
 		println("ATGC: Compiling")
 		model = emfModel
+		log.addText('ATGC: new instance')
 	}
 	
-	def boolean compile(){ // the whole process
+	def boolean compile(){ // the whole process, done after gathering parts
 		try {
 //			// get explicit parts
 //			gatherParts
@@ -128,34 +130,40 @@ class Biocompiler {
 //			}
 		}
 		catch(NoArrangementFound e){
-			// add this to the log
+			log.addError('No possible arrangement was possible.')
 			println("No possible arrangement found")
 			return false
 		}
 		catch(RBSOptimisationIssue e){
-			// add this to the log
+			log.addError('Problem with the RBS calculator.')
 			println("Problem with the RBS calculator.")
 			return false
 		}
 		catch(Exception e){
 			// add this to the log
+			log.addError("Something when wrong. Please contact the author.")
+			log.addError("Error: " + e.message)
 			println("Something when wrong. Please contact the author.")
 			println("Error: " + e.message)
 //			e.printStackTrace
 			return false
 		}
 		
+		log.addText("Compilation successful")
 		return true
 	}
 
 
 	def gatherParts(){
+		log.addText("Gathering parts.")
 		println("ATGC: gathering parts")
 		for(region: model.regionList){
+			log.addText("\t\tregion:" + region.displayName)
 			println("\tregion:" + region.displayName)
 			for(cell: region.cellList){
 				var biocompilerCell = biopartsFactory.createBiocompilerCell
 				biocompilerCell.name = cell.displayName
+				log.addText("\t\tcell: " + cell.displayName)
 				println("\t\tcell: " + cell.displayName)
 				for(device: cell.deviceList){	
 					var biocompilerDevice = biopartsFactory.createBiocompilerDevice
@@ -205,10 +213,11 @@ class Biocompiler {
 		}
 	}
 	println(utils.convertToXml(biocompilerModel))
-
+	log.addText("Parts gathered.")
 }
 
 	def completeDevices(){
+		log.addText("Completing devices.")
 		for(cell: biocompilerModel.cells){
 			for(device: cell.devices){
 				// add 1 RBS per gene
@@ -242,6 +251,7 @@ class Biocompiler {
 			}
 			
 		}
+		log.addText("Completing devices is done.")
 	}
 	
 	def createIntVarForAllparts(){
@@ -808,6 +818,9 @@ class Biocompiler {
 		
 	}
 	
+	def String makeHtmlLog(){
+		return log.toHtml
+	}
 	
 	// for tests only
 	def fillUpWithRandomSequences(){

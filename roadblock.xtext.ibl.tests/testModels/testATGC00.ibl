@@ -18,7 +18,7 @@ define myCell typeof CELL() {
 		}
 	ATGC ARRANGE p1aa,p2aa
 	}
- 
+
 		
 define myRegion typeof REGION(){
 	CELL foo = new myCell()	

@@ -217,7 +217,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
 			compilationButton.setEnabled(true);
 			biocompiler = new Biocompiler(model);
+			
 			biocompiler.gatherParts();
+			updateConsoleView();
 			browser.setText(biocompiler.identifiedPartsHtml());
 			
 //			modelFile.setText(config.modelFile);
@@ -292,15 +294,22 @@ public class MainView extends ViewPart implements IPartListener2 {
 		}
 	}
 
+	private void updateConsoleView(){
+		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
+		myConsole.setText(biocompiler.makeHtmlLog()); 
+	}
+
+	private void updateResultsView(){
+		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.resultsView");
+		resultsView.setContent(biocompiler.makeResultPage()); 
+	}
+	
+	
 	// Compile
 	private void performCompilation() {
-		biocompiler.compile();
-		ConsoleView myConsole;
-		myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
-		myConsole.addText("Timestamp:" + (new Date())); 
-		
-		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.resultsView");
-		resultsView.setContent("Timestamp:" + (new Date())); 
+//		biocompiler.compile();
+		updateConsoleView();
+		updateResultsView();
 		
 		// XXX read model from EMFModel.xml rather than regenerating it
 //		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
