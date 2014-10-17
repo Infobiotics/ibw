@@ -30,11 +30,7 @@ class IblGeneratorTests {
 		var byte[] encoded = Files.readAllBytes(Paths.get(path)) 
 	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString
 	}
-@Test
-	def testiftrue(){
-		assertTrue(true)
-		
-	}
+
  
 	@Test
 	def void testMinimalModel(){
