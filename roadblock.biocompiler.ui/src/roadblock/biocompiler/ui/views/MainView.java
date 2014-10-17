@@ -91,7 +91,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 //		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
 
 		// create widget layout
-		GridLayout layout = new GridLayout(3, false);
+		GridLayout layout = new GridLayout(1, false);
 		layout.marginRight = 5;
 		parent.setLayout(layout);
 //
@@ -296,7 +296,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private void updateConsoleView(){
 		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
-		myConsole.setText(biocompiler.makeHtmlLog()); 
+		myConsole.setContent(biocompiler.makeHtmlLog()); 
 	}
 
 	private void updateResultsView(){

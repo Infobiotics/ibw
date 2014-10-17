@@ -30,8 +30,6 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 */
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
-		
-
 		browser = new Browser(parent,SWT.NONE);
 		browser.setText("<body bgcolor='#ffffff'><h2>Initialisation</h2></body>");
 	}
