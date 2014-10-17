@@ -63,7 +63,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
+//import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
@@ -81,7 +81,7 @@ import roadblock.modelchecking.ui.model.PropertyTreeData;
 import roadblock.modelchecking.ui.util.ConfigurationUtil;
 import roadblock.modelchecking.ui.util.ModelcheckingUtil;
 
-import com.google.inject.Inject;
+//import com.google.inject.Inject;
 
 public class MainView extends ViewPart implements IPartListener2 {
 
@@ -107,8 +107,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private String tmpDirPath;
 	private File tmpDir;
 
-	@Inject
-	private IHighlightedPositionAcceptor highlightedPositionAcceptor;
+	// @Inject
+	// private IHighlightedPositionAcceptor highlightedPositionAcceptor;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -668,6 +668,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
 
+/*
 	private IModelcheckingConfiguration getModelcheckingConfiguration(String exportFileName, ModelcheckingTarget target) {
 
 		IModelcheckingConfiguration config = null;
@@ -689,6 +690,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		return config;
 	}
+*/
 
 	@Override
 	public void partDeactivated(IWorkbenchPartReference partRef) {

@@ -10,7 +10,7 @@ import roadblock.xtext.ibl.ibl.Model
 import org.junit.Test
 import org.junit.runner.RunWith
 import roadblock.xtext.ibl.ibl.IblPackage
-import roadblock.xtext.ibl.ibl.VariableDefinition
+//import roadblock.xtext.ibl.ibl.VariableDefinition
 import java.nio.charset.Charset
 import java.io.IOException
 import java.nio.file.Paths

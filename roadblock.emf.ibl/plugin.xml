@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.roadblock.org/ibl.ecore"
-            class="Ibl.IblPackage"
+            class="roadblock.emf.ibl.Ibl.IblPackage"
             genModel="model/ibl.genmodel"/>
    </extension>
 
