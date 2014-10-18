@@ -10,6 +10,21 @@ import roadblock.emf.ibl.Ibl.IblPackage
 import roadblock.emf.ibl.Ibl.Model
 import java.io.FileWriter
 import java.io.IOException
+import com.google.inject.Inject
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+
+import org.junit.Test
+import org.junit.runner.RunWith
+import java.io.IOException
+import java.nio.charset.Charset
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.ByteBuffer
+
+import static org.junit.Assert.*
+
+
 
 class BypassGUI {
 	val utils = new BiocompilerUtil
@@ -53,6 +68,7 @@ class BypassGUI {
 	
 	@Test
 	def testATGC00(){
+		
 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
 		val XMLsource = utils.readFile("../roadblock.xtext.ibl.tests/testModels/testATGC00.xml",Charset.defaultCharset())
 		val emfModel = utils.convertToEObject(XMLsource) as Model	

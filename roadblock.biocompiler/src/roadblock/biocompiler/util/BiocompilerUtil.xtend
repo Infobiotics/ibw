@@ -40,6 +40,8 @@ class BiocompilerUtil {
 		#['B', 'CGT'],
 		#['V', 'ACG'],
 		#['D', 'AGT']]
+		
+	val public pathResources = '../roadblock.biocompiler/resources/'
 	
 	def randomHashLookingString(){		
 		return UUID.randomUUID.toString
@@ -131,7 +133,7 @@ class BiocompilerUtil {
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
-		var process = new ProcessBuilder("resources/RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
 //		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.sh").start()
 //		println("\t*** FAKE RBS, FOR TESTS ONLY ***")
 		var is = process.getInputStream

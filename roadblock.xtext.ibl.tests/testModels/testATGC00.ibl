@@ -3,7 +3,8 @@
 define myCell typeof CELL() {
 	p1aa = PROMOTER(sequence = "gcgtggcgatgggccgacagtgaacacggggaccaggtgt")
     g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtg")
-
+    
+    
 	p2aa = PROMOTER(sequence = "atttatcaatattgtttgctccgttatcgttattaacaagtcatcaataaagccatc")
     g2bb = GENE(sequence =     "ggtatcgtactaggtgcatcaaacgctgcggtctattgtt")
     g2cc = GENE(sequence =     "cgttcggcgagttgccttccgacaccctgcgtcaatgcaaaaaggaagtggcttga")
@@ -19,7 +20,7 @@ define myCell typeof CELL() {
 	ATGC ARRANGE p1aa,p2aa
 	}
 
-	 	 
+	  	 
 define myRegion typeof REGION(){
 	CELL foo = new myCell()	
 

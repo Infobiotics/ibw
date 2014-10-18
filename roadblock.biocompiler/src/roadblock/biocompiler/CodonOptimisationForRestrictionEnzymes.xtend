@@ -227,7 +227,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		
 		var LinkedHashMap<String, CodonUsageTableElement> table = newLinkedHashMap
 		
-		val databaseLocation = "resources/codonUsage.db"
+		val databaseLocation = utils.pathResources + "/codonUsage.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		

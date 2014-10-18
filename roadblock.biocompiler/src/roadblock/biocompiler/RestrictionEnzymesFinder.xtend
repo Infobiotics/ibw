@@ -14,20 +14,21 @@ class NotEnoughFittingRE extends Exception{}
 class RestrictionEnzymesFinder {
 
 	// some constants
-	val static databaseLocation = "resources/restrictionEnzymes.db"
 	val static utils = new BiocompilerUtil
+	val static databaseLocation = utils.pathResources + "restrictionEnzymes.db"
 	
 	//	
 	var BiocompilerCell cell
 	var String suppliers
-	var log = ''
+	var log = new HtmlLog(1000)
 	
 	new(BiocompilerCell cell, String suppliers){
 		this.cell = cell
-		this.suppliers = suppliers	
+		this.suppliers = suppliers
+		log.addText("Looking for restriction enzymes for " + cell.name)	
 	}
 	
-	def String searchRE(){
+	def HtmlLog searchRE(){
 		val updateRBSMax = 1 // maximum number of times we allow the RBSs to be recalculated.
 		var updateRBS = 0 // number of times RBSs have been recalculated
 
@@ -40,7 +41,7 @@ class RestrictionEnzymesFinder {
 			// failure
 			//remove empty REs
 			cell = utils.removeUnassignedCloningSites(cell)
-			log = log + '\nThere is not enough non-cutting restriction enzymes.'
+			log.addWarning('There is not enough non-cutting restriction enzymes.')
 			return log
 		}
 		
@@ -49,7 +50,7 @@ class RestrictionEnzymesFinder {
 			numberRequested = cell.devices.map[parts.filter[biologicalFunction=='CLONINGSITE'].size].reduce[a,b |a +b]
 			if(findFittingRE){
 				// success
-				log = log + "\nFitting restriction sites found."
+				log.addText("Fitting restriction sites found.")
 				return log
 			}
 			else{
@@ -61,7 +62,7 @@ class RestrictionEnzymesFinder {
 				
 				if(numberPotentialRE >= numberRequested){
 					// there's a chance to have those RE fitting with new RBSs
-					log = log + "Trying to fit more restriction enzymes by recomputing the RBSs."
+					log.addText("Trying to fit more restriction enzymes by recomputing the RBSs.")
 					// TODO recalculate the RBSs
 					
 					// set the RE sequences back to zero
@@ -78,14 +79,14 @@ class RestrictionEnzymesFinder {
 		
 		if(findFittingREWithCodonOptimisation(numberRequested)){
 			// success
-			log = log + "All restriction enzymes have been found."
+			log.addText("All restriction enzymes have been found.")
 			return log
 		}
 		else{
 			// failure
 			// remove empty REs
 			cell = utils.removeUnassignedCloningSites(cell)
-			log = log + "There is not enough non-cutting restriction enzymes."
+			log.addWarning("There is not enough non-cutting restriction enzymes.")
 			return log
 		}
 			
@@ -128,7 +129,7 @@ class RestrictionEnzymesFinder {
 			
 			// log the affected CDS
 			for(k: utils.uniqueInteger(codonToUpdateList.map[it.partID])){
-				log = log + "\n Codon Optimised: " + CDSList.get(k)
+				log.addWarning("Codon Optimised: " + CDSList.get(k))
 			}
 			return true
 		}

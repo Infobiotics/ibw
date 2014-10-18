@@ -20,14 +20,17 @@ class HtmlLog {
 	}
 	
 	def addText(String contentString){
+		println("Log: " +contentString)
 		addContent("<FONT COLOR = '#FFFFFF'><TT>" + contentString + "</TT></FONT>")
 	}
 
 	def addWarning(String contentString){
+		println("Log: " +contentString)
 		addContent("<FONT COLOR = '#00FF00'><TT>" + contentString + "</TT></FONT>")
 	}
 
 	def addError(String contentString){
+		println("Log: " +contentString)
 		addContent("<FONT COLOR = '#FF0000'><TT>" + contentString + "</TT></FONT>")
 	}
 

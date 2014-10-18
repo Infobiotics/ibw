@@ -63,6 +63,7 @@ import java.util.regex.Pattern
 import roadblock.emf.bioparts.Bioparts.BiocompilerCell
 import java.util.List
 import roadblock.biocompiler.util.BiocompilerUtil
+import javax.sound.midi.Sequence
 
 @Data class RestrictionEnzyme {
     String name
@@ -76,6 +77,12 @@ import roadblock.biocompiler.util.BiocompilerUtil
 
 class NoArrangementFound extends Exception{}
 class RBSOptimisationIssue extends Exception{}
+class SequenceLookupFail extends Exception {
+	public String partName
+	new(String partName) {
+		this.partName = partName
+	}
+}
 
 class Biocompiler {
 	val static utils = new BiocompilerUtil
@@ -90,6 +97,7 @@ class Biocompiler {
 	
 	var modelFactory = IblFactory::eINSTANCE
 	
+	
 	new(Model emfModel){
 		println(new Date())
 		println("ATGC: Compiling")
@@ -99,8 +107,6 @@ class Biocompiler {
 	
 	def boolean compile(){ // the whole process, done after gathering parts
 		try {
-//			// get explicit parts
-//			gatherParts
 			
 			// complete devices
 			completeDevices 
@@ -124,28 +130,26 @@ class Biocompiler {
 			findTerminatorSequence
 			
 			//findNoncuttingRestrictionEnzymes
-//			for(cell: biocompilerModel.cells){
-//				var ref = new RestrictionEnzymesFinder(cell,"b")
-//				var log = ref.searchRE 
-//			}
+			for(cell: biocompilerModel.cells){
+				var ref = new RestrictionEnzymesFinder(cell,"b")
+				log.addLog(ref.searchRE)
+			}
+		}
+		catch(SequenceLookupFail e){
+			log.addError("There was a problem when looking up the sequence of the following part:" + e.partName)
+			return false			
 		}
 		catch(NoArrangementFound e){
 			log.addError('No possible arrangement was possible.')
-			println("No possible arrangement found")
 			return false
 		}
 		catch(RBSOptimisationIssue e){
 			log.addError('Problem with the RBS calculator.')
-			println("Problem with the RBS calculator.")
 			return false
 		}
 		catch(Exception e){
-			// add this to the log
 			log.addError("Something when wrong. Please contact the author.")
 			log.addError("Error: " + e.message)
-			println("Something when wrong. Please contact the author.")
-			println("Error: " + e.message)
-//			e.printStackTrace
 			return false
 		}
 		
@@ -159,18 +163,16 @@ class Biocompiler {
 		println("ATGC: gathering parts")
 		for(region: model.regionList){
 			log.addText("\t\tregion:" + region.displayName)
-			println("\tregion:" + region.displayName)
 			for(cell: region.cellList){
 				var biocompilerCell = biopartsFactory.createBiocompilerCell
 				biocompilerCell.name = cell.displayName
 				log.addText("\t\tcell: " + cell.displayName)
-				println("\t\tcell: " + cell.displayName)
 				for(device: cell.deviceList){	
 					var biocompilerDevice = biopartsFactory.createBiocompilerDevice
 					biocompilerDevice.name = device.displayName
-					println("\t\t\tDevice:" + device.displayName)
+					log.addText("\t\t\tDevice:" + device.displayName)
 					for(partName: device.partList.map[displayName]){
-						println("\t\t\t\tPart: " + partName)
+						log.addText("\t\t\t\tPart: " + partName)
 						//look up the part's declaration
 						val part = searchFirstDeclaration(device, partName);
 						// create a biopart with relevant info 
@@ -475,15 +477,18 @@ class Biocompiler {
 	
 	def lookUpSequence(){
 		// look up sequences in built-in database or online database
+		log.addText("Looking up sequences")
 		var ArrayList<Biopart> allParts = new ArrayList()
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
 				allParts.addAll(device.parts.filter[#['PROMOTER', 'GENE'].contains(biologicalFunction)])
+
 		val builtinBiofab = 'atgc://biofab/part/'
 		val builtinUser = 'atgc://user-submitted/part/'
 		val partsregistry = 'http://parts.igem.org/part:'
 		val ncl = 'http://sbol.ncl.ac.uk:8081/part/'
 		for(part: allParts){
+			log.addText("Looking up sequence for " + part.name)
 			if(part.sequence == null || part.sequence == ''){
 				val url = part.accessionURL
 				// look up sequence from URI
@@ -492,7 +497,7 @@ class Biocompiler {
 					case url.toLowerCase.startsWith(builtinUser):{part.sequence = getSequenceFromDatabase(url.substring(builtinUser.length),'user-submitted')}
 					case url.toLowerCase.startsWith(partsregistry):{part.sequence = getSequenceFromPartsRegistry(url.substring(partsregistry.length))}
 					case url.toLowerCase.startsWith(ncl):{part.sequence = getSequenceFromNCL(url.substring(ncl.length))}
-					default : {part.sequence = 'Repository not found'}
+					default : {throw new SequenceLookupFail(part.name)}
 				}			
 			}
 			else {
@@ -520,7 +525,7 @@ class Biocompiler {
 
 	def private  getSequenceFromDatabase(String partName, String collection){
 		// pick some from the DB
-		val databaseLocation = "resources/partRegistry.db"
+		val databaseLocation = utils.pathResources + "/partRegistry.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
@@ -561,7 +566,7 @@ class Biocompiler {
 				numberTerminator = numberTerminator + device.parts.filter[biologicalFunction =='TERMINATOR'].length
 		
 		// pick some from the DB
-		val databaseLocation = "resources/partRegistry.db"
+		val databaseLocation = utils.pathResources + "/partRegistry.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
@@ -673,6 +678,7 @@ class Biocompiler {
 		}
 		
 	}
+	
 	def private static SequenceAnnotation makeAnnotation(Biopart part, int sequenceStart, int sequenceEnd){
 		var annotation = SBOLFactory.createSequenceAnnotation
 		annotation.URI = URI.create("http://sbols.org/anot#" + utils.randomHashLookingString)
@@ -754,7 +760,7 @@ class Biocompiler {
 		source.add("<HTML>")
 		source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
 		
-		val path = 'resources/images/'
+		val path = utils.pathResources + '/images/'
 		
 		
 		for(cell:biocompilerModel.cells){

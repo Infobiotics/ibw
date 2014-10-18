@@ -12,10 +12,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.ecore;bundle-version="2.9.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.9.1",
- org.apache.commons.io;bundle-version="2.0.1"
+ org.apache.commons.io;bundle-version="2.0.1",
+ com.google.inject;bundle-version="3.0.0",
+ org.eclipse.xtext.junit4;bundle-version="2.5.4"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.almworks.sqlite4java,
+ org.eclipse.xtext.xbase.compiler,
  org.jacop.constraints,
  org.jacop.constraints.binpacking,
  org.jacop.constraints.geost,
@@ -92,5 +95,6 @@ Bundle-ClassPath: .,
  resources/JaCoP/jacop-4.0.0.jar,
  resources/SBOL/libSBOLj-core-1.0.0-SNAPSHOT.jar,
  resources/sqlite4java/sqlite4java.jar,
+ src/roadblock/biocompiler/util/,
  resources/sqlite4java/
 
