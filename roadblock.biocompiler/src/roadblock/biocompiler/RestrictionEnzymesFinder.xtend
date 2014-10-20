@@ -62,8 +62,15 @@ class RestrictionEnzymesFinder {
 				
 				if(numberPotentialRE >= numberRequested){
 					// there's a chance to have those RE fitting with new RBSs
-					log.addText("Trying to fit more restriction enzymes by recomputing the RBSs.")
-					// TODO recalculate the RBSs
+					log.addWarning("Trying to fit more restriction enzymes by recomputing the RBSs.")
+					// recalculate the RBSs
+					for(device: cell.devices)
+						for(part: device.parts.filter[biologicalFunction =='RBS']){
+							val tmp = utils.optimiseRBS(part, 1000.0)
+							part => [
+								sequence = tmp.sequence
+							 	accessionURL = tmp.accessionURL]
+						}
 					
 					// set the RE sequences back to zero
 					cell = utils.setAllCloningSitesToUnassigned(cell)

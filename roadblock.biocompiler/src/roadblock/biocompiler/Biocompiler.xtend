@@ -93,7 +93,7 @@ class Biocompiler {
 	var public biocompilerModel = biopartsFactory.createBiocompilerModel
 	var public store = new Store
 		
-	var HtmlLog log = new HtmlLog(500)
+	var HtmlLog log = new HtmlLog(1000)
 	
 	var modelFactory = IblFactory::eINSTANCE
 	
