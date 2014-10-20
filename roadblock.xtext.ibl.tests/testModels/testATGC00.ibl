@@ -3,14 +3,14 @@
 //		atgc://biofab/part/, 
 //		atgc://user-submitted/part/, 
 //		http://parts.igem.org/Part:BBa_J23101
-//		http://sbol.ncl.ac.uk:8081/part/
+//		http://sbol.ncl.ac.uk:8081/part/BO_2690
 
 define myCell typeof CELL() {
 	p1aa = PROMOTER(URI = "http://parts.igem.org/Part:BBa_J23101")
     g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtg")
     
     
-	p2aa = PROMOTER(sequence = "atttatcaatattgtttgctccgttatcgttattaacaagtcatcaataaagccatc")
+	p2aa = PROMOTER(URI = "http://sbol.ncl.ac.uk:8081/part/BO_2690")
     g2bb = GENE(sequence =     "ggtatcgtactaggtgcatcaaacgctgcggtctattgtt")
     g2cc = GENE(sequence =     "cgttcggcgagttgccttccgacaccctgcgtcaatgcaaaaaggaagtggcttga")
 	

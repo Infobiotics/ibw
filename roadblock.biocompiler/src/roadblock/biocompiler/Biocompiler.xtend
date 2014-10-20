@@ -106,6 +106,14 @@ class UnknownPartInPartRegistry extends Exception {
 	}
 }
 
+class UnknownPartInVirtualPartRepository extends Exception {
+	public String partName
+		
+	new(String partName) {
+		this.partName = partName
+	}
+}
+
 class Biocompiler {
 	val static utils = new BiocompilerUtil
 
@@ -167,10 +175,16 @@ class Biocompiler {
 			return false			
 		}
 		catch(UnknownPartInPartRegistry e ){
-			log.addError("There was a problem when looking up the part:" + e.partName + " in Part Registry. Double-check the URI.")
+			log.addError("There was a problem when looking up the part:" + e.partName + " in Part Registry. Please double-check the URI.")
 			return false			
 			
 		}
+		catch(UnknownPartInVirtualPartRepository e ){
+			log.addError("There was a problem when looking up the part:" + e.partName + " in Virtual Part Repository. Please double-check the URI.")
+			return false			
+			
+		}
+		
 		catch(NoArrangementFound e){
 			log.addError('No possible arrangement was possible.')
 			return false
@@ -574,13 +588,20 @@ class Biocompiler {
 	}
 
 	def private static getSequenceFromNCL(String partName){
-		var url = new URL("http://sbol.ncl.ac.uk:8081/part/"+ partName + "/sbol").openStream
-		var reader = SBOLFactory.createReader
-		var sbol = reader.read(url)
-				
-		val sequence = ((sbol?.contents?.get(0) as Collection)?.components?.get(0) as DnaComponent)?.dnaSequence?.nucleotides 
+
+		var String sequence
+		try{
+			var url = new URL("http://sbol.ncl.ac.uk:8081/part/"+ partName + "/sbol").openStream
+			var reader = SBOLFactory.createReader
+			var sbol = reader.read(url)
+			sequence = ((sbol?.contents?.get(0) as Collection)?.components?.get(0) as DnaComponent)?.dnaSequence?.nucleotides 					
+		}
+		catch(Exception e){
+			throw new UnknownPartInVirtualPartRepository(partName)			
+		}
+
 		
-		return if(sequence==null) "sequence not found" else sequence
+		return sequence
 	}
 	
 	def addStartCodonToCDS(){ // add a start codon to GENEs if not present
