@@ -64,6 +64,7 @@ import roadblock.emf.bioparts.Bioparts.BiocompilerCell
 import java.util.List
 import roadblock.biocompiler.util.BiocompilerUtil
 import javax.sound.midi.Sequence
+import java.io.InputStream
 
 @Data class RestrictionEnzyme {
     String name
@@ -94,6 +95,14 @@ class UnknownPartInDatabase extends Exception {
 	new(String partName, String collection) {
 		this.partName = partName
 		this.collection = collection		
+	}
+}
+
+class UnknownPartInPartRegistry extends Exception {
+	public String partName
+		
+	new(String partName) {
+		this.partName = partName
 	}
 }
 
@@ -157,6 +166,11 @@ class Biocompiler {
 			log.addError("There was a problem when looking up the part:" + e.partName + " in the built-in database (collection: "+ e.collection + ").")
 			return false			
 		}
+		catch(UnknownPartInPartRegistry e ){
+			log.addError("There was a problem when looking up the part:" + e.partName + " in Part Registry. Double-check the URI.")
+			return false			
+			
+		}
 		catch(NoArrangementFound e){
 			log.addError('No possible arrangement was possible.')
 			return false
@@ -168,6 +182,7 @@ class Biocompiler {
 		catch(Exception e){
 			log.addError("Something when wrong. Please contact the author.")
 			log.addError("Error: " + e.message)
+			e.printStackTrace
 			return false
 		}
 		
@@ -543,9 +558,17 @@ class Biocompiler {
 	}
 
 	def private static getSequenceFromPartsRegistry(String partName){
-		var url = new URL('http://parts.igem.org/fasta/parts/' + partName).openStream
-		var result = IOUtils.toString(url)
-		IOUtils.closeQuietly(url);
+		
+		var InputStream url 
+		var String result
+		try{
+			url = new URL('http://parts.igem.org/fasta/parts/' + partName).openStream
+			result = IOUtils.toString(url)
+			IOUtils.closeQuietly(url)
+		}
+		catch(java.io.FileNotFoundException e){
+			throw new UnknownPartInPartRegistry(partName)			
+		}
 		
 		return result.substring(result.indexOf("\n")).replace("\n","")
 	}

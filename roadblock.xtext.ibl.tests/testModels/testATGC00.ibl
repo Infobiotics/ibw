@@ -1,7 +1,12 @@
 // used by iblGeneratorTests/testATGCDirectives.xtend
+// URI formats: 
+//		atgc://biofab/part/, 
+//		atgc://user-submitted/part/, 
+//		http://parts.igem.org/Part:BBa_J23101
+//		http://sbol.ncl.ac.uk:8081/part/
 
 define myCell typeof CELL() {
-	p1aa = PROMOTER(URI = "atgc://user-submitted/part/yaya")
+	p1aa = PROMOTER(URI = "http://parts.igem.org/Part:BBa_J23101")
     g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtg")
     
     
