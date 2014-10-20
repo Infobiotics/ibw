@@ -52,6 +52,12 @@ class BiocompilerUtil {
 		return (1..stringLength).map["ATGC".charAt(rng.nextInt(4))].join
 	}
 	
+	def boolean isValidDNASequence(String dna){ // true is string is made of ATGC only		
+		return Pattern.compile("([^ATGCatgc])").split(dna,2).size == 1
+		
+	}
+	
+	
 	def char complement(char x){
 		var char t = x
 		switch(x.toString) {
@@ -200,7 +206,7 @@ class BiocompilerUtil {
 		
 		var ArrayList<Integer> indices = new ArrayList
 		while(index.find) indices.add(index.start)
-		
+
 		return indices	
 	}
 

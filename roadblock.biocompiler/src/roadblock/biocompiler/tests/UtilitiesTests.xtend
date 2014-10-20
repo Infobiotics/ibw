@@ -179,5 +179,13 @@ class UtilitiesTests {
 			assertTrue(false)
 		}
 	}
+	
+	@Test
+	def testIsValidDNASequence(){
+		println("Testing IsValidDNASequence")
+		
+		assertTrue(utils.isValidDNASequence("atgcgATGCA"))
+		assertFalse(utils.isValidDNASequence("atsdf#gcgATGCA"))		
+	}
 
 }

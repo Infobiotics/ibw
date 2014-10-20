@@ -114,6 +114,16 @@ class UnknownPartInVirtualPartRepository extends Exception {
 	}
 }
 
+class MalFormedDNASequence extends Exception {
+	public String partName
+	public String partSequence
+			
+	new(String partName, String partSequence) {
+		this.partName = partName
+		this.partSequence = partSequence		
+	}
+}
+
 class Biocompiler {
 	val static utils = new BiocompilerUtil
 
@@ -137,6 +147,7 @@ class Biocompiler {
 	
 	def boolean compile(){ // the whole process, done after gathering parts
 		try {
+			lookUpSequence
 			
 			// complete devices
 			completeDevices 
@@ -153,8 +164,6 @@ class Biocompiler {
 			findArrangement // throws NoArrangementFound
 			
 			println("===========")
-			println("Find sequences")
-			lookUpSequence
 			addStartCodonToCDS
 			findRBSSequence
 			findTerminatorSequence
@@ -164,6 +173,12 @@ class Biocompiler {
 				var ref = new RestrictionEnzymesFinder(cell,"b")
 				log.addLog(ref.searchRE)
 			}
+		}
+		catch(MalFormedDNASequence e){
+			log.addError("The sequence you specified is not made of A, T, G or C only.")
+			log.addError("\t Part: " + e.partName)
+			log.addError("\t Sequence: " + e.partSequence)
+			return false			
 		}
 		catch(MalFormedURI e){
 			log.addError("There was a problem when looking up the sequence of the following part:" + e.partName)
@@ -548,7 +563,11 @@ class Biocompiler {
 				}			
 			}
 			else {
-				part.accessionURL = 'ATGC://user-submitted/seq#' + part.sequence
+				// check sequence is made of ATGC
+				if(utils.isValidDNASequence(part.sequence))
+					part.accessionURL = 'ATGC://user-submitted/seq#' + part.sequence
+				else
+					throw new MalFormedDNASequence(part.name, part.sequence)
 			}
 			
 		}

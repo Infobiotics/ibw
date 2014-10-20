@@ -35,7 +35,7 @@ class RestrictionEnzymesFinder {
 		var numberRequested = cell.devices.map[parts.filter[biologicalFunction=='CLONINGSITE'].size].reduce[a,b |a +b]
 		var numberPotentialRE = populatingPotentialRETable(cell, suppliers)
 
-		if(numberRequested == 0) return log // no RE to look for
+		if(numberRequested == 0) {log.addText("No restriction enzymes requested."); return log }// no RE to look for
 		
 		if(numberRequested > numberPotentialRE) {
 			// failure

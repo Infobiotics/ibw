@@ -6,11 +6,11 @@
 //		http://sbol.ncl.ac.uk:8081/part/BO_2690
 
 define myCell typeof CELL() {
-	p1aa = PROMOTER(URI = "http://parts.igem.org/Part:BBa_J23101")
-    g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtg")
+	p1aa = PROMOTER(sequence = "atgacgtaatggtcgatttgacgtacgtaagtaa")
+    g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtggatc")
     
     
-	p2aa = PROMOTER(URI = "http://sbol.ncl.ac.uk:8081/part/BO_2690")
+	p2aa = PROMOTER(sequence = "gtgactgatttttgttagagtagacgatcatgcaaga")
     g2bb = GENE(sequence =     "ggtatcgtactaggtgcatcaaacgctgcggtctattgtt")
     g2cc = GENE(sequence =     "cgttcggcgagttgccttccgacaccctgcgtcaatgcaaaaaggaagtggcttga")
 	
@@ -21,6 +21,7 @@ define myCell typeof CELL() {
 
 	DEVICE device2 = new DEVICE(parts = [p2aa, g2bb,g2cc])(input = [], output = []){
 		ATGC ARRANGE g2cc, g2bb
+		ATGC DIRECTION: BACKWARD
 		}
 	ATGC ARRANGE p1aa,p2aa
 	}

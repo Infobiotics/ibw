@@ -343,26 +343,37 @@ class Scratch {
 	@Test
 	def quickie(){ // my kingdom for a console
 		
-		var x = #[10,12,1,1,3,4,1,4,10,10]
+		
+		var pattern = Pattern.compile("([^ATGCatgc])")	
+		
+		var dna = "atgcTTGAgttacATG"
+		var index = Pattern.compile("([^ATGCatgc])").matcher(dna)
+		var tmp = Pattern.compile("([^ATGCatgc])").split(dna,2).size 
+		println(tmp)
+		var valid = (tmp == 1)
+		
+		assertTrue(valid)
 
-		// unique elements
-		var y = x.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
-	
-		println(y.join(' / '))
-	
-	
-		var cdsList = #['AAABBBCCC', 'DDDEEEFFFGGG']
-		var List<String> cdsListCopy = cdsList.clone
-	
-		println(cdsListCopy.join(' / '))
-		
-		cdsListCopy.set(0, "eeee")
-		println(cdsListCopy.join(' / '))
-		
-		
-		var xx = "AAABBBCC"
-		assertFalse(xx.split("(BBB)").empty)		
-		assertTrue(true)
+//		var x = #[10,12,1,1,3,4,1,4,10,10]
+//
+//		// unique elements
+//		var y = x.fold(newArrayList)[a,b | if(a.contains(b)) a else {a.add(b);a}]
+//	
+//		println(y.join(' / '))
+//	
+//	
+//		var cdsList = #['AAABBBCCC', 'DDDEEEFFFGGG']
+//		var List<String> cdsListCopy = cdsList.clone
+//	
+//		println(cdsListCopy.join(' / '))
+//		
+//		cdsListCopy.set(0, "eeee")
+//		println(cdsListCopy.join(' / '))
+//		
+//		
+//		var xx = "AAABBBCC"
+//		assertFalse(xx.split("(BBB)").empty)		
+//		assertTrue(true)
 	}
 	
 	
