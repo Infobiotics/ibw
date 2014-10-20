@@ -79,8 +79,11 @@ class NoArrangementFound extends Exception{}
 class RBSOptimisationIssue extends Exception{}
 class SequenceLookupFail extends Exception {
 	public String partName
-	new(String partName) {
+	public String partURI
+	
+	new(String partName, String partURI) {
 		this.partName = partName
+		this.partURI = partURI		
 	}
 }
 
@@ -137,6 +140,7 @@ class Biocompiler {
 		}
 		catch(SequenceLookupFail e){
 			log.addError("There was a problem when looking up the sequence of the following part:" + e.partName)
+			log.addError("\tURI (" + e.partURI + ") is malformed. It should be one of atgc://biofab/part/, atgc://user-submitted/part/, http://parts.igem.org/part: or http://sbol.ncl.ac.uk:8081/part/")			
 			return false			
 		}
 		catch(NoArrangementFound e){
@@ -497,7 +501,7 @@ class Biocompiler {
 					case url.toLowerCase.startsWith(builtinUser):{part.sequence = getSequenceFromDatabase(url.substring(builtinUser.length),'user-submitted')}
 					case url.toLowerCase.startsWith(partsregistry):{part.sequence = getSequenceFromPartsRegistry(url.substring(partsregistry.length))}
 					case url.toLowerCase.startsWith(ncl):{part.sequence = getSequenceFromNCL(url.substring(ncl.length))}
-					default : {throw new SequenceLookupFail(part.name)}
+					default : {throw new SequenceLookupFail(part.name, part.accessionURL)}
 				}			
 			}
 			else {
