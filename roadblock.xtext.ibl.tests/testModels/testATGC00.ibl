@@ -1,7 +1,7 @@
 // used by iblGeneratorTests/testATGCDirectives.xtend
 
 define myCell typeof CELL() {
-	p1aa = PROMOTER(URI = "blah")
+	p1aa = PROMOTER(URI = "atgc://user-submitted/part/yaya")
     g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtg")
     
     

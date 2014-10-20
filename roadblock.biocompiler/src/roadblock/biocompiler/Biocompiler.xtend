@@ -77,13 +77,23 @@ import javax.sound.midi.Sequence
 
 class NoArrangementFound extends Exception{}
 class RBSOptimisationIssue extends Exception{}
-class SequenceLookupFail extends Exception {
+class MalFormedURI extends Exception {
 	public String partName
 	public String partURI
 	
 	new(String partName, String partURI) {
 		this.partName = partName
 		this.partURI = partURI		
+	}
+}
+
+class UnknownPartInDatabase extends Exception {
+	public String partName
+	public String collection
+		
+	new(String partName, String collection) {
+		this.partName = partName
+		this.collection = collection		
 	}
 }
 
@@ -138,9 +148,13 @@ class Biocompiler {
 				log.addLog(ref.searchRE)
 			}
 		}
-		catch(SequenceLookupFail e){
+		catch(MalFormedURI e){
 			log.addError("There was a problem when looking up the sequence of the following part:" + e.partName)
 			log.addError("\tURI (" + e.partURI + ") is malformed. It should be one of atgc://biofab/part/, atgc://user-submitted/part/, http://parts.igem.org/part: or http://sbol.ncl.ac.uk:8081/part/")			
+			return false			
+		}
+		catch(UnknownPartInDatabase e){
+			log.addError("There was a problem when looking up the part:" + e.partName + " in the built-in database (collection: "+ e.collection + ").")
 			return false			
 		}
 		catch(NoArrangementFound e){
@@ -501,7 +515,7 @@ class Biocompiler {
 					case url.toLowerCase.startsWith(builtinUser):{part.sequence = getSequenceFromDatabase(url.substring(builtinUser.length),'user-submitted')}
 					case url.toLowerCase.startsWith(partsregistry):{part.sequence = getSequenceFromPartsRegistry(url.substring(partsregistry.length))}
 					case url.toLowerCase.startsWith(ncl):{part.sequence = getSequenceFromNCL(url.substring(ncl.length))}
-					default : {throw new SequenceLookupFail(part.name, part.accessionURL)}
+					default : {throw new MalFormedURI(part.name, part.accessionURL)}
 				}			
 			}
 			else {
@@ -509,22 +523,6 @@ class Biocompiler {
 			}
 			
 		}
-	}
-	
-	def addStartCodonToCDS(){ // add a start codon to GENEs if not present
-//	valid start codons: 'ATG' 'GTG'
-		for(cell: biocompilerModel.cells)
-			for(device: cell.devices)
-				for(part: device.parts.filter[biologicalFunction == 'GENE'])
-					if(!#['ATG','GTG'].contains(part.sequence.substring(0,2).toUpperCase))
-						part.sequence = 'ATG' + part.sequence
-		
-	}
-
-	
-	
-	def buildWholeSequence(BiocompilerCell cell){
-		cell.devices.map[parts].flatten.sortBy[position.value].map[utils.finalSequence(it)].join
 	}
 
 	def private  getSequenceFromDatabase(String partName, String collection){
@@ -535,7 +533,7 @@ class Biocompiler {
 		
 		var sql = db.prepare("SELECT sequence FROM partRegistry WHERE LOWER(name) = '"+ partName.toLowerCase +"' AND Origin ='" + collection + "'")
 		
-		var sequence = if(sql.step) sql.columnString(0).toLowerCase else 'part not found'
+		var sequence = if(sql.step) sql.columnString(0).toLowerCase else throw new UnknownPartInDatabase(partName, collection)
 		
 		// tidying up
 		sql.dispose
@@ -560,6 +558,20 @@ class Biocompiler {
 		val sequence = ((sbol?.contents?.get(0) as Collection)?.components?.get(0) as DnaComponent)?.dnaSequence?.nucleotides 
 		
 		return if(sequence==null) "sequence not found" else sequence
+	}
+	
+	def addStartCodonToCDS(){ // add a start codon to GENEs if not present
+//	valid start codons: 'ATG' 'GTG'
+		for(cell: biocompilerModel.cells)
+			for(device: cell.devices)
+				for(part: device.parts.filter[biologicalFunction == 'GENE'])
+					if(!#['ATG','GTG'].contains(part.sequence.substring(0,2).toUpperCase))
+						part.sequence = 'ATG' + part.sequence
+		
+	}
+	
+	def buildWholeSequence(BiocompilerCell cell){
+		cell.devices.map[parts].flatten.sortBy[position.value].map[utils.finalSequence(it)].join
 	}
 	
 	def findTerminatorSequence(){
