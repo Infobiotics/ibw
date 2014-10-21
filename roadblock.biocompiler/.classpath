@@ -8,6 +8,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="resources/sqlite4java/sqlite4java.jar"/>
 	<classpathentry kind="lib" path="resources/SBOL/libSBOLj-core-1.0.0-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="resources/JaCoP/jacop-4.0.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
