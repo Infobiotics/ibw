@@ -313,5 +313,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/flatModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/property"/>
     </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ATGCTranslationRate">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCTranslationRate/translationRate"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

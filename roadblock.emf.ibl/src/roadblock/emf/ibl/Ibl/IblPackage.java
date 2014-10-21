@@ -1845,6 +1845,34 @@ public class IblPackage extends EPackageImpl {
 	public static final int FLAT_MODEL_PROPERTY_PAIR_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCTranslationRate()
+	 * @generated
+	 */
+	public static final int ATGC_TRANSLATION_RATE = 37;
+
+	/**
+	 * The feature id for the '<em><b>Translation Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_TRANSLATION_RATE__TRANSLATION_RATE = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Translation Rate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_TRANSLATION_RATE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1852,7 +1880,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 37;
+	public static final int TIME_UNIT = 38;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
@@ -1862,7 +1890,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 38;
+	public static final int TEMPORAL_OPERATOR = 39;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1872,7 +1900,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 39;
+	public static final int RELATIONAL_OPERATOR = 40;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1882,7 +1910,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 40;
+	public static final int BOOLEAN_OPERATOR = 41;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1892,7 +1920,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 41;
+	public static final int CONCENTRATION_UNIT = 42;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -1902,7 +1930,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 42;
+	public static final int RATE_UNIT = 43;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2162,6 +2190,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass flatModelPropertyPairEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass atgcTranslationRateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4247,6 +4282,33 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ATGC Translation Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+	 * @generated
+	 */
+	public EClass getATGCTranslationRate() {
+		return atgcTranslationRateEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate#getTranslationRate <em>Translation Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Translation Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate#getTranslationRate()
+	 * @see #getATGCTranslationRate()
+	 * @generated
+	 */
+	public EAttribute getATGCTranslationRate_TranslationRate() {
+		return (EAttribute)atgcTranslationRateEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4537,6 +4599,9 @@ public class IblPackage extends EPackageImpl {
 		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL);
 		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__PROPERTY);
 
+		atgcTranslationRateEClass = createEClass(ATGC_TRANSLATION_RATE);
+		createEAttribute(atgcTranslationRateEClass, ATGC_TRANSLATION_RATE__TRANSLATION_RATE);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalOperatorEEnum = createEEnum(TEMPORAL_OPERATOR);
@@ -4609,6 +4674,7 @@ public class IblPackage extends EPackageImpl {
 		atgcDirectionEClass.getESuperTypes().add(this.getATGCDirective());
 		atgcArrangeEClass.getESuperTypes().add(this.getATGCDirective());
 		atgcCloningSitesEClass.getESuperTypes().add(this.getATGCDirective());
+		atgcTranslationRateEClass.getESuperTypes().add(this.getATGCDirective());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4946,6 +5012,9 @@ public class IblPackage extends EPackageImpl {
 		initEClass(flatModelPropertyPairEClass, FlatModelPropertyPair.class, "FlatModelPropertyPair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFlatModelPropertyPair_FlatModel(), this.getFlatModel(), null, "flatModel", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlatModelPropertyPair_Property(), this.getIProperty(), null, "property", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(atgcTranslationRateEClass, ATGCTranslationRate.class, "ATGCTranslationRate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getATGCTranslationRate_TranslationRate(), ecorePackage.getEDouble(), "translationRate", "1000", 0, 1, ATGCTranslationRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -6286,6 +6355,24 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference FLAT_MODEL_PROPERTY_PAIR__PROPERTY = eINSTANCE.getFlatModelPropertyPair_Property();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCTranslationRate()
+		 * @generated
+		 */
+		public static final EClass ATGC_TRANSLATION_RATE = eINSTANCE.getATGCTranslationRate();
+
+		/**
+		 * The meta object literal for the '<em><b>Translation Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ATGC_TRANSLATION_RATE__TRANSLATION_RATE = eINSTANCE.getATGCTranslationRate_TranslationRate();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

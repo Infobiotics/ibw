@@ -5,6 +5,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.util.EcoreUtil
 import roadblock.emf.ibl.Ibl.ATGCArrange
+import roadblock.emf.ibl.Ibl.ATGCTranslationRate
 import roadblock.emf.ibl.Ibl.ATGCDirective
 import roadblock.emf.ibl.Ibl.Cell
 import roadblock.emf.ibl.Ibl.ConcentrationUnit
@@ -290,6 +291,13 @@ class ModelBuilder extends IblSwitch<Object> {
 		return cell
 	}
 
+	override caseATGCTranslationRate(roadblock.xtext.ibl.ibl.ATGCTranslationRate atgcTranslationRate){
+		var emfAtgcTranslationRate = modelFactory.createATGCTranslationRate
+		emfAtgcTranslationRate.translationRate = Double.parseDouble(atgcTranslationRate.translationRate)
+		return emfAtgcTranslationRate
+		
+	}
+	
 	override caseATGCArrange(roadblock.xtext.ibl.ibl.ATGCArrange atgcArrange) {
 		var emfAtgcArrange = modelFactory.createATGCArrange
 

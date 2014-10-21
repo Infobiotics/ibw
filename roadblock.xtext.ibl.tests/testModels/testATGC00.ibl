@@ -17,8 +17,9 @@ define myCell typeof CELL() {
 	DEVICE device1 = new DEVICE(parts = [p1aa, g1bb])(input = [], output = []){
 		ATGC CLONING SITES: 5
 		ATGC DIRECTION: BACKWARD
+		ATGC TRANSLATION RATE: 5000 
 		}
-
+   
 	DEVICE device2 = new DEVICE(parts = [p2aa, g2bb,g2cc])(input = [], output = []){
 		ATGC ARRANGE g2cc, g2bb
 		ATGC DIRECTION: BACKWARD

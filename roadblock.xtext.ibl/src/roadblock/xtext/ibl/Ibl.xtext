@@ -395,7 +395,7 @@ Outside:
 ////////////////
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command = (ATGCCloningSites | ATGCArrange | ATGCDirection)
+	'ATGC' command = (ATGCCloningSites | ATGCArrange | ATGCDirection | ATGCTranslationRate)
 ;
 
 ATGCArrange:
@@ -413,6 +413,10 @@ ATGCDirection:
 	'DIRECTION' ':' direction = ('FORWARD' | 'BACKWARD')
 ;
 
+ATGCTranslationRate: 
+	{ATGCTranslationRate}
+	'TRANSLATION RATE' ':' translationRate = REAL
+;
 /////////////////////////
 // model checker rules //
 /////////////////////////

@@ -419,4 +419,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//IProperty"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCTranslationRate" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="translationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1000"/>
+  </eClassifiers>
 </ecore:EPackage>
