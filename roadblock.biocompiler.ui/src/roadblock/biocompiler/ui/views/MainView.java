@@ -216,10 +216,11 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
 			biocompiler = new Biocompiler(model);
-			biocompiler.gatherParts();
-			compilationButton.setEnabled(true);
+			//biocompiler.gatherParts();
+			//compilationButton.setEnabled(true);
 			
-			browser.setText(biocompiler.identifiedPartsHtml());
+			//browser.setText(biocompiler.identifiedPartsHtml());
+
 //			modelFile.setText(config.modelFile);
 //			dataFile.setText(config.dataFile);
 //			maxTime.setText(config.maxTime.toString());
@@ -295,7 +296,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	// Compile
 	private void performCompilation() {
 		
-		biocompiler.compile();
+//		biocompiler.compile();
 		ConsoleView myConsole;
 		myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
 		myConsole.addText("Timestamp:" + (new Date())); 

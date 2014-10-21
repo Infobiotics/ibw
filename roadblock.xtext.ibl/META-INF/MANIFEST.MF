@@ -18,16 +18,19 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
- org.eclipse.emf.ecore.xmi
+ org.eclipse.emf.ecore.xmi,
+ roadblock.biocompiler.resources;bundle-version="1.0.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
+ roadblock.biocompiler,
  roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
- roadblock.simulation.ngss,
+ roadblock.emf.bioparts.Bioparts,
  roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util,
  roadblock.modelchecking,
- roadblock.modelchecking.translation
+ roadblock.modelchecking.translation,
+ roadblock.simulation.ngss
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.xtext.ibl,
  roadblock.xtext.ibl.services,
