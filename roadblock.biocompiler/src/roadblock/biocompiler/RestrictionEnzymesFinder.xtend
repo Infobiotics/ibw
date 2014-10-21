@@ -66,7 +66,7 @@ class RestrictionEnzymesFinder {
 					// recalculate the RBSs
 					for(device: cell.devices)
 						for(part: device.parts.filter[biologicalFunction =='RBS']){
-							val tmp = utils.optimiseRBS(part, 1000.0)
+							val tmp = utils.optimiseRBS(part, device.translationRate)
 							part => [
 								sequence = tmp.sequence
 							 	accessionURL = tmp.accessionURL]

@@ -33,6 +33,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//BooleanVar"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
         eType="#//Biopart" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="translationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1000.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BiocompilerModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

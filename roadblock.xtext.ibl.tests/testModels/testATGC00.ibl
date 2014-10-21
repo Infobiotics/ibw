@@ -22,7 +22,7 @@ define myCell typeof CELL() {
    
 	DEVICE device2 = new DEVICE(parts = [p2aa, g2bb,g2cc])(input = [], output = []){
 		ATGC ARRANGE g2cc, g2bb
-		ATGC DIRECTION: BACKWARD
+		
 		}
 	ATGC ARRANGE p1aa,p2aa
 	}

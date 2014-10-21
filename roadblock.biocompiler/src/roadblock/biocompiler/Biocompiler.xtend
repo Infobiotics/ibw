@@ -65,6 +65,7 @@ import java.util.List
 import roadblock.biocompiler.util.BiocompilerUtil
 import javax.sound.midi.Sequence
 import java.io.InputStream
+import roadblock.emf.ibl.Ibl.ATGCTranslationRate
 
 @Data class RestrictionEnzyme {
     String name
@@ -137,6 +138,7 @@ class Biocompiler {
 	
 	var modelFactory = IblFactory::eINSTANCE
 	
+	val defaultTranslationRate = 1000.0
 	
 	new(Model emfModel){
 		println(new Date())
@@ -222,7 +224,6 @@ class Biocompiler {
 
 	def gatherParts(){
 		log.addText("Gathering parts.")
-		println("ATGC: gathering parts")
 		for(region: model.regionList){
 			log.addText("\t\tregion:" + region.displayName)
 			for(cell: region.cellList){
@@ -270,6 +271,12 @@ class Biocompiler {
 								biocompilerDevice.parts.add(biopart)							
 							}
 					}
+					// setting translation rate
+					commands = device.ATGCCommandList.filter[it.class == ATGCTranslationRate]
+					if(!commands.empty){
+						biocompilerDevice.translationRate = (commands.last as ATGCTranslationRate).translationRate
+					}
+						
 				biocompilerCell.devices.add(biocompilerDevice)
 							
 			}
@@ -671,7 +678,7 @@ class Biocompiler {
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
 				for(part: device.parts.filter[biologicalFunction =='RBS']){
-					val tmp = utils.optimiseRBS(part, 1000.0)
+					val tmp = utils.optimiseRBS(part, device.translationRate)
 					part => [
 						sequence = tmp.sequence
 					 	accessionURL = tmp.accessionURL]
