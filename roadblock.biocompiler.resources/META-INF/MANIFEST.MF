@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Biocompiler Resources
+Bundle-SymbolicName: roadblock.biocompiler.resources;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: jacop-4.0.0.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin id="roadblock.biocompiler.resources" name="Biocompiler Resources" version="1.0.0.qualifier">
-	<runtime>
-		<library name="jacop-4.0.0.jar">
-			<export name="*"/>
-		</library>
-   </runtime>
-</plugin>
