@@ -9,8 +9,23 @@ Require-Bundle: org.eclipse.ui,
  roadblock.modelchecking.ui;bundle-version="1.0.0",
  roadblock.simulation.ui;bundle-version="1.0.0",
  roadblock.biocompiler.ui;bundle-version="1.0.0",
- roadblock.biocompiler;bundle-version="1.0.0",
- roadblock.biocompiler.resources;bundle-version="1.0.0",
- roadblock.emf.bioparts;bundle-version="1.0.0"
+ roadblock.biocompiler.resources;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.jacop.constraints,
+ org.jacop.constraints.binpacking,
+ org.jacop.constraints.geost,
+ org.jacop.constraints.knapsack,
+ org.jacop.constraints.netflow,
+ org.jacop.constraints.netflow.simplex,
+ org.jacop.constraints.regular,
+ org.jacop.core,
+ org.jacop.fz,
+ org.jacop.scala,
+ org.jacop.search,
+ org.jacop.set.constraints,
+ org.jacop.set.core,
+ org.jacop.set.search,
+ org.jacop.ui,
+ org.jacop.util,
+ org.jacop.util.fsm

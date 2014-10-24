@@ -1,6 +1,5 @@
 package roadblock.biocompiler.ui.views;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -8,41 +7,23 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.databinding.Binding;
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.core.databinding.validation.IValidator;
-import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.console.ConsolePlugin;
-import org.eclipse.ui.console.IConsole;
-import org.eclipse.ui.console.MessageConsole;
-import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -53,8 +34,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 import roadblock.emf.ibl.Ibl.Model;
-import roadblock.dataprocessing.flatModel.FlatModelManager;
-import roadblock.simulation.ngss.Simulator;
 import roadblock.biocompiler.ui.Activator;
 import roadblock.biocompiler.ui.model.Configuration;
 import roadblock.biocompiler.ui.util.ConfigurationUtil;
@@ -215,7 +194,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 		} else {
 
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
-			biocompiler = new Biocompiler(model);
+			biocompiler = new Biocompiler();
+
+			//biocompiler = new Biocompiler(model);
 			//biocompiler.gatherParts();
 			//compilationButton.setEnabled(true);
 			

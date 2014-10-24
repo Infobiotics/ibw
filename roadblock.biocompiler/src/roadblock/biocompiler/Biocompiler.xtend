@@ -95,6 +95,12 @@ class Biocompiler {
 		model = emfModel
 	}
 	
+	new(){ // empty constructor for debugging
+		println("instanciating a biocompiler")
+		model = null
+	}
+	
+	
 	def boolean compile(){ // the whole process
 		try {
 //			// get explicit parts
