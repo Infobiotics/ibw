@@ -458,12 +458,14 @@ class Biocompiler {
 	}
 	
 	def constraintATGCARRANGE(){
+		log.addText("Adding ARRANGE Constraints")
 		for(region: model.regionList)
 		for(cell: region.cellList){
 			// at cell level
 			for(arrange: cell.ATGCCommandList.filter[class == ATGCArrange].map[it as ATGCArrange]){
 				val partList = arrange.partList.map[displayName]
-				for(k: 1..(partList.length-1)){
+				for(k: 1..(partList.size-1)){
+					println("\tk = " + k)
 					val part1 = findPart(cell.displayName, partList.get(k - 1))
 					val part2 = findPart(cell.displayName, partList.get(k))
 					store.impose(new XltY(part1.position,part2.position))
@@ -486,6 +488,8 @@ class Biocompiler {
 	
 		
 	def constraintATGCDIRECTION(){
+		log.addText("Adding DIRECTION Constraints")
+		
 		for(region: model.regionList)
 		for(cell: region.cellList){
 			for(device: cell.deviceList){
