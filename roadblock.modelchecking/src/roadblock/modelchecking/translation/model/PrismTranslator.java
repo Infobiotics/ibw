@@ -124,24 +124,25 @@ public class PrismTranslator implements IModelTranslator {
 			adjustMaxConcentration(consumedMolecules);
 			adjustMaxConcentration(producedMolecules);
 
-			// translating the forward version of the rule
-			ST ruleTemplate = rule.getForwardRate() != 0 ? prismTemplates.getInstanceOf("rule") : prismTemplates.getInstanceOf("ruleWithoutRate");
-			ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules));
-			if (rule.getForwardRate() != 0) {
+			// translating the forward version of the rule,
+			// if the forward rate is specified and greater than zero
+			if (rule.getForwardRate() != null && rule.getForwardRate() > 0) {
+
+				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
+				ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules));
 				ruleTemplate.add("rate", rule.getForwardRate());
+				ruleTemplate.add("updates", getTranslatedRuleUpdates(consumedMolecules, producedMolecules));
+
+				translatedRules.add(ruleTemplate.render());
 			}
-			ruleTemplate.add("updates", getTranslatedRuleUpdates(consumedMolecules, producedMolecules));
 
-			translatedRules.add(ruleTemplate.render());
+			// translating the reversed version, in case of bidirectional rules,
+			// if the reverse rate is specified and greater than zero
+			if (rule.isIsBidirectional() && rule.getReverseRate() != null && rule.getReverseRate() > 0) {
 
-			// translating the reversed version, in case of bidirectional rules
-			if (rule.isIsBidirectional()) {
-
-				ruleTemplate = rule.getReverseRate() != 0 ? prismTemplates.getInstanceOf("rule") : prismTemplates.getInstanceOf("ruleWithoutRate");
+				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
 				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules));
-				if (rule.getReverseRate() != 0) {
-					ruleTemplate.add("rate", rule.getReverseRate());
-				}
+				ruleTemplate.add("rate", rule.getReverseRate());
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(producedMolecules, consumedMolecules));
 
 				translatedRules.add(ruleTemplate.render());
@@ -235,7 +236,7 @@ public class PrismTranslator implements IModelTranslator {
 
 		ST rewardTemplate = prismTemplates.getInstanceOf("reward");
 		// the molecule name is already translated
-		rewardTemplate.add("molecule", property.getVariableName());
+		rewardTemplate.add("molecule", property.getVariable().getName());
 
 		return rewardTemplate.render();
 	}

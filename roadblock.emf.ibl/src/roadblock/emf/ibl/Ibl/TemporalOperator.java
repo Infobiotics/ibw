@@ -57,26 +57,22 @@ public enum TemporalOperator implements Enumerator {
 	STEADY_STATE(6, "STEADY_STATE", "STEADY_STATE"),
 
 	/**
-	 * The '<em><b>NOT EVENTUALLY</b></em>' literal object.
+	 * The '<em><b>NEVER</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NOT_EVENTUALLY_VALUE
+	 * @see #NEVER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NOT_EVENTUALLY(5, "NOT_EVENTUALLY", "NOT_EVENTUALLY"),
-
-	/**
-	 * The '<em><b>ALWAYS EVENTUALLY</b></em>' literal object.
+	NEVER(5, "NEVER", "NEVER"), /**
+	 * The '<em><b>INFINITELY OFTEN</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ALWAYS_EVENTUALLY_VALUE
+	 * @see #INFINITELY_OFTEN_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ALWAYS_EVENTUALLY(4, "ALWAYS_EVENTUALLY", "ALWAYS_EVENTUALLY"),
-
-	/**
+	INFINITELY_OFTEN(4, "INFINITELY_OFTEN", "INFINITELY_OFTEN"), /**
 	 * The '<em><b>ALWAYS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,17 +80,7 @@ public enum TemporalOperator implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ALWAYS(7, "ALWAYS", "ALWAYS"),
-
-	/**
-	 * The '<em><b>EVENTUALLY ALWAYS</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EVENTUALLY_ALWAYS_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	EVENTUALLY_ALWAYS(8, "EVENTUALLY_ALWAYS", "EVENTUALLY_ALWAYS");
+	ALWAYS(7, "ALWAYS", "ALWAYS");
 
 	/**
 	 * The '<em><b>UNTIL</b></em>' literal value.
@@ -157,34 +143,34 @@ public enum TemporalOperator implements Enumerator {
 	public static final int STEADY_STATE_VALUE = 6;
 
 	/**
-	 * The '<em><b>NOT EVENTUALLY</b></em>' literal value.
+	 * The '<em><b>NEVER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>NOT EVENTUALLY</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>NEVER</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NOT_EVENTUALLY
+	 * @see #NEVER
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NOT_EVENTUALLY_VALUE = 5;
+	public static final int NEVER_VALUE = 5;
 
 	/**
-	 * The '<em><b>ALWAYS EVENTUALLY</b></em>' literal value.
+	 * The '<em><b>INFINITELY OFTEN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>ALWAYS EVENTUALLY</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>INFINITELY OFTEN</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ALWAYS_EVENTUALLY
+	 * @see #INFINITELY_OFTEN
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ALWAYS_EVENTUALLY_VALUE = 4;
+	public static final int INFINITELY_OFTEN_VALUE = 4;
 
 	/**
 	 * The '<em><b>ALWAYS</b></em>' literal value.
@@ -202,21 +188,6 @@ public enum TemporalOperator implements Enumerator {
 	public static final int ALWAYS_VALUE = 7;
 
 	/**
-	 * The '<em><b>EVENTUALLY ALWAYS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>EVENTUALLY ALWAYS</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #EVENTUALLY_ALWAYS
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int EVENTUALLY_ALWAYS_VALUE = 8;
-
-	/**
 	 * An array of all the '<em><b>Temporal Operator</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -228,10 +199,9 @@ public enum TemporalOperator implements Enumerator {
 			FOLLOWED_BY,
 			EVENTUALLY,
 			STEADY_STATE,
-			NOT_EVENTUALLY,
-			ALWAYS_EVENTUALLY,
+			NEVER,
+			INFINITELY_OFTEN,
 			ALWAYS,
-			EVENTUALLY_ALWAYS,
 		};
 
 	/**
@@ -286,10 +256,9 @@ public enum TemporalOperator implements Enumerator {
 			case FOLLOWED_BY_VALUE: return FOLLOWED_BY;
 			case EVENTUALLY_VALUE: return EVENTUALLY;
 			case STEADY_STATE_VALUE: return STEADY_STATE;
-			case NOT_EVENTUALLY_VALUE: return NOT_EVENTUALLY;
-			case ALWAYS_EVENTUALLY_VALUE: return ALWAYS_EVENTUALLY;
+			case NEVER_VALUE: return NEVER;
+			case INFINITELY_OFTEN_VALUE: return INFINITELY_OFTEN;
 			case ALWAYS_VALUE: return ALWAYS;
-			case EVENTUALLY_ALWAYS_VALUE: return EVENTUALLY_ALWAYS;
 		}
 		return null;
 	}

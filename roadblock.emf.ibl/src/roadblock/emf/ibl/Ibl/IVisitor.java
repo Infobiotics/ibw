@@ -44,7 +44,7 @@ public interface IVisitor<TResult> {
 	 * @model
 	 * @generated
 	 */
-	TResult visit(StateExpression expression);
+	TResult visit(ConcentrationExpression expression);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,5 +221,45 @@ public interface IVisitor<TResult> {
 	 * @generated
 	 */
 	TResult visit(PropertyInitialCondition expression);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(BinaryArithmeticExpression expression);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(NumericLiteral expression);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(VariableReference expression);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(MonotonicityExpression expression);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(RelationalExpression expression);
 
 } // IVisitor

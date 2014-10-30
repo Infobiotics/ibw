@@ -1210,13 +1210,13 @@ public class IblPackage extends EPackageImpl {
 	public static final int REWARD_PROPERTY = 22;
 
 	/**
-	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REWARD_PROPERTY__VARIABLE_NAME = IPROPERTY_FEATURE_COUNT + 0;
+	public static final int REWARD_PROPERTY__VARIABLE = IPROPERTY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Time Constraint</b></em>' containment reference.
@@ -1440,23 +1440,23 @@ public class IblPackage extends EPackageImpl {
 	public static final int NOT_STATE_FORMULA_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}' class.
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression <em>Concentration Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.StateExpression
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression()
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression()
 	 * @generated
 	 */
-	public static final int STATE_EXPRESSION = 28;
+	public static final int CONCENTRATION_EXPRESSION = 28;
 
 	/**
-	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STATE_EXPRESSION__VARIABLE_NAME = ISTATE_FORMULA_FEATURE_COUNT + 0;
+	public static final int CONCENTRATION_EXPRESSION__VARIABLE = ISTATE_FORMULA_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -1465,7 +1465,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STATE_EXPRESSION__OPERATOR = ISTATE_FORMULA_FEATURE_COUNT + 1;
+	public static final int CONCENTRATION_EXPRESSION__OPERATOR = ISTATE_FORMULA_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Quantity</b></em>' attribute.
@@ -1474,7 +1474,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STATE_EXPRESSION__QUANTITY = ISTATE_FORMULA_FEATURE_COUNT + 2;
+	public static final int CONCENTRATION_EXPRESSION__QUANTITY = ISTATE_FORMULA_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Unit</b></em>' attribute.
@@ -1483,16 +1483,16 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STATE_EXPRESSION__UNIT = ISTATE_FORMULA_FEATURE_COUNT + 3;
+	public static final int CONCENTRATION_EXPRESSION__UNIT = ISTATE_FORMULA_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>State Expression</em>' class.
+	 * The number of structural features of the '<em>Concentration Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STATE_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 4;
+	public static final int CONCENTRATION_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}' class.
@@ -1679,22 +1679,13 @@ public class IblPackage extends EPackageImpl {
 	public static final int PROPERTY_INITIAL_CONDITION = 32;
 
 	/**
-	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROPERTY_INITIAL_CONDITION__VARIABLE_NAME = IVISITABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Variable Attribute</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE = IVISITABLE_FEATURE_COUNT + 1;
+	public static final int PROPERTY_INITIAL_CONDITION__VARIABLE = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Unit</b></em>' attribute.
@@ -1703,7 +1694,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROPERTY_INITIAL_CONDITION__UNIT = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int PROPERTY_INITIAL_CONDITION__UNIT = IVISITABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Amount</b></em>' attribute.
@@ -1712,7 +1703,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROPERTY_INITIAL_CONDITION__AMOUNT = IVISITABLE_FEATURE_COUNT + 3;
+	public static final int PROPERTY_INITIAL_CONDITION__AMOUNT = IVISITABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Property Initial Condition</em>' class.
@@ -1721,7 +1712,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 4;
+	public static final int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}' class.
@@ -1845,6 +1836,247 @@ public class IblPackage extends EPackageImpl {
 	public static final int FLAT_MODEL_PROPERTY_PAIR_FEATURE_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticExpression()
+	 * @generated
+	 */
+	public static final int IARITHMETIC_EXPRESSION = 37;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticOperand
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticOperand()
+	 * @generated
+	 */
+	public static final int IARITHMETIC_OPERAND = 38;
+
+	/**
+	 * The number of structural features of the '<em>IArithmetic Operand</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IARITHMETIC_OPERAND_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>IArithmetic Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IARITHMETIC_EXPRESSION_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryArithmeticExpression()
+	 * @generated
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION = 39;
+
+	/**
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION__LEFT_OPERAND = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION__RIGHT_OPERAND = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION__OPERATOR = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Binary Arithmetic Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION_FEATURE_COUNT = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.NumericLiteral
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getNumericLiteral()
+	 * @generated
+	 */
+	public static final int NUMERIC_LITERAL = 40;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NUMERIC_LITERAL__VALUE = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Numeric Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NUMERIC_LITERAL_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.VariableReference
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getVariableReference()
+	 * @generated
+	 */
+	public static final int VARIABLE_REFERENCE = 41;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE__NAME = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Maximum Of Interest</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE__IS_MAXIMUM_OF_INTEREST = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Container Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE__CONTAINER_NAME = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Variable Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityExpression()
+	 * @generated
+	 */
+	public static final int MONOTONICITY_EXPRESSION = 42;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MONOTONICITY_EXPRESSION__VARIABLE = ISTATE_FORMULA_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MONOTONICITY_EXPRESSION__TYPE = ISTATE_FORMULA_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Monotonicity Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MONOTONICITY_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.RelationalExpression
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalExpression()
+	 * @generated
+	 */
+	public static final int RELATIONAL_EXPRESSION = 43;
+
+	/**
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION__LEFT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION__RIGHT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION__OPERATOR = ISTATE_FORMULA_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Relational Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1852,17 +2084,17 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 37;
+	public static final int TIME_UNIT = 44;
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.TemporalOperator
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
+	 * @see roadblock.emf.ibl.Ibl.TemporalPattern
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalPattern()
 	 * @generated
 	 */
-	public static final int TEMPORAL_OPERATOR = 38;
+	public static final int TEMPORAL_PATTERN = 45;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -1872,7 +2104,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 39;
+	public static final int RELATIONAL_OPERATOR = 46;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -1882,7 +2114,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 40;
+	public static final int BOOLEAN_OPERATOR = 47;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -1892,7 +2124,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 41;
+	public static final int CONCENTRATION_UNIT = 48;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -1902,7 +2134,27 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 42;
+	public static final int RATE_UNIT = 49;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ArithmeticOperator
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getArithmeticOperator()
+	 * @generated
+	 */
+	public static final int ARITHMETIC_OPERATOR = 50;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityType
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityType()
+	 * @generated
+	 */
+	public static final int MONOTONICITY_TYPE = 51;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2105,7 +2357,7 @@ public class IblPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stateExpressionEClass = null;
+	private EClass concentrationExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2168,6 +2420,55 @@ public class IblPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass iArithmeticExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iArithmeticOperandEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass binaryArithmeticExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass numericLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass monotonicityExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass relationalExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum timeUnitEEnum = null;
 
 	/**
@@ -2175,7 +2476,7 @@ public class IblPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum temporalOperatorEEnum = null;
+	private EEnum temporalPatternEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2204,6 +2505,20 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EEnum rateUnitEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum arithmeticOperatorEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum monotonicityTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -3528,17 +3843,18 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariableName <em>Variable Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable Name</em>'.
-	 * @see roadblock.emf.ibl.Ibl.RewardProperty#getVariableName()
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RewardProperty#getVariable()
 	 * @see #getRewardProperty()
 	 * @generated
 	 */
-	public EAttribute getRewardProperty_VariableName() {
-		return (EAttribute)rewardPropertyEClass.getEStructuralFeatures().get(0);
+	public EReference getRewardProperty_Variable() {
+		return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(0);
 	}
+
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getTimeConstraint <em>Time Constraint</em>}'.
@@ -3771,68 +4087,73 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}'.
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression <em>Concentration Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>State Expression</em>'.
-	 * @see roadblock.emf.ibl.Ibl.StateExpression
+	 * @return the meta object for class '<em>Concentration Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression
 	 * @generated
 	 */
-	public EClass getStateExpression() {
-		return stateExpressionEClass;
+	public EClass getConcentrationExpression() {
+		return concentrationExpressionEClass;
 	}
 
+
 	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.StateExpression#getVariableName <em>Variable Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable Name</em>'.
-	 * @see roadblock.emf.ibl.Ibl.StateExpression#getVariableName()
-	 * @see #getStateExpression()
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression#getVariable()
+	 * @see #getConcentrationExpression()
 	 * @generated
 	 */
-	public EAttribute getStateExpression_VariableName() {
-		return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getConcentrationExpression_Variable() {
+		return (EReference)concentrationExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
+
 	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.StateExpression#getOperator <em>Operator</em>}'.
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getOperator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see roadblock.emf.ibl.Ibl.StateExpression#getOperator()
-	 * @see #getStateExpression()
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression#getOperator()
+	 * @see #getConcentrationExpression()
 	 * @generated
 	 */
-	public EAttribute getStateExpression_Operator() {
-		return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getConcentrationExpression_Operator() {
+		return (EAttribute)concentrationExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
+
 	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.StateExpression#getQuantity <em>Quantity</em>}'.
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getQuantity <em>Quantity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Quantity</em>'.
-	 * @see roadblock.emf.ibl.Ibl.StateExpression#getQuantity()
-	 * @see #getStateExpression()
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression#getQuantity()
+	 * @see #getConcentrationExpression()
 	 * @generated
 	 */
-	public EAttribute getStateExpression_Quantity() {
-		return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(2);
+	public EAttribute getConcentrationExpression_Quantity() {
+		return (EAttribute)concentrationExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
+
 	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.StateExpression#getUnit <em>Unit</em>}'.
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getUnit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Unit</em>'.
-	 * @see roadblock.emf.ibl.Ibl.StateExpression#getUnit()
-	 * @see #getStateExpression()
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression#getUnit()
+	 * @see #getConcentrationExpression()
 	 * @generated
 	 */
-	public EAttribute getStateExpression_Unit() {
-		return (EAttribute)stateExpressionEClass.getEStructuralFeatures().get(3);
+	public EAttribute getConcentrationExpression_Unit() {
+		return (EAttribute)concentrationExpressionEClass.getEStructuralFeatures().get(3);
 	}
+
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}'.
@@ -4069,30 +4390,16 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable Name</em>'.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName()
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariable()
 	 * @see #getPropertyInitialCondition()
 	 * @generated
 	 */
-	public EAttribute getPropertyInitialCondition_VariableName() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(0);
-	}
-
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute <em>Variable Attribute</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Variable Attribute</em>'.
-	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute()
-	 * @see #getPropertyInitialCondition()
-	 * @generated
-	 */
-	public EAttribute getPropertyInitialCondition_VariableAttribute() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(1);
+	public EReference getPropertyInitialCondition_Variable() {
+		return (EReference)propertyInitialConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 
@@ -4106,7 +4413,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EAttribute getPropertyInitialCondition_Unit() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(1);
 	}
 
 
@@ -4120,7 +4427,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EAttribute getPropertyInitialCondition_Amount() {
-		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(2);
 	}
 
 
@@ -4247,6 +4554,265 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IArithmetic Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
+	 * @generated
+	 */
+	public EClass getIArithmeticExpression() {
+		return iArithmeticExpressionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IArithmetic Operand</em>'.
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticOperand
+	 * @generated
+	 */
+	public EClass getIArithmeticOperand() {
+		return iArithmeticOperandEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Arithmetic Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression
+	 * @generated
+	 */
+	public EClass getBinaryArithmeticExpression() {
+		return binaryArithmeticExpressionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getLeftOperand <em>Left Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left Operand</em>'.
+	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getLeftOperand()
+	 * @see #getBinaryArithmeticExpression()
+	 * @generated
+	 */
+	public EReference getBinaryArithmeticExpression_LeftOperand() {
+		return (EReference)binaryArithmeticExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getRightOperand <em>Right Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right Operand</em>'.
+	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getRightOperand()
+	 * @see #getBinaryArithmeticExpression()
+	 * @generated
+	 */
+	public EReference getBinaryArithmeticExpression_RightOperand() {
+		return (EReference)binaryArithmeticExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getOperator <em>Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getOperator()
+	 * @see #getBinaryArithmeticExpression()
+	 * @generated
+	 */
+	public EAttribute getBinaryArithmeticExpression_Operator() {
+		return (EAttribute)binaryArithmeticExpressionEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Numeric Literal</em>'.
+	 * @see roadblock.emf.ibl.Ibl.NumericLiteral
+	 * @generated
+	 */
+	public EClass getNumericLiteral() {
+		return numericLiteralEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.NumericLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see roadblock.emf.ibl.Ibl.NumericLiteral#getValue()
+	 * @see #getNumericLiteral()
+	 * @generated
+	 */
+	public EAttribute getNumericLiteral_Value() {
+		return (EAttribute)numericLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Reference</em>'.
+	 * @see roadblock.emf.ibl.Ibl.VariableReference
+	 * @generated
+	 */
+	public EClass getVariableReference() {
+		return variableReferenceEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.VariableReference#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see roadblock.emf.ibl.Ibl.VariableReference#getName()
+	 * @see #getVariableReference()
+	 * @generated
+	 */
+	public EAttribute getVariableReference_Name() {
+		return (EAttribute)variableReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.VariableReference#isIsMaximumOfInterest <em>Is Maximum Of Interest</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Maximum Of Interest</em>'.
+	 * @see roadblock.emf.ibl.Ibl.VariableReference#isIsMaximumOfInterest()
+	 * @see #getVariableReference()
+	 * @generated
+	 */
+	public EAttribute getVariableReference_IsMaximumOfInterest() {
+		return (EAttribute)variableReferenceEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.VariableReference#getContainerName <em>Container Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Container Name</em>'.
+	 * @see roadblock.emf.ibl.Ibl.VariableReference#getContainerName()
+	 * @see #getVariableReference()
+	 * @generated
+	 */
+	public EAttribute getVariableReference_ContainerName() {
+		return (EAttribute)variableReferenceEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Monotonicity Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression
+	 * @generated
+	 */
+	public EClass getMonotonicityExpression() {
+		return monotonicityExpressionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression#getVariable()
+	 * @see #getMonotonicityExpression()
+	 * @generated
+	 */
+	public EReference getMonotonicityExpression_Variable() {
+		return (EReference)monotonicityExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression#getType()
+	 * @see #getMonotonicityExpression()
+	 * @generated
+	 */
+	public EAttribute getMonotonicityExpression_Type() {
+		return (EAttribute)monotonicityExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Relational Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RelationalExpression
+	 * @generated
+	 */
+	public EClass getRelationalExpression() {
+		return relationalExpressionEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RelationalExpression#getLeftOperand <em>Left Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Left Operand</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RelationalExpression#getLeftOperand()
+	 * @see #getRelationalExpression()
+	 * @generated
+	 */
+	public EReference getRelationalExpression_LeftOperand() {
+		return (EReference)relationalExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RelationalExpression#getRightOperand <em>Right Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Right Operand</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RelationalExpression#getRightOperand()
+	 * @see #getRelationalExpression()
+	 * @generated
+	 */
+	public EReference getRelationalExpression_RightOperand() {
+		return (EReference)relationalExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RelationalExpression#getOperator <em>Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RelationalExpression#getOperator()
+	 * @see #getRelationalExpression()
+	 * @generated
+	 */
+	public EAttribute getRelationalExpression_Operator() {
+		return (EAttribute)relationalExpressionEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4259,16 +4825,17 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}'.
+	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Temporal Operator</em>'.
-	 * @see roadblock.emf.ibl.Ibl.TemporalOperator
+	 * @return the meta object for enum '<em>Temporal Pattern</em>'.
+	 * @see roadblock.emf.ibl.Ibl.TemporalPattern
 	 * @generated
 	 */
-	public EEnum getTemporalOperator() {
-		return temporalOperatorEEnum;
+	public EEnum getTemporalPattern() {
+		return temporalPatternEEnum;
 	}
+
 
 	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}'.
@@ -4316,6 +4883,32 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EEnum getRateUnit() {
 		return rateUnitEEnum;
+	}
+
+
+	/**
+	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Arithmetic Operator</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ArithmeticOperator
+	 * @generated
+	 */
+	public EEnum getArithmeticOperator() {
+		return arithmeticOperatorEEnum;
+	}
+
+
+	/**
+	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Monotonicity Type</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityType
+	 * @generated
+	 */
+	public EEnum getMonotonicityType() {
+		return monotonicityTypeEEnum;
 	}
 
 
@@ -4468,7 +5061,7 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(binaryProbabilityPropertyEClass, BINARY_PROBABILITY_PROPERTY__OPERATOR);
 
 		rewardPropertyEClass = createEClass(REWARD_PROPERTY);
-		createEAttribute(rewardPropertyEClass, REWARD_PROPERTY__VARIABLE_NAME);
+		createEReference(rewardPropertyEClass, REWARD_PROPERTY__VARIABLE);
 		createEReference(rewardPropertyEClass, REWARD_PROPERTY__TIME_CONSTRAINT);
 		createEReference(rewardPropertyEClass, REWARD_PROPERTY__CONCENTRATION_CONSTRAINT);
 		createEReference(rewardPropertyEClass, REWARD_PROPERTY__INITIAL_CONDITIONS);
@@ -4493,11 +5086,11 @@ public class IblPackage extends EPackageImpl {
 		notStateFormulaEClass = createEClass(NOT_STATE_FORMULA);
 		createEReference(notStateFormulaEClass, NOT_STATE_FORMULA__NEGATED_OPERAND);
 
-		stateExpressionEClass = createEClass(STATE_EXPRESSION);
-		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__VARIABLE_NAME);
-		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__OPERATOR);
-		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__QUANTITY);
-		createEAttribute(stateExpressionEClass, STATE_EXPRESSION__UNIT);
+		concentrationExpressionEClass = createEClass(CONCENTRATION_EXPRESSION);
+		createEReference(concentrationExpressionEClass, CONCENTRATION_EXPRESSION__VARIABLE);
+		createEAttribute(concentrationExpressionEClass, CONCENTRATION_EXPRESSION__OPERATOR);
+		createEAttribute(concentrationExpressionEClass, CONCENTRATION_EXPRESSION__QUANTITY);
+		createEAttribute(concentrationExpressionEClass, CONCENTRATION_EXPRESSION__UNIT);
 
 		regionEClass = createEClass(REGION);
 		createEAttribute(regionEClass, REGION__DISPLAY_NAME);
@@ -4519,8 +5112,7 @@ public class IblPackage extends EPackageImpl {
 		createEReference(flatModelEClass, FLAT_MODEL__RULE_LIST);
 
 		propertyInitialConditionEClass = createEClass(PROPERTY_INITIAL_CONDITION);
-		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE_NAME);
-		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE);
+		createEReference(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE);
 		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__UNIT);
 		createEAttribute(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__AMOUNT);
 
@@ -4537,13 +5129,41 @@ public class IblPackage extends EPackageImpl {
 		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL);
 		createEReference(flatModelPropertyPairEClass, FLAT_MODEL_PROPERTY_PAIR__PROPERTY);
 
+		iArithmeticExpressionEClass = createEClass(IARITHMETIC_EXPRESSION);
+
+		iArithmeticOperandEClass = createEClass(IARITHMETIC_OPERAND);
+
+		binaryArithmeticExpressionEClass = createEClass(BINARY_ARITHMETIC_EXPRESSION);
+		createEReference(binaryArithmeticExpressionEClass, BINARY_ARITHMETIC_EXPRESSION__LEFT_OPERAND);
+		createEReference(binaryArithmeticExpressionEClass, BINARY_ARITHMETIC_EXPRESSION__RIGHT_OPERAND);
+		createEAttribute(binaryArithmeticExpressionEClass, BINARY_ARITHMETIC_EXPRESSION__OPERATOR);
+
+		numericLiteralEClass = createEClass(NUMERIC_LITERAL);
+		createEAttribute(numericLiteralEClass, NUMERIC_LITERAL__VALUE);
+
+		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
+		createEAttribute(variableReferenceEClass, VARIABLE_REFERENCE__NAME);
+		createEAttribute(variableReferenceEClass, VARIABLE_REFERENCE__IS_MAXIMUM_OF_INTEREST);
+		createEAttribute(variableReferenceEClass, VARIABLE_REFERENCE__CONTAINER_NAME);
+
+		monotonicityExpressionEClass = createEClass(MONOTONICITY_EXPRESSION);
+		createEReference(monotonicityExpressionEClass, MONOTONICITY_EXPRESSION__VARIABLE);
+		createEAttribute(monotonicityExpressionEClass, MONOTONICITY_EXPRESSION__TYPE);
+
+		relationalExpressionEClass = createEClass(RELATIONAL_EXPRESSION);
+		createEReference(relationalExpressionEClass, RELATIONAL_EXPRESSION__LEFT_OPERAND);
+		createEReference(relationalExpressionEClass, RELATIONAL_EXPRESSION__RIGHT_OPERAND);
+		createEAttribute(relationalExpressionEClass, RELATIONAL_EXPRESSION__OPERATOR);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
-		temporalOperatorEEnum = createEEnum(TEMPORAL_OPERATOR);
+		temporalPatternEEnum = createEEnum(TEMPORAL_PATTERN);
 		relationalOperatorEEnum = createEEnum(RELATIONAL_OPERATOR);
 		booleanOperatorEEnum = createEEnum(BOOLEAN_OPERATOR);
 		concentrationUnitEEnum = createEEnum(CONCENTRATION_UNIT);
 		rateUnitEEnum = createEEnum(RATE_UNIT);
+		arithmeticOperatorEEnum = createEEnum(ARITHMETIC_OPERATOR);
+		monotonicityTypeEEnum = createEEnum(MONOTONICITY_TYPE);
 	}
 
 	/**
@@ -4601,7 +5221,7 @@ public class IblPackage extends EPackageImpl {
 		iStateFormulaEClass.getESuperTypes().add(this.getIVisitable());
 		binaryStateFormulaEClass.getESuperTypes().add(this.getIStateFormula());
 		notStateFormulaEClass.getESuperTypes().add(this.getIStateFormula());
-		stateExpressionEClass.getESuperTypes().add(this.getIStateFormula());
+		concentrationExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 		regionEClass.getESuperTypes().add(this.getIVisitable());
 		emfVariableAssignmentEClass.getESuperTypes().add(this.getIVisitable());
 		flatModelEClass.getESuperTypes().add(this.getIVisitable());
@@ -4609,6 +5229,13 @@ public class IblPackage extends EPackageImpl {
 		atgcDirectionEClass.getESuperTypes().add(this.getATGCDirective());
 		atgcArrangeEClass.getESuperTypes().add(this.getATGCDirective());
 		atgcCloningSitesEClass.getESuperTypes().add(this.getATGCDirective());
+		iArithmeticExpressionEClass.getESuperTypes().add(this.getIArithmeticOperand());
+		iArithmeticOperandEClass.getESuperTypes().add(this.getIVisitable());
+		binaryArithmeticExpressionEClass.getESuperTypes().add(this.getIArithmeticExpression());
+		numericLiteralEClass.getESuperTypes().add(this.getIArithmeticOperand());
+		variableReferenceEClass.getESuperTypes().add(this.getIArithmeticOperand());
+		monotonicityExpressionEClass.getESuperTypes().add(this.getIStateFormula());
+		relationalExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4640,7 +5267,7 @@ public class IblPackage extends EPackageImpl {
 		initEOperation(op, g1);
 
 		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getStateExpression(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getConcentrationExpression(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(iVisitorEClass_TResult);
 		initEOperation(op, g1);
 
@@ -4754,6 +5381,31 @@ public class IblPackage extends EPackageImpl {
 		g1 = createEGenericType(iVisitorEClass_TResult);
 		initEOperation(op, g1);
 
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getBinaryArithmeticExpression(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getNumericLiteral(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getVariableReference(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getMonotonicityExpression(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getRelationalExpression(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModel_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4776,8 +5428,8 @@ public class IblPackage extends EPackageImpl {
 		initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRule_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRule_IsBidirectional(), ecorePackage.getEBoolean(), "isBidirectional", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRule_ForwardRate(), ecorePackage.getEDouble(), "forwardRate", "0", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRule_ReverseRate(), ecorePackage.getEDouble(), "reverseRate", "0", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ForwardRate(), ecorePackage.getEDoubleObject(), "forwardRate", "0", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ReverseRate(), ecorePackage.getEDoubleObject(), "reverseRate", "0", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_LeftHandSide(), this.getMolecularSpecies(), null, "leftHandSide", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_RightHandSide(), this.getMolecularSpecies(), null, "rightHandSide", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRule_ID(), ecorePackage.getEString(), "ID", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4789,7 +5441,7 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getMolecularSpecies_URI(), ecorePackage.getEString(), "URI", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Amount(), ecorePackage.getEDouble(), "amount", "0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMolecularSpecies_DegradationRate(), ecorePackage.getEDouble(), "degradationRate", "0.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMolecularSpecies_DegradationRate(), ecorePackage.getEDoubleObject(), "degradationRate", "0.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_BindingRate(), ecorePackage.getEDoubleObject(), "bindingRate", "0.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_UnbindingRate(), ecorePackage.getEDoubleObject(), "unbindingRate", "0.0", 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMolecularSpecies_BiologicalType(), ecorePackage.getEString(), "biologicalType", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4870,15 +5522,15 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(unaryProbabilityPropertyEClass, UnaryProbabilityProperty.class, "UnaryProbabilityProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnaryProbabilityProperty_StateFormula(), this.getIStateFormula(), null, "stateFormula", null, 0, 1, UnaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUnaryProbabilityProperty_Operator(), this.getTemporalOperator(), "operator", null, 0, 1, UnaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUnaryProbabilityProperty_Operator(), this.getTemporalPattern(), "operator", null, 0, 1, UnaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(binaryProbabilityPropertyEClass, BinaryProbabilityProperty.class, "BinaryProbabilityProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBinaryProbabilityProperty_LeftOperand(), this.getIStateFormula(), null, "leftOperand", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBinaryProbabilityProperty_RightOperand(), this.getIStateFormula(), null, "rightOperand", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBinaryProbabilityProperty_Operator(), this.getTemporalOperator(), "operator", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryProbabilityProperty_Operator(), this.getTemporalPattern(), "operator", null, 0, 1, BinaryProbabilityProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rewardPropertyEClass, RewardProperty.class, "RewardProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRewardProperty_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRewardProperty_Variable(), this.getVariableReference(), null, "variable", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRewardProperty_TimeConstraint(), this.getTimeInstant(), null, "timeConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRewardProperty_ConcentrationConstraint(), this.getConcentrationConstraint(), null, "concentrationConstraint", null, 0, 1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRewardProperty_InitialConditions(), this.getPropertyInitialCondition(), null, "initialConditions", null, 0, -1, RewardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4903,11 +5555,11 @@ public class IblPackage extends EPackageImpl {
 		initEClass(notStateFormulaEClass, NotStateFormula.class, "NotStateFormula", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNotStateFormula_NegatedOperand(), this.getIStateFormula(), null, "negatedOperand", null, 0, 1, NotStateFormula.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stateExpressionEClass, StateExpression.class, "StateExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStateExpression_VariableName(), ecorePackage.getEString(), "variableName", "", 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStateExpression_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStateExpression_Quantity(), ecorePackage.getEDouble(), "quantity", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStateExpression_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, StateExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(concentrationExpressionEClass, ConcentrationExpression.class, "ConcentrationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcentrationExpression_Variable(), this.getVariableReference(), null, "variable", null, 0, 1, ConcentrationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConcentrationExpression_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, ConcentrationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConcentrationExpression_Quantity(), ecorePackage.getEDouble(), "quantity", null, 0, 1, ConcentrationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConcentrationExpression_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, ConcentrationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(regionEClass, Region.class, "Region", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRegion_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4929,8 +5581,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getFlatModel_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPropertyInitialCondition_VariableName(), ecorePackage.getEString(), "variableName", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPropertyInitialCondition_VariableAttribute(), ecorePackage.getEString(), "variableAttribute", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPropertyInitialCondition_Variable(), this.getVariableReference(), null, "variable", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyInitialCondition_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPropertyInitialCondition_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -4947,20 +5598,45 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getFlatModelPropertyPair_FlatModel(), this.getFlatModel(), null, "flatModel", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlatModelPropertyPair_Property(), this.getIProperty(), null, "property", null, 0, 1, FlatModelPropertyPair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(iArithmeticExpressionEClass, IArithmeticExpression.class, "IArithmeticExpression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(iArithmeticOperandEClass, IArithmeticOperand.class, "IArithmeticOperand", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(binaryArithmeticExpressionEClass, BinaryArithmeticExpression.class, "BinaryArithmeticExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBinaryArithmeticExpression_LeftOperand(), this.getIArithmeticOperand(), null, "leftOperand", null, 0, 1, BinaryArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryArithmeticExpression_RightOperand(), this.getIArithmeticOperand(), null, "rightOperand", null, 0, 1, BinaryArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryArithmeticExpression_Operator(), this.getArithmeticOperator(), "operator", null, 0, 1, BinaryArithmeticExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(numericLiteralEClass, NumericLiteral.class, "NumericLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNumericLiteral_Value(), ecorePackage.getEDouble(), "value", "0", 0, 1, NumericLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableReferenceEClass, VariableReference.class, "VariableReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableReference_Name(), ecorePackage.getEString(), "name", "", 0, 1, VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableReference_IsMaximumOfInterest(), ecorePackage.getEBoolean(), "isMaximumOfInterest", "false", 0, 1, VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableReference_ContainerName(), ecorePackage.getEString(), "containerName", "", 0, 1, VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(monotonicityExpressionEClass, MonotonicityExpression.class, "MonotonicityExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMonotonicityExpression_Variable(), this.getVariableReference(), null, "variable", null, 0, 1, MonotonicityExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMonotonicityExpression_Type(), this.getMonotonicityType(), "type", null, 0, 1, MonotonicityExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(relationalExpressionEClass, RelationalExpression.class, "RelationalExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRelationalExpression_LeftOperand(), this.getIArithmeticOperand(), null, "leftOperand", null, 0, 1, RelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRelationalExpression_RightOperand(), this.getIArithmeticOperand(), null, "rightOperand", null, 0, 1, RelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRelationalExpression_Operator(), this.getRelationalOperator(), "operator", null, 0, 1, RelationalExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
 		addEEnumLiteral(timeUnitEEnum, TimeUnit.SECOND);
 		addEEnumLiteral(timeUnitEEnum, TimeUnit.MINUTE);
 
-		initEEnum(temporalOperatorEEnum, TemporalOperator.class, "TemporalOperator");
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.UNTIL);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.FOLLOWED_BY);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.EVENTUALLY);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.STEADY_STATE);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.NOT_EVENTUALLY);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.ALWAYS_EVENTUALLY);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.ALWAYS);
-		addEEnumLiteral(temporalOperatorEEnum, TemporalOperator.EVENTUALLY_ALWAYS);
+		initEEnum(temporalPatternEEnum, TemporalPattern.class, "TemporalPattern");
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.UNTIL);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.FOLLOWED_BY);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.EVENTUALLY);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.STEADY_STATE);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.NEVER);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.INFINITELY_OFTEN);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.ALWAYS);
 
 		initEEnum(relationalOperatorEEnum, RelationalOperator.class, "RelationalOperator");
 		addEEnumLiteral(relationalOperatorEEnum, RelationalOperator.GT);
@@ -4987,6 +5663,16 @@ public class IblPackage extends EPackageImpl {
 		initEEnum(rateUnitEEnum, RateUnit.class, "RateUnit");
 		addEEnumLiteral(rateUnitEEnum, RateUnit.PER_SECOND);
 		addEEnumLiteral(rateUnitEEnum, RateUnit.PER_MINUTE);
+
+		initEEnum(arithmeticOperatorEEnum, ArithmeticOperator.class, "ArithmeticOperator");
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.ADDITION);
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.SUBTRACTION);
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.MULTIPLICATION);
+		addEEnumLiteral(arithmeticOperatorEEnum, ArithmeticOperator.DIVISION);
+
+		initEEnum(monotonicityTypeEEnum, MonotonicityType.class, "MonotonicityType");
+		addEEnumLiteral(monotonicityTypeEEnum, MonotonicityType.INCREASING);
+		addEEnumLiteral(monotonicityTypeEEnum, MonotonicityType.DECREASING);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -5828,12 +6514,12 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass REWARD_PROPERTY = eINSTANCE.getRewardProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute REWARD_PROPERTY__VARIABLE_NAME = eINSTANCE.getRewardProperty_VariableName();
+		public static final EReference REWARD_PROPERTY__VARIABLE = eINSTANCE.getRewardProperty_Variable();
 
 		/**
 		 * The meta object literal for the '<em><b>Time Constraint</b></em>' containment reference feature.
@@ -5990,22 +6676,22 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference NOT_STATE_FORMULA__NEGATED_OPERAND = eINSTANCE.getNotStateFormula_NegatedOperand();
 
 		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}' class.
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression <em>Concentration Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.StateExpression
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression()
+		 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression()
 		 * @generated
 		 */
-		public static final EClass STATE_EXPRESSION = eINSTANCE.getStateExpression();
+		public static final EClass CONCENTRATION_EXPRESSION = eINSTANCE.getConcentrationExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute STATE_EXPRESSION__VARIABLE_NAME = eINSTANCE.getStateExpression_VariableName();
+		public static final EReference CONCENTRATION_EXPRESSION__VARIABLE = eINSTANCE.getConcentrationExpression_Variable();
 
 		/**
 		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -6013,7 +6699,7 @@ public class IblPackage extends EPackageImpl {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute STATE_EXPRESSION__OPERATOR = eINSTANCE.getStateExpression_Operator();
+		public static final EAttribute CONCENTRATION_EXPRESSION__OPERATOR = eINSTANCE.getConcentrationExpression_Operator();
 
 		/**
 		 * The meta object literal for the '<em><b>Quantity</b></em>' attribute feature.
@@ -6021,7 +6707,7 @@ public class IblPackage extends EPackageImpl {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute STATE_EXPRESSION__QUANTITY = eINSTANCE.getStateExpression_Quantity();
+		public static final EAttribute CONCENTRATION_EXPRESSION__QUANTITY = eINSTANCE.getConcentrationExpression_Quantity();
 
 		/**
 		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
@@ -6029,7 +6715,7 @@ public class IblPackage extends EPackageImpl {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute STATE_EXPRESSION__UNIT = eINSTANCE.getStateExpression_Unit();
+		public static final EAttribute CONCENTRATION_EXPRESSION__UNIT = eINSTANCE.getConcentrationExpression_Unit();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}' class.
@@ -6176,20 +6862,12 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass PROPERTY_INITIAL_CONDITION = eINSTANCE.getPropertyInitialCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute PROPERTY_INITIAL_CONDITION__VARIABLE_NAME = eINSTANCE.getPropertyInitialCondition_VariableName();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable Attribute</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE = eINSTANCE.getPropertyInitialCondition_VariableAttribute();
+		public static final EReference PROPERTY_INITIAL_CONDITION__VARIABLE = eINSTANCE.getPropertyInitialCondition_Variable();
 
 		/**
 		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
@@ -6288,6 +6966,172 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference FLAT_MODEL_PROPERTY_PAIR__PROPERTY = eINSTANCE.getFlatModelPropertyPair_Property();
 
 		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticExpression()
+		 * @generated
+		 */
+		public static final EClass IARITHMETIC_EXPRESSION = eINSTANCE.getIArithmeticExpression();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.IArithmeticOperand
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticOperand()
+		 * @generated
+		 */
+		public static final EClass IARITHMETIC_OPERAND = eINSTANCE.getIArithmeticOperand();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryArithmeticExpression()
+		 * @generated
+		 */
+		public static final EClass BINARY_ARITHMETIC_EXPRESSION = eINSTANCE.getBinaryArithmeticExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Left Operand</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference BINARY_ARITHMETIC_EXPRESSION__LEFT_OPERAND = eINSTANCE.getBinaryArithmeticExpression_LeftOperand();
+
+		/**
+		 * The meta object literal for the '<em><b>Right Operand</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference BINARY_ARITHMETIC_EXPRESSION__RIGHT_OPERAND = eINSTANCE.getBinaryArithmeticExpression_RightOperand();
+
+		/**
+		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute BINARY_ARITHMETIC_EXPRESSION__OPERATOR = eINSTANCE.getBinaryArithmeticExpression_Operator();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.NumericLiteral
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getNumericLiteral()
+		 * @generated
+		 */
+		public static final EClass NUMERIC_LITERAL = eINSTANCE.getNumericLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute NUMERIC_LITERAL__VALUE = eINSTANCE.getNumericLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.VariableReference
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getVariableReference()
+		 * @generated
+		 */
+		public static final EClass VARIABLE_REFERENCE = eINSTANCE.getVariableReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute VARIABLE_REFERENCE__NAME = eINSTANCE.getVariableReference_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Maximum Of Interest</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute VARIABLE_REFERENCE__IS_MAXIMUM_OF_INTEREST = eINSTANCE.getVariableReference_IsMaximumOfInterest();
+
+		/**
+		 * The meta object literal for the '<em><b>Container Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute VARIABLE_REFERENCE__CONTAINER_NAME = eINSTANCE.getVariableReference_ContainerName();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityExpression()
+		 * @generated
+		 */
+		public static final EClass MONOTONICITY_EXPRESSION = eINSTANCE.getMonotonicityExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference MONOTONICITY_EXPRESSION__VARIABLE = eINSTANCE.getMonotonicityExpression_Variable();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MONOTONICITY_EXPRESSION__TYPE = eINSTANCE.getMonotonicityExpression_Type();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.RelationalExpression
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalExpression()
+		 * @generated
+		 */
+		public static final EClass RELATIONAL_EXPRESSION = eINSTANCE.getRelationalExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Left Operand</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RELATIONAL_EXPRESSION__LEFT_OPERAND = eINSTANCE.getRelationalExpression_LeftOperand();
+
+		/**
+		 * The meta object literal for the '<em><b>Right Operand</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RELATIONAL_EXPRESSION__RIGHT_OPERAND = eINSTANCE.getRelationalExpression_RightOperand();
+
+		/**
+		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RELATIONAL_EXPRESSION__OPERATOR = eINSTANCE.getRelationalExpression_Operator();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6298,14 +7142,14 @@ public class IblPackage extends EPackageImpl {
 		public static final EEnum TIME_UNIT = eINSTANCE.getTimeUnit();
 
 		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TemporalOperator <em>Temporal Operator</em>}' enum.
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.TemporalOperator
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalOperator()
+		 * @see roadblock.emf.ibl.Ibl.TemporalPattern
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalPattern()
 		 * @generated
 		 */
-		public static final EEnum TEMPORAL_OPERATOR = eINSTANCE.getTemporalOperator();
+		public static final EEnum TEMPORAL_PATTERN = eINSTANCE.getTemporalPattern();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -6346,6 +7190,26 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EEnum RATE_UNIT = eINSTANCE.getRateUnit();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.ArithmeticOperator
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getArithmeticOperator()
+		 * @generated
+		 */
+		public static final EEnum ARITHMETIC_OPERATOR = eINSTANCE.getArithmeticOperator();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.MonotonicityType
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityType()
+		 * @generated
+		 */
+		public static final EEnum MONOTONICITY_TYPE = eINSTANCE.getMonotonicityType();
 
 	}
 

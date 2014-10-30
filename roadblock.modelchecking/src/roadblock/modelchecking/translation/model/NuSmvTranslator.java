@@ -258,9 +258,11 @@ public class NuSmvTranslator implements IModelTranslator {
 			adjustMaxConcentration(consumedMolecules);
 			adjustMaxConcentration(producedMolecules);
 
-			registerUpdateRules(++ruleCount, consumedMolecules, producedMolecules);
+			if (rule.getForwardRate() != null && rule.getForwardRate() > 0) {
+				registerUpdateRules(++ruleCount, consumedMolecules, producedMolecules);
+			}
 
-			if (rule.isIsBidirectional()) {
+			if (rule.isIsBidirectional() && rule.getReverseRate() != null && rule.getReverseRate() > 0) {
 				registerUpdateRules(++ruleCount, producedMolecules, consumedMolecules);
 			}
 		}

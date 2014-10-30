@@ -92,7 +92,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double FORWARD_RATE_EDEFAULT = 0.0;
+	protected static final Double FORWARD_RATE_EDEFAULT = new Double(0.0);
 
 	/**
 	 * The cached value of the '{@link #getForwardRate() <em>Forward Rate</em>}' attribute.
@@ -102,7 +102,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected double forwardRate = FORWARD_RATE_EDEFAULT;
+	protected Double forwardRate = FORWARD_RATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getReverseRate() <em>Reverse Rate</em>}' attribute.
@@ -112,7 +112,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double REVERSE_RATE_EDEFAULT = 0.0;
+	protected static final Double REVERSE_RATE_EDEFAULT = new Double(0.0);
 
 	/**
 	 * The cached value of the '{@link #getReverseRate() <em>Reverse Rate</em>}' attribute.
@@ -122,7 +122,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected double reverseRate = REVERSE_RATE_EDEFAULT;
+	protected Double reverseRate = REVERSE_RATE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getLeftHandSide() <em>Left Hand Side</em>}' containment reference list.
@@ -299,12 +299,12 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Forward Rate</em>' attribute.
-	 * @see #setForwardRate(double)
+	 * @see #setForwardRate(Double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRate()
 	 * @model default="0"
 	 * @generated
 	 */
-	public double getForwardRate() {
+	public Double getForwardRate() {
 		return forwardRate;
 	}
 
@@ -316,8 +316,8 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @see #getForwardRate()
 	 * @generated
 	 */
-	public void setForwardRate(double newForwardRate) {
-		double oldForwardRate = forwardRate;
+	public void setForwardRate(Double newForwardRate) {
+		Double oldForwardRate = forwardRate;
 		forwardRate = newForwardRate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE, oldForwardRate, forwardRate));
@@ -333,12 +333,12 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reverse Rate</em>' attribute.
-	 * @see #setReverseRate(double)
+	 * @see #setReverseRate(Double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRate()
 	 * @model default="0"
 	 * @generated
 	 */
-	public double getReverseRate() {
+	public Double getReverseRate() {
 		return reverseRate;
 	}
 
@@ -350,8 +350,8 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * @see #getReverseRate()
 	 * @generated
 	 */
-	public void setReverseRate(double newReverseRate) {
-		double oldReverseRate = reverseRate;
+	public void setReverseRate(Double newReverseRate) {
+		Double oldReverseRate = reverseRate;
 		reverseRate = newReverseRate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE, oldReverseRate, reverseRate));
@@ -657,9 +657,9 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__IS_BIDIRECTIONAL:
 				return isBidirectional != IS_BIDIRECTIONAL_EDEFAULT;
 			case IblPackage.RULE__FORWARD_RATE:
-				return forwardRate != FORWARD_RATE_EDEFAULT;
+				return FORWARD_RATE_EDEFAULT == null ? forwardRate != null : !FORWARD_RATE_EDEFAULT.equals(forwardRate);
 			case IblPackage.RULE__REVERSE_RATE:
-				return reverseRate != REVERSE_RATE_EDEFAULT;
+				return REVERSE_RATE_EDEFAULT == null ? reverseRate != null : !REVERSE_RATE_EDEFAULT.equals(reverseRate);
 			case IblPackage.RULE__LEFT_HAND_SIDE:
 				return leftHandSide != null && !leftHandSide.isEmpty();
 			case IblPackage.RULE__RIGHT_HAND_SIDE:

@@ -218,7 +218,6 @@ CellInstantiation:
 ;
 
 
-
 ///////////////
 // variables //
 ///////////////
@@ -424,16 +423,30 @@ PropertyDefinition:
 
 ProbabilityProperty:
 	{ProbabilityProperty}
-	stateFormula1=StateFormula
-	((		
-	((isEventually?='EVENTUALLY HOLDS' | isNever?='NEVER HOLDS' | isAlways?='ALWAYS HOLDS') |
-	((isUntilThen?='WILL HOLD UNTIL THEN' | isFollowedBy?='IS FOLLOWED BY') stateFormula2=StateFormula))		
-	
-	(timeInstant=TimeInstant | timeInterval=TimeInterval)?
-	)  |
-	
-	(isSteadyState?='HOLDS IN STEADY-STATE' | isInfinitelyOften?='HOLDS INFINITELY OFTEN' 	
-	))
+	((stateFormula1=StateFormula (((
+		(isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS') 'HOLDS'
+		|
+		('HOLDS' isUntilThen?='UNTIL' 
+			(stateFormula2=StateFormula 'HOLDS' | '[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES'))
+		)
+		|
+		isFollowedBy?='IS FOLLOWED BY' (stateFormula2=StateFormula | '[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES'))) 
+		(timeInstant=TimeInstant | timeInterval=TimeInterval)?)
+		|
+		'HOLDS' (isSteadyState?='IN STEADY-STATE' | isInfinitelyOften?='INFINITELY OFTEN'))
+	)
+	|
+	('[' variable1=PropertyVariableReference ']' ((
+		(isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS') (isIncreasing?='INCREASES' | isDecreasing?='DECREASES')
+		|
+		((isIncreasing1?='INCREASES' | isDecreasing1?='DECREASES')	isUntilThen?='UNTIL'
+		('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') | stateFormula2=StateFormula 'HOLDS')
+		|
+		((isIncreasing1?='INCREASES' | isDecreasing1?='DECREASES') isFollowedBy?='IS FOLLOWED BY'
+		('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') | stateFormula2=StateFormula)))) 
+		(timeInstant=TimeInstant | timeInterval=TimeInterval)?
+	)))
+	 	
 	(probabilityConstraint=ProbabilityConstraint)?
 	(
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
@@ -442,23 +455,39 @@ ProbabilityProperty:
 
 RewardProperty:
 	{RewardProperty}
-	'EXPECTED' '[' name=VariableKind ']' timeInstant=RewardTimeInstant 'IS ' concentrationConstraint=ConcentrationConstraint 
+	'EXPECTED' '[' variable=PropertyVariableReference ']' timeInstant=RewardTimeInstant 'IS ' concentrationConstraint=ConcentrationConstraint 
     (
 	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
 	)?
-;
-
-StateExpression:
-	{StateExpression}
-	name = VariableKind  operator=RelationalOperator concentrationQuantity=ConcentrationQuantity
 ;
 
 StateFormula:
 	{StateFormula}
 	formula=
 	'[' atomicFormula=StateExpression']' | 
-	'[' isNegation?='NOT' negatedFormula=StateFormula']' |
+	'[' isNegation?='NOT' negatedFormula=StateFormula ']' |
 	'[' leftFormula=StateFormula (isConjunction?='AND' | isDisjunction?='OR' | isImplication?='IMPLIES') rightFormula=StateFormula ']'
+;
+
+StateExpression:
+	{StateExpression}
+	(variable=PropertyVariableReference operator=RelationalOperator concentrationQuantity=ConcentrationQuantity) |
+	(operand1=AdditionSubtractionExpression operator=RelationalOperator operand2=AdditionSubtractionExpression)
+;
+
+AdditionSubtractionExpression:
+	{AdditionSubtractionExpression}
+	operand1=MultiplicationDivisionExpression (operator=('+' | '-') operand2=MultiplicationDivisionExpression)?
+;
+
+MultiplicationDivisionExpression:
+	{MultiplicationDivisionExpression}
+	operand1=ArithmeticOperand (operator=('*' | '/') operand2=ArithmeticOperand)?
+;
+
+ArithmeticOperand:
+	{ArithmeticOperand}
+	numericLiteral=REAL | variable=PropertyVariableReference | isMaximumOfInterest?='MAX('variable=PropertyVariableReference')' | '(' expression=AdditionSubtractionExpression ')' 
 ;
 
 TimeInstant:
@@ -492,7 +521,12 @@ ConcentrationConstraint:
 
 PropertyInitialCondition:
 	{PropertyInitialCondition}
-	variable=VariableAssignmentObject '=' value=ConcentrationQuantity	
+	'[' variable=PropertyVariableReference '=' value=ConcentrationQuantity ']'	
+;
+
+PropertyVariableReference:
+	{PropertyVariableReference}
+	name=VariableKind ('@' container=VariableName)?
 ;
 
 /////////////////
@@ -544,7 +578,7 @@ ConcentrationQuantity:
 
 // relational operators
 RelationalOperator:
-	'==' | '!=' | '<' | '>' | '<=' | '>='
+	'=' | '!=' | '<' | '>' | '<=' | '>='
 ;
 
 // boolean operator

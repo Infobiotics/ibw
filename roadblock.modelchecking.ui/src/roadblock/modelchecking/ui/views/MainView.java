@@ -63,13 +63,13 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
-//import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.runtime.IModelcheckingConfiguration;
 import roadblock.modelchecking.runtime.VerificationManager;
+import roadblock.modelchecking.runtime.mc2.Mc2Configuration;
 import roadblock.modelchecking.runtime.nusmv.NuSmvConfiguration;
 import roadblock.modelchecking.runtime.prism.PrismConfiguration;
 import roadblock.modelchecking.ui.Activator;
@@ -81,7 +81,7 @@ import roadblock.modelchecking.ui.model.PropertyTreeData;
 import roadblock.modelchecking.ui.util.ConfigurationUtil;
 import roadblock.modelchecking.ui.util.ModelcheckingUtil;
 
-//import com.google.inject.Inject;
+//import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 
 public class MainView extends ViewPart implements IPartListener2 {
 
@@ -106,9 +106,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private String tmpDirPath;
 	private File tmpDir;
-
-	// @Inject
-	// private IHighlightedPositionAcceptor highlightedPositionAcceptor;
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -168,17 +165,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ddlModelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
 		ddlModelChecker.add("NuSMV");
 		ddlModelChecker.setData("NuSMV", ModelcheckingTarget.NUSMV);
+		ddlModelChecker.add("MC2");
+		ddlModelChecker.setData("MC2", ModelcheckingTarget.MC2);
 		ddlModelChecker.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 
-				if(ddlModelChecker.getText() == "PRISM") {
+				if (ddlModelChecker.getText() == "PRISM") {
 					txtConfidenceValue.setEnabled(true);
 					txtPathLength.setEnabled(true);
 					txtSampleNumber.setEnabled(true);
-				}
-				else {
+				} else {
 					txtConfidenceValue.setEnabled(false);
 					txtPathLength.setEnabled(false);
 					txtSampleNumber.setEnabled(false);
@@ -222,7 +220,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		Label separator2 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
 		separator2.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 
-		ctvPropertyTreeViewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.NO_SCROLL | SWT.V_SCROLL);
+		ctvPropertyTreeViewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.V_SCROLL);
 		// ctvPropertyTreeViewer.setLabelProvider(new IblLabelProvider());
 		ctvPropertyTreeViewer.setContentProvider(new IblTreeContentProvider());
 		ctvPropertyTreeViewer.setAutoExpandLevel(4);
@@ -558,7 +556,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
 		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-		
+
 		final double confidence = Double.parseDouble(txtConfidenceValue.getText());
 		final long pathLength = Long.parseLong(txtPathLength.getText());
 		final long samples = Long.parseLong(txtSampleNumber.getText());
@@ -593,10 +591,14 @@ public class MainView extends ViewPart implements IPartListener2 {
 								nuSmvConfig.modelFileName = exportFileName;
 								config = nuSmvConfig;
 								break;
+							case MC2:
+								Mc2Configuration mc2Config = new Mc2Configuration();
+								mc2Config.modelFileName = exportFileName;
+								config = mc2Config;
+								break;
 							}
 
-							final Process verificationProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target,
-									config);
+							final Process verificationProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target, config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
@@ -667,30 +669,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
-
-/*
-	private IModelcheckingConfiguration getModelcheckingConfiguration(String exportFileName, ModelcheckingTarget target) {
-
-		IModelcheckingConfiguration config = null;
-
-		switch (target) {
-		case PRISM:
-			PrismConfiguration prismConfig = new PrismConfiguration();
-			prismConfig.modelFileName = exportFileName;
-			prismConfig.confidence = Double.parseDouble(txtConfidenceValue.getText());
-			prismConfig.pathLength = Long.parseLong(txtPathLength.getText());
-			prismConfig.samples = Long.parseLong(txtSampleNumber.getText());
-			config = prismConfig;
-		case NUSMV:
-			NuSmvConfiguration nuSmvConfig = new NuSmvConfiguration();
-			nuSmvConfig.modelFileName = exportFileName;
-			config = nuSmvConfig;
-			break;
-		}
-
-		return config;
-	}
-*/
 
 	@Override
 	public void partDeactivated(IWorkbenchPartReference partRef) {

@@ -22,8 +22,9 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
+		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 
-		writeFile(filename + ".smv", modelTranslation);
+		writeModel(filename + ".smv", modelTranslation, propetyTranslation, false);
 	}
 
 	@Override
@@ -37,30 +38,28 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
 
-		writeFile(verificationModelFileName, modelTranslation, propetyTranslation);
+		writeModel(verificationModelFileName, modelTranslation, propetyTranslation, true);
 
 		String[] verificationCommand = new String[] { "NuSMV", verificationModelFileName };
-		
+
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
 
-	private void writeFile(String fileName, String model) throws IOException {
+	private void writeModel(String fileName, String model, String property, boolean writeProperty) throws IOException {
 
 		FileWriter writer = new FileWriter(fileName);
 
-		writer.write(model);
-		writer.flush();
-		writer.close();
-	}
-	
-	private void writeFile(String fileName, String model, String property) throws IOException {
-
-		FileWriter writer = new FileWriter(fileName);
-
-		writer.write(model);
+		writer.write(String.format("-- The generated NuSMV model corresponding to property: SPEC %s", property));
 		writer.write(System.getProperty("line.separator"));
 		writer.write(System.getProperty("line.separator"));
-		writer.write(String.format("SPEC %s", property));
+		writer.write(model);
+
+		if (writeProperty) {
+			writer.write(System.getProperty("line.separator"));
+			writer.write(System.getProperty("line.separator"));
+			writer.write(String.format("SPEC %s", property));
+		}
+		
 		writer.flush();
 		writer.close();
 	}

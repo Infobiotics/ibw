@@ -4,7 +4,7 @@ define SensorCell typeof CELL(){
         // define molecular elements
         ribosome = RIBOSOME() : observable
         rnaP = RNA(displayName = "XYZ") : observable
-        SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+        SA = MOLECULE(displayID = "SA")
 //        CHASSIS chassis = new CHASSIS(organism = "ecoli") // NOT YET IMPLEMENTED
 //        INTEGER plasmidNumber = 500 // NOT YET IMPLEMENTED
 
@@ -27,7 +27,9 @@ define SensorCell typeof CELL(){
 		GFP = MOLECULE()
 		AHL = MOLECULE()
 		
-        DEVICE NahRLasRProduction = new DEVICE(parts = [PnahR, nahR, lasR])(input = [], output = [NahR, LasR]){
+		mrna1 = RNA()
+		
+        DEVICE NahRLasRProduction = new DEVICE(parts = [])(input = []){
        	// constitutively produces NahR and LasR
 			mrna1 = RNA()
 		
@@ -52,10 +54,8 @@ define SensorCell typeof CELL(){
 			translation2.forwardRate = 1 s^-1
    }
 
-        DEVICE XylS2Production = new DEVICE(parts = [Psal, xylS2])(input = [NahR], output = [XylS2]){
+        DEVICE XylS2Production = new DEVICE(parts = [])(input = [NahR]){
         // produces XylS2, upregulated by SA~NahR
-			ATGC ARRANGE Psal, xylS2
-
 			mrna1 = RNA()
 			
 		    RULE regulation : SA~NahR + Psal <-> SA~NahR~Psal
@@ -65,10 +65,10 @@ define SensorCell typeof CELL(){
 			RULE translationInitiation : mrna1 + ribosome <-> mrna1~ribosome // mrna binds to ribosome
 			RULE translation : mrna1~ribosome -> mrna1~ribosome + XylS2
 			
-            VERIFY [XylS2 > 0 uM ] EVENTUALLY HOLDS
+            VERIFY [XylS2 > 0 uM] EVENTUALLY HOLDS
         }
 
-        DEVICE GFPProduction = new DEVICE(parts = [Pm, PlasR, gFP])(input = [SA~XylS2, AHL~LasR], output = [GFP]){
+        DEVICE GFPProduction = new DEVICE(parts = [])(input = [SA~XylS2]){
         // produces GFP, upregulated by SA~XylS2 OR AHL~LasR (dual promoter)
 
 			mrna1 = RNA() 	
@@ -107,24 +107,31 @@ define SensorCell typeof CELL(){
          RULE AHLConsumption : OUTSIDE -> AHL
          AHLConsumption.rate = 1 min^-1
  
-         // atgc rules
-         ATGC ARRANGE nahR, PnahR, Psal
- 
          // some example properties
-          
-         VERIFY [SA > 0 uM] EVENTUALLY HOLDS
+         
+         VERIFY [mrna1 = 2 uM] HOLDS UNTIL [mrna1 @ GFPProduction < 0 uM] HOLDS
+         VERIFY [((SA + 10) / 2) * 5 > 0] EVENTUALLY HOLDS         
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
          VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
          VERIFY [SA > 0 uM] NEVER HOLDS
          VERIFY [SA > 0 uM] ALWAYS HOLDS
-         VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
+         VERIFY [SA > 0 uM] EVENTUALLY HOLDS
          VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
-         VERIFY [GFP > 0 uM] WILL HOLD UNTIL THEN [SA > 0 uM]
          VERIFY EXPECTED [GFP] AT 1000 s IS ?
          VERIFY EXPECTED [GFP] WITHIN 1000 s IS ?
-}  
+         
+         VERIFY [SA] INCREASES IS FOLLOWED BY [GFP > 0]  
+		 VERIFY [GFP > 0] EVENTUALLY HOLDS
+		 VERIFY [GFP = MAX(GFP) / 2] HOLDS UNTIL [GFP] DECREASES
+		 //VERIFY [SA] NEVER
+		 VERIFY [GFP] NEVER INCREASES
+		 //VERIFY [GFP] EVENTUALLY INCREASES WITHIN 1000 s
+		 VERIFY [GFP > MAX(GFP)] EVENTUALLY HOLDS WITHIN [1000,2000] s
+		 VERIFY [GFP > 0] HOLDS IN STEADY-STATE
+		 VERIFY [GFP > 0] HOLDS INFINITELY OFTEN
+}
 
 define site1 typeof REGION () {
-        SA = MOLECULE(displayID = "SA", degradationRate = 1 s^-1, concentration = 100 uM)
+        SA = MOLECULE(displayID = "SA")
         CELL myCell = new SensorCell()
 }

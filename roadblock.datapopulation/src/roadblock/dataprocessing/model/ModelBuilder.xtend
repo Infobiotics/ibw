@@ -355,8 +355,7 @@ class ModelBuilder extends IblSwitch<Object> {
 			rule.rightHandSide.add(part.doSwitch as MolecularSpecies)
 
 		rule.isBidirectional = ruleDefinition.reversible
-		rule.setForwardRate(0.0)
-		if(rule.isBidirectional) rule.setReverseRate(0.0) else rule.setReverseRate(0.0)
+
 		return rule
 	}
 

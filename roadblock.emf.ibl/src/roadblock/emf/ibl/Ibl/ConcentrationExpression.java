@@ -4,50 +4,42 @@ package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>State Expression</b></em>'.
+ * A representation of the model object '<em><b>Concentration Expression</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getVariableName <em>Variable Name</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getOperator <em>Operator</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getUnit <em>Unit</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getVariable <em>Variable</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getOperator <em>Operator</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getQuantity <em>Quantity</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getUnit <em>Unit</em>}</li>
  * </ul>
  * </p>
  *
- * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression()
+ * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression()
  * @model kind="class"
  * @generated
  */
-public class StateExpression extends EObjectImpl implements IStateFormula {
+public class ConcentrationExpression extends EObjectImpl implements IStateFormula {
 	/**
-	 * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariableName()
+	 * @see #getVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VARIABLE_NAME_EDEFAULT = "";
-
-	/**
-	 * The cached value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariableName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String variableName = VARIABLE_NAME_EDEFAULT;
+	protected VariableReference variable;
 
 	/**
 	 * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -114,7 +106,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StateExpression() {
+	protected ConcentrationExpression() {
 		super();
 	}
 
@@ -125,41 +117,62 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return IblPackage.Literals.STATE_EXPRESSION;
+		return IblPackage.Literals.CONCENTRATION_EXPRESSION;
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Variable Name</b></em>' attribute.
-	 * The default value is <code>""</code>.
+	 * Returns the value of the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variable Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Variable</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable Name</em>' attribute.
-	 * @see #setVariableName(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression_VariableName()
-	 * @model default=""
+	 * @return the value of the '<em>Variable</em>' containment reference.
+	 * @see #setVariable(VariableReference)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression_Variable()
+	 * @model containment="true"
 	 * @generated
 	 */
-	public String getVariableName() {
-		return variableName;
+	public VariableReference getVariable() {
+		return variable;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.StateExpression#getVariableName <em>Variable Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable Name</em>' attribute.
-	 * @see #getVariableName()
 	 * @generated
 	 */
-	public void setVariableName(String newVariableName) {
-		String oldVariableName = variableName;
-		variableName = newVariableName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.STATE_EXPRESSION__VARIABLE_NAME, oldVariableName, variableName));
+	public NotificationChain basicSetVariable(VariableReference newVariable, NotificationChain msgs) {
+		VariableReference oldVariable = variable;
+		variable = newVariable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.CONCENTRATION_EXPRESSION__VARIABLE, oldVariable, newVariable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getVariable <em>Variable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Variable</em>' containment reference.
+	 * @see #getVariable()
+	 * @generated
+	 */
+	public void setVariable(VariableReference newVariable) {
+		if (newVariable != variable) {
+			NotificationChain msgs = null;
+			if (variable != null)
+				msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.CONCENTRATION_EXPRESSION__VARIABLE, null, msgs);
+			if (newVariable != null)
+				msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.CONCENTRATION_EXPRESSION__VARIABLE, null, msgs);
+			msgs = basicSetVariable(newVariable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.CONCENTRATION_EXPRESSION__VARIABLE, newVariable, newVariable));
 	}
 
 	/**
@@ -174,7 +187,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	 * @return the value of the '<em>Operator</em>' attribute.
 	 * @see roadblock.emf.ibl.Ibl.RelationalOperator
 	 * @see #setOperator(RelationalOperator)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression_Operator()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression_Operator()
 	 * @model
 	 * @generated
 	 */
@@ -183,7 +196,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.StateExpression#getOperator <em>Operator</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getOperator <em>Operator</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Operator</em>' attribute.
@@ -195,7 +208,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 		RelationalOperator oldOperator = operator;
 		operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.STATE_EXPRESSION__OPERATOR, oldOperator, operator));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.CONCENTRATION_EXPRESSION__OPERATOR, oldOperator, operator));
 	}
 
 	/**
@@ -208,7 +221,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Quantity</em>' attribute.
 	 * @see #setQuantity(double)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression_Quantity()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression_Quantity()
 	 * @model
 	 * @generated
 	 */
@@ -217,7 +230,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.StateExpression#getQuantity <em>Quantity</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getQuantity <em>Quantity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Quantity</em>' attribute.
@@ -228,7 +241,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 		double oldQuantity = quantity;
 		quantity = newQuantity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.STATE_EXPRESSION__QUANTITY, oldQuantity, quantity));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.CONCENTRATION_EXPRESSION__QUANTITY, oldQuantity, quantity));
 	}
 
 	/**
@@ -243,7 +256,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	 * @return the value of the '<em>Unit</em>' attribute.
 	 * @see roadblock.emf.ibl.Ibl.ConcentrationUnit
 	 * @see #setUnit(ConcentrationUnit)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression_Unit()
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationExpression_Unit()
 	 * @model
 	 * @generated
 	 */
@@ -252,7 +265,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.StateExpression#getUnit <em>Unit</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression#getUnit <em>Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Unit</em>' attribute.
@@ -264,7 +277,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 		ConcentrationUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.STATE_EXPRESSION__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.CONCENTRATION_EXPRESSION__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -283,15 +296,29 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.CONCENTRATION_EXPRESSION__VARIABLE:
+				return basicSetVariable(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.STATE_EXPRESSION__VARIABLE_NAME:
-				return getVariableName();
-			case IblPackage.STATE_EXPRESSION__OPERATOR:
+			case IblPackage.CONCENTRATION_EXPRESSION__VARIABLE:
+				return getVariable();
+			case IblPackage.CONCENTRATION_EXPRESSION__OPERATOR:
 				return getOperator();
-			case IblPackage.STATE_EXPRESSION__QUANTITY:
+			case IblPackage.CONCENTRATION_EXPRESSION__QUANTITY:
 				return getQuantity();
-			case IblPackage.STATE_EXPRESSION__UNIT:
+			case IblPackage.CONCENTRATION_EXPRESSION__UNIT:
 				return getUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -305,16 +332,16 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.STATE_EXPRESSION__VARIABLE_NAME:
-				setVariableName((String)newValue);
+			case IblPackage.CONCENTRATION_EXPRESSION__VARIABLE:
+				setVariable((VariableReference)newValue);
 				return;
-			case IblPackage.STATE_EXPRESSION__OPERATOR:
+			case IblPackage.CONCENTRATION_EXPRESSION__OPERATOR:
 				setOperator((RelationalOperator)newValue);
 				return;
-			case IblPackage.STATE_EXPRESSION__QUANTITY:
+			case IblPackage.CONCENTRATION_EXPRESSION__QUANTITY:
 				setQuantity((Double)newValue);
 				return;
-			case IblPackage.STATE_EXPRESSION__UNIT:
+			case IblPackage.CONCENTRATION_EXPRESSION__UNIT:
 				setUnit((ConcentrationUnit)newValue);
 				return;
 		}
@@ -329,16 +356,16 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.STATE_EXPRESSION__VARIABLE_NAME:
-				setVariableName(VARIABLE_NAME_EDEFAULT);
+			case IblPackage.CONCENTRATION_EXPRESSION__VARIABLE:
+				setVariable((VariableReference)null);
 				return;
-			case IblPackage.STATE_EXPRESSION__OPERATOR:
+			case IblPackage.CONCENTRATION_EXPRESSION__OPERATOR:
 				setOperator(OPERATOR_EDEFAULT);
 				return;
-			case IblPackage.STATE_EXPRESSION__QUANTITY:
+			case IblPackage.CONCENTRATION_EXPRESSION__QUANTITY:
 				setQuantity(QUANTITY_EDEFAULT);
 				return;
-			case IblPackage.STATE_EXPRESSION__UNIT:
+			case IblPackage.CONCENTRATION_EXPRESSION__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
 		}
@@ -353,13 +380,13 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.STATE_EXPRESSION__VARIABLE_NAME:
-				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
-			case IblPackage.STATE_EXPRESSION__OPERATOR:
+			case IblPackage.CONCENTRATION_EXPRESSION__VARIABLE:
+				return variable != null;
+			case IblPackage.CONCENTRATION_EXPRESSION__OPERATOR:
 				return operator != OPERATOR_EDEFAULT;
-			case IblPackage.STATE_EXPRESSION__QUANTITY:
+			case IblPackage.CONCENTRATION_EXPRESSION__QUANTITY:
 				return quantity != QUANTITY_EDEFAULT;
-			case IblPackage.STATE_EXPRESSION__UNIT:
+			case IblPackage.CONCENTRATION_EXPRESSION__UNIT:
 				return unit != UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -375,9 +402,7 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (variableName: ");
-		result.append(variableName);
-		result.append(", operator: ");
+		result.append(" (operator: ");
 		result.append(operator);
 		result.append(", quantity: ");
 		result.append(quantity);
@@ -387,4 +412,4 @@ public class StateExpression extends EObjectImpl implements IStateFormula {
 		return result.toString();
 	}
 
-} // StateExpression
+} // ConcentrationExpression
