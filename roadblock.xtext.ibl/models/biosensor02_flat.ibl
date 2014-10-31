@@ -36,6 +36,17 @@ define SentinelCell typeof CELL(){
 	RULE LasRDegradation: LasR ->
 	RULE XylS2Degradation: XylS2 ->
 	RULE LuxDegradation: Lux ->
+	
+	VERIFY [SA > 0 uM] EVENTUALLY HOLDS
+	VERIFY [AHL > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
+	VERIFY [NahR > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
+	VERIFY [LasR > 0 uM] NEVER HOLDS
+	VERIFY [SA > 0 uM] ALWAYS HOLDS
+	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
+	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
+	VERIFY [AHL > 0 uM] WILL HOLD UNTIL THEN [SA > 0 uM]
+	VERIFY EXPECTED [XylS2] AT 1000 s IS ?
+	VERIFY EXPECTED [XylS2] WITHIN 1000 s IS ?
 
 	// components of the NahRLasRProduction device
 	PnahR = PROMOTER()
@@ -82,6 +93,8 @@ define SentinelCell typeof CELL(){
 		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
 		RULE translation : mrna~ribosome -> mrna + ribosome + XylS2
 		RULE mrnaDegradation : mrna ->
+		
+		VERIFY [XylS2 > 0 uM ] EVENTUALLY HOLDS
 	}
 
 	// components of the LuxProduction device
@@ -123,6 +136,8 @@ define SentinelCell typeof CELL(){
 		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
 		RULE translation : mrna~ribosome -> mrna + ribosome + Lux 		
 		RULE mrnaDegradation : mrna ->
+		
+		VERIFY [ [ NOT [ PlasR > 50 uM ] ] IMPLIES [ [ rnaP < 40 uM ] AND [ Lux < 100 uM ] ] ] EVENTUALLY HOLDS
 	}
 }
 
