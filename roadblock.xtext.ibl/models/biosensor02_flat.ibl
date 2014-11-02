@@ -48,9 +48,9 @@ define SentinelCell typeof CELL(){
 	LuxDegradation.forwardRate = 14e-6 s-1	//rough value from http://bionumbers.hms.harvard.edu//bionumber.aspx?id=110438&ver=2
 
 	// components of the NahRLasRProduction device
-	PnahR = PROMOTER()
-	nahR = GENE()
-	lasR = GENE()
+	PnahR = PROMOTER(URI = "atgc://user-submitted/part/pnahr")
+	nahR = GENE(URI = "atgc://user-submitted/part/nahr")
+	lasR = GENE(URI = "atgc://user-submitted/part/lasr")
 	NahR = PROTEIN()
 	LasR = PROTEIN()
 
@@ -76,9 +76,9 @@ define SentinelCell typeof CELL(){
 		mrnaDegradation.forwardRate = 2.778e-2 s-1	// rough 6 min [Bionumbers]
 	}
 
-	// components of the XylSProduction device
-	Psal = PROMOTER()
-	xylS = GENE()
+	// components of the XylS2Production device
+	Psal = PROMOTER(URI = "atgc://user-submitted/part/psal")
+	xylS = GENE(URI = "atgc://user-submitted/part/xysl2")
 	XylS = PROTEIN()
 
 	DEVICE XylS2Production = new DEVICE(parts=[Psal,xylS])(input=[NahR,SA], output=[XylS]){
@@ -112,14 +112,14 @@ define SentinelCell typeof CELL(){
 	}
 
 	// components of the LuxProduction device
-	Pm = PROMOTER()
-	PrsaL = PROMOTER()
-	luxr = GENE()
+	Pm = PROMOTER(URI = "atgc://user-submitted/part/pm")
+	PrsaL = PROMOTER(URI = "atgc://user-submitted/part/plasr")
+	luxr = GENE(URI = "http://parts.igem.org/Part:BBa_K592012")
 	LuxR = PROTEIN()
-
-	DEVICE LuxProduction = new DEVICE(parts=[Pm,PrsaL,luxr])(input=[XylS,SA,LasR,AHL], output=[LuxR]){
+ 
+	DEVICE LuxProduction = new DEVICE(parts=[Pm,PrsaL,luxr])(input=[XylS~SA,LasR~AHL], output=[LuxR]){
 		mrna = RNA() 	
-
+		ATGC CLONING SITES: 5
 		// background transcriptions
 		RULE backgroundBinding1 : Pm + rnaP <-> Pm~rnaP	
 		RULE backgroundInitiation1 : Pm~rnaP -> Pm + rnaP + mrna
@@ -154,6 +154,7 @@ define SentinelCell typeof CELL(){
 	VERIFY EXPECTED [XylS] AT 1000 s IS ?
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
 
+	ATGC ARRANGE nahR, PnahR, Psal, xylS2
 }
 
 define site typeof REGION() {
