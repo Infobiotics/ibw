@@ -6,7 +6,6 @@ import java.util.Map;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
-import roadblock.emf.ibl.Ibl.IblFactory;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
 
@@ -15,7 +14,7 @@ public class FlatModelManager {
 	private Model model;
 
 	private FlatModelBuilder flatModelBuilder;
-	private Map<IProperty, FlatModelBuilder> flatModelBuilderByProperty;
+	private Map<IProperty, ByPropertyFlattening> flatModelBuilderByProperty;
 	private FlatModel flatModel;
 	private Map<IProperty, FlatModelPropertyPair> flatDataByProperty;
 
@@ -52,14 +51,8 @@ public class FlatModelManager {
 		if (flatDataByProperty.containsKey(property)) {
 			flatData = flatDataByProperty.get(property);
 		} else {
-
-			flatData = IblFactory.eINSTANCE.createFlatModelPropertyPair();
-
-			FlatModelBuilder flatModelBuilder = new FlatModelBuilder(model, property);
-			flatModelBuilder.build();
-
-			flatData.setFlatModel(flatModelBuilder.getFlatModel());
-			flatData.setProperty(flatModelBuilder.getFlatProperty());
+			ByPropertyFlattening flatModelBuilder = new ByPropertyFlattening(model, property);
+			flatData = flatModelBuilder.getFlatData();
 
 			flatDataByProperty.put(property, flatData);
 		}
