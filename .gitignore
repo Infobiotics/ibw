@@ -8,6 +8,16 @@
 *.so
 
 
+roadblock.emf.ibl/bin
+
+roadblock.datapopulation/bin
+roadblock.datapopulation/xtend-gen/
+
+roadblock.modelchecking/bin
+
+roadblock.simulation/bin
+roadblock.simulation/xtend-gen
+
 roadblock.xtext.ibl/bin
 roadblock.xtext.ibl/src-gen
 roadblock.xtext.ibl/xtend-gen
@@ -18,5 +28,5 @@ roadblock.xtext.ibl.ui/xtend-gen
 
 roadblock.xtext.ibl.tests/xtend-gen
 
-roadblock.datapopulation/bin
-roadblock.datapopulation/xtend-gen/
+roadblock.xtext.xpect.ibl.tests/bin
+
