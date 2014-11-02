@@ -9,44 +9,43 @@
 
 
 define SentinelCell typeof CELL(){
-	ribosome = RIBOSOME() : observable
 	rnaP = RNA() : observable
 
 	SA = MOLECULE()
 	AHL = MOLECULE()
 
 	// diffusion rules
-	RULE SADiffusion: SA <-> OUTSIDE
-	RULE AHLDiffusion: AHL <-> OUTSIDE
+	RULE SADiffusion: SA -> OUTSIDE
+	RULE AHLDiffusion: AHL -> OUTSIDE
 
-	// XylS2 dimerization, spontaneous and activated by SA
-	RULE XylSDimerization: XylS2 + XylS2 <-> XylS2~XylS2
-	RULE XylSActivation: XylS2 + SA <-> XylS2~SA
-	RULE XylSActivatedDimerization: XylS2~SA + XylS2 <-> XylS2~XylS2~SA
+	// XylS2 activation by SA
+	RULE XylSActivation: XylS + SA <-> XylS~SA
 
-	// LasR dimerization, spontaneous and activated by AHL
-	RULE LasRDimerization: LasR + LasR <-> LasR~LasR
-	RULE LasRActivation: LasR + SA <-> LasR~SA
-	RULE LasRActivatedDimerization: LasR~SA + LasR <-> LasR~LasR~SA
+	// NahR activation by SA
+	RULE NahRActivation: NahR + SA <-> NahR~SA
 
+	// LasR activation by AHL
+	RULE LasRActivation: LasR + AHL <-> LasR~AHL
+	
 	// protein and metabolite degradations
 	RULE SADegradation: SA ->
+	SADegradation.forwardRate = 56.6e-6 s-1	// with an ultraviolet irradiation http://www.cder.dz/download/Art15-1_15.pdf. The value is in agreement with page 52 of http://books.google.co.uk/books?id=iFNQWsDh8w8C
+
 	RULE AHLDegradation: AHL ->
+	AHLDegradation.forwardRate = 15.4e-7 s-1	// http://onlinelibrary.wiley.com/doi/10.1111/j.1574-6941.2009.00828.x/full also http://2011.igem.org/Team:ETH_Zurich/Modeling/Parameters. In bovine serum is times 100 faster, see page 87 http://books.google.co.uk/books?id=GKx0b8HNUt4C
+
 	RULE NahRDegradation: NahR ->
+	NahRDegradation.forwardRate = 14e-6 s-1	//rough value from http://bionumbers.hms.harvard.edu//bionumber.aspx?id=110438&ver=2
+
 	RULE LasRDegradation: LasR ->
-	RULE XylS2Degradation: XylS2 ->
-	RULE LuxDegradation: Lux ->
 	
-	VERIFY [SA > 0 uM] EVENTUALLY HOLDS
-	VERIFY [AHL > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
-	VERIFY [NahR > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
-	VERIFY [LasR > 0 uM] NEVER HOLDS
-	VERIFY [SA > 0 uM] ALWAYS HOLDS
-	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
-	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
-	VERIFY [AHL > 0 uM] WILL HOLD UNTIL THEN [SA > 0 uM]
-	VERIFY EXPECTED [XylS2] AT 1000 s IS ?
-	VERIFY EXPECTED [XylS2] WITHIN 1000 s IS ?
+	LasRDegradation.forwardRate = 14e-6 s-1	//rough value from http://bionumbers.hms.harvard.edu//bionumber.aspx?id=110438&ver=2
+
+	RULE XylSDegradation: XylS ->
+	XylSDegradation.forwardRate = 14e-6 s-1	//rough value from http://bionumbers.hms.harvard.edu//bionumber.aspx?id=110438&ver=2
+
+	RULE LuxDegradation: LuxR ->
+	LuxDegradation.forwardRate = 14e-6 s-1	//rough value from http://bionumbers.hms.harvard.edu//bionumber.aspx?id=110438&ver=2
 
 	// components of the NahRLasRProduction device
 	PnahR = PROMOTER()
@@ -60,90 +59,106 @@ define SentinelCell typeof CELL(){
 		
 		// constitutive transcription
 		RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP			
+		promoterBinding.forwardRate = 4.0e+22 M-1 s-1 // XXX right conversion? median initiation time = 15 s [Bionumbers]; 
+
 		RULE transcription : PnahR~rnaP -> PnahR + rnaP + mrna
+		transcription.forwardRate = 18.4e-3 s-1	// (1) rough transcription rate = 50 nuc/sec [Bionumbers], (2) nahR we assume 2000 nuc which is rough value for the alpha+beta subunits, (3) lasR = 720 [http://www.ncbi.nlm.nih.gov/nuccore/D30812.1]
 
 		// protein translations
-		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
-		RULE translationNahR : mrna~ribosome -> mrna + ribosome + NahR
-		RULE translationLasR : mrna~ribosome -> mrna + ribosome + LasR
+		RULE translationNahR : mrna -> mrna + NahR
+		translationNahR.forwardRate = 7.96e-3	// (1) rough 15 aa/sec [Bionumbers], (2) the sum of 3*(alpha+beta) is 1884 aa [http://www.sciencemag.org/content/299/5609/1039], for simplicity we will just take this value as is
+
+		RULE translationLasR : mrna -> mrna + LasR
+		translationLasR.forwardRate = 6.25e-2 s-1	// (1) rough 15 aa/sec [Bionumbers], (2) 240 aa [http://www.uniprot.org/uniprot/P25084], in agreement with the gene length
 
 		// rna degradation
 		RULE mrnaDegradation : mrna ->
+		mrnaDegradation.forwardRate = 2.778e-2 s-1	// rough 6 min [Bionumbers]
 	}
 
-	// components of the XylS2Production device
+	// components of the XylSProduction device
 	Psal = PROMOTER()
-	xylS2 = GENE()
-	XylS2 = PROTEIN()
+	xylS = GENE()
+	XylS = PROTEIN()
 
-	DEVICE XylS2Production = new DEVICE(parts=[Psal,xylS2])(input=[NahR,SA], output=[XylS2]){
+	DEVICE XylS2Production = new DEVICE(parts=[Psal,xylS])(input=[NahR,SA], output=[XylS]){
 		mrna = RNA()
 
 		// background translation
 		RULE backgroundPromoterBinding : Psal + rnaP <-> Psal~rnaP	
-		RULE backgroundTranscription : Psal~rnaP -> Psal + rnaP + mrna
+		backgroundPromoterBinding.forwardRate = 4.0e+22 M-1 s-1	// median initiation time = 15 s [Bionumbers];
 
+		RULE backgroundTranscription : Psal~rnaP -> Psal + rnaP + mrna
+		backgroundTranscription.forwardRate = 4.52e-2 s-1	// (1) rough transcription rate = 50 nuc/sec [Bionumbers], (2) xylS=1106 nuc [http://www.ncbi.nlm.nih.gov/nuccore/NG_034502.1]
+		
 		// upregulated transcription
-		RULE NahRBinding: NahR + Psal <-> NahR~Psal
-		RULE NahRActivation: NahR~Psal + SA <-> NahR~SA~Psal
-		RULE regulatedPromoterBinding : NahR~SA~Psal + rnaP <-> NahR~SA~Psal~rnaP	
-		RULE regulatedTranscription : NahR~SA~Psal~rnaP -> NahR~SA + Psal + rnaP + mrna
+		RULE NahRBinding: Psal + NahR~SA <-> Psal~NahR~SA
+		NahRBinding.forwardrate = 78.2e+3 M-1 s-1 // [Park, BBA 1725, 247 (2005)]
+		NahRBinding.backwardrate = 19.1e-2 s-1 // [Park, BBA 1725, 247 (2005)]
+
+		RULE regulatedPromoterBinding : Psal~NahR~SA + rnaP <-> Psal~NahR~SA~rnaP	
+		regulatedPromoterBinding.forwardRate = 4.0e+22 M-1 s-1	// XXX why is this the same rate as background?, median initiation time = 15 s [Bionumbers];
+		RULE regulatedTranscription : Psal~NahR~SA~rnaP -> Psal + NahR~SA + rnaP + mrna
+		regulatedTranscription.forwardRate = 4.52e-2 s-1	// (1) rough transcription rate = 50 nuc/sec [Bionumbers], (2) xylS=1106 nuc [http://www.ncbi.nlm.nih.gov/nuccore/NG_034502.1]
 
 		// protein translations
-		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
-		RULE translation : mrna~ribosome -> mrna + ribosome + XylS2
+		RULE translation : mrna -> mrna + XylS
+		translation.forwardRate = 4.67e-2 s-1	// (1) rough 15 aa/sec [Bionumbers], (2) 321 aa [Gene 44, 235 (1986)]
+
 		RULE mrnaDegradation : mrna ->
+		mrnaDegradation.forwardRate = 2.778e-2 s-1
 		
-		VERIFY [XylS2 > 0 uM ] EVENTUALLY HOLDS
+		VERIFY [XylS > 0 uM ] EVENTUALLY HOLDS
 	}
 
 	// components of the LuxProduction device
 	Pm = PROMOTER()
-	PlasR = PROMOTER()
-	lux = GENE()
-	Lux = PROTEIN()
+	PrsaL = PROMOTER()
+	luxr = GENE()
+	LuxR = PROTEIN()
 
-	DEVICE LuxProduction = new DEVICE(parts=[Pm,PlasR,lux])(input=[XylS2~SA,LasR~AHL], output=[Lux]){
+	DEVICE LuxProduction = new DEVICE(parts=[Pm,PrsaL,luxr])(input=[XylS,SA,LasR,AHL], output=[LuxR]){
 		mrna = RNA() 	
 
 		// background transcriptions
 		RULE backgroundBinding1 : Pm + rnaP <-> Pm~rnaP	
 		RULE backgroundInitiation1 : Pm~rnaP -> Pm + rnaP + mrna
-		RULE backgroundBinding2 : PlasR + rnaP <-> PlasR~rnaP	
-		RULE backgroundInitiation2 : PlasR~rnaP -> PlasR + rnaP + mrna
+		RULE backgroundBinding2 : PrsaL + rnaP <-> PrsaL~rnaP	
+		RULE backgroundInitiation2 : PrsaL~rnaP -> PrsaL + rnaP + mrna
 
-		// upregulated transcription by XylS2 dimer
-		RULE XylS2Binding1 : XylS2~XylS2 + Pm <-> XylS2~XylS2~Pm
-		RULE XylS2Initiation1 : XylS2~XylS2~Pm + rnaP <-> XylS2~XylS2~Pm~rnaP	
-		RULE XylS2Transcription1 : XylS2~XylS2~Pm~rnaP -> Pm + rnaP + mrna + XylS2~XylS2
+		// upregulated transcription by XylS~SA
+		RULE XylSBinding : XylS~SA + Pm <-> XylS~SA~Pm
+		RULE XylSInitiation : XylS~SA~Pm + rnaP <-> XylS~SA~Pm~rnaP	
+		RULE XylSTranscription : XylS~SA~Pm~rnaP -> Pm + XylS~SA + rnaP + mrna
 
-		// upregulated transcription by XylS2~SA dimer
-		RULE XylSBinding2 : XylS2~XylS2~SA + Pm <-> XylS2~XylS2~SA~Pm
-		RULE XylSInitiation2 : XylS2~XylS2~SA~Pm + rnaP <-> XylS2~XylS2~SA~Pm~rnaP	
-		RULE XylS2Transcription2 : XylS2~XylS2~SA~Pm~rnaP -> Pm + rnaP + mrna + XylS2~XylS2~SA
-
-		// upregulated transcription by LasR dimer
-		RULE AHLBinding : LasR~LasR + PlasR <-> LasR~LasR~PlasR
-		RULE AHLInitiation : LasR~LasR~PlasR + rnaP <-> LasR~LasR~PlasR~rnaP	
-		RULE AHLTranscription : LasR~LasR~PlasR~rnaP -> LasR~LasR + PlasR + rnaP + mrna
-			
-		// upregulated transcription by LasR~SA dimer
-		RULE AHLBinding : LasR~LasR~SA + PlasR <-> LasR~LasR~SA~PlasR
-		RULE AHLInitiation : LasR~LasR~SA~PlasR + rnaP <-> LasR~LasR~SA~PlasR~rnaP	
-		RULE AHLTranscription : LasR~LasR~SA~PlasR~rnaP -> LasR~LasR~SA + PlasR + rnaP + mrna
+		// upregulated transcription by LasR~AHL
+		RULE LasRBinding : PrsaL + LasR~AHLR <-> PrsaL~LasR~AHL
+		RULE LasRInitiation : PrsaL~LasR~AHL + rnaP <-> PrsaL~LasR~AHL~rnaP	
+		RULE LasRTranscription : PrsaL~LasR~AHL~rnaP -> PrsaL + LasR~AHL + rnaP + mrna
 
 		// protein translation
-		RULE translationInitiation : mrna + ribosome <-> mrna~ribosome
-		RULE translation : mrna~ribosome -> mrna + ribosome + Lux 		
+		RULE translation : mrna -> mrna + LuxR		
 		RULE mrnaDegradation : mrna ->
-		
-		VERIFY [ [ NOT [ PlasR > 50 uM ] ] IMPLIES [ [ rnaP < 40 uM ] AND [ Lux < 100 uM ] ] ] EVENTUALLY HOLDS
+
+		VERIFY [ [ NOT [ PrsaL > 50 uM ] ] IMPLIES [ [ rnaP < 40 uM ] AND [ LuxR < 100 uM ] ] ] EVENTUALLY HOLDS
 	}
+
+	VERIFY [SA > 0 uM] EVENTUALLY HOLDS
+	VERIFY [AHL > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
+	VERIFY [NahR > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
+	VERIFY [LasR > 0 uM] NEVER HOLDS
+	VERIFY [SA > 0 uM] ALWAYS HOLDS
+	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
+	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
+	VERIFY [AHL > 0 uM] WILL HOLD UNTIL THEN [SA > 0 uM]
+	VERIFY EXPECTED [XylS] AT 1000 s IS ?
+	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
+
 }
 
 define site typeof REGION() {
 	AHL = MOLECULE()
-	SA = NOLECULE()
+	SA = MOLECULE()
 
 	CELL cell = new SentinelCell()
 }
