@@ -194,7 +194,7 @@ define SentinelCell typeof CELL(){
 		RULE mrnaDegradation : mrna ->
 		mrnaDegradation.forwardRate = 2.78e-3 s-1
 
-		VERIFY [ [ NOT [ PrsaL > 50 uM ] ] IMPLIES [ [ rnaP < 40 uM ] AND [ LuxR < 100 uM ] ] ] EVENTUALLY HOLDS
+		VERIFY [ [ NOT [ PrsaL > 50 uM ] ] IMPLIES [ [ rnaP < 40 uM ] AND [ LuxRR < 100 uM ] ] ] EVENTUALLY HOLDS
 	}
 
 	VERIFY [SA > 0 uM] EVENTUALLY HOLDS
