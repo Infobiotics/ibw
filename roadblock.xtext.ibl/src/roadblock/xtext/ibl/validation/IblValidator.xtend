@@ -37,6 +37,7 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.ATGCArrange
 
 // utility class, used for checking forbidden containers
 @Data 
@@ -190,17 +191,14 @@ class IblValidator extends AbstractIblValidator {
 		//if complex: check if it is created by a rule
 		if(isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
 				return true
-		
 		// otherwise check if it's been created somewhere else
 		
 		// check if locally declared
 		if(getAllVariableDefinitions(container).exists[it.variableName == variableName])
 			return true
-		
 		// check if it's a rule's name
 		if(getAllRules(container).exists[it.name.buildVariableName == variableName])
 			return true
-			
 		// if in device: check signature and observables in device's container 
 		switch(container){
 			DeviceDefinition: {if(getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists[it.buildVariableName==variableName])
@@ -224,6 +222,16 @@ class IblValidator extends AbstractIblValidator {
 		val variableName = variableAssignment.buildVariableName		
 		if(!hasBeenDeclared(variableName, variableAssignment.eContainer))
 			error(variableName.errorMessage,IblPackage::eINSTANCE.variableAssignment_Variable)
+	}
+
+	
+	// ATGC ARRANGE
+	@Check
+	def checkEnforceVariableDeclaration(ATGCArrange atgcArrange){
+		for(variableName: atgcArrange.arguments.map[buildVariableName]){
+			if(!hasBeenDeclared(variableName, atgcArrange.eContainer.eContainer))
+				error(variableName.errorMessage,IblPackage::eINSTANCE.ATGCArrange_Arguments)
+		}
 	}
 
 	// Rule
@@ -304,8 +312,6 @@ class IblValidator extends AbstractIblValidator {
 		
 		
 	}
-
-
 // =================================================================================
 // 						forbid multiple declarations
 // =================================================================================

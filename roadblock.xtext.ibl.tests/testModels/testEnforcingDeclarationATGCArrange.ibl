@@ -1,0 +1,64 @@
+// test for enforcing variable declaration for variable assignment
+// any variable assigned must be declared or a complex created by a rule
+//
+// Don't fix the errors! They're here for testing purposes.
+ 
+define factoryCell typeof CELL(){
+	
+	a = MOLECULE(): observable
+	b = MOLECULE()
+	c = MOLECULE()
+	d = MOLECULE(): observable
+	
+	pa = PROMOTER()
+	pb = PROMOTER()
+
+	qa = PROTEIN()
+	qb = PROTEIN()	
+			
+	qa.rate = 1 s^-1 // fine
+
+	RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
+	RULE cdComplex: a + c~d <-> a // c~d  not declared but fine because complex and created
+	 
+	a~b.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	c~d.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	
+	DEVICE D1 = new DEVICE(parts=[pa, pb])(input=[a], output=[b]){ // error with f
+		
+		da = MOLECULE()
+		db = MOLECULE()
+		dc = MOLECULE()
+		
+		
+		d.rate = 1 s^-1 // fine bc observable
+				
+		RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
+		RULE cdComplex: a + c~d <-> a // c~d  not declared but fine because complex and created
+	
+		a~b.rate = 1 s^-1 // a~b not declared but fine because complex and created
+		c~d.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	
+		ATGC ARRANGE pa, pb
+		ATGC ARRANGE pa1, pb // error: pa1 not declared	
+	}
+		ATGC ARRANGE pa, pb	
+		ATGC ARRANGE pa2, pb // error: pa1 not declared	
+}
+
+define myRegion typeof REGION(){
+	a = MOLECULE()
+	b = MOLECULE()
+	c = MOLECULE()
+		
+	a.rate = 1 s^-1 // fine
+	
+	RULE abComplex: a + b -> a~b // a~b not declared but fine because complex and created
+	RULE cdComplex: a + c~a <-> a // c~d  not declared but fine because complex and created
+	
+	a~b.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	c~a.rate = 1 s^-1 // a~b not declared but fine because complex and created
+	
+	CELL mycell = new factoryCell()
+	
+}

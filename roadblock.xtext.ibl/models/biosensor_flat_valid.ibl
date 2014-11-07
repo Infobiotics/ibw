@@ -105,7 +105,7 @@ define SensorCell typeof CELL(){
  
          RULE AHLConsumption : OUTSIDE -> AHL
          AHLConsumption.rate = 1 min^-1
- 
+ 		 
          // atgc rules
          ATGC ARRANGE nahR, PnahR, Psal
  

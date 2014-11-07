@@ -99,7 +99,14 @@ class IblValidatorTest {
 		model.assertError(IblPackage::eINSTANCE.propertyDefinition,null,"Complex 'a~b' must be created by a rule or passed on as a parameter.")
 	}
 
-
+// in ATGC ARRANGE
+	@Test
+	def void testEnforcingDeclarationATGCArrange(){
+		val model = readFile("../roadblock.xtext.ibl.tests/testModels/testEnforcingDeclarationATGCArrange.ibl",Charset.defaultCharset()).parse	
+		
+		model.assertError(IblPackage::eINSTANCE.ATGCArrange,null,"Variable 'pa1' must be declared.")
+		model.assertError(IblPackage::eINSTANCE.ATGCArrange,null,"Variable 'pa2' must be declared.")
+	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //						Multiple variable declarations
 //////////////////////////////////////////////////////////////////////////////////////////////////////
