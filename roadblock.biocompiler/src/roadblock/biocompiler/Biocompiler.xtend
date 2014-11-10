@@ -175,6 +175,9 @@ class Biocompiler {
 				var ref = new RestrictionEnzymesFinder(cell,"b")
 				log.addLog(ref.searchRE)
 			}
+			
+			
+			
 		}
 		catch(MalFormedDNASequence e){
 			log.addError("The sequence you specified is not made of A, T, G or C only.")
@@ -720,41 +723,6 @@ class Biocompiler {
 		return searchFirstDeclaration(container.eContainer, displayName)
 	}
 	
-	// export biocompiler model to an SBOL document
-	def SBOLDocument makeSBOLDocument(){
-		var document = SBOLFactory.createDocument
-		for(cell: biocompilerModel.cells){
-			var dnaComponent = SBOLFactory.createDnaComponent
-			dnaComponent.URI = URI.create('ATGC://' + cell.name)	
-			dnaComponent => [
-				description = 'Cell: '+ cell.name
-				name = cell.name
-				displayId = cell.name
-				]
-			dnaComponent.addType = URI.create('http://www.w3.org/1999/02/22-rdf-syntax-ns#')		
-			// gather all parts in that cell
-			val ArrayList<Biopart> allParts = new ArrayList()
-			for(device: cell.devices)
-				allParts.addAll(device.parts)
-				
-			var wholeSequence = SBOLFactory.createDnaSequence
-			wholeSequence.nucleotides = allParts.sortBy[position.value].map[sequence].reduce[ a, b | a + b].toLowerCase
-			wholeSequence.URI = URI.create('http://sbols.org/seq#d23749adb3a7e0e2f09168cb7267a6113b238973')
-			dnaComponent.dnaSequence = wholeSequence
-			
-			var sequenceStart = 1
-			for(part :allParts.sortBy[position.value]){
-				dnaComponent.addAnnotation(makeAnnotation(part, sequenceStart, sequenceStart + part.sequence.length -1 ))
-				sequenceStart = sequenceStart + part.sequence.length -1						
-			}
-
-		document.addContent(dnaComponent )		
-
-		}
-		
-		return document // only export construct for the last cell for the time being
-	}
-	
 	def void print(){
 		for(cell: biocompilerModel.cells){
 			println("Cell: " + cell.name)
@@ -768,24 +736,65 @@ class Biocompiler {
 		}
 		
 	}
+/**************************************************************************************************************
+ * 
+ * 						SBOL EXPORT
+ */		
+	// export biocompiler model to an SBOL document
+	def SBOLDocument makeSBOLDocument(){
+		var document = SBOLFactory.createDocument
+		for(cell: biocompilerModel.cells){
+			var dnaComponent = SBOLFactory.createDnaComponent
+			dnaComponent.URI = URI.create('ATGC://' + cell.name)	
+			dnaComponent => [
+				description = 'Cell: '+ cell.name
+				name = cell.name
+				displayId = cell.name
+				]
+				
+			// gather all parts in that cell
+			val ArrayList<Biopart> allParts = new ArrayList()
+			for(device: cell.devices)
+				allParts.addAll(device.parts)
+				
+			var wholeSequence = SBOLFactory.createDnaSequence
+			wholeSequence.nucleotides = allParts.sortBy[position.value].map[sequence].reduce[ a, b | a + b].toLowerCase
+			wholeSequence.URI = URI.create('http://sbols.org/seq#' + wholeSequence.nucleotides)
+			dnaComponent.dnaSequence = wholeSequence
+			
+			var sequenceStart = 1
+			for(part: allParts.sortBy[position.value]){
+				dnaComponent.addAnnotation(makeAnnotation(part, sequenceStart, sequenceStart + part.sequence.length -1 ))
+				sequenceStart = sequenceStart + part.sequence.length -1
+			}
+			document.addContent(dnaComponent )		
+
+		}
+		
+		return document // only export construct for the last cell for the time being
+	}
+	
 	
 	def private static SequenceAnnotation makeAnnotation(Biopart part, int sequenceStart, int sequenceEnd){
 		var annotation = SBOLFactory.createSequenceAnnotation
 		annotation.URI = URI.create("http://sbols.org/anot#" + utils.randomHashLookingString)
 		annotation =>[
-			bioStart = 1 //sequenceStart
-			bioEnd = 4 // sequenceEnd
-			strand = StrandType.POSITIVE
+			bioStart = sequenceStart
+			bioEnd = sequenceEnd
+			strand = if(part.direction ==1) StrandType.POSITIVE else StrandType.NEGATIVE
 		]
 		var dnaComponent = SBOLFactory.createDnaComponent()
-		println('\t' + part.accessionURL)
+		
 		if(part.accessionURL==null || part.accessionURL == '' )
 			dnaComponent.URI = URI.create("http://sbols.org/" + part.name + "/dnaComponent")
 		else
 			dnaComponent.URI = URI.create(part.accessionURL)
+
 		dnaComponent =>[
-			displayId = part.ID
+			displayId = part.name
 			name = part.name ]
+		
+		println("URI:" + dnaComponent.URI)
 		
 		// use the predefined SequenceOntology constant
 		switch(part.biologicalFunction){

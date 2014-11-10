@@ -110,6 +110,7 @@ def buildingOneDevice(){
 		// add the DnaComponent to this document
 		document.addContent(dnaComponent);
 		
+		SBOLFactory.validate(document)
 		// write the contents of the document as an XML file to stdout
 		println("Serialize the SBOL document in the official XML format:")
 		SBOLFactory.write(document, System.out)
@@ -179,6 +180,7 @@ def buildingOneDevice(){
 		dnaComponent.setName("I0462");
 		dnaComponent.setDescription("LuxR protein generator");
 		dnaComponent.setDnaSequence(createDnaSequence)
+		
 		dnaComponent.addAnnotation(createAnnotation1)
 		dnaComponent.addAnnotation(createAnnotation2)
 		dnaComponent.addAnnotation(createAnnotation3)

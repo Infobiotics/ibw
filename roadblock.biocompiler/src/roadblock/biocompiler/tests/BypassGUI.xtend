@@ -23,8 +23,11 @@ import java.nio.file.Paths
 import java.nio.ByteBuffer
 
 import static org.junit.Assert.*
-
-
+import org.sbolstandard.core.util.SBOLPrettyWriter
+import org.sbolstandard.core.cli.SBOLValidate
+import org.sbolstandard.core.SBOLFactory
+import org.sbolstandard.core.SBOLValidationException
+import java.io.FileOutputStream
 
 class BypassGUI {
 	val utils = new BiocompilerUtil
@@ -83,6 +86,21 @@ class BypassGUI {
 		writeTextFile('log.html', biocompiler.makeHtmlLog)
 		writeTextFile('results.html', biocompiler.makeResultPage)
 		writeTextFile(filename, buildHtml)	
+		
+		
+		var sbol = biocompiler.makeSBOLDocument
+		new SBOLPrettyWriter().write(sbol, new FileOutputStream("ATGCGeneratedSBOL.txt"))
+//SBOLFactory.validate(sbol)
+		try {
+			println("Validating the SBOL document");	
+			// validate the contents of the file
+		SBOLFactory.write(sbol, new FileOutputStream("ATGCGeneratedSBOL.xml"));
+//			SBOLFactory.validate(sbol)
+			println("validated.");
+		}
+		catch (SBOLValidationException e) {
+			println("Validation failed: " + e.getMessage());
+		}		
 		assertTrue(true)
 	}	
 }
