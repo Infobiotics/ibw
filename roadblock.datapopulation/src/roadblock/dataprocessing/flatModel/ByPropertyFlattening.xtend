@@ -146,7 +146,7 @@ public class ByPropertyFlattening {
 				var complexMoleculeName = "";
 
 				for (String moleculeName : componentMolecules) {
-					complexMoleculeName += flatMoleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
+					complexMoleculeName = complexMoleculeName + flatMoleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
 				}
 
 				clonedMolecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 1));

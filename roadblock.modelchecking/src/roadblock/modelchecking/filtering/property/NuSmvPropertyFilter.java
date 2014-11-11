@@ -7,7 +7,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -88,20 +88,10 @@ public class NuSmvPropertyFilter implements IPropertyFilter {
 		
 		return isLeftOperandValid && isRightOperandValid;
 	}
-	
-	@Override
-	public Boolean visit(ConcentrationExpression expression) {
-		boolean isVariableValid = expression.getVariable().accept(this);
-		
-		return isVariableValid;
-	}
 
 	@Override
 	public Boolean visit(BinaryArithmeticExpression expression) {
-		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
-		boolean isRightOperandValid = expression.getRightOperand().accept(this);
-		
-		return isLeftOperandValid && isRightOperandValid;
+		return false;
 	}
 	
 	@Override
@@ -118,13 +108,18 @@ public class NuSmvPropertyFilter implements IPropertyFilter {
 	}
 	
 	@Override
+	public Boolean visit(ConcentrationQuantity expression) {
+		return expression.getAmount() == 0 || expression.getAmount() == 1;
+	}
+	
+	@Override
 	public Boolean visit(VariableReference expression) {
 		return !expression.isIsMaximumOfInterest();
 	}
 	
 	@Override
 	public Boolean visit(NumericLiteral expression) {
-		return true;
+		return expression.getValue() == 0 || expression.getValue() == 1;
 	}
 
 	@Override
@@ -224,6 +219,6 @@ public class NuSmvPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public ModelcheckingTarget getTarget() {
-		return ModelcheckingTarget.PRISM;
+		return ModelcheckingTarget.NUSMV;
 	}
 }

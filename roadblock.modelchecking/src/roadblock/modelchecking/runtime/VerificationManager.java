@@ -31,7 +31,7 @@ public class VerificationManager {
 		executor.export(model, property, target, filename);
 	}
 
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, IModelcheckingConfiguration config) throws IOException {
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, IModelcheckingConfiguration config) throws IOException, InterruptedException {
 
 		IModelcheckingExecutor<? extends IModelcheckingConfiguration> executor = getExecutor(target);
 		Process verificationProcess = null;

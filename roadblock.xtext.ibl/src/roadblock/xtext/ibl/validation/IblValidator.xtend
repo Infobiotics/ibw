@@ -17,10 +17,9 @@ import roadblock.xtext.ibl.ibl.List
 import roadblock.xtext.ibl.ibl.MultiplicationDivisionExpression
 import roadblock.xtext.ibl.ibl.Outside
 import roadblock.xtext.ibl.ibl.PlasmidInstantiation
-import roadblock.xtext.ibl.ibl.ProbabilityProperty
 import roadblock.xtext.ibl.ibl.ProcessInstantiation
 import roadblock.xtext.ibl.ibl.PropertyDefinition
-import roadblock.xtext.ibl.ibl.RewardProperty
+import roadblock.xtext.ibl.ibl.PropertyVariableReference
 import roadblock.xtext.ibl.ibl.RuleDefinition
 import roadblock.xtext.ibl.ibl.StateFormula
 import roadblock.xtext.ibl.ibl.SystemInstantiation
@@ -316,26 +315,19 @@ class IblValidator extends AbstractIblValidator {
 	@Check
 	def checkEnforceVariableDeclaration(PropertyDefinition propertyDefinition) {
 		val property = propertyDefinition.property
-		switch (property) {
-			ProbabilityProperty: {
-				for (variableName : (property as ProbabilityProperty).stateFormula1.allVariablesInStateFormula.map[buildVariableName]) {
-					if(!hasBeenDeclared(variableName, propertyDefinition.eContainer))
-						error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
-				}
-				if(property.isUntilThen || property.isFollowedBy)
-					for (variableName : (property as ProbabilityProperty).stateFormula2.allVariablesInStateFormula.map[buildVariableName]) {
-						if(!hasBeenDeclared(variableName, propertyDefinition.eContainer))
-							error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
-					}
 
-			}
-			RewardProperty: {
-				val variableName = (property as RewardProperty).variable.name.buildVariableName
-				if(!hasBeenDeclared(variableName, propertyDefinition.eContainer))
+		for (variableReference : property.eAllContents.filter(PropertyVariableReference).toList) {
+			var variableName = variableReference.name.buildVariableName;
+
+			if(variableReference.container == null) {
+				if(!hasBeenDeclared(variableName, propertyDefinition.eContainer)) {
 					error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
+				}
+			} else {
 			}
 		}
 
+	//if(!hasBeenDeclared(variableName, propertyDefinition.eContainer))
 	}
 
 	// =================================================================================

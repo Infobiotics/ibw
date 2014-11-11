@@ -17,7 +17,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -221,10 +221,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 				return createNotStateFormulaAdapter();
 			}
 			@Override
-			public Adapter caseConcentrationExpression(ConcentrationExpression object) {
-				return createConcentrationExpressionAdapter();
-			}
-			@Override
 			public Adapter caseRegion(Region object) {
 				return createRegionAdapter();
 			}
@@ -283,6 +279,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRelationalExpression(RelationalExpression object) {
 				return createRelationalExpressionAdapter();
+			}
+			@Override
+			public Adapter caseConcentrationQuantity(ConcentrationQuantity object) {
+				return createConcentrationQuantityAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -697,20 +697,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcentrationExpression <em>Concentration Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see roadblock.emf.ibl.Ibl.ConcentrationExpression
-	 * @generated
-	 */
-	public Adapter createConcentrationExpressionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -917,6 +903,20 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRelationalExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity <em>Concentration Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationQuantity
+	 * @generated
+	 */
+	public Adapter createConcentrationQuantityAdapter() {
 		return null;
 	}
 

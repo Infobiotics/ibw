@@ -9,7 +9,7 @@ import roadblock.emf.ibl.Ibl.BooleanOperator;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -54,13 +54,28 @@ public class MC2Translator implements IPropertyTranslator {
 		String stateFormula = expression.getStateFormula().accept(this);
 
 		if (tc != null) {
-			String pattern = "P%s [ %s (%s ^ %s) ]";
-			String timeConstraint = tc.accept(this);
 
-			translation = String.format(pattern, probabilityConstraint, temporalPattern, stateFormula, timeConstraint);
+			String timeConstraint = tc.accept(this);
+			String pattern = null;
+
+			if (expression.getOperator() == TemporalPattern.INFINITELY_OFTEN) {
+				pattern = "P%s [ G (F (%s ^ %s)) ]";
+				translation = String.format(pattern, probabilityConstraint, stateFormula, timeConstraint);
+			} else {
+				pattern = "P%s [ %s (%s ^ %s) ]";
+				translation = String.format(pattern, probabilityConstraint, temporalPattern, stateFormula, timeConstraint);
+			}
 		} else {
-			String pattern = "P%s [ %s (%s) ]";
-			translation = String.format(pattern, probabilityConstraint, temporalPattern, stateFormula);
+
+			String pattern = null;
+
+			if (expression.getOperator() == TemporalPattern.INFINITELY_OFTEN) {
+				pattern = "P%s [ G (F (%s)) ]";
+				translation = String.format(pattern, probabilityConstraint, stateFormula);
+			} else {
+				pattern = "P%s [ %s (%s) ]";
+				translation = String.format(pattern, probabilityConstraint, temporalPattern, stateFormula);
+			}
 		}
 
 		return translation;
@@ -107,7 +122,7 @@ public class MC2Translator implements IPropertyTranslator {
 	@Override
 	public String visit(SteadyStateProperty expression) {
 
-		String pattern = "P%s [ F G (%s) ]";
+		String pattern = "P%s [ F (G (%s)) ]";
 
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 
@@ -115,16 +130,6 @@ public class MC2Translator implements IPropertyTranslator {
 		String stateFormula = expression.getStateFormula().accept(this);
 
 		return String.format(pattern, probabilityConstraint, stateFormula);
-	}
-
-	@Override
-	public String visit(ConcentrationExpression expression) {
-
-		String pattern = "%s %s %s";
-		String variableName = expression.getVariable().accept(this);
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, variableName, relationalOperator, expression.getQuantity());
 	}
 
 	@Override
@@ -222,6 +227,11 @@ public class MC2Translator implements IPropertyTranslator {
 	}
 
 	@Override
+	public String visit(ConcentrationQuantity expression) {
+		return Double.toString(expression.getAmount());
+	}
+
+	@Override
 	public String visit(VariableReference variable) {
 
 		String translation = null;
@@ -234,7 +244,7 @@ public class MC2Translator implements IPropertyTranslator {
 			String pattern = "[%s]";
 			translation = String.format(pattern, variableName);
 		}
-		
+
 		return translation;
 	}
 
@@ -287,7 +297,7 @@ public class MC2Translator implements IPropertyTranslator {
 
 		switch (operator) {
 		case AND:
-			return "&";
+			return "^";
 		case OR:
 			return "|";
 		case IMPLIES:

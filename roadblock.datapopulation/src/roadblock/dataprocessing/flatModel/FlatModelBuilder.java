@@ -16,7 +16,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcentrationUnit;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
@@ -131,7 +131,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			registerChildCompartment(cell, cell.getDisplayName(), region);
 			cell.accept(this);
 		}
-		
+
 		if (belongsToPropertyCompartment) {
 			register(region.getRuleList(), region);
 		}
@@ -161,7 +161,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			registerChildCompartment(device, device.getDisplayName(), cell);
 			device.accept(this);
 		}
-		
+
 		if (belongsToPropertyCompartment) {
 
 			register(cell.getRuleList(), cell);
@@ -196,7 +196,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			registerChildCompartment(kinetics, kinetics.getDisplayName(), device);
 			kinetics.accept(this);
 		}
-		
+
 		if (belongsToPropertyCompartment) {
 
 			register(device.getRuleList(), device);
@@ -328,11 +328,9 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	}
 
 	@Override
-	public Void visit(ConcentrationExpression expression) {
+	public Void visit(ConcentrationQuantity expression) {
 
-		expression.getVariable().accept(this);
-
-		expression.setQuantity(UnitConverter.getInstance().getBaseConcentration(expression.getQuantity(), expression.getUnit()));
+		expression.setAmount(UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
 		expression.setUnit(ConcentrationUnit.MOLECULE);
 
 		return null;
@@ -513,73 +511,69 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 		for (Rule rule : rules) {
 
-			// exclude rules with unspecified forward and reverse rates
-			if (rule.getForwardRate() != null || rule.getReverseRate() != null) {
+			List<MolecularSpecies> lhsMolecules = new ArrayList<>();
+			List<MolecularSpecies> rhsMolecules = new ArrayList<>();
+			boolean isLeftOutside = rule.getLeftHandSide().size() == 1 && rule.getLeftHandSide().get(0).getDisplayName().equals("OUTSIDE");
+			boolean isRightOutside = rule.getRightHandSide().size() == 1 && rule.getRightHandSide().get(0).getDisplayName().equals("OUTSIDE");
 
-				List<MolecularSpecies> lhsMolecules = new ArrayList<>();
-				List<MolecularSpecies> rhsMolecules = new ArrayList<>();
-				boolean isLeftOutside = rule.getLeftHandSide().size() == 1 && rule.getLeftHandSide().get(0).getDisplayName().equals("OUTSIDE");
-				boolean isRightOutside = rule.getRightHandSide().size() == 1 && rule.getRightHandSide().get(0).getDisplayName().equals("OUTSIDE");
+			for (MolecularSpecies molecularSpecies : rule.getLeftHandSide()) {
 
-				for (MolecularSpecies molecularSpecies : rule.getLeftHandSide()) {
+				if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
 
-					if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
+					MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
 
-						MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
-
-						if (molecule != null) {
-							lhsMolecules.add(EcoreUtil.copy(molecule));
-						}
-
-						if (isRightOutside) {
-
-							molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment)).get(molecularSpecies.getDisplayName());
-
-							if (molecule != null) {
-								rhsMolecules.add(EcoreUtil.copy(molecule));
-							}
-						}
+					if (molecule != null) {
+						lhsMolecules.add(EcoreUtil.copy(molecule));
 					}
-				}
 
-				for (MolecularSpecies molecularSpecies : rule.getRightHandSide()) {
+					if (isRightOutside) {
 
-					if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
-
-						MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
+						molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment)).get(molecularSpecies.getDisplayName());
 
 						if (molecule != null) {
 							rhsMolecules.add(EcoreUtil.copy(molecule));
 						}
+					}
+				}
+			}
 
-						if (isLeftOutside) {
+			for (MolecularSpecies molecularSpecies : rule.getRightHandSide()) {
 
-							molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment)).get(molecularSpecies.getDisplayName());
+				if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
 
-							if (molecule != null) {
-								lhsMolecules.add(EcoreUtil.copy(molecule));
-							}
+					MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
+
+					if (molecule != null) {
+						rhsMolecules.add(EcoreUtil.copy(molecule));
+					}
+
+					if (isLeftOutside) {
+
+						molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment)).get(molecularSpecies.getDisplayName());
+
+						if (molecule != null) {
+							lhsMolecules.add(EcoreUtil.copy(molecule));
 						}
 					}
 				}
+			}
 
-				Rule clonedRule = EcoreUtil.copy(rule);
-				clonedRule.getLeftHandSide().clear();
-				clonedRule.getLeftHandSide().addAll(lhsMolecules);
-				clonedRule.getRightHandSide().clear();
-				clonedRule.getRightHandSide().addAll(rhsMolecules);
+			Rule clonedRule = EcoreUtil.copy(rule);
+			clonedRule.getLeftHandSide().clear();
+			clonedRule.getLeftHandSide().addAll(lhsMolecules);
+			clonedRule.getRightHandSide().clear();
+			clonedRule.getRightHandSide().addAll(rhsMolecules);
 
-				flatModel.getRuleList().add(clonedRule);
+			flatModel.getRuleList().add(clonedRule);
 
-				if (clonedRule.getForwardRate() != null) {
-					clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit()));
-					clonedRule.setForwardRateUnit(RateUnit.PER_SECOND);
-				}
+			if (clonedRule.getForwardRate() != null) {
+				clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit()));
+				clonedRule.setForwardRateUnit(RateUnit.PER_SECOND);
+			}
 
-				if (clonedRule.getReverseRate() != null) {
-					clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit()));
-					clonedRule.setReverseRateUnit(RateUnit.PER_SECOND);
-				}
+			if (clonedRule.getReverseRate() != null) {
+				clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit()));
+				clonedRule.setReverseRateUnit(RateUnit.PER_SECOND);
 			}
 		}
 	}

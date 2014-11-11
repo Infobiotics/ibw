@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import roadblock.dataprocessing.util.UnitConverter
 import roadblock.emf.ibl.Ibl.Cell
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint
-import roadblock.emf.ibl.Ibl.ConcentrationExpression
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity
 import roadblock.emf.ibl.Ibl.ConcentrationUnit
 import roadblock.emf.ibl.Ibl.Device
 import roadblock.emf.ibl.Ibl.IProperty
@@ -74,7 +74,7 @@ public class FlatteningUtil {
 				flatMoleculesByFlatName.put(flatMolecule.displayName, flatMolecule);
 			}
 		}
-		
+
 		// inherit molecules used in left-OUTSIDE rules
 		var leftOutsideRules = compartment.eContents.filter(Rule).filter[leftHandSide.exists[displayName.equals("OUTSIDE")]].toList;
 		for (rule : leftOutsideRules) {
@@ -82,7 +82,7 @@ public class FlatteningUtil {
 				flatMoleculesByFlatName.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
 			}
 		}
-		
+
 		// inherit molecules used in right-OUTSIDE rules
 		var rightOutsideRules = compartment.eContents.filter(Rule).filter[rightHandSide.exists[displayName.equals("OUTSIDE")]].toList;
 		for (rule : rightOutsideRules) {
@@ -95,81 +95,77 @@ public class FlatteningUtil {
 	}
 
 	def public List<Rule> getFlatRules(EObject compartment, Map<EObject, Map<String, MolecularSpecies>> flatMoleculesByCompartment) {
-		
+
 		var flatRules = new ArrayList<Rule>;
 
 		for (rule : compartment.eAllContents.filter(Rule).toList) {
 
-			// exclude rules with unspecified forward and reverse rates
-			if(rule.forwardRate != null || rule.reverseRate != null) {
+			var ruleCompartment = rule.eContainer;
+			var parentCompartment = ruleCompartment.eContainer;
+			var lhsMolecules = new ArrayList<MolecularSpecies>;
+			var rhsMolecules = new ArrayList<MolecularSpecies>;
+			var isLeftOutside = rule.leftHandSide.size() == 1 && rule.leftHandSide.get(0).displayName.equals("OUTSIDE");
+			var isRightOutside = rule.rightHandSide.size() == 1 && rule.rightHandSide.get(0).displayName.equals("OUTSIDE");
 
-				var ruleCompartment = rule.eContainer;
-				var parentCompartment = ruleCompartment.eContainer;
-				var lhsMolecules = new ArrayList<MolecularSpecies>;
-				var rhsMolecules = new ArrayList<MolecularSpecies>;
-				var isLeftOutside = rule.leftHandSide.size() == 1 && rule.leftHandSide.get(0).displayName.equals("OUTSIDE");
-				var isRightOutside = rule.rightHandSide.size() == 1 && rule.rightHandSide.get(0).displayName.equals("OUTSIDE");
+			for (lhsMolecule : rule.leftHandSide) {
 
-				for (lhsMolecule : rule.leftHandSide) {
+				if(!lhsMolecule.displayName.equals("OUTSIDE")) {
 
-					if(!lhsMolecule.displayName.equals("OUTSIDE")) {
+					var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(lhsMolecule.displayName);
 
-						var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(lhsMolecule.displayName);
-
-						if(molecule != null) {
-							lhsMolecules.add(EcoreUtil.copy(molecule));
-						}
-
-						if(isRightOutside) {
-
-							molecule = flatMoleculesByCompartment.get(parentCompartment).get(lhsMolecule.displayName);
-
-							if(molecule != null) {
-								rhsMolecules.add(EcoreUtil.copy(molecule));
-							}
-						}
+					if(molecule != null) {
+						lhsMolecules.add(EcoreUtil.copy(molecule));
 					}
-				}
 
-				for (rhsMolecule : rule.rightHandSide) {
+					if(isRightOutside) {
 
-					if(!rhsMolecule.displayName.equals("OUTSIDE")) {
-
-						var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(rhsMolecule.getDisplayName());
+						molecule = flatMoleculesByCompartment.get(parentCompartment).get(lhsMolecule.displayName);
 
 						if(molecule != null) {
 							rhsMolecules.add(EcoreUtil.copy(molecule));
 						}
+					}
+				}
+			}
 
-						if(isLeftOutside) {
+			for (rhsMolecule : rule.rightHandSide) {
 
-							molecule = flatMoleculesByCompartment.get(parentCompartment).get(rhsMolecule.getDisplayName());
+				if(!rhsMolecule.displayName.equals("OUTSIDE")) {
 
-							if(molecule != null) {
-								lhsMolecules.add(EcoreUtil.copy(molecule));
-							}
+					var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(rhsMolecule.getDisplayName());
+
+					if(molecule != null) {
+						rhsMolecules.add(EcoreUtil.copy(molecule));
+					}
+
+					if(isLeftOutside) {
+
+						molecule = flatMoleculesByCompartment.get(parentCompartment).get(rhsMolecule.getDisplayName());
+
+						if(molecule != null) {
+							lhsMolecules.add(EcoreUtil.copy(molecule));
 						}
 					}
 				}
-
-				var clonedRule = EcoreUtil.copy(rule);
-				clonedRule.leftHandSide.clear();
-				clonedRule.leftHandSide.addAll(lhsMolecules);
-				clonedRule.rightHandSide.clear();
-				clonedRule.rightHandSide.addAll(rhsMolecules);
-
-				if(clonedRule.forwardRate != null) {
-					clonedRule.forwardRate = UnitConverter::getInstance().getBaseRate(clonedRule.forwardRate, clonedRule.forwardRateUnit);
-					clonedRule.forwardRateUnit = RateUnit.PER_SECOND;
-				}
-
-				if(clonedRule.reverseRate != null) {
-					clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate, clonedRule.reverseRateUnit);
-					clonedRule.reverseRateUnit = RateUnit.PER_SECOND;
-				}
-
-				flatRules.add(clonedRule);
 			}
+
+			var clonedRule = EcoreUtil.copy(rule);
+			clonedRule.leftHandSide.clear();
+			clonedRule.leftHandSide.addAll(lhsMolecules);
+			clonedRule.rightHandSide.clear();
+			clonedRule.rightHandSide.addAll(rhsMolecules);
+
+			if(clonedRule.forwardRate != null) {
+				clonedRule.forwardRate = UnitConverter::getInstance().getBaseRate(clonedRule.forwardRate, clonedRule.forwardRateUnit);
+				clonedRule.forwardRateUnit = RateUnit.PER_SECOND;
+			}
+
+			if(clonedRule.reverseRate != null) {
+				clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate, clonedRule.reverseRateUnit);
+				clonedRule.reverseRateUnit = RateUnit.PER_SECOND;
+			}
+
+			flatRules.add(clonedRule);
 		}
 
 		return flatRules;
@@ -195,18 +191,18 @@ public class FlatteningUtil {
 			moleculeReference.name = flatMoleculesByCompartment.get(moleculeCompartment).get(moleculeReference.name).displayName;
 		}
 
-		// flatten concentration expressions
-		var concentrationExpressions = flatProperty.eAllContents.filter(ConcentrationExpression).toList;
-		for (concentrationExpression : concentrationExpressions) {
-			concentrationExpression.quantity = UnitConverter::getInstance.getBaseConcentration(concentrationExpression.quantity, concentrationExpression.unit);
-			concentrationExpression.unit = ConcentrationUnit.MOLECULE;
-		}
-
 		// flatten concentration constraints
 		var concentrationConstraints = flatProperty.eAllContents.filter(ConcentrationConstraint).toList;
 		for (concentrationConstraint : concentrationConstraints) {
 			concentrationConstraint.value = UnitConverter::getInstance.getBaseConcentration(concentrationConstraint.value, concentrationConstraint.unit);
 			concentrationConstraint.unit = ConcentrationUnit.MOLECULE;
+		}
+		
+		// flatten concentration quantities
+		var concentrationQuantities = flatProperty.eAllContents.filter(ConcentrationQuantity).toList;
+		for (concentrationQuantity : concentrationQuantities) {
+			concentrationQuantity.amount = UnitConverter::getInstance.getBaseConcentration(concentrationQuantity.amount, concentrationQuantity.unit);
+			concentrationQuantity.unit = ConcentrationUnit.MOLECULE;
 		}
 
 		// flatten time intervals

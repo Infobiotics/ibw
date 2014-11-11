@@ -44,7 +44,7 @@ public interface IVisitor<TResult> {
 	 * @model
 	 * @generated
 	 */
-	TResult visit(ConcentrationExpression expression);
+	TResult visit(ConcentrationQuantity expression);
 
 	/**
 	 * <!-- begin-user-doc -->

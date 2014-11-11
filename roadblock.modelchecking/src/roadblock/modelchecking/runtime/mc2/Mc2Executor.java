@@ -1,9 +1,17 @@
 package roadblock.modelchecking.runtime.mc2;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
+
 import roadblock.dataprocessing.flatModel.FlatModelManager;
+import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
@@ -27,30 +35,68 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 	}
 
 	@Override
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, Mc2Configuration config) throws IOException {
-
-		String verificationModelFileName = config.modelFileName + ".sm";
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, Mc2Configuration config) throws IOException, InterruptedException {
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
-
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
+		FlatModel flatModel = flatData.getFlatModel();
+		String xmlFlatModel = convertToXml(flatModel);
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 
-		// writeFile(verificationModelFileName, modelTranslation,
-		// propetyTranslation);
+		String simulationFileName = config.modelFileName + ".csv";
+		String propertiesFileName = config.modelFileName + ".queries";
 
-		String[] verificationCommand = new String[] { "prism", verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod" };
+		String[] simulationCommand = new String[] { "ngss", "--emf", "parser=emf", "max_time=" + config.maxTime, "max_runtime=" + 0.0, "simulation_algorithm=" + config.simulationAlgorithm,
+				"data_file=" + simulationFileName, "log_interval=" + config.logInterval, "runs=" + config.runs, "seed=0", "output=console", "compress=true", "parallel=true", "show_progress=false" };
+		String[] verificationCommand = new String[] { "java", "-jar", "/home/laurentiumierla/DevTools/MC2v2.0beta2/mc2.jar", "stoch", simulationFileName, propertiesFileName, "-time" };
 
-		// String[] verificationCommand = new String[] { "prism",
-		// config.modelFileName, "-csl", propetyTranslation };
-		// String[] verificationCommand = new String[] { "ping", "google.ro",
-		// "-c", "10" };
+		Process simulationProcess = runSimulation(simulationCommand, xmlFlatModel, simulationFileName);
+		simulationProcess.waitFor();
 
-		// System.out.println(verificationCommand[0] + " " +
-		// verificationCommand[1] + " " + verificationCommand[2] + " \'" +
-		// verificationCommand[3] + "\'");
+		writeFile(propertiesFileName, propetyTranslation);
 
-		return Runtime.getRuntime().exec(verificationCommand);
+		Process verificationProcess = Runtime.getRuntime().exec(verificationCommand);
+
+		return verificationProcess;
+	}
+
+	private Process runSimulation(String[] command, String xmlFlatModel, String simulationFileName) throws IOException {
+
+		Process simulationProcess = Runtime.getRuntime().exec(command);
+
+		// pass the input model
+		OutputStream input = simulationProcess.getOutputStream();
+		input.write(xmlFlatModel.getBytes());
+		input.close();
+
+		// write simulation traces
+		BufferedReader output = new BufferedReader(new InputStreamReader(simulationProcess.getInputStream()));
+		StringBuilder simulationTrace = new StringBuilder();
+
+		String part = null;
+		while ((part = output.readLine()) != null) {
+			simulationTrace.append(part);
+			simulationTrace.append(System.getProperty("line.separator"));
+		}
+		output.close();
+
+		BufferedWriter fileStream = new BufferedWriter(new PrintWriter(simulationFileName));
+		fileStream.write(simulationTrace.toString().replace(",", " "));
+		fileStream.close();
+
+		return simulationProcess;
+	}
+
+	private String convertToXml(FlatModel model) throws IOException {
+
+		XMLResourceImpl resource = new XMLResourceImpl();
+		XMLProcessor processor = new XMLProcessor();
+
+		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+		resource.setEncoding("UTF-8");
+		resource.getContents().add(model);
+
+		return processor.saveToString(resource, null);
 	}
 
 	private void writeFile(String fileName, String property) throws IOException {
@@ -58,7 +104,6 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		PrintWriter writer = new PrintWriter(fileName);
 
 		writer.write(property);
-		writer.flush();
 		writer.close();
 	}
 }

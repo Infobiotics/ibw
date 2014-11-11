@@ -10,7 +10,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -230,7 +230,7 @@ public class PropertyCollector implements IVisitor<Void> {
 	}
 
 	@Override
-	public Void visit(ConcentrationExpression expression) {
+	public Void visit(ConcentrationQuantity expression) {
 		throw new UnsupportedOperationException();
 	}
 

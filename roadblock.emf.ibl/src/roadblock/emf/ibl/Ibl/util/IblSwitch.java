@@ -16,7 +16,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -315,14 +315,6 @@ public class IblSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IblPackage.CONCENTRATION_EXPRESSION: {
-				ConcentrationExpression concentrationExpression = (ConcentrationExpression)theEObject;
-				T result = caseConcentrationExpression(concentrationExpression);
-				if (result == null) result = caseIStateFormula(concentrationExpression);
-				if (result == null) result = caseIVisitable(concentrationExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IblPackage.REGION: {
 				Region region = (Region)theEObject;
 				T result = caseRegion(region);
@@ -434,6 +426,14 @@ public class IblSwitch<T> extends Switch<T> {
 				T result = caseRelationalExpression(relationalExpression);
 				if (result == null) result = caseIStateFormula(relationalExpression);
 				if (result == null) result = caseIVisitable(relationalExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.CONCENTRATION_QUANTITY: {
+				ConcentrationQuantity concentrationQuantity = (ConcentrationQuantity)theEObject;
+				T result = caseConcentrationQuantity(concentrationQuantity);
+				if (result == null) result = caseIArithmeticOperand(concentrationQuantity);
+				if (result == null) result = caseIVisitable(concentrationQuantity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -862,21 +862,6 @@ public class IblSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Concentration Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Concentration Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseConcentrationExpression(ConcentrationExpression object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Region</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1098,6 +1083,21 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRelationalExpression(RelationalExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concentration Quantity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concentration Quantity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcentrationQuantity(ConcentrationQuantity object) {
 		return null;
 	}
 

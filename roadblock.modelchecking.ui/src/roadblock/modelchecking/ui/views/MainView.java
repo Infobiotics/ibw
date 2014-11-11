@@ -44,6 +44,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
@@ -95,22 +96,33 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private MessageConsole verificationConsole;
 
 	private CheckboxTreeViewer ctvPropertyTreeViewer;
+
 	private Text txtModelFile;
 	private Text txtDataFile;
 	private Combo ddlModelChecker;
+
 	private Text txtConfidenceValue;
 	private Text txtPathLength;
 	private Text txtSampleNumber;
+
+	private Text txtMaxTime;
+	private Text txtInterval;
+	private Text txtRuns;
+	private Combo ddlSimulator;
+
 	private Button btnVerify;
 	private Button btnExport;
 
 	private String tmpDirPath;
 	private File tmpDir;
 
+	private List<Control> prismConfigControls = new ArrayList<>();
+	private List<Control> mc2ConfigControls = new ArrayList<>();
+
 	@Override
 	public void createPartControl(Composite parent) {
 
-		// final Composite parentComposite = parent;
+		final Composite parentComposite = parent;
 
 		// add change listener model
 		// final Composite parentComposite = parent;
@@ -171,17 +183,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
-				if (ddlModelChecker.getText() == "PRISM") {
-					txtConfidenceValue.setEnabled(true);
-					txtPathLength.setEnabled(true);
-					txtSampleNumber.setEnabled(true);
-				} else {
-					txtConfidenceValue.setEnabled(false);
-					txtPathLength.setEnabled(false);
-					txtSampleNumber.setEnabled(false);
-				}
-				updateUi();
+				handleModelcheckerChanged(parentComposite);
 			}
 
 			@Override
@@ -191,24 +193,82 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		// create confidence value widget
 		Label confidenceLabel = new Label(parent, SWT.NONE);
+		confidenceLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		confidenceLabel.setText("Confidence: ");
 		confidenceLabel.setToolTipText("confidence value for stochastic model checking");
+		prismConfigControls.add(confidenceLabel);
 		txtConfidenceValue = new Text(parent, SWT.BORDER);
 		txtConfidenceValue.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		prismConfigControls.add(txtConfidenceValue);
 
 		// create path length widget
 		Label pathLabel = new Label(parent, SWT.NONE);
+		pathLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		pathLabel.setText("Path length: ");
 		pathLabel.setToolTipText("length of the maximum path for stochastic model checking");
+		prismConfigControls.add(pathLabel);
 		txtPathLength = new Text(parent, SWT.BORDER);
 		txtPathLength.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		prismConfigControls.add(txtPathLength);
 
 		// number of samples
 		Label samplesLabel = new Label(parent, SWT.NONE);
+		samplesLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		samplesLabel.setText("Samples: ");
 		samplesLabel.setToolTipText("number of samples for stochastic model checking");
+		prismConfigControls.add(samplesLabel);
 		txtSampleNumber = new Text(parent, SWT.BORDER);
 		txtSampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		prismConfigControls.add(txtSampleNumber);
+
+		// create max time widget
+		Label maxTimeLabel = new Label(parent, SWT.NONE);
+		maxTimeLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
+		maxTimeLabel.setText("Max. Time: ");
+		maxTimeLabel.setToolTipText("end time of the simulation");
+		mc2ConfigControls.add(maxTimeLabel);
+		txtMaxTime = new Text(parent, SWT.BORDER);
+		txtMaxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		mc2ConfigControls.add(txtMaxTime);
+
+		// create interval widget
+		Label intervalLabel = new Label(parent, SWT.NONE);
+		intervalLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
+		intervalLabel.setText("Interval: ");
+		intervalLabel.setToolTipText("interval with which trajectories are sampled");
+		mc2ConfigControls.add(intervalLabel);
+		txtInterval = new Text(parent, SWT.BORDER);
+		txtInterval.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		mc2ConfigControls.add(txtInterval);
+
+		// create number of runs widget
+		Label runsLabel = new Label(parent, SWT.NONE);
+		runsLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
+		runsLabel.setText("No. of runs: ");
+		runsLabel.setToolTipText("number of simulation runs");
+		mc2ConfigControls.add(runsLabel);
+		txtRuns = new Text(parent, SWT.BORDER);
+		txtRuns.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		mc2ConfigControls.add(txtRuns);
+
+		// create stochastic simulation algorithm widget
+		Label simulatorLabel = new Label(parent, SWT.NONE);
+		simulatorLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
+		simulatorLabel.setText("Simulator: ");
+		simulatorLabel.setToolTipText("simulation algorithm to use");
+		mc2ConfigControls.add(simulatorLabel);
+		ddlSimulator = new Combo(parent, SWT.READ_ONLY);
+		ddlSimulator.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		mc2ConfigControls.add(ddlSimulator);
+		ddlSimulator.add("dm");
+		ddlSimulator.add("frm");
+		ddlSimulator.add("cr");
+		ddlSimulator.add("tl");
+		ddlSimulator.add("nrm");
+		ddlSimulator.add("pdm");
+		ddlSimulator.add("ldm");
+		ddlSimulator.add("sdm");
+		ddlSimulator.add("odm");
 
 		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
 		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
@@ -293,6 +353,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		});
 		btnVerify.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		btnVerify.setEnabled(false);
+
+		ddlModelChecker.select(0);
+		ddlSimulator.select(0);
+		handleModelcheckerChanged(parentComposite);
 	}
 
 	@Override
@@ -359,6 +423,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 			txtConfidenceValue.setText(config.getConfidenceValue().toString());
 			txtPathLength.setText(config.getPathLength().toString());
 			txtSampleNumber.setText(config.getSampleNumber().toString());
+			txtMaxTime.setText(config.getMaxTime().toString());
+			txtInterval.setText(config.getLogInterval().toString());
+			txtRuns.setText(config.getRuns().toString());
 		}
 
 		getSite().getShell().layout(true, true);
@@ -501,6 +568,88 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// max time widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtMaxTime);
+		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
+
+		// add a validator so can only be a decimal number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// log interval widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtInterval);
+		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
+
+		// add a validator so can only be a decimal number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// no. of runs widget
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtRuns);
+		modelValue = BeanProperties.value(Configuration.class, "runs").observe(config);
+
+		// add a validator so can only be an integer number
+		validator = new IValidator() {
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Integer) {
+					Integer intValue = (Integer) value;
+					if (intValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+
+					return ValidationStatus.ok();
+				}
+
+				return ValidationStatus.error("not an integer number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// simulation algorithm widget
+		widgetValue = WidgetProperties.selection().observe(ddlSimulator);
+		modelValue = BeanProperties.value(Configuration.class, "simulationAlgorithm").observe(config);
+
+		strategy = new UpdateValueStrategy();
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 	}
 
 	private void ensureConfig() {
@@ -555,11 +704,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
-		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
 
 		final double confidence = Double.parseDouble(txtConfidenceValue.getText());
 		final long pathLength = Long.parseLong(txtPathLength.getText());
 		final long samples = Long.parseLong(txtSampleNumber.getText());
+
+		final double maxTime = Double.parseDouble(txtMaxTime.getText());
+		final double logInterval = Double.parseDouble(txtInterval.getText());
+		final long runs = Long.parseLong(txtRuns.getText());
+		final String simulationAlgorithm = ddlSimulator.getText();
 
 		final MessageConsoleStream consoleStream = verificationConsole.newMessageStream();
 
@@ -567,14 +720,16 @@ public class MainView extends ViewPart implements IPartListener2 {
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
-				try {
+				Process runningProcess = null;
+				
+				try {					
 					int exportIndex = 0;
 
 					for (Object checkedProperty : selectedPropertyPairs) {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							final String exportFileName = String.format("%s%s", filenameWithoutExtension, ++exportIndex);
+							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
 							IModelcheckingConfiguration config = null;
 
 							switch (target) {
@@ -594,11 +749,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 							case MC2:
 								Mc2Configuration mc2Config = new Mc2Configuration();
 								mc2Config.modelFileName = exportFileName;
+								mc2Config.maxTime = maxTime;
+								mc2Config.logInterval = logInterval;
+								mc2Config.runs = runs;
+								mc2Config.simulationAlgorithm = simulationAlgorithm;
 								config = mc2Config;
 								break;
 							}
 
-							final Process verificationProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target, config);
+							final Process verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target, config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
@@ -606,6 +765,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 									try {
 
 										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
+										BufferedReader err = new BufferedReader(new InputStreamReader(verificationProcess.getErrorStream()));
 										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFileName + ".result"));
 
 										String part = null;
@@ -615,11 +775,20 @@ public class MainView extends ViewPart implements IPartListener2 {
 											consoleStream.println(part);
 											fileStream.flush();
 										}
-
 										in.close();
+										
+										while ((part = err.readLine()) != null) {
+											fileStream.write(part);
+											fileStream.newLine();
+											consoleStream.println(part);
+											fileStream.flush();
+										}
+										err.close();
+										
 										fileStream.close();
 
 									} catch (IOException e) {
+										verificationProcess.destroy();
 									}
 								}
 							});
@@ -641,6 +810,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 					monitor.done();
 
 				} catch (IOException e) {
+					if (runningProcess != null) {
+						runningProcess.destroy();
+					}
 					errorDialogWithStackTrace("Failed verifying the " + config.modelName + " model", e);
 				}
 			}
@@ -668,6 +840,35 @@ public class MainView extends ViewPart implements IPartListener2 {
 		}
 		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
+	}
+
+	private void handleModelcheckerChanged(Composite parentComposite) {
+
+		switch ((ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText())) {
+		case PRISM:
+			toggleControls(prismConfigControls, true);
+			toggleControls(mc2ConfigControls, false);
+			break;
+		case NUSMV:
+			toggleControls(prismConfigControls, false);
+			toggleControls(mc2ConfigControls, false);
+			break;
+		case MC2:
+			toggleControls(mc2ConfigControls, true);
+			toggleControls(prismConfigControls, false);
+			break;
+		}
+
+		parentComposite.layout();
+		updateUi();
+	}
+
+	private void toggleControls(List<Control> controls, boolean asVisible) {
+		for (Control control : controls) {
+			GridData layoutData = (GridData) control.getLayoutData();
+			layoutData.exclude = !asVisible;
+			control.setVisible(asVisible);
+		}
 	}
 
 	@Override

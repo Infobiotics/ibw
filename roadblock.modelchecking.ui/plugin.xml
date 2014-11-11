@@ -2,9 +2,10 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="roadblock.modelchecking.ui.views.mainView"
          point="org.eclipse.ui.views">
       <category
-            name="IBW Modelchecking"
+            name="Model Checking"
             id="roadblock.modelchecking.ui">
       </category>
       <view

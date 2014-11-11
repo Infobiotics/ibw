@@ -67,6 +67,10 @@ public class ConfigurationUtil {
 		setConfidenceValue(config.confidenceValue);
 		setPathLength(config.pathLength);
 		setSampleNumber(config.sampleNumber);
+		setMaxTime(config.maxTime);
+		setLogInterval(config.logInterval);
+		setRuns(config.runs);
+		setSimulationAlgorithm(config.simulationAlgorithm);
 
 		return config;
 	}
@@ -85,6 +89,10 @@ public class ConfigurationUtil {
 		config.confidenceValue = 0.99;
 		config.pathLength = 10000;
 		config.sampleNumber = 100;
+		config.maxTime = 100.0;
+		config.logInterval = 1.0;
+		config.runs = 1;
+		config.simulationAlgorithm = "";
 		
 		return config;
 	}
@@ -98,6 +106,10 @@ public class ConfigurationUtil {
 		setConfidenceValue(config.confidenceValue);
 		setPathLength(config.pathLength);
 		setSampleNumber(config.sampleNumber);
+		setMaxTime(config.maxTime);
+		setLogInterval(config.logInterval);
+		setRuns(config.runs);
+		setSimulationAlgorithm(config.simulationAlgorithm);
 	}
 
 	private void loadCurrentConfig() {
@@ -109,6 +121,10 @@ public class ConfigurationUtil {
 		config.confidenceValue = getConfidenceValue();
 		config.pathLength = getPathLength();
 		config.sampleNumber = getSampleNumber();
+		config.maxTime = getMaxTime();
+		config.logInterval = getLogInterval();
+		config.runs = getRuns();
+		config.simulationAlgorithm = getSimulationAlgorithm();
 	}
 
 	private static String getConfigQualifier(String projectName, String modelName) {
@@ -181,6 +197,38 @@ public class ConfigurationUtil {
 
 	private void setSampleNumber(Integer sampleNumber) {
 		writeParameterToConfiguration("sampleNumber", sampleNumber);
+	}
+	
+	private double getMaxTime() {
+		return readDoubleParameterFromConfiguration("maxTime");
+	}
+
+	private void setMaxTime(Double maxTime) {
+		writeParameterToConfiguration("maxTime", maxTime);
+	}
+	
+	private double getLogInterval() {
+		return readDoubleParameterFromConfiguration("logInterval");
+	}
+
+	private void setLogInterval(Double logInterval) {
+		writeParameterToConfiguration("logInterval", logInterval);
+	}
+	
+	private int getRuns() {
+		return readIntParameterFromConfiguration("runs");
+	}
+
+	private void setRuns(Integer runs) {
+		writeParameterToConfiguration("runs", runs);
+	}
+	
+	private String getSimulationAlgorithm() {
+		return readParameterFromConfiguration("simulationAlgorithm");
+	}
+
+	private void setSimulationAlgorithm(String simulationAlgorithm) {
+		writeParameterToConfiguration("simulationAlgorithm", simulationAlgorithm);
 	}
 
 	private String readParameterFromConfiguration(String parameter) {

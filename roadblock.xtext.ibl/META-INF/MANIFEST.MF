@@ -22,14 +22,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Import-Package: org.apache.log4j,
- org.eclipse.xtext.xbase.lib,
- roadblock.dataprocessing.flatModel,
- roadblock.dataprocessing.model,
- roadblock.simulation.ngss,
- roadblock.emf.ibl.Ibl,
- roadblock.emf.ibl.Ibl.util,
- roadblock.modelchecking,
- roadblock.modelchecking.translation
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.xtext.ibl,
  roadblock.xtext.ibl.services,

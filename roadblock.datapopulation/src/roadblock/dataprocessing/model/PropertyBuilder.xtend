@@ -38,6 +38,7 @@ import roadblock.xtext.ibl.ibl.VariableComplex
 import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
+import roadblock.xtext.ibl.ibl.ConcentrationQuantity
 
 public class PropertyBuilder extends IblSwitch<Object> {
 
@@ -186,24 +187,13 @@ public class PropertyBuilder extends IblSwitch<Object> {
 
 		var expression = null as IStateFormula;
 
-		if(stateExpression.variable != null) {
+		var binaryStateFormula = modelFactory.createRelationalExpression
 
-			var concentrationExpression = modelFactory.createConcentrationExpression;
+		binaryStateFormula.setLeftOperand(doSwitch(stateExpression.operand1) as IArithmeticOperand);
+		binaryStateFormula.operator = getRelationalOperator(stateExpression.operator);
+		binaryStateFormula.setRightOperand(doSwitch(stateExpression.operand2) as IArithmeticOperand);
 
-			concentrationExpression.setVariable(doSwitch(stateExpression.variable) as VariableReference);
-			concentrationExpression.operator = getRelationalOperator(stateExpression.operator);
-			concentrationExpression.quantity = Double.parseDouble(stateExpression.concentrationQuantity.value);
-			concentrationExpression.unit = getConcentrationUnit(stateExpression.concentrationQuantity.unit);
-			expression = concentrationExpression;
-		} else {
-			var binaryStateFormula = modelFactory.createRelationalExpression
-
-			binaryStateFormula.setLeftOperand(doSwitch(stateExpression.operand1) as IArithmeticOperand);
-			binaryStateFormula.operator = getRelationalOperator(stateExpression.operator);
-			binaryStateFormula.setRightOperand(doSwitch(stateExpression.operand2) as IArithmeticOperand);
-
-			expression = binaryStateFormula;
-		}
+		expression = binaryStateFormula;
 
 		return expression;
 	}
@@ -300,6 +290,8 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			operand = variable;
 		} else if(arithmeticOperand.expression != null) {
 			operand = doSwitch(arithmeticOperand.expression) as  IArithmeticOperand;
+		} else if(arithmeticOperand.concentrationQuantity != null) {
+			operand = doSwitch(arithmeticOperand.concentrationQuantity) as  IArithmeticOperand;
 		} else {
 			var numericLiteral = modelFactory.createNumericLiteral
 			numericLiteral.value = Double.parseDouble(arithmeticOperand.numericLiteral);
@@ -307,6 +299,16 @@ public class PropertyBuilder extends IblSwitch<Object> {
 		}
 
 		return operand;
+	}
+	
+	override caseConcentrationQuantity(ConcentrationQuantity concentrationQuantity) {
+		
+		var concentration = modelFactory.createConcentrationQuantity;
+		
+		concentration.amount = Double.parseDouble(concentrationQuantity.value);
+		concentration.unit = getConcentrationUnit(concentrationQuantity.unit);
+		
+		return concentration;
 	}
 
 	override casePropertyVariableReference(PropertyVariableReference propertyVariableReference) {

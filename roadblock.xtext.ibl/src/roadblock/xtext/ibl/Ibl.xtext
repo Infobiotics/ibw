@@ -471,7 +471,6 @@ StateFormula:
 
 StateExpression:
 	{StateExpression}
-	(variable=PropertyVariableReference operator=RelationalOperator concentrationQuantity=ConcentrationQuantity) |
 	(operand1=AdditionSubtractionExpression operator=RelationalOperator operand2=AdditionSubtractionExpression)
 ;
 
@@ -487,7 +486,7 @@ MultiplicationDivisionExpression:
 
 ArithmeticOperand:
 	{ArithmeticOperand}
-	numericLiteral=REAL | variable=PropertyVariableReference | isMaximumOfInterest?='MAX('variable=PropertyVariableReference')' | '(' expression=AdditionSubtractionExpression ')' 
+	numericLiteral=REAL | concentrationQuantity=ConcentrationQuantity | variable=PropertyVariableReference | isMaximumOfInterest?='MAX('variable=PropertyVariableReference')' | '(' expression=AdditionSubtractionExpression ')' 
 ;
 
 TimeInstant:
@@ -538,7 +537,7 @@ REAL:
 ;
 
 UnitInterval:
-	'1.0' | '.' (INT)* | '0.' (INT)* 
+	'1.0' | '.' (INT)* | '0.' (INT)*
 ;
 
 Decimal hidden():
@@ -550,11 +549,11 @@ DecimalExp hidden():
 ;
 
 TimeUnit:
-	's' | 'min' | 'mins' 
+	's' | 'min' | 'mins'
 ;
 
 FluxUnit:
-'s^-1' | 'min^-1'	
+	's^-1' | 'min^-1'
 ;
 
 ConcentrationUnit:

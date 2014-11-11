@@ -9,7 +9,7 @@ import roadblock.emf.ibl.Ibl.BooleanOperator;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -101,16 +101,6 @@ public class NuSmvTranslator implements IPropertyTranslator {
 	}
 
 	@Override
-	public String visit(ConcentrationExpression expression) {
-
-		String pattern = "%s %s %s";
-		String variableName = doTranslateName(expression.getVariable().getName());
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, variableName, relationalOperator, (int) expression.getQuantity());
-	}
-
-	@Override
 	public String visit(NotStateFormula expression) {
 
 		String pattern = "!(%s)";
@@ -153,13 +143,18 @@ public class NuSmvTranslator implements IPropertyTranslator {
 	}
 
 	@Override
+	public String visit(ConcentrationQuantity expression) {
+		return Integer.toString((int) expression.getAmount());
+	}
+
+	@Override
 	public String visit(VariableReference expression) {
 		return doTranslateName(expression.getName());
 	}
 
 	@Override
 	public String visit(NumericLiteral expression) {
-		return Integer.toString((int)expression.getValue());
+		return Integer.toString((int) expression.getValue());
 	}
 
 	private String Translate(RelationalOperator operator) {

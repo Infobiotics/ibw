@@ -7,7 +7,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -26,6 +26,7 @@ import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
+import roadblock.emf.ibl.Ibl.TemporalPattern;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
@@ -37,7 +38,7 @@ public class MC2PropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(UnaryProbabilityProperty expression) {
-		return true;
+		return expression.getOperator() != TemporalPattern.NEVER;
 	}
 
 	@Override
@@ -161,22 +162,22 @@ public class MC2PropertyFilter implements IPropertyFilter {
 	}
 
 	@Override
-	public Boolean visit(ConcentrationExpression expression) {
+	public Boolean visit(BinaryArithmeticExpression expression) {
 		throw new UnsupportedOperationException();
 	}
-
+	
 	@Override
-	public Boolean visit(BinaryArithmeticExpression expression) {
+	public Boolean visit(ConcentrationQuantity expression) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Boolean visit(VariableReference expression) {
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public Boolean visit(NumericLiteral expression) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public Boolean visit(VariableReference expression) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -192,6 +193,6 @@ public class MC2PropertyFilter implements IPropertyFilter {
 
 	@Override
 	public ModelcheckingTarget getTarget() {
-		return ModelcheckingTarget.PRISM;
+		return ModelcheckingTarget.MC2;
 	}
 }

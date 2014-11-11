@@ -28,7 +28,7 @@
     </eOperations>
     <eOperations name="visit">
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
-      <eParameters name="expression" eType="#//ConcentrationExpression"/>
+      <eParameters name="expression" eType="#//ConcentrationQuantity"/>
     </eOperations>
     <eOperations name="visit">
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
@@ -358,13 +358,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="negatedOperand" eType="#//IStateFormula"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConcentrationExpression" eSuperTypes="#//IStateFormula">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableReference"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//RelationalOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RelationalOperator">
     <eLiterals name="GT" value="1"/>
     <eLiterals name="GE" value="2"/>
@@ -483,5 +476,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IArithmeticOperand"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//RelationalOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConcentrationQuantity" eSuperTypes="#//IArithmeticOperand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -86,7 +86,6 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.CONCENTRATION_CONSTRAINT: return (EObject)createConcentrationConstraint();
 			case IblPackage.BINARY_STATE_FORMULA: return (EObject)createBinaryStateFormula();
 			case IblPackage.NOT_STATE_FORMULA: return (EObject)createNotStateFormula();
-			case IblPackage.CONCENTRATION_EXPRESSION: return (EObject)createConcentrationExpression();
 			case IblPackage.REGION: return (EObject)createRegion();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT: return (EObject)createEMFVariableAssignment();
 			case IblPackage.FLAT_MODEL: return (EObject)createFlatModel();
@@ -100,6 +99,7 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.VARIABLE_REFERENCE: return (EObject)createVariableReference();
 			case IblPackage.MONOTONICITY_EXPRESSION: return (EObject)createMonotonicityExpression();
 			case IblPackage.RELATIONAL_EXPRESSION: return (EObject)createRelationalExpression();
+			case IblPackage.CONCENTRATION_QUANTITY: return (EObject)createConcentrationQuantity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -378,16 +378,6 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConcentrationExpression createConcentrationExpression() {
-		ConcentrationExpression concentrationExpression = new ConcentrationExpression();
-		return concentrationExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Region createRegion() {
 		Region region = new Region();
 		return region;
@@ -511,6 +501,16 @@ public class IblFactory extends EFactoryImpl {
 	public RelationalExpression createRelationalExpression() {
 		RelationalExpression relationalExpression = new RelationalExpression();
 		return relationalExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConcentrationQuantity createConcentrationQuantity() {
+		ConcentrationQuantity concentrationQuantity = new ConcentrationQuantity();
+		return concentrationQuantity;
 	}
 
 	/**

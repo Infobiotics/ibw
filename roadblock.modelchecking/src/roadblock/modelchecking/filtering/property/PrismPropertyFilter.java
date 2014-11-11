@@ -7,7 +7,7 @@ import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
-import roadblock.emf.ibl.Ibl.ConcentrationExpression;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -40,7 +40,7 @@ public class PrismPropertyFilter implements IPropertyFilter {
 	public Boolean visit(UnaryProbabilityProperty expression) {
 		boolean isPropertyPatternValid = expression.getOperator() != TemporalPattern.INFINITELY_OFTEN ? true : false;
 		boolean isStateFormulaValid = expression.getStateFormula().accept(this);
-		
+
 		return isPropertyPatternValid && isStateFormulaValid;
 	}
 
@@ -48,14 +48,14 @@ public class PrismPropertyFilter implements IPropertyFilter {
 	public Boolean visit(BinaryProbabilityProperty expression) {
 		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
 		boolean isRightOperandValid = expression.getRightOperand().accept(this);
-		
+
 		return isLeftOperandValid && isRightOperandValid;
 	}
 
 	@Override
 	public Boolean visit(SteadyStateProperty expression) {
 		boolean isStateFormulaValid = expression.getStateFormula().accept(this);
-		
+
 		return isStateFormulaValid;
 	}
 
@@ -67,7 +67,7 @@ public class PrismPropertyFilter implements IPropertyFilter {
 	@Override
 	public Boolean visit(NotStateFormula expression) {
 		boolean isStateFormulaValid = expression.getNegatedOperand().accept(this);
-		
+
 		return isStateFormulaValid;
 	}
 
@@ -75,43 +75,41 @@ public class PrismPropertyFilter implements IPropertyFilter {
 	public Boolean visit(BinaryStateFormula expression) {
 		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
 		boolean isRightOperandValid = expression.getRightOperand().accept(this);
-		
+
 		return isLeftOperandValid && isRightOperandValid;
-	}
-	
-	@Override
-	public Boolean visit(ConcentrationExpression expression) {
-		boolean isVariableValid = expression.getVariable().accept(this);
-		
-		return isVariableValid;
 	}
 
 	@Override
 	public Boolean visit(BinaryArithmeticExpression expression) {
 		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
 		boolean isRightOperandValid = expression.getRightOperand().accept(this);
-		
+
 		return isLeftOperandValid && isRightOperandValid;
 	}
-	
+
 	@Override
 	public Boolean visit(RelationalExpression expression) {
 		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
 		boolean isRightOperandValid = expression.getRightOperand().accept(this);
-		
+
 		return isLeftOperandValid && isRightOperandValid;
 	}
-	
+
 	@Override
 	public Boolean visit(MonotonicityExpression expression) {
 		return false;
 	}
-	
+
+	@Override
+	public Boolean visit(ConcentrationQuantity expression) {
+		return true;
+	}
+
 	@Override
 	public Boolean visit(VariableReference expression) {
 		return !expression.isIsMaximumOfInterest();
 	}
-	
+
 	@Override
 	public Boolean visit(NumericLiteral expression) {
 		return true;

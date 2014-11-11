@@ -62,13 +62,18 @@ public class NuSmvTranslator implements IModelTranslator {
 
 		initDataStructures(model);
 
+		boolean hasRules = updateRulesByMolecule.size() != 0;
+
 		ST modelTemplate = nusmvTemplates.getInstanceOf("model");
 		modelTemplate.add("name", "NuSMVModel");
 		modelTemplate.add("molecules", getTranslatedMolecules(model));
-		modelTemplate.add("invariant", getTranslatedInvariant(model));
 		modelTemplate.add("initialConcentrations", getTranslatedInitialConcentrations(model));
-		modelTemplate.add("choiceConstraints", getTranslatedChoiceConstraints(model));
-		modelTemplate.add("updateRules", getTranslatedUpdateRules(model));
+
+		if (hasRules) {
+			modelTemplate.add("invariant", getTranslatedInvariant(model));
+			modelTemplate.add("choiceConstraints", getTranslatedChoiceConstraints(model));
+			modelTemplate.add("updateRules", getTranslatedUpdateRules(model));
+		}
 
 		return modelTemplate.render();
 	}
@@ -115,12 +120,10 @@ public class NuSmvTranslator implements IModelTranslator {
 						ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "productionGuard" : "consumptionGuard");
 
 						if (updateRule.isProduction) {
-							guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity,
-									moleculeMaxConcentrations.get(molecule));
+							guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity, moleculeMaxConcentrations.get(molecule));
 						}
 						for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
-							guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(),
-									consumedMolecule.getValue() - 1);
+							guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
 						}
 
 						guardList.add(guardTemplate.render());
@@ -145,8 +148,7 @@ public class NuSmvTranslator implements IModelTranslator {
 					ST guardTemplate = nusmvTemplates.getInstanceOf(updateRule.isProduction ? "productionGuard" : "consumptionGuard");
 
 					if (updateRule.isProduction) {
-						guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity,
-								moleculeMaxConcentrations.get(molecule));
+						guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity, moleculeMaxConcentrations.get(molecule));
 					}
 					for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
 						guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
@@ -203,8 +205,7 @@ public class NuSmvTranslator implements IModelTranslator {
 
 				guardTemplate.add("ruleIndex", updateRule.ruleIndex);
 				if (updateRule.isProduction) {
-					guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity,
-							moleculeMaxConcentrations.get(molecule));
+					guardTemplate.addAggr("producedMolecule.{name, multiplicity, maxConcentration}", molecule, updateRule.multiplicity, moleculeMaxConcentrations.get(molecule));
 				}
 				for (Entry<String, Integer> consumedMolecule : updateRule.guardComponents.entrySet()) {
 					guardTemplate.addAggr("consumedMolecules.{name, multiplicity}", consumedMolecule.getKey(), consumedMolecule.getValue() - 1);
@@ -213,9 +214,8 @@ public class NuSmvTranslator implements IModelTranslator {
 				caseBranchTemplate.add("guard", guardTemplate.render());
 				caseBranchTemplate.add(
 						"value",
-						(updateRule.isProduction ? nusmvTemplates.getInstanceOf("moleculeProduction") : nusmvTemplates
-								.getInstanceOf("moleculeConsumption")).addAggr("molecule.{name, multiplicity}", molecule, updateRule.multiplicity)
-								.render());
+						(updateRule.isProduction ? nusmvTemplates.getInstanceOf("moleculeProduction") : nusmvTemplates.getInstanceOf("moleculeConsumption")).addAggr("molecule.{name, multiplicity}",
+								molecule, updateRule.multiplicity).render());
 
 				branchList.add(caseBranchTemplate.render());
 			}
