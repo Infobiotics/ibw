@@ -117,6 +117,7 @@ class BiocompilerUtil {
 		return cell
 	}
 	
+	
 	// RBS Optimisation
 	def Biopart optimiseRBS(Biopart part, Double rate){
 		val device = part.eContainer as BiocompilerDevice
@@ -139,9 +140,8 @@ class BiocompilerUtil {
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
-//		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
-		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.py").start()
-		println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.py").start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)

@@ -89,13 +89,11 @@ class BypassGUI {
 		
 		
 		var sbol = biocompiler.makeSBOLDocument
-		new SBOLPrettyWriter().write(sbol, new FileOutputStream("ATGCGeneratedSBOL.txt"))
-//SBOLFactory.validate(sbol)
 		try {
 			println("Validating the SBOL document");	
+			SBOLFactory.validate(sbol)
 			// validate the contents of the file
-		SBOLFactory.write(sbol, new FileOutputStream("ATGCGeneratedSBOL.xml"));
-//			SBOLFactory.validate(sbol)
+			SBOLFactory.write(sbol, new FileOutputStream("ATGCGeneratedSBOL.xml"));
 			println("validated.");
 		}
 		catch (SBOLValidationException e) {

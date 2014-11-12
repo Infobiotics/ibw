@@ -308,19 +308,20 @@ class Biocompiler {
 						] 
 					device.parts.add(biopart)	
 				}
-				
-				// add 1 terminator
-				var biopart = biopartsFactory.createBiopart
-					biopart => [
-						name = cell.name + "/" + device.name + "/terminator"
-						sequence = ""
-						biologicalFunction = "TERMINATOR"
-						cellName = cell.name
-						deviceName = device.name
-						accessionURL = ""
-					] 
-				device.parts.add(biopart)
-				
+
+				// add 1 terminator if necessary (i.e. if none have been set by the user)				
+				if(device.parts.filter[biologicalFunction == 'TERMINATOR'].size == 0){
+					var biopart = biopartsFactory.createBiopart
+						biopart => [
+							name = cell.name + "/" + device.name + "/terminator"
+							sequence = ""
+							biologicalFunction = "TERMINATOR"
+							cellName = cell.name
+							deviceName = device.name
+							accessionURL = ""
+						] 
+					device.parts.add(biopart)
+				}				
 
 			}
 			
@@ -650,13 +651,17 @@ class Biocompiler {
 	def buildWholeSequence(BiocompilerCell cell){
 		cell.devices.map[parts].flatten.sortBy[position.value].map[utils.finalSequence(it)].join
 	}
+
+	def boolean sequenceIsSet(Biopart part){ // checks if sequence has been set or not
+		!(part.sequence == null || part.sequence == '')		
+	}
 	
 	def findTerminatorSequence(){
 		// how many needed
 		var numberTerminator = 0
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
-				numberTerminator = numberTerminator + device.parts.filter[biologicalFunction =='TERMINATOR'].length
+				numberTerminator = numberTerminator + device.parts.filter[it.biologicalFunction =='TERMINATOR' && (!it.sequenceIsSet)].length
 		
 		// pick some from the DB
 		val databaseLocation = utils.pathResources + "/partRegistry.db"
@@ -794,7 +799,6 @@ class Biocompiler {
 			displayId = part.name
 			name = part.name ]
 		
-		println("URI:" + dnaComponent.URI)
 		
 		// use the predefined SequenceOntology constant
 		switch(part.biologicalFunction){
