@@ -3,6 +3,7 @@ package roadblock.modelchecking.runtime.nusmv;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
@@ -40,7 +41,9 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 
 		writeModel(verificationModelFileName, modelTranslation, propetyTranslation, true);
 
-		String[] verificationCommand = new String[] { "NuSMV", verificationModelFileName };
+		String toolPath = BinaryPathProvider.getInstance().getNuSmvPath();
+
+		String[] verificationCommand = new String[] { toolPath, verificationModelFileName };
 
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
@@ -59,7 +62,7 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 			writer.write(System.getProperty("line.separator"));
 			writer.write(String.format("SPEC %s", property));
 		}
-		
+
 		writer.flush();
 		writer.close();
 	}

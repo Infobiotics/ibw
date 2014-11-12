@@ -21,7 +21,7 @@ import roadblock.modelchecking.ModelcheckingTarget;
 
 public class PrismTranslator implements IModelTranslator {
 
-	private static STGroup prismTemplates = new STGroupFile(PrismTranslator.class.getResource("../templates/PRISM.stg").getFile());
+	private static STGroup prismTemplates = new STGroupFile(PrismTranslator.class.getResource("templates/PRISM.stg").getFile());
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();

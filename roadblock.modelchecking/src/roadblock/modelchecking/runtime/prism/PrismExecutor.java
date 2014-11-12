@@ -3,6 +3,7 @@ package roadblock.modelchecking.runtime.prism;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
@@ -40,18 +41,10 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 
 		writeFile(verificationModelFileName, modelTranslation, propetyTranslation);
 
-		String[] verificationCommand = new String[] { "prism", verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod", "ci",
-				"-simconf", String.valueOf(config.confidence), "-simsamples", String.valueOf(config.samples), "-simpathlen",
-				String.valueOf(config.pathLength) };
-
-		// String[] verificationCommand = new String[] { "prism",
-		// config.modelFileName, "-csl", propetyTranslation };
-		// String[] verificationCommand = new String[] { "ping", "google.ro",
-		// "-c", "10" };
-
-		// System.out.println(verificationCommand[0] + " " +
-		// verificationCommand[1] + " " + verificationCommand[2] + " \'" +
-		// verificationCommand[3] + "\'");
+		String toolPath = BinaryPathProvider.getInstance().getPrismPath();
+		
+		String[] verificationCommand = new String[] { toolPath, verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod", "ci", "-simconf", String.valueOf(config.confidence),
+				"-simsamples", String.valueOf(config.samples), "-simpathlen", String.valueOf(config.pathLength) };
 
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
@@ -59,7 +52,7 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 	private void writeFile(String fileName, String model, String property) throws IOException {
 
 		PrintWriter writer = new PrintWriter(fileName);
-		
+
 		writer.write(String.format("// The generated PRISM model corresponding to property: %s", property));
 		writer.write(System.getProperty("line.separator"));
 		writer.write(System.getProperty("line.separator"));

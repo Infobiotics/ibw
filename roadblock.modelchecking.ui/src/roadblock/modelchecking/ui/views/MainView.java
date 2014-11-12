@@ -22,6 +22,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
@@ -721,8 +722,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
 				Process runningProcess = null;
-				
-				try {					
+
+				try {
 					int exportIndex = 0;
 
 					for (Object checkedProperty : selectedPropertyPairs) {
@@ -776,7 +777,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 											fileStream.flush();
 										}
 										in.close();
-										
+
 										while ((part = err.readLine()) != null) {
 											fileStream.write(part);
 											fileStream.newLine();
@@ -784,7 +785,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 											fileStream.flush();
 										}
 										err.close();
-										
+
 										fileStream.close();
 
 									} catch (IOException e) {

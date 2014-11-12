@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
+import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
@@ -46,9 +47,12 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		String simulationFileName = config.modelFileName + ".csv";
 		String propertiesFileName = config.modelFileName + ".queries";
 
-		String[] simulationCommand = new String[] { "ngss", "--emf", "parser=emf", "max_time=" + config.maxTime, "max_runtime=" + 0.0, "simulation_algorithm=" + config.simulationAlgorithm,
+		String ngssPath = BinaryPathProvider.getInstance().getNgssPath();
+		String mc2Path = BinaryPathProvider.getInstance().getMc2Path();
+		
+		String[] simulationCommand = new String[] { ngssPath, "--emf", "parser=emf", "max_time=" + config.maxTime, "max_runtime=" + 0.0, "simulation_algorithm=" + config.simulationAlgorithm,
 				"data_file=" + simulationFileName, "log_interval=" + config.logInterval, "runs=" + config.runs, "seed=0", "output=console", "compress=true", "parallel=true", "show_progress=false" };
-		String[] verificationCommand = new String[] { "java", "-jar", "/home/laurentiumierla/DevTools/MC2v2.0beta2/mc2.jar", "stoch", simulationFileName, propertiesFileName, "-time" };
+		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName, propertiesFileName, "-time" };
 
 		Process simulationProcess = runSimulation(simulationCommand, xmlFlatModel, simulationFileName);
 		simulationProcess.waitFor();

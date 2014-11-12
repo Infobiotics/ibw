@@ -28,7 +28,7 @@ public class NuSmvTranslator implements IModelTranslator {
 		public int multiplicity;
 	}
 
-	private static STGroup nusmvTemplates = new STGroupFile(NuSmvTranslator.class.getResource("../templates/NuSMV.stg").getFile());
+	private static STGroup nusmvTemplates = new STGroupFile(NuSmvTranslator.class.getResource("templates/NuSMV.stg").getFile());
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private HashMap<String, List<UpdateRule>> updateRulesByMolecule = new HashMap<>();
