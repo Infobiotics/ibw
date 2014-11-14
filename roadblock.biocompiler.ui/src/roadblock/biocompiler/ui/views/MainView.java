@@ -1,7 +1,11 @@
 package roadblock.biocompiler.ui.views;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
@@ -192,7 +196,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				if (iblResource != currentIblResource) {
 					currentIblResource = iblResource;
-//					ensureConfig();
+					ensureConfig();
 //					bindValues();
 				}
 
@@ -209,7 +213,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 	
 
-	protected void updateUi() {
+	protected void updateUi()  {
 
 		if (currentIblResource == null) {
 			compilationButton.setEnabled(false);
@@ -219,8 +223,42 @@ public class MainView extends ViewPart implements IPartListener2 {
 			compilationButton.setEnabled(true);
 			System.out.println(model);
 			
-			// save the model as XML
-			
+
+			try {
+				// convert the model to XML
+				System.out.println("Converting to XML");
+				String xml = convertToXml(model);
+				
+				// save XML as file
+				System.out.println("Saving to XML");
+				String xmlFilename = config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml";
+				writeTextFile(xmlFilename, xml);
+				
+				// run the biocompiler
+				System.out.println("Running the biocompiler");
+				String pathToBiocompiler = "/home/christophe/WualaDrive/koantig/work/roadblock/biocompilerStandAlone";
+				Process process = new ProcessBuilder(pathToBiocompiler + "/atgcWrapper.sh",xmlFilename,".").start(); 
+				
+				InputStream is = process.getInputStream();
+				InputStream is2 = process.getErrorStream();
+				InputStreamReader isr = new InputStreamReader(is);
+				InputStreamReader isr2 = new InputStreamReader(is2);
+				BufferedReader br = new BufferedReader(isr);
+				BufferedReader br2 = new BufferedReader(isr2);
+				String line="";
+
+				System.out.println("##########  Error stream ############");
+				while ((line = br2.readLine()) != null) {
+					System.out.println(line);
+					}
+
+				System.out.println("##########  Input stream ############");
+				while ((line = br.readLine()) != null) {
+					System.out.println(line);
+					}
+			} catch (IOException e) {
+				System.out.println("Problem when creating the xml");
+			}
 			
 //			biocompiler = new Biocompiler(model);
 //			biocompiler.gatherParts();
@@ -303,12 +341,12 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private void updateConsoleView(){
 		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
-		myConsole.setContent(biocompiler.makeHtmlLog()); 
+//		myConsole.setContent(biocompiler.makeHtmlLog()); 
 	}
 
 	private void updateResultsView(){
 		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.resultsView");
-		resultsView.setContent(biocompiler.makeResultPage()); 
+//		resultsView.setContent(biocompiler.makeResultPage()); 
 	}
 	
 	
@@ -353,6 +391,29 @@ public class MainView extends ViewPart implements IPartListener2 {
 		resource.setEncoding("UTF-8");
 		resource.getContents().add(eObject);
 		return processor.saveToString(resource, null);
+	}
+
+	public void  writeTextFile(String fileName, String s) {
+
+		FileWriter output = null ;
+
+		try {
+			output = new FileWriter(fileName);
+			output.write(s);
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (output != null) {
+				try {
+					output.flush();
+					output.close();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	private static void errorDialogWithStackTrace(String msg, Throwable t) {
