@@ -41,8 +41,10 @@ class CodonOptimisationForRestrictionEnzymes {
 	
 	var public List<String> cdsList
 	var public List<RestrictionEnzyme> reList
+	
+	var pathToResources = '../roadblock.biocompiler/resources'
 	// constructor
-	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species){
+	new(List<String> cdsList, List<RestrictionEnzyme> reList, String species, String pathToResources){
 		
 		this.cdsList = cdsList
 		this.reList = reList
@@ -223,11 +225,11 @@ class CodonOptimisationForRestrictionEnzymes {
 		return nList.fold({var List<Integer> a = newArrayList; a.add(1); a })[a,b | {a.add(a.last * b); a}]
 	}
 		
-	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
+	def LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
 		
 		var LinkedHashMap<String, CodonUsageTableElement> table = newLinkedHashMap
 		
-		val databaseLocation = utils.pathResources + "/codonUsage.db"
+		val databaseLocation = pathToResources + "/db/codonUsage.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		

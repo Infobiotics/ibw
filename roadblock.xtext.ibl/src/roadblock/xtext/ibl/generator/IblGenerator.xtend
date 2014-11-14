@@ -19,8 +19,7 @@ import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.modelchecking.ModelcheckingTarget
-import roadblock.modelchecking.translation.TranslationManager 
-
+import roadblock.modelchecking.translation.TranslationManager import roadblock.biocompiler.Biocompiler
 
 /**
  * Generates code from your model files on save.
@@ -63,6 +62,7 @@ class IblGenerator implements IGenerator {
 		fsa.generateFile('EMFModel.xml', convertToXml(emfModel))
 //		println("biocompiler starting")
 //		var Biocompiler biocompiler = new Biocompiler(emfModel)
+//		biocompiler.compile
 //		biocompiler.gatherParts
 //		biocompiler.completeDevices
 //		biocompiler.createIntVarForAllparts

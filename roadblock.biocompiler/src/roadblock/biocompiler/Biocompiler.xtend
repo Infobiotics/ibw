@@ -63,9 +63,10 @@ import java.util.regex.Pattern
 import roadblock.emf.bioparts.Bioparts.BiocompilerCell
 import java.util.List
 import roadblock.biocompiler.util.BiocompilerUtil
-import javax.sound.midi.Sequence
 import java.io.InputStream
 import roadblock.emf.ibl.Ibl.ATGCTranslationRate
+import roadblock.emf.ibl.Ibl.IblPackage
+import java.nio.charset.Charset
 
 @Data class RestrictionEnzyme {
     String name
@@ -138,12 +139,44 @@ class Biocompiler {
 	
 	var modelFactory = IblFactory::eINSTANCE
 	
+	var public pathToResources = '../roadblock.biocompiler/resources'
+	var public pathOutput = '../roadblock.biocompiler/'	
+	var pathToImages = '../roadblock.biocompiler/resources'
+	
 	val defaultTranslationRate = 1000.0
+	
+	
+	 def static void main(String[] args){
+	 	println("Hi from biocompiler. " + args.size + " arguments")
+	 	if(args.size == 3 ){
+	 		val filename = args.get(0)
+	 		println("loading the EMF data model" + filename)
+	 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
+			val XMLsource = utils.readFile(filename,Charset.defaultCharset())
+			println("EMF model read")
+			val emfModel = utils.convertToEObject(XMLsource) as Model	
+			println("EMF model parsed")
+			var biocompiler = new Biocompiler(emfModel)
+			println("biocompiler instantiated and populated")
+			biocompiler.pathToResources = args.get(1)
+			println("Path to Resources: " + biocompiler.pathToResources)
+
+			biocompiler.pathOutput = args.get(2)
+			println("Path to Output: " + biocompiler.pathOutput)
+			
+			biocompiler.gatherParts
+			println("part gathering done.")
+			biocompiler.compile
+			println("Compilation done.")
+				 		
+	 	}
+	 }
 	
 	new(Model emfModel){
 		println(new Date())
 		println("ATGC: Compiling")
 		model = emfModel
+		log.addText(model.toString)
 		log.addText('ATGC: new instance')
 	}
 	
@@ -172,7 +205,7 @@ class Biocompiler {
 			
 			//findNoncuttingRestrictionEnzymes
 			for(cell: biocompilerModel.cells){
-				var ref = new RestrictionEnzymesFinder(cell,"b")
+				var ref = new RestrictionEnzymesFinder(cell,"b", pathToResources)
 				log.addLog(ref.searchRE)
 			}
 			
@@ -310,7 +343,7 @@ class Biocompiler {
 				}
 
 				// add 1 terminator if necessary (i.e. if none have been set by the user)				
-				if(device.parts.filter[biologicalFunction == 'TERMINATOR'].size == 0){
+//				if(device.parts.filter[biologicalFunction == 'TERMINATOR'].size == 0){
 					var biopart = biopartsFactory.createBiopart
 						biopart => [
 							name = cell.name + "/" + device.name + "/terminator"
@@ -321,12 +354,14 @@ class Biocompiler {
 							accessionURL = ""
 						] 
 					device.parts.add(biopart)
-				}				
+//				}				
 
 			}
 			
 		}
 		log.addText("Completing devices is done.")
+		
+		println(biocompilerModel)
 	}
 	
 	def createIntVarForAllparts(){
@@ -590,7 +625,7 @@ class Biocompiler {
 
 	def private  getSequenceFromDatabase(String partName, String collection){
 		// pick some from the DB
-		val databaseLocation = utils.pathResources + "/partRegistry.db"
+		val databaseLocation = pathToResources + "/db/partRegistry.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
@@ -661,10 +696,10 @@ class Biocompiler {
 		var numberTerminator = 0
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
-				numberTerminator = numberTerminator + device.parts.filter[it.biologicalFunction =='TERMINATOR' && (!it.sequenceIsSet)].length
+				numberTerminator = numberTerminator + device.parts.filter[it.biologicalFunction =='TERMINATOR' ].length
 		
 		// pick some from the DB
-		val databaseLocation = utils.pathResources + "/partRegistry.db"
+		val databaseLocation =  pathToResources + "/db/partRegistry.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		
@@ -690,7 +725,7 @@ class Biocompiler {
 		for(cell: biocompilerModel.cells)
 			for(device: cell.devices)
 				for(part: device.parts.filter[biologicalFunction =='RBS']){
-					val tmp = utils.optimiseRBS(part, device.translationRate)
+					val tmp = utils.optimiseRBS(part, device.translationRate, pathToResources)
 					part => [
 						sequence = tmp.sequence
 					 	accessionURL = tmp.accessionURL]
@@ -863,7 +898,7 @@ class Biocompiler {
 		source.add("<HTML>")
 		source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
 		
-		val path = utils.pathResources + '/images/'
+		val path = pathToImages + '/images/'
 		
 		
 		for(cell:biocompilerModel.cells){

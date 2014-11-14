@@ -7,7 +7,7 @@
 // and Omer Markovitch
 // after discussion with Felix Dafhnis-Calas and Stephan Heeb
 
-
+ 
 define SentinelCell typeof CELL(){
 	ribosome = RIBOSOME() : observable
 	rnaP = RNA() : observable
@@ -57,7 +57,7 @@ define SentinelCell typeof CELL(){
 		// rna degradation
 		RULE mrnaDegradation : mrna ->
 	}
-
+ 
 	// components of the XylS2Production device
 	Psal = PROMOTER(URI = "atgc://user-submitted/part/psal")
 	xylS2 = GENE(URI = "atgc://user-submitted/part/xysl2")

@@ -41,7 +41,6 @@ class BiocompilerUtil {
 		#['V', 'ACG'],
 		#['D', 'AGT']]
 		
-	val public pathResources = '../roadblock.biocompiler/resources/'
 	
 	def randomHashLookingString(){		
 		return UUID.randomUUID.toString
@@ -119,7 +118,7 @@ class BiocompilerUtil {
 	
 	
 	// RBS Optimisation
-	def Biopart optimiseRBS(Biopart part, Double rate){
+	def Biopart optimiseRBS(Biopart part, Double rate, String pathToResources){
 		val device = part.eContainer as BiocompilerDevice
 		val positionRBS = part.position.value
 		val relativePosition = if(device.direction.value == 0) -1 else 1
@@ -128,20 +127,20 @@ class BiocompilerUtil {
 		preSequence = preSequence.substring(preSequence.length-15)
 		var postSequence = device.parts.filter[position.value == (positionRBS + relativePosition ) ].get(0).sequence.substring(0,14)
 		
-		part.sequence = optimiseRBS(preSequence,postSequence, rate)
+		part.sequence = optimiseRBS(preSequence,postSequence, rate, pathToResources)
 		part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 
 				
 		return part
 	}
 	
-	def String optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate){
+	def String optimiseRBS(String preSequence, String postSequence, Double translationInitiationRate, String pathToResources){
 		println("RBS optimisation in process...")
 		println("\tpre: "+ preSequence)
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
-		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
-//		var process = new ProcessBuilder("resources/RBSCalculator/fakeRBSCalculator.py").start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+//		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
+		var process = new ProcessBuilder(pathToResources + "/RBSCalculator/fakeRBSCalculator.py").start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)

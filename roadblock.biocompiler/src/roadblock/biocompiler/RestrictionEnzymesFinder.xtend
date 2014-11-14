@@ -15,16 +15,19 @@ class RestrictionEnzymesFinder {
 
 	// some constants
 	val static utils = new BiocompilerUtil
-	val static databaseLocation = utils.pathResources + "restrictionEnzymes.db"
 	
 	//	
 	var BiocompilerCell cell
 	var String suppliers
 	var log = new HtmlLog(1000)
+	var pathToResources = ''
+	var databaseLocation = ''
 	
-	new(BiocompilerCell cell, String suppliers){
+	new(BiocompilerCell cell, String suppliers, String pathToResources){
 		this.cell = cell
 		this.suppliers = suppliers
+		this.pathToResources = pathToResources
+		this.databaseLocation = pathToResources + "/db/restrictionEnzymes.db"
 		log.addText("Looking for restriction enzymes for " + cell.name)	
 	}
 	
@@ -66,7 +69,7 @@ class RestrictionEnzymesFinder {
 					// recalculate the RBSs
 					for(device: cell.devices)
 						for(part: device.parts.filter[biologicalFunction =='RBS']){
-							val tmp = utils.optimiseRBS(part, device.translationRate)
+							val tmp = utils.optimiseRBS(part, device.translationRate, pathToResources)
 							part => [
 								sequence = tmp.sequence
 							 	accessionURL = tmp.accessionURL]
@@ -107,7 +110,7 @@ class RestrictionEnzymesFinder {
 		var reList = getRestrictionEnzymesList("fitsRBS = 1 AND fitsCDS = 0") // conflict with CDS only
 		
 		var species = "w3110"
-		var cofre = new CodonOptimisationForRestrictionEnzymes(CDSList.map[utils.finalSequence(it)].toList, reList ,species)
+		var cofre = new CodonOptimisationForRestrictionEnzymes(CDSList.map[utils.finalSequence(it)].toList, reList ,species, pathToResources)
 		
 		var results = cofre.findAtLeastNRestrictionEnzymes(numberRequested)
 		
@@ -186,7 +189,7 @@ class RestrictionEnzymesFinder {
 	return true			
 }
 	
-	def static Integer populatingPotentialRETable(BiocompilerCell cell, String suppliers){
+	def  Integer populatingPotentialRETable(BiocompilerCell cell, String suppliers){
 		// build a table of potential restriction enzymes, i.e. RE that don't cut on unchangeable parts and whether they cut a CDS or an RBS
 		// returns the number of potential RE
 		

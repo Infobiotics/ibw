@@ -76,7 +76,7 @@ class RestrictionEnzymesFinderTests {
 		var biocompiler = simpleDevice
 		var name = biocompiler.biocompilerModel.cells.get(0).name
 		assertEquals("myCell",name)
-		var ref = new RestrictionEnzymesFinder(biocompiler.biocompilerModel.cells.get(0), "b")
+		var ref = new RestrictionEnzymesFinder(biocompiler.biocompilerModel.cells.get(0), "b", "../roadblock.biocompiler/resources")
 		biocompiler.print
 		ref.searchRE
 		//biocompiler.biocompilerModel.cells.set(0,ref.searchRE)

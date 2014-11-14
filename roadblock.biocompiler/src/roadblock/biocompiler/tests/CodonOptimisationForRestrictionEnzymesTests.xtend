@@ -39,7 +39,7 @@ class CodonOptimisationForRestrictionEnzymesTests {
 //		db.dispose	
 		
 		val species = "w3110"
-		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species)
+		var cofre = new CodonOptimisationForRestrictionEnzymes(cdsList,reList, species,'../roadblock.biocompiler/resources')
 		println("searching")
 		var results = cofre.findAtLeastNRestrictionEnzymes(2)
 		

@@ -207,6 +207,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	public void dispose() {
 		getSite().getPage().removePartListener(this);
 	}
+	
 
 	protected void updateUi() {
 
@@ -216,11 +217,17 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
 			compilationButton.setEnabled(true);
-			biocompiler = new Biocompiler(model);
+			System.out.println(model);
 			
-			biocompiler.gatherParts();
+			// save the model as XML
+			
+			
+//			biocompiler = new Biocompiler(model);
+//			biocompiler.gatherParts();
+//			browser.setText(biocompiler.identifiedPartsHtml());
+//			//biocompiler.compile();
 			updateConsoleView();
-			browser.setText(biocompiler.identifiedPartsHtml());
+			
 			
 //			modelFile.setText(config.modelFile);
 //			dataFile.setText(config.dataFile);

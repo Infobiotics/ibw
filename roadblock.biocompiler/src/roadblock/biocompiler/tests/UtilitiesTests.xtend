@@ -169,7 +169,7 @@ class UtilitiesTests {
 		val postSequence = "atggtgaatgtgaaaccagtaacgttatacgatgt"
 		val rate = 550.80
 		try {
-			var sequence = utils.optimiseRBS(preSequence, postSequence, rate)
+			var sequence = utils.optimiseRBS(preSequence, postSequence, rate, "../roadblock.biocompiler/resources")
 			println("RBS: " + sequence)
 			assertTrue(true)
 			assertTrue(sequence.length > 0)
