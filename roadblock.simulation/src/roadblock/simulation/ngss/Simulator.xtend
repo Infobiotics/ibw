@@ -1,24 +1,25 @@
 package roadblock.simulation.ngss
 
-import java.lang.Runtime
 import java.io.BufferedReader
 import java.io.BufferedWriter
-import java.io.PrintWriter
-import java.io.OutputStream
 import java.io.InputStreamReader
+import java.io.OutputStream
+import java.io.PrintWriter
+import roadblock.bin.BinaryPathProvider
 
 class SimulationThread extends Thread {
 	var String xml_model
 	var String resultFilename
 	public var Process process
-	
-	new (String xml_model, String resultFilename, String cmd) {
+
+	new(String xml_model, String resultFilename, String cmd) {
 		this.xml_model = xml_model
 		this.resultFilename = resultFilename
 		this.process = Runtime.getRuntime().exec(cmd)
 	}
 
 	override run() {
+
 		// write emf model to process in
 		var input = process.getOutputStream()
 		input.write(xml_model.getBytes())
@@ -28,7 +29,7 @@ class SimulationThread extends Thread {
 		var output = new BufferedReader(new InputStreamReader(process.getInputStream()))
 		var fileStream = new BufferedWriter(new PrintWriter(resultFilename))
 		var String part = null
-		while ((part = output.readLine()) != null) {
+		while((part = output.readLine()) != null) {
 			fileStream.write(part)
 			fileStream.newLine()
 		}
@@ -38,7 +39,7 @@ class SimulationThread extends Thread {
 }
 
 class Simulator {
-	
+
 	/* variables to alter the behavior of the simulator */
 	public var simulation_algorithm = 'nrm'
 	public var max_time = 100.0
@@ -48,27 +49,29 @@ class Simulator {
 	public var seed = 0
 
 	var String model
-	val ngss_exe = "/home/harold/uni/newc/roadblock/ngss/ngss"
 
-	new (String model)
-	{
+	new(String model) {
 		this.model = model
 	}
 
 	def runSimulation(String resultFilename, OutputStream errorStream) {
-		val cmd = '''«this.ngss_exe» --emf parser=emf max_time=«this.max_time» max_runtime=«this.max_runtime» simulation_algorithm=«this.simulation_algorithm» data_file=model.csv log_interval=«this.log_interval» runs=«this.runs» seed=«this.seed» output=console compress=true parallel=true show_progress=false'''
+
+		var ngssPath = BinaryPathProvider.getInstance().getNgssPath();
+		val cmd = '''«ngssPath» --emf parser=emf max_time=«this.max_time» max_runtime=«this.max_runtime» simulation_algorithm=«this.simulation_algorithm» data_file=model.csv log_interval=«this.
+			log_interval» runs=«this.runs» seed=«this.seed» output=console compress=true parallel=true show_progress=false'''
 
 		// run simulation
 		var thread = new SimulationThread(this.model, resultFilename, cmd)
 		thread.start()
 
 		var result = thread.process.waitFor()
-		if (result!=0)
-		{
+		if(result != 0) {
+
 			// write error message to console
 			var String line
 			var error = new BufferedReader(new InputStreamReader(thread.process.getErrorStream()))
-			while ((line=error.readLine()) != null) errorStream.write(line.getBytes())
+			while((line = error.readLine()) != null)
+				errorStream.write(line.getBytes())
 			error.close()
 		}
 		thread.join()

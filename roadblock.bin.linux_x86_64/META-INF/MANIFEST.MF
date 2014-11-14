@@ -7,7 +7,6 @@ Fragment-Host: roadblock.bin;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-BundleShape: dir
 Eclipse-PlatformFilter: (& (osgi.os=linux) (osgi.arch=x86_64))
-Bundle-ClassPath: resources/,
- .
+Bundle-ClassPath: .
 Export-Package: .
 Bundle-ActivationPolicy: lazy

@@ -25,6 +25,8 @@ public class BinaryPathProvider {
 			URL mc2Url = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/mc2.jar"), Collections.EMPTY_MAP));
 			mc2Path = mc2Url.getPath();
 			
+			// instantiate the BinaryPathResolver in order to call its static constructor
+			// the instantiation is made by reflection as the class is available only at runtime
 			Class<?> binaryPathResolverClass = Class.forName("BinaryPathResolver");
 			@SuppressWarnings("unused")
 			Object binaryPathResolver = binaryPathResolverClass.newInstance();

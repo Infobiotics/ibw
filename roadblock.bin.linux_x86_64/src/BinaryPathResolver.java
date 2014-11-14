@@ -20,10 +20,10 @@ public class BinaryPathResolver {
 		try {
 			Bundle currentBundle = Platform.getBundle("roadblock.bin.linux_x86_64");
 
-			URL prismUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/prism"), Collections.EMPTY_MAP));
+			URL prismUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/prism/bin/prism"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setPrismPath(prismUrl.getPath());
 
-			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nusmv"), Collections.EMPTY_MAP));
+			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nusmv/bin/NuSMV"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNuSmvPath(nuSmvUrl.getPath());
 
 			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss"), Collections.EMPTY_MAP));
@@ -32,7 +32,7 @@ public class BinaryPathResolver {
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getPrismPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNuSmvPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNgssPath());
-
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
