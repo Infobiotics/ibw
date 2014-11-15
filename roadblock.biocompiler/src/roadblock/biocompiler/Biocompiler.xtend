@@ -67,6 +67,7 @@ import java.io.InputStream
 import roadblock.emf.ibl.Ibl.ATGCTranslationRate
 import roadblock.emf.ibl.Ibl.IblPackage
 import java.nio.charset.Charset
+import java.io.FileWriter
 
 @Data class RestrictionEnzyme {
     String name
@@ -148,7 +149,7 @@ class Biocompiler {
 	
 	 def static void main(String[] args){
 	 	println("Hi from biocompiler. " + args.size + " arguments")
-	 	if(args.size == 3 ){
+	 	if(args.size == 4 ){
 	 		val filename = args.get(0)
 	 		println("loading the EMF data model" + filename)
 	 		val mp = IblPackage.eINSTANCE // necessary for registering the URI
@@ -164,11 +165,24 @@ class Biocompiler {
 			biocompiler.pathOutput = args.get(2)
 			println("Path to Output: " + biocompiler.pathOutput)
 			
+
 			biocompiler.gatherParts
 			println("part gathering done.")
-			biocompiler.compile
-			println("Compilation done.")
-				 		
+			// write biocompile.resultsHTml
+			utils.toFile(biocompiler.pathOutput + "/identifiedParts.html", biocompiler.identifiedPartsHtml)
+			if(args.get(3) == 'compile'){
+				biocompiler.compile
+				println("Compilation done.")
+				
+				//write biocompile.console
+				utils.toFile(biocompiler.pathOutput + "/console.html", biocompiler.makeHtmlLog)
+					
+				//write biocompiler results
+				utils.toFile(biocompiler.pathOutput + "/results.html", biocompiler.makeResultPage)
+				
+				//write solution as SBOL
+				SBOLFactory.write(biocompiler.makeSBOLDocument, new FileOutputStream(biocompiler.pathOutput + '/ATGC_SBOL.xml'));
+			} 				 		
 	 	}
 	 }
 	
@@ -970,4 +984,7 @@ class Biocompiler {
 	def fillUpWithRandomSequences(){
 		biocompilerModel.cells.forEach[devices.forEach[parts.forEach[sequence = utils.randomDNA(15)]]]	
 	}
+	
+
+	
 }

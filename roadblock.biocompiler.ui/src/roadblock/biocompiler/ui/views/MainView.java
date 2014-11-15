@@ -8,6 +8,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,17 +76,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Model model;
 	private Configuration config;
 	private XtextResource currentIblResource;
-//	private MessageConsole simulationConsole;
-	
-//	private Text modelFile;
-//	private Text dataFile;
-//	private Text maxTime;
-//	private Text logInterval;
-//	private Text sampleNumber;
-//	private Combo SSAlgorithm;
+
 	private Button compilationButton;
 	private Browser browser;
-	private Biocompiler biocompiler;
 	
 	@Override
 	public void createPartControl(Composite parent) {
@@ -90,77 +86,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// add change listener model
 		getSite().getPage().addPartListener(this);
 		
-//		simulationConsole = new MessageConsole("Simulation Results", null);
-//		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { simulationConsole });
-//		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
-
 		// create widget layout
 		GridLayout layout = new GridLayout(1, false);
 		layout.marginRight = 5;
 		parent.setLayout(layout);
-//
-//		// create model file widget
-//		Label modelFileLabel = new Label(parent, SWT.NONE);
-//		modelFileLabel.setText("Model file: ");
-//		modelFileLabel.setToolTipText("filename of sbml/xml model");
-//		modelFile = new Text(parent, SWT.BORDER);
-//		modelFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-//		modelFile.setEnabled(false); // disable
-
-		// create data file widget
-//		Label dataFileLabel = new Label(parent, SWT.NONE);
-//		dataFileLabel.setText("Data file: ");
-//		dataFileLabel.setToolTipText("file to save simulation data to");
-//		dataFile = new Text(parent, SWT.BORDER);
-//		dataFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-//		Button fileDialogButton = new Button(parent, SWT.PUSH);
-//		fileDialogButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-//		fileDialogButton.setText("Directory...");
-//		final DirectoryDialog directoryDialog = new DirectoryDialog(parent.getShell());
-//		fileDialogButton.addSelectionListener(new SelectionAdapter() {
-//			@Override
-//			public void widgetSelected(SelectionEvent e) {
-//				config.dataDirectory = directoryDialog.open();
-//			}
-//		});
-
-//		Label maxTimeLabel = new Label(parent, SWT.NONE);
-//		maxTimeLabel.setText("Max. Time: ");
-//		maxTimeLabel.setToolTipText("end time of the simulation");
-//		maxTime = new Text(parent, SWT.BORDER);
-//		maxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-//		
-//		Label logIntervalLabel = new Label(parent, SWT.NONE);
-//		logIntervalLabel.setText("Interval: ");
-//		logIntervalLabel.setToolTipText("interval with which trajectories are sampled");
-//		logInterval = new Text(parent, SWT.BORDER);
-//		logInterval.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-//
-//		// number of samples
-//		Label samplesLabel = new Label(parent, SWT.NONE);
-//		samplesLabel.setText("Number of runs: ");
-//		samplesLabel.setToolTipText("number of samples for stochastic simulation");
-//		sampleNumber = new Text(parent, SWT.BORDER);
-//		sampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-//
-//		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
-//		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-//
-//		// create stochastic simulation algorithm widget
-//		Label SSLabel = new Label(parent, SWT.NONE);
-//		SSLabel.setText("Simulation algorithm: ");
-//		SSLabel.setToolTipText("simulation algorithm to use");
-//		SSAlgorithm = new Combo(parent, SWT.NONE);
-//		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-//		SSAlgorithm.add("dm");
-//		SSAlgorithm.add("frm");
-//		SSAlgorithm.add("cr");
-//		SSAlgorithm.add("tl");
-//		SSAlgorithm.add("nrm");
-//		SSAlgorithm.add("pdm");
-//		SSAlgorithm.add("ldm");
-//		SSAlgorithm.add("sdm");
-//		SSAlgorithm.add("odm");
 		
 		// create compilation button
 		compilationButton = new Button(parent, SWT.PUSH);
@@ -212,7 +141,38 @@ public class MainView extends ViewPart implements IPartListener2 {
 		getSite().getPage().removePartListener(this);
 	}
 	
+	public void runBiocompiler(String xmlFilename, String command){
+		try {
+			
+			// run the biocompiler
+			System.out.println("Running the biocompiler");
+			String pathToBiocompiler = "/home/christophe/WualaDrive/koantig/work/roadblock/biocompilerStandAlone";
+			Process process = new ProcessBuilder(pathToBiocompiler + "/atgcWrapper.sh",xmlFilename,config.dataDirectory + "/src-gen",command).start(); 
+			
+			InputStream is = process.getInputStream();
+			InputStream is2 = process.getErrorStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			InputStreamReader isr2 = new InputStreamReader(is2);
+			BufferedReader br = new BufferedReader(isr);
+			BufferedReader br2 = new BufferedReader(isr2);
+			String line="";
 
+			System.out.println("##########  Error stream ############");
+			while ((line = br2.readLine()) != null) {
+				System.out.println(line);
+				}
+
+			System.out.println("##########  Input stream ############");
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+				}
+		} catch (IOException e) {
+			System.out.println("Problem when creating the xml");
+		}
+		
+		
+	}
+	
 	protected void updateUi()  {
 
 		if (currentIblResource == null) {
@@ -222,116 +182,36 @@ public class MainView extends ViewPart implements IPartListener2 {
 			model = SimulationUtil.getInstance().getModel(currentIblResource);
 			compilationButton.setEnabled(true);
 			System.out.println(model);
+			try{
+			// convert the model to XML
+			System.out.println("Converting to XML");
+			String xml = convertToXml(model);
 			
-
-			try {
-				// convert the model to XML
-				System.out.println("Converting to XML");
-				String xml = convertToXml(model);
-				
-				// save XML as file
-				System.out.println("Saving to XML");
-				String xmlFilename = config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml";
-				writeTextFile(xmlFilename, xml);
-				
-				// run the biocompiler
-				System.out.println("Running the biocompiler");
-				String pathToBiocompiler = "/home/christophe/WualaDrive/koantig/work/roadblock/biocompilerStandAlone";
-				Process process = new ProcessBuilder(pathToBiocompiler + "/atgcWrapper.sh",xmlFilename,".").start(); 
-				
-				InputStream is = process.getInputStream();
-				InputStream is2 = process.getErrorStream();
-				InputStreamReader isr = new InputStreamReader(is);
-				InputStreamReader isr2 = new InputStreamReader(is2);
-				BufferedReader br = new BufferedReader(isr);
-				BufferedReader br2 = new BufferedReader(isr2);
-				String line="";
-
-				System.out.println("##########  Error stream ############");
-				while ((line = br2.readLine()) != null) {
-					System.out.println(line);
-					}
-
-				System.out.println("##########  Input stream ############");
-				while ((line = br.readLine()) != null) {
-					System.out.println(line);
-					}
+			// save XML as file
+			System.out.println("Saving to XML");
+			String xmlFilename = config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml";
+			writeTextFile(xmlFilename, xml);
+			
+			runBiocompiler(xmlFilename,"parse");
 			} catch (IOException e) {
-				System.out.println("Problem when creating the xml");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
-//			biocompiler = new Biocompiler(model);
-//			biocompiler.gatherParts();
-//			browser.setText(biocompiler.identifiedPartsHtml());
-//			//biocompiler.compile();
-			updateConsoleView();
+
 			
+			try {
+				String identifiedParts = readFile(config.dataDirectory + "/src-gen/identifiedParts.html", Charset.defaultCharset());
+				browser.setText(identifiedParts);				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			//updateConsoleView();
 			
-//			modelFile.setText(config.modelFile);
-//			dataFile.setText(config.dataFile);
-//			maxTime.setText(config.maxTime.toString());
-//			logInterval.setText(config.logInterval.toString());
-//			sampleNumber.setText(config.sampleNumber.toString());
-//			SSAlgorithm.setText(config.SSAlgorithm);
 		}
 	}
-
-	// bind class entries to widget entries
-//	private void bindValues() {
-//
-//		DataBindingContext ctx = new DataBindingContext();
-//		IObservableValue widgetValue;
-//		IObservableValue modelValue;
-//		IValidator validator;
-//		UpdateValueStrategy strategy;
-//		Binding bindValue;
-//
-//		// model file widget
-//		widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
-//		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
-//
-//		// add a validator so can only be a non-empty string
-//		validator = new IValidator() {
-//			@Override
-//			public IStatus validate(Object value) {
-//				if (value instanceof String) {
-//					String stringValue = String.valueOf(value);
-//					if (stringValue.isEmpty()) {
-//						return ValidationStatus.error("cannot be empty");
-//					}
-//					return ValidationStatus.ok();
-//				}
-//				return ValidationStatus.error("not a string");
-//			}
-//		};
-//		strategy = new UpdateValueStrategy();
-//		strategy.setBeforeSetValidator(validator);
-//		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
-//		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-//
-//		// data file widget
-//		widgetValue = WidgetProperties.text(SWT.Modify).observe(dataFile);
-//		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
-//
-//		// add a validator so can only be a non-empty string
-//		validator = new IValidator() {
-//			@Override
-//			public IStatus validate(Object value) {
-//				if (value instanceof String) {
-//					String stringValue = String.valueOf(value);
-//					if (stringValue.isEmpty()) {
-//						return ValidationStatus.error("cannot be empty");
-//					}
-//					return ValidationStatus.ok();
-//				}
-//				return ValidationStatus.error("not a string");
-//			}
-//		};
-//		strategy = new UpdateValueStrategy();
-//		strategy.setBeforeSetValidator(validator);
-//		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
-//		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-//	}
 
 	private void ensureConfig() {
 		if (config == null) {
@@ -341,45 +221,35 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private void updateConsoleView(){
 		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
-//		myConsole.setContent(biocompiler.makeHtmlLog()); 
+		try {
+			String console = readFile(config.dataDirectory + "/src-gen/console.html", Charset.defaultCharset());
+			myConsole.setContent(console);				
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	private void updateResultsView(){
 		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.resultsView");
-//		resultsView.setContent(biocompiler.makeResultPage()); 
+		try {
+			String console = readFile(config.dataDirectory + "/src-gen/results.html", Charset.defaultCharset());
+			resultsView.setContent(console);				
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	
 	// Compile
 	private void performCompilation() {
-//		biocompiler.compile();
+		
+		runBiocompiler(config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml", "compile");
 		updateConsoleView();
 		updateResultsView();
-		
-		// XXX read model from EMFModel.xml rather than regenerating it
-//		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
-
-//		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
-//		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-//		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
-//		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
-//
-//		String xml = null;
-//		try {
-//			/* ideally, the model xml should only be regenerated when the source code changes */
-//			FlatModelManager flatModelManager = new FlatModelManager(model);
-//			xml = convertToXml(flatModelManager.getFlatModel());
-//		} catch (IOException e) {
-//			errorDialogWithStackTrace("Failed to export model to xml", e);
-//		}
-//		
-//		Simulator simulator = new Simulator(xml);
-//		simulator.max_time = config.getMaxTime();
-//		simulator.log_interval = config.getLogInterval();
-//		simulator.runs = config.getSampleNumber();
-//		//simulator.max_runtime = 0.0;
-//		//simulator.seed = 0;
-////		simulator.runSimulation(exportFilename, consoleStream);
 	}
 
 	// export an EMF model to XML
@@ -393,6 +263,12 @@ public class MainView extends ViewPart implements IPartListener2 {
 		return processor.saveToString(resource, null);
 	}
 
+	// read file into a string
+	public String readFile(String path, Charset encoding)  throws IOException {
+		 byte[] encoded = Files.readAllBytes(Paths.get(path));
+	 	return encoding.decode(ByteBuffer.wrap(encoded)).toString();
+	}
+	
 	public void  writeTextFile(String fileName, String s) {
 
 		FileWriter output = null ;
