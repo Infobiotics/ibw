@@ -42,7 +42,7 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 		writeFile(verificationModelFileName, modelTranslation, propetyTranslation);
 
 		String toolPath = BinaryPathProvider.getInstance().getPrismPath();
-		
+
 		String[] verificationCommand = new String[] { toolPath, verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod", "ci", "-simconf", String.valueOf(config.confidence),
 				"-simsamples", String.valueOf(config.samples), "-simpathlen", String.valueOf(config.pathLength) };
 

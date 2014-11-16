@@ -1,11 +1,6 @@
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.attribute.PosixFilePermission;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.Path;
@@ -26,37 +21,11 @@ public class BinaryPathResolver {
 			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nusmv/bin/NuSMV.exe"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNuSmvPath(nuSmvUrl.getPath());
 
-			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss.exe"), Collections.EMPTY_MAP));
-			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
-
-			setBinaryFullPermissions(BinaryPathProvider.getInstance().getPrismPath());
-			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNuSmvPath());
-			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNgssPath());
+			//URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss.exe"), Collections.EMPTY_MAP));
+			//BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	private static void setBinaryFullPermissions(String binaryPath) throws IOException {
-
-		Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-		
-		// add owners permission
-		perms.add(PosixFilePermission.OWNER_READ);
-		perms.add(PosixFilePermission.OWNER_WRITE);
-		perms.add(PosixFilePermission.OWNER_EXECUTE);
-		
-		// add group permissions
-		perms.add(PosixFilePermission.GROUP_READ);
-		perms.add(PosixFilePermission.GROUP_WRITE);
-		perms.add(PosixFilePermission.GROUP_EXECUTE);
-		
-		// add others permissions
-		perms.add(PosixFilePermission.OTHERS_READ);
-		perms.add(PosixFilePermission.OTHERS_WRITE);
-		perms.add(PosixFilePermission.OTHERS_EXECUTE);
-
-		Files.setPosixFilePermissions(Paths.get(binaryPath), perms);
 	}
 }

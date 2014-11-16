@@ -7,7 +7,8 @@ rem Default is .. so it can be run directly from the bin directory.
 rem Change ".." to the actual PRISM directory to allow it to be run from anywhere.
 rem An example would be: set PRISM_DIR=c:\Program Files\prism-3.2
 rem Note: Do not put quotes ("...") around the path.
-set PRISM_DIR=..
+set PRISM_DIR=%~dp0
+set PRISM_DIR=%PRISM_DIR:~0,-1%\..\
 
 rem Add PRISM to path
 path=%PRISM_DIR%\lib;%path%

@@ -49,7 +49,7 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 
 		String ngssPath = BinaryPathProvider.getInstance().getNgssPath();
 		String mc2Path = BinaryPathProvider.getInstance().getMc2Path();
-		
+
 		String[] simulationCommand = new String[] { ngssPath, "--emf", "parser=emf", "max_time=" + config.maxTime, "max_runtime=" + 0.0, "simulation_algorithm=" + config.simulationAlgorithm,
 				"data_file=" + simulationFileName, "log_interval=" + config.logInterval, "runs=" + config.runs, "seed=0", "output=console", "compress=true", "parallel=true", "show_progress=false" };
 		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName, propertiesFileName, "-time" };
