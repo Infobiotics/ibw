@@ -3,7 +3,7 @@
 # Startup script for PRISM (Linux/Solaris)
 
 # PRISM home directory
-PRISM_DIR=$(cd $(dirname $0); pwd -P)"/../"
+PRISM_DIR=$(cd $(dirname $0); pwd -P)"/.."
 
 # Default value for notification after the scipt has finished (yes/no)
 NOTIFY_DEFAULT=no
