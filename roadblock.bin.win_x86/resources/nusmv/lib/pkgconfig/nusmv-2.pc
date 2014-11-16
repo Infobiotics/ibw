@@ -1,0 +1,22 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+datarootdir=/usr/local/share
+datadir=${datarootdir}/nusmv
+sharedir=${datarootdir}
+
+sat_available=yes
+minisat_libdir=/hardmnt/elbow0/home/mdorigatti/NuSMV2/tags/NuSMV-2.5.4-release_20111031/builders/build/NuSMV-2.5.4/MiniSat_v070721
+minisat_libname=MiniSat
+
+cudddir=/hardmnt/elbow0/home/mdorigatti/NuSMV2/tags/NuSMV-2.5.4-release_20111031/builders/build/NuSMV-2.5.4/cudd-2.4.1.1
+cuddname=cudd-2.4.1.1
+cuddmkfile=Makefile_mingw
+
+Name: NuSMV-2
+Description: New Symbolic Model Verifier
+Requires: 
+Version: 2.5.4
+Cflags: -I. -I.. -I${includedir}/nusmv -I${includedir}/${cuddname} 
+Libs: -L${libdir} -lnusmv

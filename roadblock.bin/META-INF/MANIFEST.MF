@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Bin
+Bundle-SymbolicName: roadblock.bin
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: roadblock.bin.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: roadblock.bin
+Eclipse-BundleShape: dir

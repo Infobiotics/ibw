@@ -42,7 +42,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TemporalOperator OPERATOR_EDEFAULT = TemporalOperator.UNTIL;
+	protected static final TemporalPattern OPERATOR_EDEFAULT = TemporalPattern.UNTIL;
 
 	/**
 	 * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
@@ -51,7 +51,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	 * @generated
 	 * @ordered
 	 */
-	protected TemporalOperator operator = OPERATOR_EDEFAULT;
+	protected TemporalPattern operator = OPERATOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -126,7 +126,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 
 	/**
 	 * Returns the value of the '<em><b>Operator</b></em>' attribute.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.TemporalOperator}.
+	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.TemporalPattern}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Operator</em>' attribute isn't clear, there
@@ -134,30 +134,27 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operator</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.TemporalOperator
-	 * @see #setOperator(TemporalOperator)
+	 * @see roadblock.emf.ibl.Ibl.TemporalPattern
+	 * @see #setOperator(TemporalPattern)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getUnaryProbabilityProperty_Operator()
 	 * @model
 	 * @generated
 	 */
-	public TemporalOperator getOperator() {
+	public TemporalPattern getOperator() {
 		return operator;
 	}
 
 	/**
-	 * Sets the value of the '
-	 * {@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getOperator
-	 * <em>Operator</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Operator</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.TemporalOperator
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getOperator <em>Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Operator</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.TemporalPattern
 	 * @see #getOperator()
 	 * @generated
 	 */
-	public void setOperator(TemporalOperator newOperator) {
-		TemporalOperator oldOperator = operator;
+	public void setOperator(TemporalPattern newOperator) {
+		TemporalPattern oldOperator = operator;
 		operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.UNARY_PROBABILITY_PROPERTY__OPERATOR, oldOperator, operator));
@@ -202,7 +199,7 @@ public class UnaryProbabilityProperty extends ProbabilityProperty {
 				setStateFormula((IStateFormula)newValue);
 				return;
 			case IblPackage.UNARY_PROBABILITY_PROPERTY__OPERATOR:
-				setOperator((TemporalOperator)newValue);
+				setOperator((TemporalPattern)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

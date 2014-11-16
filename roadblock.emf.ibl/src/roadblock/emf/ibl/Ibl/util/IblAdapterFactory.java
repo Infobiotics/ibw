@@ -11,16 +11,20 @@ import roadblock.emf.ibl.Ibl.ATGCArrange;
 import roadblock.emf.ibl.Ibl.ATGCCloningSites;
 import roadblock.emf.ibl.Ibl.ATGCDirection;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
+import roadblock.emf.ibl.Ibl.IArithmeticExpression;
+import roadblock.emf.ibl.Ibl.IArithmeticOperand;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IStateFormula;
@@ -31,19 +35,22 @@ import roadblock.emf.ibl.Ibl.IblPackage;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.MonotonicityExpression;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.ProbabilityProperty;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
 import roadblock.emf.ibl.Ibl.Region;
+import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
-import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.VariableReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -214,10 +221,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 				return createNotStateFormulaAdapter();
 			}
 			@Override
-			public Adapter caseStateExpression(StateExpression object) {
-				return createStateExpressionAdapter();
-			}
-			@Override
 			public Adapter caseRegion(Region object) {
 				return createRegionAdapter();
 			}
@@ -248,6 +251,38 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseFlatModelPropertyPair(FlatModelPropertyPair object) {
 				return createFlatModelPropertyPairAdapter();
+			}
+			@Override
+			public Adapter caseIArithmeticExpression(IArithmeticExpression object) {
+				return createIArithmeticExpressionAdapter();
+			}
+			@Override
+			public Adapter caseIArithmeticOperand(IArithmeticOperand object) {
+				return createIArithmeticOperandAdapter();
+			}
+			@Override
+			public Adapter caseBinaryArithmeticExpression(BinaryArithmeticExpression object) {
+				return createBinaryArithmeticExpressionAdapter();
+			}
+			@Override
+			public Adapter caseNumericLiteral(NumericLiteral object) {
+				return createNumericLiteralAdapter();
+			}
+			@Override
+			public Adapter caseVariableReference(VariableReference object) {
+				return createVariableReferenceAdapter();
+			}
+			@Override
+			public Adapter caseMonotonicityExpression(MonotonicityExpression object) {
+				return createMonotonicityExpressionAdapter();
+			}
+			@Override
+			public Adapter caseRelationalExpression(RelationalExpression object) {
+				return createRelationalExpressionAdapter();
+			}
+			@Override
+			public Adapter caseConcentrationQuantity(ConcentrationQuantity object) {
+				return createConcentrationQuantityAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -662,20 +697,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see roadblock.emf.ibl.Ibl.StateExpression
-	 * @generated
-	 */
-	public Adapter createStateExpressionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Region <em>Region</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -784,6 +805,118 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFlatModelPropertyPairAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
+	 * @generated
+	 */
+	public Adapter createIArithmeticExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticOperand
+	 * @generated
+	 */
+	public Adapter createIArithmeticOperandAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression
+	 * @generated
+	 */
+	public Adapter createBinaryArithmeticExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.NumericLiteral
+	 * @generated
+	 */
+	public Adapter createNumericLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.VariableReference
+	 * @generated
+	 */
+	public Adapter createVariableReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression
+	 * @generated
+	 */
+	public Adapter createMonotonicityExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.RelationalExpression
+	 * @generated
+	 */
+	public Adapter createRelationalExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity <em>Concentration Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ConcentrationQuantity
+	 * @generated
+	 */
+	public Adapter createConcentrationQuantityAdapter() {
 		return null;
 	}
 

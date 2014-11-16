@@ -4,8 +4,10 @@ package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -17,8 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute <em>Variable Attribute</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariable <em>Variable</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount <em>Amount</em>}</li>
  * </ul>
@@ -30,44 +31,14 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class PropertyInitialCondition extends EObjectImpl implements IVisitable {
 	/**
-	 * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVariableName()
+	 * @see #getVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VARIABLE_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariableName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String variableName = VARIABLE_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getVariableAttribute() <em>Variable Attribute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariableAttribute()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VARIABLE_ATTRIBUTE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getVariableAttribute() <em>Variable Attribute</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariableAttribute()
-	 * @generated
-	 * @ordered
-	 */
-	protected String variableAttribute = VARIABLE_ATTRIBUTE_EDEFAULT;
+	protected VariableReference variable;
 
 	/**
 	 * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
@@ -129,69 +100,58 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Variable Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variable Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Variable</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable Name</em>' attribute.
-	 * @see #setVariableName(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_VariableName()
-	 * @model
+	 * @return the value of the '<em>Variable</em>' containment reference.
+	 * @see #setVariable(VariableReference)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_Variable()
+	 * @model containment="true"
 	 * @generated
 	 */
-	public String getVariableName() {
-		return variableName;
+	public VariableReference getVariable() {
+		return variable;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableName <em>Variable Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable Name</em>' attribute.
-	 * @see #getVariableName()
 	 * @generated
 	 */
-	public void setVariableName(String newVariableName) {
-		String oldVariableName = variableName;
-		variableName = newVariableName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME, oldVariableName, variableName));
+	public NotificationChain basicSetVariable(VariableReference newVariable, NotificationChain msgs) {
+		VariableReference oldVariable = variable;
+		variable = newVariable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE, oldVariable, newVariable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Variable Attribute</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variable Attribute</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variable Attribute</em>' attribute.
-	 * @see #setVariableAttribute(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition_VariableAttribute()
-	 * @model
-	 * @generated
-	 */
-	public String getVariableAttribute() {
-		return variableAttribute;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariableAttribute <em>Variable Attribute</em>}' attribute.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariable <em>Variable</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable Attribute</em>' attribute.
-	 * @see #getVariableAttribute()
+	 * @param value the new value of the '<em>Variable</em>' containment reference.
+	 * @see #getVariable()
 	 * @generated
 	 */
-	public void setVariableAttribute(String newVariableAttribute) {
-		String oldVariableAttribute = variableAttribute;
-		variableAttribute = newVariableAttribute;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE, oldVariableAttribute, variableAttribute));
+	public void setVariable(VariableReference newVariable) {
+		if (newVariable != variable) {
+			NotificationChain msgs = null;
+			if (variable != null)
+				msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE, null, msgs);
+			if (newVariable != null)
+				msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE, null, msgs);
+			msgs = basicSetVariable(newVariable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE, newVariable, newVariable));
 	}
 
 	/**
@@ -279,12 +239,24 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE:
+				return basicSetVariable(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
-				return getVariableName();
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
-				return getVariableAttribute();
+			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE:
+				return getVariable();
 			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
 				return getUnit();
 			case IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT:
@@ -301,11 +273,8 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
-				setVariableName((String)newValue);
-				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
-				setVariableAttribute((String)newValue);
+			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE:
+				setVariable((VariableReference)newValue);
 				return;
 			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
 				setUnit((ConcentrationUnit)newValue);
@@ -325,11 +294,8 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
-				setVariableName(VARIABLE_NAME_EDEFAULT);
-				return;
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
-				setVariableAttribute(VARIABLE_ATTRIBUTE_EDEFAULT);
+			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE:
+				setVariable((VariableReference)null);
 				return;
 			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
 				setUnit(UNIT_EDEFAULT);
@@ -349,10 +315,8 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_NAME:
-				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
-			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE_ATTRIBUTE:
-				return VARIABLE_ATTRIBUTE_EDEFAULT == null ? variableAttribute != null : !VARIABLE_ATTRIBUTE_EDEFAULT.equals(variableAttribute);
+			case IblPackage.PROPERTY_INITIAL_CONDITION__VARIABLE:
+				return variable != null;
 			case IblPackage.PROPERTY_INITIAL_CONDITION__UNIT:
 				return unit != UNIT_EDEFAULT;
 			case IblPackage.PROPERTY_INITIAL_CONDITION__AMOUNT:
@@ -371,11 +335,7 @@ public class PropertyInitialCondition extends EObjectImpl implements IVisitable 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (variableName: ");
-		result.append(variableName);
-		result.append(", variableAttribute: ");
-		result.append(variableAttribute);
-		result.append(", unit: ");
+		result.append(" (unit: ");
 		result.append(unit);
 		result.append(", amount: ");
 		result.append(amount);

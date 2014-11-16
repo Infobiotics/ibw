@@ -3,6 +3,7 @@ package roadblock.modelchecking.filtering;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.filtering.property.IPropertyFilter;
+import roadblock.modelchecking.filtering.property.MC2PropertyFilter;
 import roadblock.modelchecking.filtering.property.NuSmvPropertyFilter;
 import roadblock.modelchecking.filtering.property.PrismPropertyFilter;
 
@@ -35,6 +36,9 @@ public class FilteringManager {
 			break;
 		case NUSMV:
 			propertyFilter = new NuSmvPropertyFilter();
+			break;
+		case MC2:
+			propertyFilter = new MC2PropertyFilter();
 			break;
 		default:
 			break;

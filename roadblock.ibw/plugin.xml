@@ -3,12 +3,20 @@
 <plugin>
 
    <extension
-         id="IBW"
+         id="product"
          name="Infobiotics Workbench"
          point="org.eclipse.core.runtime.products">
       <product
             application="org.eclipse.ui.ide.workbench"
-            name="IBW">
+            name="Infobiotics Workbench">
+         <property
+               name="appName"
+               value="Infobiotics Workbench">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
       </product>
    </extension>
    <extension

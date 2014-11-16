@@ -28,7 +28,7 @@
     </eOperations>
     <eOperations name="visit">
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
-      <eParameters name="expression" eType="#//StateExpression"/>
+      <eParameters name="expression" eType="#//ConcentrationQuantity"/>
     </eOperations>
     <eOperations name="visit">
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
@@ -118,6 +118,26 @@
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
       <eParameters name="expression" eType="#//PropertyInitialCondition"/>
     </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//BinaryArithmeticExpression"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//NumericLiteral"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//VariableReference"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//MonotonicityExpression"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//RelationalExpression"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -152,9 +172,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Rule" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBidirectional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverseRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverseRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftHandSide" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
@@ -173,7 +193,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0.0"/>
@@ -281,30 +301,30 @@
     <eLiterals name="SECOND" value="1"/>
     <eLiterals name="MINUTE" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TemporalOperator">
+  <eClassifiers xsi:type="ecore:EEnum" name="TemporalPattern">
     <eLiterals name="UNTIL" value="1"/>
     <eLiterals name="FOLLOWED_BY" value="2" literal="FOLLOWED_BY"/>
     <eLiterals name="EVENTUALLY" value="3"/>
     <eLiterals name="STEADY_STATE" value="6"/>
-    <eLiterals name="NOT_EVENTUALLY" value="5"/>
-    <eLiterals name="ALWAYS_EVENTUALLY" value="4"/>
+    <eLiterals name="NEVER" value="5" literal="NEVER"/>
+    <eLiterals name="INFINITELY_OFTEN" value="4" literal="INFINITELY_OFTEN"/>
     <eLiterals name="ALWAYS" value="7"/>
-    <eLiterals name="EVENTUALLY_ALWAYS" value="8"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryProbabilityProperty" eSuperTypes="#//ProbabilityProperty">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stateFormula" eType="#//IStateFormula"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//TemporalOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//TemporalPattern"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryProbabilityProperty" eSuperTypes="#//ProbabilityProperty">
     <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IStateFormula"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IStateFormula"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//TemporalOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//TemporalPattern"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RewardProperty" eSuperTypes="#//IProperty">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeConstraint" eType="#//TimeInstant"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concentrationConstraint"
@@ -337,13 +357,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="NotStateFormula" eSuperTypes="#//IStateFormula">
     <eStructuralFeatures xsi:type="ecore:EReference" name="negatedOperand" eType="#//IStateFormula"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StateExpression" eSuperTypes="#//IStateFormula">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//RelationalOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RelationalOperator">
     <eLiterals name="GT" value="1"/>
@@ -394,8 +407,8 @@
         eType="#//Rule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyInitialCondition" eSuperTypes="#//IVisitable">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
@@ -418,5 +431,54 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//IProperty"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IArithmeticExpression" abstract="true"
+      interface="true" eSuperTypes="#//IArithmeticOperand"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IArithmeticOperand" abstract="true"
+      interface="true" eSuperTypes="#//IVisitable"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ArithmeticOperator">
+    <eLiterals name="ADDITION" value="1" literal="ADDITION"/>
+    <eLiterals name="SUBTRACTION" value="2" literal="SUBTRACTION"/>
+    <eLiterals name="MULTIPLICATION" value="3" literal="MULTIPLICATION"/>
+    <eLiterals name="DIVISION" value="4" literal="DIVISION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryArithmeticExpression" eSuperTypes="#//IArithmeticExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IArithmeticOperand"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IArithmeticOperand"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//ArithmeticOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NumericLiteral" eSuperTypes="#//IArithmeticOperand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableReference" eSuperTypes="#//IArithmeticOperand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMaximumOfInterest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="containerName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MonotonicityType">
+    <eLiterals name="INCREASING" value="1" literal="INCREASING"/>
+    <eLiterals name="DECREASING" value="2" literal="DECREASING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MonotonicityExpression" eSuperTypes="#//IStateFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//MonotonicityType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationalExpression" eSuperTypes="#//IStateFormula">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftOperand" eType="#//IArithmeticOperand"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightOperand" eType="#//IArithmeticOperand"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//RelationalOperator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConcentrationQuantity" eSuperTypes="#//IArithmeticOperand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
   </eClassifiers>
 </ecore:EPackage>

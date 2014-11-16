@@ -126,7 +126,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double DEGRADATION_RATE_EDEFAULT = 0.0;
+	protected static final Double DEGRADATION_RATE_EDEFAULT = new Double(0.0);
 
 	/**
 	 * The cached value of the '{@link #getDegradationRate() <em>Degradation Rate</em>}' attribute.
@@ -136,7 +136,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 * @ordered
 	 */
-	protected double degradationRate = DEGRADATION_RATE_EDEFAULT;
+	protected Double degradationRate = DEGRADATION_RATE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBindingRate() <em>Binding Rate</em>}' attribute.
@@ -463,12 +463,12 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Degradation Rate</em>' attribute.
-	 * @see #setDegradationRate(double)
+	 * @see #setDegradationRate(Double)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_DegradationRate()
 	 * @model default="0.0"
 	 * @generated
 	 */
-	public double getDegradationRate() {
+	public Double getDegradationRate() {
 		return degradationRate;
 	}
 
@@ -480,8 +480,8 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @see #getDegradationRate()
 	 * @generated
 	 */
-	public void setDegradationRate(double newDegradationRate) {
-		double oldDegradationRate = degradationRate;
+	public void setDegradationRate(Double newDegradationRate) {
+		Double oldDegradationRate = degradationRate;
 		degradationRate = newDegradationRate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE, oldDegradationRate, degradationRate));
@@ -932,7 +932,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 			case IblPackage.MOLECULAR_SPECIES__UNIT:
 				return unit != UNIT_EDEFAULT;
 			case IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE:
-				return degradationRate != DEGRADATION_RATE_EDEFAULT;
+				return DEGRADATION_RATE_EDEFAULT == null ? degradationRate != null : !DEGRADATION_RATE_EDEFAULT.equals(degradationRate);
 			case IblPackage.MOLECULAR_SPECIES__BINDING_RATE:
 				return BINDING_RATE_EDEFAULT == null ? bindingRate != null : !BINDING_RATE_EDEFAULT.equals(bindingRate);
 			case IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE:
