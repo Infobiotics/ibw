@@ -60,11 +60,14 @@ class Simulator {
 		val cmd = '''«ngssPath» --emf parser=emf max_time=«this.max_time» max_runtime=«this.max_runtime» simulation_algorithm=«this.simulation_algorithm» data_file=model.csv log_interval=«this.
 			log_interval» runs=«this.runs» seed=«this.seed» output=console compress=true parallel=true show_progress=false'''
 
+		errorStream.write((cmd+"\n").getBytes())
+
 		// run simulation
 		var thread = new SimulationThread(this.model, resultFilename, cmd)
 		thread.start()
 
 		var result = thread.process.waitFor()
+		errorStream.write("finished".getBytes())
 		if(result != 0) {
 
 			// write error message to console

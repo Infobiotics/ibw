@@ -53,9 +53,13 @@ public class Simulator {
       _builder.append(this.seed, "");
       _builder.append(" output=console compress=true parallel=true show_progress=false");
       final String cmd = _builder.toString();
+      byte[] _bytes = (cmd + "\n").getBytes();
+      errorStream.write(_bytes);
       SimulationThread thread = new SimulationThread(this.model, resultFilename, cmd);
       thread.start();
       int result = thread.process.waitFor();
+      byte[] _bytes_1 = "finished".getBytes();
+      errorStream.write(_bytes_1);
       if ((result != 0)) {
         String line = null;
         InputStream _errorStream = thread.process.getErrorStream();
@@ -66,8 +70,8 @@ public class Simulator {
         boolean _notEquals = (!Objects.equal(_line, null));
         boolean _while = _notEquals;
         while (_while) {
-          byte[] _bytes = line.getBytes();
-          errorStream.write(_bytes);
+          byte[] _bytes_2 = line.getBytes();
+          errorStream.write(_bytes_2);
           String _readLine_1 = error.readLine();
           String _line_1 = line = _readLine_1;
           boolean _notEquals_1 = (!Objects.equal(_line_1, null));

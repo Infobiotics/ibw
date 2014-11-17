@@ -1,6 +1,7 @@
 package roadblock.simulation.ui.views;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -320,23 +321,33 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	// launch simulator
 	private void performSimulation() {
-		// XXX read model from EMFModel.xml rather than regenerating it
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
-		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
-		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
+		try {
+			consoleStream.write("perform simulation\n");
 
-		String xml = ModelCache.getInstance().getSerialisedFlatModel(currentIblResource);
+			final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+			final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
+			final String fileExtension = filename.substring(filename.lastIndexOf('.'));
+			final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
 
-		Simulator simulator = new Simulator(xml);
-		simulator.max_time = config.getMaxTime();
-		simulator.log_interval = config.getLogInterval();
-		simulator.runs = config.getSampleNumber();
-		// simulator.max_runtime = 0.0;
-		// simulator.seed = 0;
-		simulator.runSimulation(exportFilename, consoleStream);
+			consoleStream.write("getting xml\n");
+			String xml = ModelCache.getInstance().getSerialisedFlatModel(currentIblResource);
+			consoleStream.write("got xml\n");
+
+			Simulator simulator = new Simulator(xml);
+			consoleStream.write("got created simulator\n");
+			simulator.max_time = config.getMaxTime();
+			simulator.log_interval = config.getLogInterval();
+			simulator.runs = config.getSampleNumber();
+			//simulator.max_runtime = 0.0;
+			//simulator.seed = 0;
+			consoleStream.write("start simulation\n");
+			simulator.runSimulation(exportFilename, consoleStream);
+			consoleStream.write("done\n");
+		} catch (IOException e) {
+			errorDialogWithStackTrace("Failed to export model to xml", e);
+		}
 	}
 
 	@SuppressWarnings("unused")
