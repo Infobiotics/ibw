@@ -78,7 +78,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private XtextResource currentIblResource;
 
 	private Button compilationButton;
+	private Button refreshButton;
 	private Browser browser;
+	
+	private String pathToBiocompiler = "/home/christophe/spiderOak/work/roadblock/biocompilerStandAlone";
 	
 	@Override
 	public void createPartControl(Composite parent) {
@@ -90,6 +93,19 @@ public class MainView extends ViewPart implements IPartListener2 {
 		GridLayout layout = new GridLayout(1, false);
 		layout.marginRight = 5;
 		parent.setLayout(layout);
+		
+		// create refresh button
+		refreshButton = new Button(parent, SWT.PUSH);
+		refreshButton.setText("Refresh model");
+		refreshButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				refreshModel();
+			}
+		});
+		refreshButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		refreshButton.setEnabled(true);
+		
 		
 		// create compilation button
 		compilationButton = new Button(parent, SWT.PUSH);
@@ -109,6 +125,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 		browser.setText("<BODY > empty model</BODY>");
 	}
 
+	private void refreshModel(){
+		if(currentIblResource == null) System.out.println("CurrentIblresource is null");
+		if (currentIblResource.getErrors().size() == 0) {
+			updateUi();
+//			runBiocompiler(config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml", "parse");
+			compilationButton.setEnabled(true);
+		}
+	}
+	
 	@Override
 	public void partActivated(IWorkbenchPartReference partRef) {
 		IWorkbenchPart part = partRef.getPart(true);
@@ -126,12 +151,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 				if (iblResource != currentIblResource) {
 					currentIblResource = iblResource;
 					ensureConfig();
-//					bindValues();
 				}
 
-				if (iblResource.getErrors().size() == 0) {
-					updateUi();
-				}
 			}
 		}
 	}
@@ -146,7 +167,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 			
 			// run the biocompiler
 			System.out.println("Running the biocompiler");
-			String pathToBiocompiler = "/home/christophe/WualaDrive/koantig/work/roadblock/biocompilerStandAlone";
+			
 			Process process = new ProcessBuilder(pathToBiocompiler + "/atgcWrapper.sh",xmlFilename,config.dataDirectory + "/src-gen",command).start(); 
 			
 			InputStream is = process.getInputStream();
@@ -174,7 +195,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 	
 	protected void updateUi()  {
-
+		System.out.println("Calling updateUi");
 		if (currentIblResource == null) {
 			compilationButton.setEnabled(false);
 		} else {
@@ -208,7 +229,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 				e.printStackTrace();
 			}
 
-			//updateConsoleView();
 			
 		}
 	}
@@ -250,6 +270,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		runBiocompiler(config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml", "compile");
 		updateConsoleView();
 		updateResultsView();
+		compilationButton.setEnabled(false);
 	}
 
 	// export an EMF model to XML
@@ -309,7 +330,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	@Override
 	public void partDeactivated(IWorkbenchPartReference partRef) {
-		updateUi();
 	}
 
 	@Override

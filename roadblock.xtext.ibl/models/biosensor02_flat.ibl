@@ -57,7 +57,7 @@ define SentinelCell typeof CELL(){
 		// rna degradation
 		RULE mrnaDegradation : mrna ->
 	}
- 
+  
 	// components of the XylS2Production device
 	Psal = PROMOTER(URI = "atgc://user-submitted/part/psal")
 	xylS2 = GENE(URI = "atgc://user-submitted/part/xysl2")
