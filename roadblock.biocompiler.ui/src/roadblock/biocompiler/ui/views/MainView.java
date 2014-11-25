@@ -81,7 +81,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Button refreshButton;
 	private Browser browser;
 	
-	private String pathToBiocompiler = "/home/christophe/spiderOak/work/roadblock/biocompilerStandAlone";
+	private String pathToBiocompiler = "/home/christophe/git/roadblock.xtext/roadblock.biocompiler";
 	
 	@Override
 	public void createPartControl(Composite parent) {

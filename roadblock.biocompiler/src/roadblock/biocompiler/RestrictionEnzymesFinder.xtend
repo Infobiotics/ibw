@@ -189,12 +189,13 @@ class RestrictionEnzymesFinder {
 	return true			
 }
 	
-	def  Integer populatingPotentialRETable(BiocompilerCell cell, String suppliers){
+	def  public Integer populatingPotentialRETable(BiocompilerCell cell, String suppliers){
 		// build a table of potential restriction enzymes, i.e. RE that don't cut on unchangeable parts and whether they cut a CDS or an RBS
 		// returns the number of potential RE
 		
 		var List<List<Integer>> potentialRE = newArrayList()	
 		val db = new SQLiteConnection(new File(databaseLocation))
+		println("dblocation: " + databaseLocation)
 		if (!db.isOpen) db.open()
 		db.exec("DELETE FROM PotentialRE")	
 	

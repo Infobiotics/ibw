@@ -55,7 +55,7 @@ class CodonOptimisationForRestrictionEnzymes {
 
 		// for each codon, compute the forms and costs
 		println("Building codonUsageTable")		
-		codonUsageTable = prepareFormsAndCostsTable(species)
+		codonUsageTable = prepareFormsAndCostsTable(species, pathToResources)
 		
 		println("Computing forms and costs for each codon")		
 		codonList = computeFormsAndCostsForCodonList(codonList, cdsList, codonUsageTable)
@@ -225,7 +225,7 @@ class CodonOptimisationForRestrictionEnzymes {
 		return nList.fold({var List<Integer> a = newArrayList; a.add(1); a })[a,b | {a.add(a.last * b); a}]
 	}
 		
-	def LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species){
+	def static LinkedHashMap<String, CodonUsageTableElement> prepareFormsAndCostsTable(String species, String pathToResources){
 		
 		var LinkedHashMap<String, CodonUsageTableElement> table = newLinkedHashMap
 		

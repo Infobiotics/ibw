@@ -71,21 +71,7 @@ class RestrictionEnzymesFinderTests {
 		return biocompiler
 	}
 
-	@Test
-	def changeTest(){
-		var biocompiler = simpleDevice
-		var name = biocompiler.biocompilerModel.cells.get(0).name
-		assertEquals("myCell",name)
-		var ref = new RestrictionEnzymesFinder(biocompiler.biocompilerModel.cells.get(0), "b", "../roadblock.biocompiler/resources")
-		biocompiler.print
-		ref.searchRE
-		//biocompiler.biocompilerModel.cells.set(0,ref.searchRE)
-		name = biocompiler.biocompilerModel.cells.get(0).name
-		biocompiler.print
-		assertEquals("changed",name)
-		
-		
-	}
+	
 	@Test
 	def populatingPotentialRETableTest(){ // simple device promoter - rbs - gene - re - re - re - terminator.
 		var biocompiler = simpleDevice
@@ -95,10 +81,14 @@ class RestrictionEnzymesFinderTests {
 		cell.devices.get(0).parts.filter[biologicalFunction != "CLONINGSITE"].forEach[sequence = "XXXXXXXX"]
 		biocompiler.print
 		
-		totalPotentialRE = RestrictionEnzymesFinder.populatingPotentialRETable(cell, 'b')
+		println("first REF")
+		var ref = new RestrictionEnzymesFinder(biocompiler.biocompilerModel.cells.get(0),'b','resources')
+		println("populating")
+		totalPotentialRE = ref.populatingPotentialRETable(cell, 'b')
 		
+		println("building a list of RE")
 		// all REs fit, so there should be 39 of them
-		val databaseLocation = "resources/restrictionEnzymes.db"
+		val databaseLocation = "resources/db/restrictionEnzymes.db"
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		var sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
@@ -110,7 +100,7 @@ class RestrictionEnzymesFinderTests {
 		
 		// putting 5 RE in the promoter sequence
 		cell.devices.get(0).parts.filter[biologicalFunction == "PROMOTER"].forEach[sequence = "ACGCGTxTTTAAAxGAATTCxGGCCxAAGCTT"]
-		totalPotentialRE = RestrictionEnzymesFinder.populatingPotentialRETable(cell, 'b')
+		totalPotentialRE = ref.populatingPotentialRETable(cell, 'b')
 		db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
@@ -122,7 +112,7 @@ class RestrictionEnzymesFinderTests {
 		// putting 5 RE in CDS
 		cell.devices.get(0).parts.filter[biologicalFunction != "CLONINGSITE"].forEach[sequence = "XXXXXXXX"]
 		cell.devices.get(0).parts.filter[biologicalFunction == "GENE"].forEach[sequence = "ACGCGTxTTTAAAxGAATTCxGGCCxAAGCTT"]
-		totalPotentialRE = RestrictionEnzymesFinder.populatingPotentialRETable(cell, 'b')
+		totalPotentialRE = ref.populatingPotentialRETable(cell, 'b')
 		db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
@@ -137,7 +127,7 @@ class RestrictionEnzymesFinderTests {
 		// putting 5 RE in RBS
 		cell.devices.get(0).parts.filter[biologicalFunction != "CLONINGSITE"].forEach[sequence = "XXXXXXXX"]		
 		cell.devices.get(0).parts.filter[biologicalFunction == "RBS"].forEach[sequence = "ACGCGTxTTTAAAxGAATTCxGGCCxAAGCTT"]
-		RestrictionEnzymesFinder.populatingPotentialRETable(cell, 'b')
+		ref.populatingPotentialRETable(cell, 'b')
 		db = new SQLiteConnection(new File(databaseLocation))
 		if (!db.isOpen) db.open()
 		sql = db.prepare("SELECT COUNT(*) FROM PotentialRE")
@@ -148,6 +138,8 @@ class RestrictionEnzymesFinderTests {
 		assertEquals(5, sql.columnInt(0))
 		
 		db.dispose
+		
+
 }	
 
 //	@Test 
