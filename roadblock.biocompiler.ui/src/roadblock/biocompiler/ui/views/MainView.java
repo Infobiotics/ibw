@@ -68,6 +68,7 @@ import roadblock.biocompiler.ui.model.Configuration;
 import roadblock.biocompiler.ui.util.ConfigurationUtil;
 import roadblock.biocompiler.ui.util.SimulationUtil;
 import roadblock.biocompiler.*;
+import roadblock.bin.BinaryPathProvider;
 
 public class MainView extends ViewPart implements IPartListener2 {
 
@@ -81,7 +82,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Button refreshButton;
 	private Browser browser;
 	
-	private String pathToBiocompiler = "/home/christophe/git/roadblock.xtext/roadblock.biocompiler";
+	private String pathToBiocompiler = BinaryPathProvider.getInstance().getAtgcPath();
 	
 	@Override
 	public void createPartControl(Composite parent) {
@@ -168,7 +169,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 			// run the biocompiler
 			System.out.println("Running the biocompiler");
 			
-			Process process = new ProcessBuilder(pathToBiocompiler + "/atgcWrapper.sh",xmlFilename,config.dataDirectory + "/src-gen",command).start(); 
+			Process process = new ProcessBuilder(pathToBiocompiler + File.separator + "atgcWrapper.sh",xmlFilename,config.dataDirectory + File.separator + "src-gen",command).start(); 
 			
 			InputStream is = process.getInputStream();
 			InputStream is2 = process.getErrorStream();

@@ -13,7 +13,7 @@ public class SqliteTests {
 
 	@Test
 	public void testExample() { // just checking that the libraries and the database are there and sqlite is working.
-		String databaseLocation = "resources/partRegistry.db";
+		String databaseLocation = "resources/db/partRegistry.db";
 		
 		assertTrue((new File(databaseLocation)).exists());
 		

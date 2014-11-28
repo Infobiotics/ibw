@@ -17,6 +17,7 @@ public class BinaryPathProvider {
 	private static String prismPath;
 	private static String nuSmvPath;
 	private static String ngssPath;
+	private static String atgcPath;
 
 	static {
 		try {
@@ -66,6 +67,14 @@ public class BinaryPathProvider {
 
 	public void setNgssPath(String ngssPath) {
 		BinaryPathProvider.ngssPath = ngssPath;
+	}
+
+	public String getAtgcPath() {
+		return atgcPath;
+	}
+
+	public void setAtgcPath(String atgcPath) {
+		BinaryPathProvider.atgcPath = atgcPath;
 	}
 
 	public static BinaryPathProvider getInstance() {

@@ -68,6 +68,7 @@ import roadblock.emf.ibl.Ibl.ATGCTranslationRate
 import roadblock.emf.ibl.Ibl.IblPackage
 import java.nio.charset.Charset
 import java.io.FileWriter
+import roadblock.biocompiler.util.EncodedImages
 
 @Data class RestrictionEnzyme {
     String name
@@ -161,7 +162,9 @@ class Biocompiler {
 			println("biocompiler instantiated and populated")
 			biocompiler.pathToResources = args.get(1)
 			println("Path to Resources: " + biocompiler.pathToResources)
-
+			
+			biocompiler.pathToImages = biocompiler.pathToResources + File.separator + "images"
+			println("Path to images: " + biocompiler.pathToImages)
 			biocompiler.pathOutput = args.get(2)
 			println("Path to Output: " + biocompiler.pathOutput)
 			
@@ -895,24 +898,24 @@ class Biocompiler {
 		colours.add("#F5F5F5")
 		colours.add("#80CDC1")
 		colours.add("#018571")
-
+		val encodedImages = new EncodedImages
 		val imageNames = <String,String>newHashMap // from type+direction to image filename
-		imageNames.put("promoter0","promoterReversed.png")
-		imageNames.put("promoter1","promoter.png")
-		imageNames.put("rbs0","rbsReversed.png")
-		imageNames.put("rbs1","rbs.png")
-		imageNames.put("gene0","geneReversed.png")
-		imageNames.put("gene1","gene.png")
-		imageNames.put("cloningsite0","cloningSiteReversed.png")
-		imageNames.put("cloningsite1","cloningSite.png")
-		imageNames.put("terminator0","terminatorReversed.png")
-		imageNames.put("terminator1","terminator.png") 
+		imageNames.put("promoter0","data:image/png;base64," + encodedImages.promoterReversed)
+		imageNames.put("promoter1","data:image/png;base64," + encodedImages.promoter)
+		imageNames.put("rbs0","data:image/png;base64," + encodedImages.rbsReversed)
+		imageNames.put("rbs1","data:image/png;base64," + encodedImages.rbs)
+		imageNames.put("gene0","data:image/png;base64," + encodedImages.geneReversed)
+		imageNames.put("gene1","data:image/png;base64," + encodedImages.gene)
+		imageNames.put("cloningsite0","data:image/png;base64," + encodedImages.cloningsiteReversed)
+		imageNames.put("cloningsite1","data:image/png;base64," + encodedImages.cloningsite)
+		imageNames.put("terminator0","data:image/png;base64," + encodedImages.terminatorReversed)
+		imageNames.put("terminator1","data:image/png;base64," + encodedImages.terminator) 
 		
 		var List<String> source = newArrayList
 		source.add("<HTML>")
 		source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
 		
-		val path = pathToImages + '/images/'
+		val path = pathToImages + File.separator
 		
 		
 		for(cell:biocompilerModel.cells){
@@ -936,7 +939,7 @@ class Biocompiler {
 				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
 				«{col = (col+1) % colours.size; ''}»
 				«FOR part: device.parts.sortBy[position.value]»
-				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«path+imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=76px></TD>
+				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=76px></TD>
 				«ENDFOR»
 				«ENDFOR»
 				</TR>
