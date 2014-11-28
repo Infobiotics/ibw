@@ -26,7 +26,7 @@
       <perspective
             class="roadblock.ibw.perspectives.Modelchecking"
             id="roadblock.ibw.perspectives.modelchecking"
-            name="Model Checking">
+            name="Verification">
       </perspective>
    </extension>
    <extension

@@ -5,14 +5,14 @@
          id="roadblock.modelchecking.ui.views.mainView"
          point="org.eclipse.ui.views">
       <category
-            name="Model Checking"
+            name="Verification"
             id="roadblock.modelchecking.ui">
       </category>
       <view
             category="roadblock.modelchecking.ui"
             class="roadblock.modelchecking.ui.views.MainView"
             id="roadblock.modelchecking.ui.views.mainView"
-            name="Model Checking">
+            name="Verification">
       </view>
       </extension>
 </plugin>
