@@ -2,9 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         id="roadblock.simulation.ui.views.mainView"
+         name="Simulation"
          point="org.eclipse.ui.views">
       <category
-            name="IBW Simulation"
+            name="Simulation"
             id="roadblock.simulation.ui">
       </category>
       <view

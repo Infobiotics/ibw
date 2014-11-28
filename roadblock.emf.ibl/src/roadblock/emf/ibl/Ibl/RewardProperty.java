@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariable <em>Variable</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.RewardProperty#getTimeConstraint <em>Time Constraint</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.RewardProperty#getConcentrationConstraint <em>Concentration Constraint</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.RewardProperty#getInitialConditions <em>Initial Conditions</em>}</li>
@@ -35,24 +35,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class RewardProperty extends EObjectImpl implements IProperty {
 	/**
-	 * The default value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getVariableName()
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VARIABLE_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getVariableName() <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @see #getVariableName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String variableName = VARIABLE_NAME_EDEFAULT;
+	protected VariableReference variable;
 
 	/**
 	 * The cached value of the '{@link #getTimeConstraint() <em>Time Constraint</em>}' containment reference.
@@ -104,37 +94,58 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Variable Name</b></em>' attribute. <!--
-	 * begin-user-doc -->
+	 * Returns the value of the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Variable Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Variable</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
-	 * @return the value of the '<em>Variable Name</em>' attribute.
-	 * @see #setVariableName(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRewardProperty_VariableName()
-	 * @model
+	 * @return the value of the '<em>Variable</em>' containment reference.
+	 * @see #setVariable(VariableReference)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRewardProperty_Variable()
+	 * @model containment="true"
 	 * @generated
 	 */
-	public String getVariableName() {
-		return variableName;
+	public VariableReference getVariable() {
+		return variable;
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariableName <em>Variable Name</em>}' attribute.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Variable Name</em>' attribute.
-	 * @see #getVariableName()
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVariableName(String newVariableName) {
-		String oldVariableName = variableName;
-		variableName = newVariableName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.REWARD_PROPERTY__VARIABLE_NAME, oldVariableName, variableName));
+	public NotificationChain basicSetVariable(VariableReference newVariable, NotificationChain msgs) {
+		VariableReference oldVariable = variable;
+		variable = newVariable;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.REWARD_PROPERTY__VARIABLE, oldVariable, newVariable);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.RewardProperty#getVariable <em>Variable</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Variable</em>' containment reference.
+	 * @see #getVariable()
+	 * @generated
+	 */
+	public void setVariable(VariableReference newVariable) {
+		if (newVariable != variable) {
+			NotificationChain msgs = null;
+			if (variable != null)
+				msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.REWARD_PROPERTY__VARIABLE, null, msgs);
+			if (newVariable != null)
+				msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.REWARD_PROPERTY__VARIABLE, null, msgs);
+			msgs = basicSetVariable(newVariable, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.REWARD_PROPERTY__VARIABLE, newVariable, newVariable));
 	}
 
 	/**
@@ -290,6 +301,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case IblPackage.REWARD_PROPERTY__VARIABLE:
+				return basicSetVariable(null, msgs);
 			case IblPackage.REWARD_PROPERTY__TIME_CONSTRAINT:
 				return basicSetTimeConstraint(null, msgs);
 			case IblPackage.REWARD_PROPERTY__CONCENTRATION_CONSTRAINT:
@@ -307,8 +320,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IblPackage.REWARD_PROPERTY__VARIABLE_NAME:
-				return getVariableName();
+			case IblPackage.REWARD_PROPERTY__VARIABLE:
+				return getVariable();
 			case IblPackage.REWARD_PROPERTY__TIME_CONSTRAINT:
 				return getTimeConstraint();
 			case IblPackage.REWARD_PROPERTY__CONCENTRATION_CONSTRAINT:
@@ -327,8 +340,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IblPackage.REWARD_PROPERTY__VARIABLE_NAME:
-				setVariableName((String)newValue);
+			case IblPackage.REWARD_PROPERTY__VARIABLE:
+				setVariable((VariableReference)newValue);
 				return;
 			case IblPackage.REWARD_PROPERTY__TIME_CONSTRAINT:
 				setTimeConstraint((TimeInstant)newValue);
@@ -351,8 +364,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IblPackage.REWARD_PROPERTY__VARIABLE_NAME:
-				setVariableName(VARIABLE_NAME_EDEFAULT);
+			case IblPackage.REWARD_PROPERTY__VARIABLE:
+				setVariable((VariableReference)null);
 				return;
 			case IblPackage.REWARD_PROPERTY__TIME_CONSTRAINT:
 				setTimeConstraint((TimeInstant)null);
@@ -374,8 +387,8 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IblPackage.REWARD_PROPERTY__VARIABLE_NAME:
-				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
+			case IblPackage.REWARD_PROPERTY__VARIABLE:
+				return variable != null;
 			case IblPackage.REWARD_PROPERTY__TIME_CONSTRAINT:
 				return timeConstraint != null;
 			case IblPackage.REWARD_PROPERTY__CONCENTRATION_CONSTRAINT:
@@ -384,21 +397,6 @@ public class RewardProperty extends EObjectImpl implements IProperty {
 				return initialConditions != null && !initialConditions.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (variableName: ");
-		result.append(variableName);
-		result.append(')');
-		return result.toString();
 	}
 
 } // RewardProperty

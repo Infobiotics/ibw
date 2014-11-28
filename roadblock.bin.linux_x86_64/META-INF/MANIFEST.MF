@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Linux_x86_64
+Bundle-SymbolicName: roadblock.bin.linux_x86_64;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Fragment-Host: roadblock.bin;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Eclipse-BundleShape: dir
+Eclipse-PlatformFilter: (& (osgi.os=linux) (osgi.arch=x86_64))
+Bundle-ClassPath: .
+Export-Package: .
+Bundle-ActivationPolicy: lazy

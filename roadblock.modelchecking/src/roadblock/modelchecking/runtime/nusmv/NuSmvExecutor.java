@@ -3,6 +3,7 @@ package roadblock.modelchecking.runtime.nusmv;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IProperty;
@@ -22,8 +23,9 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
+		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 
-		writeFile(filename + ".smv", modelTranslation);
+		writeModel(filename + ".smv", modelTranslation, propetyTranslation, false);
 	}
 
 	@Override
@@ -37,30 +39,30 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
 
-		writeFile(verificationModelFileName, modelTranslation, propetyTranslation);
+		writeModel(verificationModelFileName, modelTranslation, propetyTranslation, true);
 
-		String[] verificationCommand = new String[] { "NuSMV", verificationModelFileName };
-		
+		String toolPath = BinaryPathProvider.getInstance().getNuSmvPath();
+
+		String[] verificationCommand = new String[] { toolPath, verificationModelFileName };
+
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
 
-	private void writeFile(String fileName, String model) throws IOException {
+	private void writeModel(String fileName, String model, String property, boolean writeProperty) throws IOException {
 
 		FileWriter writer = new FileWriter(fileName);
 
-		writer.write(model);
-		writer.flush();
-		writer.close();
-	}
-	
-	private void writeFile(String fileName, String model, String property) throws IOException {
-
-		FileWriter writer = new FileWriter(fileName);
-
-		writer.write(model);
+		writer.write(String.format("-- The generated NuSMV model corresponding to property: SPEC %s", property));
 		writer.write(System.getProperty("line.separator"));
 		writer.write(System.getProperty("line.separator"));
-		writer.write(String.format("SPEC %s", property));
+		writer.write(model);
+
+		if (writeProperty) {
+			writer.write(System.getProperty("line.separator"));
+			writer.write(System.getProperty("line.separator"));
+			writer.write(String.format("SPEC %s", property));
+		}
+
 		writer.flush();
 		writer.close();
 	}

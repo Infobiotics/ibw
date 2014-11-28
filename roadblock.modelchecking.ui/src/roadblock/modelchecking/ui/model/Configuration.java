@@ -10,6 +10,10 @@ public class Configuration {
 	public Double confidenceValue;
 	public Integer pathLength;
 	public Integer sampleNumber;
+	public Double maxTime;
+	public Double logInterval;
+	public Integer runs;
+	public String simulationAlgorithm;
 
 	public String getModelName() {
 		return modelName;
@@ -75,4 +79,35 @@ public class Configuration {
 		this.sampleNumber = sampleNumber;
 	}
 
+	public Double getMaxTime() {
+		return maxTime;
+	}
+
+	public void setMaxTime(Double maxTime) {
+		this.maxTime = maxTime;
+	}
+
+	public Double getLogInterval() {
+		return logInterval;
+	}
+
+	public void setLogInterval(Double logInterval) {
+		this.logInterval = logInterval;
+	}
+
+	public Integer getRuns() {
+		return runs;
+	}
+
+	public void setRuns(Integer runs) {
+		this.runs = runs;
+	}
+
+	public String getSimulationAlgorithm() {
+		return simulationAlgorithm;
+	}
+
+	public void setSimulationAlgorithm(String simulationAlgorithm) {
+		this.simulationAlgorithm = simulationAlgorithm;
+	}
 }

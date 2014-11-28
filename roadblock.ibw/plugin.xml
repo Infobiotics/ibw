@@ -3,7 +3,7 @@
 <plugin>
 
    <extension
-         id="IBW"
+         id="product"
          name="Infobiotics Workbench"
          point="org.eclipse.core.runtime.products">
       <product
@@ -12,10 +12,6 @@
          <property
                name="appName"
                value="Infobiotics Workbench">
-         </property>
-         <property
-               name="startupProgressRect"
-               value="5,275,445,15">
          </property>
          <property
                name="preferenceCustomization"
@@ -43,14 +39,5 @@
             name="Simulation">
       </perspective>
    </extension>
-   <extension
-         id="roadblock.ibw.perspectives.biocompiler"
-         name="Biocompiler Perspective"
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            class="roadblock.ibw.perspectives.Biocompiler"
-            id="roadblock.ibw.perspectives.biocompiler"
-            name="Biocompiler">
-      </perspective>
-   </extension>
+
 </plugin>

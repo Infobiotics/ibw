@@ -95,7 +95,12 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.ATGC_ARRANGE: return (EObject)createATGCArrange();
 			case IblPackage.ATGC_CLONING_SITES: return (EObject)createATGCCloningSites();
 			case IblPackage.FLAT_MODEL_PROPERTY_PAIR: return (EObject)createFlatModelPropertyPair();
-			case IblPackage.ATGC_TRANSLATION_RATE: return (EObject)createATGCTranslationRate();
+			case IblPackage.BINARY_ARITHMETIC_EXPRESSION: return (EObject)createBinaryArithmeticExpression();
+			case IblPackage.NUMERIC_LITERAL: return (EObject)createNumericLiteral();
+			case IblPackage.VARIABLE_REFERENCE: return (EObject)createVariableReference();
+			case IblPackage.MONOTONICITY_EXPRESSION: return (EObject)createMonotonicityExpression();
+			case IblPackage.RELATIONAL_EXPRESSION: return (EObject)createRelationalExpression();
+			case IblPackage.CONCENTRATION_QUANTITY: return (EObject)createConcentrationQuantity();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -111,8 +116,8 @@ public class IblFactory extends EFactoryImpl {
 		switch (eDataType.getClassifierID()) {
 			case IblPackage.TIME_UNIT:
 				return createTimeUnitFromString(eDataType, initialValue);
-			case IblPackage.TEMPORAL_OPERATOR:
-				return createTemporalOperatorFromString(eDataType, initialValue);
+			case IblPackage.TEMPORAL_PATTERN:
+				return createTemporalPatternFromString(eDataType, initialValue);
 			case IblPackage.RELATIONAL_OPERATOR:
 				return createRelationalOperatorFromString(eDataType, initialValue);
 			case IblPackage.BOOLEAN_OPERATOR:
@@ -121,6 +126,10 @@ public class IblFactory extends EFactoryImpl {
 				return createConcentrationUnitFromString(eDataType, initialValue);
 			case IblPackage.RATE_UNIT:
 				return createRateUnitFromString(eDataType, initialValue);
+			case IblPackage.ARITHMETIC_OPERATOR:
+				return createArithmeticOperatorFromString(eDataType, initialValue);
+			case IblPackage.MONOTONICITY_TYPE:
+				return createMonotonicityTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -136,8 +145,8 @@ public class IblFactory extends EFactoryImpl {
 		switch (eDataType.getClassifierID()) {
 			case IblPackage.TIME_UNIT:
 				return convertTimeUnitToString(eDataType, instanceValue);
-			case IblPackage.TEMPORAL_OPERATOR:
-				return convertTemporalOperatorToString(eDataType, instanceValue);
+			case IblPackage.TEMPORAL_PATTERN:
+				return convertTemporalPatternToString(eDataType, instanceValue);
 			case IblPackage.RELATIONAL_OPERATOR:
 				return convertRelationalOperatorToString(eDataType, instanceValue);
 			case IblPackage.BOOLEAN_OPERATOR:
@@ -146,6 +155,10 @@ public class IblFactory extends EFactoryImpl {
 				return convertConcentrationUnitToString(eDataType, instanceValue);
 			case IblPackage.RATE_UNIT:
 				return convertRateUnitToString(eDataType, instanceValue);
+			case IblPackage.ARITHMETIC_OPERATOR:
+				return convertArithmeticOperatorToString(eDataType, instanceValue);
+			case IblPackage.MONOTONICITY_TYPE:
+				return convertMonotonicityTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -456,9 +469,59 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ATGCTranslationRate createATGCTranslationRate() {
-		ATGCTranslationRate atgcTranslationRate = new ATGCTranslationRate();
-		return atgcTranslationRate;
+	public BinaryArithmeticExpression createBinaryArithmeticExpression() {
+		BinaryArithmeticExpression binaryArithmeticExpression = new BinaryArithmeticExpression();
+		return binaryArithmeticExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NumericLiteral createNumericLiteral() {
+		NumericLiteral numericLiteral = new NumericLiteral();
+		return numericLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VariableReference createVariableReference() {
+		VariableReference variableReference = new VariableReference();
+		return variableReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MonotonicityExpression createMonotonicityExpression() {
+		MonotonicityExpression monotonicityExpression = new MonotonicityExpression();
+		return monotonicityExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RelationalExpression createRelationalExpression() {
+		RelationalExpression relationalExpression = new RelationalExpression();
+		return relationalExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConcentrationQuantity createConcentrationQuantity() {
+		ConcentrationQuantity concentrationQuantity = new ConcentrationQuantity();
+		return concentrationQuantity;
 	}
 
 	/**
@@ -486,8 +549,8 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TemporalOperator createTemporalOperatorFromString(EDataType eDataType, String initialValue) {
-		TemporalOperator result = TemporalOperator.get(initialValue);
+	public TemporalPattern createTemporalPatternFromString(EDataType eDataType, String initialValue) {
+		TemporalPattern result = TemporalPattern.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -497,7 +560,7 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertTemporalOperatorToString(EDataType eDataType, Object instanceValue) {
+	public String convertTemporalPatternToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -578,6 +641,46 @@ public class IblFactory extends EFactoryImpl {
 	 * @generated
 	 */
 	public String convertRateUnitToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ArithmeticOperator createArithmeticOperatorFromString(EDataType eDataType, String initialValue) {
+		ArithmeticOperator result = ArithmeticOperator.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertArithmeticOperatorToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MonotonicityType createMonotonicityTypeFromString(EDataType eDataType, String initialValue) {
+		MonotonicityType result = MonotonicityType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMonotonicityTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

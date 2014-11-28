@@ -1,12 +1,15 @@
 package roadblock.modelchecking.translation.property;
 
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.ArithmeticOperator;
+import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.BooleanOperator;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -16,21 +19,24 @@ import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.MonotonicityExpression;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
 import roadblock.emf.ibl.Ibl.Region;
+import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RelationalOperator;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
-import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
-import roadblock.emf.ibl.Ibl.TemporalOperator;
+import roadblock.emf.ibl.Ibl.TemporalPattern;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.VariableReference;
 import roadblock.modelchecking.ModelcheckingTarget;
 
 public class PrismTranslator implements IPropertyTranslator {
@@ -56,7 +62,7 @@ public class PrismTranslator implements IPropertyTranslator {
 	public String visit(BinaryProbabilityProperty expression) {
 
 		String translation = null;
-		boolean isFollowedByProperty = expression.getOperator() == TemporalOperator.FOLLOWED_BY;
+		boolean isFollowedByProperty = expression.getOperator() == TemporalPattern.FOLLOWED_BY;
 
 		String pattern = isFollowedByProperty ? "P%s [ G%s((%s) => F(%s)) ]" : "P%s [ (%s) %s%s (%s) ]";
 
@@ -74,7 +80,7 @@ public class PrismTranslator implements IPropertyTranslator {
 			String temporalOperator = Translate(expression.getOperator());
 			translation = String.format(pattern, probabilityConstraint, leftStateFormula, temporalOperator, timeConstraint, rightStateFormula);
 		}
-		
+
 		return translation;
 	}
 
@@ -98,21 +104,11 @@ public class PrismTranslator implements IPropertyTranslator {
 
 		ConcentrationConstraint cc = expression.getConcentrationConstraint();
 
-		String rewardExpression = doTranslateName(expression.getVariableName()) + "_rew";
+		String rewardExpression = doTranslateName(expression.getVariable().getName()) + "_rew";
 		String timeConstraint = expression.getTimeConstraint().accept(this);
 		String concentrationConstraint = cc != null ? cc.accept(this) : "=?";
 
 		return String.format(pattern, rewardExpression, concentrationConstraint, timeConstraint);
-	}
-
-	@Override
-	public String visit(StateExpression expression) {
-
-		String pattern = "%s %s %s";
-		String variableName = doTranslateName(expression.getVariableName());
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, variableName, relationalOperator, expression.getQuantity());
 	}
 
 	@Override
@@ -173,20 +169,57 @@ public class PrismTranslator implements IPropertyTranslator {
 		return String.format(pattern, relationalOperator, expression.getValue());
 	}
 
-	private String Translate(TemporalOperator operator) {
+	@Override
+	public String visit(BinaryArithmeticExpression expression) {
+		String pattern = "(%s %s %s)";
+
+		String leftOperand = expression.getLeftOperand().accept(this);
+		String arithmeticOperator = Translate(expression.getOperator());
+		String rightOperand = expression.getRightOperand().accept(this);
+
+		return String.format(pattern, leftOperand, arithmeticOperator, rightOperand);
+	}
+
+	@Override
+	public String visit(RelationalExpression expression) {
+		String pattern = "%s %s %s";
+
+		String leftOperand = expression.getLeftOperand().accept(this);
+		String relationalOperator = Translate(expression.getOperator());
+		String rightOperand = expression.getRightOperand().accept(this);
+
+		return String.format(pattern, leftOperand, relationalOperator, rightOperand);
+	}
+
+	@Override
+	public String visit(ConcentrationQuantity expression) {
+		return Double.toString(expression.getAmount());
+	}
+
+	@Override
+	public String visit(VariableReference expression) {
+		return doTranslateName(expression.getName());
+	}
+
+	@Override
+	public String visit(NumericLiteral expression) {
+		return Double.toString(expression.getValue());
+	}
+
+	private String Translate(TemporalPattern operator) {
 
 		switch (operator) {
 		case ALWAYS:
 			return "G";
 		case EVENTUALLY:
 			return "F";
-		case ALWAYS_EVENTUALLY:
+		case INFINITELY_OFTEN:
 			return "G F";
-		case NOT_EVENTUALLY:
+		case NEVER:
 			return "G !";
 		case UNTIL:
 			return "U";
-		case EVENTUALLY_ALWAYS:
+		case STEADY_STATE:
 			return "F G";
 		default:
 			return "";
@@ -222,6 +255,22 @@ public class PrismTranslator implements IPropertyTranslator {
 			return "|";
 		case IMPLIES:
 			return "=>";
+		default:
+			return "";
+		}
+	}
+
+	private String Translate(ArithmeticOperator operator) {
+
+		switch (operator) {
+		case ADDITION:
+			return "+";
+		case SUBTRACTION:
+			return "-";
+		case MULTIPLICATION:
+			return "*";
+		case DIVISION:
+			return "/";
 		default:
 			return "";
 		}
@@ -303,6 +352,11 @@ public class PrismTranslator implements IPropertyTranslator {
 
 	@Override
 	public String visit(EMFVariableAssignment expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(MonotonicityExpression expression) {
 		throw new UnsupportedOperationException();
 	}
 }

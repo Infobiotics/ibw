@@ -3,6 +3,11 @@
  */
 package roadblock.xtext.ibl.generator
 
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.emf.ecore.resource.Resource
+
+/* 
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -10,8 +15,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.emf.ecore.EObject
 import roadblock.dataprocessing.flatModel.FlatModelManager
 import roadblock.dataprocessing.flatModel.PropertyCollector
 import roadblock.dataprocessing.model.ModelBuilder
@@ -19,7 +23,8 @@ import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.modelchecking.ModelcheckingTarget
-import roadblock.modelchecking.translation.TranslationManager import roadblock.biocompiler.Biocompiler
+import roadblock.modelchecking.translation.TranslationManager
+*/
 
 /**
  * Generates code from your model files on save.
@@ -27,7 +32,12 @@ import roadblock.modelchecking.translation.TranslationManager import roadblock.b
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class IblGenerator implements IGenerator {
+	
+	override doGenerate(Resource input, IFileSystemAccess fsa) {
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
 
+/* 
 	private TranslationManager translationManager = TranslationManager::instance;
 
 	// export an EMF model to XML
@@ -54,19 +64,10 @@ class IblGenerator implements IGenerator {
 
 		var xml = convertToXml(flatModelManager.getFlatModel())
 		println(xml)
-//		fsa.generateFile('EMFFlatModel.xml', xml)
+		fsa.generateFile('EMFModel.xml', xml)
 		//fsa.generateFile('unitTestingGenerator.xml', 'someContent')
 		
 		generateTranslations(emfModel);
-		
-		fsa.generateFile('EMFModel.xml', convertToXml(emfModel))
-//		println("biocompiler starting")
-//		var Biocompiler biocompiler = new Biocompiler(emfModel)
-//		biocompiler.compile
-//		biocompiler.gatherParts
-//		biocompiler.completeDevices
-//		biocompiler.createIntVarForAllparts
-//		println("end")
 	}
 	
     def generateTranslations(Model emfModel) {
@@ -123,5 +124,5 @@ class IblGenerator implements IGenerator {
 				}
 			}
 		}
-	}
+	}*/
 }

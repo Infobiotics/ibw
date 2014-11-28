@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.xtext.roadblock/ibl/Ibl" 
        class = "roadblock.xtext.ibl.ibl.IblPackage"
-       genModel = "roadblock/xtext/ibl/Ibl.genmodel" /> 
+       genModel = "bin/roadblock/xtext/ibl/Ibl.genmodel" /> 
 	
   </extension>
 

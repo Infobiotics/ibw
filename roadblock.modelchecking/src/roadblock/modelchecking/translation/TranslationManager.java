@@ -50,6 +50,9 @@ public class TranslationManager {
 		case NUSMV:
 			propertyTranslator = new roadblock.modelchecking.translation.property.NuSmvTranslator();
 			break;
+		case MC2:
+			propertyTranslator = new roadblock.modelchecking.translation.property.MC2Translator();
+			break;
 		default:
 			break;
 		}

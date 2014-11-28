@@ -3,7 +3,7 @@ import com.google.inject.Inject
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+//import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 
 
 import org.junit.Assert
@@ -25,7 +25,7 @@ import roadblock.xtext.ibl.ibl.CellBody
 
 class IblParserTests {
 	@Inject extension ParseHelper<Model>
-	@Inject extension ValidationTestHelper
+	// @Inject extension ValidationTestHelper
 	
 	@Test
 	def void testATGCParsing(){

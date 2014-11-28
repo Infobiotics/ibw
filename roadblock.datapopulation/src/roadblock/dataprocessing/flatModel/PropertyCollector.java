@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -18,19 +20,22 @@ import roadblock.emf.ibl.Ibl.IVisitor;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.MonotonicityExpression;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
 import roadblock.emf.ibl.Ibl.Region;
+import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
-import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.VariableReference;
 
 public class PropertyCollector implements IVisitor<Void> {
 
@@ -155,11 +160,6 @@ public class PropertyCollector implements IVisitor<Void> {
 	}
 
 	@Override
-	public Void visit(StateExpression expression) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
 	public Void visit(TimeInterval expression) {
 		throw new UnsupportedOperationException();
 	}
@@ -178,7 +178,7 @@ public class PropertyCollector implements IVisitor<Void> {
 	public Void visit(ConcentrationConstraint expression) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@Override
 	public Void visit(ConcreteProbabilityConstraint expression) {
 		throw new UnsupportedOperationException();
@@ -226,6 +226,36 @@ public class PropertyCollector implements IVisitor<Void> {
 
 	@Override
 	public Void visit(EMFVariableAssignment expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Void visit(ConcentrationQuantity expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Void visit(BinaryArithmeticExpression expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Void visit(NumericLiteral expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Void visit(VariableReference expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Void visit(MonotonicityExpression expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Void visit(RelationalExpression expression) {
 		throw new UnsupportedOperationException();
 	}
 }

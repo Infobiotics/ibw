@@ -6,7 +6,17 @@
 *.exe
 *.o
 *.so
-*.orig
+
+
+roadblock.emf.ibl/bin
+
+roadblock.datapopulation/bin
+roadblock.datapopulation/xtend-gen/
+
+roadblock.modelchecking/bin
+
+roadblock.simulation/bin
+roadblock.simulation/xtend-gen
 
 roadblock.xtext.ibl/bin
 roadblock.xtext.ibl/src-gen

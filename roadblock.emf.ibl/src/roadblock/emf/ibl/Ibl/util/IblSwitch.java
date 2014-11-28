@@ -10,17 +10,20 @@ import roadblock.emf.ibl.Ibl.ATGCArrange;
 import roadblock.emf.ibl.Ibl.ATGCCloningSites;
 import roadblock.emf.ibl.Ibl.ATGCDirection;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
-import roadblock.emf.ibl.Ibl.ATGCTranslationRate;
+import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
+import roadblock.emf.ibl.Ibl.IArithmeticExpression;
+import roadblock.emf.ibl.Ibl.IArithmeticOperand;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IStateFormula;
@@ -31,11 +34,14 @@ import roadblock.emf.ibl.Ibl.IblPackage;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.MonotonicityExpression;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.ProbabilityProperty;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
 import roadblock.emf.ibl.Ibl.Region;
+import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
 import roadblock.emf.ibl.Ibl.StateExpression;
@@ -44,6 +50,7 @@ import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.VariableReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -375,11 +382,67 @@ public class IblSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IblPackage.ATGC_TRANSLATION_RATE: {
-				ATGCTranslationRate atgcTranslationRate = (ATGCTranslationRate)theEObject;
-				T result = caseATGCTranslationRate(atgcTranslationRate);
-				if (result == null) result = caseATGCDirective(atgcTranslationRate);
-				if (result == null) result = caseIVisitable(atgcTranslationRate);
+			case IblPackage.IARITHMETIC_EXPRESSION: {
+				IArithmeticExpression iArithmeticExpression = (IArithmeticExpression)theEObject;
+				T result = caseIArithmeticExpression(iArithmeticExpression);
+				if (result == null) result = caseIArithmeticOperand(iArithmeticExpression);
+				if (result == null) result = caseIVisitable(iArithmeticExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.IARITHMETIC_OPERAND: {
+				IArithmeticOperand iArithmeticOperand = (IArithmeticOperand)theEObject;
+				T result = caseIArithmeticOperand(iArithmeticOperand);
+				if (result == null) result = caseIVisitable(iArithmeticOperand);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.BINARY_ARITHMETIC_EXPRESSION: {
+				BinaryArithmeticExpression binaryArithmeticExpression = (BinaryArithmeticExpression)theEObject;
+				T result = caseBinaryArithmeticExpression(binaryArithmeticExpression);
+				if (result == null) result = caseIArithmeticExpression(binaryArithmeticExpression);
+				if (result == null) result = caseIArithmeticOperand(binaryArithmeticExpression);
+				if (result == null) result = caseIVisitable(binaryArithmeticExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.NUMERIC_LITERAL: {
+				NumericLiteral numericLiteral = (NumericLiteral)theEObject;
+				T result = caseNumericLiteral(numericLiteral);
+				if (result == null) result = caseIArithmeticOperand(numericLiteral);
+				if (result == null) result = caseIVisitable(numericLiteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.VARIABLE_REFERENCE: {
+				VariableReference variableReference = (VariableReference)theEObject;
+				T result = caseVariableReference(variableReference);
+				if (result == null) result = caseIArithmeticOperand(variableReference);
+				if (result == null) result = caseIVisitable(variableReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.MONOTONICITY_EXPRESSION: {
+				MonotonicityExpression monotonicityExpression = (MonotonicityExpression)theEObject;
+				T result = caseMonotonicityExpression(monotonicityExpression);
+				if (result == null) result = caseIStateFormula(monotonicityExpression);
+				if (result == null) result = caseIVisitable(monotonicityExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.RELATIONAL_EXPRESSION: {
+				RelationalExpression relationalExpression = (RelationalExpression)theEObject;
+				T result = caseRelationalExpression(relationalExpression);
+				if (result == null) result = caseIStateFormula(relationalExpression);
+				if (result == null) result = caseIVisitable(relationalExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.CONCENTRATION_QUANTITY: {
+				ConcentrationQuantity concentrationQuantity = (ConcentrationQuantity)theEObject;
+				T result = caseConcentrationQuantity(concentrationQuantity);
+				if (result == null) result = caseIArithmeticOperand(concentrationQuantity);
+				if (result == null) result = caseIVisitable(concentrationQuantity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -943,17 +1006,122 @@ public class IblSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ATGC Translation Rate</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IArithmetic Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ATGC Translation Rate</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IArithmetic Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseATGCTranslationRate(ATGCTranslationRate object) {
+	public T caseIArithmeticExpression(IArithmeticExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IArithmetic Operand</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IArithmetic Operand</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIArithmeticOperand(IArithmeticOperand object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Binary Arithmetic Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Binary Arithmetic Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBinaryArithmeticExpression(BinaryArithmeticExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Numeric Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Numeric Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNumericLiteral(NumericLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableReference(VariableReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Monotonicity Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Monotonicity Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMonotonicityExpression(MonotonicityExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Relational Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Relational Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRelationalExpression(RelationalExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concentration Quantity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concentration Quantity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcentrationQuantity(ConcentrationQuantity object) {
 		return null;
 	}
 

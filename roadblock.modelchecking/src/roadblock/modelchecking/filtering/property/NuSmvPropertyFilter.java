@@ -1,11 +1,13 @@
 package roadblock.modelchecking.filtering.property;
 
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -15,64 +17,109 @@ import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.MonotonicityExpression;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
 import roadblock.emf.ibl.Ibl.Region;
+import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
-import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.VariableReference;
 import roadblock.modelchecking.ModelcheckingTarget;
 
 public class NuSmvPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(UnaryProbabilityProperty expression) {
+		
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 		ITimeConstraint tc = expression.getTimeConstraint();
+		
+		boolean isStateFormulaValid = expression.getStateFormula().accept(this);
 
-		return pc == null && tc == null;
+		return pc == null && tc == null && isStateFormulaValid;
 	}
 
 	@Override
 	public Boolean visit(BinaryProbabilityProperty expression) {
+		
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 		ITimeConstraint tc = expression.getTimeConstraint();
+		
+		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
+		boolean isRightOperandValid = expression.getRightOperand().accept(this);
 
-		return pc == null && tc == null;
+		return pc == null && tc == null && isLeftOperandValid && isRightOperandValid;
 	}
 
 	@Override
 	public Boolean visit(SteadyStateProperty expression) {
+		
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
+		boolean isStateFormulaValid = expression.getStateFormula().accept(this);
 
-		return pc == null;
+		return pc == null && isStateFormulaValid;
 	}
 
 	@Override
 	public Boolean visit(RewardProperty expression) {
 		return false;
 	}
-
-	@Override
-	public Boolean visit(StateExpression expression) {
-		throw new UnsupportedOperationException();
-	}
-
+	
 	@Override
 	public Boolean visit(NotStateFormula expression) {
-		throw new UnsupportedOperationException();
+		boolean isStateFormulaValid = expression.getNegatedOperand().accept(this);
+		
+		return isStateFormulaValid;
 	}
 
 	@Override
 	public Boolean visit(BinaryStateFormula expression) {
-		throw new UnsupportedOperationException();
+		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
+		boolean isRightOperandValid = expression.getRightOperand().accept(this);
+		
+		return isLeftOperandValid && isRightOperandValid;
+	}
+
+	@Override
+	public Boolean visit(BinaryArithmeticExpression expression) {
+		return false;
+	}
+	
+	@Override
+	public Boolean visit(RelationalExpression expression) {
+		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
+		boolean isRightOperandValid = expression.getRightOperand().accept(this);
+		
+		return isLeftOperandValid && isRightOperandValid;
+	}
+	
+	@Override
+	public Boolean visit(MonotonicityExpression expression) {
+		return false;
+	}
+	
+	@Override
+	public Boolean visit(ConcentrationQuantity expression) {
+		return expression.getAmount() == 0 || expression.getAmount() == 1;
+	}
+	
+	@Override
+	public Boolean visit(VariableReference expression) {
+		return !expression.isIsMaximumOfInterest();
+	}
+	
+	@Override
+	public Boolean visit(NumericLiteral expression) {
+		return expression.getValue() == 0 || expression.getValue() == 1;
 	}
 
 	@Override
@@ -172,6 +219,6 @@ public class NuSmvPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public ModelcheckingTarget getTarget() {
-		return ModelcheckingTarget.PRISM;
+		return ModelcheckingTarget.NUSMV;
 	}
 }

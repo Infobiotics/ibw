@@ -1,12 +1,15 @@
 package roadblock.modelchecking.translation.property;
 
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.ArithmeticOperator;
+import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
 import roadblock.emf.ibl.Ibl.BooleanOperator;
 import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Chromosome;
 import roadblock.emf.ibl.Ibl.ConcentrationConstraint;
+import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
@@ -14,20 +17,23 @@ import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
+import roadblock.emf.ibl.Ibl.MonotonicityExpression;
 import roadblock.emf.ibl.Ibl.NotStateFormula;
+import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
 import roadblock.emf.ibl.Ibl.Region;
+import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RelationalOperator;
 import roadblock.emf.ibl.Ibl.RewardProperty;
 import roadblock.emf.ibl.Ibl.Rule;
-import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
+import roadblock.emf.ibl.Ibl.VariableReference;
 import roadblock.modelchecking.ModelcheckingTarget;
 
 public class NuSmvTranslator implements IPropertyTranslator {
@@ -44,13 +50,13 @@ public class NuSmvTranslator implements IPropertyTranslator {
 		case EVENTUALLY:
 			pattern = "EF (%s)";
 			break;
-		case ALWAYS_EVENTUALLY:
+		case INFINITELY_OFTEN:
 			pattern = "AG (EF (%s))";
 			break;
-		case NOT_EVENTUALLY:
+		case NEVER:
 			pattern = "!(EF (%s))";
 			break;
-		case EVENTUALLY_ALWAYS:
+		case STEADY_STATE:
 			pattern = "AF (AG (%s))";
 			break;
 		default:
@@ -95,16 +101,6 @@ public class NuSmvTranslator implements IPropertyTranslator {
 	}
 
 	@Override
-	public String visit(StateExpression expression) {
-
-		String pattern = "%s %s %s";
-		String variableName = doTranslateName(expression.getVariableName());
-		String relationalOperator = Translate(expression.getOperator());
-
-		return String.format(pattern, variableName, relationalOperator, (int)expression.getQuantity());
-	}
-
-	@Override
 	public String visit(NotStateFormula expression) {
 
 		String pattern = "!(%s)";
@@ -122,6 +118,43 @@ public class NuSmvTranslator implements IPropertyTranslator {
 		String relationalOperator = Translate(expression.getOperator());
 
 		return String.format(pattern, leftFormula, relationalOperator, rightFormula);
+	}
+
+	@Override
+	public String visit(BinaryArithmeticExpression expression) {
+		String pattern = "(%s %s %s)";
+
+		String leftOperand = expression.getLeftOperand().accept(this);
+		String arithmeticOperator = Translate(expression.getOperator());
+		String rightOperand = expression.getRightOperand().accept(this);
+
+		return String.format(pattern, leftOperand, arithmeticOperator, rightOperand);
+	}
+
+	@Override
+	public String visit(RelationalExpression expression) {
+		String pattern = "%s %s %s";
+
+		String leftOperand = expression.getLeftOperand().accept(this);
+		String relationalOperator = Translate(expression.getOperator());
+		String rightOperand = expression.getRightOperand().accept(this);
+
+		return String.format(pattern, leftOperand, relationalOperator, rightOperand);
+	}
+
+	@Override
+	public String visit(ConcentrationQuantity expression) {
+		return Integer.toString((int) expression.getAmount());
+	}
+
+	@Override
+	public String visit(VariableReference expression) {
+		return doTranslateName(expression.getName());
+	}
+
+	@Override
+	public String visit(NumericLiteral expression) {
+		return Integer.toString((int) expression.getValue());
 	}
 
 	private String Translate(RelationalOperator operator) {
@@ -153,6 +186,22 @@ public class NuSmvTranslator implements IPropertyTranslator {
 			return "|";
 		case IMPLIES:
 			return "->";
+		default:
+			return "";
+		}
+	}
+
+	private String Translate(ArithmeticOperator operator) {
+
+		switch (operator) {
+		case ADDITION:
+			return "+";
+		case SUBTRACTION:
+			return "-";
+		case MULTIPLICATION:
+			return "*";
+		case DIVISION:
+			return "/";
 		default:
 			return "";
 		}
@@ -264,6 +313,11 @@ public class NuSmvTranslator implements IPropertyTranslator {
 
 	@Override
 	public String visit(EMFVariableAssignment expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(MonotonicityExpression expression) {
 		throw new UnsupportedOperationException();
 	}
 }

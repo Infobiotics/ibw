@@ -9,16 +9,9 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://www.roadblock.org/ibl.ecore"
-            class="Ibl.IblPackage"
-            genModel="model/ibl.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ibl -->
-      <package
-            uri="http://www.roadblock.org/ibl.ecore"
             class="roadblock.emf.ibl.Ibl.IblPackage"
             genModel="model/ibl.genmodel"/>
    </extension>
 
+null
 </plugin>
