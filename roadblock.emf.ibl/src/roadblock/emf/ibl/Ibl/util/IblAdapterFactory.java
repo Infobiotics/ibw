@@ -11,6 +11,7 @@ import roadblock.emf.ibl.Ibl.ATGCArrange;
 import roadblock.emf.ibl.Ibl.ATGCCloningSites;
 import roadblock.emf.ibl.Ibl.ATGCDirection;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.ATGCTranslationRate;
 import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
@@ -288,6 +289,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseConcentrationQuantity(ConcentrationQuantity object) {
 				return createConcentrationQuantityAdapter();
+			}
+			@Override
+			public Adapter caseATGCTranslationRate(ATGCTranslationRate object) {
+				return createATGCTranslationRateAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -936,6 +941,20 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConcentrationQuantityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+	 * @generated
+	 */
+	public Adapter createATGCTranslationRateAdapter() {
 		return null;
 	}
 

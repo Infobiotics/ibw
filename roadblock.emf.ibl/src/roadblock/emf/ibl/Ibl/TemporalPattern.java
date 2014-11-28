@@ -86,7 +86,15 @@ public enum TemporalPattern implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ALWAYS(7, "ALWAYS", "ALWAYS");
+	ALWAYS(7, "ALWAYS", "ALWAYS"), /**
+	 * The '<em><b>EVENTUALLY ALWAYS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EVENTUALLY_ALWAYS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EVENTUALLY_ALWAYS(8, "EVENTUALLY_ALWAYS", "EVENTUALLY_ALWAYS");
 
 	/**
 	 * The '<em><b>UNTIL</b></em>' literal value.
@@ -194,6 +202,21 @@ public enum TemporalPattern implements Enumerator {
 	public static final int ALWAYS_VALUE = 7;
 
 	/**
+	 * The '<em><b>EVENTUALLY ALWAYS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>EVENTUALLY ALWAYS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #EVENTUALLY_ALWAYS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENTUALLY_ALWAYS_VALUE = 8;
+
+	/**
 	 * An array of all the '<em><b>Temporal Pattern</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -208,6 +231,7 @@ public enum TemporalPattern implements Enumerator {
 			NEVER,
 			INFINITELY_OFTEN,
 			ALWAYS,
+			EVENTUALLY_ALWAYS,
 		};
 
 	/**
@@ -265,6 +289,7 @@ public enum TemporalPattern implements Enumerator {
 			case NEVER_VALUE: return NEVER;
 			case INFINITELY_OFTEN_VALUE: return INFINITELY_OFTEN;
 			case ALWAYS_VALUE: return ALWAYS;
+			case EVENTUALLY_ALWAYS_VALUE: return EVENTUALLY_ALWAYS;
 		}
 		return null;
 	}

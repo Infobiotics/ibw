@@ -101,6 +101,7 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.MONOTONICITY_EXPRESSION: return (EObject)createMonotonicityExpression();
 			case IblPackage.RELATIONAL_EXPRESSION: return (EObject)createRelationalExpression();
 			case IblPackage.CONCENTRATION_QUANTITY: return (EObject)createConcentrationQuantity();
+			case IblPackage.ATGC_TRANSLATION_RATE: return (EObject)createATGCTranslationRate();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -522,6 +523,16 @@ public class IblFactory extends EFactoryImpl {
 	public ConcentrationQuantity createConcentrationQuantity() {
 		ConcentrationQuantity concentrationQuantity = new ConcentrationQuantity();
 		return concentrationQuantity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ATGCTranslationRate createATGCTranslationRate() {
+		ATGCTranslationRate atgcTranslationRate = new ATGCTranslationRate();
+		return atgcTranslationRate;
 	}
 
 	/**

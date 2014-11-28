@@ -11,15 +11,15 @@
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TimeUnit/SECOND"/>
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TimeUnit/MINUTE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//TemporalOperator">
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/UNTIL"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/FOLLOWED_BY"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/EVENTUALLY"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/STEADY_STATE"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/NOT_EVENTUALLY"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/ALWAYS_EVENTUALLY"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/ALWAYS"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalOperator/EVENTUALLY_ALWAYS"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//TemporalPattern">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/UNTIL"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/FOLLOWED_BY"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/EVENTUALLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/STEADY_STATE"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/NEVER"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/INFINITELY_OFTEN"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/ALWAYS"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//TemporalPattern/EVENTUALLY_ALWAYS"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RelationalOperator">
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RelationalOperator/GT"/>
@@ -46,6 +46,16 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RateUnit">
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateUnit/PER_SECOND"/>
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateUnit/PER_MINUTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//ArithmeticOperator">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ArithmeticOperator/ADDITION"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ArithmeticOperator/SUBTRACTION"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ArithmeticOperator/MULTIPLICATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ArithmeticOperator/DIVISION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//MonotonicityType">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//MonotonicityType/INCREASING"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//MonotonicityType/DECREASING"/>
     </genEnums>
     <genClasses image="false" ecoreClass="ibl.ecore#//IVisitable">
       <genOperations ecoreOperation="ibl.ecore#//IVisitable/accept">
@@ -132,6 +142,21 @@
       </genOperations>
       <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.25">
         <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.25/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.26">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.26/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.27">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.27/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.28">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.28/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.29">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.29/expression"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.30">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.30/expression"/>
       </genOperations>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Model">
@@ -245,7 +270,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//BinaryProbabilityProperty/operator"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//RewardProperty">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//RewardProperty/variableName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/variable"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/timeConstraint"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/concentrationConstraint"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//RewardProperty/initialConditions"/>
@@ -295,8 +320,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModel/ruleList"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//PropertyInitialCondition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/variableName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/variableAttribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//PropertyInitialCondition/variable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/unit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/amount"/>
     </genClasses>
@@ -312,6 +336,34 @@
     <genClasses ecoreClass="ibl.ecore#//FlatModelPropertyPair">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/flatModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModelPropertyPair/property"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IArithmeticExpression"/>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IArithmeticOperand"/>
+    <genClasses ecoreClass="ibl.ecore#//BinaryArithmeticExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//BinaryArithmeticExpression/leftOperand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//BinaryArithmeticExpression/rightOperand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//BinaryArithmeticExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//NumericLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//NumericLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//VariableReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//VariableReference/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//VariableReference/isMaximumOfInterest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//VariableReference/containerName"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//MonotonicityExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//MonotonicityExpression/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MonotonicityExpression/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//RelationalExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//RelationalExpression/leftOperand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//RelationalExpression/rightOperand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//RelationalExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//ConcentrationQuantity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcentrationQuantity/amount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ConcentrationQuantity/unit"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//ATGCTranslationRate">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCTranslationRate/translationRate"/>

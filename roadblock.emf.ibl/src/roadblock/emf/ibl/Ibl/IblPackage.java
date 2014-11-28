@@ -1502,7 +1502,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion()
 	 * @generated
 	 */
-	public static final int REGION = 28;
+	public static final int REGION = 29;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -1584,7 +1584,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
 	 * @generated
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT = 29;
+	public static final int EMF_VARIABLE_ASSIGNMENT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
@@ -1639,7 +1639,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel()
 	 * @generated
 	 */
-	public static final int FLAT_MODEL = 30;
+	public static final int FLAT_MODEL = 31;
 
 	/**
 	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
@@ -1676,7 +1676,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
 	 * @generated
 	 */
-	public static final int PROPERTY_INITIAL_CONDITION = 31;
+	public static final int PROPERTY_INITIAL_CONDITION = 32;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1722,7 +1722,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCDirection()
 	 * @generated
 	 */
-	public static final int ATGC_DIRECTION = 32;
+	public static final int ATGC_DIRECTION = 33;
 
 	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -1750,7 +1750,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCArrange()
 	 * @generated
 	 */
-	public static final int ATGC_ARRANGE = 33;
+	public static final int ATGC_ARRANGE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Part List</b></em>' containment reference list.
@@ -1778,7 +1778,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCCloningSites()
 	 * @generated
 	 */
-	public static final int ATGC_CLONING_SITES = 34;
+	public static final int ATGC_CLONING_SITES = 35;
 
 	/**
 	 * The feature id for the '<em><b>Cloning Sites</b></em>' attribute.
@@ -1806,7 +1806,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModelPropertyPair()
 	 * @generated
 	 */
-	public static final int FLAT_MODEL_PROPERTY_PAIR = 35;
+	public static final int FLAT_MODEL_PROPERTY_PAIR = 36;
 
 	/**
 	 * The feature id for the '<em><b>Flat Model</b></em>' containment reference.
@@ -1843,7 +1843,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticExpression()
 	 * @generated
 	 */
-	public static final int IARITHMETIC_EXPRESSION = 36;
+	public static final int IARITHMETIC_EXPRESSION = 37;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}' class.
@@ -1853,7 +1853,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticOperand()
 	 * @generated
 	 */
-	public static final int IARITHMETIC_OPERAND = 37;
+	public static final int IARITHMETIC_OPERAND = 38;
 
 	/**
 	 * The number of structural features of the '<em>IArithmetic Operand</em>' class.
@@ -1881,7 +1881,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryArithmeticExpression()
 	 * @generated
 	 */
-	public static final int BINARY_ARITHMETIC_EXPRESSION = 38;
+	public static final int BINARY_ARITHMETIC_EXPRESSION = 39;
 
 	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
@@ -1927,7 +1927,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getNumericLiteral()
 	 * @generated
 	 */
-	public static final int NUMERIC_LITERAL = 39;
+	public static final int NUMERIC_LITERAL = 40;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1955,7 +1955,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getVariableReference()
 	 * @generated
 	 */
-	public static final int VARIABLE_REFERENCE = 40;
+	public static final int VARIABLE_REFERENCE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2001,7 +2001,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityExpression()
 	 * @generated
 	 */
-	public static final int MONOTONICITY_EXPRESSION = 41;
+	public static final int MONOTONICITY_EXPRESSION = 42;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -2038,7 +2038,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalExpression()
 	 * @generated
 	 */
-	public static final int RELATIONAL_EXPRESSION = 42;
+	public static final int RELATIONAL_EXPRESSION = 43;
 
 	/**
 	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
@@ -2084,7 +2084,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationQuantity()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_QUANTITY = 43;
+	public static final int CONCENTRATION_QUANTITY = 44;
 
 	/**
 	 * The feature id for the '<em><b>Amount</b></em>' attribute.
@@ -2114,6 +2114,34 @@ public class IblPackage extends EPackageImpl {
 	public static final int CONCENTRATION_QUANTITY_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCTranslationRate()
+	 * @generated
+	 */
+	public static final int ATGC_TRANSLATION_RATE = 45;
+
+	/**
+	 * The feature id for the '<em><b>Translation Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_TRANSLATION_RATE__TRANSLATION_RATE = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Translation Rate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_TRANSLATION_RATE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2121,7 +2149,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 44;
+	public static final int TIME_UNIT = 46;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}' enum.
@@ -2131,7 +2159,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalPattern()
 	 * @generated
 	 */
-	public static final int TEMPORAL_PATTERN = 45;
+	public static final int TEMPORAL_PATTERN = 47;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -2141,7 +2169,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 46;
+	public static final int RELATIONAL_OPERATOR = 48;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -2151,7 +2179,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 47;
+	public static final int BOOLEAN_OPERATOR = 49;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -2161,7 +2189,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 48;
+	public static final int CONCENTRATION_UNIT = 50;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -2171,7 +2199,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 49;
+	public static final int RATE_UNIT = 51;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
@@ -2181,7 +2209,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getArithmeticOperator()
 	 * @generated
 	 */
-	public static final int ARITHMETIC_OPERATOR = 50;
+	public static final int ARITHMETIC_OPERATOR = 52;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}' enum.
@@ -2191,7 +2219,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityType()
 	 * @generated
 	 */
-	public static final int MONOTONICITY_TYPE = 51;
+	public static final int MONOTONICITY_TYPE = 53;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2507,6 +2535,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass concentrationQuantityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass atgcTranslationRateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4893,6 +4928,33 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ATGC Translation Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+	 * @generated
+	 */
+	public EClass getATGCTranslationRate() {
+		return atgcTranslationRateEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate#getTranslationRate <em>Translation Rate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Translation Rate</em>'.
+	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate#getTranslationRate()
+	 * @see #getATGCTranslationRate()
+	 * @generated
+	 */
+	public EAttribute getATGCTranslationRate_TranslationRate() {
+		return (EAttribute)atgcTranslationRateEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5239,6 +5301,9 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__AMOUNT);
 		createEAttribute(concentrationQuantityEClass, CONCENTRATION_QUANTITY__UNIT);
 
+		atgcTranslationRateEClass = createEClass(ATGC_TRANSLATION_RATE);
+		createEAttribute(atgcTranslationRateEClass, ATGC_TRANSLATION_RATE__TRANSLATION_RATE);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalPatternEEnum = createEEnum(TEMPORAL_PATTERN);
@@ -5321,6 +5386,7 @@ public class IblPackage extends EPackageImpl {
 		monotonicityExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 		relationalExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 		concentrationQuantityEClass.getESuperTypes().add(this.getIArithmeticOperand());
+		atgcTranslationRateEClass.getESuperTypes().add(this.getATGCDirective());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -5713,6 +5779,9 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getConcentrationQuantity_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConcentrationQuantity_Unit(), this.getConcentrationUnit(), "unit", null, 0, 1, ConcentrationQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(atgcTranslationRateEClass, ATGCTranslationRate.class, "ATGCTranslationRate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getATGCTranslationRate_TranslationRate(), ecorePackage.getEDouble(), "translationRate", "1000", 0, 1, ATGCTranslationRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
 		addEEnumLiteral(timeUnitEEnum, TimeUnit.SECOND);
@@ -5726,6 +5795,7 @@ public class IblPackage extends EPackageImpl {
 		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.NEVER);
 		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.INFINITELY_OFTEN);
 		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.ALWAYS);
+		addEEnumLiteral(temporalPatternEEnum, TemporalPattern.EVENTUALLY_ALWAYS);
 
 		initEEnum(relationalOperatorEEnum, RelationalOperator.class, "RelationalOperator");
 		addEEnumLiteral(relationalOperatorEEnum, RelationalOperator.GT);
@@ -7245,6 +7315,24 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute CONCENTRATION_QUANTITY__UNIT = eINSTANCE.getConcentrationQuantity_Unit();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCTranslationRate()
+		 * @generated
+		 */
+		public static final EClass ATGC_TRANSLATION_RATE = eINSTANCE.getATGCTranslationRate();
+
+		/**
+		 * The meta object literal for the '<em><b>Translation Rate</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ATGC_TRANSLATION_RATE__TRANSLATION_RATE = eINSTANCE.getATGCTranslationRate_TranslationRate();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

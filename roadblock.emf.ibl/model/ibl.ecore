@@ -489,4 +489,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATGCTranslationRate" eSuperTypes="#//ATGCDirective">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="translationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1000"/>
+  </eClassifiers>
 </ecore:EPackage>

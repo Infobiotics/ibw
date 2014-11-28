@@ -10,6 +10,7 @@ import roadblock.emf.ibl.Ibl.ATGCArrange;
 import roadblock.emf.ibl.Ibl.ATGCCloningSites;
 import roadblock.emf.ibl.Ibl.ATGCDirection;
 import roadblock.emf.ibl.Ibl.ATGCDirective;
+import roadblock.emf.ibl.Ibl.ATGCTranslationRate;
 import roadblock.emf.ibl.Ibl.BinaryArithmeticExpression;
 import roadblock.emf.ibl.Ibl.BinaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.BinaryStateFormula;
@@ -443,6 +444,14 @@ public class IblSwitch<T> extends Switch<T> {
 				T result = caseConcentrationQuantity(concentrationQuantity);
 				if (result == null) result = caseIArithmeticOperand(concentrationQuantity);
 				if (result == null) result = caseIVisitable(concentrationQuantity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.ATGC_TRANSLATION_RATE: {
+				ATGCTranslationRate atgcTranslationRate = (ATGCTranslationRate)theEObject;
+				T result = caseATGCTranslationRate(atgcTranslationRate);
+				if (result == null) result = caseATGCDirective(atgcTranslationRate);
+				if (result == null) result = caseIVisitable(atgcTranslationRate);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1122,6 +1131,21 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConcentrationQuantity(ConcentrationQuantity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ATGC Translation Rate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ATGC Translation Rate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseATGCTranslationRate(ATGCTranslationRate object) {
 		return null;
 	}
 
