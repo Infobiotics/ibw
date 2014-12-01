@@ -26,7 +26,7 @@ public class BinaryPathResolver {
 			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nusmv/bin/NuSMV"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNuSmvPath(nuSmvUrl.getPath());
 
-			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss"), Collections.EMPTY_MAP));
+			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
 			
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getPrismPath());

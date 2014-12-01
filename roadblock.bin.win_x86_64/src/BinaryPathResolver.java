@@ -18,11 +18,11 @@ public class BinaryPathResolver {
 			URL prismUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/prism/bin/prism.bat"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setPrismPath(prismUrl.getPath());
 
-			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nusmv/bin/NuSMV.exe"), Collections.EMPTY_MAP));
+			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nuxmv/nuXmv.exe"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNuSmvPath(nuSmvUrl.getPath());
 
-			//URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss.exe"), Collections.EMPTY_MAP));
-			//BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
+			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss.exe"), Collections.EMPTY_MAP));
+			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
 			
 		} catch (IOException e) {
 			e.printStackTrace();

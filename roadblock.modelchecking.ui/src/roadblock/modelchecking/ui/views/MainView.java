@@ -82,8 +82,6 @@ import roadblock.modelchecking.ui.model.PropertyTreeData;
 import roadblock.modelchecking.ui.util.ConfigurationUtil;
 import roadblock.modelchecking.ui.util.ModelcheckingUtil;
 
-//import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
-
 public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.modelchecking.ui.views.mainView";
@@ -153,7 +151,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// create data file widget
 		Label dataFileLabel = new Label(parent, SWT.NONE);
 		dataFileLabel.setText("Generated file: ");
-		dataFileLabel.setToolTipText("file to save model checking data to");
+		dataFileLabel.setToolTipText("file to save verification data to");
 		txtDataFile = new Text(parent, SWT.BORDER);
 		txtDataFile.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		Button fileDialogButton = new Button(parent, SWT.PUSH);

@@ -159,7 +159,7 @@ define SentinelCell typeof CELL(){
 		backgroundTranscription1.forwardRate = 2.08e-1 s-1
 
 		// (28) LasR up-regulated binding
-		RULE LasRBinding : PrsaL + LasR~AHLR <-> PrsaL~LasR~AHL
+		RULE LasRBinding : PrsaL + LasR~AHL <-> PrsaL~LasR~AHL
 		LasRBinding.forwardRate = 7.82e+4 M-1 s-1
 		LasRBinding.backwardRate = 19.1e-2 s-1
 
@@ -204,7 +204,7 @@ define SentinelCell typeof CELL(){
 	VERIFY [SA > 0 uM] ALWAYS HOLDS
 	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
 	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
-	VERIFY [AHL > 0 uM] WILL HOLD UNTIL THEN [SA > 0 uM]
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA > 0 uM] HOLDS
 	VERIFY EXPECTED [XylS] AT 1000 s IS ?
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
 

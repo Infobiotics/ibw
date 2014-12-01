@@ -1,7 +1,6 @@
 package roadblock.simulation.ui.views;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -44,16 +43,12 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
-import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
-import roadblock.emf.ibl.Ibl.Model;
-import roadblock.dataprocessing.flatModel.FlatModelManager;
+
+import roadblock.caching.ModelCache;
 import roadblock.simulation.ngss.Simulator;
 import roadblock.simulation.ui.Activator;
 import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
-import roadblock.simulation.ui.util.SimulationUtil;
 
 // XXX mimick changes in modelchecking.ui
 
@@ -61,12 +56,11 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.simulation.ui.views.mainView";
 
-	private Model model;
 	private Configuration config;
 	private XtextResource currentIblResource;
 	private MessageConsole simulationConsole;
-	
-	//private CheckboxTreeViewer propertyTreeViewer;
+
+	// private CheckboxTreeViewer propertyTreeViewer;
 	private Text modelFile;
 	private Text dataFile;
 	private Text maxTime;
@@ -80,7 +74,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		// add change listener model
 		getSite().getPage().addPartListener(this);
-		
+
 		simulationConsole = new MessageConsole("Simulation Results", null);
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { simulationConsole });
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
@@ -120,7 +114,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		maxTimeLabel.setToolTipText("end time of the simulation");
 		maxTime = new Text(parent, SWT.BORDER);
 		maxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		
+
 		Label logIntervalLabel = new Label(parent, SWT.NONE);
 		logIntervalLabel.setText("Interval: ");
 		logIntervalLabel.setToolTipText("interval with which trajectories are sampled");
@@ -152,7 +146,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSAlgorithm.add("ldm");
 		SSAlgorithm.add("sdm");
 		SSAlgorithm.add("odm");
-		
+
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
 		simulationButton.setText("Simulate");
@@ -204,15 +198,13 @@ public class MainView extends ViewPart implements IPartListener2 {
 			simulationButton.setEnabled(false);
 			simulationButton.setEnabled(false);
 		} else {
-
-			model = SimulationUtil.getInstance().getModel(currentIblResource);
-/*
-			if (model != null) {
-
-				((IblLabelProvider) propertyTreeViewer.getLabelProvider()).resetIndex();
-				propertyTreeViewer.setInput(model);
-			}
-*/
+			/*
+			 * if (model != null) {
+			 * 
+			 * ((IblLabelProvider)
+			 * propertyTreeViewer.getLabelProvider()).resetIndex();
+			 * propertyTreeViewer.setInput(model); }
+			 */
 			simulationButton.setEnabled(true);
 			modelFile.setText(config.modelFile);
 			dataFile.setText(config.dataFile);
@@ -296,35 +288,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
 
-		String xml = null;
-		try {
-			/* ideally, the model xml should only be regenerated when the source code changes */
-			FlatModelManager flatModelManager = new FlatModelManager(model);
-			xml = convertToXml(flatModelManager.getFlatModel());
-		} catch (IOException e) {
-			errorDialogWithStackTrace("Failed to export model to xml", e);
-		}
-		
+		String xml = ModelCache.getInstance().getSerialisedFlatModel(currentIblResource);
+
 		Simulator simulator = new Simulator(xml);
 		simulator.max_time = config.getMaxTime();
 		simulator.log_interval = config.getLogInterval();
 		simulator.runs = config.getSampleNumber();
-		//simulator.max_runtime = 0.0;
-		//simulator.seed = 0;
+		// simulator.max_runtime = 0.0;
+		// simulator.seed = 0;
 		simulator.runSimulation(exportFilename, consoleStream);
 	}
 
-	// export an EMF model to XML
-	// via http://techblog.goelite.org/sending-emf-models-via-soap/
-	public static String convertToXml(EObject eObject) throws IOException {
-		XMLResourceImpl resource = new XMLResourceImpl();
-		XMLProcessor processor = new XMLProcessor();
-		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
-		resource.setEncoding("UTF-8");
-		resource.getContents().add(eObject);
-		return processor.saveToString(resource, null);
-	}
-
+	@SuppressWarnings("unused")
 	private static void errorDialogWithStackTrace(String msg, Throwable t) {
 
 		StringWriter sw = new StringWriter();

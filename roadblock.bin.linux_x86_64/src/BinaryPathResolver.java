@@ -23,10 +23,10 @@ public class BinaryPathResolver {
 			URL prismUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/prism/bin/prism"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setPrismPath(prismUrl.getPath());
 
-			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nusmv/bin/NuSMV"), Collections.EMPTY_MAP));
+			URL nuSmvUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/nuxmv/nuXmv"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNuSmvPath(nuSmvUrl.getPath());
 
-			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss"), Collections.EMPTY_MAP));
+			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
 
 			URL atgcUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/atgc"), Collections.EMPTY_MAP));

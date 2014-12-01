@@ -434,7 +434,7 @@ ProbabilityProperty:
 			(stateFormula2=StateFormula 'HOLDS' | '[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES'))
 		)
 		|
-		isFollowedBy?='IS FOLLOWED BY' (stateFormula2=StateFormula | '[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES'))) 
+		isFollowedBy?='IS FOLLOWED BY' stateFormula2=StateFormula)
 		(timeInstant=TimeInstant | timeInterval=TimeInterval)?)
 		|
 		'HOLDS' (isSteadyState?='IN STEADY-STATE' | isInfinitelyOften?='INFINITELY OFTEN'))
@@ -444,10 +444,7 @@ ProbabilityProperty:
 		(isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS') (isIncreasing?='INCREASES' | isDecreasing?='DECREASES')
 		|
 		((isIncreasing1?='INCREASES' | isDecreasing1?='DECREASES')	isUntilThen?='UNTIL'
-		('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') | stateFormula2=StateFormula 'HOLDS')
-		|
-		((isIncreasing1?='INCREASES' | isDecreasing1?='DECREASES') isFollowedBy?='IS FOLLOWED BY'
-		('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') | stateFormula2=StateFormula)))) 
+		('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') | stateFormula2=StateFormula 'HOLDS'))) 
 		(timeInstant=TimeInstant | timeInterval=TimeInterval)?
 	)))
 	 	

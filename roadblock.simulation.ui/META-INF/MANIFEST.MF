@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.simulation.ui.views
-Import-Package: roadblock.dataprocessing.flatModel,
+Import-Package: roadblock.caching,
+ roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
  roadblock.simulation.ngss,
