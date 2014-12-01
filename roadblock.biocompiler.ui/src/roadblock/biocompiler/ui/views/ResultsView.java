@@ -2,11 +2,11 @@ package roadblock.biocompiler.ui.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
-
 
 public class ResultsView extends ViewPart implements IPartListener2 {
 	Composite parent;

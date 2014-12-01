@@ -16,6 +16,7 @@ public class Biocompiler implements IPerspectiveFactory {
 		leftArea.addView("org.eclipse.ui.navigator.ProjectExplorer");
 		rightArea.addView("roadblock.biocompiler.ui.views.MainView");
 		bottomArea.addView("roadblock.biocompiler.ui.views.Console");
+		bottomArea.addView("roadblock.biocompiler.ui.views.resultsView");
 		
 	}
 		
