@@ -208,7 +208,7 @@ define SentinelCell typeof CELL(){
 	VERIFY EXPECTED [XylS] AT 1000 s IS ?
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
 
-	ATGC ARRANGE nahR, PnahR, Psal, XylS  
+	ATGC ARRANGE nahR, PnahR, Psal, xylS
 }
 
 define site typeof REGION() {

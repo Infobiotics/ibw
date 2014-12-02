@@ -270,7 +270,7 @@ class Biocompiler {
 			return false
 		}
 		
-		log.addText("Compilation successful")
+		log.addWarning("Compilation successful")
 		return true
 	}
 
