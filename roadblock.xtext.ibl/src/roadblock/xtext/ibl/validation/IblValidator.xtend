@@ -40,6 +40,7 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.ATGCArrange
 
 // utility class, used for checking forbidden containers
 @Data
@@ -232,6 +233,16 @@ class IblValidator extends AbstractIblValidator {
 		val variableName = variableAssignment.buildVariableName
 		if(!hasBeenDeclared(variableName, variableAssignment.eContainer))
 			error(variableName.errorMessage, IblPackage::eINSTANCE.variableAssignment_Variable)
+	}
+
+	// ATGC ARRANGE
+
+	@Check
+	def checkEnforceVariableDeclaration(ATGCArrange atgcArrange){
+		for(variableName: atgcArrange.arguments.map[buildVariableName]){
+			if(!hasBeenDeclared(variableName, atgcArrange.eContainer.eContainer))
+				error(variableName.errorMessage,IblPackage::eINSTANCE.ATGCArrange_Arguments)
+		}
 	}
 
 	// Rule

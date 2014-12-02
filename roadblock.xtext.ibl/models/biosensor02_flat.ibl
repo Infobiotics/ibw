@@ -5,7 +5,7 @@
 // created 08/10/14 by
 // Harold Fellermann, Omer Markovitch, Laurentiu Mierla, Christophe Ladroue
 // after discussion with Felix Dafhnis-Calas and Stephan Heeb
-
+  
 
 define SentinelCell typeof CELL(){
 	rnaP = MOLECULE(amount=1e-6 M) : observable
@@ -208,7 +208,7 @@ define SentinelCell typeof CELL(){
 	VERIFY EXPECTED [XylS] AT 1000 s IS ?
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
 
-	ATGC ARRANGE nahR, PnahR, Psal, xylS2
+	ATGC ARRANGE nahR, PnahR, Psal, XylS  
 }
 
 define site typeof REGION() {

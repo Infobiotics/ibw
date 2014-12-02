@@ -517,6 +517,7 @@ class Biocompiler {
 		log.addText("Adding ARRANGE Constraints")
 		for(region: model.regionList)
 		for(cell: region.cellList){
+			println("at cell level")
 			// at cell level
 			for(arrange: cell.ATGCCommandList.filter[class == ATGCArrange].map[it as ATGCArrange]){
 				val partList = arrange.partList.map[displayName]
@@ -529,6 +530,7 @@ class Biocompiler {
 			}
 			for(device: cell.deviceList){
 				// at device level
+				println("at device level")
 			for(arrange: device.ATGCCommandList.filter[class == ATGCArrange].map[it as ATGCArrange]){
 				val partList = arrange.partList.map[displayName]
 				for(k: 1..(partList.length-1)){

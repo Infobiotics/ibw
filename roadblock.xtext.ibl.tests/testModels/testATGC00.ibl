@@ -29,4 +29,4 @@ define myCell typeof CELL() {
            	      
 define myRegion typeof REGION(){
 	CELL foo = new myCell()	 
-   }     
+   }       
