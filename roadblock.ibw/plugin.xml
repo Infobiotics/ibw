@@ -26,7 +26,7 @@
       <perspective
             class="roadblock.ibw.perspectives.Modelchecking"
             id="roadblock.ibw.perspectives.modelchecking"
-            name="Verification">
+            name="IBW Verification">
       </perspective>
    </extension>
    <extension
@@ -36,7 +36,17 @@
       <perspective
             class="roadblock.ibw.perspectives.Simulation"
             id="roadblock.ibw.perspectives.simulation"
-            name="Simulation">
+            name="IBW Simulation">
+      </perspective>
+   </extension>
+   <extension
+         id="roadblock.ibw.perspectives.biocompiler"
+         name="Biocompiler Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Biocompiler"
+            id="roadblock.ibw.perspectives.biocompiler"
+            name="IBW Biocompilation">
       </perspective>
    </extension>
 
