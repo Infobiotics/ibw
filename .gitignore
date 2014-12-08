@@ -7,13 +7,29 @@
 *.o
 *.so
 
-
-roadblock.emf.ibl/bin
+roadblock.bin/bin
 
 roadblock.datapopulation/bin
 roadblock.datapopulation/xtend-gen/
 
+roadblock.emf.ibl/bin
+roadblock.emf.ibl/src
+roadblock.emf.ibl/text
+roadblock.emf.ibl.edit
+roadblock.emf.ibl.editor
+roadblock.emf.ibl.tests
+
+roadblock.emf.bioparts/bin
+roadblock.emf.bioparts/src
+roadblock.emf.bioparts/text
+roadblock.emf.bioparts.edit/
+roadblock.emf.bioparts.editor/
+roadblock.emf.bioparts.tests/
+
+roadblock.ibw/bin
+
 roadblock.modelchecking/bin
+roadblock.modelchecking.ui/bin
 
 roadblock.simulation/bin
 roadblock.simulation/xtend-gen
