@@ -264,7 +264,7 @@ class Biocompiler {
 			return false
 		}
 		catch(Exception e){
-			log.addError("Something when wrong. Please contact the author.")
+			log.addError("Something went wrong. Please contact the author.")
 			log.addError("Error: " + e.message)
 			e.printStackTrace
 			return false

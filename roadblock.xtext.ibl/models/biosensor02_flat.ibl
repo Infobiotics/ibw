@@ -167,7 +167,7 @@ define SentinelCell typeof CELL(){
 		RULE LasRInitiation : PrsaL~LasR~AHL + rnaP <-> PrsaL~LasR~AHL~rnaP	
 		LasRInitiation.forwardRate = 5.60e-7 M-1 s-1
 		LasRInitiation.backwardRate = 2.00e-1 s-1
-
+ 
 		// (30) LasR up-regulated transcription
 		RULE LasRTranscription : PrsaL~LasR~AHL~rnaP -> PrsaL + LasR~AHL + rnaP + mrna
 		LasRTranscription.forwardRate = 2.08e-1 s-1
