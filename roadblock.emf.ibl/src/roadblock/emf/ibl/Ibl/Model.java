@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @model kind="class"
  * @generated
  */
-public class Model extends EObjectImpl implements IVisitable {
+public class Model extends EObjectImpl implements IVisitable, IMoleculeContainer, IRuleContainer {
 	/**
 	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

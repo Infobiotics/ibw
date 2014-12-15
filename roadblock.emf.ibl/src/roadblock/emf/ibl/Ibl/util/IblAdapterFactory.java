@@ -26,8 +26,10 @@ import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IArithmeticExpression;
 import roadblock.emf.ibl.Ibl.IArithmeticOperand;
+import roadblock.emf.ibl.Ibl.IMoleculeContainer;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
+import roadblock.emf.ibl.Ibl.IRuleContainer;
 import roadblock.emf.ibl.Ibl.IStateFormula;
 import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.IVisitable;
@@ -293,6 +295,14 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseATGCTranslationRate(ATGCTranslationRate object) {
 				return createATGCTranslationRateAdapter();
+			}
+			@Override
+			public Adapter caseIMoleculeContainer(IMoleculeContainer object) {
+				return createIMoleculeContainerAdapter();
+			}
+			@Override
+			public Adapter caseIRuleContainer(IRuleContainer object) {
+				return createIRuleContainerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -955,6 +965,34 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createATGCTranslationRateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IMoleculeContainer
+	 * @generated
+	 */
+	public Adapter createIMoleculeContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.IRuleContainer
+	 * @generated
+	 */
+	public Adapter createIRuleContainerAdapter() {
 		return null;
 	}
 

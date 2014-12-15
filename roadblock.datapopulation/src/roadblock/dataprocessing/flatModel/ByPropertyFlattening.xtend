@@ -10,14 +10,15 @@ import roadblock.emf.ibl.Ibl.ConcentrationUnit
 import roadblock.emf.ibl.Ibl.Device
 import roadblock.emf.ibl.Ibl.FlatModel
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair
+import roadblock.emf.ibl.Ibl.IMoleculeContainer
 import roadblock.emf.ibl.Ibl.IProperty
+import roadblock.emf.ibl.Ibl.IRuleContainer
 import roadblock.emf.ibl.Ibl.IblFactory
 import roadblock.emf.ibl.Ibl.Kinetics
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.emf.ibl.Ibl.MolecularSpecies
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition
 import roadblock.emf.ibl.Ibl.Region
-import roadblock.emf.ibl.Ibl.Rule
 import roadblock.emf.ibl.Ibl.VariableReference
 
 public class ByPropertyFlattening {
@@ -118,48 +119,54 @@ public class ByPropertyFlattening {
 		}
 
 		// inherit molecules used in left-OUTSIDE rules
-		var leftOutsideRules = compartment.eContents.filter(Rule).filter[leftHandSide.exists[displayName.equals("OUTSIDE")]].toList;
-		for (rule : leftOutsideRules) {
-			for (molecule : rule.rightHandSide) {
-				molecules.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
+		if(compartment instanceof IRuleContainer) {
+			var leftOutsideRules = (compartment as IRuleContainer).ruleList.filter[leftHandSide.exists[displayName.equals("OUTSIDE")]].toList;
+			for (rule : leftOutsideRules) {
+				for (molecule : rule.rightHandSide) {
+					molecules.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
+				}
 			}
 		}
-		
+
 		// inherit molecules used in right-OUTSIDE rules
-		var rightOutsideRules = compartment.eContents.filter(Rule).filter[rightHandSide.exists[displayName.equals("OUTSIDE")]].toList;
-		for (rule : rightOutsideRules) {
-			for (molecule : rule.leftHandSide) {
-				molecules.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
+		if(compartment instanceof IRuleContainer) {
+			var rightOutsideRules = (compartment as IRuleContainer).ruleList.filter[rightHandSide.exists[displayName.equals("OUTSIDE")]].toList;
+			for (rule : rightOutsideRules) {
+				for (molecule : rule.leftHandSide) {
+					molecules.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
+				}
 			}
 		}
 	}
 
 	def registerFlatMolecules(EObject compartment) {
 
-		for (molecule : compartment.eContents.filter(MolecularSpecies).toList) {
+		if(compartment instanceof IMoleculeContainer) {
+			for (molecule : (compartment as IMoleculeContainer).moleculeList) {
 
-			var clonedMolecule = EcoreUtil.copy(molecule);
+				var clonedMolecule = EcoreUtil.copy(molecule);
 
-			if(clonedMolecule.getDisplayName().contains("~")) {
+				if(clonedMolecule.getDisplayName().contains("~")) {
 
-				var componentMolecules = clonedMolecule.getDisplayName().split("~");
-				var complexMoleculeName = "";
+					var componentMolecules = clonedMolecule.getDisplayName().split("~");
+					var complexMoleculeName = "";
 
-				for (String moleculeName : componentMolecules) {
-					complexMoleculeName = complexMoleculeName + flatMoleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
+					for (String moleculeName : componentMolecules) {
+						complexMoleculeName = complexMoleculeName + flatMoleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
+					}
+
+					clonedMolecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 1));
+				} else {
+					clonedMolecule.setDisplayName(prefixByCompartment.get(compartment) + "_" + molecule.getDisplayName());
 				}
 
-				clonedMolecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 1));
-			} else {
-				clonedMolecule.setDisplayName(prefixByCompartment.get(compartment) + "_" + molecule.getDisplayName());
+				clonedMolecule.setAmount(UnitConverter::getInstance.getBaseConcentration(molecule.getAmount(), molecule.getUnit()));
+				clonedMolecule.setUnit(ConcentrationUnit.MOLECULE);
+
+				flatMoleculesByCompartment.get(compartment).put(molecule.getDisplayName(), clonedMolecule);
+				flatMoleculesByFlatName.put(clonedMolecule.getDisplayName(), clonedMolecule);
+				moleculesByFlatName.put(clonedMolecule.getDisplayName(), molecule);
 			}
-
-			clonedMolecule.setAmount(UnitConverter::getInstance.getBaseConcentration(molecule.getAmount(), molecule.getUnit()));
-			clonedMolecule.setUnit(ConcentrationUnit.MOLECULE);
-
-			flatMoleculesByCompartment.get(compartment).put(molecule.getDisplayName(), clonedMolecule);
-			flatMoleculesByFlatName.put(clonedMolecule.getDisplayName(), clonedMolecule);
-			moleculesByFlatName.put(clonedMolecule.getDisplayName(), molecule);
 		}
 	}
 
@@ -168,7 +175,7 @@ public class ByPropertyFlattening {
 		val propertyCompartmentScopeFlatMolecules = flatMoleculesByCompartment.get(propertyCompartment);
 
 		// compute the set of flat molecules used by rules in the property compartment
-		val flatMoleculeSet = propertyCompartment.eContents.filter(Rule).map[eContents].flatten.filter(MolecularSpecies).filter[displayName != "OUTSIDE"].map[
+		val flatMoleculeSet = (propertyCompartment as IRuleContainer).ruleList.map[eContents].flatten.filter(MolecularSpecies).filter[displayName != "OUTSIDE"].map[
 			propertyCompartmentScopeFlatMolecules.get(displayName).displayName].toSet;
 
 		// compute the set of molecule references as they appear in properties
@@ -193,13 +200,15 @@ public class ByPropertyFlattening {
 
 		while(compartment != model) {
 
-			val compartmentScopeFlatMolecules = flatMoleculesByCompartment.get(compartment);
-			val rulesFlatMoleculeSet = compartment.eContents.filter(Rule).map[eContents].flatten.filter(MolecularSpecies).filter[displayName != "OUTSIDE"].map[
-				compartmentScopeFlatMolecules.get(displayName).displayName].toSet;
+			if(compartment instanceof IRuleContainer) {
+				val compartmentScopeFlatMolecules = flatMoleculesByCompartment.get(compartment);
+				val rulesFlatMoleculeSet = (compartment as IRuleContainer).ruleList.map[eContents].flatten.filter(MolecularSpecies).filter[displayName != "OUTSIDE"].map[
+					compartmentScopeFlatMolecules.get(displayName).displayName].toSet;
 
-			if(rulesFlatMoleculeSet.exists[flatMoleculeSet.contains(it)]) {
-				flatMoleculeSet.addAll(rulesFlatMoleculeSet);
-				flatteningCompartment = compartment;
+				if(rulesFlatMoleculeSet.exists[flatMoleculeSet.contains(it)]) {
+					flatMoleculeSet.addAll(rulesFlatMoleculeSet);
+					flatteningCompartment = compartment;
+				}
 			}
 
 			compartment = compartment.eContainer;

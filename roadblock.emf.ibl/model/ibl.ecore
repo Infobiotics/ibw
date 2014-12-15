@@ -139,7 +139,7 @@
       <eParameters name="expression" eType="#//RelationalExpression"/>
     </eOperations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//IVisitable">
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="processList" upperBound="-1"
         eType="#//Kinetics" containment="true"/>
@@ -157,7 +157,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="regionList" upperBound="-1"
         eType="#//Region" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Kinetics" eSuperTypes="#//IVisitable">
+  <eClassifiers xsi:type="ecore:EClass" name="Kinetics" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
         eType="#//Rule" containment="true"/>
@@ -209,7 +209,7 @@
         defaultValueLiteral="PER_SECOND"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//IVisitable">
+  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="processList" upperBound="-1"
         eType="#//Kinetics" containment="true"/>
@@ -233,7 +233,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//IProperty" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Cell" eSuperTypes="#//IVisitable">
+  <eClassifiers xsi:type="ecore:EClass" name="Cell" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Attempt at generating javadoc from EMF."/>
     </eAnnotations>
@@ -388,7 +388,7 @@
     <eLiterals name="fM" value="6"/>
     <eLiterals name="MOLECULE" value="7"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//IVisitable">
+  <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//IVisitable #//IRuleContainer #//IMoleculeContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Kinetics" eType="#//Kinetics"
         containment="true"/>
@@ -492,5 +492,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ATGCTranslationRate" eSuperTypes="#//ATGCDirective">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="translationRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1000"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IMoleculeContainer" abstract="true"
+      interface="true">
+    <eOperations name="getMoleculeList" upperBound="-1" eType="#//MolecularSpecies"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IRuleContainer" abstract="true" interface="true">
+    <eOperations name="getRuleList" upperBound="-1" eType="#//Rule"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -5,7 +5,6 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.util.EcoreUtil
 import roadblock.emf.ibl.Ibl.ATGCArrange
-import roadblock.emf.ibl.Ibl.ATGCTranslationRate
 import roadblock.emf.ibl.Ibl.ATGCDirective
 import roadblock.emf.ibl.Ibl.Cell
 import roadblock.emf.ibl.Ibl.ConcentrationUnit
@@ -20,6 +19,7 @@ import roadblock.emf.ibl.Ibl.Rule
 import roadblock.xtext.ibl.ibl.ATGCCloningSites
 import roadblock.xtext.ibl.ibl.ATGCDefinition
 import roadblock.xtext.ibl.ibl.ATGCDirection
+import roadblock.xtext.ibl.ibl.ATGCTranslationRate
 import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject
 import roadblock.xtext.ibl.ibl.CellBody
 import roadblock.xtext.ibl.ibl.CellInstantiation
@@ -43,9 +43,9 @@ import roadblock.xtext.ibl.ibl.VariableExpressionObject
 import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableKind2
 import roadblock.xtext.ibl.ibl.VariableName
+import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.util.IblSwitch
-import roadblock.xtext.ibl.ibl.VariableReference
 
 class ModelBuilder extends IblSwitch<Object> {
 
@@ -66,7 +66,7 @@ class ModelBuilder extends IblSwitch<Object> {
 
 		for (concreteProperty : emfModel.eAllContents.toList.filter(IProperty)) {
 			for (entry : semanticEntityByProperty.entrySet) {
-				if (EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
+				if(EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
 					mapper.put(concreteProperty, entry.value);
 				}
 			}
@@ -84,7 +84,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	}
 
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
-		if (moleculeList.filter[displayName == complexName].size == 0) {
+		if(moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
 			complex => [
 				displayName = complexName
@@ -211,13 +211,11 @@ class ModelBuilder extends IblSwitch<Object> {
 			var EObject variable
 			switch container {
 				Region:
-					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].
-						head
+					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].head
 				Cell:
 					variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
 				Device:
-					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].
-						head
+					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].head
 			}
 
 			switch variable {
@@ -291,13 +289,13 @@ class ModelBuilder extends IblSwitch<Object> {
 		return cell
 	}
 
-	override caseATGCTranslationRate(roadblock.xtext.ibl.ibl.ATGCTranslationRate atgcTranslationRate){
+	override caseATGCTranslationRate(ATGCTranslationRate atgcTranslationRate) {
 		var emfAtgcTranslationRate = modelFactory.createATGCTranslationRate
 		emfAtgcTranslationRate.translationRate = Double.parseDouble(atgcTranslationRate.translationRate)
 		return emfAtgcTranslationRate
-		
+
 	}
-	
+
 	override caseATGCArrange(roadblock.xtext.ibl.ibl.ATGCArrange atgcArrange) {
 		var emfAtgcArrange = modelFactory.createATGCArrange
 
@@ -385,17 +383,18 @@ class ModelBuilder extends IblSwitch<Object> {
 					device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
 		}
-		
-		for (part: deviceDefinition.parts.entries.map[
-						switch(it){
-								VariableReference: (it as VariableReference).variable.buildVariableName
-								VariableComplex : (it as VariableComplex).complex.buildVariableName
-			}]){
+
+		for (part : deviceDefinition.parts.entries.map[
+			switch (it) {
+				VariableReference: (it as VariableReference).variable.buildVariableName
+				VariableComplex: (it as VariableComplex).complex.buildVariableName
+			}]) {
+
 			// create an empty part, just for reference. Validation should have ensured that the part has already been declared.
 			var biopart = modelFactory.createMolecularSpecies
-			biopart.displayName = part				
+			biopart.displayName = part
 			device.partList.add(biopart)
-			
+
 		}
 
 		return device
@@ -428,7 +427,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		]
 
 		// Defaults for parts and molecules
-		if (isPart(type))
+		if(isPart(type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
@@ -463,7 +462,7 @@ class ModelBuilder extends IblSwitch<Object> {
 					molecule => [unbindingRate = Double.parseDouble(q.value); unit = getConcentrationUnit(q.units)]
 				}
 				case 'sequence': {
-					val q =  parameter.value.doSwitch as String
+					val q = parameter.value.doSwitch as String
 					molecule.sequence = q
 				}
 			}

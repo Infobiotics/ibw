@@ -2142,6 +2142,44 @@ public class IblPackage extends EPackageImpl {
 	public static final int ATGC_TRANSLATION_RATE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.IMoleculeContainer
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIMoleculeContainer()
+	 * @generated
+	 */
+	public static final int IMOLECULE_CONTAINER = 46;
+
+	/**
+	 * The number of structural features of the '<em>IMolecule Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IMOLECULE_CONTAINER_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.IRuleContainer
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIRuleContainer()
+	 * @generated
+	 */
+	public static final int IRULE_CONTAINER = 47;
+
+	/**
+	 * The number of structural features of the '<em>IRule Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IRULE_CONTAINER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2149,7 +2187,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 46;
+	public static final int TIME_UNIT = 48;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}' enum.
@@ -2159,7 +2197,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalPattern()
 	 * @generated
 	 */
-	public static final int TEMPORAL_PATTERN = 47;
+	public static final int TEMPORAL_PATTERN = 49;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -2169,7 +2207,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 48;
+	public static final int RELATIONAL_OPERATOR = 50;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -2179,7 +2217,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 49;
+	public static final int BOOLEAN_OPERATOR = 51;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -2189,7 +2227,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 50;
+	public static final int CONCENTRATION_UNIT = 52;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' enum.
@@ -2199,7 +2237,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
 	 * @generated
 	 */
-	public static final int RATE_UNIT = 51;
+	public static final int RATE_UNIT = 53;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
@@ -2209,7 +2247,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getArithmeticOperator()
 	 * @generated
 	 */
-	public static final int ARITHMETIC_OPERATOR = 52;
+	public static final int ARITHMETIC_OPERATOR = 54;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}' enum.
@@ -2219,7 +2257,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityType()
 	 * @generated
 	 */
-	public static final int MONOTONICITY_TYPE = 53;
+	public static final int MONOTONICITY_TYPE = 55;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2542,6 +2580,20 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass atgcTranslationRateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iMoleculeContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iRuleContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -4955,6 +5007,32 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IMolecule Container</em>'.
+	 * @see roadblock.emf.ibl.Ibl.IMoleculeContainer
+	 * @generated
+	 */
+	public EClass getIMoleculeContainer() {
+		return iMoleculeContainerEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IRule Container</em>'.
+	 * @see roadblock.emf.ibl.Ibl.IRuleContainer
+	 * @generated
+	 */
+	public EClass getIRuleContainer() {
+		return iRuleContainerEClass;
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5304,6 +5382,10 @@ public class IblPackage extends EPackageImpl {
 		atgcTranslationRateEClass = createEClass(ATGC_TRANSLATION_RATE);
 		createEAttribute(atgcTranslationRateEClass, ATGC_TRANSLATION_RATE__TRANSLATION_RATE);
 
+		iMoleculeContainerEClass = createEClass(IMOLECULE_CONTAINER);
+
+		iRuleContainerEClass = createEClass(IRULE_CONTAINER);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalPatternEEnum = createEEnum(TEMPORAL_PATTERN);
@@ -5345,11 +5427,19 @@ public class IblPackage extends EPackageImpl {
 
 		// Add supertypes to classes
 		modelEClass.getESuperTypes().add(this.getIVisitable());
+		modelEClass.getESuperTypes().add(this.getIMoleculeContainer());
+		modelEClass.getESuperTypes().add(this.getIRuleContainer());
 		kineticsEClass.getESuperTypes().add(this.getIVisitable());
+		kineticsEClass.getESuperTypes().add(this.getIMoleculeContainer());
+		kineticsEClass.getESuperTypes().add(this.getIRuleContainer());
 		ruleEClass.getESuperTypes().add(this.getIVisitable());
 		molecularSpeciesEClass.getESuperTypes().add(this.getIVisitable());
 		deviceEClass.getESuperTypes().add(this.getIVisitable());
+		deviceEClass.getESuperTypes().add(this.getIMoleculeContainer());
+		deviceEClass.getESuperTypes().add(this.getIRuleContainer());
 		cellEClass.getESuperTypes().add(this.getIVisitable());
+		cellEClass.getESuperTypes().add(this.getIMoleculeContainer());
+		cellEClass.getESuperTypes().add(this.getIRuleContainer());
 		atgcDirectiveEClass.getESuperTypes().add(this.getIVisitable());
 		systemEClass.getESuperTypes().add(this.getIVisitable());
 		chromosomeEClass.getESuperTypes().add(this.getIVisitable());
@@ -5372,6 +5462,8 @@ public class IblPackage extends EPackageImpl {
 		notStateFormulaEClass.getESuperTypes().add(this.getIStateFormula());
 		stateExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 		regionEClass.getESuperTypes().add(this.getIVisitable());
+		regionEClass.getESuperTypes().add(this.getIRuleContainer());
+		regionEClass.getESuperTypes().add(this.getIMoleculeContainer());
 		emfVariableAssignmentEClass.getESuperTypes().add(this.getIVisitable());
 		flatModelEClass.getESuperTypes().add(this.getIVisitable());
 		propertyInitialConditionEClass.getESuperTypes().add(this.getIVisitable());
@@ -5781,6 +5873,14 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(atgcTranslationRateEClass, ATGCTranslationRate.class, "ATGCTranslationRate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getATGCTranslationRate_TranslationRate(), ecorePackage.getEDouble(), "translationRate", "1000", 0, 1, ATGCTranslationRate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iMoleculeContainerEClass, IMoleculeContainer.class, "IMoleculeContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(iMoleculeContainerEClass, this.getMolecularSpecies(), "getMoleculeList", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(iRuleContainerEClass, IRuleContainer.class, "IRuleContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		addEOperation(iRuleContainerEClass, this.getRule(), "getRuleList", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -7333,6 +7433,26 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute ATGC_TRANSLATION_RATE__TRANSLATION_RATE = eINSTANCE.getATGCTranslationRate_TranslationRate();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.IMoleculeContainer
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIMoleculeContainer()
+		 * @generated
+		 */
+		public static final EClass IMOLECULE_CONTAINER = eINSTANCE.getIMoleculeContainer();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.IRuleContainer
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIRuleContainer()
+		 * @generated
+		 */
+		public static final EClass IRULE_CONTAINER = eINSTANCE.getIRuleContainer();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

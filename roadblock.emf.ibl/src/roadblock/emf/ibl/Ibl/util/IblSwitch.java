@@ -25,8 +25,10 @@ import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IArithmeticExpression;
 import roadblock.emf.ibl.Ibl.IArithmeticOperand;
+import roadblock.emf.ibl.Ibl.IMoleculeContainer;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.IProperty;
+import roadblock.emf.ibl.Ibl.IRuleContainer;
 import roadblock.emf.ibl.Ibl.IStateFormula;
 import roadblock.emf.ibl.Ibl.ITimeConstraint;
 import roadblock.emf.ibl.Ibl.IVisitable;
@@ -126,6 +128,8 @@ public class IblSwitch<T> extends Switch<T> {
 				Model model = (Model)theEObject;
 				T result = caseModel(model);
 				if (result == null) result = caseIVisitable(model);
+				if (result == null) result = caseIMoleculeContainer(model);
+				if (result == null) result = caseIRuleContainer(model);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -133,6 +137,8 @@ public class IblSwitch<T> extends Switch<T> {
 				Kinetics kinetics = (Kinetics)theEObject;
 				T result = caseKinetics(kinetics);
 				if (result == null) result = caseIVisitable(kinetics);
+				if (result == null) result = caseIMoleculeContainer(kinetics);
+				if (result == null) result = caseIRuleContainer(kinetics);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -154,6 +160,8 @@ public class IblSwitch<T> extends Switch<T> {
 				Device device = (Device)theEObject;
 				T result = caseDevice(device);
 				if (result == null) result = caseIVisitable(device);
+				if (result == null) result = caseIMoleculeContainer(device);
+				if (result == null) result = caseIRuleContainer(device);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -161,6 +169,8 @@ public class IblSwitch<T> extends Switch<T> {
 				Cell cell = (Cell)theEObject;
 				T result = caseCell(cell);
 				if (result == null) result = caseIVisitable(cell);
+				if (result == null) result = caseIMoleculeContainer(cell);
+				if (result == null) result = caseIRuleContainer(cell);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -329,6 +339,8 @@ public class IblSwitch<T> extends Switch<T> {
 				Region region = (Region)theEObject;
 				T result = caseRegion(region);
 				if (result == null) result = caseIVisitable(region);
+				if (result == null) result = caseIRuleContainer(region);
+				if (result == null) result = caseIMoleculeContainer(region);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -452,6 +464,18 @@ public class IblSwitch<T> extends Switch<T> {
 				T result = caseATGCTranslationRate(atgcTranslationRate);
 				if (result == null) result = caseATGCDirective(atgcTranslationRate);
 				if (result == null) result = caseIVisitable(atgcTranslationRate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.IMOLECULE_CONTAINER: {
+				IMoleculeContainer iMoleculeContainer = (IMoleculeContainer)theEObject;
+				T result = caseIMoleculeContainer(iMoleculeContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.IRULE_CONTAINER: {
+				IRuleContainer iRuleContainer = (IRuleContainer)theEObject;
+				T result = caseIRuleContainer(iRuleContainer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1146,6 +1170,36 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseATGCTranslationRate(ATGCTranslationRate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IMolecule Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IMolecule Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIMoleculeContainer(IMoleculeContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IRule Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IRule Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIRuleContainer(IRuleContainer object) {
 		return null;
 	}
 
