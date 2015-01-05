@@ -368,5 +368,11 @@
     <genClasses ecoreClass="ibl.ecore#//ATGCTranslationRate">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCTranslationRate/translationRate"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IMoleculeContainer">
+      <genOperations ecoreOperation="ibl.ecore#//IMoleculeContainer/getMoleculeList"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ibl.ecore#//IRuleContainer">
+      <genOperations ecoreOperation="ibl.ecore#//IRuleContainer/getRuleList"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

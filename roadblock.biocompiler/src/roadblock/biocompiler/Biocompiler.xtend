@@ -917,7 +917,7 @@ class Biocompiler {
 		source.add("<HTML>")
 		source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
 		
-		val path = pathToImages + File.separator
+//		val path = pathToImages + File.separator
 		
 		
 		for(cell:biocompilerModel.cells){

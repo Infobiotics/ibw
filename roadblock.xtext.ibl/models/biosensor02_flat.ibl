@@ -135,16 +135,16 @@ define SentinelCell typeof CELL(){
 	PrsaL = PROMOTER(URI = "atgc://user-submitted/part/prsal")
 	luxr = GENE(URI = "http://parts.igem.org/Part:BBa_K592012")
 	LuxR = PROTEIN()
- 
+   
 	DEVICE LuxRProduction = new DEVICE(parts=[Pm,PrsaL,luxr])(input=[XylS~SA,LasR~AHL], output=[LuxR]){
 		mrna = RNA()
 		ATGC CLONING SITES: 5
-
+  
 		// (24) Pm background promoter binding
 		RULE backgroundBinding1 : Pm + rnaP <-> Pm~rnaP	
 		backgroundBinding1.forwardRate = 5.60e-8 M-1 s-1
 		backgroundBinding1.backwardRate = 2.00e-1 s-1
-
+  
 		// (25) Pm background transcription
 		RULE backgroundTranscription1 : Pm~rnaP -> Pm + rnaP + mrna
 		backgroundTranscription1.forwardRate = 2.08e-1 s-1

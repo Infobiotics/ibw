@@ -86,7 +86,9 @@ public enum TemporalPattern implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ALWAYS(7, "ALWAYS", "ALWAYS"), /**
+	ALWAYS(7, "ALWAYS", "ALWAYS"),
+
+	/**
 	 * The '<em><b>EVENTUALLY ALWAYS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

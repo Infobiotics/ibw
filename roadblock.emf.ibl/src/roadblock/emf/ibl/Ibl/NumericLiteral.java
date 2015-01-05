@@ -103,10 +103,12 @@ public class NumericLiteral extends EObjectImpl implements IArithmeticOperand {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
-	 * @generated NOT
+	 * @generated
 	 */
 	public <TResult> TResult accept(IVisitor<TResult> visitor) {
-		return visitor.visit(this);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
