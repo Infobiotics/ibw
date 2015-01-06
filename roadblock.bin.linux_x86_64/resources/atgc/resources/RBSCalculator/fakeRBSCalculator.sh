@@ -1,8 +1,0 @@
-#sleep 10
-echo Program Executed
-echo TCCTGATACTCCGCCTGTCCTTCCTCATATATTTC
-echo 101.254131308
-echo 0
-echo 
-echo 92.2229399681
-

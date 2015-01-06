@@ -172,19 +172,19 @@ class Biocompiler {
 			biocompiler.gatherParts
 			println("part gathering done.")
 			// write biocompile.resultsHTml
-			utils.toFile(biocompiler.pathOutput + "/identifiedParts.html", biocompiler.identifiedPartsHtml)
+			utils.toFile(biocompiler.pathOutput + File.separator + "identifiedParts.html", biocompiler.identifiedPartsHtml)
 			if(args.get(3) == 'compile'){
 				biocompiler.compile
 				println("Compilation done.")
 				
 				//write biocompile.console
-				utils.toFile(biocompiler.pathOutput + "/console.html", biocompiler.makeHtmlLog)
+				utils.toFile(biocompiler.pathOutput + File.separator + "console.html", biocompiler.makeHtmlLog)
 					
 				//write biocompiler results
-				utils.toFile(biocompiler.pathOutput + "/results.html", biocompiler.makeResultPage)
+				utils.toFile(biocompiler.pathOutput + File.separator + "results.html", biocompiler.makeResultPage)
 				
 				//write solution as SBOL
-				SBOLFactory.write(biocompiler.makeSBOLDocument, new FileOutputStream(biocompiler.pathOutput + '/ATGC_SBOL.xml'));
+				SBOLFactory.write(biocompiler.makeSBOLDocument, new FileOutputStream(biocompiler.pathOutput + File.separator + 'ATGC_SBOL.xml'));
 			} 				 		
 	 	}
 	 }

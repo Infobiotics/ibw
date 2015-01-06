@@ -144,7 +144,7 @@ define SentinelCell typeof CELL(){
 		RULE backgroundBinding1 : Pm + rnaP <-> Pm~rnaP	
 		backgroundBinding1.forwardRate = 5.60e-8 M-1 s-1
 		backgroundBinding1.backwardRate = 2.00e-1 s-1
-  
+   
 		// (25) Pm background transcription
 		RULE backgroundTranscription1 : Pm~rnaP -> Pm + rnaP + mrna
 		backgroundTranscription1.forwardRate = 2.08e-1 s-1

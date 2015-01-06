@@ -165,11 +165,13 @@ public class MainView extends ViewPart implements IPartListener2 {
 	
 	public void runBiocompiler(String xmlFilename, String command){
 		try {
-			
+			String wrapperName = "atgcWrapper.sh"; // default wrapper 
+			if(System.getProperty("os.name").startsWith("Windows"))
+				wrapperName = "atgcWrapper.bat";
+
 			// run the biocompiler
 			System.out.println("Running the biocompiler");
-			
-			Process process = new ProcessBuilder(pathToBiocompiler + File.separator + "atgcWrapper.sh",xmlFilename,config.dataDirectory + File.separator + "src-gen",command).start(); 
+			Process process = new ProcessBuilder(pathToBiocompiler + File.separator + wrapperName,xmlFilename,config.dataDirectory + File.separator + "src-gen",command).start(); 
 			
 			InputStream is = process.getInputStream();
 			InputStream is2 = process.getErrorStream();

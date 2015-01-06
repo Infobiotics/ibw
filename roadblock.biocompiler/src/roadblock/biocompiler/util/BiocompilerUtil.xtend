@@ -128,7 +128,7 @@ class BiocompilerUtil {
 		var postSequence = device.parts.filter[position.value == (positionRBS + relativePosition ) ].get(0).sequence.substring(0,14)
 		
 		part.sequence = optimiseRBS(preSequence,postSequence, rate, pathToResources)
-		part.accessionURL = 'ATGC://computer-generated/RBS/seq#' + part.sequence 
+		part.accessionURL = 'ATGC://computer-generated/RBS/' + part.cellName + "/" + part.name + "/" + "seq#"  + part.sequence 
 				
 		return part
 	}
@@ -139,8 +139,12 @@ class BiocompilerUtil {
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
+		var RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.py" // default wrapper name
+		if(System.getProperty("os.name").startsWith("Windows"))
+			RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.bat"
+			
 //		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
-		var process = new ProcessBuilder(pathToResources + "/RBSCalculator/fakeRBSCalculator.py").start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+		var process = new ProcessBuilder(pathToResources + File.separator + RBSWrapperName).start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)
