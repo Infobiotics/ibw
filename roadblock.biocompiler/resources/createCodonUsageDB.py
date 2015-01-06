@@ -13,7 +13,7 @@ import itertools
 # Create the tables
 print "Creating tables"
 
-connection = sqlite3.connect('codonUsage.db')
+connection = sqlite3.connect('db/codonUsage.db')
 c = connection.cursor()
 try:
 	c.execute('DROP TABLE CodonUsage')
@@ -43,7 +43,7 @@ codonTable = {
 'Threonine': ['ACT', 'ACC', 'ACA', 'ACG'],
 'Alanine': ['GCT', 'GCC', 'GCA', 'GCG'],
 'Tyrosine': ['TAT', 'TAC'],
-'STOP':['TAA', 'TGA', 'TAG'],
+'STOP':['TAA', '	TGA', 'TAG'],
 'Histidine':['CAT', 'CAC'],
 'Glutamine':['CAA', 'CAG'],
 'Asparagine': ['AAT', 'AAC'],

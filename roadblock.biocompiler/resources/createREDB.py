@@ -16,7 +16,7 @@ source = response.read().split('\n')
 # Create the tables
 print "Creating tables"
 
-connection = sqlite3.connect('restrictionEnzymes.db')
+connection = sqlite3.connect('db/restrictionEnzymes.db')
 c = connection.cursor()
 try:
 	c.execute('DROP TABLE RestrictionEnzyme')
