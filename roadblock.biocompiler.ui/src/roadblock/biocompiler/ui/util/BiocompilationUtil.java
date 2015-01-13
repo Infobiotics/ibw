@@ -5,11 +5,11 @@ import org.eclipse.xtext.resource.XtextResource;
 import roadblock.dataprocessing.model.ModelBuilder;
 import roadblock.emf.ibl.Ibl.Model;
 
-public class SimulationUtil {
+public class BiocompilationUtil {
 
-	private static final SimulationUtil instance = new SimulationUtil();
+	private static final BiocompilationUtil instance = new BiocompilationUtil();
 	
-	public static SimulationUtil getInstance() {
+	public static BiocompilationUtil getInstance() {
 		return instance;
 	}
 	

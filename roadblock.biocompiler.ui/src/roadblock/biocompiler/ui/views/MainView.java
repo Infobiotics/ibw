@@ -12,62 +12,40 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.databinding.Binding;
-import org.eclipse.core.databinding.DataBindingContext;
-import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeanProperties;
-import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.core.databinding.validation.IValidator;
-import org.eclipse.core.databinding.validation.ValidationStatus;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.console.ConsolePlugin;
-import org.eclipse.ui.console.IConsole;
-import org.eclipse.ui.console.MessageConsole;
-import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.util.ResourceUtil;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 import roadblock.emf.ibl.Ibl.Model;
-import roadblock.dataprocessing.flatModel.FlatModelManager;
-import roadblock.simulation.ngss.Simulator;
 import roadblock.biocompiler.ui.Activator;
-import roadblock.biocompiler.ui.model.Configuration;
-import roadblock.biocompiler.ui.util.ConfigurationUtil;
-import roadblock.biocompiler.ui.util.SimulationUtil;
-import roadblock.biocompiler.*;
+import roadblock.biocompiler.ui.util.BiocompilationUtil;
 import roadblock.bin.BinaryPathProvider;
 
 public class MainView extends ViewPart implements IPartListener2 {
@@ -75,7 +53,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	public static final String ID = "roadblock.biocompiler.ui.views.mainView";
 
 	private Model model;
-	private Configuration config;
+	private String dataDirectory = null;
 	private XtextResource currentIblResource;
 
 	private Button compilationButton;
@@ -84,6 +62,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	
 	private String pathToBiocompiler = BinaryPathProvider.getInstance().getAtgcPath();
 	
+
 	@Override
 	public void createPartControl(Composite parent) {
 
@@ -171,7 +150,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			// run the biocompiler
 			System.out.println("Running the biocompiler");
-			Process process = new ProcessBuilder(pathToBiocompiler + File.separator + wrapperName,xmlFilename,config.dataDirectory + File.separator + "src-gen",command).start(); 
+			Process process = new ProcessBuilder(pathToBiocompiler + File.separator + wrapperName,xmlFilename,dataDirectory + File.separator + "src-gen",command).start(); 
 			
 			InputStream is = process.getInputStream();
 			InputStream is2 = process.getErrorStream();
@@ -203,7 +182,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 			compilationButton.setEnabled(false);
 		} else {
 
-			model = SimulationUtil.getInstance().getModel(currentIblResource);
+			model = BiocompilationUtil.getInstance().getModel(currentIblResource);
 			compilationButton.setEnabled(true);
 			System.out.println(model);
 			try{
@@ -213,7 +192,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 			
 			// save XML as file
 			System.out.println("Saving to XML");
-			String xmlFilename = config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml";
+			String xmlFilename = dataDirectory + "/src-gen/EMFModelForBiocompiler.xml";
 			writeTextFile(xmlFilename, xml);
 			
 			runBiocompiler(xmlFilename,"parse");
@@ -225,7 +204,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			
 			try {
-				String identifiedParts = readFile(config.dataDirectory + "/src-gen/identifiedParts.html", Charset.defaultCharset());
+				String identifiedParts = readFile(dataDirectory + "/src-gen/identifiedParts.html", Charset.defaultCharset());
 				browser.setText(identifiedParts);				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -237,15 +216,26 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	private void ensureConfig() {
-		if (config == null) {
-			config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
+		if (dataDirectory == null) {
+			dataDirectory = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + ResourceUtil.getFile(currentIblResource).getFullPath().removeLastSegments(1).toOSString();
+			// create a src-gen folder if there isn't one.
+			File f = new File(dataDirectory + File.separator + "src-gen");
+			if(!f.exists()){
+				try{
+					f.mkdirs();
+				}
+				catch (SecurityException e){
+					e.printStackTrace();
+				}
+			}
+			
 		}
 	}
 
 	private void updateConsoleView(){
 		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
 		try {
-			String console = readFile(config.dataDirectory + "/src-gen/console.html", Charset.defaultCharset());
+			String console = readFile(dataDirectory + "/src-gen/console.html", Charset.defaultCharset());
 			myConsole.setContent(console);				
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -257,7 +247,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private void updateResultsView(){
 		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.resultsView");
 		try {
-			String console = readFile(config.dataDirectory + "/src-gen/results.html", Charset.defaultCharset());
+			String console = readFile(dataDirectory + "/src-gen/results.html", Charset.defaultCharset());
 			resultsView.setContent(console);				
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -270,7 +260,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	// Compile
 	private void performCompilation() {
 		
-		runBiocompiler(config.dataDirectory + "/src-gen/EMFModelForBiocompiler.xml", "compile");
+		runBiocompiler(dataDirectory + "/src-gen/EMFModelForBiocompiler.xml", "compile");
 		updateConsoleView();
 		updateResultsView();
 		compilationButton.setEnabled(false);

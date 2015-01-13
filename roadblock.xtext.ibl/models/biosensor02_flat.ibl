@@ -16,7 +16,7 @@ define SentinelCell typeof CELL(){
 	// (1), (2) diffusion rules
 	// RULE SADiffusion: SA -> OUTSIDE
 	// RULE AHLDiffusion: AHL -> OUTSIDE
-
+ 
 	// (3) XylS2 activation by SA
 	RULE XylSActivation: XylS + SA <-> XylS~SA
 	XylSActivation.forwardRate = 10.0e+4 M-1 s-1
@@ -26,7 +26,7 @@ define SentinelCell typeof CELL(){
 	RULE LasRActivation: LasR + AHL <-> LasR~AHL
 	LasRActivation.forwardRate = 10.0e+4 M-1 s-1
 	LasRActivation.backwardRate = 10.0e-5 s-1
-	
+	  
 	// (5) NahR activation by SA
 	RULE NahRActivation: NahR + SA <-> NahR~SA
 	NahRActivation.forwardRate = 10.0e+4 M-1 s-1
@@ -47,15 +47,15 @@ define SentinelCell typeof CELL(){
 	// (9) LasR degradation
 	RULE LasRDegradation: LasR ->	
 	LasRDegradation.forwardRate = 14e-6 s-1
-
+    
 	// (10) XylS degradation
 	RULE XylSDegradation: XylS ->
 	XylSDegradation.forwardRate = 14e-6 s-1
-
+  
 	// (11) LuxR degradation
 	RULE LuxRDegradation: LuxR ->
 	LuxRDegradation.forwardRate = 14e-6 s-1
-
+    
 	// components of the NahRLasRProduction device
 	PnahR = PROMOTER(URI = "atgc://user-submitted/part/pnahr")
 	nahR = GENE(URI = "atgc://user-submitted/part/nahr")
