@@ -139,12 +139,24 @@ class BiocompilerUtil {
 		println("\tpost: "+ postSequence)
 		println("\trate: "+ translationInitiationRate)
 		
-		var RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.py" // default wrapper name
-		if(System.getProperty("os.name").startsWith("Windows"))
-			RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.bat"
-			
-//		var process = new ProcessBuilder(pathResources + "RBSCalculator/RBSDesignerWrapper.sh",preSequence, postSequence, translationInitiationRate.toString).start
-		var process = new ProcessBuilder(pathToResources + File.separator + RBSWrapperName).start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+		var useFake = true
+		var RBSWrapperName = ""
+		var Process process = null
+		
+		if(useFake){
+			RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.py" // default wrapper name
+			if(System.getProperty("os.name").startsWith("Windows"))
+				RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.bat"
+			process = new ProcessBuilder(pathToResources + File.separator + RBSWrapperName).start(); println("\t*** FAKE RBS, FOR TESTS ONLY ***")
+		}
+		else {
+			RBSWrapperName = "RBSCalculator" + File.separator + "RBSDesignerWrapper.sh" // default wrapper name
+			if(System.getProperty("os.name").startsWith("Windows"))
+				RBSWrapperName = "RBSCalculator" + File.separator + "fakeRBSCalculator.bat"
+				
+			process = new ProcessBuilder(pathToResources + File.separator + RBSWrapperName,preSequence, postSequence, translationInitiationRate.toString).start
+		}
+		
 		var is = process.getInputStream
 		var is2 = process.errorStream
 		var isr = new InputStreamReader(is)
