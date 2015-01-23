@@ -43,19 +43,32 @@ cp atgcWrapper.bat $pathWindows/resources/atgc
 cp atgcWrapper.bat $pathWindows64/resources/atgc
 
 # RBS calculator
+## Binaries from python scripts and NuPACK
+pathRBSCalculator="resources/atgc/resources/RBSCalculator"
+
 echo "  RBS calculator"
 for i in $(seq 0 5)
 do
-	mkdir -p ${paths[$i]}/resources/atgc/resources/RBSCalculator
+	rm -rf ${paths[$i]}/resources/atgc/resources/RBSCalculator
 done
 
-pathRBSCalculator="resources/atgc/resources/RBSCalculator"
+cp -R resources/RBSCalculatorExecutables/RBSCalculatorLinux $pathLinux/$pathRBSCalculator
+cp -R resources/RBSCalculatorExecutables/RBSCalculatorLinux $pathLinux64/$pathRBSCalculator
+cp -R resources/RBSCalculatorExecutables/RBSCalculatorMac64 $pathMac/$pathRBSCalculator
+cp -R resources/RBSCalculatorExecutables/RBSCalculatorMac64 $pathMac64/$pathRBSCalculator
+
+mkdir $pathWindows/$pathRBSCalculator
+mkdir $pathWindows64/$pathRBSCalculator
+
+## fake RBS calculator
 cp resources/RBSCalculator/fakeRBSCalculator.py $pathLinux/$pathRBSCalculator
 cp resources/RBSCalculator/fakeRBSCalculator.py $pathLinux64/$pathRBSCalculator
 cp resources/RBSCalculator/fakeRBSCalculator.py $pathMac/$pathRBSCalculator
 cp resources/RBSCalculator/fakeRBSCalculator.py $pathMac64/$pathRBSCalculator
 cp resources/RBSCalculator/fakeRBSCalculator.bat $pathWindows/$pathRBSCalculator
 cp resources/RBSCalculator/fakeRBSCalculator.bat $pathWindows64/$pathRBSCalculator
+
+
 
 # test file
 echo "  Test file"
