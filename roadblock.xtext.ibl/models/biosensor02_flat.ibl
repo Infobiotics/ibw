@@ -127,7 +127,7 @@ define SentinelCell typeof CELL(){
 		RULE mrnaDegradation : mrna ->
 		mrnaDegradation.forwardRate = 2.78e-3 s-1
 		
-		VERIFY [XylS > 0 uM ] EVENTUALLY HOLDS
+		VERIFY [XylS > 0 uM ] EVENTUALLY HOLDS 
 	}
 
 	// components of the LuxRProduction device

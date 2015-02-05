@@ -14,8 +14,8 @@ public class Biocompiler implements IPerspectiveFactory {
 		IFolderLayout rightArea = layout.createFolder("right", IPageLayout.RIGHT, 0.70f, editorArea);
 		IFolderLayout bottomArea = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.80f, editorArea); 
 		leftArea.addView("org.eclipse.ui.navigator.ProjectExplorer");
-		rightArea.addView("roadblock.biocompiler.ui.views.MainView");
-		bottomArea.addView("roadblock.biocompiler.ui.views.Console");
+		rightArea.addView("roadblock.biocompiler.ui.views.mainView");
+		bottomArea.addView("roadblock.biocompiler.ui.views.consoleView");
 		bottomArea.addView("roadblock.biocompiler.ui.views.resultsView");
 		
 	}
