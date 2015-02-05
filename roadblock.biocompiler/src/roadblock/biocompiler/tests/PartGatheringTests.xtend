@@ -197,13 +197,13 @@ class PartGatheringTests {
 		assertEquals(utils.convertToXml(biocompiler.biocompilerModel),'<?xml version="1.0" encoding="UTF-8"?>
 <roadblock.emf.bioparts:BiocompilerModel xmlns:roadblock.emf.bioparts="http://www.roadblock.org/bioparts.ecore">
   <cells name="myCell">
-    <devices name="device1" minPosition="myCell/device1/minPosition = 1" maxPosition="myCell/device1/maxPosition = 4" direction="myCell/device1/direction=1">
+    <devices name="device1" minPosition="myCell/device1/minPosition = 1" maxPosition="myCell/device1/maxPosition = 4" direction="myCell/device1/direction=1" translationRate="1000.0">
       <parts sequence="AAA" name="p1aa" biologicalFunction="PROMOTER" cellName="myCell" deviceName="device1" position="myCell/device1/p1aa_1 = 1"/>
       <parts sequence="TTT" name="g1bb" biologicalFunction="GENE" cellName="myCell" deviceName="device1" position="myCell/device1/g1bb_2 = 3"/>
       <parts sequence="" name="myCell/device1/rbs_1" accessionURL="" biologicalFunction="RBS" cellName="myCell" deviceName="device1" position="myCell/device1/myCell/device1/rbs_1_3 = 2"/>
       <parts sequence="" name="myCell/device1/terminator" accessionURL="" biologicalFunction="TERMINATOR" cellName="myCell" deviceName="device1" position="myCell/device1/myCell/device1/terminator_4 = 4"/>
     </devices>
-    <devices name="device2" minPosition="myCell/device2/minPosition = 5" maxPosition="myCell/device2/maxPosition = 10" direction="myCell/device2/direction=1">
+    <devices name="device2" minPosition="myCell/device2/minPosition = 5" maxPosition="myCell/device2/maxPosition = 10" direction="myCell/device2/direction=1" translationRate="1000.0">
       <parts sequence="GGG" name="p2aa" biologicalFunction="PROMOTER" cellName="myCell" deviceName="device2" position="myCell/device2/p2aa_5 = 5"/>
       <parts sequence="CCC" name="g2bb" biologicalFunction="GENE" cellName="myCell" deviceName="device2" position="myCell/device2/g2bb_6 = 7"/>
       <parts sequence="ATA" name="g2cc" biologicalFunction="GENE" cellName="myCell" deviceName="device2" position="myCell/device2/g2cc_7 = 9"/>
