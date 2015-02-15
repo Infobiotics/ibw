@@ -3,6 +3,7 @@
 
 <product name="Infobiotics Workbench" uid="IBW" id="roadblock.ibw.product" application="org.eclipse.ui.ide.workbench" version="1.0" useFeatures="false" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -13,7 +14,8 @@
    <windowImages/>
 
    <splash
-      location="roadblock.ibw" />
+      location="roadblock.ibw"
+      startupProgressRect="5,275,445,15" />
    <launcher name="ibw">
       <linux icon="/roadblock.ibw/images/ibw_icon_256x256.xpm"/>
       <solaris/>
@@ -22,8 +24,10 @@
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
 
    <plugins>
       <plugin id="ch.qos.logback.classic"/>
