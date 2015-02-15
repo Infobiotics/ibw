@@ -941,7 +941,7 @@ class Biocompiler {
 				«FOR device: cell.devices.sortBy[parts.get(0).position.value]»
 				«{col = (col+1) % colours.size; ''}»
 				«FOR part: device.parts.sortBy[position.value]»
-				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=76px></TD>
+				<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«imageNames.get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=30px></TD>
 				«ENDFOR»
 				«ENDFOR»
 				</TR>

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3960"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="SBOL_Boxed.svg">
+  <defs
+     id="defs3962">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5123">
+      <path
+         inkscape:connector-curvature="0"
+         d="M 0,100 50,100 50,0 0,0 0,100 z"
+         id="path5125" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="253.52081"
+     inkscape:cy="765.95011"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3965">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path5190"
+       d="m -823.72851,735.74583 0,94.96875 46,0 0,-94.96875 -46,0 z"
+       style="fill:none;stroke:none"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none"
+       d="m -823.72851,735.74583 0,94.96875 46,0 0,-94.96875 -46,0 z"
+       id="path5201" />
+    <g
+       id="g5409"
+       transform="translate(-97.984797,58.588848)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/rbs.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1.0128869,0,0,-1.0128869,184.96542,239.4666)"
+         id="g4271"
+         style="fill:none">
+        <g
+           id="g4273"
+           clip-path="url(#clipPath5123)"
+           style="fill:none">
+          <g
+             id="g4275"
+             transform="translate(12,50)"
+             style="fill:none">
+            <path
+               inkscape:connector-curvature="0"
+               d="m 0,0 26,0 0,5 C 26,15 20,20 13,20 6,20 0,15 0,5 L 0,0 z"
+               style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               id="path4277" />
+          </g>
+        </g>
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         d="m 187.28759,142.49144 0,94.96875 46,0 0,-94.96875 -46,0 z"
+         id="path5205" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 187.65152,189.97582 45.27215,0"
+         id="path5207"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g5422"
+       transform="translate(210.11173,40.406099)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/cds.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(1.0128869,0,0,-1.0128869,247.63526,137.58465)"
+         id="g5100"
+         style="fill:none">
+        <g
+           transform="translate(9,35)"
+           id="g5102"
+           style="fill:none">
+          <path
+             inkscape:connector-curvature="0"
+             id="path5104"
+             style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 0,0 18,0 33,15 18,30 0,30 0,0 z" />
+        </g>
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         d="m 250.46388,39.45587 0,94.96878 46,0 0,-94.96878 -46,0 z"
+         id="path5209" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 250.8278,86.94026 45.27216,0"
+         id="path5211"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g5392"
+       transform="translate(-61.619305,74.751288)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/promoter.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="translate(335.93337,-746.06947)"
+         id="g5123">
+        <g
+           id="g5294"
+           transform="matrix(1.0128869,0,0,-1.0128869,-247.47926,961.29241)">
+          <g
+             id="g5296"
+             transform="translate(31.5,84.5)">
+            <path
+               d="M 0,0 8.5,-7.5 0,-14.833"
+               style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               id="path5298"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             id="g5300"
+             transform="translate(10,50)">
+            <path
+               d="m 0,0 0,27 29,0"
+               style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               id="path5302"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:none"
+           d="m -245.15709,864.31725 0,94.96875 46,0 0,-94.96875 -46,0 z"
+           id="path5117" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path5119"
+           d="m -244.79316,911.80163 45.27215,0"
+           style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      </g>
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:0.22869957;fill:none;stroke:none"
+         d="m 90.77628,118.24778 0,94.96875 46,0 0,-94.96875 -46,0 z"
+         id="path5213" />
+    </g>
+    <g
+       id="g5433"
+       transform="translate(-260.61936,-40.406102)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/cloningSite.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         d="m 318.69091,82.89244 0,94.96876 46,0 0,-94.96876 -46,0 z"
+         id="path5243" />
+      <g
+         style="fill:none"
+         transform="matrix(-1.0128869,0,0,1.0128869,341.6909,129.22325)"
+         id="g4075">
+        <path
+           id="path4077"
+           style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="M 0,0 0,-26"
+           inkscape:connector-curvature="0" />
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 319.05483,130.37682 45.27215,0"
+         id="path5241"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g5446"
+       transform="translate(-122.22846,2.0203051)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/terminator.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         inkscape:connector-curvature="0"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         d="m 378.83673,73.80107 0,94.96875 46,0 0,-94.96875 -46,0 z"
+         id="path5253" />
+      <g
+         id="g4233"
+         transform="matrix(-0.81030953,0,0,0.81030953,-201.91716,687.91287)"
+         style="fill:none">
+        <g
+           transform="matrix(1.25,0,0,-1.25,-745.09044,-700.69649)"
+           id="g4235"
+           style="fill:none">
+          <path
+             id="path4237"
+             style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 0,0 0,24"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           transform="matrix(1.25,0,0,-1.25,-763.84044,-731.94649)"
+           id="g4239"
+           style="fill:none">
+          <path
+             id="path4241"
+             style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             d="M 0,0 30,0"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 379.20065,121.28544 45.27215,0"
+         id="path5251"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g5461"
+       transform="translate(-352.54323,122.22846)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/rbsReversed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         style="fill:none"
+         id="g5266"
+         transform="matrix(-1.0128869,0,0,1.0128869,576.28159,71.7946)">
+        <g
+           style="fill:none"
+           clip-path="url(#clipPath5123)"
+           id="g5268">
+          <g
+             style="fill:none"
+             transform="translate(12,50)"
+             id="g5270">
+            <path
+               id="path5272"
+               style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               d="m 0,0 26,0 0,5 C 26,15 20,20 13,20 6,20 0,15 0,5 L 0,0 z"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+      </g>
+      <path
+         id="path5274"
+         d="m 573.95942,168.76976 0,-94.96875 -46,0 0,94.96875 46,0 z"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path5276"
+         d="m 573.5955,121.28538 -45.27215,0"
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       id="g5474"
+       transform="translate(-131.31983,55.55839)"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/cdsReversed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         style="fill:none"
+         id="g5280"
+         transform="matrix(-1.0128869,0,0,1.0128869,679.36027,154.4837)">
+        <g
+           style="fill:none"
+           id="g5282"
+           transform="translate(9,35)">
+          <path
+             d="M 0,0 18,0 33,15 18,30 0,30 0,0 z"
+             style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path5284"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+      <path
+         id="path5286"
+         d="m 676.53165,252.61248 0,-94.96878 -46,0 0,94.96878 46,0 z"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path5288"
+         d="m 676.16773,205.12809 -45.27216,0"
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       id="g5372"
+       transform="translate(52.527933,66.670065)"
+       style="fill:none"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/promoterReversed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g5292"
+         transform="matrix(-1,0,0,-1,363.23101,1112.8891)"
+         style="fill:none">
+        <g
+           transform="matrix(1.0128869,0,0,-1.0128869,-247.47926,961.29241)"
+           id="g5295"
+           style="fill:none">
+          <g
+             transform="translate(31.5,84.5)"
+             id="g5297"
+             style="fill:none">
+            <path
+               inkscape:connector-curvature="0"
+               id="path5299"
+               style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               d="M 0,0 8.5,-7.5 0,-14.833" />
+          </g>
+          <g
+             transform="translate(10,50)"
+             id="g5301"
+             style="fill:none">
+            <path
+               inkscape:connector-curvature="0"
+               id="path5303"
+               style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+               d="m 0,0 0,27 29,0" />
+          </g>
+        </g>
+        <path
+           id="path5305"
+           d="m -245.15709,864.31725 0,94.96875 46,0 0,-94.96875 -46,0 z"
+           style="fill:none;stroke:none"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m -244.79316,911.80163 45.27215,0"
+           id="path5307"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <path
+         id="path5309"
+         d="m 608.3881,248.57183 0,-94.96875 -46,0 0,94.96875 46,0 z"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(-1,0,0,-1,-303.11296,1124.1059)"
+       id="g5311"
+       style="fill:none"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/cloningSiteReversed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         id="path5313"
+         d="m -498.72851,925.03154 0,94.96876 46,0 0,-94.96876 -46,0 z"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <g
+         id="g5315"
+         transform="matrix(-1.0128869,0,0,1.0128869,-475.72852,971.36235)"
+         style="fill:none">
+        <path
+           inkscape:connector-curvature="0"
+           d="M 0,0 0,-26"
+           style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="path5317" />
+      </g>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path5319"
+         d="m -498.36459,972.51592 45.27215,0"
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       transform="matrix(-1,0,0,-1,-80.615498,1325.5535)"
+       id="g5321"
+       style="fill:none"
+       inkscape:export-filename="/home/christophe/git/roadblock.xtext/roadblock.biocompiler/resources/images/terminatorReversed.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         id="path5323"
+         d="m -408.01422,897.1744 0,94.96875 46,0 0,-94.96875 -46,0 z"
+         style="opacity:0.23318386;fill:none;stroke:none"
+         inkscape:connector-curvature="0" />
+      <g
+         style="fill:none"
+         transform="matrix(-0.81030953,0,0,0.81030953,-988.76811,1511.2862)"
+         id="g5325">
+        <g
+           style="fill:none"
+           id="g5327"
+           transform="matrix(1.25,0,0,-1.25,-745.09044,-700.69649)">
+          <path
+             inkscape:connector-curvature="0"
+             d="M 0,0 0,24"
+             style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path5329" />
+        </g>
+        <g
+           style="fill:none"
+           id="g5331"
+           transform="matrix(1.25,0,0,-1.25,-763.84044,-731.94649)">
+          <path
+             inkscape:connector-curvature="0"
+             d="M 0,0 30,0"
+             style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+             id="path5333" />
+        </g>
+      </g>
+      <path
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path5335"
+         d="m -407.6503,944.65877 45.27215,0"
+         style="fill:none;stroke:#000000;stroke-width:0.73152566;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+  </g>
+</svg>
