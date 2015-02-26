@@ -85,6 +85,7 @@ class ViennaRNA(dict):
         cmd = "RNAcofold"
         args = outputPS_str + dangles + " < " + self.prefix
 
+        print cmd + args
         output = popen2.Popen3(cmd + args)
         #output.tochild.write(input_string)
 
@@ -147,7 +148,8 @@ class ViennaRNA(dict):
         #Call ViennaRNA C programs
         cmd = "RNAsubopt"
         args = " -e " + str(energy_gap) + outputPS_str + dangles + " < " + self.prefix
-
+        
+        print cmd + args
         output = popen2.Popen3(cmd + args)
 
         while output.poll() < 0:
@@ -218,6 +220,7 @@ class ViennaRNA(dict):
         cmd = "RNAeval"
         args = dangles + " < " + self.prefix
 
+        print cmd + args
         output = popen2.Popen3(cmd + args)
 
         while output.poll() < 0:

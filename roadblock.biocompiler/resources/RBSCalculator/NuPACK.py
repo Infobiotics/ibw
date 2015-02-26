@@ -83,6 +83,7 @@ class NuPACK(dict):
         args = " -T " + str(Temp) + " -material " + material + " " + ordered + pairs + mfe + degenerate \
         + dangles + timeonly + quiet + " "
 
+        print cmd + args + self.prefix
         output = popen2.Popen3(cmd + args + self.prefix)
         while output.poll() < 0:
             try:
@@ -132,7 +133,9 @@ class NuPACK(dict):
         #Call NuPACK C programs
         cmd = "mfe"
         args = " -T " + str(Temp) + multi + pseudo + " -material " + material + degenerate + dangles + " "
-
+        
+        print "hi there"
+        print cmd + args + self.prefix
         output = popen2.Popen3(cmd + args + self.prefix)
         while output.poll() < 0:
             try:
@@ -172,6 +175,7 @@ class NuPACK(dict):
         cmd = "subopt"
         args = " -T " + str(Temp) + multi + pseudo + " -material " + material + degenerate + dangles + " "
 
+        print cmd + args + self.prefix
         output = popen2.Popen3(cmd + args + self.prefix)
         while output.poll() < 0:
             try:
@@ -211,6 +215,7 @@ class NuPACK(dict):
         cmd = "energy"
         args = " -T " + str(Temp) + multi + pseudo + " -material " + material + degenerate + dangles + " "
 
+        print cmd + args + self.prefix
         output = popen2.Popen3(cmd + args + self.prefix)
         while output.poll() < 0:
             try:
@@ -261,6 +266,7 @@ class NuPACK(dict):
         cmd = "pfunc"
         args = " -T " + str(Temp) + multi + pseudo + " -material " + material + degenerate + dangles + " "
 
+        print cmd + args + self.prefix
         output = popen2.Popen3(cmd + args + self.prefix)
         while output.poll() < 0:
             try:
@@ -311,6 +317,7 @@ class NuPACK(dict):
         cmd = "count"
         args = " -T " + str(Temp) + multi + pseudo + " -material " + material + degenerate + dangles + " "
 
+        print cmd + args + self.prefix
         output = popen2.Popen3(cmd + args + self.prefix)
         while output.poll() < 0:
             try:
@@ -725,6 +732,7 @@ class NuPACK(dict):
 
         cmd = "sir_graph_ng" #Assumes it's on the path
         args = "-p" #to PostScript file
+        print cmd + " " + args + " " + inputfile
         output = popen2.Popen3(cmd + " " + args + " " + inputfile,"r")
         output.wait()
         if debug == 1: print output.fromchild.read()
@@ -732,6 +740,7 @@ class NuPACK(dict):
         inputfile = inputfile[0:len(inputfile)-2] + "ps"
 
         cmd = "ps2pdf" #Assumes it's on the path
+        print cmd + " " + inputfile
         output = popen2.Popen3(cmd + " " + inputfile,"r")
         output.wait()
         if debug == 1: print output.fromchild.read()

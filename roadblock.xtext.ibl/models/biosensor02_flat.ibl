@@ -12,7 +12,7 @@ define SentinelCell typeof CELL(){
 
 	SA = MOLECULE()
 	AHL = MOLECULE()
-
+ 
 	// (1), (2) diffusion rules
 	// RULE SADiffusion: SA -> OUTSIDE
 	// RULE AHLDiffusion: AHL -> OUTSIDE
@@ -31,11 +31,11 @@ define SentinelCell typeof CELL(){
 	RULE NahRActivation: NahR + SA <-> NahR~SA
 	NahRActivation.forwardRate = 10.0e+4 M-1 s-1
 	NahRActivation.backwardRate = 10.0e-5 s-1
-
+ 
 	// (6) SA degradation
 	RULE SADegradation: SA ->
 	SADegradation.forwardRate = 56.6e-6 s-1
-
+ 
 	// (7) AHL degradation
 	RULE AHLDegradation: AHL ->
 	AHLDegradation.forwardRate = 15.4e-7 s-1
@@ -55,7 +55,7 @@ define SentinelCell typeof CELL(){
 	// (11) LuxR degradation
 	RULE LuxRDegradation: LuxR ->
 	LuxRDegradation.forwardRate = 14e-6 s-1
-    
+     
 	// components of the NahRLasRProduction device
 	PnahR = PROMOTER(URI = "atgc://user-submitted/part/pnahr")
 	nahR = GENE(URI = "atgc://user-submitted/part/nahr")
@@ -128,7 +128,7 @@ define SentinelCell typeof CELL(){
 		mrnaDegradation.forwardRate = 2.78e-3 s-1
 		
 		VERIFY [XylS > 0 uM ] EVENTUALLY HOLDS 
-	}
+	} 
 
 	// components of the LuxRProduction device
 	Pm = PROMOTER(URI = "atgc://user-submitted/part/pm")
@@ -207,7 +207,7 @@ define SentinelCell typeof CELL(){
 	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA > 0 uM] HOLDS
 	VERIFY EXPECTED [XylS] AT 1000 s IS ?
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
-
+     
 	ATGC ARRANGE nahR, PnahR, Psal, xylS
 }
 

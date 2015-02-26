@@ -355,7 +355,7 @@ VariableExpressionObject:
 
 AtomicVariableExpressionObject:
 	{VariableReference} variable = VariableName | 
-	{VariableAttibute} attribute=VariableAttribute | 
+	{VariableAttribute} attribute=VariableAttribute | 
 	{VariableComplex} complex=VariableComplex | 
 	{RealConstant} value=REAL | 
 	{Quantity} quantity = Quantity | 
