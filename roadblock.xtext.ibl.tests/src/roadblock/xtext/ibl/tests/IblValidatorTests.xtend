@@ -86,7 +86,7 @@ class IblValidatorTest {
 		val model = '''
 		define myRegion typeof REGION(){
 		VERIFY [a1 > 0 uM] EVENTUALLY HOLDS	
-		VERIFY [[b1 > 0 uM] OR [b2~b4 > 0 uM]] WILL HOLD UNTIL THEN [b3 > 0 uM]
+		VERIFY [[b1 > 0 uM] OR [b2~b4 > 0 uM]] HOLDS UNTIL [b3 > 0 uM] HOLDS
 		VERIFY EXPECTED [a] WITHIN 1000 s IS ?
 		VERIFY EXPECTED [a~b] WITHIN 1000 s IS ?
 		}

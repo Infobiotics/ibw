@@ -221,6 +221,41 @@ class IblValidator extends AbstractIblValidator {
 		return false
 	}
 
+	def getVariableType(String variableName, EObject container) {
+		// return type of variableName if it has been declared, or null otherwise
+
+		//if complex: check if it is created by a rule
+		if(isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
+			return getVariableNamesCreatedByRules(container).findFirst[it == variableName].class
+
+		// otherwise check if it's been created somewhere else
+		
+		// check if locally declared
+		var variableDefinitions = getAllVariableDefinitions(container) 
+		if(variableDefinitions.exists[it.variableName == variableName])
+			return variableDefinitions.findFirst[it.variableName == variableName].class
+
+		// check if it's a rule's name
+		var ruleDefinitions = getAllRules(container)
+		if(ruleDefinitions.exists[it.name.buildVariableName == variableName])
+			return ruleDefinitions.findFirst[it.name.buildVariableName == variableName].class
+
+		// if in device: check signature and observables in device's container 
+		switch (container) {
+			DeviceDefinition: {
+				var inDeviceSignature = getAllArgumentsInDeviceSignature(container as DeviceDefinition)
+				if(inDeviceSignature.exists[it.buildVariableName == variableName])
+					return getVariableType(variableName, container.eContainer)
+				
+				var variableDefinitionsInContainer = getAllVariableDefinitions(container.eContainer).filter[observable]	
+				if(variableDefinitionsInContainer.exists[it.variableName == variableName])
+					return variableDefinitionsInContainer.findFirst[it.variableName == variableName]
+			}
+		}
+
+		return null
+	}
+
 	def errorMessage(String variableName) {
 		if(variableName.complex)
 			return "Complex '" + variableName + "' must be created by a rule or passed on as a parameter."
