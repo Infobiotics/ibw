@@ -42,6 +42,7 @@ import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
 import roadblock.xtext.ibl.ibl.ATGCArrange
 import java.util.Set
+import roadblock.xtext.ibl.ibl.VariableType
 
 // utility class, used for checking forbidden containers
 @Data
@@ -211,7 +212,6 @@ class IblValidator extends AbstractIblValidator {
 			return true
 
 		// if in device: check signature and observables in device's container 
-		println("see me?" + variableName + ", container:" + container)
 		switch (container) {
 			DeviceDefinition: {
 				if(getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists[it.buildVariableName == variableName])
@@ -225,9 +225,8 @@ class IblValidator extends AbstractIblValidator {
 		return false
 	}
 
-	def Object getVariableType(String variableName, EObject container) {
+	def  getVariableType(String variableName, EObject container) {
 		// return type of variableName if it has been declared, or null otherwise
-
 		if(container.eContainer==null) return null
 		
 		//if complex: check if it is created by a rule
@@ -237,12 +236,14 @@ class IblValidator extends AbstractIblValidator {
 		// otherwise check if it's been created somewhere else
 		
 		// check if locally declared
-		var variableDefinitions = getAllVariableDefinitions(container) 
+		var variableDefinitions = getAllVariableDefinitions(container)
+//		if(variableDefinitions.size>0) println("\tVariable definitions: " + variableDefinitions.map[it.variableName].join(', '))
+		 
 		if(variableDefinitions.exists[it.variableName == variableName]){
-			val definition = variableDefinitions.findFirst[it.variableName == variableName]
-			switch (definition){
-				VariableDefinitionBuiltIn: {return (definition as VariableDefinitionBuiltIn).type}
-				VariableDefinitionUserDefined: {return (definition as VariableDefinitionUserDefined).constructor}
+			val variableDefinition = variableDefinitions.findFirst[it.variableName == variableName]
+			switch (variableDefinition.definition){
+				VariableDefinitionBuiltIn: {return (variableDefinition.definition as VariableDefinitionBuiltIn).type}
+				VariableDefinitionUserDefined: {return (variableDefinition.definition as VariableDefinitionUserDefined).constructor}
 			}
 		}
 		
@@ -273,8 +274,14 @@ class IblValidator extends AbstractIblValidator {
 		for(variableName: atgcArrange.arguments.map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, atgcArrange.eContainer.eContainer))
 				error(variableName.errorMessage,IblPackage::eINSTANCE.ATGCArrange_Arguments)
-//			else //if(getVariableType(variableName, atgcArrange.eContainer.eContainer)!=null)
-//				error(variableName + " must be a biological part: " + getVariableType(variableName,atgcArrange.eContainer.eContainer), IblPackage::eINSTANCE.ATGCArrange_Arguments)
+			else {
+				val type = getVariableType(variableName,atgcArrange.eContainer.eContainer)
+				if(type!=null){
+					val variableType = 	(type as VariableType).name
+					if(!#['PROMOTER', 'GENE', 'INTEGER','RATE','RBS','TERMINATOR' , 'CLONINGSITE'].contains(variableType)) 
+						error(variableName + " must be a biological part. " + variableName + " is a " + variableType, IblPackage::eINSTANCE.ATGCArrange_Arguments)
+				}
+			}
 		}
 	}
 
