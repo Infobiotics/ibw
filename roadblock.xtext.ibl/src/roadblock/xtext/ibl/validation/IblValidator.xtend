@@ -41,6 +41,7 @@ import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
 import roadblock.xtext.ibl.ibl.ATGCArrange
+import java.util.Set
 
 // utility class, used for checking forbidden containers
 @Data
@@ -178,10 +179,11 @@ class IblValidator extends AbstractIblValidator {
 	}
 
 	def getAllArgumentsInDeviceSignature(DeviceDefinition device) {
-		var set = getPartsInDeviceSignature(device).toSet
-		set.addAll(getInputsInDeviceSignature(device).toSet)
-		set.addAll(getOutputsInDeviceSignature(device).toSet)
-		return set
+		var  set = new ArrayList<VariableKind>()
+		if(device.parts!=null) set.addAll(getPartsInDeviceSignature(device))
+		if(device.input!=null) set.addAll(getInputsInDeviceSignature(device))
+		if(device.output!=null) set.addAll(getOutputsInDeviceSignature(device))
+		return set.toSet
 	}
 
 	def isObservable(VariableDefinition variableDefinition) {
@@ -209,6 +211,7 @@ class IblValidator extends AbstractIblValidator {
 			return true
 
 		// if in device: check signature and observables in device's container 
+		println("see me?" + variableName + ", container:" + container)
 		switch (container) {
 			DeviceDefinition: {
 				if(getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists[it.buildVariableName == variableName])
@@ -216,44 +219,36 @@ class IblValidator extends AbstractIblValidator {
 				if(getAllVariableDefinitions(container.eContainer).filter[observable].exists[it.variableName == variableName])
 					return true
 			}
+			
 		}
 
 		return false
 	}
 
-	def getVariableType(String variableName, EObject container) {
+	def Object getVariableType(String variableName, EObject container) {
 		// return type of variableName if it has been declared, or null otherwise
 
+		if(container.eContainer==null) return null
+		
 		//if complex: check if it is created by a rule
 		if(isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
-			return getVariableNamesCreatedByRules(container).findFirst[it == variableName].class
+			return "Complex"
 
 		// otherwise check if it's been created somewhere else
 		
 		// check if locally declared
 		var variableDefinitions = getAllVariableDefinitions(container) 
-		if(variableDefinitions.exists[it.variableName == variableName])
-			return variableDefinitions.findFirst[it.variableName == variableName].class
-
-		// check if it's a rule's name
-		var ruleDefinitions = getAllRules(container)
-		if(ruleDefinitions.exists[it.name.buildVariableName == variableName])
-			return ruleDefinitions.findFirst[it.name.buildVariableName == variableName].class
-
-		// if in device: check signature and observables in device's container 
-		switch (container) {
-			DeviceDefinition: {
-				var inDeviceSignature = getAllArgumentsInDeviceSignature(container as DeviceDefinition)
-				if(inDeviceSignature.exists[it.buildVariableName == variableName])
-					return getVariableType(variableName, container.eContainer)
-				
-				var variableDefinitionsInContainer = getAllVariableDefinitions(container.eContainer).filter[observable]	
-				if(variableDefinitionsInContainer.exists[it.variableName == variableName])
-					return variableDefinitionsInContainer.findFirst[it.variableName == variableName]
+		if(variableDefinitions.exists[it.variableName == variableName]){
+			val definition = variableDefinitions.findFirst[it.variableName == variableName]
+			switch (definition){
+				VariableDefinitionBuiltIn: {return (definition as VariableDefinitionBuiltIn).type}
+				VariableDefinitionUserDefined: {return (definition as VariableDefinitionUserDefined).constructor}
 			}
 		}
+		
+		// Else go up and search again for a definition
+		return getVariableType(variableName, container.eContainer)		
 
-		return null
 	}
 
 	def errorMessage(String variableName) {
@@ -274,9 +269,12 @@ class IblValidator extends AbstractIblValidator {
 
 	@Check
 	def checkEnforceVariableDeclaration(ATGCArrange atgcArrange){
+		// also checks if variable is a biological part
 		for(variableName: atgcArrange.arguments.map[buildVariableName]){
 			if(!hasBeenDeclared(variableName, atgcArrange.eContainer.eContainer))
 				error(variableName.errorMessage,IblPackage::eINSTANCE.ATGCArrange_Arguments)
+//			else //if(getVariableType(variableName, atgcArrange.eContainer.eContainer)!=null)
+//				error(variableName + " must be a biological part: " + getVariableType(variableName,atgcArrange.eContainer.eContainer), IblPackage::eINSTANCE.ATGCArrange_Arguments)
 		}
 	}
 
