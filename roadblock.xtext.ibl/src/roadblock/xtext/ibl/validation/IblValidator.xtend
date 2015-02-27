@@ -91,7 +91,13 @@ class IblValidator extends AbstractIblValidator {
 			FunctionContent: return (container as FunctionContent).members.filter(VariableDefinition)
 			DeviceDefinition: return (container as DeviceDefinition).members.filter(VariableDefinition)
 		}
-
+		
+		}
+		
+	def getAllCellInstantiations(EObject container){
+		switch (container) {
+			FunctionContent: return (container as FunctionContent).members.filter(CellInstantiation)
+		}
 	}
 
 	def getAllRules(EObject container) {
@@ -397,7 +403,15 @@ class IblValidator extends AbstractIblValidator {
 			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinition_Definition)
 		}
 	}
-//def getAllRules
+	//TODO: same for all instantiations (PROCESS etc. Cf grammar)
+	@Check
+	def checkMultipleCellInstantiation(CellInstantiation cellInstantiation){
+		val cellName = cellInstantiation.name.name
+		val container = cellInstantiation.eContainer
+		if(container.getAllCellInstantiations.filter[it.name.name == cellName].size >1){
+			error("Cell'" + cellName + "' is declared twice in the same container.", IblPackage::eINSTANCE.cellInstantiation_Name)
+		}
+	}
 
 	//def getAllRules
 	@Check
