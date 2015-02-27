@@ -403,7 +403,7 @@ class IblValidator extends AbstractIblValidator {
 			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinition_Definition)
 		}
 	}
-	
+	//TODO: same for all instantiations (PROCESS etc. Cf grammar)
 	@Check
 	def checkMultipleCellInstantiation(CellInstantiation cellInstantiation){
 		val cellName = cellInstantiation.name.name
