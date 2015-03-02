@@ -3,9 +3,7 @@
 package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -210,15 +208,13 @@ public class VariableReference extends EObjectImpl implements IArithmeticOperand
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @model
-	 * @generated
+	 * @generated NOT
 	 */
 	public <TResult> TResult accept(IVisitor<TResult> visitor) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		return visitor.visit(this);
 	}
 
 	/**

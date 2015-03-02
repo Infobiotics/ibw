@@ -501,7 +501,7 @@ class ModelBuilder extends IblSwitch<Object> {
 			VariableAttribute:
 				emfVariableAssignment => [
 					variableName = variable.name.buildVariableName
-					variableAttribute = variable.attribute.name
+					variableAttribute = variable.att.name
 				]
 			default:
 				emfVariableAssignment => [variableName = 'NOT IMPLEMENTED'; variableAttribute = 'NOT IMPLEMENTED']

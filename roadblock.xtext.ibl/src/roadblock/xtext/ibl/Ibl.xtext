@@ -265,7 +265,7 @@ VariableType:
 // a variable attribute
 VariableAttribute:
 	{VariableAttribute}
-	name=VariableKind '.' attribute=VariableName
+	name=VariableKind '.' att=VariableName
 ;
 
 // a definition of a variable
