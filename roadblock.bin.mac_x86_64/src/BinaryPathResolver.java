@@ -35,7 +35,6 @@ public class BinaryPathResolver {
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getPrismPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNuSmvPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNgssPath());
-			System.setProperty("java.library.path","/Users/konur/Desktop/CODING/roadblock.xtext/roadblock.bin.mac_x86_64/resources/nuxmv/");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
