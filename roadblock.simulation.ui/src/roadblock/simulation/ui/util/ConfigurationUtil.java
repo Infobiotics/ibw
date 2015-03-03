@@ -83,8 +83,7 @@ public class ConfigurationUtil {
 		config.logInterval = 0.1;
 		config.maxTime = 100.;
 		config.sampleNumber = 1;
-		config.SSAlgorithm = "nrm";
-		
+		config.SSAlgorithm = "Direct Method";
 		return config;
 	}
 

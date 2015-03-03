@@ -152,7 +152,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSAlgorithm.setData("Composition Rejection", "cr");
 		SSAlgorithm.add("Tau Leaping");
 		SSAlgorithm.setData("Tau Leaping", "tl");
-		SSAlgorithm.select(0);
+		//SSAlgorithm.select(0);
 		
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
@@ -343,11 +343,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 		
 		// SSAlgorithm
- 		widgetValue = WidgetProperties.text(SWT.Modify).observe(SSAlgorithm);
+		widgetValue = WidgetProperties.selection().observe(SSAlgorithm);
 		modelValue = BeanProperties.value(Configuration.class, "SSAlgorithm").observe(config);
 		strategy = new UpdateValueStrategy();
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
-		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 	}
 
 	private void ensureConfig() {
