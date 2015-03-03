@@ -28,10 +28,14 @@ public class BinaryPathResolver {
 
 			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
+			
+			URL atgcUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/atgc"), Collections.EMPTY_MAP));
+			BinaryPathProvider.getInstance().setAtgcPath(atgcUrl.getPath());
 
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getPrismPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNuSmvPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNgssPath());
+			System.setProperty("java.library.path","/Users/konur/Desktop/CODING/roadblock.xtext/roadblock.bin.mac_x86_64/resources/nuxmv/");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
