@@ -4,19 +4,12 @@ Bundle-Name: Caching
 Bundle-SymbolicName: roadblock.caching
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: com.google.inject;version="1.3.0",
- javax.inject;version="1.0.0",
- org.eclipse.emf.common.util,
- org.eclipse.emf.ecore,
- org.eclipse.emf.ecore.resource,
- org.eclipse.emf.ecore.resource.impl,
- org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.ecore.xmi.impl,
- org.eclipse.emf.ecore.xmi.util,
- org.eclipse.xtext.resource,
- org.eclipse.xtext.util,
- roadblock.dataprocessing.flatModel,
+Import-Package: roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
  roadblock.xtext.ibl.ibl
 Export-Package: roadblock.caching
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.1",
+ org.eclipse.xtext;bundle-version="2.5.4",
+ org.eclipse.osgi;bundle-version="3.9.1",
+ org.eclipse.osgi.util;bundle-version="3.2.300"
