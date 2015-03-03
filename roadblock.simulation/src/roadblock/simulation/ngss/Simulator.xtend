@@ -12,7 +12,7 @@ class SimulationThread extends Thread {
 	var String resultFilename
 	public var Process process
 
-	new(String xml_model, String resultFilename, String cmd) {
+	new(String xml_model, String resultFilename, String[] cmd) {
 		this.xml_model = xml_model
 		this.resultFilename = resultFilename
 		this.process = Runtime.getRuntime().exec(cmd)
@@ -57,11 +57,13 @@ class Simulator {
 	def runSimulation(String resultFilename, OutputStream errorStream) {
 
 		var ngssPath = BinaryPathProvider.getInstance().getNgssPath();
-		val cmd = '''«ngssPath» --emf parser=emf max_time=«this.max_time» max_runtime=«this.max_runtime» simulation_algorithm=«this.simulation_algorithm» data_file=model.csv log_interval=«this.
-			log_interval» runs=«this.runs» seed=«this.seed» output=console compress=true parallel=true show_progress=false'''
+
+		val String[] simulationCommand = #[ ngssPath, "--emf", "parser=emf", "max_time=" + this.max_time, "max_runtime=" + this.max_runtime, 
+		"simulation_algorithm=" + this.simulation_algorithm, "data_file=model.csv", "log_interval=" + this.log_interval,
+			"runs=" + this.runs, "seed=" + this.seed,  "output=console", "compress=true", "parallel=true", "show_progress=false" ];
 
 		// run simulation
-		var thread = new SimulationThread(this.model, resultFilename, cmd)
+		var thread = new SimulationThread(this.model, resultFilename, simulationCommand)
 		thread.start()
 
 		var result = thread.process.waitFor()
