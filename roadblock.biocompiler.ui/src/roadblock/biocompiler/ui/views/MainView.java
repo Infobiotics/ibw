@@ -24,6 +24,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -33,6 +34,10 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.console.ConsolePlugin;
+import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.MessageConsole;
+import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -59,12 +64,19 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Button compilationButton;
 	private Button refreshButton;
 	private Browser browser;
+	private MessageConsole atgcConsole;
+	
 	
 	private String pathToBiocompiler = BinaryPathProvider.getInstance().getAtgcPath();
 	
 
 	@Override
 	public void createPartControl(Composite parent) {
+		
+		atgcConsole = new MessageConsole("Raw output", null);
+		
+		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { atgcConsole });
+		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(atgcConsole);
 
 		// add change listener model
 		getSite().getPage().addPartListener(this);
@@ -148,6 +160,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 			if(System.getProperty("os.name").startsWith("Windows"))
 				wrapperName = "atgcWrapper.bat";
 
+			final MessageConsoleStream consoleStream = atgcConsole.newMessageStream();
+
 			// run the biocompiler
 			System.out.println("Running the biocompiler");
 			Process process = new ProcessBuilder(pathToBiocompiler + File.separator + wrapperName,xmlFilename,dataDirectory + File.separator + "src-gen",command).start(); 
@@ -159,15 +173,20 @@ public class MainView extends ViewPart implements IPartListener2 {
 			BufferedReader br = new BufferedReader(isr);
 			BufferedReader br2 = new BufferedReader(isr2);
 			String line="";
+//			consoleStream.setActivateOnWrite(true);
 
 			System.out.println("##########  Error stream ############");
+
 			while ((line = br2.readLine()) != null) {
 				System.out.println(line);
+				consoleStream.println(line);
+				
 				}
 
 			System.out.println("##########  Input stream ############");
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
+				consoleStream.println(line);
 				}
 		} catch (IOException e) {
 			System.out.println("Problem when creating the xml");
