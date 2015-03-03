@@ -50,8 +50,6 @@ import roadblock.simulation.ui.Activator;
 import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
 
-// XXX mimick changes in modelchecking.ui
-
 public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.simulation.ui.views.mainView";
@@ -60,7 +58,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private XtextResource currentIblResource;
 	private MessageConsole simulationConsole;
 
-	// private CheckboxTreeViewer propertyTreeViewer;
 	private Text modelFile;
 	private Text dataFile;
 	private Text maxTime;
@@ -137,16 +134,26 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSLabel.setToolTipText("simulation algorithm to use");
 		SSAlgorithm = new Combo(parent, SWT.NONE);
 		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		SSAlgorithm.add("dm");
-		SSAlgorithm.add("frm");
-		SSAlgorithm.add("cr");
-		SSAlgorithm.add("tl");
-		SSAlgorithm.add("nrm");
-		SSAlgorithm.add("pdm");
-		SSAlgorithm.add("ldm");
-		SSAlgorithm.add("sdm");
-		SSAlgorithm.add("odm");
-
+		SSAlgorithm.add("Direct Method");
+		SSAlgorithm.setData("Direct Method", "dm");
+		SSAlgorithm.add("First Reaction Method");
+		SSAlgorithm.setData("First Reaction Method", "frm");
+		SSAlgorithm.add("Next Reaction Method");
+		SSAlgorithm.setData("Next Reaction Method", "nrm");
+		SSAlgorithm.add("Optimized Direct Method");
+		SSAlgorithm.setData("Optimized Direct Method", "odm");
+		SSAlgorithm.add("Sorted Direct Method");
+		SSAlgorithm.setData("Sorted Direct Method", "sdm");
+		SSAlgorithm.add("Logarithmic Direct Method");
+		SSAlgorithm.setData("Logarithmic Direct Method", "ldm");
+		SSAlgorithm.add("Partial Propensity Direct Method");
+		SSAlgorithm.setData("Partial Propensity Direct Method", "pdm");
+		SSAlgorithm.add("Composition Rejection");
+		SSAlgorithm.setData("Composition Rejection", "cr");
+		SSAlgorithm.add("Tau Leaping");
+		SSAlgorithm.setData("Tau Leaping", "tl");
+		SSAlgorithm.select(0);
+		
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
 		simulationButton.setText("Simulate");
@@ -211,7 +218,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 			maxTime.setText(config.maxTime.toString());
 			logInterval.setText(config.logInterval.toString());
 			sampleNumber.setText(config.sampleNumber.toString());
-			SSAlgorithm.setText(config.SSAlgorithm);
+			//SSAlgorithm.setText(config.SSAlgorithm);
 		}
 	}
 
@@ -228,9 +235,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// model file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
 		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
-
-		// add a validator so can only be a non-empty string
 		validator = new IValidator() {
+			// non-empty string validator
 			@Override
 			public IStatus validate(Object value) {
 				if (value instanceof String) {
@@ -251,9 +257,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// data file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(dataFile);
 		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
-
-		// add a validator so can only be a non-empty string
 		validator = new IValidator() {
+			// non-empty string validator
 			@Override
 			public IStatus validate(Object value) {
 				if (value instanceof String) {
@@ -270,6 +275,79 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+
+		// max_time
+ 		widgetValue = WidgetProperties.text(SWT.Modify).observe(maxTime);
+		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
+		validator = new IValidator() {
+			// decimal number validator
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+					return ValidationStatus.ok();
+				}
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+		
+		// logInterval
+ 		widgetValue = WidgetProperties.text(SWT.Modify).observe(logInterval);
+		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
+		validator = new IValidator() {
+			// decimal number validator
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Double) {
+					Double doubleValue = (Double) value;
+					if (doubleValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+					return ValidationStatus.ok();
+				}
+				return ValidationStatus.error("not a decimal number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+		
+		// sampleNumber
+ 		widgetValue = WidgetProperties.text(SWT.Modify).observe(sampleNumber);
+		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
+		validator = new IValidator() {
+			// integer number validator
+			@Override
+			public IStatus validate(Object value) {
+				if (value instanceof Integer) {
+					Integer intValue = (Integer) value;
+					if (intValue <= 0) {
+						return ValidationStatus.error("should be greater than 0");
+					}
+					return ValidationStatus.ok();
+				}
+				return ValidationStatus.error("not an integer number");
+			}
+		};
+		strategy = new UpdateValueStrategy();
+		strategy.setBeforeSetValidator(validator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
+		
+		// SSAlgorithm
+ 		widgetValue = WidgetProperties.text(SWT.Modify).observe(SSAlgorithm);
+		modelValue = BeanProperties.value(Configuration.class, "SSAlgorithm").observe(config);
+		strategy = new UpdateValueStrategy();
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 	}
 
 	private void ensureConfig() {
@@ -280,7 +358,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	// launch simulator
 	private void performSimulation() {
-		// XXX read model from EMFModel.xml rather than regenerating it
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
@@ -294,6 +371,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		simulator.max_time = config.getMaxTime();
 		simulator.log_interval = config.getLogInterval();
 		simulator.runs = config.getSampleNumber();
+		simulator.simulation_algorithm = SSAlgorithm.getData(config.SSAlgorithm).toString();
 		// simulator.max_runtime = 0.0;
 		// simulator.seed = 0;
 		simulator.runSimulation(exportFilename, consoleStream);
