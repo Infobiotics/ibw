@@ -24,6 +24,9 @@ public class BinaryPathResolver {
 			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss.exe"), Collections.EMPTY_MAP));
 			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
 			
+			URL atgcUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/atgc"), Collections.EMPTY_MAP));
+			BinaryPathProvider.getInstance().setAtgcPath(atgcUrl.getPath());
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
