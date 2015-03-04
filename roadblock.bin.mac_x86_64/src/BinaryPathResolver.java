@@ -36,6 +36,33 @@ public class BinaryPathResolver {
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNuSmvPath());
 			setBinaryFullPermissions(BinaryPathProvider.getInstance().getNgssPath());
 			
+			// permissions for ATGC 
+			Set<String> programs = new HashSet<String>();
+			programs.add("atgcWrapper.sh");
+			programs.add("resources/RBSCalculator/fakeRBSCalculator.py");
+			programs.add("resources/RBSCalculator/NuPACK");
+			programs.add("resources/RBSCalculator/RBS_Calculator");  
+			programs.add("resources/RBSCalculator/RBSDesignerWrapper.sh");  
+			programs.add("resources/RBSCalculator/RBS_MC_Design");
+			programs.add("resources/RBSCalculator/Run_RBS_Calculator");  
+			programs.add("resources/RBSCalculator/Run_RBS_Design");  
+			programs.add("resources/RBSCalculator/ViennaRNA");
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/complexes");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/concentrations");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/count");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/defect");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/design");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/distributions");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/energy");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/mfe");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/pairs");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/pfunc");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/prob");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/sample");  
+			programs.add("resources/RBSCalculator/nupack3.0.4/bin/subopt");
+			
+			for(String filename: programs)
+				setBinaryFullPermissions(BinaryPathProvider.getInstance().getAtgcPath() + filename);			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
