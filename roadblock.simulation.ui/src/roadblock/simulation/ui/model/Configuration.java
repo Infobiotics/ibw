@@ -1,7 +1,12 @@
 package roadblock.simulation.ui.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class Configuration {
 
+	private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+	
 	public String modelName;
 	public String modelFile;
 	public String dataFile;
@@ -11,13 +16,32 @@ public class Configuration {
 	public Integer sampleNumber;
 	public String SSAlgorithm;
 
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		changeSupport.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		changeSupport.removePropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		changeSupport.addPropertyChangeListener(propertyName, listener);
+	}
+
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		changeSupport.removePropertyChangeListener(propertyName, listener);
+	}
+
+	protected void firePropertyChange(String propertyName, Object oldValue, Object newValue) {
+		changeSupport.firePropertyChange(propertyName, oldValue, newValue);
+	}
 	
 	public String getModelName() {
 		return modelName;
 	}
 
 	public void setModelName(String modelName) {
-		this.modelName = modelName;
+		changeSupport.firePropertyChange("modelName", this.modelName, this.modelName = modelName);
 	}
 	
 	public String getModelFile() {
@@ -25,7 +49,7 @@ public class Configuration {
 	}
 
 	public void setModelFile(String modelFile) {
-		this.modelFile = modelFile;
+		changeSupport.firePropertyChange("modelFile", this.modelFile, this.modelFile = modelFile);
 	}
 
 	public String getDataFile() {
@@ -33,7 +57,7 @@ public class Configuration {
 	}
 
 	public void setDataFile(String dataFile) {
-		this.dataFile = dataFile;
+		changeSupport.firePropertyChange("dataFile", this.dataFile, this.dataFile = dataFile);
 	}
 
 	public String getDataDirectory() {
@@ -41,7 +65,7 @@ public class Configuration {
 	}
 
 	public void setDataDirectory(String dataDirectory) {
-		this.dataDirectory = dataDirectory;
+		changeSupport.firePropertyChange("dataDirectory", this.dataDirectory, this.dataDirectory = dataDirectory);
 	}
 
 	public Integer getSampleNumber() {
@@ -49,7 +73,7 @@ public class Configuration {
 	}
 
 	public void setSampleNumber(Integer sampleNumber) {
-		this.sampleNumber = sampleNumber;
+		changeSupport.firePropertyChange("sampleNumber", this.sampleNumber, this.sampleNumber = sampleNumber);
 	}
 
 	public Double getMaxTime() {
@@ -57,7 +81,7 @@ public class Configuration {
 	}
 	
 	public void setMaxTime(Double maxTime) {
-		this.maxTime = maxTime;
+		changeSupport.firePropertyChange("maxTime", this.maxTime, this.maxTime = maxTime);
 	}
 	
 	public Double getLogInterval() {
@@ -65,15 +89,15 @@ public class Configuration {
 	}
 	
 	public void setLogInterval(Double logInterval) {
-		this.logInterval = logInterval;
+		changeSupport.firePropertyChange("logInterval", this.logInterval, this.logInterval = logInterval);
 	}
 	
 	public String getSSAlgorithm() {
 		return SSAlgorithm;
 	}
 
-	public void setSSAlgorithm(String ssAlgorithm) {
-		this.SSAlgorithm = ssAlgorithm;
+	public void setSSAlgorithm(String SSAlgorithm) {
+		changeSupport.firePropertyChange("SSAlgorithm", this.SSAlgorithm, this.SSAlgorithm = SSAlgorithm);
 	}
 
 }
