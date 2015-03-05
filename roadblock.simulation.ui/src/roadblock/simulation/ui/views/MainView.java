@@ -205,20 +205,12 @@ public class MainView extends ViewPart implements IPartListener2 {
 			simulationButton.setEnabled(false);
 			simulationButton.setEnabled(false);
 		} else {
-			/*
-			 * if (model != null) {
-			 * 
-			 * ((IblLabelProvider)
-			 * propertyTreeViewer.getLabelProvider()).resetIndex();
-			 * propertyTreeViewer.setInput(model); }
-			 */
 			simulationButton.setEnabled(true);
 			modelFile.setText(config.modelFile);
 			dataFile.setText(config.dataFile);
 			maxTime.setText(config.maxTime.toString());
 			logInterval.setText(config.logInterval.toString());
 			sampleNumber.setText(config.sampleNumber.toString());
-			//SSAlgorithm.setText(config.SSAlgorithm);
 		}
 	}
 
@@ -374,6 +366,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// simulator.max_runtime = 0.0;
 		// simulator.seed = 0;
 		simulator.runSimulation(exportFilename, consoleStream);
+
+		// XXX refresh project explorer
 	}
 
 	@SuppressWarnings("unused")
