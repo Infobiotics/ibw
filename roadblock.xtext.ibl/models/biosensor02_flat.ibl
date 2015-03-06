@@ -8,7 +8,7 @@
   
 
 define SentinelCell typeof CELL(){
-	rnaP = MOLECULE(amount=1e-6 M) : observable
+	rnaP = MOLECULE(concentration=1e-6 M) : observable
 
 	SA = MOLECULE()
 	AHL = MOLECULE()
