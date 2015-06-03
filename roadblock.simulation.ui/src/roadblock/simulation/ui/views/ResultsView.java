@@ -1,4 +1,4 @@
-package roadblock.biocompiler.ui.views;
+package roadblock.simulation.ui.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
@@ -13,7 +13,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	/**
 	 * The ID of the view as specified by the extension.
 	 */
-	public static final String ID = "roadblock.biocompiler.ui.views.resultsView";
+	public static final String ID = "roadblock.simulation.ui.views.resultsView";
 
 	private Browser browser;
 	/**
@@ -29,8 +29,9 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 */
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
+		// TODO XY Graph
 		browser = new Browser(parent,SWT.NONE);
-		browser.setText("<body bgcolor='#ffffff'><h2>Initialisation</h2></body>");
+		browser.setText("<body bgcolor='#ffffff'><h2>XXX graph here</h2></body>");
 	}
 
 
@@ -43,80 +44,47 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 
 	@Override
 	public void partActivated(IWorkbenchPartReference partRef) {
-//		// TODO Auto-generated method stub
-//		IWorkbenchPart part = partRef.getPart(true);
-//		if (part instanceof XtextEditor) {
-//			XtextEditor editor = (XtextEditor) part;
-//			if (editor.getLanguageName().equals("org.icos.subtext.Subtext")) {
-//				IReadAccess<XtextResource> document = editor.getDocument();
-//				Resource resource = document.readOnly(new IUnitOfWork<XtextResource,XtextResource>() {
-//					public XtextResource exec(XtextResource state) {
-//						return state;
-//					}
-//				});
-//				currentResource = resource;
-//				propertyChange(
-//					new PropertyChangeEvent(resource, SubtextResourceScopeCache.MODEL, null, 
-//						cache.getModel(resource)));
-//			}
-//		}
-//		
 	}
 
 	@Override
 	public void partBroughtToTop(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void partClosed(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void partDeactivated(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void partOpened(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void partHidden(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void partVisible(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void partInputChanged(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	
 	protected void updateUI() {
-
 	}
 	
 	@Override
 	public void dispose() {
-		//getSite().getPage().removePartListener(this);
 	}
 	
 	// my own functions
 	public void setContent(String html){
+		// TODO do work here?
 		browser.setText(html);
 	}
 }

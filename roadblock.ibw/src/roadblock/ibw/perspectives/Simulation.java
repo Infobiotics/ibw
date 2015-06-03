@@ -19,6 +19,9 @@ public class Simulation implements IPerspectiveFactory {
 		IFolderLayout rightArea = layout.createFolder("right", IPageLayout.RIGHT, .7f, editorArea);
 		rightArea.addView("roadblock.simulation.ui.views.mainView");
 		
+		//IFolderLayout bottomArea = layout.createFolder("bottom", IPageLayout.BOTTOM, .8f, editorArea);
+		//bottomArea.addView("roadblock.simulation.ui.views.resultsView");
 		layout.addView(IConsoleConstants.ID_CONSOLE_VIEW, IPageLayout.BOTTOM, .7f, editorArea);
+
 	}
 }

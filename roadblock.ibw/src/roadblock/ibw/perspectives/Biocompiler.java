@@ -17,10 +17,5 @@ public class Biocompiler implements IPerspectiveFactory {
 		rightArea.addView("roadblock.biocompiler.ui.views.mainView");
 		bottomArea.addView("roadblock.biocompiler.ui.views.consoleView");
 		bottomArea.addView("roadblock.biocompiler.ui.views.resultsView");
-		
 	}
-		
-	
-	
-
 }
