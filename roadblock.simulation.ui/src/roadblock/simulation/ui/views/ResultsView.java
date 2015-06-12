@@ -1,8 +1,7 @@
 package roadblock.simulation.ui.views;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
+import org.csstudio.swt.xygraph.figures.XYGraph;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
@@ -15,7 +14,8 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 */
 	public static final String ID = "roadblock.simulation.ui.views.resultsView";
 
-	private Browser browser;
+	private XYGraph xyGraph; // = new XYGraph();
+	
 	/**
 	 * The constructor.
 	 */
@@ -30,8 +30,6 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	public void createPartControl(Composite parent) {
 		this.parent = parent;
 		// TODO XY Graph
-		browser = new Browser(parent,SWT.NONE);
-		browser.setText("<body bgcolor='#ffffff'><h2>XXX graph here</h2></body>");
 	}
 
 
@@ -83,8 +81,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	}
 	
 	// my own functions
-	public void setContent(String html){
+	public void setContent(){
 		// TODO do work here?
-		browser.setText(html);
 	}
 }

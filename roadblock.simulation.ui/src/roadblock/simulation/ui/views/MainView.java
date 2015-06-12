@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.MessageConsole;
@@ -48,6 +49,7 @@ import roadblock.caching.ModelCache;
 import roadblock.simulation.ngss.Simulator;
 import roadblock.simulation.ui.Activator;
 import roadblock.simulation.ui.model.Configuration;
+import roadblock.simulation.ui.views.ResultsView;
 import roadblock.simulation.ui.util.ConfigurationUtil;
 
 public class MainView extends ViewPart implements IPartListener2 {
@@ -367,9 +369,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 		// simulator.seed = 0;
 		simulator.runSimulation(exportFilename, consoleStream);
 
+		updateResultsView();
 		// XXX refresh project explorer
 	}
 
+	private void updateResultsView() {
+		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage()
+				.findView("roadblock.simulation.ui.views.resultsView");
+		// XXX content
+		resultsView.setContent();
+	}
+	
 	@SuppressWarnings("unused")
 	private static void errorDialogWithStackTrace(String msg, Throwable t) {
 

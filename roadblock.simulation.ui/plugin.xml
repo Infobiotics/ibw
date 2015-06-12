@@ -15,5 +15,11 @@
             id="roadblock.simulation.ui.views.mainView"
             name="Simulation">
       </view>
+      <view
+            category="roadblock.simulation.ui"
+            class="roadblock.simulation.ui.views.ResultsView"
+            id="roadblock.simulation.ui.views.resultsView"
+            name="Results view">
+      </view>
       </extension>
 </plugin>

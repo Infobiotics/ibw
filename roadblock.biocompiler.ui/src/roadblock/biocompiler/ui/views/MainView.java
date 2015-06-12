@@ -1,11 +1,9 @@
 package roadblock.biocompiler.ui.views;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -29,7 +27,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -53,7 +50,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
-import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.biocompiler.ui.Activator;
 import roadblock.biocompiler.ui.util.BiocompilationUtil;
@@ -307,7 +303,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				runBiocompiler(xmlFilename, "parse");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -317,7 +312,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 						Charset.defaultCharset());
 				browser.setText(identifiedParts);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -352,7 +346,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 					Charset.defaultCharset());
 			myConsole.setContent(console);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -367,7 +360,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 					Charset.defaultCharset());
 			resultsView.setContent(console);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
