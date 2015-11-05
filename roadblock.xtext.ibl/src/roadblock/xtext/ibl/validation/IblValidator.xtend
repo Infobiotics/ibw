@@ -3,7 +3,9 @@ package roadblock.xtext.ibl.validation
 import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.xtend.lib.annotations.Data
 import org.eclipse.xtext.validation.Check
+import roadblock.xtext.ibl.ibl.ATGCArrange
 import roadblock.xtext.ibl.ibl.ATGCDefinition
 import roadblock.xtext.ibl.ibl.AdditionSubtractionExpression
 import roadblock.xtext.ibl.ibl.ArithmeticOperand
@@ -17,7 +19,6 @@ import roadblock.xtext.ibl.ibl.List
 import roadblock.xtext.ibl.ibl.MultiplicationDivisionExpression
 import roadblock.xtext.ibl.ibl.Outside
 import roadblock.xtext.ibl.ibl.PlasmidInstantiation
-import roadblock.xtext.ibl.ibl.ProbabilityProperty
 import roadblock.xtext.ibl.ibl.ProcessInstantiation
 import roadblock.xtext.ibl.ibl.PropertyDefinition
 import roadblock.xtext.ibl.ibl.PropertyVariableReference
@@ -33,6 +34,7 @@ import roadblock.xtext.ibl.ibl.VariableDefinitionUserDefined
 import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.VariableReference
+import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.impl.CellBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ChromosomeBodyImpl
 import roadblock.xtext.ibl.ibl.impl.CustomFunctionBodyImpl
@@ -40,9 +42,6 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
-import roadblock.xtext.ibl.ibl.ATGCArrange
-import java.util.Set
-import roadblock.xtext.ibl.ibl.VariableType
 
 // utility class, used for checking forbidden containers
 @Data
@@ -53,7 +52,6 @@ class ContainerData {
 
 class IblValidator extends AbstractIblValidator {
 
-	
 	def isComplex(String name) {
 		name.contains('~')
 	}

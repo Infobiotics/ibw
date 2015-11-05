@@ -4,6 +4,7 @@
 
 grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate ibl "http://www.xtext.roadblock/ibl/Ibl"
 
 /////////////////////
@@ -357,7 +358,7 @@ AtomicVariableExpressionObject:
 	{VariableReference} variable = VariableName | 
 	{VariableAttribute} attribute=VariableAttribute | 
 	{VariableComplex} complex=VariableComplex | 
-	{RealConstant} value=REAL | 
+	{RealConstant} value=Real | 
 	{Quantity} quantity = Quantity | 
 	{StringConstant} string=STRING
 ;
@@ -414,7 +415,7 @@ ATGCDirection:
 
 ATGCTranslationRate: 
 	{ATGCTranslationRate}
-	'TRANSLATION RATE' ':' translationRate = REAL
+	'TRANSLATION RATE' ':' translationRate = Real
 ;
 /////////////////////////
 // model checker rules //
@@ -487,32 +488,32 @@ MultiplicationDivisionExpression:
 
 ArithmeticOperand:
 	{ArithmeticOperand}
-	numericLiteral=REAL | concentrationQuantity=ConcentrationQuantity | variable=PropertyVariableReference | isMaximumOfInterest?='MAX('variable=PropertyVariableReference')' | '(' expression=AdditionSubtractionExpression ')' 
+	numericLiteral=Real | concentrationQuantity=ConcentrationQuantity | variable=PropertyVariableReference | isMaximumOfInterest?='MAX('variable=PropertyVariableReference')' | '(' expression=AdditionSubtractionExpression ')' 
 ;
 
 TimeInstant:
 	{TimeInstant}
-	(isEqualTo?='AT' timeInstant=INT | isLessThanOrEqual?='BEFORE' timeInstant=INT | isGreaterThanOrEqual?='AFTER' timeInstant=INT) timeUnit=TimeUnit
+	(isEqualTo?='AT' timeInstant=INT | isLessThanOrEqual?='BEFORE' timeInstant=INT | isGreaterThanOrEqual?='AFTER' timeInstant=INT) timeUnit=TIME_UNIT
 ;
 
 TimeInterval:
 	{TimeInterval}
-	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TimeUnit
+	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TIME_UNIT
 ;
 
 RewardTimeInstant:
 	{RewardTimeInstant}
-	(isEqualTo?='AT' | isLessThanOrEqual?='WITHIN') timeValue=INT timeUnit=TimeUnit
+	(isEqualTo?='AT' | isLessThanOrEqual?='WITHIN') timeValue=INT timeUnit=TIME_UNIT
 ;
 
 ProbabilityConstraint:
 	{ProbabilityConstraint}
-	'WITH PROBABILITY' ((operator=RelationalOperator probability=UnitInterval) | hasUnknownProbability?='?') 
+	'WITH PROBABILITY' ((operator=RelationalOperator probability=UNIT_INTERVAL) | hasUnknownProbability?='?') 
 ;
 
 ConcentrationConstraint:
 	{ConcentrationConstraint}
-	(operator=RelationalOperator value=REAL unit=ConcentrationUnit) | isUnknown?='?' 
+	(operator=RelationalOperator value=Real unit=CONCENTRATION_UNIT) | isUnknown?='?' 
 ;
 
 //StateFormula:
@@ -533,47 +534,57 @@ PropertyVariableReference:
 // basic types //
 /////////////////
 
-REAL:
-	Decimal | DecimalExp
-;
-
-UnitInterval:
-	'1.0' | '.' (INT)* | '0.' (INT)*
-;
-
-Decimal hidden():
-	('+'|'-')?  INT ('.' INT)?
-;
-
-DecimalExp hidden():
-	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
-;
-
-TimeUnit:
-	's' | 'min' | 'mins'
-;
-
-FluxUnit:
-	's^-1' | 'min^-1'
-;
-
-ConcentrationUnit:
-	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules' 
-;
+Real returns ecore::EDouble:
+	INT | FLOAT;
 
 Unit:
-	TimeUnit | FluxUnit | ConcentrationUnit
-;
+	TIME_UNIT | FLUX_UNIT | CONCENTRATION_UNIT;
+
+terminal UNIT_INTERVAL returns ecore::EDouble:
+	'1' ('.' '0'?)? | '0.' DIGITS? | '.' DIGITS?;
+
+terminal INT returns ecore::EInt:
+	'0' | NON_ZERO_DIGIT DIGITS?;
+
+terminal FLOAT returns ecore::EDouble:
+	INT '.' DIGITS? EXPONENT_PART? | '.' DIGITS EXPONENT_PART? | INT EXPONENT_PART;
+
+terminal fragment DIGITS:
+	('0'..'9')+;
+
+terminal fragment NON_ZERO_DIGIT:
+	'1'..'9';
+
+terminal fragment EXPONENT_PART:
+	EXPONENT_INDICATOR SIGNED_INT;
+
+terminal fragment EXPONENT_INDICATOR:
+	'e' | 'E';
+
+terminal fragment SIGNED_INT:
+	SIGN? INT;
+
+terminal fragment SIGN:
+	'+' | '-';
+
+terminal TIME_UNIT:
+	's' | 'min' | 'mins';
+
+terminal FLUX_UNIT:
+	's^-1' | 'min^-1';
+
+terminal CONCENTRATION_UNIT:
+	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules';
 
 // a quantity with units
 Quantity:
 	{Quantity}
-	value=REAL units=Unit
+	value=Real units=Unit
 ;
 
 ConcentrationQuantity:
 	{ConcentrationQuantity}
-	value=REAL unit=ConcentrationUnit
+	value=Real unit=CONCENTRATION_UNIT
 ;
 
 // relational operators
