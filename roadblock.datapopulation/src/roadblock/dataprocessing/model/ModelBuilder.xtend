@@ -66,7 +66,7 @@ class ModelBuilder extends IblSwitch<Object> {
 
 		for (concreteProperty : emfModel.eAllContents.toList.filter(IProperty)) {
 			for (entry : semanticEntityByProperty.entrySet) {
-				if(EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
+				if (EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
 					mapper.put(concreteProperty, entry.value);
 				}
 			}
@@ -84,7 +84,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	}
 
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
-		if(moleculeList.filter[displayName == complexName].size == 0) {
+		if (moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
 			complex => [
 				displayName = complexName
@@ -175,7 +175,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 	}
 
-	// 
+	//
 	def populate(Model xtextModel) {
 		return doSwitch(xtextModel) as roadblock.emf.ibl.Ibl.Model;
 	}
@@ -211,11 +211,13 @@ class ModelBuilder extends IblSwitch<Object> {
 			var EObject variable
 			switch container {
 				Region:
-					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].head
+					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].
+						head
 				Cell:
 					variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
 				Device:
-					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].head
+					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].
+						head
 			}
 
 			switch variable {
@@ -291,7 +293,7 @@ class ModelBuilder extends IblSwitch<Object> {
 
 	override caseATGCTranslationRate(ATGCTranslationRate atgcTranslationRate) {
 		var emfAtgcTranslationRate = modelFactory.createATGCTranslationRate
-		emfAtgcTranslationRate.translationRate = Double.parseDouble(atgcTranslationRate.translationRate)
+		emfAtgcTranslationRate.translationRate = atgcTranslationRate.translationRate
 		return emfAtgcTranslationRate
 
 	}
@@ -384,11 +386,12 @@ class ModelBuilder extends IblSwitch<Object> {
 			}
 		}
 
-		for (part : deviceDefinition.parts.entries.map[
+		for (part : deviceDefinition.parts.entries.map [
 			switch (it) {
 				VariableReference: (it as VariableReference).variable.buildVariableName
 				VariableComplex: (it as VariableComplex).complex.buildVariableName
-			}]) {
+			}
+		]) {
 
 			// create an empty part, just for reference. Validation should have ensured that the part has already been declared.
 			var biopart = modelFactory.createMolecularSpecies
@@ -427,7 +430,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		]
 
 		// Defaults for parts and molecules
-		if(isPart(type))
+		if (isPart(type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
@@ -445,21 +448,21 @@ class ModelBuilder extends IblSwitch<Object> {
 					molecule.displayName = parameter.value.doSwitch as String
 				case 'concentration': {
 					val q = parameter.value.doSwitch as Quantity;
-					molecule => [amount = Double.parseDouble(q.value); unit = getConcentrationUnit(q.units)]
+					molecule => [amount = q.value; unit = getConcentrationUnit(q.units)]
 				}
 				case 'URI':
 					molecule.URI = parameter.value.doSwitch as String
 				case 'degradationRate': {
 					val q = parameter.value.doSwitch as Quantity;
-					molecule => [degradationRate = Double.parseDouble(q.value); unit = getConcentrationUnit(q.units)]
+					molecule => [degradationRate = q.value; unit = getConcentrationUnit(q.units)]
 				}
 				case 'bindingRate': {
 					val q = parameter.value.doSwitch as Quantity;
-					molecule => [bindingRate = Double.parseDouble(q.value); unit = getConcentrationUnit(q.units)]
+					molecule => [bindingRate = q.value; unit = getConcentrationUnit(q.units)]
 				}
 				case 'unbindingRate': {
 					val q = parameter.value.doSwitch as Quantity;
-					molecule => [unbindingRate = Double.parseDouble(q.value); unit = getConcentrationUnit(q.units)]
+					molecule => [unbindingRate = q.value; unit = getConcentrationUnit(q.units)]
 				}
 				case 'sequence': {
 					val q = parameter.value.doSwitch as String
@@ -511,7 +514,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		switch expression {
 			Quantity:
 				emfVariableAssignment => [
-					amount = Double.parseDouble(expression.value)
+					amount = expression.value
 					unit = expression.units
 				]
 			default:

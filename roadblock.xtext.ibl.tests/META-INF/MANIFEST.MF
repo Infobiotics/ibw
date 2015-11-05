@@ -12,11 +12,13 @@ Require-Bundle: roadblock.xtext.ibl,
  org.eclipse.ui,
  org.eclipse.jdt.core;bundle-version="3.8.3",
  org.eclipse.xtext.xbase.junit;bundle-version="2.5.0",
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.log4j,
  org.hamcrest.core,
  org.junit;version="4.5.0",
+ org.junit.rules;version="4.11.0",
  org.junit.runner;version="4.5.0",
  org.junit.runner.manipulation;version="4.5.0",
  org.junit.runner.notification;version="4.5.0",

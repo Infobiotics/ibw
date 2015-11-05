@@ -207,7 +207,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 		} else {
 			var concreteProbability = modelFactory.createConcreteProbabilityConstraint;
 			concreteProbability.operator = getRelationalOperator(probabilityConstraint.operator);
-			concreteProbability.bound = Double.parseDouble(probabilityConstraint.probability);
+			concreteProbability.bound = probabilityConstraint.probability;
 			probability = concreteProbability;
 		}
 
@@ -219,7 +219,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 		var initialCondition = modelFactory.createPropertyInitialCondition;
 
 		initialCondition.variable = doSwitch(propertyInitialCondition.variable) as VariableReference
-		initialCondition.amount = Double.parseDouble(propertyInitialCondition.value.value);
+		initialCondition.amount = propertyInitialCondition.value.value;
 		initialCondition.unit = getConcentrationUnit(propertyInitialCondition.value.unit);
 
 		return initialCondition;
@@ -233,7 +233,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 
 			concentration = modelFactory.createConcentrationConstraint;
 			concentration.operator = getRelationalOperator(concentrationConstraint.operator);
-			concentration.value = Double.parseDouble(concentrationConstraint.value);
+			concentration.value = concentrationConstraint.value;
 			concentration.unit = getConcentrationUnit(concentrationConstraint.unit);
 		}
 
@@ -294,7 +294,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			operand = doSwitch(arithmeticOperand.concentrationQuantity) as  IArithmeticOperand;
 		} else {
 			var numericLiteral = modelFactory.createNumericLiteral
-			numericLiteral.value = Double.parseDouble(arithmeticOperand.numericLiteral);
+			numericLiteral.value = arithmeticOperand.numericLiteral;
 			operand = numericLiteral;
 		}
 
@@ -305,7 +305,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 		
 		var concentration = modelFactory.createConcentrationQuantity;
 		
-		concentration.amount = Double.parseDouble(concentrationQuantity.value);
+		concentration.amount = concentrationQuantity.value;
 		concentration.unit = getConcentrationUnit(concentrationQuantity.unit);
 		
 		return concentration;
