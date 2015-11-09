@@ -3,8 +3,8 @@
 package roadblock.emf.ibl.Ibl;
 
 import java.util.Collection;
-
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -165,44 +165,24 @@ public class Rule extends EObjectImpl implements IVisitable {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getForwardRateUnit() <em>Forward Rate Unit</em>}' attribute.
+	 * The cached value of the '{@link #getForwardRateUnit() <em>Forward Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getForwardRateUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RateUnit FORWARD_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
+	protected RateUnit forwardRateUnit;
 
 	/**
-	 * The cached value of the '{@link #getForwardRateUnit() <em>Forward Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getForwardRateUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected RateUnit forwardRateUnit = FORWARD_RATE_UNIT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
+	 * The cached value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getReverseRateUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RateUnit REVERSE_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
-
-	/**
-	 * The cached value of the '{@link #getReverseRateUnit() <em>Reverse Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReverseRateUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected RateUnit reverseRateUnit = REVERSE_RATE_UNIT_EDEFAULT;
+	protected RateUnit reverseRateUnit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -358,6 +338,116 @@ public class Rule extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Forward Rate Unit</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Forward Rate Unit</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Forward Rate Unit</em>' containment reference.
+	 * @see #setForwardRateUnit(RateUnit)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRateUnit()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public RateUnit getForwardRateUnit() {
+		return forwardRateUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetForwardRateUnit(RateUnit newForwardRateUnit, NotificationChain msgs) {
+		RateUnit oldForwardRateUnit = forwardRateUnit;
+		forwardRateUnit = newForwardRateUnit;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE_UNIT, oldForwardRateUnit, newForwardRateUnit);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Forward Rate Unit</em>' containment reference.
+	 * @see #getForwardRateUnit()
+	 * @generated
+	 */
+	public void setForwardRateUnit(RateUnit newForwardRateUnit) {
+		if (newForwardRateUnit != forwardRateUnit) {
+			NotificationChain msgs = null;
+			if (forwardRateUnit != null)
+				msgs = ((InternalEObject)forwardRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__FORWARD_RATE_UNIT, null, msgs);
+			if (newForwardRateUnit != null)
+				msgs = ((InternalEObject)newForwardRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__FORWARD_RATE_UNIT, null, msgs);
+			msgs = basicSetForwardRateUnit(newForwardRateUnit, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE_UNIT, newForwardRateUnit, newForwardRateUnit));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Reverse Rate Unit</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Reverse Rate Unit</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Reverse Rate Unit</em>' containment reference.
+	 * @see #setReverseRateUnit(RateUnit)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRateUnit()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public RateUnit getReverseRateUnit() {
+		return reverseRateUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetReverseRateUnit(RateUnit newReverseRateUnit, NotificationChain msgs) {
+		RateUnit oldReverseRateUnit = reverseRateUnit;
+		reverseRateUnit = newReverseRateUnit;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_UNIT, oldReverseRateUnit, newReverseRateUnit);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Reverse Rate Unit</em>' containment reference.
+	 * @see #getReverseRateUnit()
+	 * @generated
+	 */
+	public void setReverseRateUnit(RateUnit newReverseRateUnit) {
+		if (newReverseRateUnit != reverseRateUnit) {
+			NotificationChain msgs = null;
+			if (reverseRateUnit != null)
+				msgs = ((InternalEObject)reverseRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__REVERSE_RATE_UNIT, null, msgs);
+			if (newReverseRateUnit != null)
+				msgs = ((InternalEObject)newReverseRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__REVERSE_RATE_UNIT, null, msgs);
+			msgs = basicSetReverseRateUnit(newReverseRateUnit, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_UNIT, newReverseRateUnit, newReverseRateUnit));
+	}
+
+	/**
 	 * Returns the value of the '<em><b>Left Hand Side</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
 	 * <!-- begin-user-doc -->
@@ -434,80 +524,6 @@ public class Rule extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Forward Rate Unit</b></em>' attribute.
-	 * The default value is <code>"PER_SECOND"</code>.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Forward Rate Unit</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Forward Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
-	 * @see #setForwardRateUnit(RateUnit)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRateUnit()
-	 * @model default="PER_SECOND"
-	 * @generated
-	 */
-	public RateUnit getForwardRateUnit() {
-		return forwardRateUnit;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Forward Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
-	 * @see #getForwardRateUnit()
-	 * @generated
-	 */
-	public void setForwardRateUnit(RateUnit newForwardRateUnit) {
-		RateUnit oldForwardRateUnit = forwardRateUnit;
-		forwardRateUnit = newForwardRateUnit == null ? FORWARD_RATE_UNIT_EDEFAULT : newForwardRateUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE_UNIT, oldForwardRateUnit, forwardRateUnit));
-	}
-
-	/**
-	 * Returns the value of the '<em><b>Reverse Rate Unit</b></em>' attribute.
-	 * The default value is <code>"PER_SECOND"</code>.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Reverse Rate Unit</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reverse Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
-	 * @see #setReverseRateUnit(RateUnit)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRateUnit()
-	 * @model default="PER_SECOND"
-	 * @generated
-	 */
-	public RateUnit getReverseRateUnit() {
-		return reverseRateUnit;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reverse Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
-	 * @see #getReverseRateUnit()
-	 * @generated
-	 */
-	public void setReverseRateUnit(RateUnit newReverseRateUnit) {
-		RateUnit oldReverseRateUnit = reverseRateUnit;
-		reverseRateUnit = newReverseRateUnit == null ? REVERSE_RATE_UNIT_EDEFAULT : newReverseRateUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_UNIT, oldReverseRateUnit, reverseRateUnit));
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model
@@ -529,6 +545,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				return ((InternalEList<?>)getLeftHandSide()).basicRemove(otherEnd, msgs);
 			case IblPackage.RULE__RIGHT_HAND_SIDE:
 				return ((InternalEList<?>)getRightHandSide()).basicRemove(otherEnd, msgs);
+			case IblPackage.RULE__FORWARD_RATE_UNIT:
+				return basicSetForwardRateUnit(null, msgs);
+			case IblPackage.RULE__REVERSE_RATE_UNIT:
+				return basicSetReverseRateUnit(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -635,10 +655,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				setID(ID_EDEFAULT);
 				return;
 			case IblPackage.RULE__FORWARD_RATE_UNIT:
-				setForwardRateUnit(FORWARD_RATE_UNIT_EDEFAULT);
+				setForwardRateUnit((RateUnit)null);
 				return;
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
-				setReverseRateUnit(REVERSE_RATE_UNIT_EDEFAULT);
+				setReverseRateUnit((RateUnit)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -667,9 +687,9 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IblPackage.RULE__FORWARD_RATE_UNIT:
-				return forwardRateUnit != FORWARD_RATE_UNIT_EDEFAULT;
+				return forwardRateUnit != null;
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
-				return reverseRateUnit != REVERSE_RATE_UNIT_EDEFAULT;
+				return reverseRateUnit != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -694,10 +714,6 @@ public class Rule extends EObjectImpl implements IVisitable {
 		result.append(reverseRate);
 		result.append(", ID: ");
 		result.append(id);
-		result.append(", forwardRateUnit: ");
-		result.append(forwardRateUnit);
-		result.append(", reverseRateUnit: ");
-		result.append(reverseRateUnit);
 		result.append(')');
 		return result.toString();
 	}

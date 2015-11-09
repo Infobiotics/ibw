@@ -2,12 +2,16 @@
  */
 package roadblock.emf.ibl.Ibl;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +23,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnit <em>Unit</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnits <em>Units</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}</li>
  * </ul>
  * </p>
@@ -70,24 +74,14 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	protected String variableAttribute = VARIABLE_ATTRIBUTE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUnit() <em>Unit</em>}' attribute.
+	 * The cached value of the '{@link #getUnits() <em>Units</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnit()
+	 * @see #getUnits()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String UNIT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected String unit = UNIT_EDEFAULT;
+	protected EList<String> units;
 
 	/**
 	 * The default value of the '{@link #getAmount() <em>Amount</em>}' attribute.
@@ -195,36 +189,24 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Unit</b></em>' attribute.
+	 * Returns the value of the '<em><b>Units</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unit</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Units</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unit</em>' attribute.
-	 * @see #setUnit(String)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_Unit()
-	 * @model
+	 * @return the value of the '<em>Units</em>' attribute list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_Units()
+	 * @model default=""
 	 * @generated
 	 */
-	public String getUnit() {
-		return unit;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnit <em>Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unit</em>' attribute.
-	 * @see #getUnit()
-	 * @generated
-	 */
-	public void setUnit(String newUnit) {
-		String oldUnit = unit;
-		unit = newUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT, oldUnit, unit));
+	public List<String> getUnits() {
+		if (units == null) {
+			units = new EDataTypeUniqueEList<String>(String.class, this, IblPackage.EMF_VARIABLE_ASSIGNMENT__UNITS);
+		}
+		return units;
 	}
 
 	/**
@@ -282,8 +264,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 				return getVariableName();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				return getVariableAttribute();
-			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
-				return getUnit();
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNITS:
+				return getUnits();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				return getAmount();
 		}
@@ -295,6 +277,7 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -304,8 +287,9 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				setVariableAttribute((String)newValue);
 				return;
-			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
-				setUnit((String)newValue);
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNITS:
+				getUnits().clear();
+				getUnits().addAll((Collection<? extends String>)newValue);
 				return;
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				setAmount((Double)newValue);
@@ -328,8 +312,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				setVariableAttribute(VARIABLE_ATTRIBUTE_EDEFAULT);
 				return;
-			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
-				setUnit(UNIT_EDEFAULT);
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNITS:
+				getUnits().clear();
 				return;
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				setAmount(AMOUNT_EDEFAULT);
@@ -350,8 +334,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE:
 				return VARIABLE_ATTRIBUTE_EDEFAULT == null ? variableAttribute != null : !VARIABLE_ATTRIBUTE_EDEFAULT.equals(variableAttribute);
-			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNIT:
-				return UNIT_EDEFAULT == null ? unit != null : !UNIT_EDEFAULT.equals(unit);
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__UNITS:
+				return units != null && !units.isEmpty();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				return amount != AMOUNT_EDEFAULT;
 		}
@@ -372,8 +356,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 		result.append(variableName);
 		result.append(", variableAttribute: ");
 		result.append(variableAttribute);
-		result.append(", unit: ");
-		result.append(unit);
+		result.append(", units: ");
+		result.append(units);
 		result.append(", amount: ");
 		result.append(amount);
 		result.append(')');
