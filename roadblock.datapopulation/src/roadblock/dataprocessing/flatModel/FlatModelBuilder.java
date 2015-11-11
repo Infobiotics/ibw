@@ -77,7 +77,11 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		this.prefixByCompartment = new HashMap<>();
 		this.childCompartmentsByCompartment = new HashMap<>();
 
-		model.accept(this);
+		try {
+			model.accept(this);
+		} catch (Exception ex) {
+			this.childCompartmentsByCompartment = new HashMap<>();
+		}
 	}
 
 	public FlatModel getFlatModel() {
@@ -609,7 +613,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 			flatModel.getRuleList().add(clonedRule);
 
-			if (clonedRule.getForwardRate() != null) {
+			if (clonedRule.getForwardRate() != null
+					&& clonedRule.getForwardRateUnit() != null) {
 				clonedRule.setForwardRate(UnitConverter.getInstance()
 						.getBaseRate(clonedRule.getForwardRate(),
 								clonedRule.getForwardRateUnit()));
@@ -617,7 +622,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 						.createRateUnit());
 			}
 
-			if (clonedRule.getReverseRate() != null) {
+			if (clonedRule.getReverseRate() != null
+					&& clonedRule.getReverseRateUnit() != null) {
 				clonedRule.setReverseRate(UnitConverter.getInstance()
 						.getBaseRate(clonedRule.getReverseRate(),
 								clonedRule.getReverseRateUnit()));
