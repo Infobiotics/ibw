@@ -469,7 +469,7 @@ terminal UNIT_INTERVAL returns ecore::EDouble:
 	'1' ('.' '0'?)? | '0.' DIGITS? | '.' DIGITS?;
 
 terminal INT returns ecore::EInt:
-	'0' | NON_ZERO_DIGIT DIGITS?;
+	'0' | (NON_ZERO_DIGIT DIGITS?);
 
 terminal FLOAT returns ecore::EDouble:
 	INT '.' DIGITS? EXPONENT_PART? | '.' DIGITS EXPONENT_PART? | INT EXPONENT_PART;

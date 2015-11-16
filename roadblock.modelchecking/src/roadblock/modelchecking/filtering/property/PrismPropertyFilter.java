@@ -38,7 +38,8 @@ public class PrismPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(UnaryProbabilityProperty expression) {
-		boolean isPropertyPatternValid = expression.getOperator() != TemporalPattern.INFINITELY_OFTEN ? true : false;
+		boolean isPropertyPatternValid = expression.getOperator() != TemporalPattern.INFINITELY_OFTEN
+				&& expression.getOperator() != TemporalPattern.STEADY_STATE ? true : false;
 		boolean isStateFormulaValid = expression.getStateFormula().accept(this);
 
 		return isPropertyPatternValid && isStateFormulaValid;
@@ -46,17 +47,17 @@ public class PrismPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(BinaryProbabilityProperty expression) {
+		boolean isPropertyPatternValid = expression.getOperator() != TemporalPattern.FOLLOWED_BY ? true : false;
+		
 		boolean isLeftOperandValid = expression.getLeftOperand().accept(this);
 		boolean isRightOperandValid = expression.getRightOperand().accept(this);
 
-		return isLeftOperandValid && isRightOperandValid;
+		return isPropertyPatternValid && isLeftOperandValid && isRightOperandValid;
 	}
 
 	@Override
 	public Boolean visit(SteadyStateProperty expression) {
-		boolean isStateFormulaValid = expression.getStateFormula().accept(this);
-
-		return isStateFormulaValid;
+		return false;
 	}
 
 	@Override

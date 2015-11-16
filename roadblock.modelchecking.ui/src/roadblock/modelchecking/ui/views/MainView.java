@@ -68,6 +68,7 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
+import roadblock.modelchecking.filtering.FilteringManager;
 import roadblock.modelchecking.runtime.IModelcheckingConfiguration;
 import roadblock.modelchecking.runtime.VerificationManager;
 import roadblock.modelchecking.runtime.mc2.Mc2Configuration;
@@ -307,7 +308,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (iblEditor != null && propertyTreeData != null) {
+				if (iblEditor != null && propertyTreeData != null && e.item.getData() instanceof PropertySemanticEntityPair) {
 					PropertySemanticEntityPair selection = (PropertySemanticEntityPair) e.item.getData();
 
 					INode propertyNode = NodeModelUtils.getNode(selection.semanticEntity);
@@ -659,7 +660,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private void exportVerificationModel() {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
-		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
 
@@ -674,6 +674,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
+							ModelcheckingTarget target = FilteringManager.getInstance().getModelcheckingTarget(property);
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
 							VerificationManager.getInstance().export(propertyTreeData.model, property, target, exportFilename);
@@ -699,7 +700,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private void performModelChecking() {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
-		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
 
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
 
@@ -727,6 +727,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
+							ModelcheckingTarget target = FilteringManager.getInstance().getModelcheckingTarget(property);
 							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
 							IModelcheckingConfiguration config = null;
 

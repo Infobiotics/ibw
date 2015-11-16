@@ -44,17 +44,25 @@ public class PrismTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(UnaryProbabilityProperty expression) {
 
-		String pattern = "P%s [ %s%s (%s) ]";
+		String translation = null;
+		boolean isNeverProperty = expression.getOperator() == TemporalPattern.NEVER;
+		String pattern = isNeverProperty ? "P%s [ G%s !(%s) ]" : "P%s [ %s%s (%s) ]";
 
 		IProbabilityConstraint pc = expression.getProbabilityConstraint();
 		ITimeConstraint tc = expression.getTimeConstraint();
 
 		String probabilityConstraint = pc != null ? pc.accept(this) : ">0";
-		String temporalOperator = Translate(expression.getOperator());
 		String timeConstraint = tc != null ? tc.accept(this) : "";
 		String stateFormula = expression.getStateFormula().accept(this);
 
-		return String.format(pattern, probabilityConstraint, temporalOperator, timeConstraint, stateFormula);
+		if (isNeverProperty) {
+			translation = String.format(pattern, probabilityConstraint, timeConstraint, stateFormula);
+		} else {
+			String temporalOperator = translate(expression.getOperator());
+			translation = String.format(pattern, probabilityConstraint, temporalOperator, timeConstraint, stateFormula);
+		}
+
+		return translation;
 
 	}
 
@@ -77,7 +85,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		if (isFollowedByProperty) {
 			translation = String.format(pattern, probabilityConstraint, timeConstraint, leftStateFormula, rightStateFormula);
 		} else {
-			String temporalOperator = Translate(expression.getOperator());
+			String temporalOperator = translate(expression.getOperator());
 			translation = String.format(pattern, probabilityConstraint, leftStateFormula, temporalOperator, timeConstraint, rightStateFormula);
 		}
 
@@ -126,7 +134,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		String pattern = "(%s) %s (%s)";
 		String leftFormula = expression.getLeftOperand().accept(this);
 		String rightFormula = expression.getRightOperand().accept(this);
-		String relationalOperator = Translate(expression.getOperator());
+		String relationalOperator = translate(expression.getOperator());
 
 		return String.format(pattern, leftFormula, relationalOperator, rightFormula);
 	}
@@ -135,7 +143,7 @@ public class PrismTranslator implements IPropertyTranslator {
 	public String visit(ConcreteProbabilityConstraint expression) {
 
 		String pattern = "%s%.2f";
-		String relationalOperator = Translate(expression.getOperator());
+		String relationalOperator = translate(expression.getOperator());
 
 		return String.format(pattern, relationalOperator, expression.getBound());
 	}
@@ -156,7 +164,7 @@ public class PrismTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(TimeInstant expression) {
 		String pattern = "%s%d";
-		String relationalOperator = Translate(expression.getOperator());
+		String relationalOperator = translate(expression.getOperator());
 
 		return String.format(pattern, relationalOperator, expression.getValue());
 	}
@@ -164,7 +172,7 @@ public class PrismTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(ConcentrationConstraint expression) {
 		String pattern = "%s%f";
-		String relationalOperator = Translate(expression.getOperator());
+		String relationalOperator = translate(expression.getOperator());
 
 		return String.format(pattern, relationalOperator, expression.getValue());
 	}
@@ -174,7 +182,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		String pattern = "(%s %s %s)";
 
 		String leftOperand = expression.getLeftOperand().accept(this);
-		String arithmeticOperator = Translate(expression.getOperator());
+		String arithmeticOperator = translate(expression.getOperator());
 		String rightOperand = expression.getRightOperand().accept(this);
 
 		return String.format(pattern, leftOperand, arithmeticOperator, rightOperand);
@@ -185,7 +193,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		String pattern = "%s %s %s";
 
 		String leftOperand = expression.getLeftOperand().accept(this);
-		String relationalOperator = Translate(expression.getOperator());
+		String relationalOperator = translate(expression.getOperator());
 		String rightOperand = expression.getRightOperand().accept(this);
 
 		return String.format(pattern, leftOperand, relationalOperator, rightOperand);
@@ -206,7 +214,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		return Double.toString(expression.getValue());
 	}
 
-	private String Translate(TemporalPattern operator) {
+	private String translate(TemporalPattern operator) {
 
 		switch (operator) {
 		case ALWAYS:
@@ -215,8 +223,6 @@ public class PrismTranslator implements IPropertyTranslator {
 			return "F";
 		case INFINITELY_OFTEN:
 			return "G F";
-		case NEVER:
-			return "G !";
 		case UNTIL:
 			return "U";
 		case STEADY_STATE:
@@ -226,7 +232,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		}
 	}
 
-	private String Translate(RelationalOperator operator) {
+	private String translate(RelationalOperator operator) {
 
 		switch (operator) {
 		case GT:
@@ -246,7 +252,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		}
 	}
 
-	private String Translate(BooleanOperator operator) {
+	private String translate(BooleanOperator operator) {
 
 		switch (operator) {
 		case AND:
@@ -260,7 +266,7 @@ public class PrismTranslator implements IPropertyTranslator {
 		}
 	}
 
-	private String Translate(ArithmeticOperator operator) {
+	private String translate(ArithmeticOperator operator) {
 
 		switch (operator) {
 		case ADDITION:

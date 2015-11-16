@@ -26,6 +26,24 @@ public class FilteringManager {
 		return property.accept(propertyFilter);
 	}
 
+	public ModelcheckingTarget getModelcheckingTarget(IProperty property) {
+
+		ModelcheckingTarget target = ModelcheckingTarget.MC2;
+
+		IPropertyFilter nuSmvPropertyFilter = getPropertyFilter(ModelcheckingTarget.NUSMV);
+		if (property.accept(nuSmvPropertyFilter)) {
+			target = ModelcheckingTarget.NUSMV;
+		} else {
+			IPropertyFilter prismPropertyFilter = getPropertyFilter(ModelcheckingTarget.PRISM);
+			if (property.accept(prismPropertyFilter)) {
+				target = ModelcheckingTarget.PRISM;
+			}
+		}
+
+		return target;
+
+	}
+
 	private IPropertyFilter getPropertyFilter(ModelcheckingTarget target) {
 
 		IPropertyFilter propertyFilter = null;
