@@ -9,7 +9,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
@@ -87,6 +89,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	public static final String ID = "roadblock.modelchecking.ui.views.mainView";
 
+	private Composite parentComposite;
+
 	private PropertyTreeData propertyTreeData;
 	private Configuration config;
 	private XtextEditor iblEditor;
@@ -98,7 +102,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private Text txtModelFile;
 	private Text txtDataFile;
-	private Combo ddlModelChecker;
+	// private Combo ddlModelChecker;
 
 	private Text txtConfidenceValue;
 	private Text txtPathLength;
@@ -121,7 +125,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	@Override
 	public void createPartControl(Composite parent) {
 
-		final Composite parentComposite = parent;
+		parentComposite = parent;
 
 		// add change listener model
 		// final Composite parentComposite = parent;
@@ -163,30 +167,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				config.setDataDirectory(directoryDialog.open());
-			}
-		});
-
-		// create model checker algorithm widget
-		Label modelCheckerLabel = new Label(parent, SWT.NONE);
-		modelCheckerLabel.setText("Model checker: ");
-		modelCheckerLabel.setToolTipText("model checker to use");
-		ddlModelChecker = new Combo(parent, SWT.READ_ONLY);
-		ddlModelChecker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		ddlModelChecker.add("PRISM");
-		ddlModelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
-		ddlModelChecker.add("NuSMV");
-		ddlModelChecker.setData("NuSMV", ModelcheckingTarget.NUSMV);
-		ddlModelChecker.add("MC2");
-		ddlModelChecker.setData("MC2", ModelcheckingTarget.MC2);
-		ddlModelChecker.addSelectionListener(new SelectionListener() {
-
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				handleModelcheckerChanged(parentComposite);
-			}
-
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
 
@@ -302,6 +282,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 					btnExport.setEnabled(isAnyPropertyChecked);
 					btnVerify.setEnabled(isAnyPropertyChecked);
 				}
+
+				List<PropertySemanticEntityPair> propertyItems = new ArrayList<>();
+				for (Object o : ctvPropertyTreeViewer.getCheckedElements()) {
+					if (o instanceof PropertySemanticEntityPair) {
+						propertyItems.add((PropertySemanticEntityPair) o);
+					}
+				}
+
+				handlePropertyItemChecked(propertyItems);
 			}
 		});
 		tree.addSelectionListener(new SelectionListener() {
@@ -353,9 +342,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		btnVerify.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		btnVerify.setEnabled(false);
 
-		ddlModelChecker.select(0);
 		ddlSimulator.select(0);
-		handleModelcheckerChanged(parentComposite);
 	}
 
 	@Override
@@ -392,6 +379,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				if (iblResource.getErrors().size() == 0) {
 					updateUi();
+					handlePropertyItemChecked(null);
 				}
 			}
 		}
@@ -409,8 +397,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		if (currentIblResource != null) {
 
-			ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
-			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource, target);
+			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource);
 
 			if (propertyTreeData != null) {
 				ctvPropertyTreeViewer.setInput(propertyTreeData);
@@ -418,7 +405,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			txtModelFile.setText(config.getModelFile());
 			txtDataFile.setText(config.getDataFile());
-			ddlModelChecker.setText(config.getModelChecker());
 			txtConfidenceValue.setText(config.getConfidenceValue().toString());
 			txtPathLength.setText(config.getPathLength().toString());
 			txtSampleNumber.setText(config.getSampleNumber().toString());
@@ -485,13 +471,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-
-		// model checker value widget
-		widgetValue = WidgetProperties.selection().observe(ddlModelChecker);
-		modelValue = BeanProperties.value(Configuration.class, "modelChecker").observe(config);
-
-		strategy = new UpdateValueStrategy();
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 
 		// confidence value widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtConfidenceValue);
@@ -681,17 +660,38 @@ public class MainView extends ViewPart implements IPartListener2 {
 						}
 					}
 				} catch (IOException e) {
-					errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " + ddlModelChecker.getText(), e);
+					errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " /*
+																									 * +
+																									 * ddlModelChecker
+																									 * .
+																									 * getText
+																									 * (
+																									 * )
+																									 */, e);
 				}
 			}
 		};
 
 		try {
 			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName() + " to " + ddlModelChecker.getText() + "...");
+			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName() + " to " /*
+																										 * +
+																										 * ddlModelChecker
+																										 * .
+																										 * getText
+																										 * (
+																										 * )
+																										 */+ "...");
 			progressDialog.run(true, true, exportTask);
 		} catch (InvocationTargetException | InterruptedException e) {
-			errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " + ddlModelChecker.getText(), e);
+			errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " /*
+																							 * +
+																							 * ddlModelChecker
+																							 * .
+																							 * getText
+																							 * (
+																							 * )
+																							 */, e);
 		}
 
 	}
@@ -756,7 +756,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 								break;
 							}
 
-							final Process verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target, config);
+							final Process verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model,
+									property, target, config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
@@ -841,25 +842,33 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
 
-	private void handleModelcheckerChanged(Composite parentComposite) {
+	private void handlePropertyItemChecked(List<PropertySemanticEntityPair> checkedPropertyItems) {
 
-		switch ((ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText())) {
-		case PRISM:
-			toggleControls(prismConfigControls, true);
-			toggleControls(mc2ConfigControls, false);
-			break;
-		case NUSMV:
-			toggleControls(prismConfigControls, false);
-			toggleControls(mc2ConfigControls, false);
-			break;
-		case MC2:
-			toggleControls(mc2ConfigControls, true);
-			toggleControls(prismConfigControls, false);
-			break;
+		toggleControls(prismConfigControls, false);
+		toggleControls(mc2ConfigControls, false);
+
+		if (checkedPropertyItems != null) {
+			Set<ModelcheckingTarget> targets = new HashSet<>();
+
+			for (PropertySemanticEntityPair item : checkedPropertyItems) {
+				targets.add(FilteringManager.getInstance().getModelcheckingTarget(item.property));
+			}
+
+			for (ModelcheckingTarget target : targets) {
+				switch (target) {
+				case PRISM:
+					toggleControls(prismConfigControls, true);
+					break;
+				case MC2:
+					toggleControls(mc2ConfigControls, true);
+					break;
+				default:
+					break;
+				}
+			}
 		}
 
 		parentComposite.layout();
-		updateUi();
 	}
 
 	private void toggleControls(List<Control> controls, boolean asVisible) {
