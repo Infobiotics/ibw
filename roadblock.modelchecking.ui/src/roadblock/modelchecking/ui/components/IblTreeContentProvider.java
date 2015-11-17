@@ -10,7 +10,6 @@ import roadblock.emf.ibl.Ibl.Cell;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Region;
-import roadblock.modelchecking.filtering.FilteringManager;
 import roadblock.modelchecking.ui.model.PropertySemanticEntityPair;
 import roadblock.modelchecking.ui.model.PropertyTreeData;
 
@@ -72,20 +71,14 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 				}
 			}
 
-			for (IProperty property : cell.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.modelcheckingTarget)) {
-					hasChildren = true;
-					break;
-				}
+			if (cell.getProperties().size() > 0) {
+				hasChildren = true;
 			}
 		} else if (element instanceof Device) {
 			Device device = (Device) element;
 
-			for (IProperty property : device.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.modelcheckingTarget)) {
-					hasChildren = true;
-					break;
-				}
+			if (device.getProperties().size() > 0) {
+				hasChildren = true;
 			}
 		}
 
@@ -116,17 +109,13 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 			}
 
 			for (IProperty property : cell.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.modelcheckingTarget)) {
-					childElements.add(getPropertySemanticEntityPair(property));
-				}
+				childElements.add(getPropertySemanticEntityPair(property));
 			}
 		} else if (parentContainer instanceof Device) {
 			Device device = (Device) parentContainer;
 
 			for (IProperty property : device.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.modelcheckingTarget)) {
-					childElements.add(getPropertySemanticEntityPair(property));
-				}
+				childElements.add(getPropertySemanticEntityPair(property));
 			}
 		}
 

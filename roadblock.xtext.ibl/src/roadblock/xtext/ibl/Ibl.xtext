@@ -1,9 +1,9 @@
 // xtext grammar for Roadblock IBL language
 // 2013, released under GNU GPL V3
 // 12 Feb 2014
-
 grammar roadblock.xtext.ibl.Ibl with org.eclipse.xtext.common.Terminals
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 generate ibl "http://www.xtext.roadblock/ibl/Ibl"
 
 /////////////////////
@@ -13,138 +13,117 @@ generate ibl "http://www.xtext.roadblock/ibl/Ibl"
 // a model is composed of top level model members
 Model:
 	{Model}
-	members+=ModelMember*
-;
-	
-// model members are an import statement, variable definition or function definition
-ModelMember:
-	ImportStatement | FunctionDefinition
-;
+	members+=ModelMember*;
 
-//////////////////////
+	// model members are an import statement, variable definition or function definition
+ModelMember:
+	ImportStatement | FunctionDefinition;
+
+	//////////////////////
 // import statement //
 //////////////////////
-
 ImportStatement:
 	{Import}
-	'import' importedNamespace=QualifiedNameWithWildcard
-;
+	'import' importedNamespace=QualifiedNameWithWildcard;
 
-/////////////////////////
+	/////////////////////////
 // Function definition //
 /////////////////////////
 
 // function types
 FunctionType:
-	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' |  'REGION'
-;
+	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' | 'REGION';
 
-// a function definition
+	// a function definition
 FunctionDefinition:
 	{FunctionDefinition}
-	'define' name=VariableName 'typeof' functionBody = FunctionBodyType 
-	(
-	'USES'
-		uses+=FunctionUseMember (',' uses+=FunctionUseMember)*
-	)?
-;
-
+	'define' name=VariableName 'typeof' functionBody=FunctionBodyType
+	('USES'
+	uses+=FunctionUseMember (',' uses+=FunctionUseMember)*)?;
 
 FunctionBodyType:
-	ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody
-;
+	ProcessBody | SystemBody | PlasmidBody | ChromosomeBody | CellBody | RegionBody | CustomFunctionBody;
 
-// Process body definition
+	// Process body definition
 ProcessBody:
 	{ProcessBody}
-	 'PROCESS'	 
-	 functionContent = FunctionContent	
-;
+	'PROCESS'
+	functionContent=FunctionContent;
 
-// System body definition
+	// System body definition
 SystemBody:
 	{SystemBody}
-	 'SYSTEM'
-	 functionContent = FunctionContent
-;
+	'SYSTEM'
+	functionContent=FunctionContent;
 
-// Plasmid body definition
+	// Plasmid body definition
 PlasmidBody:
 	{PlasmidBody}
-	 'PLASMID'
-	 functionContent = FunctionContent
-;
+	'PLASMID'
+	functionContent=FunctionContent;
 
-// Chromosome body definition
+	// Chromosome body definition
 ChromosomeBody:
 	{ChromosomeBody}
-	 'CHROMOSOME'
-	 functionContent = FunctionContent
-;
+	'CHROMOSOME'
+	functionContent=FunctionContent;
 
-// Cell body definition
+	// Cell body definition
 CellBody:
 	{CellBody}
-	 'CELL'
-	 functionContent = FunctionContent
-;
+	'CELL'
+	functionContent=FunctionContent;
 
-// Region body definition
+	// Region body definition
 RegionBody:
 	{RegionBody}
-	 'REGION'
-	 functionContent = FunctionContent
-;
+	'REGION'
+	functionContent=FunctionContent;
 
-// User defined function body definition
+	// User defined function body definition
 CustomFunctionBody:
 	{CustomFunctionBody}
-	 functionType=VariableName
-	 functionContent = FunctionContent
-;
-
+	functionType=VariableName
+	functionContent=FunctionContent;
 
 FunctionContent:
 	{FunctionContent}
 	'('
-		(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
+	(parameters+=FunctionParameterMember (',' parameters+=FunctionParameterMember)*)?
 	')'
 	'{'
-		members+=FunctionBodyMember*
-	'}'
-;
-//////////////////
+	members+=FunctionBodyMember*
+	'}';
+	//////////////////
 // Body members //
 //////////////////
 
 
 // See iblRefactoringGrammar.R for some automation
 FunctionBodyMember:
-	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation | ProcessInstantiation | PropertyDefinition | 
-	RuleDefinition | SystemInstantiation | 
-	VariableAssignment | VariableDefinition
-;
+	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
+	ProcessInstantiation | PropertyDefinition |
+	RuleDefinition | SystemInstantiation |
+	VariableAssignment | VariableDefinition;
 
-//////////////////////
+	//////////////////////
 // function members //
 //////////////////////
 
 // function parameter member
 FunctionParameterMember:
-	((type=VariableKind2) | (collection=CollectionID '<' type = VariableKind2 '>'))  name=VariableName (':' scope=FunctionParameterScope)?
-;
+	((type=VariableKind2) | (collection=CollectionID '<' type=VariableKind2 '>')) name=VariableName (':'
+	scope=FunctionParameterScope)?;
 
-// allowed scope of function parameters
+	// allowed scope of function parameters
 FunctionParameterScope:
-	'input' | 'output' | 'optional'
-;
+	'input' | 'output' | 'optional';
 
-// function use member
+	// function use member
 FunctionUseMember:
-	type=VariableType name=VariableName
-;
+	type=VariableType name=VariableName;
 
-/////////////
+	/////////////
 // devices //
 ////////////
 
@@ -153,22 +132,20 @@ DeviceDefinition:
 	{DeviceDefinition}
 	'DEVICE' name=VariableName '=' 'new' 'DEVICE'
 	'('
-		'parts' '=' parts=List
+	'parts' '=' parts=List
 	')'
 	'('
-		('input' '=' input=List)?
-		(',' 'output' '=' output=List)?
+	('input' '=' input=List)?
+	(',' 'output' '=' output=List)?
 	')'
 	'{'
-		(members+=DeviceMembers*)
-	'}'
-;
+	(members+=DeviceMembers*)
+	'}';
 
 DeviceMembers:
-	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RuleDefinition | VariableAssignment
-;
+	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RuleDefinition | VariableAssignment;
 
-////////////////////
+	////////////////////
 // instantiations //
 ////////////////////
 
@@ -176,74 +153,56 @@ DeviceMembers:
 ProcessInstantiation:
 	{ProcessInstantiation}
 	'PROCESS' name=VariableName
-	(
-	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-	)?
-;
+	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
+	')')?;
 
-// System instantiation 
+	// System instantiation 
 SystemInstantiation:
 	{SystemInstantiation}
 	'SYSTEM' name=VariableName
-	(
-	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-	)?
-;
+	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
+	')')?;
 
-// Plasmid instantiation 
+	// Plasmid instantiation 
 PlasmidInstantiation:
 	{PlasmidInstantiation}
 	'PLASMID' name=VariableName
-	(
-	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-	)?
-;
+	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
+	')')?;
 
-// Chromosome instantiation 
+	// Chromosome instantiation 
 ChromosomeInstantiation:
 	{ChromosomeInstantiation}
 	'CHROMOSOME' name=VariableName
-	(
-	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-	)?
-;
+	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
+	')')?;
 
-// Cell instantiation 
+	// Cell instantiation 
 CellInstantiation:
 	{CellInstantiation}
 	'CELL' name=VariableName
-	(
-	'=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-	)?
-;
+	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
+	')')?;
 
-
-///////////////
+	///////////////
 // variables //
 ///////////////
-
-
 VariableKind:
-	VariableName | VariableComplex
-;
+	VariableName | VariableComplex;
 
 VariableName:
 	{VariableName}
-	name = 	ID
-;
+	name=ID;
 
 VariableComplex:
 	{VariableComplex}
-	components+=VariableName ('~' components += VariableName)+
-;
+	components+=VariableName ('~' components+=VariableName)+;
 
 VariableKind2:
 //	{VariableKind2}
-	VariableType | VariableName
-;
+	VariableType | VariableName;
 
-
-//// a variable
+	//// a variable
 //VariableName:
 //	ID
 //;
@@ -257,43 +216,31 @@ VariableKind2:
 
 // variable types
 VariableType:
-	{VariableType}
-	name = ('MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER' | 'RATE' | 'RBS' | 'TERMINATOR' | 'CLONINGSITE' )
-;
+	{VariableType} name=('MOLECULE' | 'COMPLEX' | 'RIBOSOME' | 'PROMOTER' | 'PROTEIN' | 'DNA' | 'RNA' | 'GENE' | 'INTEGER'
+	| 'RATE' | 'RBS' | 'TERMINATOR' | 'CLONINGSITE');
 
-
-// a variable attribute
+	// a variable attribute
 VariableAttribute:
-	{VariableAttribute}
-	name=VariableKind '.' att=VariableName
-;
+	{VariableAttribute} name=VariableKind '.' att=VariableName;
 
-// a definition of a variable
+	// a definition of a variable
 VariableDefinition:
-	{VariableDefinition}
-	definition=(VariableDefinitionBuiltIn | VariableDefinitionUserDefined | VariableDefinitionCollection | VariableDefinitionBasic)
-	(':' qualifier=VariableQualifier)?
-;
+	{VariableDefinition} definition=(VariableDefinitionBuiltIn | VariableDefinitionUserDefined |
+	VariableDefinitionCollection | VariableDefinitionBasic) (':' qualifier=VariableQualifier)?;
 
-// a variable qualifier
+	// a variable qualifier
 VariableQualifier:
-	'observable'
-;
+	'observable';
 
 VariableDefinitionUserDefined:
-	{VariableDefinitionUserDefined}
-	type=VariableName name=VariableName
-	(
-	'=' 'new' constructor=VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'
-	)?
-;
+	{VariableDefinitionUserDefined} type=VariableName name=VariableName ('=' 'new' constructor=VariableKind2 '('
+	(parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')')?;
 
 VariableDefinitionBuiltIn:
-	{VariableDefinitionBuiltIn}
-	name = VariableName '=' type = VariableKind2 '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)? ')'	
-;
+	{VariableDefinitionBuiltIn} name=VariableName '=' type=VariableKind2 '(' (parameters+=ParameterAssignment (','
+	parameters+=ParameterAssignment)*)? ')';
 
-/*
+	/*
 VariableDefinitionBuiltIn:
 	{VariableDefinitionBuiltIn}
 	type=VariableType name=VariableName
@@ -311,291 +258,251 @@ VariableDefinitionUserDefined:
 ;
 */
 VariableDefinitionCollection:
-	{VariableDefinitionCollection}
-	(collection=CollectionID '<' type=VariableKind2 '>' name=VariableName)
-	(
-	'=' value=List ')'
-	)?
-;
+	{VariableDefinitionCollection} (collection=CollectionID '<' type=VariableKind2 '>' name=VariableName) ('=' value=List
+	')')?;
 
-// variable collections
+	// variable collections
 CollectionID:
-	'LIST' | 'SET' | 'HASH'
-;
+	'LIST' | 'SET' | 'HASH';
 
 VariableDefinitionBasic:
-	{VariableDefinitionBasic}
-	type=VariableType name=VariableName '=' expression=VariableExpression
-;
+	{VariableDefinitionBasic} type=VariableType name=VariableName '=' expression=VariableExpression;
 
-// a parameter assignment
+	// a parameter assignment
 ParameterAssignment:
-	name=VariableName '=' value=VariableExpressionObject
-;
+	name=VariableName '=' value=VariableExpressionObject;
 
-// a variable assignment
+	// a variable assignment
 VariableAssignment:
-	{VariableAssignment}
-	variable=VariableAssignmentObject '=' expression=VariableExpression
-;
+	{VariableAssignment} variable=VariableAssignmentObject '=' expression=VariableExpression;
 
 VariableAssignmentObject:
 //	{VariableAssignmentObject}
-	VariableName | VariableAttribute
-;
+	VariableName | VariableAttribute;
 
 VariableExpression:
 	{VariableExpression}
-	members+=VariableExpressionObject (VariableExpressionOperator members+=VariableExpressionObject)*
-;
+	members+=VariableExpressionObject (VariableExpressionOperator members+=VariableExpressionObject)*;
 
 VariableExpressionObject:
-	AtomicVariableExpressionObject | CompoundVariableExpressionObject
-;
+	AtomicVariableExpressionObject | CompoundVariableExpressionObject;
 
 AtomicVariableExpressionObject:
-	{VariableReference} variable = VariableName | 
-	{VariableAttribute} attribute=VariableAttribute | 
-	{VariableComplex} complex=VariableComplex | 
-	{RealConstant} value=REAL | 
-	{Quantity} quantity = Quantity | 
-	{StringConstant} string=STRING
-;
+	{VariableReference} variable=VariableName |
+	{VariableAttribute} attribute=VariableAttribute |
+	{VariableComplex} complex=VariableComplex |
+	{RealConstant} value=Real |
+	{Quantity} quantity=Quantity |
+	{StringConstant} string=STRING;
 
 CompoundVariableExpressionObject:
 	{CompoundVariableExpressionObject}
-	list=List
-;
+	list=List;
 
 VariableExpressionOperator:
-	'+' | '-' | '|'
-;
+	'+' | '-' | '|';
 
-///////////
+	///////////
 // rules //
 ///////////
 
 // rule definition
 RuleDefinition:
 	{RuleDefinition}
-	'RULE' name=VariableName ':' (lhs+= RuleObject ('+' lhs+=RuleObject)*)? ('->'|reversible?='<->') (rhs += RuleObject('+' rhs+=RuleObject)*)?
-;
+	'RULE' name=VariableName ':' (lhs+=RuleObject ('+' lhs+=RuleObject)*)? ('->' | reversible?='<->') (rhs+=RuleObject
+	('+' rhs+=RuleObject)*)?;
 
 RuleObject:
-	VariableKind | Outside
-;
+	VariableKind | Outside;
 
 Outside:
 	{Outside}
-	'OUTSIDE'
-;
-////////////////
+	'OUTSIDE';
+	////////////////
 // atgc rules //
 ////////////////
 ATGCDefinition:
 	{ATGCDefinition}
-	'ATGC' command = (ATGCCloningSites | ATGCArrange | ATGCDirection | ATGCTranslationRate)
-;
+	'ATGC' command=(ATGCCloningSites | ATGCArrange | ATGCDirection | ATGCTranslationRate);
 
 ATGCArrange:
 	{ATGCArrange}
-	'ARRANGE' arguments+=VariableName  (',' arguments+=VariableName)*
-;
+	'ARRANGE' arguments+=VariableName (',' arguments+=VariableName)*;
 
 ATGCCloningSites:
 	{ATGCCloningSites}
-	'CLONING SITES' ':' cloningsites = INT
-;
+	'CLONING SITES' ':' cloningsites=INT;
 
-ATGCDirection: 
+ATGCDirection:
 	{ATGCDirection}
-	'DIRECTION' ':' direction = ('FORWARD' | 'BACKWARD')
-;
+	'DIRECTION' ':' direction=('FORWARD' | 'BACKWARD');
 
-ATGCTranslationRate: 
+ATGCTranslationRate:
 	{ATGCTranslationRate}
-	'TRANSLATION RATE' ':' translationRate = REAL
-;
-/////////////////////////
+	'TRANSLATION RATE' ':' translationRate=Real;
+	/////////////////////////
 // model checker rules //
 /////////////////////////
-
 PropertyDefinition:
 	{PropertyDefinition}
-	'VERIFY' property=(ProbabilityProperty | RewardProperty)	
-;
+	'VERIFY' property=(ProbabilityProperty | RewardProperty);
 
 ProbabilityProperty:
 	{ProbabilityProperty}
-	((stateFormula1=StateFormula (((
-		(isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS') 'HOLDS'
-		|
-		('HOLDS' isUntilThen?='UNTIL' 
-			(stateFormula2=StateFormula 'HOLDS' | '[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES'))
-		)
-		|
-		isFollowedBy?='IS FOLLOWED BY' stateFormula2=StateFormula)
-		(timeInstant=TimeInstant | timeInterval=TimeInterval)?)
-		|
-		'HOLDS' (isSteadyState?='IN STEADY-STATE' | isInfinitelyOften?='INFINITELY OFTEN'))
-	)
+	((stateFormula1=StateFormula ((((isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS') 'HOLDS'
 	|
-	('[' variable1=PropertyVariableReference ']' ((
-		(isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS') (isIncreasing?='INCREASES' | isDecreasing?='DECREASES')
-		|
-		((isIncreasing1?='INCREASES' | isDecreasing1?='DECREASES')	isUntilThen?='UNTIL'
-		('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') | stateFormula2=StateFormula 'HOLDS'))) 
-		(timeInstant=TimeInstant | timeInterval=TimeInterval)?
-	)))
-	 	
+	('HOLDS' isUntilThen?='UNTIL'
+	(stateFormula2=StateFormula 'HOLDS' | '[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' |
+	isDecreasing2?='DECREASES')))
+	|
+	isFollowedBy?='IS FOLLOWED BY' stateFormula2=StateFormula)
+	(timeInstant=TimeInstant | timeInterval=TimeInterval)?)
+	|
+	'HOLDS' (isSteadyState?='IN STEADY-STATE' | isInfinitelyOften?='INFINITELY OFTEN')))
+	|
+	('[' variable1=PropertyVariableReference ']' (((isEventually?='EVENTUALLY' | isNever?='NEVER' | isAlways?='ALWAYS')
+	(isIncreasing?='INCREASES' | isDecreasing?='DECREASES')
+	|
+	((isIncreasing1?='INCREASES' | isDecreasing1?='DECREASES') isUntilThen?='UNTIL'
+	('[' variable2=PropertyVariableReference ']' (isIncreasing2?='INCREASES' | isDecreasing2?='DECREASES') |
+	stateFormula2=StateFormula 'HOLDS')))
+	(timeInstant=TimeInstant | timeInterval=TimeInterval)?)))
 	(probabilityConstraint=ProbabilityConstraint)?
-	(
-	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
-	)?
-;
+	('GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*)?;
 
 RewardProperty:
 	{RewardProperty}
-	'EXPECTED' '[' variable=PropertyVariableReference ']' timeInstant=RewardTimeInstant 'IS ' concentrationConstraint=ConcentrationConstraint 
-    (
-	'GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*
-	)?
-;
+	'EXPECTED' '[' variable=PropertyVariableReference ']' timeInstant=RewardTimeInstant 'IS '
+	concentrationConstraint=ConcentrationConstraint
+	('GIVEN' initialConditions+=PropertyInitialCondition (',' initialConditions+=PropertyInitialCondition)*)?;
 
 StateFormula:
 	{StateFormula}
-	formula=
-	'[' atomicFormula=StateExpression']' | 
+	formula='[' atomicFormula=StateExpression ']' |
 	'[' isNegation?='NOT' negatedFormula=StateFormula ']' |
-	'[' leftFormula=StateFormula (isConjunction?='AND' | isDisjunction?='OR' | isImplication?='IMPLIES') rightFormula=StateFormula ']'
-;
+	'[' leftFormula=StateFormula (isConjunction?='AND' | isDisjunction?='OR' | isImplication?='IMPLIES')
+	rightFormula=StateFormula ']';
 
 StateExpression:
 	{StateExpression}
-	(operand1=AdditionSubtractionExpression operator=RelationalOperator operand2=AdditionSubtractionExpression)
-;
+	(operand1=AdditionSubtractionExpression operator=RELATIONAL_OPERATOR operand2=AdditionSubtractionExpression);
 
 AdditionSubtractionExpression:
 	{AdditionSubtractionExpression}
-	operand1=MultiplicationDivisionExpression (operator=('+' | '-') operand2=MultiplicationDivisionExpression)?
-;
+	operand1=MultiplicationDivisionExpression (operator=('+' | '-') operand2=MultiplicationDivisionExpression)?;
 
 MultiplicationDivisionExpression:
 	{MultiplicationDivisionExpression}
-	operand1=ArithmeticOperand (operator=('*' | '/') operand2=ArithmeticOperand)?
-;
+	operand1=ArithmeticOperand (operator=('*' | '/') operand2=ArithmeticOperand)?;
 
 ArithmeticOperand:
 	{ArithmeticOperand}
-	numericLiteral=REAL | concentrationQuantity=ConcentrationQuantity | variable=PropertyVariableReference | isMaximumOfInterest?='MAX('variable=PropertyVariableReference')' | '(' expression=AdditionSubtractionExpression ')' 
-;
+	numericLiteral=Real | concentrationQuantity=ConcentrationQuantity | variable=PropertyVariableReference |
+	isMaximumOfInterest?='MAX(' variable=PropertyVariableReference ')' | '(' expression=AdditionSubtractionExpression ')';
 
 TimeInstant:
 	{TimeInstant}
-	(isEqualTo?='AT' timeInstant=INT | isLessThanOrEqual?='BEFORE' timeInstant=INT | isGreaterThanOrEqual?='AFTER' timeInstant=INT) timeUnit=TimeUnit
-;
+	(isEqualTo?='AT' timeInstant=INT | isLessThanOrEqual?='BEFORE' timeInstant=INT | isGreaterThanOrEqual?='AFTER'
+	timeInstant=INT) timeUnit=TIME_UNIT;
 
 TimeInterval:
 	{TimeInterval}
-	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TimeUnit
-;
+	'WITHIN' '[' lowerBound=INT ',' upperBound=INT ']' timeUnit=TIME_UNIT;
 
 RewardTimeInstant:
 	{RewardTimeInstant}
-	(isEqualTo?='AT' | isLessThanOrEqual?='WITHIN') timeValue=INT timeUnit=TimeUnit
-;
+	(isEqualTo?='AT' | isLessThanOrEqual?='WITHIN') timeValue=INT timeUnit=TIME_UNIT;
 
 ProbabilityConstraint:
 	{ProbabilityConstraint}
-	'WITH PROBABILITY' ((operator=RelationalOperator probability=UnitInterval) | hasUnknownProbability?='?') 
-;
+	'WITH PROBABILITY' ((operator=RELATIONAL_OPERATOR probability=UNIT_INTERVAL) | hasUnknownProbability?='?');
 
 ConcentrationConstraint:
 	{ConcentrationConstraint}
-	(operator=RelationalOperator value=REAL unit=ConcentrationUnit) | isUnknown?='?' 
-;
+	(operator=RELATIONAL_OPERATOR value=Real unit=CONCENTRATION_UNIT) | isUnknown?='?';
 
-//StateFormula:
+	//StateFormula:
 //	{StateFormula}
 //'[' stateFormula+=StateFormula (BooleanOperator stateFormula+=StateFormula)* ']'
-
 PropertyInitialCondition:
 	{PropertyInitialCondition}
-	'[' variable=PropertyVariableReference '=' value=ConcentrationQuantity ']'	
-;
+	'[' variable=PropertyVariableReference '=' value=ConcentrationQuantity ']';
 
 PropertyVariableReference:
 	{PropertyVariableReference}
-	name=VariableKind ('@' container=VariableName)?
-;
+	name=VariableKind ('@' container=VariableName)?;
 
-/////////////////
-// basic types //
-/////////////////
-
-REAL:
-	Decimal | DecimalExp
-;
-
-UnitInterval:
-	'1.0' | '.' (INT)* | '0.' (INT)*
-;
-
-Decimal hidden():
-	('+'|'-')?  INT ('.' INT)?
-;
-
-DecimalExp hidden():
-	('+'|'-')? INT ('.' INT)? ('E'|'e') ('+'|'-')? INT
-;
-
-TimeUnit:
-	's' | 'min' | 'mins'
-;
-
-FluxUnit:
-	's^-1' | 'min^-1'
-;
-
-ConcentrationUnit:
-	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules' 
-;
-
-Unit:
-	TimeUnit | FluxUnit | ConcentrationUnit
-;
-
-// a quantity with units
+	// a quantity with units
 Quantity:
 	{Quantity}
-	value=REAL units=Unit
-;
+	value=Real units+=Unit+;
 
 ConcentrationQuantity:
 	{ConcentrationQuantity}
-	value=REAL unit=ConcentrationUnit
-;
+	value=Real unit=CONCENTRATION_UNIT;
 
-// relational operators
-RelationalOperator:
-	'=' | '!=' | '<' | '>' | '<=' | '>='
-;
-
-// boolean operator
-BooleanOperator:
-	'NOT' |'AND' | 'OR' | 'IMPLIES'
-;
-
-// qualified name
+	// qualified name
 QualifiedNameWithWildcard:
-	QualifiedName ('.*')?
-;
+	QualifiedName ('.*')?;
 
 QualifiedName:
-	ID ('.' ID)*
-;
+	ID ('.' ID)*;
 
 List:
 	{List}
-	'[' (entries+=AtomicVariableExpressionObject (',' entries+=AtomicVariableExpressionObject)*)? ']'
-;
+	'[' (entries+=AtomicVariableExpressionObject (',' entries+=AtomicVariableExpressionObject)*)? ']';
+
+	/////////////////
+// basic types //
+/////////////////
+Real returns ecore::EDouble:
+	INT | FLOAT;
+
+	// relational operators
+RELATIONAL_OPERATOR:
+	'=' | '!=' | '<' | '>' | '<=' | '>=';
+
+Unit:
+	TIME_UNIT | FLUX_UNIT | CONCENTRATION_UNIT | RATE_TIME_UNIT | RATE_CONCENTRATION_UNIT;
+
+terminal UNIT_INTERVAL returns ecore::EDouble:
+	'1' ('.' '0'?)? | '0.' DIGITS? | '.' DIGITS?;
+
+terminal INT returns ecore::EInt:
+	'0' | (NON_ZERO_DIGIT DIGITS?);
+
+terminal FLOAT returns ecore::EDouble:
+	INT '.' DIGITS? EXPONENT_PART? | '.' DIGITS EXPONENT_PART? | INT EXPONENT_PART;
+
+terminal fragment DIGITS:
+	('0'..'9')+;
+
+terminal fragment NON_ZERO_DIGIT:
+	'1'..'9';
+
+terminal fragment EXPONENT_PART:
+	EXPONENT_INDICATOR SIGNED_INT;
+
+terminal fragment EXPONENT_INDICATOR:
+	'e' | 'E';
+
+terminal fragment SIGNED_INT:
+	SIGN? INT;
+
+terminal fragment SIGN:
+	'+' | '-';
+
+terminal TIME_UNIT:
+	's' | 'min' | 'mins';
+
+terminal FLUX_UNIT:
+	's^-1' | 'min^-1';
+
+terminal CONCENTRATION_UNIT:
+	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules';
+
+terminal RATE_TIME_UNIT:
+	's^-1' | 'min-1';
+
+terminal RATE_CONCENTRATION_UNIT:
+	'M^-1' | 'mM^-1' | 'uM^-1' | 'nM^-1' | 'pM^-1' | 'fM^-1' | 'molecule^-1';

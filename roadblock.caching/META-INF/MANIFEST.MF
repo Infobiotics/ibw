@@ -9,7 +9,7 @@ Import-Package: roadblock.dataprocessing.flatModel,
  roadblock.emf.ibl.Ibl,
  roadblock.xtext.ibl.ibl
 Export-Package: roadblock.caching
-Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.10.1",
+Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.xtext;bundle-version="2.5.4",
  org.eclipse.osgi;bundle-version="3.9.1",
  org.eclipse.osgi.util;bundle-version="3.2.300"

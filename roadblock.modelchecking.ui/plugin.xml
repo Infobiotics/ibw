@@ -5,7 +5,7 @@
          id="roadblock.modelchecking.ui.views.mainView"
          point="org.eclipse.ui.views">
       <category
-            name="Verification"
+            name="IBW Verification"
             id="roadblock.modelchecking.ui">
       </category>
       <view

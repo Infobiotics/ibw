@@ -2,136 +2,213 @@
  */
 package roadblock.emf.ibl.Ibl;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Rate Unit</b></em>',
- * and utility methods for working with them.
+ * A representation of the model object '<em><b>Rate Unit</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link roadblock.emf.ibl.Ibl.RateUnit#getRateTimeUnit <em>Rate Time Unit</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.RateUnit#getRateConcentrationUnit <em>Rate Concentration Unit</em>}</li>
+ * </ul>
+ * </p>
+ *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
- * @model
+ * @model kind="class"
  * @generated
  */
-public enum RateUnit implements Enumerator {
+public class RateUnit extends EObjectImpl {
 	/**
-	 * The '<em><b>PER SECOND</b></em>' literal object.
+	 * The default value of the '{@link #getRateTimeUnit() <em>Rate Time Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PER_SECOND_VALUE
+	 * @see #getRateTimeUnit()
 	 * @generated
 	 * @ordered
 	 */
-	PER_SECOND(1, "PER_SECOND", "PER_SECOND"),
+	protected static final RateTimeUnit RATE_TIME_UNIT_EDEFAULT = RateTimeUnit.PER_SECOND;
 
 	/**
-	 * The '<em><b>PER MINUTE</b></em>' literal object.
+	 * The cached value of the '{@link #getRateTimeUnit() <em>Rate Time Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PER_MINUTE_VALUE
+	 * @see #getRateTimeUnit()
 	 * @generated
 	 * @ordered
 	 */
-	PER_MINUTE(2, "PER_MINUTE", "PER_MINUTE");
+	protected RateTimeUnit rateTimeUnit = RATE_TIME_UNIT_EDEFAULT;
 
 	/**
-	 * The '<em><b>PER SECOND</b></em>' literal value.
+	 * The default value of the '{@link #getRateConcentrationUnit() <em>Rate Concentration Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRateConcentrationUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final RateConcentrationUnit RATE_CONCENTRATION_UNIT_EDEFAULT = RateConcentrationUnit.PER_M;
+
+	/**
+	 * The cached value of the '{@link #getRateConcentrationUnit() <em>Rate Concentration Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRateConcentrationUnit()
+	 * @generated
+	 * @ordered
+	 */
+	protected RateConcentrationUnit rateConcentrationUnit = RATE_CONCENTRATION_UNIT_EDEFAULT;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RateUnit() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return IblPackage.Literals.RATE_UNIT;
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Rate Time Unit</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateTimeUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>PER SECOND</b></em>' literal object isn't clear,
+	 * If the meaning of the '<em>Rate Time Unit</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PER_SECOND
-	 * @model
+	 * @return the value of the '<em>Rate Time Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.RateTimeUnit
+	 * @see #setRateTimeUnit(RateTimeUnit)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit_RateTimeUnit()
+	 * @model default=""
 	 * @generated
-	 * @ordered
 	 */
-	public static final int PER_SECOND_VALUE = 1;
+	public RateTimeUnit getRateTimeUnit() {
+		return rateTimeUnit;
+	}
 
 	/**
-	 * The '<em><b>PER MINUTE</b></em>' literal value.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.RateUnit#getRateTimeUnit <em>Rate Time Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rate Time Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.RateTimeUnit
+	 * @see #getRateTimeUnit()
+	 * @generated
+	 */
+	public void setRateTimeUnit(RateTimeUnit newRateTimeUnit) {
+		RateTimeUnit oldRateTimeUnit = rateTimeUnit;
+		rateTimeUnit = newRateTimeUnit == null ? RATE_TIME_UNIT_EDEFAULT : newRateTimeUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RATE_UNIT__RATE_TIME_UNIT, oldRateTimeUnit, rateTimeUnit));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Rate Concentration Unit</b></em>' attribute.
+	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateConcentrationUnit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>PER MINUTE</b></em>' literal object isn't clear,
+	 * If the meaning of the '<em>Rate Concentration Unit</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PER_MINUTE
+	 * @return the value of the '<em>Rate Concentration Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.RateConcentrationUnit
+	 * @see #setRateConcentrationUnit(RateConcentrationUnit)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit_RateConcentrationUnit()
 	 * @model
 	 * @generated
-	 * @ordered
 	 */
-	public static final int PER_MINUTE_VALUE = 2;
+	public RateConcentrationUnit getRateConcentrationUnit() {
+		return rateConcentrationUnit;
+	}
 
 	/**
-	 * An array of all the '<em><b>Rate Unit</b></em>' enumerators.
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.RateUnit#getRateConcentrationUnit <em>Rate Concentration Unit</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Rate Concentration Unit</em>' attribute.
+	 * @see roadblock.emf.ibl.Ibl.RateConcentrationUnit
+	 * @see #getRateConcentrationUnit()
+	 * @generated
+	 */
+	public void setRateConcentrationUnit(RateConcentrationUnit newRateConcentrationUnit) {
+		RateConcentrationUnit oldRateConcentrationUnit = rateConcentrationUnit;
+		rateConcentrationUnit = newRateConcentrationUnit == null ? RATE_CONCENTRATION_UNIT_EDEFAULT : newRateConcentrationUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RATE_UNIT__RATE_CONCENTRATION_UNIT, oldRateConcentrationUnit, rateConcentrationUnit));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final RateUnit[] VALUES_ARRAY =
-		new RateUnit[] {
-			PER_SECOND,
-			PER_MINUTE,
-		};
-
-	/**
-	 * A public read-only list of all the '<em><b>Rate Unit</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final List<RateUnit> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
-
-	/**
-	 * Returns the '<em><b>Rate Unit</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static RateUnit get(String literal) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			RateUnit result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case IblPackage.RATE_UNIT__RATE_TIME_UNIT:
+				return getRateTimeUnit();
+			case IblPackage.RATE_UNIT__RATE_CONCENTRATION_UNIT:
+				return getRateConcentrationUnit();
 		}
-		return null;
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * Returns the '<em><b>Rate Unit</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static RateUnit getByName(String name) {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			RateUnit result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case IblPackage.RATE_UNIT__RATE_TIME_UNIT:
+				setRateTimeUnit((RateTimeUnit)newValue);
+				return;
+			case IblPackage.RATE_UNIT__RATE_CONCENTRATION_UNIT:
+				setRateConcentrationUnit((RateConcentrationUnit)newValue);
+				return;
 		}
-		return null;
+		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * Returns the '<em><b>Rate Unit</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static RateUnit get(int value) {
-		switch (value) {
-			case PER_SECOND_VALUE: return PER_SECOND;
-			case PER_MINUTE_VALUE: return PER_MINUTE;
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case IblPackage.RATE_UNIT__RATE_TIME_UNIT:
+				setRateTimeUnit(RATE_TIME_UNIT_EDEFAULT);
+				return;
+			case IblPackage.RATE_UNIT__RATE_CONCENTRATION_UNIT:
+				setRateConcentrationUnit(RATE_CONCENTRATION_UNIT_EDEFAULT);
+				return;
 		}
-		return null;
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -139,70 +216,33 @@ public enum RateUnit implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private final int value;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final String name;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private final String literal;
-
-	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private RateUnit(int value, String name, String literal) {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case IblPackage.RATE_UNIT__RATE_TIME_UNIT:
+				return rateTimeUnit != RATE_TIME_UNIT_EDEFAULT;
+			case IblPackage.RATE_UNIT__RATE_CONCENTRATION_UNIT:
+				return rateConcentrationUnit != RATE_CONCENTRATION_UNIT_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getValue() {
-	  return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-	  return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getLiteral() {
-	  return literal;
-	}
-
-	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		return literal;
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (rateTimeUnit: ");
+		result.append(rateTimeUnit);
+		result.append(", rateConcentrationUnit: ");
+		result.append(rateConcentrationUnit);
+		result.append(')');
+		return result.toString();
 	}
-	
-} //RateUnit
+
+} // RateUnit

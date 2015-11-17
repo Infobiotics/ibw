@@ -4,8 +4,11 @@ package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -17,6 +20,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getID <em>ID</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getURI <em>URI</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getAmount <em>Amount</em>}</li>
@@ -29,7 +33,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRateUnit <em>Degradation Rate Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit <em>Binding Rate Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit <em>Unbinding Rate Unit</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getID <em>ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +41,26 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * @generated
  */
 public class MolecularSpecies extends EObjectImpl implements IVisitable {
+	/**
+	 * The default value of the '{@link #getID() <em>ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String id = ID_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getDisplayName() <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -219,84 +242,34 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	protected String sequence = SEQUENCE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDegradationRateUnit() <em>Degradation Rate Unit</em>}' attribute.
+	 * The cached value of the '{@link #getDegradationRateUnit() <em>Degradation Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDegradationRateUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RateUnit DEGRADATION_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
+	protected RateUnit degradationRateUnit;
 
 	/**
-	 * The cached value of the '{@link #getDegradationRateUnit() <em>Degradation Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDegradationRateUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected RateUnit degradationRateUnit = DEGRADATION_RATE_UNIT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getBindingRateUnit() <em>Binding Rate Unit</em>}' attribute.
+	 * The cached value of the '{@link #getBindingRateUnit() <em>Binding Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBindingRateUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RateUnit BINDING_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
+	protected RateUnit bindingRateUnit;
 
 	/**
-	 * The cached value of the '{@link #getBindingRateUnit() <em>Binding Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBindingRateUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected RateUnit bindingRateUnit = BINDING_RATE_UNIT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getUnbindingRateUnit() <em>Unbinding Rate Unit</em>}' attribute.
+	 * The cached value of the '{@link #getUnbindingRateUnit() <em>Unbinding Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getUnbindingRateUnit()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RateUnit UNBINDING_RATE_UNIT_EDEFAULT = RateUnit.PER_SECOND;
-
-	/**
-	 * The cached value of the '{@link #getUnbindingRateUnit() <em>Unbinding Rate Unit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnbindingRateUnit()
-	 * @generated
-	 * @ordered
-	 */
-	protected RateUnit unbindingRateUnit = UNBINDING_RATE_UNIT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getID()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getID() <em>ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getID()
-	 * @generated
-	 * @ordered
-	 */
-	protected String id = ID_EDEFAULT;
+	protected RateUnit unbindingRateUnit;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -622,20 +595,17 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Degradation Rate Unit</b></em>' attribute.
-	 * The default value is <code>"PER_SECOND"</code>.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
+	 * Returns the value of the '<em><b>Degradation Rate Unit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Degradation Rate Unit</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Degradation Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @return the value of the '<em>Degradation Rate Unit</em>' containment reference.
 	 * @see #setDegradationRateUnit(RateUnit)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_DegradationRateUnit()
-	 * @model default="PER_SECOND"
+	 * @model containment="true"
 	 * @generated
 	 */
 	public RateUnit getDegradationRateUnit() {
@@ -643,36 +613,54 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRateUnit <em>Degradation Rate Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Degradation Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @generated
+	 */
+	public NotificationChain basicSetDegradationRateUnit(RateUnit newDegradationRateUnit, NotificationChain msgs) {
+		RateUnit oldDegradationRateUnit = degradationRateUnit;
+		degradationRateUnit = newDegradationRateUnit;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT, oldDegradationRateUnit, newDegradationRateUnit);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRateUnit <em>Degradation Rate Unit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Degradation Rate Unit</em>' containment reference.
 	 * @see #getDegradationRateUnit()
 	 * @generated
 	 */
 	public void setDegradationRateUnit(RateUnit newDegradationRateUnit) {
-		RateUnit oldDegradationRateUnit = degradationRateUnit;
-		degradationRateUnit = newDegradationRateUnit == null ? DEGRADATION_RATE_UNIT_EDEFAULT : newDegradationRateUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT, oldDegradationRateUnit, degradationRateUnit));
+		if (newDegradationRateUnit != degradationRateUnit) {
+			NotificationChain msgs = null;
+			if (degradationRateUnit != null)
+				msgs = ((InternalEObject)degradationRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT, null, msgs);
+			if (newDegradationRateUnit != null)
+				msgs = ((InternalEObject)newDegradationRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT, null, msgs);
+			msgs = basicSetDegradationRateUnit(newDegradationRateUnit, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT, newDegradationRateUnit, newDegradationRateUnit));
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Binding Rate Unit</b></em>' attribute.
-	 * The default value is <code>"PER_SECOND"</code>.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
+	 * Returns the value of the '<em><b>Binding Rate Unit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Binding Rate Unit</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Binding Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @return the value of the '<em>Binding Rate Unit</em>' containment reference.
 	 * @see #setBindingRateUnit(RateUnit)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_BindingRateUnit()
-	 * @model default="PER_SECOND"
+	 * @model containment="true"
 	 * @generated
 	 */
 	public RateUnit getBindingRateUnit() {
@@ -680,36 +668,54 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit <em>Binding Rate Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Binding Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @generated
+	 */
+	public NotificationChain basicSetBindingRateUnit(RateUnit newBindingRateUnit, NotificationChain msgs) {
+		RateUnit oldBindingRateUnit = bindingRateUnit;
+		bindingRateUnit = newBindingRateUnit;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT, oldBindingRateUnit, newBindingRateUnit);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit <em>Binding Rate Unit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Binding Rate Unit</em>' containment reference.
 	 * @see #getBindingRateUnit()
 	 * @generated
 	 */
 	public void setBindingRateUnit(RateUnit newBindingRateUnit) {
-		RateUnit oldBindingRateUnit = bindingRateUnit;
-		bindingRateUnit = newBindingRateUnit == null ? BINDING_RATE_UNIT_EDEFAULT : newBindingRateUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT, oldBindingRateUnit, bindingRateUnit));
+		if (newBindingRateUnit != bindingRateUnit) {
+			NotificationChain msgs = null;
+			if (bindingRateUnit != null)
+				msgs = ((InternalEObject)bindingRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT, null, msgs);
+			if (newBindingRateUnit != null)
+				msgs = ((InternalEObject)newBindingRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT, null, msgs);
+			msgs = basicSetBindingRateUnit(newBindingRateUnit, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT, newBindingRateUnit, newBindingRateUnit));
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Unbinding Rate Unit</b></em>' attribute.
-	 * The default value is <code>"PER_SECOND"</code>.
-	 * The literals are from the enumeration {@link roadblock.emf.ibl.Ibl.RateUnit}.
+	 * Returns the value of the '<em><b>Unbinding Rate Unit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unbinding Rate Unit</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unbinding Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @return the value of the '<em>Unbinding Rate Unit</em>' containment reference.
 	 * @see #setUnbindingRateUnit(RateUnit)
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies_UnbindingRateUnit()
-	 * @model default="PER_SECOND"
+	 * @model containment="true"
 	 * @generated
 	 */
 	public RateUnit getUnbindingRateUnit() {
@@ -717,19 +723,40 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	}
 
 	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit <em>Unbinding Rate Unit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unbinding Rate Unit</em>' attribute.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @generated
+	 */
+	public NotificationChain basicSetUnbindingRateUnit(RateUnit newUnbindingRateUnit, NotificationChain msgs) {
+		RateUnit oldUnbindingRateUnit = unbindingRateUnit;
+		unbindingRateUnit = newUnbindingRateUnit;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT, oldUnbindingRateUnit, newUnbindingRateUnit);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit <em>Unbinding Rate Unit</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Unbinding Rate Unit</em>' containment reference.
 	 * @see #getUnbindingRateUnit()
 	 * @generated
 	 */
 	public void setUnbindingRateUnit(RateUnit newUnbindingRateUnit) {
-		RateUnit oldUnbindingRateUnit = unbindingRateUnit;
-		unbindingRateUnit = newUnbindingRateUnit == null ? UNBINDING_RATE_UNIT_EDEFAULT : newUnbindingRateUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT, oldUnbindingRateUnit, unbindingRateUnit));
+		if (newUnbindingRateUnit != unbindingRateUnit) {
+			NotificationChain msgs = null;
+			if (unbindingRateUnit != null)
+				msgs = ((InternalEObject)unbindingRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT, null, msgs);
+			if (newUnbindingRateUnit != null)
+				msgs = ((InternalEObject)newUnbindingRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT, null, msgs);
+			msgs = basicSetUnbindingRateUnit(newUnbindingRateUnit, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT, newUnbindingRateUnit, newUnbindingRateUnit));
 	}
 
 	/**
@@ -781,8 +808,28 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT:
+				return basicSetDegradationRateUnit(null, msgs);
+			case IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT:
+				return basicSetBindingRateUnit(null, msgs);
+			case IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT:
+				return basicSetUnbindingRateUnit(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case IblPackage.MOLECULAR_SPECIES__ID:
+				return getID();
 			case IblPackage.MOLECULAR_SPECIES__DISPLAY_NAME:
 				return getDisplayName();
 			case IblPackage.MOLECULAR_SPECIES__URI:
@@ -807,8 +854,6 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 				return getBindingRateUnit();
 			case IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT:
 				return getUnbindingRateUnit();
-			case IblPackage.MOLECULAR_SPECIES__ID:
-				return getID();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -821,6 +866,9 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case IblPackage.MOLECULAR_SPECIES__ID:
+				setID((String)newValue);
+				return;
 			case IblPackage.MOLECULAR_SPECIES__DISPLAY_NAME:
 				setDisplayName((String)newValue);
 				return;
@@ -857,9 +905,6 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 			case IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT:
 				setUnbindingRateUnit((RateUnit)newValue);
 				return;
-			case IblPackage.MOLECULAR_SPECIES__ID:
-				setID((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -872,6 +917,9 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case IblPackage.MOLECULAR_SPECIES__ID:
+				setID(ID_EDEFAULT);
+				return;
 			case IblPackage.MOLECULAR_SPECIES__DISPLAY_NAME:
 				setDisplayName(DISPLAY_NAME_EDEFAULT);
 				return;
@@ -900,16 +948,13 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 				setSequence(SEQUENCE_EDEFAULT);
 				return;
 			case IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT:
-				setDegradationRateUnit(DEGRADATION_RATE_UNIT_EDEFAULT);
+				setDegradationRateUnit((RateUnit)null);
 				return;
 			case IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT:
-				setBindingRateUnit(BINDING_RATE_UNIT_EDEFAULT);
+				setBindingRateUnit((RateUnit)null);
 				return;
 			case IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT:
-				setUnbindingRateUnit(UNBINDING_RATE_UNIT_EDEFAULT);
-				return;
-			case IblPackage.MOLECULAR_SPECIES__ID:
-				setID(ID_EDEFAULT);
+				setUnbindingRateUnit((RateUnit)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -923,6 +968,8 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case IblPackage.MOLECULAR_SPECIES__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case IblPackage.MOLECULAR_SPECIES__DISPLAY_NAME:
 				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
 			case IblPackage.MOLECULAR_SPECIES__URI:
@@ -942,13 +989,11 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 			case IblPackage.MOLECULAR_SPECIES__SEQUENCE:
 				return SEQUENCE_EDEFAULT == null ? sequence != null : !SEQUENCE_EDEFAULT.equals(sequence);
 			case IblPackage.MOLECULAR_SPECIES__DEGRADATION_RATE_UNIT:
-				return degradationRateUnit != DEGRADATION_RATE_UNIT_EDEFAULT;
+				return degradationRateUnit != null;
 			case IblPackage.MOLECULAR_SPECIES__BINDING_RATE_UNIT:
-				return bindingRateUnit != BINDING_RATE_UNIT_EDEFAULT;
+				return bindingRateUnit != null;
 			case IblPackage.MOLECULAR_SPECIES__UNBINDING_RATE_UNIT:
-				return unbindingRateUnit != UNBINDING_RATE_UNIT_EDEFAULT;
-			case IblPackage.MOLECULAR_SPECIES__ID:
-				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+				return unbindingRateUnit != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -963,7 +1008,9 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (displayName: ");
+		result.append(" (ID: ");
+		result.append(id);
+		result.append(", displayName: ");
 		result.append(displayName);
 		result.append(", URI: ");
 		result.append(uri);
@@ -981,14 +1028,6 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 		result.append(biologicalType);
 		result.append(", sequence: ");
 		result.append(sequence);
-		result.append(", degradationRateUnit: ");
-		result.append(degradationRateUnit);
-		result.append(", bindingRateUnit: ");
-		result.append(bindingRateUnit);
-		result.append(", unbindingRateUnit: ");
-		result.append(unbindingRateUnit);
-		result.append(", ID: ");
-		result.append(id);
 		result.append(')');
 		return result.toString();
 	}

@@ -91,6 +91,7 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT: return (EObject)createEMFVariableAssignment();
 			case IblPackage.FLAT_MODEL: return (EObject)createFlatModel();
 			case IblPackage.PROPERTY_INITIAL_CONDITION: return (EObject)createPropertyInitialCondition();
+			case IblPackage.RATE_UNIT: return (EObject)createRateUnit();
 			case IblPackage.ATGC_DIRECTION: return (EObject)createATGCDirection();
 			case IblPackage.ATGC_ARRANGE: return (EObject)createATGCArrange();
 			case IblPackage.ATGC_CLONING_SITES: return (EObject)createATGCCloningSites();
@@ -125,8 +126,10 @@ public class IblFactory extends EFactoryImpl {
 				return createBooleanOperatorFromString(eDataType, initialValue);
 			case IblPackage.CONCENTRATION_UNIT:
 				return createConcentrationUnitFromString(eDataType, initialValue);
-			case IblPackage.RATE_UNIT:
-				return createRateUnitFromString(eDataType, initialValue);
+			case IblPackage.RATE_TIME_UNIT:
+				return createRateTimeUnitFromString(eDataType, initialValue);
+			case IblPackage.RATE_CONCENTRATION_UNIT:
+				return createRateConcentrationUnitFromString(eDataType, initialValue);
 			case IblPackage.ARITHMETIC_OPERATOR:
 				return createArithmeticOperatorFromString(eDataType, initialValue);
 			case IblPackage.MONOTONICITY_TYPE:
@@ -154,8 +157,10 @@ public class IblFactory extends EFactoryImpl {
 				return convertBooleanOperatorToString(eDataType, instanceValue);
 			case IblPackage.CONCENTRATION_UNIT:
 				return convertConcentrationUnitToString(eDataType, instanceValue);
-			case IblPackage.RATE_UNIT:
-				return convertRateUnitToString(eDataType, instanceValue);
+			case IblPackage.RATE_TIME_UNIT:
+				return convertRateTimeUnitToString(eDataType, instanceValue);
+			case IblPackage.RATE_CONCENTRATION_UNIT:
+				return convertRateConcentrationUnitToString(eDataType, instanceValue);
 			case IblPackage.ARITHMETIC_OPERATOR:
 				return convertArithmeticOperatorToString(eDataType, instanceValue);
 			case IblPackage.MONOTONICITY_TYPE:
@@ -430,6 +435,16 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RateUnit createRateUnit() {
+		RateUnit rateUnit = new RateUnit();
+		return rateUnit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ATGCDirection createATGCDirection() {
 		ATGCDirection atgcDirection = new ATGCDirection();
 		return atgcDirection;
@@ -640,8 +655,8 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RateUnit createRateUnitFromString(EDataType eDataType, String initialValue) {
-		RateUnit result = RateUnit.get(initialValue);
+	public RateTimeUnit createRateTimeUnitFromString(EDataType eDataType, String initialValue) {
+		RateTimeUnit result = RateTimeUnit.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -651,7 +666,27 @@ public class IblFactory extends EFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertRateUnitToString(EDataType eDataType, Object instanceValue) {
+	public String convertRateTimeUnitToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RateConcentrationUnit createRateConcentrationUnitFromString(EDataType eDataType, String initialValue) {
+		RateConcentrationUnit result = RateConcentrationUnit.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRateConcentrationUnitToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

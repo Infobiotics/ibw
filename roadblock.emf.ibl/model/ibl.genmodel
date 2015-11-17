@@ -43,9 +43,18 @@
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/fM"/>
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ConcentrationUnit/MOLECULE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RateUnit">
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateUnit/PER_SECOND"/>
-      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateUnit/PER_MINUTE"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RateTimeUnit">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateTimeUnit/PER_SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateTimeUnit/PER_MINUTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//RateConcentrationUnit">
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_M"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_mM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_uM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_nM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_pM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_fM"/>
+      <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//RateConcentrationUnit/PER_MOLECULE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ibl.ecore#//ArithmeticOperator">
       <genEnumLiterals ecoreEnumLiteral="ibl.ecore#//ArithmeticOperator/ADDITION"/>
@@ -186,10 +195,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/leftHandSide"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Rule/rightHandSide"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/ID"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/forwardRateUnit"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Rule/reverseRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//Rule/forwardRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//Rule/reverseRateUnit"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//MolecularSpecies">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/ID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/displayName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/URI"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/amount"/>
@@ -199,10 +209,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unbindingRate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/biologicalType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/sequence"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/degradationRateUnit"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/bindingRateUnit"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/unbindingRateUnit"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//MolecularSpecies/ID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//MolecularSpecies/degradationRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//MolecularSpecies/bindingRateUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference ibl.ecore#//MolecularSpecies/unbindingRateUnit"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Device">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Device/displayName"/>
@@ -312,7 +321,7 @@
     <genClasses ecoreClass="ibl.ecore#//EMFVariableAssignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/variableAttribute"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/units"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EMFVariableAssignment/amount"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//FlatModel">
@@ -323,6 +332,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//PropertyInitialCondition/variable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/unit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//PropertyInitialCondition/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//RateUnit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//RateUnit/rateTimeUnit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//RateUnit/rateConcentrationUnit"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//ATGCDirection">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//ATGCDirection/direction"/>

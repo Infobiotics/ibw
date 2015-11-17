@@ -44,6 +44,7 @@ import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.ProbabilityProperty;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
+import roadblock.emf.ibl.Ibl.RateUnit;
 import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RewardProperty;
@@ -243,6 +244,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
 				return createPropertyInitialConditionAdapter();
+			}
+			@Override
+			public Adapter caseRateUnit(RateUnit object) {
+				return createRateUnitAdapter();
 			}
 			@Override
 			public Adapter caseATGCDirection(ATGCDirection object) {
@@ -783,6 +788,20 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPropertyInitialConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @generated
+	 */
+	public Adapter createRateUnitAdapter() {
 		return null;
 	}
 

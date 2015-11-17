@@ -6,7 +6,7 @@
          name="Simulation"
          point="org.eclipse.ui.views">
       <category
-            name="Simulation"
+            name="IBW Simulation"
             id="roadblock.simulation.ui">
       </category>
       <view
@@ -14,6 +14,12 @@
             class="roadblock.simulation.ui.views.MainView"
             id="roadblock.simulation.ui.views.mainView"
             name="Simulation">
+      </view>
+      <view
+            category="roadblock.simulation.ui"
+            class="roadblock.simulation.ui.views.ResultsView"
+            id="roadblock.simulation.ui.views.resultsView"
+            name="Results view">
       </view>
       </extension>
 </plugin>

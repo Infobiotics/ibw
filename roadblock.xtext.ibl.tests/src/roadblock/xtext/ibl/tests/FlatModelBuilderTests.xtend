@@ -15,7 +15,7 @@ import roadblock.xtext.ibl.ibl.Model
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(IblInjectorProvider))
-class PropertyBuilderTests {
+class FlatModelBuilderTests {
 	@Inject extension ParseHelper<Model>
 
 	@Test

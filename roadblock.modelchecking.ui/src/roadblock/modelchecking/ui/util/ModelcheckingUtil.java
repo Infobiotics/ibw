@@ -3,7 +3,6 @@ package roadblock.modelchecking.ui.util;
 import org.eclipse.xtext.resource.XtextResource;
 
 import roadblock.dataprocessing.model.ModelBuilder;
-import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.ui.model.PropertyTreeData;
 
 public class ModelcheckingUtil {
@@ -14,7 +13,7 @@ public class ModelcheckingUtil {
 		return instance;
 	}
 
-	public PropertyTreeData getPropertyTreeData(XtextResource iblResource, ModelcheckingTarget target) {
+	public PropertyTreeData getPropertyTreeData(XtextResource iblResource) {
 
 		roadblock.xtext.ibl.ibl.Model semanticModel = (roadblock.xtext.ibl.ibl.Model) iblResource.getContents().get(0);
 		ModelBuilder modelBuilder = new ModelBuilder();
@@ -22,7 +21,6 @@ public class ModelcheckingUtil {
 		PropertyTreeData modelData = new PropertyTreeData();
 		modelData.model = semanticModel != null ? modelBuilder.populate(semanticModel) : null;
 		modelData.semanticEntityByProperty = modelBuilder.getPropertySemanticEntityMapper();
-		modelData.modelcheckingTarget = target;
 
 		return modelData;
 	}

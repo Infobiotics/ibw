@@ -182,12 +182,13 @@
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forwardRateUnit" eType="#//RateUnit"
-        defaultValueLiteral="PER_SECOND"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reverseRateUnit" eType="#//RateUnit"
-        defaultValueLiteral="PER_SECOND"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forwardRateUnit" eType="#//RateUnit"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reverseRateUnit" eType="#//RateUnit"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MolecularSpecies" eSuperTypes="#//IVisitable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="URI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
@@ -201,13 +202,12 @@
         defaultValueLiteral="0.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="biologicalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="degradationRateUnit" eType="#//RateUnit"
-        defaultValueLiteral="PER_SECOND"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bindingRateUnit" eType="#//RateUnit"
-        defaultValueLiteral="PER_SECOND"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unbindingRateUnit" eType="#//RateUnit"
-        defaultValueLiteral="PER_SECOND"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="degradationRateUnit" eType="#//RateUnit"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bindingRateUnit" eType="#//RateUnit"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unbindingRateUnit" eType="#//RateUnit"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -405,7 +405,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="EMFVariableAssignment" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="units" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FlatModel" eSuperTypes="#//IVisitable">
@@ -420,9 +421,24 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//ConcentrationUnit"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="RateUnit">
+  <eClassifiers xsi:type="ecore:EClass" name="RateUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateTimeUnit" eType="#//RateTimeUnit"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateConcentrationUnit"
+        eType="#//RateConcentrationUnit"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RateTimeUnit">
     <eLiterals name="PER_SECOND" value="1" literal="PER_SECOND"/>
     <eLiterals name="PER_MINUTE" value="2" literal="PER_MINUTE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RateConcentrationUnit">
+    <eLiterals name="PER_M" value="1" literal="PER_M"/>
+    <eLiterals name="PER_mM" value="2" literal="PER_mM"/>
+    <eLiterals name="PER_uM" value="3" literal="PER_uM"/>
+    <eLiterals name="PER_nM" value="4" literal="PER_nM"/>
+    <eLiterals name="PER_pM" value="5" literal="PER_pM"/>
+    <eLiterals name="PER_fM" value="6" literal="PER_fM"/>
+    <eLiterals name="PER_MOLECULE" value="7" literal="PER_MOLECULE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATGCDirection" eSuperTypes="#//ATGCDirective">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

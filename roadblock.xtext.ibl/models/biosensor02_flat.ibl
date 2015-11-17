@@ -19,42 +19,42 @@ define SentinelCell typeof CELL(){
  
 	// (3) XylS2 activation by SA
 	RULE XylSActivation: XylS + SA <-> XylS~SA
-	XylSActivation.forwardRate = 10.0e+4 M-1 s-1
-	XylSActivation.backwardRate = 10.0e-5 s-1
+	XylSActivation.forwardRate = 10.0e+4 M^-1 s^-1
+	XylSActivation.backwardRate = 10.0e-5 M^-1 s^-1
 
 	// (4) LasR activation by AHL
 	RULE LasRActivation: LasR + AHL <-> LasR~AHL
-	LasRActivation.forwardRate = 10.0e+4 M-1 s-1
-	LasRActivation.backwardRate = 10.0e-5 s-1
+	LasRActivation.forwardRate = 10.0e+4 M^-1 s^-1
+	LasRActivation.backwardRate = 10.0e-5 M^-1 s^-1
 	  
 	// (5) NahR activation by SA
 	RULE NahRActivation: NahR + SA <-> NahR~SA
-	NahRActivation.forwardRate = 10.0e+4 M-1 s-1
-	NahRActivation.backwardRate = 10.0e-5 s-1
+	NahRActivation.forwardRate = 10.0e+4 M^-1 s^-1
+	NahRActivation.backwardRate = 10.0e-5 M^-1 s^-1
  
 	// (6) SA degradation
 	RULE SADegradation: SA ->
-	SADegradation.forwardRate = 56.6e-6 s-1
+	SADegradation.forwardRate = 56.6e-6 M^-1 s^-1
  
 	// (7) AHL degradation
 	RULE AHLDegradation: AHL ->
-	AHLDegradation.forwardRate = 15.4e-7 s-1
+	AHLDegradation.forwardRate = 15.4e-7 M^-1 s^-1
 
 	// (8) NahR degradation
 	RULE NahRDegradation: NahR ->
-	NahRDegradation.forwardRate = 14e-6 s-1
+	NahRDegradation.forwardRate = 14e-6 M^-1 s^-1
 
 	// (9) LasR degradation
 	RULE LasRDegradation: LasR ->	
-	LasRDegradation.forwardRate = 14e-6 s-1
+	LasRDegradation.forwardRate = 14e-6 M^-1 s^-1
     
 	// (10) XylS degradation
 	RULE XylSDegradation: XylS ->
-	XylSDegradation.forwardRate = 14e-6 s-1
+	XylSDegradation.forwardRate = 14e-6 M^-1 s^-1
   
 	// (11) LuxR degradation
 	RULE LuxRDegradation: LuxR ->
-	LuxRDegradation.forwardRate = 14e-6 s-1
+	LuxRDegradation.forwardRate = 14e-6 M^-1 s^-1
      
 	// components of the NahRLasRProduction device
 	PnahR = PROMOTER(URI = "atgc://user-submitted/part/pnahr")
@@ -68,24 +68,24 @@ define SentinelCell typeof CELL(){
 		
 		// (12) constitutive transcription
 		RULE promoterBinding : PnahR + rnaP <-> PnahR~rnaP			
-		promoterBinding.forwardRate = 5.60e-7 M-1 s-1
-		promoterBinding.backwardRate = 2.00e-1 s-1
+		promoterBinding.forwardRate = 0.0360e-7 M^-1 s^-1
+		promoterBinding.backwardRate = 2.00e-1 M^-1 s^-1
 
 		// (13) translation
 		RULE transcription : PnahR~rnaP -> PnahR + rnaP + mrna
-		transcription.forwardRate = 18.4e-3 s-1
+		transcription.forwardRate = 18.4e-3 M^-1 s^-1
 
 		// (14) NahR translation
 		RULE translationNahR : mrna -> mrna + NahR
-		translationNahR.forwardRate = 7.96e-3
+		translationNahR.forwardRate = 7.96e-3 M^-1 s^-1
 
 		// (15) LasR translation
 		RULE translationLasR : mrna -> mrna + LasR
-		translationLasR.forwardRate = 6.25e-2 s-1
+		translationLasR.forwardRate = 6.25e-2 M^-1 s^-1
 
 		// (16) rna degradation
 		RULE mrnaDegradation : mrna ->
-		mrnaDegradation.forwardRate = 2.78e-3 s-01
+		mrnaDegradation.forwardRate = 2.78e-3 M^-1 s^-1
 	}
 
 	// components of the XylS2Production device
@@ -98,34 +98,34 @@ define SentinelCell typeof CELL(){
 
 		// (17) background promoter binding
 		RULE backgroundPromoterBinding : Psal + rnaP <-> Psal~rnaP	
-		backgroundPromoterBinding.forwardRate = 5.60e-8 M-1 s-1
-		backgroundPromoterBinding.backwardRate = 2.00e-1 s-1
+		backgroundPromoterBinding.forwardRate = 5.60e-8 M^-1 s^-1
+		backgroundPromoterBinding.backwardRate = 2.00e-1 M^-1 s^-1
 		
 		// (18) backward transcription
 		RULE backgroundTranscription : Psal~rnaP -> Psal + rnaP + mrna
-		backgroundTranscription.forwardRate = 4.52e-3 s-1
+		backgroundTranscription.forwardRate = 4.52e-3 M^-1 s^-1
 			
 		// (19) up-regulated promoter binding
 		RULE NahRBinding: Psal + NahR~SA <-> Psal~NahR~SA
-		NahRBinding.forwardrate = 7.82e+4 M-1 s-1
-		NahRBinding.backwardrate = 19.1e-2 s-1
+		NahRBinding.forwardrate = 7.82e+4 M^-1 s^-1
+		NahRBinding.backwardrate = 19.1e-2 M^-1 s^-1
 
 		// (20) up-regulated promoter binding
 		RULE regulatedPromoterBinding : Psal~NahR~SA + rnaP <-> Psal~NahR~SA~rnaP	
-		regulatedPromoterBinding.forwardRate = 5.60e-8 M-1 s-1 // XXX same as background rate ?!
-		regulatedPromoterBinding.backwardRate = 2.00e-1 s-1
+		regulatedPromoterBinding.forwardRate = 5.60e-8 M^-1 s^-1 // XXX same as background rate ?!
+		regulatedPromoterBinding.backwardRate = 2.00e-1 M^-1 s^-1
 
 		// (21) up-regulated transcription
 		RULE regulatedTranscription : Psal~NahR~SA~rnaP -> Psal + NahR~SA + rnaP + mrna
-		regulatedTranscription.forwardRate = 4.52e-3 s-1
+		regulatedTranscription.forwardRate = 4.52e-3 M^-1 s^-1
 
 		// (22) protein translations
 		RULE translation : mrna -> mrna + XylS
-		translation.forwardRate = 4.67e-2 s-1
+		translation.forwardRate = 4.67e-2 M^-1 s^-1
 
 		// (23) rna degradation
 		RULE mrnaDegradation : mrna ->
-		mrnaDegradation.forwardRate = 2.78e-3 s-1
+		mrnaDegradation.forwardRate = 2.78e-3 M^-1 s^-1
 		
 		VERIFY [XylS > 0 uM ] EVENTUALLY HOLDS 
 	} 
@@ -142,72 +142,129 @@ define SentinelCell typeof CELL(){
   
 		// (24) Pm background promoter binding
 		RULE backgroundBinding1 : Pm + rnaP <-> Pm~rnaP	
-		backgroundBinding1.forwardRate = 5.60e-8 M-1 s-1
-		backgroundBinding1.backwardRate = 2.00e-1 s-1
+		backgroundBinding1.forwardRate = 5.60e-8 M^-1 s^-1
+		backgroundBinding1.backwardRate = 2.00e-1 M^-1 s^-1
    
 		// (25) Pm background transcription
 		RULE backgroundTranscription1 : Pm~rnaP -> Pm + rnaP + mrna
-		backgroundTranscription1.forwardRate = 2.08e-1 s-1
+		backgroundTranscription1.forwardRate = 2.08e-1 M^-1 s^-1
 
 		// (26) Prsal background promoter binding
 		RULE backgroundBinding2 : PrsaL + rnaP <-> PrsaL~rnaP	
-		backgroundBinding2.forwardRate = 5.60e-8 M-1 s-1
-		backgroundBinding2.backwardRate = 2.00e-1 s-1
+		backgroundBinding2.forwardRate = 5.60e-8 M^-1 s^-1
+		backgroundBinding2.backwardRate = 2.00e-1 M^-1 s^-1
 
 		// (27) Prsal background transcription
 		RULE backgroundTranscription2 : PrsaL~rnaP -> PrsaL + rnaP + mrna
-		backgroundTranscription1.forwardRate = 2.08e-1 s-1
+		backgroundTranscription1.forwardRate = 2.08e-1 M^-1 s^-1
 
 		// (28) LasR up-regulated binding
 		RULE LasRBinding : PrsaL + LasR~AHL <-> PrsaL~LasR~AHL
-		LasRBinding.forwardRate = 7.82e+4 M-1 s-1
-		LasRBinding.backwardRate = 19.1e-2 s-1
+		LasRBinding.forwardRate = 7.82e+4 M^-1 s^-1
+		LasRBinding.backwardRate = 19.1e-2 M^-1 s^-1
 
 		// (29) LasR up-regulated promoter binding
 		RULE LasRInitiation : PrsaL~LasR~AHL + rnaP <-> PrsaL~LasR~AHL~rnaP	
-		LasRInitiation.forwardRate = 5.60e-7 M-1 s-1
-		LasRInitiation.backwardRate = 2.00e-1 s-1
+		LasRInitiation.forwardRate = 5.60e-7 M^-1 s^-1
+		LasRInitiation.backwardRate = 2.00e-1 M^-1 s^-1
  
 		// (30) LasR up-regulated transcription
 		RULE LasRTranscription : PrsaL~LasR~AHL~rnaP -> PrsaL + LasR~AHL + rnaP + mrna
-		LasRTranscription.forwardRate = 2.08e-1 s-1
+		LasRTranscription.forwardRate = 2.08e-1 M^-1 s^-1
 
 		// (31) XylS up-regulated binding
 		RULE XylSBinding : XylS~SA + Pm <-> XylS~SA~Pm
-		XylSBinding.forwardRate = 7.82e+4 M-1 s-1
-		XylSBinding.backwardRate = 19.1e-2 s-1
+		XylSBinding.forwardRate = 7.82e+4 M^-1 s^-1
+		XylSBinding.backwardRate = 19.1e-2 M^-1 s^-1
 
 		// (32) XylS up-regulated initiation
 		RULE XylSInitiation : XylS~SA~Pm + rnaP <-> XylS~SA~Pm~rnaP	
-		XylSInitiation.forwardRate = 5.60e-7 M-1 s-1
-		XylSInitiation.backwardRate = 2.00e-1 s-1
+		XylSInitiation.forwardRate = 5.60e-7 M^-1 s^-1
+		XylSInitiation.backwardRate = 2.00e-1 M^-1 s^-1
 
 		// (32) XylS up-regulated transcription
 		RULE XylSTranscription : XylS~SA~Pm~rnaP -> Pm + XylS~SA + rnaP + mrna
-		XylSTranscription.forwardRate = 2.08e-1 s-1
+		XylSTranscription.forwardRate = 2.08e-1 M^-1 s^-1
 
 		// (33) protein translation
 		RULE translation : mrna -> mrna + LuxR	
-		translation.forwardRate = 5.95e-2 s-1
+		translation.forwardRate = 5.95e-2 M^-1 s^-1
 
 		// (34) rna degradation
 		RULE mrnaDegradation : mrna ->
-		mrnaDegradation.forwardRate = 2.78e-3 s-1
+		mrnaDegradation.forwardRate = 2.78e-3 M^-1 s^-1
 
 		VERIFY [ [ NOT [ PrsaL > 50 uM ] ] IMPLIES [ [ rnaP < 40 uM ] AND [ LuxR < 100 uM ] ] ] EVENTUALLY HOLDS
 	}
 
 	VERIFY [SA > 0 uM] EVENTUALLY HOLDS
-	VERIFY [AHL > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s
-	VERIFY [NahR > 0 uM] EVENTUALLY HOLDS WITHIN [100,200] s WITH PROBABILITY >= 0.9
-	VERIFY [LasR > 0 uM] NEVER HOLDS
 	VERIFY [SA > 0 uM] ALWAYS HOLDS
+	VERIFY [LasR > 0 uM] NEVER HOLDS
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA > 0 uM] HOLDS
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA] INCREASES
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA] DECREASES
+	VERIFY [SA = 0 uM] IS FOLLOWED BY [SA = 2 uM]
 	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
 	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
-	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA > 0 uM] HOLDS
+	VERIFY [XylS] EVENTUALLY INCREASES
+	VERIFY [XylS] EVENTUALLY DECREASES
+	VERIFY [XylS] ALWAYS INCREASES
+	VERIFY [XylS] ALWAYS DECREASES
+	VERIFY [XylS] NEVER INCREASES
+	VERIFY [XylS] NEVER DECREASES
+	VERIFY [XylS] INCREASES UNTIL [SA] INCREASES
+	VERIFY [XylS] INCREASES UNTIL [SA] DECREASES
+	VERIFY [XylS] DECREASES UNTIL [SA] INCREASES
+	VERIFY [XylS] DECREASES UNTIL [SA] DECREASES
+	VERIFY [XylS] INCREASES UNTIL [SA = 2] HOLDS
+	VERIFY [XylS] DECREASES UNTIL [SA = 2] HOLDS
 	VERIFY EXPECTED [XylS] AT 1000 s IS ?
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
-     
+	
+	VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [2,3] s
+	VERIFY [SA > 0 uM] ALWAYS HOLDS  WITHIN [2,3] s
+	VERIFY [LasR > 0 uM] NEVER HOLDS  WITHIN [2,3] s
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA > 0 uM] HOLDS  WITHIN [2,3] s
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA] INCREASES  WITHIN [2,3] s
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA] DECREASES  WITHIN [2,3] s
+	VERIFY [SA = 0 uM] IS FOLLOWED BY [SA = 2 uM]  WITHIN [2,3] s
+	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE
+	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN
+	VERIFY [XylS] EVENTUALLY INCREASES  WITHIN [2,3] s
+	VERIFY [XylS] EVENTUALLY DECREASES  WITHIN [2,3] s
+	VERIFY [XylS] ALWAYS INCREASES  WITHIN [2,3] s
+	VERIFY [XylS] ALWAYS DECREASES  WITHIN [2,3] s
+	VERIFY [XylS] NEVER INCREASES  WITHIN [2,3] s
+	VERIFY [XylS] NEVER DECREASES  WITHIN [2,3] s
+	VERIFY [XylS] INCREASES UNTIL [SA] INCREASES  WITHIN [2,3] s
+	VERIFY [XylS] INCREASES UNTIL [SA] DECREASES  WITHIN [2,3] s
+	VERIFY [XylS] DECREASES UNTIL [SA] INCREASES  WITHIN [2,3] s
+	VERIFY [XylS] DECREASES UNTIL [SA] DECREASES  WITHIN [2,3] s
+	VERIFY [XylS] INCREASES UNTIL [SA = 2] HOLDS  WITHIN [2,3] s
+	VERIFY [XylS] DECREASES UNTIL [SA = 2] HOLDS  WITHIN [2,3] s
+	
+	VERIFY [SA > 0 uM] EVENTUALLY HOLDS WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [SA > 0 uM] ALWAYS HOLDS WITHIN [2,3] s WITH PROBABILITY >= 0.9 
+	VERIFY [LasR > 0 uM] NEVER HOLDS WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA > 0 uM] HOLDS WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA] INCREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [AHL > 0 uM] HOLDS UNTIL [SA] DECREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [SA = 0 uM] IS FOLLOWED BY [SA = 2 uM] WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [SA > 0 uM] HOLDS IN STEADY-STATE WITH PROBABILITY >= 0.2
+	VERIFY [SA > 0 uM] HOLDS INFINITELY OFTEN WITH PROBABILITY >= .9
+	VERIFY [XylS] EVENTUALLY INCREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] EVENTUALLY DECREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] ALWAYS INCREASES WITHIN [2,3] s WITH PROBABILITY >= .0
+	VERIFY [XylS] ALWAYS DECREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] NEVER INCREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] NEVER DECREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] INCREASES UNTIL [SA] INCREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] INCREASES UNTIL [SA] DECREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] DECREASES UNTIL [SA] INCREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] DECREASES UNTIL [SA] DECREASES WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] INCREASES UNTIL [SA = 2] HOLDS WITHIN [2,3] s WITH PROBABILITY >= 0.9
+	VERIFY [XylS] DECREASES UNTIL [SA = 2] HOLDS WITHIN [2,3] s WITH PROBABILITY >= 0.9
+
 	ATGC ARRANGE nahR, PnahR, Psal, xylS
 }
 

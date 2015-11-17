@@ -43,6 +43,7 @@ import roadblock.emf.ibl.Ibl.NumericLiteral;
 import roadblock.emf.ibl.Ibl.Plasmid;
 import roadblock.emf.ibl.Ibl.ProbabilityProperty;
 import roadblock.emf.ibl.Ibl.PropertyInitialCondition;
+import roadblock.emf.ibl.Ibl.RateUnit;
 import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.RelationalExpression;
 import roadblock.emf.ibl.Ibl.RewardProperty;
@@ -362,6 +363,12 @@ public class IblSwitch<T> extends Switch<T> {
 				PropertyInitialCondition propertyInitialCondition = (PropertyInitialCondition)theEObject;
 				T result = casePropertyInitialCondition(propertyInitialCondition);
 				if (result == null) result = caseIVisitable(propertyInitialCondition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.RATE_UNIT: {
+				RateUnit rateUnit = (RateUnit)theEObject;
+				T result = caseRateUnit(rateUnit);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -975,6 +982,21 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePropertyInitialCondition(PropertyInitialCondition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rate Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rate Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRateUnit(RateUnit object) {
 		return null;
 	}
 
