@@ -44,7 +44,7 @@ class Simulator {
 
 		val String[] simulationCommand = #[ngssPath, "--emf", "parser=emf", "max_time=" + this.max_time,
 			"max_runtime=" + this.max_runtime, "simulation_algorithm=" + this.simulation_algorithm,
-			"data_file=model.csv", "log_interval=" + this.log_interval, "runs=" + this.runs,
+			"data_file=" + resultFilename, "log_interval=" + this.log_interval, "runs=" + this.runs,
 			"seed=" + this.seed, "output=csv", "compress=true", "parallel=true", "show_progress=false"];
 
 		// run simulation
@@ -55,18 +55,12 @@ class Simulator {
 		if (result != 0) {
 			// write error message to console
 			var String line
-			var error = new BufferedReader(new InputStreamReader(thread.process.errorStream))
+			var error = new BufferedReader(new InputStreamReader(thread.process.getErrorStream()))
 			while ((line = error.readLine()) != null)
 				errorStream.write(line.getBytes())
 			error.close()
 		} else {
 			errorStream.write("Simulation completed.\n".getBytes())
-			
-			var String line
-			var output = new BufferedReader(new InputStreamReader(thread.process.inputStream))
-			while ((line = output.readLine()) != null)
-				errorStream.write(line.getBytes())
-			output.close()
 		}
 		thread.join()
 	}
