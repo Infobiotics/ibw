@@ -49,6 +49,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
@@ -102,12 +103,13 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private Text txtModelFile;
 	private Text txtDataFile;
-	// private Combo ddlModelChecker;
 
+	private Group prismGroup;
 	private Text txtConfidenceValue;
 	private Text txtPathLength;
 	private Text txtSampleNumber;
 
+	private Group mc2Group;
 	private Text txtMaxTime;
 	private Text txtInterval;
 	private Text txtRuns;
@@ -118,9 +120,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private String tmpDirPath;
 	private File tmpDir;
-
-	private List<Control> prismConfigControls = new ArrayList<>();
-	private List<Control> mc2ConfigControls = new ArrayList<>();
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -136,7 +135,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(verificationConsole);
 
 		// make temporary directory
-		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID + ".tmp";
+		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID
+				+ ".tmp";
 		tmpDir = new File(tmpDirPath);
 		tmpDir.mkdir();
 
@@ -170,75 +170,71 @@ public class MainView extends ViewPart implements IPartListener2 {
 			}
 		});
 
+		prismGroup = new Group(parent, SWT.SHADOW_ETCHED_IN);
+		prismGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		prismGroup.setLayout(new GridLayout(3, false));
+		prismGroup.setText("PRISM parameters");
+
 		// create confidence value widget
-		Label confidenceLabel = new Label(parent, SWT.NONE);
+		Label confidenceLabel = new Label(prismGroup, SWT.NONE);
 		confidenceLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		confidenceLabel.setText("Confidence: ");
 		confidenceLabel.setToolTipText("confidence value for stochastic model checking");
-		prismConfigControls.add(confidenceLabel);
-		txtConfidenceValue = new Text(parent, SWT.BORDER);
+		txtConfidenceValue = new Text(prismGroup, SWT.BORDER);
 		txtConfidenceValue.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		prismConfigControls.add(txtConfidenceValue);
 
 		// create path length widget
-		Label pathLabel = new Label(parent, SWT.NONE);
+		Label pathLabel = new Label(prismGroup, SWT.NONE);
 		pathLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		pathLabel.setText("Path length: ");
 		pathLabel.setToolTipText("length of the maximum path for stochastic model checking");
-		prismConfigControls.add(pathLabel);
-		txtPathLength = new Text(parent, SWT.BORDER);
+		txtPathLength = new Text(prismGroup, SWT.BORDER);
 		txtPathLength.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		prismConfigControls.add(txtPathLength);
 
 		// number of samples
-		Label samplesLabel = new Label(parent, SWT.NONE);
+		Label samplesLabel = new Label(prismGroup, SWT.NONE);
 		samplesLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		samplesLabel.setText("Samples: ");
 		samplesLabel.setToolTipText("number of samples for stochastic model checking");
-		prismConfigControls.add(samplesLabel);
-		txtSampleNumber = new Text(parent, SWT.BORDER);
+		txtSampleNumber = new Text(prismGroup, SWT.BORDER);
 		txtSampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		prismConfigControls.add(txtSampleNumber);
+
+		mc2Group = new Group(parent, SWT.SHADOW_ETCHED_IN);
+		mc2Group.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
+		mc2Group.setLayout(new GridLayout(3, false));
+		mc2Group.setText("MC2 parameters");
 
 		// create max time widget
-		Label maxTimeLabel = new Label(parent, SWT.NONE);
+		Label maxTimeLabel = new Label(mc2Group, SWT.NONE);
 		maxTimeLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		maxTimeLabel.setText("Max. Time: ");
 		maxTimeLabel.setToolTipText("end time of the simulation");
-		mc2ConfigControls.add(maxTimeLabel);
-		txtMaxTime = new Text(parent, SWT.BORDER);
+		txtMaxTime = new Text(mc2Group, SWT.BORDER);
 		txtMaxTime.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		mc2ConfigControls.add(txtMaxTime);
 
 		// create interval widget
-		Label intervalLabel = new Label(parent, SWT.NONE);
+		Label intervalLabel = new Label(mc2Group, SWT.NONE);
 		intervalLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		intervalLabel.setText("Interval: ");
 		intervalLabel.setToolTipText("interval with which trajectories are sampled");
-		mc2ConfigControls.add(intervalLabel);
-		txtInterval = new Text(parent, SWT.BORDER);
+		txtInterval = new Text(mc2Group, SWT.BORDER);
 		txtInterval.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		mc2ConfigControls.add(txtInterval);
 
 		// create number of runs widget
-		Label runsLabel = new Label(parent, SWT.NONE);
+		Label runsLabel = new Label(mc2Group, SWT.NONE);
 		runsLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		runsLabel.setText("No. of runs: ");
 		runsLabel.setToolTipText("number of simulation runs");
-		mc2ConfigControls.add(runsLabel);
-		txtRuns = new Text(parent, SWT.BORDER);
+		txtRuns = new Text(mc2Group, SWT.BORDER);
 		txtRuns.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		mc2ConfigControls.add(txtRuns);
 
 		// create stochastic simulation algorithm widget
-		Label simulatorLabel = new Label(parent, SWT.NONE);
+		Label simulatorLabel = new Label(mc2Group, SWT.NONE);
 		simulatorLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		simulatorLabel.setText("Simulator: ");
 		simulatorLabel.setToolTipText("simulation algorithm to use");
-		mc2ConfigControls.add(simulatorLabel);
-		ddlSimulator = new Combo(parent, SWT.READ_ONLY);
+		ddlSimulator = new Combo(mc2Group, SWT.READ_ONLY);
 		ddlSimulator.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		mc2ConfigControls.add(ddlSimulator);
 		ddlSimulator.add("dm");
 		ddlSimulator.add("frm");
 		ddlSimulator.add("cr");
@@ -297,7 +293,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (iblEditor != null && propertyTreeData != null && e.item.getData() instanceof PropertySemanticEntityPair) {
+				if (iblEditor != null && propertyTreeData != null
+						&& e.item.getData() instanceof PropertySemanticEntityPair) {
 					PropertySemanticEntityPair selection = (PropertySemanticEntityPair) e.item.getData();
 
 					INode propertyNode = NodeModelUtils.getNode(selection.semanticEntity);
@@ -640,7 +637,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
 
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
+				config.getDataFile());
 
 		IRunnableWithProgress exportTask = new IRunnableWithProgress() {
 			@Override
@@ -653,45 +651,35 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							ModelcheckingTarget target = FilteringManager.getInstance().getModelcheckingTarget(property);
+							ModelcheckingTarget target = FilteringManager.getInstance()
+									.getModelcheckingTarget(property);
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
-							VerificationManager.getInstance().export(propertyTreeData.model, property, target, exportFilename);
+							VerificationManager.getInstance().export(propertyTreeData.model, property, target,
+									exportFilename);
 						}
 					}
 				} catch (IOException e) {
-					errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " /*
-																									 * +
-																									 * ddlModelChecker
-																									 * .
-																									 * getText
-																									 * (
-																									 * )
-																									 */, e);
+					errorDialogWithStackTrace("Failed exporting " + config.getModelName()
+							+ " to " /*
+										 * + ddlModelChecker . getText ( )
+										 */, e);
 				}
 			}
 		};
 
 		try {
 			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName() + " to " /*
-																										 * +
-																										 * ddlModelChecker
-																										 * .
-																										 * getText
-																										 * (
-																										 * )
-																										 */+ "...");
+			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName()
+					+ " to " /*
+								 * + ddlModelChecker . getText ( )
+								 */ + "...");
 			progressDialog.run(true, true, exportTask);
 		} catch (InvocationTargetException | InterruptedException e) {
-			errorDialogWithStackTrace("Failed exporting " + config.getModelName() + " to " /*
-																							 * +
-																							 * ddlModelChecker
-																							 * .
-																							 * getText
-																							 * (
-																							 * )
-																							 */, e);
+			errorDialogWithStackTrace("Failed exporting " + config.getModelName()
+					+ " to " /*
+								 * + ddlModelChecker . getText ( )
+								 */, e);
 		}
 
 	}
@@ -701,7 +689,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
 
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
+				config.getDataFile());
 
 		final double confidence = Double.parseDouble(txtConfidenceValue.getText());
 		final long pathLength = Long.parseLong(txtPathLength.getText());
@@ -727,7 +716,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							ModelcheckingTarget target = FilteringManager.getInstance().getModelcheckingTarget(property);
+							ModelcheckingTarget target = FilteringManager.getInstance()
+									.getModelcheckingTarget(property);
 							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
 							IModelcheckingConfiguration config = null;
 
@@ -756,17 +746,20 @@ public class MainView extends ViewPart implements IPartListener2 {
 								break;
 							}
 
-							final Process verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model,
-									property, target, config);
+							final Process verificationProcess = runningProcess = VerificationManager.getInstance()
+									.verify(propertyTreeData.model, property, target, config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
 
 									try {
 
-										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
-										BufferedReader err = new BufferedReader(new InputStreamReader(verificationProcess.getErrorStream()));
-										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFileName + ".result"));
+										BufferedReader in = new BufferedReader(
+												new InputStreamReader(verificationProcess.getInputStream()));
+										BufferedReader err = new BufferedReader(
+												new InputStreamReader(verificationProcess.getErrorStream()));
+										BufferedWriter fileStream = new BufferedWriter(
+												new PrintWriter(exportFileName + ".result"));
 
 										String part = null;
 										while ((part = in.readLine()) != null) {
@@ -820,7 +813,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		try {
 			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor().setTaskName("Performing verification for the " + config.modelName + " model...");
+			progressDialog.getProgressMonitor()
+					.setTaskName("Performing verification for the " + config.modelName + " model...");
 			progressDialog.run(true, true, verificationTask);
 		} catch (InvocationTargetException | InterruptedException e) {
 			errorDialogWithStackTrace("Failed verifying the " + config.modelName + " model", e);
@@ -838,14 +832,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 		for (String line : trace.split(System.getProperty("line.separator"))) {
 			childStatuses.add(new Status(IStatus.ERROR, Activator.PLUGIN_ID, line));
 		}
-		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
+		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}),
+				t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
 
 	private void handlePropertyItemChecked(List<PropertySemanticEntityPair> checkedPropertyItems) {
 
-		toggleControls(prismConfigControls, false);
-		toggleControls(mc2ConfigControls, false);
+		toggleControls(prismGroup, false);
+		toggleControls(mc2Group, false);
 
 		if (checkedPropertyItems != null) {
 			Set<ModelcheckingTarget> targets = new HashSet<>();
@@ -857,10 +852,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 			for (ModelcheckingTarget target : targets) {
 				switch (target) {
 				case PRISM:
-					toggleControls(prismConfigControls, true);
+					toggleControls(prismGroup, true);
 					break;
 				case MC2:
-					toggleControls(mc2ConfigControls, true);
+					toggleControls(mc2Group, true);
 					break;
 				default:
 					break;
@@ -871,12 +866,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		parentComposite.layout();
 	}
 
-	private void toggleControls(List<Control> controls, boolean asVisible) {
-		for (Control control : controls) {
-			GridData layoutData = (GridData) control.getLayoutData();
-			layoutData.exclude = !asVisible;
-			control.setVisible(asVisible);
-		}
+	private void toggleControls(Control control, boolean asVisible) {
+		GridData layoutData = (GridData) control.getLayoutData();
+		layoutData.exclude = !asVisible;
+		control.setVisible(asVisible);
 	}
 
 	@Override
