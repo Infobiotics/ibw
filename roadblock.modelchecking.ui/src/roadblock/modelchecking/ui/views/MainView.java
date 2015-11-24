@@ -71,6 +71,7 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
+import roadblock.modelchecking.VerificationType;
 import roadblock.modelchecking.filtering.FilteringManager;
 import roadblock.modelchecking.runtime.IModelcheckingConfiguration;
 import roadblock.modelchecking.runtime.VerificationManager;
@@ -103,6 +104,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 	private Text txtModelFile;
 	private Text txtDataFile;
+	private Combo ddlVerificationType;
 
 	private Group prismGroup;
 	private Text txtConfidenceValue;
@@ -135,8 +137,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(verificationConsole);
 
 		// make temporary directory
-		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID
-				+ ".tmp";
+		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID + ".tmp";
 		tmpDir = new File(tmpDirPath);
 		tmpDir.mkdir();
 
@@ -167,6 +168,30 @@ public class MainView extends ViewPart implements IPartListener2 {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				config.setDataDirectory(directoryDialog.open());
+			}
+		});
+
+		// create verification type widget
+		Label verificationTypeLabel = new Label(parent, SWT.NONE);
+		verificationTypeLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
+		verificationTypeLabel.setText("Verification: ");
+		verificationTypeLabel.setToolTipText("verification type");
+		ddlVerificationType = new Combo(parent, SWT.READ_ONLY);
+		ddlVerificationType.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		ddlVerificationType.add("Qualitative");
+		ddlVerificationType.setData("Qualitative", VerificationType.QUALITATIVE);
+		ddlVerificationType.add("Quantitative");
+		ddlVerificationType.setData("Quantitative", VerificationType.QUANTITATIVE);
+		ddlVerificationType.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				parentComposite.layout();
+				updateUi();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		});
 
@@ -293,8 +318,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (iblEditor != null && propertyTreeData != null
-						&& e.item.getData() instanceof PropertySemanticEntityPair) {
+				if (iblEditor != null && propertyTreeData != null && e.item.getData() instanceof PropertySemanticEntityPair) {
 					PropertySemanticEntityPair selection = (PropertySemanticEntityPair) e.item.getData();
 
 					INode propertyNode = NodeModelUtils.getNode(selection.semanticEntity);
@@ -339,6 +363,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		btnVerify.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		btnVerify.setEnabled(false);
 
+		ddlVerificationType.select(0);
 		ddlSimulator.select(0);
 	}
 
@@ -394,7 +419,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		if (currentIblResource != null) {
 
-			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource);
+			VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
+			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource, verificationType);
 
 			if (propertyTreeData != null) {
 				ctvPropertyTreeViewer.setInput(propertyTreeData);
@@ -625,6 +651,13 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		strategy = new UpdateValueStrategy();
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+
+		// verification type widget
+		widgetValue = WidgetProperties.selection().observe(ddlVerificationType);
+		modelValue = BeanProperties.value(Configuration.class, "verificationType").observe(config);
+
+		strategy = new UpdateValueStrategy();
+		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 	}
 
 	private void ensureConfig() {
@@ -636,9 +669,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private void exportVerificationModel() {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
-
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
-				config.getDataFile());
+		final VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
 
 		IRunnableWithProgress exportTask = new IRunnableWithProgress() {
 			@Override
@@ -651,35 +683,27 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							ModelcheckingTarget target = FilteringManager.getInstance()
-									.getModelcheckingTarget(property);
+							
+							List<ModelcheckingTarget> targets = FilteringManager.getInstance().getModelcheckingTargets(property);
+							ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(targets, verificationType);
+							
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
-							VerificationManager.getInstance().export(propertyTreeData.model, property, target,
-									exportFilename);
+							VerificationManager.getInstance().export(propertyTreeData.model, property, target, exportFilename);
 						}
 					}
 				} catch (IOException e) {
-					errorDialogWithStackTrace("Failed exporting " + config.getModelName()
-							+ " to " /*
-										 * + ddlModelChecker . getText ( )
-										 */, e);
+					errorDialogWithStackTrace("Failed exporting " + config.getModelName(), e);
 				}
 			}
 		};
 
 		try {
 			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName()
-					+ " to " /*
-								 * + ddlModelChecker . getText ( )
-								 */ + "...");
+			progressDialog.getProgressMonitor().setTaskName("Exporting " + config.getModelName());
 			progressDialog.run(true, true, exportTask);
 		} catch (InvocationTargetException | InterruptedException e) {
-			errorDialogWithStackTrace("Failed exporting " + config.getModelName()
-					+ " to " /*
-								 * + ddlModelChecker . getText ( )
-								 */, e);
+			errorDialogWithStackTrace("Failed exporting " + config.getModelName(), e);
 		}
 
 	}
@@ -688,9 +712,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private void performModelChecking() {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
-
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
-				config.getDataFile());
+		final VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
+		
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
 
 		final double confidence = Double.parseDouble(txtConfidenceValue.getText());
 		final long pathLength = Long.parseLong(txtPathLength.getText());
@@ -716,8 +740,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							ModelcheckingTarget target = FilteringManager.getInstance()
-									.getModelcheckingTarget(property);
+
+							List<ModelcheckingTarget> targets = FilteringManager.getInstance().getModelcheckingTargets(property);
+							ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(targets, verificationType);
+
 							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
 							IModelcheckingConfiguration config = null;
 
@@ -746,20 +772,17 @@ public class MainView extends ViewPart implements IPartListener2 {
 								break;
 							}
 
-							final Process verificationProcess = runningProcess = VerificationManager.getInstance()
-									.verify(propertyTreeData.model, property, target, config);
+							final Process verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target,
+									config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
 
 									try {
 
-										BufferedReader in = new BufferedReader(
-												new InputStreamReader(verificationProcess.getInputStream()));
-										BufferedReader err = new BufferedReader(
-												new InputStreamReader(verificationProcess.getErrorStream()));
-										BufferedWriter fileStream = new BufferedWriter(
-												new PrintWriter(exportFileName + ".result"));
+										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
+										BufferedReader err = new BufferedReader(new InputStreamReader(verificationProcess.getErrorStream()));
+										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFileName + ".result"));
 
 										String part = null;
 										while ((part = in.readLine()) != null) {
@@ -813,8 +836,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		try {
 			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor()
-					.setTaskName("Performing verification for the " + config.modelName + " model...");
+			progressDialog.getProgressMonitor().setTaskName("Performing verification for the " + config.modelName + " model...");
 			progressDialog.run(true, true, verificationTask);
 		} catch (InvocationTargetException | InterruptedException e) {
 			errorDialogWithStackTrace("Failed verifying the " + config.modelName + " model", e);
@@ -832,8 +854,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		for (String line : trace.split(System.getProperty("line.separator"))) {
 			childStatuses.add(new Status(IStatus.ERROR, Activator.PLUGIN_ID, line));
 		}
-		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}),
-				t.getLocalizedMessage(), t);
+		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
 
@@ -846,7 +867,11 @@ public class MainView extends ViewPart implements IPartListener2 {
 			Set<ModelcheckingTarget> targets = new HashSet<>();
 
 			for (PropertySemanticEntityPair item : checkedPropertyItems) {
-				targets.add(FilteringManager.getInstance().getModelcheckingTarget(item.property));
+				List<ModelcheckingTarget> availableTargets = FilteringManager.getInstance().getModelcheckingTargets(item.property);
+				VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
+				ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(availableTargets, verificationType);
+
+				targets.add(target);
 			}
 
 			for (ModelcheckingTarget target : targets) {

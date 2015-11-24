@@ -1,7 +1,12 @@
 package roadblock.modelchecking.filtering;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
+import roadblock.modelchecking.VerificationType;
 import roadblock.modelchecking.filtering.property.IPropertyFilter;
 import roadblock.modelchecking.filtering.property.MC2PropertyFilter;
 import roadblock.modelchecking.filtering.property.NuSmvPropertyFilter;
@@ -20,28 +25,48 @@ public class FilteringManager {
 		return instance;
 	}
 
-	public boolean canVerify(IProperty property, ModelcheckingTarget target) {
+	public boolean canVerify(IProperty property, VerificationType verificationType) {
 
-		IPropertyFilter propertyFilter = getPropertyFilter(target);
-		return property.accept(propertyFilter);
+		boolean canVerify = false;
+
+		if (verificationType == VerificationType.QUALITATIVE) {
+			canVerify |= canVerify(property, Arrays.asList(ModelcheckingTarget.NUSMV));
+		} else if (verificationType == VerificationType.QUANTITATIVE) {
+			canVerify |= canVerify(property, Arrays.asList(ModelcheckingTarget.PRISM, ModelcheckingTarget.MC2));
+		}
+
+		return canVerify;
 	}
 
-	public ModelcheckingTarget getModelcheckingTarget(IProperty property) {
+	public boolean canVerify(IProperty property, List<ModelcheckingTarget> targets) {
 
-		ModelcheckingTarget target = ModelcheckingTarget.MC2;
+		boolean canVerify = false;
 
-		IPropertyFilter nuSmvPropertyFilter = getPropertyFilter(ModelcheckingTarget.NUSMV);
-		if (property.accept(nuSmvPropertyFilter)) {
-			target = ModelcheckingTarget.NUSMV;
-		} else {
-			IPropertyFilter prismPropertyFilter = getPropertyFilter(ModelcheckingTarget.PRISM);
-			if (property.accept(prismPropertyFilter)) {
-				target = ModelcheckingTarget.PRISM;
+		if (targets != null) {
+			for (ModelcheckingTarget target : targets) {
+				IPropertyFilter propertyFilter = getPropertyFilter(target);
+				canVerify |= property.accept(propertyFilter);
 			}
 		}
 
-		return target;
+		return canVerify;
+	}
 
+	public List<ModelcheckingTarget> getModelcheckingTargets(IProperty property) {
+
+		List<ModelcheckingTarget> targets = new ArrayList<>(Arrays.asList(ModelcheckingTarget.MC2));
+
+		IPropertyFilter nuSmvPropertyFilter = getPropertyFilter(ModelcheckingTarget.NUSMV);
+		if (property.accept(nuSmvPropertyFilter)) {
+			targets.add(ModelcheckingTarget.NUSMV);
+		}
+
+		IPropertyFilter prismPropertyFilter = getPropertyFilter(ModelcheckingTarget.PRISM);
+		if (property.accept(prismPropertyFilter)) {
+			targets.add(ModelcheckingTarget.PRISM);
+		}
+
+		return targets;
 	}
 
 	private IPropertyFilter getPropertyFilter(ModelcheckingTarget target) {

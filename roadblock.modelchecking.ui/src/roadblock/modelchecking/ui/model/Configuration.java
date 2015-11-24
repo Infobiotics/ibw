@@ -19,6 +19,7 @@ public class Configuration {
 	public Double logInterval;
 	public Integer runs;
 	public String simulationAlgorithm;
+	public String verificationType;
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		changeSupport.addPropertyChangeListener(listener);
@@ -134,5 +135,13 @@ public class Configuration {
 
 	public void setSimulationAlgorithm(String simulationAlgorithm) {
 		changeSupport.firePropertyChange("simulationAlgorithm", this.simulationAlgorithm, this.simulationAlgorithm = simulationAlgorithm);
+	}
+
+	public String getVerificationType() {
+		return verificationType;
+	}
+
+	public void setVerificationType(String verificationType) {
+		changeSupport.firePropertyChange("verificationType", this.verificationType, this.verificationType = verificationType);
 	}
 }
