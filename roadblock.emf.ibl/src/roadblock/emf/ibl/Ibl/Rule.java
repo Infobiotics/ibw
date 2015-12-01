@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#isIsBidirectional <em>Is Bidirectional</em>}</li>
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getRule()
  * @model kind="class"

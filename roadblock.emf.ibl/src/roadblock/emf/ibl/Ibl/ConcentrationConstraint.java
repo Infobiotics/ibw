@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationConstraint#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationConstraint#getValue <em>Value</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationConstraint#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationConstraint()
  * @model kind="class"

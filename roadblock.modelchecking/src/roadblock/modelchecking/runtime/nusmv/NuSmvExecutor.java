@@ -1,7 +1,10 @@
 package roadblock.modelchecking.runtime.nusmv;
 
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import org.eclipse.core.runtime.Platform;
 
 import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
@@ -31,7 +34,10 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 	@Override
 	public Process verify(Model model, IProperty property, ModelcheckingTarget target, NuSmvConfiguration config) throws IOException {
 
-		String verificationModelFileName = config.modelFileName + ".smv";
+		String nuSmvDirectory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification", File.separator, "nuxmv", File.separator);
+		String workspacePath = Platform.getLocation().toString() + nuSmvDirectory;
+
+		String verificationModelFileName = workspacePath + config.modelFileName + ".smv";
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
 
@@ -50,7 +56,9 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 
 	private void writeModel(String fileName, String model, String property, boolean writeProperty) throws IOException {
 
-		FileWriter writer = new FileWriter(fileName);
+		File file = new File(fileName);
+		file.getParentFile().mkdirs();
+		PrintWriter writer = new PrintWriter(file);
 
 		writer.write(String.format("-- The generated NuSMV model corresponding to property: SPEC %s", property));
 		writer.write(System.getProperty("line.separator"));

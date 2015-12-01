@@ -3,11 +3,8 @@
 package roadblock.emf.ibl.Ibl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -19,6 +16,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getID <em>ID</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDisplayName <em>Display Name</em>}</li>
@@ -34,7 +32,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit <em>Binding Rate Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit <em>Unbinding Rate Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies()
  * @model kind="class"
@@ -708,7 +705,7 @@ public class MolecularSpecies extends EObjectImpl implements IVisitable {
 	 * Returns the value of the '<em><b>Unbinding Rate Unit</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unbinding Rate Unit</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Unbinding Rate Unit</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

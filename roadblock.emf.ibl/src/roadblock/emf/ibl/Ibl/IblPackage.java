@@ -62,106 +62,6 @@ public class IblPackage extends EPackageImpl {
 	public static final IblPackage eINSTANCE = roadblock.emf.ibl.Ibl.IblPackage.init();
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Model
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getModel()
-	 * @generated
-	 */
-	public static final int MODEL = 2;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Kinetics <em>Kinetics</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Kinetics
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getKinetics()
-	 * @generated
-	 */
-	public static final int KINETICS = 3;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Rule
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule()
-	 * @generated
-	 */
-	public static final int RULE = 4;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies()
-	 * @generated
-	 */
-	public static final int MOLECULAR_SPECIES = 5;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Device
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice()
-	 * @generated
-	 */
-	public static final int DEVICE = 6;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Cell
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell()
-	 * @generated
-	 */
-	public static final int CELL = 7;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.ATGCDirective
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCDirective()
-	 * @generated
-	 */
-	public static final int ATGC_DIRECTIVE = 8;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.System <em>System</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.System
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getSystem()
-	 * @generated
-	 */
-	public static final int SYSTEM = 9;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Chromosome <em>Chromosome</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Chromosome
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getChromosome()
-	 * @generated
-	 */
-	public static final int CHROMOSOME = 10;
-
-	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Plasmid <em>Plasmid</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.Plasmid
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPlasmid()
-	 * @generated
-	 */
-	public static final int PLASMID = 11;
-
-	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IVisitable <em>IVisitable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -198,6 +98,16 @@ public class IblPackage extends EPackageImpl {
 	 * @ordered
 	 */
 	public static final int IVISITOR_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Model
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getModel()
+	 * @generated
+	 */
+	public static final int MODEL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -290,6 +200,16 @@ public class IblPackage extends EPackageImpl {
 	public static final int MODEL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Kinetics <em>Kinetics</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Kinetics
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getKinetics()
+	 * @generated
+	 */
+	public static final int KINETICS = 3;
+
+	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -351,6 +271,16 @@ public class IblPackage extends EPackageImpl {
 	 * @ordered
 	 */
 	public static final int KINETICS_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 6;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Rule
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule()
+	 * @generated
+	 */
+	public static final int RULE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
@@ -441,6 +371,16 @@ public class IblPackage extends EPackageImpl {
 	 * @ordered
 	 */
 	public static final int RULE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMolecularSpecies()
+	 * @generated
+	 */
+	public static final int MOLECULAR_SPECIES = 5;
 
 	/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -569,6 +509,16 @@ public class IblPackage extends EPackageImpl {
 	public static final int MOLECULAR_SPECIES_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 13;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Device
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice()
+	 * @generated
+	 */
+	public static final int DEVICE = 6;
+
+	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -686,6 +636,16 @@ public class IblPackage extends EPackageImpl {
 	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 12;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Cell
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell()
+	 * @generated
+	 */
+	public static final int CELL = 7;
+
+	/**
 	 * The feature id for the '<em><b>Display Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -776,6 +736,16 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.ATGCDirective
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCDirective()
+	 * @generated
+	 */
+	public static final int ATGC_DIRECTIVE = 8;
+
+	/**
 	 * The number of structural features of the '<em>ATGC Directive</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -783,6 +753,16 @@ public class IblPackage extends EPackageImpl {
 	 * @ordered
 	 */
 	public static final int ATGC_DIRECTIVE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.System <em>System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.System
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getSystem()
+	 * @generated
+	 */
+	public static final int SYSTEM = 9;
 
 	/**
 	 * The number of structural features of the '<em>System</em>' class.
@@ -794,6 +774,16 @@ public class IblPackage extends EPackageImpl {
 	public static final int SYSTEM_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Chromosome <em>Chromosome</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Chromosome
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getChromosome()
+	 * @generated
+	 */
+	public static final int CHROMOSOME = 10;
+
+	/**
 	 * The number of structural features of the '<em>Chromosome</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -801,6 +791,16 @@ public class IblPackage extends EPackageImpl {
 	 * @ordered
 	 */
 	public static final int CHROMOSOME_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Plasmid <em>Plasmid</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Plasmid
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getPlasmid()
+	 * @generated
+	 */
+	public static final int PLASMID = 11;
 
 	/**
 	 * The number of structural features of the '<em>Plasmid</em>' class.
@@ -1715,6 +1715,43 @@ public class IblPackage extends EPackageImpl {
 	public static final int PROPERTY_INITIAL_CONDITION_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
+	 * @generated
+	 */
+	public static final int RATE_UNIT = 33;
+
+	/**
+	 * The feature id for the '<em><b>Rate Time Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RATE_UNIT__RATE_TIME_UNIT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Rate Concentration Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RATE_UNIT__RATE_CONCENTRATION_UNIT = 1;
+
+	/**
+	 * The number of structural features of the '<em>Rate Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RATE_UNIT_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1723,6 +1760,24 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int ATGC_DIRECTION = 34;
+
+	/**
+	 * The feature id for the '<em><b>Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_DIRECTION__DIRECTION = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Direction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_DIRECTION_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCArrange <em>ATGC Arrange</em>}' class.
@@ -1735,6 +1790,24 @@ public class IblPackage extends EPackageImpl {
 	public static final int ATGC_ARRANGE = 35;
 
 	/**
+	 * The feature id for the '<em><b>Part List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_ARRANGE__PART_LIST = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Arrange</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_ARRANGE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1743,6 +1816,24 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int ATGC_CLONING_SITES = 36;
+
+	/**
+	 * The feature id for the '<em><b>Cloning Sites</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_CLONING_SITES__CLONING_SITES = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Cloning Sites</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_CLONING_SITES_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}' class.
@@ -1755,14 +1846,31 @@ public class IblPackage extends EPackageImpl {
 	public static final int FLAT_MODEL_PROPERTY_PAIR = 37;
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}' class.
+	 * The feature id for the '<em><b>Flat Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticExpression()
 	 * @generated
+	 * @ordered
 	 */
-	public static final int IARITHMETIC_EXPRESSION = 38;
+	public static final int FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR__PROPERTY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Flat Model Property Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL_PROPERTY_PAIR_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}' class.
@@ -1775,6 +1883,34 @@ public class IblPackage extends EPackageImpl {
 	public static final int IARITHMETIC_OPERAND = 39;
 
 	/**
+	 * The number of structural features of the '<em>IArithmetic Operand</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IARITHMETIC_OPERAND_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getIArithmeticExpression()
+	 * @generated
+	 */
+	public static final int IARITHMETIC_EXPRESSION = 38;
+
+	/**
+	 * The number of structural features of the '<em>IArithmetic Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IARITHMETIC_EXPRESSION_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1783,6 +1919,42 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int BINARY_ARITHMETIC_EXPRESSION = 40;
+
+	/**
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION__LEFT_OPERAND = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION__RIGHT_OPERAND = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION__OPERATOR = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Binary Arithmetic Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BINARY_ARITHMETIC_EXPRESSION_FEATURE_COUNT = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}' class.
@@ -1795,6 +1967,24 @@ public class IblPackage extends EPackageImpl {
 	public static final int NUMERIC_LITERAL = 41;
 
 	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NUMERIC_LITERAL__VALUE = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Numeric Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NUMERIC_LITERAL_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1803,6 +1993,42 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int VARIABLE_REFERENCE = 42;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE__NAME = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Maximum Of Interest</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE__IS_MAXIMUM_OF_INTEREST = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Container Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE__CONTAINER_NAME = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Variable Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int VARIABLE_REFERENCE_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}' class.
@@ -1815,6 +2041,33 @@ public class IblPackage extends EPackageImpl {
 	public static final int MONOTONICITY_EXPRESSION = 43;
 
 	/**
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MONOTONICITY_EXPRESSION__VARIABLE = ISTATE_FORMULA_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MONOTONICITY_EXPRESSION__TYPE = ISTATE_FORMULA_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Monotonicity Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MONOTONICITY_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1823,6 +2076,42 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int RELATIONAL_EXPRESSION = 44;
+
+	/**
+	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION__LEFT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION__RIGHT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Operator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION__OPERATOR = ISTATE_FORMULA_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Relational Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIONAL_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity <em>Concentration Quantity</em>}' class.
@@ -1835,6 +2124,33 @@ public class IblPackage extends EPackageImpl {
 	public static final int CONCENTRATION_QUANTITY = 45;
 
 	/**
+	 * The feature id for the '<em><b>Amount</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CONCENTRATION_QUANTITY__AMOUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CONCENTRATION_QUANTITY__UNIT = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Concentration Quantity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CONCENTRATION_QUANTITY_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1843,6 +2159,24 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int ATGC_TRANSLATION_RATE = 46;
+
+	/**
+	 * The feature id for the '<em><b>Translation Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_TRANSLATION_RATE__TRANSLATION_RATE = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ATGC Translation Rate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ATGC_TRANSLATION_RATE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}' class.
@@ -1855,6 +2189,15 @@ public class IblPackage extends EPackageImpl {
 	public static final int IMOLECULE_CONTAINER = 47;
 
 	/**
+	 * The number of structural features of the '<em>IMolecule Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IMOLECULE_CONTAINER_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1863,6 +2206,15 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int IRULE_CONTAINER = 48;
+
+	/**
+	 * The number of structural features of the '<em>IRule Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IRULE_CONTAINER_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
@@ -1935,358 +2287,6 @@ public class IblPackage extends EPackageImpl {
 	public static final int RATE_CONCENTRATION_UNIT = 55;
 
 	/**
-	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
-	 * @generated
-	 */
-	public static final int RATE_UNIT = 33;
-
-	/**
-	 * The feature id for the '<em><b>Rate Time Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RATE_UNIT__RATE_TIME_UNIT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Rate Concentration Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RATE_UNIT__RATE_CONCENTRATION_UNIT = 1;
-
-	/**
-	 * The number of structural features of the '<em>Rate Unit</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RATE_UNIT_FEATURE_COUNT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Direction</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_DIRECTION__DIRECTION = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>ATGC Direction</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_DIRECTION_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Part List</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_ARRANGE__PART_LIST = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>ATGC Arrange</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_ARRANGE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Cloning Sites</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_CLONING_SITES__CLONING_SITES = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>ATGC Cloning Sites</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_CLONING_SITES_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Flat Model</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int FLAT_MODEL_PROPERTY_PAIR__FLAT_MODEL = 0;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int FLAT_MODEL_PROPERTY_PAIR__PROPERTY = 1;
-
-	/**
-	 * The number of structural features of the '<em>Flat Model Property Pair</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int FLAT_MODEL_PROPERTY_PAIR_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of structural features of the '<em>IArithmetic Operand</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IARITHMETIC_OPERAND_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>IArithmetic Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IARITHMETIC_EXPRESSION_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BINARY_ARITHMETIC_EXPRESSION__LEFT_OPERAND = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BINARY_ARITHMETIC_EXPRESSION__RIGHT_OPERAND = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BINARY_ARITHMETIC_EXPRESSION__OPERATOR = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Binary Arithmetic Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BINARY_ARITHMETIC_EXPRESSION_FEATURE_COUNT = IARITHMETIC_EXPRESSION_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NUMERIC_LITERAL__VALUE = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Numeric Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NUMERIC_LITERAL_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int VARIABLE_REFERENCE__NAME = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Is Maximum Of Interest</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int VARIABLE_REFERENCE__IS_MAXIMUM_OF_INTEREST = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Container Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int VARIABLE_REFERENCE__CONTAINER_NAME = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Variable Reference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int VARIABLE_REFERENCE_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MONOTONICITY_EXPRESSION__VARIABLE = ISTATE_FORMULA_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MONOTONICITY_EXPRESSION__TYPE = ISTATE_FORMULA_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Monotonicity Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MONOTONICITY_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Left Operand</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RELATIONAL_EXPRESSION__LEFT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Right Operand</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RELATIONAL_EXPRESSION__RIGHT_OPERAND = ISTATE_FORMULA_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RELATIONAL_EXPRESSION__OPERATOR = ISTATE_FORMULA_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Relational Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RELATIONAL_EXPRESSION_FEATURE_COUNT = ISTATE_FORMULA_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Amount</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONCENTRATION_QUANTITY__AMOUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Unit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONCENTRATION_QUANTITY__UNIT = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Concentration Quantity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONCENTRATION_QUANTITY_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Translation Rate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_TRANSLATION_RATE__TRANSLATION_RATE = ATGC_DIRECTIVE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>ATGC Translation Rate</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ATGC_TRANSLATION_RATE_FEATURE_COUNT = ATGC_DIRECTIVE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>IMolecule Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IMOLECULE_CONTAINER_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of structural features of the '<em>IRule Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IRULE_CONTAINER_FEATURE_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2305,6 +2305,20 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public static final int MONOTONICITY_TYPE = 57;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iVisitableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iVisitorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2375,20 +2389,6 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass plasmidEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iVisitableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iVisitorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2775,6 +2775,30 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IVisitable <em>IVisitable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IVisitable</em>'.
+	 * @see roadblock.emf.ibl.Ibl.IVisitable
+	 * @generated
+	 */
+	public EClass getIVisitable() {
+		return iVisitableEClass;
+	}
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IVisitor <em>IVisitor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IVisitor</em>'.
+	 * @see roadblock.emf.ibl.Ibl.IVisitor
+	 * @generated
+	 */
+	public EClass getIVisitor() {
+		return iVisitorEClass;
+	}
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2902,7 +2926,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getModel_RegionList() {
 		return (EReference)modelEClass.getEStructuralFeatures().get(8);
 	}
-
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Kinetics <em>Kinetics</em>}'.
@@ -3110,7 +3133,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)ruleEClass.getEStructuralFeatures().get(7);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3124,7 +3146,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)ruleEClass.getEStructuralFeatures().get(8);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3135,6 +3156,19 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EClass getMolecularSpecies() {
 		return molecularSpeciesEClass;
+	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getID <em>ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>ID</em>'.
+	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getID()
+	 * @see #getMolecularSpecies()
+	 * @generated
+	 */
+	public EAttribute getMolecularSpecies_ID() {
+		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3202,7 +3236,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(5);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRate <em>Binding Rate</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3215,7 +3248,6 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getMolecularSpecies_BindingRate() {
 		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(6);
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRate <em>Unbinding Rate</em>}'.
@@ -3230,7 +3262,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(7);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBiologicalType <em>Biological Type</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3243,7 +3274,6 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getMolecularSpecies_BiologicalType() {
 		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(8);
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getSequence <em>Sequence</em>}'.
@@ -3258,7 +3288,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(9);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getDegradationRateUnit <em>Degradation Rate Unit</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3271,7 +3300,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getMolecularSpecies_DegradationRateUnit() {
 		return (EReference)molecularSpeciesEClass.getEStructuralFeatures().get(10);
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getBindingRateUnit <em>Binding Rate Unit</em>}'.
@@ -3286,7 +3314,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)molecularSpeciesEClass.getEStructuralFeatures().get(11);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getUnbindingRateUnit <em>Unbinding Rate Unit</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3298,20 +3325,6 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EReference getMolecularSpecies_UnbindingRateUnit() {
 		return (EReference)molecularSpeciesEClass.getEStructuralFeatures().get(12);
-	}
-
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MolecularSpecies#getID <em>ID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>ID</em>'.
-	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies#getID()
-	 * @see #getMolecularSpecies()
-	 * @generated
-	 */
-	public EAttribute getMolecularSpecies_ID() {
-		return (EAttribute)molecularSpeciesEClass.getEStructuralFeatures().get(0);
 	}
 
 
@@ -3431,7 +3444,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)deviceEClass.getEStructuralFeatures().get(7);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getOutputList <em>Output List</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3444,7 +3456,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getDevice_OutputList() {
 		return (EReference)deviceEClass.getEStructuralFeatures().get(8);
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getInputList <em>Input List</em>}'.
@@ -3459,7 +3470,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)deviceEClass.getEStructuralFeatures().get(9);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getVariableAssignmentList <em>Variable Assignment List</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3473,7 +3483,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)deviceEClass.getEStructuralFeatures().get(10);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3486,7 +3495,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getDevice_Properties() {
 		return (EReference)deviceEClass.getEStructuralFeatures().get(11);
 	}
-
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}'.
@@ -3604,7 +3612,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)cellEClass.getEStructuralFeatures().get(7);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3617,7 +3624,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getCell_Properties() {
 		return (EReference)cellEClass.getEStructuralFeatures().get(8);
 	}
-
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}'.
@@ -3643,7 +3649,6 @@ public class IblPackage extends EPackageImpl {
 		return systemEClass;
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Chromosome <em>Chromosome</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3656,7 +3661,6 @@ public class IblPackage extends EPackageImpl {
 		return chromosomeEClass;
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Plasmid <em>Plasmid</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3667,31 +3671,6 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EClass getPlasmid() {
 		return plasmidEClass;
-	}
-
-
-	/**
-	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IVisitable <em>IVisitable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IVisitable</em>'.
-	 * @see roadblock.emf.ibl.Ibl.IVisitable
-	 * @generated
-	 */
-	public EClass getIVisitable() {
-		return iVisitableEClass;
-	}
-
-	/**
-	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IVisitor <em>IVisitor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IVisitor</em>'.
-	 * @see roadblock.emf.ibl.Ibl.IVisitor
-	 * @generated
-	 */
-	public EClass getIVisitor() {
-		return iVisitorEClass;
 	}
 
 	/**
@@ -4047,7 +4026,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RewardProperty#getTimeConstraint <em>Time Constraint</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4086,7 +4064,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getRewardProperty_InitialConditions() {
 		return (EReference)rewardPropertyEClass.getEStructuralFeatures().get(3);
 	}
-
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty <em>Steady State Property</em>}'.
@@ -4354,7 +4331,6 @@ public class IblPackage extends EPackageImpl {
 		return regionEClass;
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Region#getDisplayName <em>Display Name</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4367,7 +4343,6 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getRegion_DisplayName() {
 		return (EAttribute)regionEClass.getEStructuralFeatures().get(0);
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Region#getKinetics <em>Kinetics</em>}'.
@@ -4382,7 +4357,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)regionEClass.getEStructuralFeatures().get(1);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getRuleList <em>Rule List</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4395,7 +4369,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getRegion_RuleList() {
 		return (EReference)regionEClass.getEStructuralFeatures().get(2);
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getMoleculeList <em>Molecule List</em>}'.
@@ -4410,7 +4383,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)regionEClass.getEStructuralFeatures().get(3);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Region#getID <em>ID</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4423,7 +4395,6 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getRegion_ID() {
 		return (EAttribute)regionEClass.getEStructuralFeatures().get(4);
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getCellList <em>Cell List</em>}'.
@@ -4438,7 +4409,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)regionEClass.getEStructuralFeatures().get(5);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getVariableAssignmentList <em>Variable Assignment List</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4452,7 +4422,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)regionEClass.getEStructuralFeatures().get(6);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment <em>EMF Variable Assignment</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4464,7 +4433,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getEMFVariableAssignment() {
 		return emfVariableAssignmentEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}'.
@@ -4479,7 +4447,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4492,7 +4459,6 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getEMFVariableAssignment_VariableAttribute() {
 		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(1);
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute list '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnits <em>Units</em>}'.
@@ -4507,7 +4473,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(2);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4521,7 +4486,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(3);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4533,7 +4497,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getFlatModel() {
 		return flatModelEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList <em>Molecule List</em>}'.
@@ -4548,7 +4511,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)flatModelEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getRuleList <em>Rule List</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4562,7 +4524,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)flatModelEClass.getEStructuralFeatures().get(1);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4574,7 +4535,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getPropertyInitialCondition() {
 		return propertyInitialConditionEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariable <em>Variable</em>}'.
@@ -4589,7 +4549,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)propertyInitialConditionEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4603,7 +4562,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(1);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount <em>Amount</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4615,6 +4573,46 @@ public class IblPackage extends EPackageImpl {
 	 */
 	public EAttribute getPropertyInitialCondition_Amount() {
 		return (EAttribute)propertyInitialConditionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rate Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit
+	 * @generated
+	 */
+	public EClass getRateUnit() {
+		return rateUnitEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RateUnit#getRateTimeUnit <em>Rate Time Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rate Time Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit#getRateTimeUnit()
+	 * @see #getRateUnit()
+	 * @generated
+	 */
+	public EAttribute getRateUnit_RateTimeUnit() {
+		return (EAttribute)rateUnitEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RateUnit#getRateConcentrationUnit <em>Rate Concentration Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rate Concentration Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.RateUnit#getRateConcentrationUnit()
+	 * @see #getRateUnit()
+	 * @generated
+	 */
+	public EAttribute getRateUnit_RateConcentrationUnit() {
+		return (EAttribute)rateUnitEClass.getEStructuralFeatures().get(1);
 	}
 
 
@@ -4630,7 +4628,6 @@ public class IblPackage extends EPackageImpl {
 		return atgcDirectionEClass;
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCDirection#getDirection <em>Direction</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4644,7 +4641,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)atgcDirectionEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCArrange <em>ATGC Arrange</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4656,7 +4652,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getATGCArrange() {
 		return atgcArrangeEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.ATGCArrange#getPartList <em>Part List</em>}'.
@@ -4671,7 +4666,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)atgcArrangeEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4683,7 +4677,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getATGCCloningSites() {
 		return atgcCloningSitesEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites#getCloningSites <em>Cloning Sites</em>}'.
@@ -4698,7 +4691,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)atgcCloningSitesEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4710,7 +4702,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getFlatModelPropertyPair() {
 		return flatModelPropertyPairEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getFlatModel <em>Flat Model</em>}'.
@@ -4725,7 +4716,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)flatModelPropertyPairEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair#getProperty <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4739,7 +4729,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)flatModelPropertyPairEClass.getEStructuralFeatures().get(1);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4751,7 +4740,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getIArithmeticExpression() {
 		return iArithmeticExpressionEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}'.
@@ -4765,7 +4753,6 @@ public class IblPackage extends EPackageImpl {
 		return iArithmeticOperandEClass;
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4777,7 +4764,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getBinaryArithmeticExpression() {
 		return binaryArithmeticExpressionEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getLeftOperand <em>Left Operand</em>}'.
@@ -4792,7 +4778,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)binaryArithmeticExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getRightOperand <em>Right Operand</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4805,7 +4790,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getBinaryArithmeticExpression_RightOperand() {
 		return (EReference)binaryArithmeticExpressionEClass.getEStructuralFeatures().get(1);
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getOperator <em>Operator</em>}'.
@@ -4820,7 +4804,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)binaryArithmeticExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4832,7 +4815,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getNumericLiteral() {
 		return numericLiteralEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.NumericLiteral#getValue <em>Value</em>}'.
@@ -4847,7 +4829,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)numericLiteralEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4859,7 +4840,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getVariableReference() {
 		return variableReferenceEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.VariableReference#getName <em>Name</em>}'.
@@ -4874,7 +4854,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)variableReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.VariableReference#isIsMaximumOfInterest <em>Is Maximum Of Interest</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4887,7 +4866,6 @@ public class IblPackage extends EPackageImpl {
 	public EAttribute getVariableReference_IsMaximumOfInterest() {
 		return (EAttribute)variableReferenceEClass.getEStructuralFeatures().get(1);
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.VariableReference#getContainerName <em>Container Name</em>}'.
@@ -4902,7 +4880,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)variableReferenceEClass.getEStructuralFeatures().get(2);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4914,7 +4891,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getMonotonicityExpression() {
 		return monotonicityExpressionEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression#getVariable <em>Variable</em>}'.
@@ -4929,7 +4905,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)monotonicityExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4943,7 +4918,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)monotonicityExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4955,7 +4929,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getRelationalExpression() {
 		return relationalExpressionEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RelationalExpression#getLeftOperand <em>Left Operand</em>}'.
@@ -4970,7 +4943,6 @@ public class IblPackage extends EPackageImpl {
 		return (EReference)relationalExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.RelationalExpression#getRightOperand <em>Right Operand</em>}'.
 	 * <!-- begin-user-doc -->
@@ -4983,7 +4955,6 @@ public class IblPackage extends EPackageImpl {
 	public EReference getRelationalExpression_RightOperand() {
 		return (EReference)relationalExpressionEClass.getEStructuralFeatures().get(1);
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RelationalExpression#getOperator <em>Operator</em>}'.
@@ -4998,7 +4969,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)relationalExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity <em>Concentration Quantity</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5010,7 +4980,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getConcentrationQuantity() {
 		return concentrationQuantityEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity#getAmount <em>Amount</em>}'.
@@ -5025,7 +4994,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)concentrationQuantityEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity#getUnit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5039,7 +5007,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)concentrationQuantityEClass.getEStructuralFeatures().get(1);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5051,7 +5018,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getATGCTranslationRate() {
 		return atgcTranslationRateEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate#getTranslationRate <em>Translation Rate</em>}'.
@@ -5066,7 +5032,6 @@ public class IblPackage extends EPackageImpl {
 		return (EAttribute)atgcTranslationRateEClass.getEStructuralFeatures().get(0);
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5079,7 +5044,6 @@ public class IblPackage extends EPackageImpl {
 		return iMoleculeContainerEClass;
 	}
 
-
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5091,7 +5055,6 @@ public class IblPackage extends EPackageImpl {
 	public EClass getIRuleContainer() {
 		return iRuleContainerEClass;
 	}
-
 
 	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
@@ -5116,7 +5079,6 @@ public class IblPackage extends EPackageImpl {
 	public EEnum getTemporalPattern() {
 		return temporalPatternEEnum;
 	}
-
 
 	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}'.
@@ -5166,7 +5128,6 @@ public class IblPackage extends EPackageImpl {
 		return rateTimeUnitEEnum;
 	}
 
-
 	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.RateConcentrationUnit <em>Rate Concentration Unit</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5178,48 +5139,6 @@ public class IblPackage extends EPackageImpl {
 	public EEnum getRateConcentrationUnit() {
 		return rateConcentrationUnitEEnum;
 	}
-
-
-	/**
-	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Rate Unit</em>'.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit
-	 * @generated
-	 */
-	public EClass getRateUnit() {
-		return rateUnitEClass;
-	}
-
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RateUnit#getRateTimeUnit <em>Rate Time Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Rate Time Unit</em>'.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit#getRateTimeUnit()
-	 * @see #getRateUnit()
-	 * @generated
-	 */
-	public EAttribute getRateUnit_RateTimeUnit() {
-		return (EAttribute)rateUnitEClass.getEStructuralFeatures().get(0);
-	}
-
-
-	/**
-	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.RateUnit#getRateConcentrationUnit <em>Rate Concentration Unit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Rate Concentration Unit</em>'.
-	 * @see roadblock.emf.ibl.Ibl.RateUnit#getRateConcentrationUnit()
-	 * @see #getRateUnit()
-	 * @generated
-	 */
-	public EAttribute getRateUnit_RateConcentrationUnit() {
-		return (EAttribute)rateUnitEClass.getEStructuralFeatures().get(1);
-	}
-
 
 	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}'.
@@ -5233,7 +5152,6 @@ public class IblPackage extends EPackageImpl {
 		return arithmeticOperatorEEnum;
 	}
 
-
 	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}'.
 	 * <!-- begin-user-doc -->
@@ -5245,7 +5163,6 @@ public class IblPackage extends EPackageImpl {
 	public EEnum getMonotonicityType() {
 		return monotonicityTypeEEnum;
 	}
-
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -5949,7 +5866,7 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getPropertyInitialCondition_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(rateUnitEClass, RateUnit.class, "RateUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRateUnit_RateTimeUnit(), this.getRateTimeUnit(), "rateTimeUnit", "", 0, 1, RateUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRateUnit_RateTimeUnit(), this.getRateTimeUnit(), "rateTimeUnit", null, 0, 1, RateUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRateUnit_RateConcentrationUnit(), this.getRateConcentrationUnit(), "rateConcentrationUnit", null, 0, 1, RateUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atgcDirectionEClass, ATGCDirection.class, "ATGCDirection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -6083,6 +6000,26 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public interface Literals {
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IVisitable <em>IVisitable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.IVisitable
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIVisitable()
+		 * @generated
+		 */
+		public static final EClass IVISITABLE = eINSTANCE.getIVisitable();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IVisitor <em>IVisitor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.IVisitor
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIVisitor()
+		 * @generated
+		 */
+		public static final EClass IVISITOR = eINSTANCE.getIVisitor();
+
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -6316,6 +6253,14 @@ public class IblPackage extends EPackageImpl {
 		public static final EClass MOLECULAR_SPECIES = eINSTANCE.getMolecularSpecies();
 
 		/**
+		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MOLECULAR_SPECIES__ID = eINSTANCE.getMolecularSpecies_ID();
+
+		/**
 		 * The meta object literal for the '<em><b>Display Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6410,14 +6355,6 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference MOLECULAR_SPECIES__UNBINDING_RATE_UNIT = eINSTANCE.getMolecularSpecies_UnbindingRateUnit();
-
-		/**
-		 * The meta object literal for the '<em><b>ID</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute MOLECULAR_SPECIES__ID = eINSTANCE.getMolecularSpecies_ID();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Device <em>Device</em>}' class.
@@ -6646,26 +6583,6 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EClass PLASMID = eINSTANCE.getPlasmid();
-
-		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IVisitable <em>IVisitable</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.IVisitable
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIVisitable()
-		 * @generated
-		 */
-		public static final EClass IVISITABLE = eINSTANCE.getIVisitable();
-
-		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IVisitor <em>IVisitor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.IVisitor
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getIVisitor()
-		 * @generated
-		 */
-		public static final EClass IVISITOR = eINSTANCE.getIVisitor();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.IProperty <em>IProperty</em>}' class.
@@ -7278,6 +7195,32 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute PROPERTY_INITIAL_CONDITION__AMOUNT = eINSTANCE.getPropertyInitialCondition_Amount();
 
 		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.RateUnit
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
+		 * @generated
+		 */
+		public static final EClass RATE_UNIT = eINSTANCE.getRateUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Rate Time Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RATE_UNIT__RATE_TIME_UNIT = eINSTANCE.getRateUnit_RateTimeUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Rate Concentration Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RATE_UNIT__RATE_CONCENTRATION_UNIT = eINSTANCE.getRateUnit_RateConcentrationUnit();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7656,32 +7599,6 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EEnum RATE_CONCENTRATION_UNIT = eINSTANCE.getRateConcentrationUnit();
-
-		/**
-		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.RateUnit <em>Rate Unit</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see roadblock.emf.ibl.Ibl.RateUnit
-		 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateUnit()
-		 * @generated
-		 */
-		public static final EClass RATE_UNIT = eINSTANCE.getRateUnit();
-
-		/**
-		 * The meta object literal for the '<em><b>Rate Time Unit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute RATE_UNIT__RATE_TIME_UNIT = eINSTANCE.getRateUnit_RateTimeUnit();
-
-		/**
-		 * The meta object literal for the '<em><b>Rate Concentration Unit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute RATE_UNIT__RATE_CONCENTRATION_UNIT = eINSTANCE.getRateUnit_RateConcentrationUnit();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.

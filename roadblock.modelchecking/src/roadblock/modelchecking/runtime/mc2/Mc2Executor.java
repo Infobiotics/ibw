@@ -1,15 +1,18 @@
 package roadblock.modelchecking.runtime.mc2;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Writer;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
+import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.CSVWriter;
 import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.emf.ibl.Ibl.FlatModel;
@@ -44,18 +47,19 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		String xmlFlatModel = convertToXml(flatModel);
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 
-		String simulationFileName = config.modelFileName + ".csv";
-		String propertiesFileName = config.modelFileName + ".queries";
-
 		String ngssPath = BinaryPathProvider.getInstance().getNgssPath();
+		String mc2Directory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification", File.separator, "mc2", File.separator);
+		String workspacePath = Platform.getLocation().toString() + mc2Directory;
 		String mc2Path = BinaryPathProvider.getInstance().getMc2Path();
 
-		String[] simulationCommand = new String[] { ngssPath, "--emf", "parser=emf", "max_time=" + config.maxTime, "max_runtime=" + 0.0, "simulation_algorithm=" + config.simulationAlgorithm,
-				"data_file=" + simulationFileName, "log_interval=" + config.logInterval, "runs=" + config.runs, "seed=0", "output=console", "compress=true", "parallel=true", "show_progress=false" };
+		String simulationFileName = workspacePath + config.modelFileName + ".csv";
+		String propertiesFileName = workspacePath + config.modelFileName + ".queries";
+
+		String[] simulationCommand = new String[] { ngssPath, workspacePath, Double.toString(config.maxTime), "0.0", config.simulationAlgorithm, simulationFileName,
+				Double.toString(config.logInterval), Long.toString(config.runs), "0" };
 		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName, propertiesFileName, "-time" };
 
-		Process simulationProcess = runSimulation(simulationCommand, xmlFlatModel, simulationFileName);
-		simulationProcess.waitFor();
+		runSimulation(simulationCommand, xmlFlatModel, workspacePath, simulationFileName);
 
 		writeFile(propertiesFileName, propetyTranslation);
 
@@ -64,7 +68,7 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		return verificationProcess;
 	}
 
-	private Process runSimulation(String[] command, String xmlFlatModel, String simulationFileName) throws IOException {
+	private Process runSimulation(String[] command, String xmlFlatModel, String workspacePath, String simulationFileName) throws IOException, InterruptedException {
 
 		Process simulationProcess = Runtime.getRuntime().exec(command);
 
@@ -73,20 +77,32 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		input.write(xmlFlatModel.getBytes());
 		input.close();
 
-		// write simulation traces
-		BufferedReader output = new BufferedReader(new InputStreamReader(simulationProcess.getInputStream()));
-		StringBuilder simulationTrace = new StringBuilder();
+		// wait for simulation to end
+		simulationProcess.waitFor();
 
-		String part = null;
-		while ((part = output.readLine()) != null) {
-			simulationTrace.append(part);
-			simulationTrace.append(System.getProperty("line.separator"));
+		// combine the results of the different simulation runs
+		File simulationDirectory = new File(workspacePath + "/-rundata");
+		File[] simulationRunFiles = simulationDirectory.listFiles();
+
+		Writer writer = new PrintWriter(simulationFileName);
+		CSVWriter csvWriter = new CSVWriter(writer, ' ', CSVWriter.NO_QUOTE_CHARACTER);
+
+		if (simulationRunFiles.length > 0) {
+			File run0File = simulationRunFiles[0];
+			CSVReader csvReader = new CSVReader(new FileReader(run0File), ',');
+			csvWriter.writeAll(csvReader.readAll());
+			csvReader.close();
+
+			for (int i = 1; i < simulationRunFiles.length; i++) {
+				File runFile = simulationRunFiles[i];
+				csvReader = new CSVReader(new FileReader(runFile), ',', CSVWriter.NO_QUOTE_CHARACTER, 1);
+				csvWriter.writeAll(csvReader.readAll());
+				csvReader.close();
+			}
 		}
-		output.close();
 
-		BufferedWriter fileStream = new BufferedWriter(new PrintWriter(simulationFileName));
-		fileStream.write(simulationTrace.toString().replace(",", " "));
-		fileStream.close();
+		csvWriter.close();
+		writer.close();
 
 		return simulationProcess;
 	}

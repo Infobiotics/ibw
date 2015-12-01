@@ -1,7 +1,10 @@
 package roadblock.modelchecking.runtime.prism;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import org.eclipse.core.runtime.Platform;
 
 import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
@@ -31,7 +34,10 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 	@Override
 	public Process verify(Model model, IProperty property, ModelcheckingTarget target, PrismConfiguration config) throws IOException {
 
-		String verificationModelFileName = config.modelFileName + ".sm";
+		String nuSmvDirectory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification", File.separator, "prism", File.separator);
+		String workspacePath = Platform.getLocation().toString() + nuSmvDirectory;
+
+		String verificationModelFileName = workspacePath + config.modelFileName + ".sm";
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
 
@@ -43,15 +49,17 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 
 		String toolPath = BinaryPathProvider.getInstance().getPrismPath();
 
-		String[] verificationCommand = new String[] { toolPath, verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod", "ci", "-simconf", String.valueOf(config.confidence),
-				"-simsamples", String.valueOf(config.samples), "-simpathlen", String.valueOf(config.pathLength) };
+		String[] verificationCommand = new String[] { toolPath, verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod", "ci", "-simconf",
+				String.valueOf(config.confidence), "-simsamples", String.valueOf(config.samples), "-simpathlen", String.valueOf(config.pathLength) };
 
 		return Runtime.getRuntime().exec(verificationCommand);
 	}
 
 	private void writeFile(String fileName, String model, String property) throws IOException {
 
-		PrintWriter writer = new PrintWriter(fileName);
+		File file = new File(fileName);
+		file.getParentFile().mkdirs();
+		PrintWriter writer = new PrintWriter(file);
 
 		writer.write(String.format("// The generated PRISM model corresponding to property: %s", property));
 		writer.write(System.getProperty("line.separator"));

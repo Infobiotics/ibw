@@ -418,14 +418,13 @@ class ModelBuilder extends IblSwitch<Object> {
 	override caseVariableDefinitionBuiltIn(VariableDefinitionBuiltIn variableDefinition) {
 		val molecule = modelFactory.createMolecularSpecies
 		val type = buildVariableName(variableDefinition.type)
-		val defaultRateUnit = modelFactory.createRateUnit
 
 		molecule => [
 			biologicalType = type.toUpperCase
 			displayName = variableDefinition.name.buildVariableName
-			degradationRateUnit = defaultRateUnit
-			bindingRateUnit = defaultRateUnit
-			unbindingRateUnit = defaultRateUnit
+			degradationRateUnit = null
+			bindingRateUnit = null
+			unbindingRateUnit = null
 			degradationRate = 0.0;
 			bindingRate = 0.0;
 			unbindingRate = 0.0
@@ -540,7 +539,10 @@ class ModelBuilder extends IblSwitch<Object> {
 	}
 
 	private def getRateUnit(List<String> units) {
-		val rateUnit = modelFactory.createRateUnit()
+		val rateUnit = modelFactory.createRateUnit => [
+			rateTimeUnit = RateTimeUnit.PER_SECOND
+			rateConcentrationUnit = RateConcentrationUnit.PER_MOLECULE
+		]
 
 		for (unit : units) {
 			switch unit {

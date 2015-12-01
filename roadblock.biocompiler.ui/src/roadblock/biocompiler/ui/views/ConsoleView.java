@@ -1,107 +1,107 @@
 package roadblock.biocompiler.ui.views;
+
 //data:image/png;base64,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
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
 
-public class ConsoleView extends ViewPart implements  IPartListener2{
-		/**
-	* The ID of the view as specified by the extension.
-	*/
+public class ConsoleView extends ViewPart implements IPartListener2 {
+	/**
+	 * The ID of the view as specified by the extension.
+	 */
 	public static final String ID = "roadblock.biocompiler.ui.views.consoleView";
 	Composite parent;
 	private Browser browser;
 
 	/**
-	* The constructor.
-	*/
+	 * The constructor.
+	 */
 	public ConsoleView() {
 	}
 
 	/**
-	* This is a callback that will allow us
-	* to create the viewer and initialize it.
-	*/
+	 * This is a callback that will allow us to create the viewer and initialize
+	 * it.
+	 */
 	public void createPartControl(Composite parent) {
 		System.out.println("Calling: Console/createPartControl");
-		this.parent=parent;
-		browser = new Browser(parent,SWT.NONE);
+		this.parent = parent;
+		browser = new Browser(parent, SWT.NONE);
 		browser.setText("<body bgcolor='#ffffff'><h2>Initialisation</h2></body>");
 
 	}
+
 	/**
-	* Passing the focus request to the viewer's control.
-	*/
+	 * Passing the focus request to the viewer's control.
+	 */
 	public void setFocus() {
 		// label.setText("Focus set at " + (new Date()));
 	}
-	
+
 	// Own functions
-	public void setContent(String html){
+	public void setContent(String html) {
 		browser.setText(html);
 	}
-//	public void setText(String myText){
-//		textField.setText(myText);	
-//	}
-//	
-//	public void addText(String myText){
-//		textField.setText(textField.getText()+"\n"+myText);	
-//	}
-//	
-//	public void emptyText(){
-//		textField.setText("");
-//	}
-	
+	// public void setText(String myText){
+	// textField.setText(myText);
+	// }
+	//
+	// public void addText(String myText){
+	// textField.setText(textField.getText()+"\n"+myText);
+	// }
+	//
+	// public void emptyText(){
+	// textField.setText("");
+	// }
+
 	@Override
 	public void partActivated(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public void partBroughtToTop(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void partClosed(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void partDeactivated(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void partHidden(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void partInputChanged(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void partOpened(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void partVisible(IWorkbenchPartReference arg0) {
 		// TODO Auto-generated method stub
-		
-	} 
+
+	}
 }

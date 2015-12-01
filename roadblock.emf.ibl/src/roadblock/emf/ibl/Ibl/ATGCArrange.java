@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ATGCArrange#getPartList <em>Part List</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCArrange()
  * @model kind="class"

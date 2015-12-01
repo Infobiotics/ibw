@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getStateFormula <em>State Formula</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getProbabilityConstraint <em>Probability Constraint</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.SteadyStateProperty#getInitialConditions <em>Initial Conditions</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getSteadyStateProperty()
  * @model kind="class"

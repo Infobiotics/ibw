@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getRightOperand <em>Right Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression#getOperator <em>Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryArithmeticExpression()
  * @model kind="class"

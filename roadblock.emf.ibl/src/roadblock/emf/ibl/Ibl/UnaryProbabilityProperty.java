@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getStateFormula <em>State Formula</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty#getOperator <em>Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getUnaryProbabilityProperty()
  * @model kind="class"

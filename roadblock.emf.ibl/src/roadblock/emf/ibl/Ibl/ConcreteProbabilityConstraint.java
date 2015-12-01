@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint#getBound <em>Bound</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getConcreteProbabilityConstraint()
  * @model kind="class"

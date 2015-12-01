@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.NotStateFormula#getNegatedOperand <em>Negated Operand</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getNotStateFormula()
  * @model kind="class"

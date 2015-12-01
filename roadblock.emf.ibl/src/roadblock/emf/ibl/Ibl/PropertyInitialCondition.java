@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getVariable <em>Variable</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getUnit <em>Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition#getAmount <em>Amount</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getPropertyInitialCondition()
  * @model kind="class"

@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getRightOperand <em>Right Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty#getOperator <em>Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryProbabilityProperty()
  * @model kind="class"

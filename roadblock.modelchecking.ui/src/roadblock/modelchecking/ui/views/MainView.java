@@ -176,6 +176,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		verificationTypeLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
 		verificationTypeLabel.setText("Verification: ");
 		verificationTypeLabel.setToolTipText("verification type");
+
 		ddlVerificationType = new Combo(parent, SWT.READ_ONLY);
 		ddlVerificationType.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 		ddlVerificationType.add("Qualitative");
@@ -186,6 +187,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				handlePropertyItemChecked(null);
+
 				parentComposite.layout();
 				updateUi();
 			}
@@ -683,10 +686,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
-							
+
 							List<ModelcheckingTarget> targets = FilteringManager.getInstance().getModelcheckingTargets(property);
 							ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(targets, verificationType);
-							
+
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
 							VerificationManager.getInstance().export(propertyTreeData.model, property, target, exportFilename);
@@ -713,8 +716,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
 		final VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
-		
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+
+		final String filename = config.getDataFile();
 
 		final double confidence = Double.parseDouble(txtConfidenceValue.getText());
 		final long pathLength = Long.parseLong(txtPathLength.getText());
@@ -728,6 +731,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		final MessageConsoleStream consoleStream = verificationConsole.newMessageStream();
 
 		IRunnableWithProgress verificationTask = new IRunnableWithProgress() {
+
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 

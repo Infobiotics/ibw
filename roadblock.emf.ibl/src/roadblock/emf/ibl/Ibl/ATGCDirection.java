@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ATGCDirection#getDirection <em>Direction</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCDirection()
  * @model kind="class"

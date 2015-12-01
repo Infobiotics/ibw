@@ -422,8 +422,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RateUnit">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateTimeUnit" eType="#//RateTimeUnit"
-        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateTimeUnit" eType="#//RateTimeUnit"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rateConcentrationUnit"
         eType="#//RateConcentrationUnit"/>
   </eClassifiers>

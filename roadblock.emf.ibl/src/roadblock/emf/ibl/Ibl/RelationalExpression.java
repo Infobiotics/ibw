@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.RelationalExpression#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.RelationalExpression#getRightOperand <em>Right Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.RelationalExpression#getOperator <em>Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalExpression()
  * @model kind="class"

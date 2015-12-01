@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getRuleList <em>Rule List</em>}</li>
@@ -34,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getOptionList <em>Option List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getID <em>ID</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getKinetics()
  * @model kind="class"

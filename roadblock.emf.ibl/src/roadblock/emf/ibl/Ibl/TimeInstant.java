@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.TimeInstant#getValue <em>Value</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.TimeInstant#getUnit <em>Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.TimeInstant#getOperator <em>Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeInstant()
  * @model kind="class"

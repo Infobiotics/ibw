@@ -20,13 +20,13 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnits <em>Units</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
  * @model kind="class"

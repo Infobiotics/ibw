@@ -9,7 +9,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface;bundle-version="3.9.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: org.csstudio.swt.widgets.datadefinition,
+Export-Package: au.com.bytecode.opencsv,
+ au.com.bytecode.opencsv.bean,
+ org.csstudio.swt.widgets.datadefinition,
  org.csstudio.swt.widgets.figureparts,
  org.csstudio.swt.widgets.figures,
  org.csstudio.swt.widgets.introspection,
@@ -25,4 +27,5 @@ Export-Package: org.csstudio.swt.widgets.datadefinition,
 Eclipse-BundleShape: dir
 Bundle-ClassPath: resources/swt-xy-graph/org.csstudio.swt.widgets_2.1.0.201209121549.jar,
  resources/swt-xy-graph/org.csstudio.swt.xygraph_2.1.0.201209121540.jar,
+ resources/opencsv-2.3.jar,
  .

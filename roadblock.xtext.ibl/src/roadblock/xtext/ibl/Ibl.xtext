@@ -130,11 +130,9 @@ FunctionUseMember:
 // device definition
 DeviceDefinition:
 	{DeviceDefinition}
-	'DEVICE' name=VariableName '=' 'new' 'DEVICE'
+	name=VariableName '=' 'DEVICE'
 	'('
 	'parts' '=' parts=List
-	')'
-	'('
 	('input' '=' input=List)?
 	(',' 'output' '=' output=List)?
 	')'

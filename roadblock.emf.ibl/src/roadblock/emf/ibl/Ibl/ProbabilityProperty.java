@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getTimeConstraint <em>Time Constraint</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getProbabilityConstraint <em>Probability Constraint</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.ProbabilityProperty#getInitialConditions <em>Initial Conditions</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getProbabilityProperty()
  * @model kind="class" abstract="true"

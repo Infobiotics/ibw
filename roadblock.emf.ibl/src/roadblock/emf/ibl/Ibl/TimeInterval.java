@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.TimeInterval#getLowerBound <em>Lower Bound</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.TimeInterval#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.TimeInterval#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeInterval()
  * @model kind="class"

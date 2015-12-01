@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getProcessList <em>Process List</em>}</li>
@@ -37,7 +38,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getID <em>ID</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Model#getRegionList <em>Region List</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getModel()
  * @model kind="class"

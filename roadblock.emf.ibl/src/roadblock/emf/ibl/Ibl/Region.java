@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getKinetics <em>Kinetics</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getCellList <em>Cell List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion()
  * @model kind="class"

@@ -14,12 +14,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.VariableReference#getName <em>Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.VariableReference#isIsMaximumOfInterest <em>Is Maximum Of Interest</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.VariableReference#getContainerName <em>Container Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getVariableReference()
  * @model kind="class"

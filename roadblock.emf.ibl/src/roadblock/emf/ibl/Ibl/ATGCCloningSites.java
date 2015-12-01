@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ATGCCloningSites#getCloningSites <em>Cloning Sites</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getATGCCloningSites()
  * @model kind="class"

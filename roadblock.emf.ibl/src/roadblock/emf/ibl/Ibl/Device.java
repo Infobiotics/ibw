@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getProcessList <em>Process List</em>}</li>
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getProperties <em>Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice()
  * @model kind="class"

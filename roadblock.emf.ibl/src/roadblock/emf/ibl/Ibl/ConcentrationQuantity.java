@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity#getAmount <em>Amount</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationQuantity()
  * @model kind="class"

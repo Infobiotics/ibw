@@ -14,13 +14,13 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getVariableName <em>Variable Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getOperator <em>Operator</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getQuantity <em>Quantity</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.StateExpression#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getStateExpression()
  * @model kind="class"

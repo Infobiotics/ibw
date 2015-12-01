@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.FlatModel#getRuleList <em>Rule List</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel()
  * @model kind="class"

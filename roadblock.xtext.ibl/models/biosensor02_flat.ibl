@@ -63,7 +63,7 @@ define SentinelCell typeof CELL(){
 	NahR = PROTEIN()
 	LasR = PROTEIN()
 
-	DEVICE NahRLasRProduction = new DEVICE(parts=[PnahR,nahR,lasR])(input=[], output=[NahR,LasR]) {
+	NahRLasRProduction = DEVICE(parts=[PnahR,nahR,lasR] input=[], output=[NahR,LasR]) {
 		mrna = RNA()
 		
 		// (12) constitutive transcription
@@ -93,7 +93,7 @@ define SentinelCell typeof CELL(){
 	xylS = GENE(URI = "atgc://user-submitted/part/xysl2")
 	XylS = PROTEIN()
 
-	DEVICE XylS2Production = new DEVICE(parts=[Psal,xylS])(input=[NahR,SA], output=[XylS]){
+	XylS2Production = DEVICE(parts=[Psal,xylS] input=[NahR,SA], output=[XylS]){
 		mrna = RNA()
 
 		// (17) background promoter binding
@@ -136,7 +136,7 @@ define SentinelCell typeof CELL(){
 	luxr = GENE(URI = "http://parts.igem.org/Part:BBa_K592012")
 	LuxR = PROTEIN()
    
-	DEVICE LuxRProduction = new DEVICE(parts=[Pm,PrsaL,luxr])(input=[XylS~SA,LasR~AHL], output=[LuxR]){
+	LuxRProduction = DEVICE(parts=[Pm,PrsaL,luxr] input=[XylS~SA,LasR~AHL], output=[LuxR]){
 		mrna = RNA()
 		ATGC CLONING SITES: 5
   

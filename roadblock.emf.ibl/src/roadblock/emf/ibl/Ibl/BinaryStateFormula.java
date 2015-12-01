@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getLeftOperand <em>Left Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getRightOperand <em>Right Operand</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.BinaryStateFormula#getOperator <em>Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getBinaryStateFormula()
  * @model kind="class"
