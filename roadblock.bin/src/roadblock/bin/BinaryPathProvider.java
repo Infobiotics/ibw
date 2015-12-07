@@ -17,21 +17,27 @@ public class BinaryPathProvider {
 	private static String prismPath;
 	private static String nuSmvPath;
 	private static String ngssPath;
-	private static String atgcPath;
+	private static String imagesPath;
+	private static String codonUsageDbPath;
+	private static String partRegistryDbPath;
+	private static String restrictionEnzymesDbPath;
+	private static String rbsCalculatorPath;
 
 	static {
 		try {
 			Bundle currentBundle = Platform.getBundle("roadblock.bin");
-			
-			URL mc2Url = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/mc2.jar"), Collections.EMPTY_MAP));
+
+			URL mc2Url = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/mc2.jar"), Collections.<String, String> emptyMap()));
 			mc2Path = mc2Url.getPath();
-			
-			// instantiate the BinaryPathResolver in order to call its static constructor
-			// the instantiation is made by reflection as the class is available only at runtime
+
+			// instantiate the BinaryPathResolver in order to call its static
+			// constructor
+			// the instantiation is made by reflection as the class is available
+			// only at runtime
 			Class<?> binaryPathResolverClass = Class.forName("BinaryPathResolver");
 			@SuppressWarnings("unused")
 			Object binaryPathResolver = binaryPathResolverClass.newInstance();
-			
+
 		} catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -69,12 +75,44 @@ public class BinaryPathProvider {
 		BinaryPathProvider.ngssPath = ngssPath;
 	}
 
-	public String getAtgcPath() {
-		return atgcPath;
+	public String getImagesPath() {
+		return imagesPath;
 	}
 
-	public void setAtgcPath(String atgcPath) {
-		BinaryPathProvider.atgcPath = atgcPath;
+	public void setImagesPath(String imagesPath) {
+		BinaryPathProvider.imagesPath = imagesPath;
+	}
+
+	public String getCodonUsageDbPath() {
+		return codonUsageDbPath;
+	}
+
+	public void setCodonUsageDbPath(String codonUsageDbPath) {
+		BinaryPathProvider.codonUsageDbPath = codonUsageDbPath;
+	}
+
+	public String getPartRegistryDbPath() {
+		return partRegistryDbPath;
+	}
+
+	public void setPartRegistryDbPath(String partRegistryDbPath) {
+		BinaryPathProvider.partRegistryDbPath = partRegistryDbPath;
+	}
+
+	public String getRestrictionEnzymesDbPath() {
+		return restrictionEnzymesDbPath;
+	}
+
+	public void setRestrictionEnzymesDbPath(String restrictionEnzymesDbPath) {
+		BinaryPathProvider.restrictionEnzymesDbPath = restrictionEnzymesDbPath;
+	}
+	
+	public String getRbsCalculatorPath() {
+		return rbsCalculatorPath;
+	}
+
+	public void setRbsCalculatorPath(String rbsCalculatorPath) {
+		BinaryPathProvider.rbsCalculatorPath = rbsCalculatorPath;
 	}
 
 	public static BinaryPathProvider getInstance() {

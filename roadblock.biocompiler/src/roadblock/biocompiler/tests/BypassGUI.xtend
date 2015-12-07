@@ -78,7 +78,6 @@ class BypassGUI {
 		
 		var biocompiler = new Biocompiler(emfModel)
 		
-		biocompiler.pathToResources = "../roadblock.biocompiler/resources"
 		biocompiler.gatherParts
 		biocompiler.compile
 		

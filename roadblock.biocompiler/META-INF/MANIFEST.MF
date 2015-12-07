@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Biocompiler
-Bundle-SymbolicName: roadblock.biocompiler
+Bundle-SymbolicName: roadblock.biocompiler;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: roadblock.biocompiler.Activator
 Require-Bundle: org.eclipse.ui,
@@ -13,8 +13,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  com.google.inject;bundle-version="3.0.0",
- org.eclipse.xtext.junit4;bundle-version="2.5.4"
-Bundle-ActivationPolicy: lazy
+ org.eclipse.xtext.junit4;bundle-version="2.5.4",
+ roadblock.bin;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: com.almworks.sqlite4java,
  org.eclipse.xtext.xbase.compiler,
@@ -52,49 +52,11 @@ Import-Package: com.almworks.sqlite4java,
  org.sbolstandard.core.cli,
  org.sbolstandard.core.impl,
  org.sbolstandard.core.util,
+ roadblock.bin,
  roadblock.emf.bioparts.Bioparts,
  roadblock.emf.bioparts.Bioparts.impl,
  roadblock.emf.bioparts.Bioparts.util,
  roadblock.emf.ibl.Ibl
-Export-Package: com.almworks.sqlite4java,
- org.jacop.constraints,
- org.jacop.constraints.binpacking,
- org.jacop.constraints.geost,
- org.jacop.constraints.knapsack,
- org.jacop.constraints.netflow,
- org.jacop.constraints.netflow.simplex,
- org.jacop.constraints.regular,
- org.jacop.core,
- org.jacop.examples,
- org.jacop.examples.cpviz,
- org.jacop.examples.fd,
- org.jacop.examples.fd.carsequencing,
- org.jacop.examples.fd.crosswords,
- org.jacop.examples.fd.filters,
- org.jacop.examples.fd.muca,
- org.jacop.examples.fd.nonogram,
- org.jacop.examples.fd.qcp,
- org.jacop.examples.scala,
- org.jacop.examples.set,
- org.jacop.fz,
- org.jacop.scala,
- org.jacop.search,
- org.jacop.set.constraints,
- org.jacop.set.core,
- org.jacop.set.search,
- org.jacop.ui,
- org.jacop.util,
- org.jacop.util.fsm,
- org.sbolstandard.core,
- org.sbolstandard.core.cli,
- org.sbolstandard.core.impl,
- org.sbolstandard.core.util,
- roadblock.biocompiler;uses:="org.eclipse.ui.plugin,org.osgi.framework"
-Bundle-ClassPath: .,
- resources/JaCoP/jacop-4.0.0.jar,
- resources/SBOL/libSBOLj-core-1.0.0-SNAPSHOT.jar,
- resources/sqlite4java/sqlite4java.jar,
- src/roadblock/biocompiler/util/,
- resources/sqlite4java/,
- resources/commons.io/commons-io-2.4.jar
+Bundle-ClassPath: .
+Export-Package: roadblock.biocompiler
 

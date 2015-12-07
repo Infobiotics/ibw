@@ -82,7 +82,7 @@ class RestrictionEnzymesFinderTests {
 		biocompiler.print
 		
 		println("first REF")
-		var ref = new RestrictionEnzymesFinder(biocompiler.biocompilerModel.cells.get(0),'b','resources')
+		var ref = new RestrictionEnzymesFinder(biocompiler.biocompilerModel.cells.get(0),'b')
 		println("populating")
 		totalPotentialRE = ref.populatingPotentialRETable(cell, 'b')
 		

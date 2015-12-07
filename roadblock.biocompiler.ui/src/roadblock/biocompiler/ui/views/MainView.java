@@ -1,10 +1,11 @@
 package roadblock.biocompiler.ui.views;
 
-import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
@@ -15,10 +16,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
@@ -47,10 +49,9 @@ import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.util.ResourceUtil;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
-import roadblock.bin.BinaryPathProvider;
+import roadblock.biocompiler.Biocompiler;
 import roadblock.biocompiler.ui.Activator;
 import roadblock.biocompiler.ui.util.BiocompilationUtil;
 import roadblock.emf.ibl.Ibl.Model;
@@ -60,15 +61,14 @@ public class MainView extends ViewPart implements IPartListener2 {
 	public static final String ID = "roadblock.biocompiler.ui.views.mainView";
 
 	private Model model;
-	private String dataDirectory = null;
+	private String biocopilationWorkspace = String.format("%s%s%s%s%s%s", Platform.getLocation().toString(), File.separator, ".tmp", File.separator, "biocompilation",
+			File.separator);
 	private XtextResource currentIblResource;
 
 	private Button compilationButton;
 	private Button refreshButton;
 	private Browser browser;
 	private MessageConsole atgcConsole;
-
-	private String pathToBiocompiler = BinaryPathProvider.getInstance().getAtgcPath();
 
 	@Override
 	public void createPartControl(Composite parent) {
@@ -121,8 +121,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 			System.out.println("CurrentIblresource is null");
 		if (currentIblResource.getErrors().size() == 0) {
 			updateUi();
-			// runBiocompiler(config.dataDirectory +
-			// "/src-gen/EMFModelForBiocompiler.xml", "parse");
 			compilationButton.setEnabled(true);
 		}
 	}
@@ -143,9 +141,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				if (iblResource != currentIblResource) {
 					currentIblResource = iblResource;
-					ensureConfig();
 				}
-
 			}
 		}
 	}
@@ -156,15 +152,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	public void runBiocompiler(final String xmlFilename, final String command) {
-		String wrapperName = "atgcWrapper.sh"; // default wrapper
-		if (System.getProperty("os.name").startsWith("Windows"))
-			wrapperName = "atgcWrapper.bat";
-
-		final String wrapperName2 = wrapperName;
 
 		final MessageConsoleStream consoleStream = atgcConsole.newMessageStream();
-		try {
 
+		try {
 			// run the biocompiler
 			System.out.println("Running the biocompiler");
 
@@ -173,55 +164,12 @@ public class MainView extends ViewPart implements IPartListener2 {
 				@Override
 				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
-					Process runningProcess = null;
+					System.setOut(new PrintStream(consoleStream));
+					System.setErr(new PrintStream(consoleStream));
 
-					try {
-						final Process process = runningProcess = new ProcessBuilder(pathToBiocompiler + File.separator + wrapperName2, xmlFilename,
-								dataDirectory + File.separator + "src-gen", command).start();
+					Biocompiler.execute(xmlFilename);
 
-						Thread streamingThread = new Thread(new Runnable() {
-							public void run() {
-
-								try {
-									BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
-									BufferedReader err = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-
-									String part = null;
-									while ((part = in.readLine()) != null) {
-										consoleStream.println(part);
-									}
-									in.close();
-
-									while ((part = err.readLine()) != null) {
-										consoleStream.println(part);
-									}
-									err.close();
-
-								} catch (IOException e) {
-									process.destroy();
-								}
-							}
-						});
-
-						streamingThread.start();
-
-						while (!monitor.isCanceled() && streamingThread.isAlive()) {
-						}
-
-						if (streamingThread.isAlive()) {
-							streamingThread.interrupt();
-							throw new IOException(); // replaced break
-						}
-
-						process.destroy();
-						monitor.done();
-
-					} catch (IOException e) {
-						if (runningProcess != null) {
-							runningProcess.destroy();
-						}
-						errorDialogWithStackTrace("Failed to compile the model", e);
-					}
+					System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 				}
 			};
 
@@ -232,29 +180,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 			} catch (InvocationTargetException | InterruptedException e) {
 				errorDialogWithStackTrace("Failed to compile the model", e);
 			}
-
-			/*
-			 * InputStream is = process.getInputStream(); InputStream is2 =
-			 * process.getErrorStream(); InputStreamReader isr = new
-			 * InputStreamReader(is); InputStreamReader isr2 = new
-			 * InputStreamReader(is2); BufferedReader br = new
-			 * BufferedReader(isr); BufferedReader br2 = new
-			 * BufferedReader(isr2); String line="";
-			 * 
-			 * System.out.println("##########  Error stream ############");
-			 * 
-			 * while ((line = br2.readLine()) != null) {
-			 * System.out.println(line); consoleStream.println(line);
-			 * 
-			 * }
-			 * 
-			 * System.out.println("##########  Input stream ############");
-			 * while ((line = br.readLine()) != null) {
-			 * System.out.println(line); consoleStream.println(line); } } catch
-			 * (IOException e) { System.out.println(
-			 * "Problem when creating the xml"); }
-			 */
-
 		} catch (Exception e) {
 
 		}
@@ -276,7 +201,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 				// save XML as file
 				System.out.println("Saving to XML");
-				String xmlFilename = dataDirectory + "/src-gen/EMFModelForBiocompiler.xml";
+				String xmlFilename = biocopilationWorkspace + "EMFModelForBiocompiler.xml";
 				writeTextFile(xmlFilename, xml);
 
 				runBiocompiler(xmlFilename, "parse");
@@ -286,7 +211,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 			}
 
 			try {
-				String identifiedParts = readFile(dataDirectory + "/src-gen/identifiedParts.html", Charset.defaultCharset());
+				String identifiedParts = readFile(biocopilationWorkspace + "identifiedParts.html", Charset.defaultCharset());
 				browser.setText(identifiedParts);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -296,27 +221,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		}
 	}
 
-	private void ensureConfig() {
-		if (dataDirectory == null) {
-			dataDirectory = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
-					+ ResourceUtil.getFile(currentIblResource).getFullPath().removeLastSegments(1).toOSString();
-			// create a src-gen folder if there isn't one.
-			File f = new File(dataDirectory + File.separator + "src-gen");
-			if (!f.exists()) {
-				try {
-					f.mkdirs();
-				} catch (SecurityException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
-	}
-
 	private void updateConsoleView() {
 		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
 		try {
-			String console = readFile(dataDirectory + "/src-gen/console.html", Charset.defaultCharset());
+			String console = readFile(biocopilationWorkspace + "console.html", Charset.defaultCharset());
 			myConsole.setContent(console);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -329,7 +237,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ResultsView resultsView = (ResultsView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.findView("roadblock.biocompiler.ui.views.resultsView");
 		try {
-			String console = readFile(dataDirectory + "/src-gen/results.html", Charset.defaultCharset());
+			String console = readFile(biocopilationWorkspace + "results.html", Charset.defaultCharset());
 			resultsView.setContent(console);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -341,7 +249,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	// Compile
 	private void performCompilation() {
 
-		runBiocompiler(dataDirectory + "/src-gen/EMFModelForBiocompiler.xml", "compile");
+		runBiocompiler(biocopilationWorkspace + "EMFModelForBiocompiler.xml", "compile");
 		updateConsoleView();
 		updateResultsView();
 		compilationButton.setEnabled(false);
@@ -369,7 +277,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 		FileWriter output = null;
 
 		try {
-			output = new FileWriter(fileName);
+			File file = new File(fileName);
+			file.getParentFile().mkdirs();
+			output = new FileWriter(file);
 			output.write(s);
 
 		} catch (Exception e) {

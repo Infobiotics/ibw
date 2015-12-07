@@ -12,7 +12,9 @@ import java.util.ArrayList
 import java.util.Date
 import java.util.List
 import org.apache.commons.io.IOUtils
+import org.eclipse.core.runtime.Platform
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtend.lib.annotations.Data
 import org.jacop.constraints.Alldifferent
 import org.jacop.constraints.And
 import org.jacop.constraints.Max
@@ -38,6 +40,7 @@ import org.sbolstandard.core.SBOLFactory
 import org.sbolstandard.core.SequenceAnnotation
 import org.sbolstandard.core.StrandType
 import org.sbolstandard.core.util.SequenceOntology
+import roadblock.bin.BinaryPathProvider
 import roadblock.biocompiler.util.BiocompilerUtil
 import roadblock.biocompiler.util.EncodedImages
 import roadblock.emf.bioparts.Bioparts.BiocompilerCell
@@ -51,7 +54,6 @@ import roadblock.emf.ibl.Ibl.ATGCTranslationRate
 import roadblock.emf.ibl.Ibl.Cell
 import roadblock.emf.ibl.Ibl.Device
 import roadblock.emf.ibl.Ibl.IblFactory
-import roadblock.emf.ibl.Ibl.IblPackage
 import roadblock.emf.ibl.Ibl.Model
 import roadblock.emf.ibl.Ibl.MolecularSpecies
 import roadblock.emf.ibl.Ibl.Region
@@ -131,53 +133,40 @@ class Biocompiler {
 
 	var modelFactory = IblFactory::eINSTANCE
 
-	var public pathToResources = '../roadblock.biocompiler/resources'
-	var public pathOutput = '../roadblock.biocompiler/'
-	var pathToImages = '../roadblock.biocompiler/resources'
+	def static void execute(String filename) {
 
-	val defaultTranslationRate = 1000.0
+		println("loading the EMF data model" + filename)
 
-	def static void main(String[] args) {
-		println("Hi from biocompiler. " + args.size + " arguments")
-		if (args.size == 4) {
-			val filename = args.get(0)
-			println("loading the EMF data model" + filename)
-			val mp = IblPackage.eINSTANCE // necessary for registering the URI
-			val XMLsource = utils.readFile(filename, Charset.defaultCharset())
-			println("EMF model read")
-			val emfModel = utils.convertToEObject(XMLsource) as Model
-			println("EMF model parsed")
-			var biocompiler = new Biocompiler(emfModel)
-			println("biocompiler instantiated and populated")
-			biocompiler.pathToResources = args.get(1)
-			println("Path to Resources: " + biocompiler.pathToResources)
+		val String biocompilationDirectory = String.format("%s%s%s%s%s", File.separator, ".tmp", File.separator,
+			"biocompilation", File.separator);
+		val String workspacePath = Platform.getLocation().toString() + biocompilationDirectory;
 
-			biocompiler.pathToImages = biocompiler.pathToResources + File.separator + "images"
-			println("Path to images: " + biocompiler.pathToImages)
-			biocompiler.pathOutput = args.get(2)
-			println("Path to Output: " + biocompiler.pathOutput)
+		val XMLsource = utils.readFile(filename, Charset.defaultCharset())
+		println("EMF model read")
 
-			biocompiler.gatherParts
-			println("part gathering done.")
+		val emfModel = utils.convertToEObject(XMLsource) as Model
+		println("EMF model parsed")
 
-			// write biocompile.resultsHTml
-			utils.toFile(biocompiler.pathOutput + File.separator + "identifiedParts.html",
-				biocompiler.identifiedPartsHtml)
-			if (args.get(3) == 'compile') {
-				biocompiler.compile
-				println("Compilation done.")
+		var biocompiler = new Biocompiler(emfModel)
+		println("biocompiler instantiated and populated")
 
-				//write biocompile.console
-				utils.toFile(biocompiler.pathOutput + File.separator + "console.html", biocompiler.makeHtmlLog)
+		biocompiler.gatherParts
+		println("part gathering done.")
 
-				//write biocompiler results
-				utils.toFile(biocompiler.pathOutput + File.separator + "results.html", biocompiler.makeResultPage)
+		// write biocompile.resultsHTml
+		utils.toFile(workspacePath + "identifiedParts.html", biocompiler.identifiedPartsHtml)
 
-				//write solution as SBOL
-				SBOLFactory.write(biocompiler.makeSBOLDocument,
-					new FileOutputStream(biocompiler.pathOutput + File.separator + 'ATGC_SBOL.xml'));
-			}
-		}
+		biocompiler.compile
+		println("Compilation done.")
+
+		// write biocompile.console
+		utils.toFile(workspacePath + "console.html", biocompiler.makeHtmlLog)
+
+		// write biocompiler results
+		utils.toFile(workspacePath + "results.html", biocompiler.makeResultPage)
+
+		// write solution as SBOL
+		SBOLFactory.write(biocompiler.makeSBOLDocument, new FileOutputStream(workspacePath + 'ATGC_SBOL.xml'));
 	}
 
 	new(Model emfModel) {
@@ -201,20 +190,19 @@ class Biocompiler {
 			constraintATGCARRANGE
 			constraintATGCDIRECTION
 
-			//		
+			//
 			println("===========")
 			println("Find arrangement")
 
 			findArrangement // throws NoArrangementFound
-
 			println("===========")
 			addStartCodonToCDS
 			findRBSSequence
 			findTerminatorSequence
 
-			//findNoncuttingRestrictionEnzymes
+			// findNoncuttingRestrictionEnzymes
 			for (cell : biocompilerModel.cells) {
-				var ref = new RestrictionEnzymesFinder(cell, "b", pathToResources)
+				var ref = new RestrictionEnzymesFinder(cell, "b")
 				log.addLog(ref.searchRE)
 			}
 
@@ -227,23 +215,22 @@ class Biocompiler {
 			log.addError("There was a problem when looking up the sequence of the following part:" + e.partName)
 			log.addError(
 				"\tURI (" + e.partURI +
-					") is malformed. It should be one of atgc://biofab/part/, atgc://user-submitted/part/, http://parts.igem.org/part: or http://sbol.ncl.ac.uk:8081/part/")
+					") is malformed. It should be one of atgc://biofab/part/, atgc://user-submitted/part/, http://parts.igem.org/part: or http://sbol.ncl.ac.uk:8081/part/"
+			)
 			return false
 		} catch (UnknownPartInDatabase e) {
 			log.addError(
-				"There was a problem when looking up the part:" + e.partName + " in the built-in database (collection: " +
-					e.collection + ").")
+				"There was a problem when looking up the part:" + e.partName +
+					" in the built-in database (collection: " + e.collection + ").")
 			return false
 		} catch (UnknownPartInPartRegistry e) {
-			log.addError(
-				"There was a problem when looking up the part:" + e.partName +
-					" in Part Registry. Please double-check the URI.")
+			log.addError("There was a problem when looking up the part:" + e.partName +
+				" in Part Registry. Please double-check the URI.")
 			return false
 
 		} catch (UnknownPartInVirtualPartRepository e) {
-			log.addError(
-				"There was a problem when looking up the part:" + e.partName +
-					" in Virtual Part Repository. Please double-check the URI.")
+			log.addError("There was a problem when looking up the part:" + e.partName +
+				" in Virtual Part Repository. Please double-check the URI.")
 			return false
 
 		} catch (NoArrangementFound e) {
@@ -278,7 +265,7 @@ class Biocompiler {
 					for (partName : device.partList.map[displayName]) {
 						log.addText("\t\t\t\tPart: " + partName)
 
-						//look up the part's declaration
+						// look up the part's declaration
 						val part = searchFirstDeclaration(device, partName);
 
 						// create a biopart with relevant info 
@@ -354,7 +341,7 @@ class Biocompiler {
 				}
 
 				// add 1 terminator if necessary (i.e. if none have been set by the user)				
-				//				if(device.parts.filter[biologicalFunction == 'TERMINATOR'].size == 0){
+				// if(device.parts.filter[biologicalFunction == 'TERMINATOR'].size == 0){
 				var biopart = biopartsFactory.createBiopart
 				biopart => [
 					name = cell.name + "/" + device.name + "/terminator"
@@ -366,7 +353,7 @@ class Biocompiler {
 				]
 				device.parts.add(biopart)
 
-			//				}				
+			// }				
 			}
 
 		}
@@ -451,7 +438,7 @@ class Biocompiler {
 				val rbsList = device.parts.filter[biologicalFunction == "RBS"].map[position]
 				val geneList = device.parts.filter[biologicalFunction == "GENE"].map[position]
 
-				for (k : (1 .. rbsList.size)) {
+				for (k : ( 1 .. rbsList.size)) {
 					store.impose(
 						new Or(
 							new And(new XplusCeqZ(rbsList.get(k - 1), 1, geneList.get(k - 1)),
@@ -571,7 +558,7 @@ class Biocompiler {
 	def allCombinations(Integer n) { // produces all combinations of n items
 		var combinations = newArrayList(newArrayList(1))
 
-		for (k : (2 .. n)) {
+		for (k : ( 2 .. n)) {
 			var temp = newArrayList()
 			for (c : combinations)
 				for (position : 0 .. c.size) {
@@ -662,7 +649,7 @@ class Biocompiler {
 	def private getSequenceFromDatabase(String partName, String collection) {
 
 		// pick some from the DB
-		val databaseLocation = pathToResources + "/db/partRegistry.db"
+		val databaseLocation = BinaryPathProvider.getInstance().partRegistryDbPath
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if(!db.isOpen) db.open()
 
@@ -670,8 +657,10 @@ class Biocompiler {
 			"SELECT sequence FROM partRegistry WHERE LOWER(name) = '" + partName.toLowerCase + "' AND Origin ='" +
 				collection + "'")
 
-		var sequence = if(sql.step) sql.columnString(0).toLowerCase else throw new UnknownPartInDatabase(partName,
-				collection)
+		var sequence = if (sql.step)
+				sql.columnString(0).toLowerCase
+			else
+				throw new UnknownPartInDatabase(partName, collection)
 
 		// tidying up
 		sql.dispose
@@ -712,8 +701,7 @@ class Biocompiler {
 	}
 
 	def addStartCodonToCDS() { // add a start codon to GENEs if not present
-
-		//	valid start codons: 'ATG' 'GTG'
+	// valid start codons: 'ATG' 'GTG'
 		for (cell : biocompilerModel.cells)
 			for (device : cell.devices)
 				for (part : device.parts.filter[biologicalFunction == 'GENE'])
@@ -739,7 +727,7 @@ class Biocompiler {
 				numberTerminator = numberTerminator + device.parts.filter[it.biologicalFunction == 'TERMINATOR'].length
 
 		// pick some from the DB
-		val databaseLocation = pathToResources + "/db/partRegistry.db"
+		val databaseLocation = BinaryPathProvider.getInstance().partRegistryDbPath
 		var db = new SQLiteConnection(new File(databaseLocation))
 		if(!db.isOpen) db.open()
 
@@ -747,282 +735,285 @@ class Biocompiler {
 			"SELECT * FROM partRegistry WHERE BiologicalFunction=='terminator' ORDER BY RANDOM() LIMIT " +
 				numberTerminator)
 
-		for (cell : biocompilerModel.cells)
-			for (device : cell.devices)
-				for (part : device.parts.filter[biologicalFunction == 'TERMINATOR']) {
-					sql.step
-					part.sequence = sql.columnString(3)
-					part.accessionURL = 'http://roadblock.com/atgc/terminator/computerGenerated/seq#' + part.sequence
-					part.name = sql.columnString(1)
+				for (cell : biocompilerModel.cells)
+					for (device : cell.devices)
+						for (part : device.parts.filter[biologicalFunction == 'TERMINATOR']) {
+							sql.step
+							part.sequence = sql.columnString(3)
+							part.accessionURL = 'http://roadblock.com/atgc/terminator/computerGenerated/seq#' +
+								part.sequence
+							part.name = sql.columnString(1)
+						}
+
+				// tidying up
+				sql.dispose
+				db.dispose
+
+			}
+
+			def findRBSSequence() {
+
+				// RBS is optimised by Salis' RBS calculator
+				for (cell : biocompilerModel.cells)
+					for (device : cell.devices)
+						for (part : device.parts.filter[biologicalFunction == 'RBS']) {
+							val tmp = utils.optimiseRBS(part, device.translationRate)
+							part => [sequence = tmp.sequence accessionURL = tmp.accessionURL]
+						}
+			}
+
+			// helper to find first declaration of variable given its displayName from local container upwards
+			def MolecularSpecies searchFirstDeclaration(EObject container, String displayName) {
+
+				// look among molecularSpecies at current level
+				// return it if found
+				switch (container) {
+					Device: {
+						val molecules = container.moleculeList.filter[it.displayName == displayName];
+						if(!molecules.empty) return molecules.head
+					}
+					Cell: {
+						val molecules = container.moleculeList.filter[it.displayName == displayName];
+						if(!molecules.empty) return molecules.head
+					}
+					Region: {
+						val molecules = container.moleculeList.filter[it.displayName == displayName];
+						if(!molecules.empty) return molecules.head
+					}
+					Model: { // shouldn't happen: variable would have been declared somewhere before that. Unless the validator let it through.
+						var molecule = modelFactory.createMolecularSpecies
+						molecule.displayName = 'UNKNOWN REFERENCE: ' + displayName
+						molecule.biologicalType = 'UNKNOWN'
+						return molecule
+					}
 				}
 
-		// tidying up
-		sql.dispose
-		db.dispose
+				// else search in next container
+				return searchFirstDeclaration(container.eContainer, displayName)
+			}
 
-	}
+			def void print() {
+				for (cell : biocompilerModel.cells) {
+					println("Cell: " + cell.name)
+					for (device : cell.devices) {
+						println("\tDevice: " + device.name)
+						for (part : device.parts.sortBy[position.value])
+							println("\t\t " + part.name + " ( " + part.biologicalFunction + " ) : " + part.sequence)
 
-	def findRBSSequence() {
+					}
 
-		// RBS is optimised by Salis' RBS calculator
-		for (cell : biocompilerModel.cells)
-			for (device : cell.devices)
-				for (part : device.parts.filter[biologicalFunction == 'RBS']) {
-					val tmp = utils.optimiseRBS(part, device.translationRate, pathToResources)
-					part => [sequence = tmp.sequence accessionURL = tmp.accessionURL]
 				}
-	}
-
-	// helper to find first declaration of variable given its displayName from local container upwards
-	def MolecularSpecies searchFirstDeclaration(EObject container, String displayName) {
-
-		// look among molecularSpecies at current level
-		// return it if found
-		switch (container) {
-			Device: {
-				val molecules = container.moleculeList.filter[it.displayName == displayName];
-				if(!molecules.empty) return molecules.head
-			}
-			Cell: {
-				val molecules = container.moleculeList.filter[it.displayName == displayName];
-				if(!molecules.empty) return molecules.head
-			}
-			Region: {
-				val molecules = container.moleculeList.filter[it.displayName == displayName];
-				if(!molecules.empty) return molecules.head
-			}
-			Model: { // shouldn't happen: variable would have been declared somewhere before that. Unless the validator let it through.
-				var molecule = modelFactory.createMolecularSpecies
-				molecule.displayName = 'UNKNOWN REFERENCE: ' + displayName
-				molecule.biologicalType = 'UNKNOWN'
-				return molecule
-			}
-		}
-
-		// else search in next container
-		return searchFirstDeclaration(container.eContainer, displayName)
-	}
-
-	def void print() {
-		for (cell : biocompilerModel.cells) {
-			println("Cell: " + cell.name)
-			for (device : cell.devices) {
-				println("\tDevice: " + device.name)
-				for (part : device.parts.sortBy[position.value])
-					println("\t\t " + part.name + " ( " + part.biologicalFunction + " ) : " + part.sequence)
 
 			}
 
-		}
+			/**************************************************************************************************************
+			 * 
+			 * 						SBOL EXPORT
+			 */
+			// export biocompiler model to an SBOL document
+			def SBOLDocument makeSBOLDocument() {
+				var document = SBOLFactory.createDocument
+				for (cell : biocompilerModel.cells) {
+					var dnaComponent = SBOLFactory.createDnaComponent
+					dnaComponent.URI = URI.create('ATGC://' + cell.name)
+					dnaComponent => [
+						description = 'Cell: ' + cell.name
+						name = cell.name
+						displayId = cell.name
+					]
 
-	}
+					// gather all parts in that cell
+					val ArrayList<Biopart> allParts = new ArrayList()
+					for (device : cell.devices)
+						allParts.addAll(device.parts)
 
-	/**************************************************************************************************************
- * 
- * 						SBOL EXPORT
- */
-	// export biocompiler model to an SBOL document
-	def SBOLDocument makeSBOLDocument() {
-		var document = SBOLFactory.createDocument
-		for (cell : biocompilerModel.cells) {
-			var dnaComponent = SBOLFactory.createDnaComponent
-			dnaComponent.URI = URI.create('ATGC://' + cell.name)
-			dnaComponent => [
-				description = 'Cell: ' + cell.name
-				name = cell.name
-				displayId = cell.name
-			]
+					var wholeSequence = SBOLFactory.createDnaSequence
+					wholeSequence.nucleotides = allParts.sortBy[position.value].map[sequence].reduce[a, b|a + b].
+						toLowerCase
+					wholeSequence.URI = URI.create('http://sbols.org/seq#' + wholeSequence.nucleotides)
+					dnaComponent.dnaSequence = wholeSequence
 
-			// gather all parts in that cell
-			val ArrayList<Biopart> allParts = new ArrayList()
-			for (device : cell.devices)
-				allParts.addAll(device.parts)
+					var sequenceStart = 1
+					for (part : allParts.sortBy[position.value]) {
+						dnaComponent.addAnnotation(
+							makeAnnotation(part, sequenceStart, sequenceStart + part.sequence.length - 1))
+						sequenceStart = sequenceStart + part.sequence.length - 1
+					}
+					document.addContent(dnaComponent)
 
-			var wholeSequence = SBOLFactory.createDnaSequence
-			wholeSequence.nucleotides = allParts.sortBy[position.value].map[sequence].reduce[a, b|a + b].toLowerCase
-			wholeSequence.URI = URI.create('http://sbols.org/seq#' + wholeSequence.nucleotides)
-			dnaComponent.dnaSequence = wholeSequence
+				}
 
-			var sequenceStart = 1
-			for (part : allParts.sortBy[position.value]) {
-				dnaComponent.addAnnotation(makeAnnotation(part, sequenceStart, sequenceStart + part.sequence.length - 1))
-				sequenceStart = sequenceStart + part.sequence.length - 1
+				return document // only export construct for the last cell for the time being
 			}
-			document.addContent(dnaComponent)
 
-		}
+			def private static SequenceAnnotation makeAnnotation(Biopart part, int sequenceStart, int sequenceEnd) {
+				var annotation = SBOLFactory.createSequenceAnnotation
+				annotation.URI = URI.create("http://sbols.org/anot#" + utils.randomHashLookingString)
+				annotation => [
+					bioStart = sequenceStart
+					bioEnd = sequenceEnd
+					strand = if(part.direction == 1) StrandType.POSITIVE else StrandType.NEGATIVE
+				]
+				var dnaComponent = SBOLFactory.createDnaComponent()
 
-		return document // only export construct for the last cell for the time being
-	}
+				if (part.accessionURL == null || part.accessionURL == '')
+					dnaComponent.URI = URI.create("http://sbols.org/" + part.name + "/dnaComponent")
+				else
+					dnaComponent.URI = URI.create(part.accessionURL)
 
-	def private static SequenceAnnotation makeAnnotation(Biopart part, int sequenceStart, int sequenceEnd) {
-		var annotation = SBOLFactory.createSequenceAnnotation
-		annotation.URI = URI.create("http://sbols.org/anot#" + utils.randomHashLookingString)
-		annotation => [
-			bioStart = sequenceStart
-			bioEnd = sequenceEnd
-			strand = if(part.direction == 1) StrandType.POSITIVE else StrandType.NEGATIVE
-		]
-		var dnaComponent = SBOLFactory.createDnaComponent()
+				dnaComponent => [displayId = part.name name = part.name]
 
-		if (part.accessionURL == null || part.accessionURL == '')
-			dnaComponent.URI = URI.create("http://sbols.org/" + part.name + "/dnaComponent")
-		else
-			dnaComponent.URI = URI.create(part.accessionURL)
+				// use the predefined SequenceOntology constant
+				switch (part.biologicalFunction) {
+					case 'PROMOTER': dnaComponent.addType(SequenceOntology.PROMOTER)
+					case 'GENE': dnaComponent.addType(SequenceOntology.CDS)
+					case 'RBS': dnaComponent.addType(SequenceOntology.type("SO_0000139"))
+					case 'TERMINATOR': dnaComponent.addType(SequenceOntology.TERMINATOR)
+					default: dnaComponent.addType(URI.create("http://purl.obolibrary.org/obo/SO_0000110"))
+				}
 
-		dnaComponent => [displayId = part.name name = part.name]
+				annotation.setSubComponent(dnaComponent);
+				return annotation;
 
-		// use the predefined SequenceOntology constant
-		switch (part.biologicalFunction) {
-			case 'PROMOTER': dnaComponent.addType(SequenceOntology.PROMOTER)
-			case 'GENE': dnaComponent.addType(SequenceOntology.CDS)
-			case 'RBS': dnaComponent.addType(SequenceOntology.type("SO_0000139"))
-			case 'TERMINATOR': dnaComponent.addType(SequenceOntology.TERMINATOR)
-			default: dnaComponent.addType(URI.create("http://purl.obolibrary.org/obo/SO_0000110"))
-		}
+			}
 
-		annotation.setSubComponent(dnaComponent);
-		return annotation;
-
-	}
-
-	def String identifiedPartsHtml() {
-		var content = <String>newArrayList
-		content.add("<HTML>")
-		content.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
-		content.add("<TT>Generated on: " + (new Date) + "</TT>")
-		var template = '''
-			«FOR cell : biocompilerModel.cells»
-				<H2>CELL: «cell.name»</H2>
-				«FOR device : cell.devices»
-					<H3>Device: «device.name»</H3>
-					<UL>
-					«FOR part : device.parts»
-						<LI>Part: «part.name» («part.biologicalFunction»)</LI>
+			def String identifiedPartsHtml() {
+				var content = <String>newArrayList
+				content.add("<HTML>")
+				content.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
+				content.add("<TT>Generated on: " + (new Date) + "</TT>")
+				var template = '''
+					«FOR cell : biocompilerModel.cells»
+						<H2>CELL: «cell.name»</H2>
+						«FOR device : cell.devices»
+							<H3>Device: «device.name»</H3>
+							<UL>
+							«FOR part : device.parts»
+								<LI>Part: «part.name» («part.biologicalFunction»)</LI>
+							«ENDFOR»
+							</UL>
+						«ENDFOR»
 					«ENDFOR»
-					</UL>
-				«ENDFOR»
-			«ENDFOR»
-		'''
-		content.add(template)
-		content.add("</BODY>")
-		content.add("</HTML>")
-		return content.join('\n')
-	}
+				'''
+				content.add(template)
+				content.add("</BODY>")
+				content.add("</HTML>")
+				return content.join('\n')
+			}
 
-	def makeResultPage() {
-		val List<String> colours = newArrayList
-		colours.add("#A6611A")
-		colours.add("#DFC27D")
-		colours.add("#F5F5F5")
-		colours.add("#80CDC1")
-		colours.add("#018571")
-		val encodedImages = new EncodedImages
-		val imageNames = <String, String>newHashMap // from type+direction to image filename
-		imageNames.put("promoter0", "data:image/png;base64," + encodedImages.promoterReversed)
-		imageNames.put("promoter1", "data:image/png;base64," + encodedImages.promoter)
-		imageNames.put("rbs0", "data:image/png;base64," + encodedImages.rbsReversed)
-		imageNames.put("rbs1", "data:image/png;base64," + encodedImages.rbs)
-		imageNames.put("gene0", "data:image/png;base64," + encodedImages.geneReversed)
-		imageNames.put("gene1", "data:image/png;base64," + encodedImages.gene)
-		imageNames.put("cloningsite0", "data:image/png;base64," + encodedImages.cloningsiteReversed)
-		imageNames.put("cloningsite1", "data:image/png;base64," + encodedImages.cloningsite)
-		imageNames.put("terminator0", "data:image/png;base64," + encodedImages.terminatorReversed)
-		imageNames.put("terminator1", "data:image/png;base64," + encodedImages.terminator)
+			def makeResultPage() {
+				val List<String> colours = newArrayList
+				colours.add("#A6611A")
+				colours.add("#DFC27D")
+				colours.add("#F5F5F5")
+				colours.add("#80CDC1")
+				colours.add("#018571")
+				val encodedImages = new EncodedImages
+				val imageNames = <String, String>newHashMap // from type+direction to image filename
+				imageNames.put("promoter0", "data:image/png;base64," + encodedImages.promoterReversed)
+				imageNames.put("promoter1", "data:image/png;base64," + encodedImages.promoter)
+				imageNames.put("rbs0", "data:image/png;base64," + encodedImages.rbsReversed)
+				imageNames.put("rbs1", "data:image/png;base64," + encodedImages.rbs)
+				imageNames.put("gene0", "data:image/png;base64," + encodedImages.geneReversed)
+				imageNames.put("gene1", "data:image/png;base64," + encodedImages.gene)
+				imageNames.put("cloningsite0", "data:image/png;base64," + encodedImages.cloningsiteReversed)
+				imageNames.put("cloningsite1", "data:image/png;base64," + encodedImages.cloningsite)
+				imageNames.put("terminator0", "data:image/png;base64," + encodedImages.terminatorReversed)
+				imageNames.put("terminator1", "data:image/png;base64," + encodedImages.terminator)
 
-		var List<String> source = newArrayList
-		source.add("<HTML>")
-		source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
+				var List<String> source = newArrayList
+				source.add("<HTML>")
+				source.add("<BODY BGCOLOR='#FCFCF0' STYLE='font-size:12px'>")
 
-		//		val path = pathToImages + File.separator
-		for (cell : biocompilerModel.cells) {
-			source.add("<H2>Cell: " + cell.name + "</H2>")
-			var col = -1
-			var deviceLength = 0
-			var template = '''
-				<TABLE cellpadding=0px cellspacing=0px >
-				<TR align=center>
-				«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
-					«{
+				// val path = pathToImages + File.separator
+				for (cell : biocompilerModel.cells) {
+					source.add("<H2>Cell: " + cell.name + "</H2>")
+					var col = -1
+					var deviceLength = 0
+					var template = '''
+						<TABLE cellpadding=0px cellspacing=0px >
+						<TR align=center>
+						«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
+							«{
 					col = (col + 1) % colours.size;
 					''
 				}»
-					«{
+							«{
 					deviceLength = device.parts.size;
 					''
 				}»
-					<TD COLSPAN = «deviceLength» bgcolor='«colours.get(col)»'>
-					«device.name»
-					</TD>
-				«ENDFOR»
-				</TR>
-				«{
+							<TD COLSPAN = «deviceLength» bgcolor='«colours.get(col)»'>
+							«device.name»
+							</TD>
+						«ENDFOR»
+						</TR>
+						«{
 					col = -1;
 					''
 				}»
-				
-				<TR>
-				«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
-					«{
+						
+						<TR>
+						«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
+							«{
 					col = (col + 1) % colours.size;
 					''
 				}»
-					«FOR part : device.parts.sortBy[position.value]»
-						<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«imageNames.
+							«FOR part : device.parts.sortBy[position.value]»
+								<TD BGCOLOR = '«colours.get(col)»'><IMG TITLE ='«part.name»: «utils.sequenceToolTip(part.sequence)» ' SRC='«imageNames.
 					get(part.biologicalFunction.toLowerCase + device.direction.value)»' BORDER=0 width=30px></TD>
-					«ENDFOR»
-				«ENDFOR»
-				</TR>
-				
-				«{
+							«ENDFOR»
+						«ENDFOR»
+						</TR>
+						
+						«{
 					col = -1;
 					''
 				}»
-				<TR align=center>
-				«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
-					«{
+						<TR align=center>
+						«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
+							«{
 					col = (col + 1) % colours.size;
 					''
 				}»
-					«{
+							«{
 					deviceLength = device.parts.size;
 					''
 				}»
-					<TD COLSPAN = «deviceLength» bgcolor='«colours.get(col)»'>
-					&nbsp;
-					</TD>
-				«ENDFOR»
-				</TR>
-				
-				</TABLE>
-				
-				«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
-					<h3>«device.name»</h3>
-					<UL>
-					«FOR part : device.parts.sortBy[position.value]»
-						<LI>
-						<b>«part.name»</b> («part.biologicalFunction») = «part.sequence»
-						</LI>
-					«ENDFOR»
-					</UL>
-				«ENDFOR»
-			'''
-			source.add(template)
+							<TD COLSPAN = «deviceLength» bgcolor='«colours.get(col)»'>
+							&nbsp;
+							</TD>
+						«ENDFOR»
+						</TR>
+						
+						</TABLE>
+						
+						«FOR device : cell.devices.sortBy[parts.get(0).position.value]»
+							<h3>«device.name»</h3>
+							<UL>
+							«FOR part : device.parts.sortBy[position.value]»
+								<LI>
+								<b>«part.name»</b> («part.biologicalFunction») = «part.sequence»
+								</LI>
+							«ENDFOR»
+							</UL>
+						«ENDFOR»
+					'''
+					source.add(template)
+				}
+
+				source.add("</BODY>")
+				source.add('</HTML>')
+				return source.join('\n')
+
+			}
+
+			def String makeHtmlLog() {
+				return log.toHtml
+			}
+
+			// for tests only
+			def fillUpWithRandomSequences() {
+				biocompilerModel.cells.forEach[devices.forEach[parts.forEach[sequence = utils.randomDNA(15)]]]
+			}
+
 		}
-
-		source.add("</BODY>")
-		source.add('</HTML>')
-		return source.join('\n')
-
-	}
-
-	def String makeHtmlLog() {
-		return log.toHtml
-	}
-
-	// for tests only
-	def fillUpWithRandomSequences() {
-		biocompilerModel.cells.forEach[devices.forEach[parts.forEach[sequence = utils.randomDNA(15)]]]
-	}
-
-}

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="resources/libSBOLj-core-1.0.0-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources/jacop-4.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources/sqlite4java.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/opencsv-2.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/swt-xy-graph/org.csstudio.swt.widgets_2.1.0.201209121549.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/swt-xy-graph/org.csstudio.swt.xygraph_2.1.0.201209121540.jar"/>
