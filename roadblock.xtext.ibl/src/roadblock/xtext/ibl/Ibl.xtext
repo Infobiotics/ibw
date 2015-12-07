@@ -500,7 +500,7 @@ terminal CONCENTRATION_UNIT:
 	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules';
 
 terminal RATE_TIME_UNIT:
-	's^-1' | 'min-1';
+	('s' | 'min') '-' '1';
 
 terminal RATE_CONCENTRATION_UNIT:
-	'M^-1' | 'mM^-1' | 'uM^-1' | 'nM^-1' | 'pM^-1' | 'fM^-1' | 'molecule^-1';
+	('M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule') ('-'? INT)?;

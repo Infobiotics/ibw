@@ -176,7 +176,11 @@ public class FlatteningUtil {
 				clonedRule.reverseRateUnit = IblFactory::eINSTANCE.createRateUnit;
 			}
 
-			flatRules.add(clonedRule);
+			// eliminate rules with no specified or zero rate
+			if (clonedRule.forwardRate != null && clonedRule.forwardRate > 0 && clonedRule.reverseRate != null &&
+				clonedRule.reverseRate > 0) {
+				flatRules.add(clonedRule);
+			}
 		}
 
 		return flatRules;
