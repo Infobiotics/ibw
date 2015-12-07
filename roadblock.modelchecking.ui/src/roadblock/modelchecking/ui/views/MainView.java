@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -187,7 +188,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				handlePropertyItemChecked(null);
+				handlePropertyItemChecked(Collections.<PropertySemanticEntityPair> emptyList());
 
 				parentComposite.layout();
 				updateUi();
@@ -368,6 +369,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		ddlVerificationType.select(0);
 		ddlSimulator.select(0);
+
+		handlePropertyItemChecked(Collections.<PropertySemanticEntityPair> emptyList());
 	}
 
 	@Override

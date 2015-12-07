@@ -27,7 +27,7 @@ public class BinaryPathResolver {
 			BinaryPathProvider.getInstance().setNuSmvPath(nuSmvUrl.getPath());
 
 			URL ngssBinaryUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss"), Collections.<String, String> emptyMap()));
-			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngss"), Collections.<String, String> emptyMap()));
+			URL ngssUrl = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/ngss/ngssWrapper.sh"), Collections.<String, String> emptyMap()));
 			BinaryPathProvider.getInstance().setNgssPath(ngssUrl.getPath());
 
 			URL imagesPath = FileLocator.resolve(FileLocator.find(currentBundle, new Path("resources/atgc/resources/images/"), Collections.<String, String> emptyMap()));
@@ -84,7 +84,7 @@ public class BinaryPathResolver {
 				setBinaryFullPermissions(FileLocator.resolve(FileLocator.find(currentBundle, new Path(filename), Collections.<String, String> emptyMap())).getPath());
 			}
 			
-			System.setProperty("java.library.path", sqlite4JavaUrl.getPath());
+			System.setProperty("sqlite4java.library.path", sqlite4JavaUrl.getPath());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
