@@ -34,8 +34,8 @@ cd ../RBSCalculator
 rm -rf ../RBSSource
 
 echo "Building the executables from C for NUPACK"
-tar xvfz ../nupack3.0.4.tar.gz
-cd nupack3.0.4
+tar xvfz ../nupack3.0.5.tar.gz
+cd nupack3.0.5
 make
 
 echo ""
