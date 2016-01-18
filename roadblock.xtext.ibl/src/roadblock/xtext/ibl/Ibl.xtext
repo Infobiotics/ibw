@@ -30,11 +30,7 @@ ImportStatement:
 // Function definition //
 /////////////////////////
 
-// function types
-FunctionType:
-	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' | 'REGION';
-
-	// a function definition
+// a function definition
 FunctionDefinition:
 	{FunctionDefinition}
 	'define' name=VariableName 'typeof' functionBody=FunctionBodyType
@@ -123,6 +119,17 @@ FunctionParameterScope:
 FunctionUseMember:
 	type=VariableType name=VariableName;
 
+	// device definition
+RateSetDefinition:
+	{RateSetDefinition}
+	name=VariableName '=' 'RATES'
+	'{'
+	(members+=RateSetMembers*)
+	'}';
+
+RateSetMembers:
+	VariableAssignment;
+	
 	/////////////
 // devices //
 ////////////
@@ -133,7 +140,7 @@ DeviceDefinition:
 	name=VariableName '=' 'DEVICE'
 	'('
 	'parts' '=' parts=List
-	('input' '=' input=List)?
+	(',' 'input' '=' input=List)?
 	(',' 'output' '=' output=List)?
 	')'
 	'{'
@@ -151,8 +158,13 @@ DeviceMembers:
 ProcessInstantiation:
 	{ProcessInstantiation}
 	'PROCESS' name=VariableName
-	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
-	')')?;
+	('=' 'new' constructor=VariableName
+	'(' (parameters+=VariableName (',' parameters+=VariableName)*)? ')'
+	('USING' using+=ProcessUnsingMember (',' using+=ProcessUnsingMember)*)?)?;
+
+ProcessUnsingMember:
+	{ProcessUnsingMember}
+	name=VariableName;
 
 	// System instantiation 
 SystemInstantiation:

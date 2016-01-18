@@ -334,7 +334,6 @@ class ModelBuilder extends IblSwitch<Object> {
 				VariableDefinition: region.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment: region.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
 			}
-
 		}
 		return region
 	}
