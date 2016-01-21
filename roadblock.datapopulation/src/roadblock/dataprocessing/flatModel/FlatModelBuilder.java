@@ -135,6 +135,11 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			cell.accept(this);
 		}
 
+		for (Kinetics kinetics : region.getProcessList()) {
+			registerChildCompartment(kinetics, kinetics.getDisplayName(), region);
+			kinetics.accept(this);
+		}
+
 		if (belongsToPropertyCompartment) {
 			register(region.getRuleList(), region);
 		}
@@ -163,6 +168,11 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		for (Device device : cell.getDeviceList()) {
 			registerChildCompartment(device, device.getDisplayName(), cell);
 			device.accept(this);
+		}
+
+		for (Kinetics kinetics : cell.getProcessList()) {
+			registerChildCompartment(kinetics, kinetics.getDisplayName(), cell);
+			kinetics.accept(this);
 		}
 
 		if (belongsToPropertyCompartment) {
@@ -577,8 +587,13 @@ public class FlatModelBuilder implements IVisitor<Void> {
 				clonedRule.setReverseRateUnit(IblFactory.eINSTANCE.createRateUnit());
 			}
 
-			// eliminate rules with no specified or zero rate
-			if (clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0 && clonedRule.getReverseRate() != null && clonedRule.getReverseRate() > 0) {
+			// eliminate rules with no specified or zero rates
+			if(clonedRule.isIsBidirectional()) {
+				if ((clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0) || (clonedRule.getReverseRate() != null && clonedRule.getReverseRate() > 0)) {
+					flatModel.getRuleList().add(clonedRule);
+				}
+			}
+			else if (clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0) {
 				flatModel.getRuleList().add(clonedRule);
 			}
 		}

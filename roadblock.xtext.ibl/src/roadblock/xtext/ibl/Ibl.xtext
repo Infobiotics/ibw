@@ -98,9 +98,9 @@ FunctionContent:
 // See iblRefactoringGrammar.R for some automation
 FunctionBodyMember:
 	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
-	ProcessInstantiation | PropertyDefinition |
-	RuleDefinition | SystemInstantiation |
-	VariableAssignment | VariableDefinition;
+	ProcessInstantiation | RateSetDefinition | PropertyDefinition | RuleDefinition | SystemInstantiation |
+	VariableAssignment |
+	VariableDefinition;
 
 	//////////////////////
 // function members //
@@ -119,17 +119,14 @@ FunctionParameterScope:
 FunctionUseMember:
 	type=VariableType name=VariableName;
 
-	// device definition
+	// rate set definition
 RateSetDefinition:
 	{RateSetDefinition}
 	name=VariableName '=' 'RATES'
 	'{'
-	(members+=RateSetMembers*)
+	(rateAssignments+=VariableAssignment*)
 	'}';
 
-RateSetMembers:
-	VariableAssignment;
-	
 	/////////////
 // devices //
 ////////////
@@ -148,7 +145,8 @@ DeviceDefinition:
 	'}';
 
 DeviceMembers:
-	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RuleDefinition | VariableAssignment;
+	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RateSetDefinition | RuleDefinition |
+	VariableAssignment;
 
 	////////////////////
 // instantiations //

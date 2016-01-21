@@ -573,22 +573,13 @@ public class IblPackage extends EPackageImpl {
 	public static final int DEVICE__ID = IVISITABLE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Kinetics</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DEVICE__KINETICS = IVISITABLE_FEATURE_COUNT + 6;
-
-	/**
 	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 7;
+	public static final int DEVICE__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Output List</b></em>' containment reference list.
@@ -597,7 +588,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE__OUTPUT_LIST = IVISITABLE_FEATURE_COUNT + 8;
+	public static final int DEVICE__OUTPUT_LIST = IVISITABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Input List</b></em>' containment reference list.
@@ -606,7 +597,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE__INPUT_LIST = IVISITABLE_FEATURE_COUNT + 9;
+	public static final int DEVICE__INPUT_LIST = IVISITABLE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Variable Assignment List</b></em>' containment reference list.
@@ -615,7 +606,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 10;
+	public static final int DEVICE__VARIABLE_ASSIGNMENT_LIST = IVISITABLE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -624,7 +615,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE__PROPERTIES = IVISITABLE_FEATURE_COUNT + 11;
+	public static final int DEVICE__PROPERTIES = IVISITABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Device</em>' class.
@@ -633,7 +624,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 12;
+	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
@@ -664,13 +655,13 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL__DEVICE_LIST = IVISITABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Kinetics</b></em>' containment reference.
+	 * The feature id for the '<em><b>Process List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CELL__KINETICS = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int CELL__PROCESS_LIST = IVISITABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Rule List</b></em>' containment reference list.
@@ -1514,13 +1505,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int REGION__DISPLAY_NAME = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Kinetics</b></em>' containment reference.
+	 * The feature id for the '<em><b>Cell List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REGION__KINETICS = IVISITABLE_FEATURE_COUNT + 1;
+	public static final int REGION__CELL_LIST = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Process List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REGION__PROCESS_LIST = IVISITABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Rule List</b></em>' containment reference list.
@@ -1529,7 +1529,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REGION__RULE_LIST = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int REGION__RULE_LIST = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
@@ -1538,7 +1538,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REGION__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 3;
+	public static final int REGION__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -1547,16 +1547,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REGION__ID = IVISITABLE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Cell List</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REGION__CELL_LIST = IVISITABLE_FEATURE_COUNT + 5;
+	public static final int REGION__ID = IVISITABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Variable Assignment List</b></em>' containment reference list.
@@ -3419,19 +3410,6 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Device#getKinetics <em>Kinetics</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Kinetics</em>'.
-	 * @see roadblock.emf.ibl.Ibl.Device#getKinetics()
-	 * @see #getDevice()
-	 * @generated
-	 */
-	public EReference getDevice_Kinetics() {
-		return (EReference)deviceEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getMoleculeList <em>Molecule List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3441,7 +3419,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getDevice_MoleculeList() {
-		return (EReference)deviceEClass.getEStructuralFeatures().get(7);
+		return (EReference)deviceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -3454,7 +3432,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getDevice_OutputList() {
-		return (EReference)deviceEClass.getEStructuralFeatures().get(8);
+		return (EReference)deviceEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -3467,7 +3445,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getDevice_InputList() {
-		return (EReference)deviceEClass.getEStructuralFeatures().get(9);
+		return (EReference)deviceEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -3480,7 +3458,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getDevice_VariableAssignmentList() {
-		return (EReference)deviceEClass.getEStructuralFeatures().get(10);
+		return (EReference)deviceEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -3493,7 +3471,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getDevice_Properties() {
-		return (EReference)deviceEClass.getEStructuralFeatures().get(11);
+		return (EReference)deviceEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -3535,17 +3513,18 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}'.
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Cell#getProcessList <em>Process List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Kinetics</em>'.
-	 * @see roadblock.emf.ibl.Ibl.Cell#getKinetics()
+	 * @return the meta object for the containment reference list '<em>Process List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Cell#getProcessList()
 	 * @see #getCell()
 	 * @generated
 	 */
-	public EReference getCell_Kinetics() {
+	public EReference getCell_ProcessList() {
 		return (EReference)cellEClass.getEStructuralFeatures().get(2);
 	}
+
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Cell#getRuleList <em>Rule List</em>}'.
@@ -4345,19 +4324,6 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Region#getKinetics <em>Kinetics</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Kinetics</em>'.
-	 * @see roadblock.emf.ibl.Ibl.Region#getKinetics()
-	 * @see #getRegion()
-	 * @generated
-	 */
-	public EReference getRegion_Kinetics() {
-		return (EReference)regionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getRuleList <em>Rule List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4367,7 +4333,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getRegion_RuleList() {
-		return (EReference)regionEClass.getEStructuralFeatures().get(2);
+		return (EReference)regionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -4380,7 +4346,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getRegion_MoleculeList() {
-		return (EReference)regionEClass.getEStructuralFeatures().get(3);
+		return (EReference)regionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -4393,7 +4359,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EAttribute getRegion_ID() {
-		return (EAttribute)regionEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)regionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -4406,8 +4372,22 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getRegion_CellList() {
-		return (EReference)regionEClass.getEStructuralFeatures().get(5);
+		return (EReference)regionEClass.getEStructuralFeatures().get(1);
 	}
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getProcessList <em>Process List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Process List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Region#getProcessList()
+	 * @see #getRegion()
+	 * @generated
+	 */
+	public EReference getRegion_ProcessList() {
+		return (EReference)regionEClass.getEStructuralFeatures().get(2);
+	}
+
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Region#getVariableAssignmentList <em>Variable Assignment List</em>}'.
@@ -5250,7 +5230,6 @@ public class IblPackage extends EPackageImpl {
 		createEReference(deviceEClass, DEVICE__PART_LIST);
 		createEReference(deviceEClass, DEVICE__ATGC_COMMAND_LIST);
 		createEAttribute(deviceEClass, DEVICE__ID);
-		createEReference(deviceEClass, DEVICE__KINETICS);
 		createEReference(deviceEClass, DEVICE__MOLECULE_LIST);
 		createEReference(deviceEClass, DEVICE__OUTPUT_LIST);
 		createEReference(deviceEClass, DEVICE__INPUT_LIST);
@@ -5260,7 +5239,7 @@ public class IblPackage extends EPackageImpl {
 		cellEClass = createEClass(CELL);
 		createEAttribute(cellEClass, CELL__DISPLAY_NAME);
 		createEReference(cellEClass, CELL__DEVICE_LIST);
-		createEReference(cellEClass, CELL__KINETICS);
+		createEReference(cellEClass, CELL__PROCESS_LIST);
 		createEReference(cellEClass, CELL__RULE_LIST);
 		createEReference(cellEClass, CELL__MOLECULE_LIST);
 		createEReference(cellEClass, CELL__ATGC_COMMAND_LIST);
@@ -5346,11 +5325,11 @@ public class IblPackage extends EPackageImpl {
 
 		regionEClass = createEClass(REGION);
 		createEAttribute(regionEClass, REGION__DISPLAY_NAME);
-		createEReference(regionEClass, REGION__KINETICS);
+		createEReference(regionEClass, REGION__CELL_LIST);
+		createEReference(regionEClass, REGION__PROCESS_LIST);
 		createEReference(regionEClass, REGION__RULE_LIST);
 		createEReference(regionEClass, REGION__MOLECULE_LIST);
 		createEAttribute(regionEClass, REGION__ID);
-		createEReference(regionEClass, REGION__CELL_LIST);
 		createEReference(regionEClass, REGION__VARIABLE_ASSIGNMENT_LIST);
 
 		emfVariableAssignmentEClass = createEClass(EMF_VARIABLE_ASSIGNMENT);
@@ -5700,7 +5679,7 @@ public class IblPackage extends EPackageImpl {
 		initEClass(kineticsEClass, Kinetics.class, "Kinetics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getKinetics_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKinetics_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getKinetics_MoleculeList(), this.getMolecularSpecies(), null, "MoleculeList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getKinetics_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKinetics_OutputList(), this.getMolecularSpecies(), null, "outputList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKinetics_OptionList(), this.getMolecularSpecies(), null, "optionList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getKinetics_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5738,7 +5717,6 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getDevice_PartList(), this.getMolecularSpecies(), null, "partList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDevice_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDevice_Kinetics(), this.getKinetics(), null, "kinetics", null, 0, 1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_OutputList(), this.getMolecularSpecies(), null, "outputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_InputList(), this.getMolecularSpecies(), null, "inputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5748,7 +5726,7 @@ public class IblPackage extends EPackageImpl {
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_DeviceList(), this.getDevice(), null, "deviceList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCell_Kinetics(), this.getKinetics(), null, "Kinetics", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCell_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_ATGCCommandList(), this.getATGCDirective(), null, "ATGCCommandList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5843,11 +5821,11 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(regionEClass, Region.class, "Region", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRegion_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRegion_Kinetics(), this.getKinetics(), null, "Kinetics", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_CellList(), this.getCell(), null, "cellList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRegion_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRegion_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRegion_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRegion_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRegion_CellList(), this.getCell(), null, "cellList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRegion_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Region.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(emfVariableAssignmentEClass, EMFVariableAssignment.class, "EMFVariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -6415,14 +6393,6 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute DEVICE__ID = eINSTANCE.getDevice_ID();
 
 		/**
-		 * The meta object literal for the '<em><b>Kinetics</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EReference DEVICE__KINETICS = eINSTANCE.getDevice_Kinetics();
-
-		/**
 		 * The meta object literal for the '<em><b>Molecule List</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6489,12 +6459,12 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference CELL__DEVICE_LIST = eINSTANCE.getCell_DeviceList();
 
 		/**
-		 * The meta object literal for the '<em><b>Kinetics</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Process List</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EReference CELL__KINETICS = eINSTANCE.getCell_Kinetics();
+		public static final EReference CELL__PROCESS_LIST = eINSTANCE.getCell_ProcessList();
 
 		/**
 		 * The meta object literal for the '<em><b>Rule List</b></em>' containment reference list feature.
@@ -7045,14 +7015,6 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute REGION__DISPLAY_NAME = eINSTANCE.getRegion_DisplayName();
 
 		/**
-		 * The meta object literal for the '<em><b>Kinetics</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EReference REGION__KINETICS = eINSTANCE.getRegion_Kinetics();
-
-		/**
 		 * The meta object literal for the '<em><b>Rule List</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7083,6 +7045,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference REGION__CELL_LIST = eINSTANCE.getRegion_CellList();
+
+		/**
+		 * The meta object literal for the '<em><b>Process List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference REGION__PROCESS_LIST = eINSTANCE.getRegion_ProcessList();
 
 		/**
 		 * The meta object literal for the '<em><b>Variable Assignment List</b></em>' containment reference list feature.

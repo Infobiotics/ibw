@@ -42,6 +42,7 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.ProcessBody
 
 // utility class, used for checking forbidden containers
 @Data
@@ -215,14 +216,21 @@ class IblValidator extends AbstractIblValidator {
 		// if in device: check signature and observables in device's container 
 		switch (container) {
 			DeviceDefinition: {
-				if (getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists [
+				if(getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists [
 					it.buildVariableName == variableName
-				])
-					return true
-				if (getAllVariableDefinitions(container.eContainer).filter[observable].exists [
+				]) return true
+
+				if(getAllVariableDefinitions(container.eContainer).filter[observable].exists [
 					it.variableName == variableName
-				])
-					return true
+				]) return true
+			}
+			FunctionContent: {
+				switch (container.eContainer) {
+					ProcessBody:
+						if(container.parameters.exists [
+							it.name.buildVariableName == variableName
+						]) return true
+				}
 			}
 		}
 

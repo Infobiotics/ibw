@@ -711,7 +711,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 		} catch (InvocationTargetException | InterruptedException e) {
 			errorDialogWithStackTrace("Failed exporting " + config.getModelName(), e);
 		}
-
 	}
 
 	// launch model checking

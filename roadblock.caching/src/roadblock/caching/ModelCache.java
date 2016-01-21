@@ -9,13 +9,13 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.IResourceScopeCache;
 
+import com.google.inject.Inject;
+import com.google.inject.Provider;
+
 import roadblock.dataprocessing.flatModel.FlatModelManager;
 import roadblock.dataprocessing.model.ModelBuilder;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.Model;
-
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 
 public class ModelCache {
 
@@ -30,63 +30,58 @@ public class ModelCache {
 
 	public Model getModel(final XtextResource resource) {
 
-		Model model = resource.getCache().get("Model", resource,
-				new Provider<Model>() {
+		Model model = resource.getCache().get("Model", resource, new Provider<Model>() {
 
-					public Model get() {
+			public Model get() {
 
-						XtextResource iblResource = (XtextResource) resource;
-						roadblock.xtext.ibl.ibl.Model semanticModel = (roadblock.xtext.ibl.ibl.Model) iblResource
-								.getContents().get(0);
+				XtextResource iblResource = (XtextResource) resource;
+				roadblock.xtext.ibl.ibl.Model semanticModel = (roadblock.xtext.ibl.ibl.Model) iblResource.getContents().get(0);
 
-						ModelBuilder modelBuilder = new ModelBuilder();
-						Model model = modelBuilder.populate(semanticModel);
+				ModelBuilder modelBuilder = new ModelBuilder();
+				Model model = modelBuilder.populate(semanticModel);
 
-						return model;
-					}
-				});
+				return model;
+			}
+		});
 
 		return model;
 	}
 
 	public FlatModel getFlatModel(final XtextResource resource) {
 
-		FlatModel flatModel = resource.getCache().get("FlatModel", resource,
-				new Provider<FlatModel>() {
+		FlatModel flatModel = resource.getCache().get("FlatModel", resource, new Provider<FlatModel>() {
 
-					public FlatModel get() {
+			public FlatModel get() {
 
-						Model model = getModel(resource);
-						FlatModelManager flatModelManager = new FlatModelManager(
-								model);
-						FlatModel flatModel = flatModelManager.getFlatModel();
+				Model model = getModel(resource);
+				FlatModelManager flatModelManager = new FlatModelManager(model);
+				FlatModel flatModel = flatModelManager.getFlatModel();
 
-						return flatModel;
-					}
-				});
+				return flatModel;
+			}
+		});
 
 		return flatModel;
 	}
 
 	public String getSerialisedFlatModel(final XtextResource resource) {
 
-		String serialisation = resource.getCache().get("SerialisedFlatModel",
-				resource, new Provider<String>() {
+		String serialisation = resource.getCache().get("SerialisedFlatModel", resource, new Provider<String>() {
 
-					public String get() {
+			public String get() {
 
-						FlatModel flatModel = getFlatModel(resource);
-						String serialisation = null;
+				FlatModel flatModel = getFlatModel(resource);
+				String serialisation = null;
 
-						try {
-							serialisation = getSerialisation(flatModel);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
+				try {
+					serialisation = getSerialisation(flatModel);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 
-						return serialisation;
-					}
-				});
+				return serialisation;
+			}
+		});
 
 		return serialisation;
 	}
@@ -96,8 +91,7 @@ public class ModelCache {
 		XMLResource resource = new XMLResourceImpl();
 		XMLProcessor processor = new XMLProcessor();
 
-		resource.getDefaultSaveOptions().put(
-				XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
+		resource.getDefaultSaveOptions().put(XMLResourceImpl.OPTION_KEEP_DEFAULT_CONTENT, Boolean.TRUE);
 		resource.setEncoding("UTF-8");
 		resource.getContents().add(eObject);
 

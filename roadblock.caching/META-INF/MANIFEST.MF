@@ -12,4 +12,5 @@ Export-Package: roadblock.caching
 Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.xtext;bundle-version="2.5.4",
  org.eclipse.osgi;bundle-version="3.9.1",
- org.eclipse.osgi.util;bundle-version="3.2.300"
+ org.eclipse.osgi.util;bundle-version="3.2.300",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.8.4"

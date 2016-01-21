@@ -61,22 +61,21 @@ import roadblock.emf.ibl.Ibl.VariableReference;
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
- * 
  * @see roadblock.emf.ibl.Ibl.IblPackage
  * @generated
  */
 public class IblAdapterFactory extends AdapterFactoryImpl {
 	/**
-	 * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached model package.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected static IblPackage modelPackage;
 
 	/**
-	 * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!--
+	 * Creates an instance of the adapter factory.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public IblAdapterFactory() {
@@ -90,7 +89,6 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc --> This implementation returns <code>true</code> if
 	 * the object is either the model's package or is an instance object of the
 	 * model. <!-- end-user-doc -->
-	 * 
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -100,7 +98,7 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -112,269 +110,219 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	protected IblSwitch<Adapter> modelSwitch = new IblSwitch<Adapter>() {
-		@Override
-		public Adapter caseIVisitable(IVisitable object) {
-			return createIVisitableAdapter();
-		}
-
-		@Override
-		public <TResult> Adapter caseIVisitor(IVisitor<TResult> object) {
-			return createIVisitorAdapter();
-		}
-
-		@Override
-		public Adapter caseModel(Model object) {
-			return createModelAdapter();
-		}
-
-		@Override
-		public Adapter caseKinetics(Kinetics object) {
-			return createKineticsAdapter();
-		}
-
-		@Override
-		public Adapter caseRule(Rule object) {
-			return createRuleAdapter();
-		}
-
-		@Override
-		public Adapter caseMolecularSpecies(MolecularSpecies object) {
-			return createMolecularSpeciesAdapter();
-		}
-
-		@Override
-		public Adapter caseDevice(Device object) {
-			return createDeviceAdapter();
-		}
-
-		@Override
-		public Adapter caseCell(Cell object) {
-			return createCellAdapter();
-		}
-
-		@Override
-		public Adapter caseATGCDirective(ATGCDirective object) {
-			return createATGCDirectiveAdapter();
-		}
-
-		@Override
-		public Adapter caseSystem(roadblock.emf.ibl.Ibl.System object) {
-			return createSystemAdapter();
-		}
-
-		@Override
-		public Adapter caseChromosome(Chromosome object) {
-			return createChromosomeAdapter();
-		}
-
-		@Override
-		public Adapter casePlasmid(Plasmid object) {
-			return createPlasmidAdapter();
-		}
-
-		@Override
-		public Adapter caseIProperty(IProperty object) {
-			return createIPropertyAdapter();
-		}
-
-		@Override
-		public Adapter caseProbabilityProperty(ProbabilityProperty object) {
-			return createProbabilityPropertyAdapter();
-		}
-
-		@Override
-		public Adapter caseIProbabilityConstraint(IProbabilityConstraint object) {
-			return createIProbabilityConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseConcreteProbabilityConstraint(ConcreteProbabilityConstraint object) {
-			return createConcreteProbabilityConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseUnknownProbabilityConstraint(UnknownProbabilityConstraint object) {
-			return createUnknownProbabilityConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseITimeConstraint(ITimeConstraint object) {
-			return createITimeConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeInterval(TimeInterval object) {
-			return createTimeIntervalAdapter();
-		}
-
-		@Override
-		public Adapter caseTimeInstant(TimeInstant object) {
-			return createTimeInstantAdapter();
-		}
-
-		@Override
-		public Adapter caseUnaryProbabilityProperty(UnaryProbabilityProperty object) {
-			return createUnaryProbabilityPropertyAdapter();
-		}
-
-		@Override
-		public Adapter caseBinaryProbabilityProperty(BinaryProbabilityProperty object) {
-			return createBinaryProbabilityPropertyAdapter();
-		}
-
-		@Override
-		public Adapter caseRewardProperty(RewardProperty object) {
-			return createRewardPropertyAdapter();
-		}
-
-		@Override
-		public Adapter caseSteadyStateProperty(SteadyStateProperty object) {
-			return createSteadyStatePropertyAdapter();
-		}
-
-		@Override
-		public Adapter caseConcentrationConstraint(ConcentrationConstraint object) {
-			return createConcentrationConstraintAdapter();
-		}
-
-		@Override
-		public Adapter caseIStateFormula(IStateFormula object) {
-			return createIStateFormulaAdapter();
-		}
-
-		@Override
-		public Adapter caseBinaryStateFormula(BinaryStateFormula object) {
-			return createBinaryStateFormulaAdapter();
-		}
-
-		@Override
-		public Adapter caseNotStateFormula(NotStateFormula object) {
-			return createNotStateFormulaAdapter();
-		}
-
-		@Override
-		public Adapter caseStateExpression(StateExpression object) {
-			return createStateExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseRegion(Region object) {
-			return createRegionAdapter();
-		}
-
-		@Override
-		public Adapter caseEMFVariableAssignment(EMFVariableAssignment object) {
-			return createEMFVariableAssignmentAdapter();
-		}
-
-		@Override
-		public Adapter caseFlatModel(FlatModel object) {
-			return createFlatModelAdapter();
-		}
-
-		@Override
-		public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
-			return createPropertyInitialConditionAdapter();
-		}
-
-		@Override
-		public Adapter caseRateUnit(RateUnit object) {
-			return createRateUnitAdapter();
-		}
-
-		@Override
-		public Adapter caseATGCDirection(ATGCDirection object) {
-			return createATGCDirectionAdapter();
-		}
-
-		@Override
-		public Adapter caseATGCArrange(ATGCArrange object) {
-			return createATGCArrangeAdapter();
-		}
-
-		@Override
-		public Adapter caseATGCCloningSites(ATGCCloningSites object) {
-			return createATGCCloningSitesAdapter();
-		}
-
-		@Override
-		public Adapter caseFlatModelPropertyPair(FlatModelPropertyPair object) {
-			return createFlatModelPropertyPairAdapter();
-		}
-
-		@Override
-		public Adapter caseIArithmeticExpression(IArithmeticExpression object) {
-			return createIArithmeticExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseIArithmeticOperand(IArithmeticOperand object) {
-			return createIArithmeticOperandAdapter();
-		}
-
-		@Override
-		public Adapter caseBinaryArithmeticExpression(BinaryArithmeticExpression object) {
-			return createBinaryArithmeticExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseNumericLiteral(NumericLiteral object) {
-			return createNumericLiteralAdapter();
-		}
-
-		@Override
-		public Adapter caseVariableReference(VariableReference object) {
-			return createVariableReferenceAdapter();
-		}
-
-		@Override
-		public Adapter caseMonotonicityExpression(MonotonicityExpression object) {
-			return createMonotonicityExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseRelationalExpression(RelationalExpression object) {
-			return createRelationalExpressionAdapter();
-		}
-
-		@Override
-		public Adapter caseConcentrationQuantity(ConcentrationQuantity object) {
-			return createConcentrationQuantityAdapter();
-		}
-
-		@Override
-		public Adapter caseATGCTranslationRate(ATGCTranslationRate object) {
-			return createATGCTranslationRateAdapter();
-		}
-
-		@Override
-		public Adapter caseIMoleculeContainer(IMoleculeContainer object) {
-			return createIMoleculeContainerAdapter();
-		}
-
-		@Override
-		public Adapter caseIRuleContainer(IRuleContainer object) {
-			return createIRuleContainerAdapter();
-		}
-
-		@Override
-		public Adapter defaultCase(EObject object) {
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseIVisitable(IVisitable object) {
+				return createIVisitableAdapter();
+			}
+			@Override
+			public <TResult> Adapter caseIVisitor(IVisitor<TResult> object) {
+				return createIVisitorAdapter();
+			}
+			@Override
+			public Adapter caseModel(Model object) {
+				return createModelAdapter();
+			}
+			@Override
+			public Adapter caseKinetics(Kinetics object) {
+				return createKineticsAdapter();
+			}
+			@Override
+			public Adapter caseRule(Rule object) {
+				return createRuleAdapter();
+			}
+			@Override
+			public Adapter caseMolecularSpecies(MolecularSpecies object) {
+				return createMolecularSpeciesAdapter();
+			}
+			@Override
+			public Adapter caseDevice(Device object) {
+				return createDeviceAdapter();
+			}
+			@Override
+			public Adapter caseCell(Cell object) {
+				return createCellAdapter();
+			}
+			@Override
+			public Adapter caseATGCDirective(ATGCDirective object) {
+				return createATGCDirectiveAdapter();
+			}
+			@Override
+			public Adapter caseSystem(roadblock.emf.ibl.Ibl.System object) {
+				return createSystemAdapter();
+			}
+			@Override
+			public Adapter caseChromosome(Chromosome object) {
+				return createChromosomeAdapter();
+			}
+			@Override
+			public Adapter casePlasmid(Plasmid object) {
+				return createPlasmidAdapter();
+			}
+			@Override
+			public Adapter caseIProperty(IProperty object) {
+				return createIPropertyAdapter();
+			}
+			@Override
+			public Adapter caseProbabilityProperty(ProbabilityProperty object) {
+				return createProbabilityPropertyAdapter();
+			}
+			@Override
+			public Adapter caseIProbabilityConstraint(IProbabilityConstraint object) {
+				return createIProbabilityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseConcreteProbabilityConstraint(ConcreteProbabilityConstraint object) {
+				return createConcreteProbabilityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseUnknownProbabilityConstraint(UnknownProbabilityConstraint object) {
+				return createUnknownProbabilityConstraintAdapter();
+			}
+			@Override
+			public Adapter caseITimeConstraint(ITimeConstraint object) {
+				return createITimeConstraintAdapter();
+			}
+			@Override
+			public Adapter caseTimeInterval(TimeInterval object) {
+				return createTimeIntervalAdapter();
+			}
+			@Override
+			public Adapter caseTimeInstant(TimeInstant object) {
+				return createTimeInstantAdapter();
+			}
+			@Override
+			public Adapter caseUnaryProbabilityProperty(UnaryProbabilityProperty object) {
+				return createUnaryProbabilityPropertyAdapter();
+			}
+			@Override
+			public Adapter caseBinaryProbabilityProperty(BinaryProbabilityProperty object) {
+				return createBinaryProbabilityPropertyAdapter();
+			}
+			@Override
+			public Adapter caseRewardProperty(RewardProperty object) {
+				return createRewardPropertyAdapter();
+			}
+			@Override
+			public Adapter caseSteadyStateProperty(SteadyStateProperty object) {
+				return createSteadyStatePropertyAdapter();
+			}
+			@Override
+			public Adapter caseConcentrationConstraint(ConcentrationConstraint object) {
+				return createConcentrationConstraintAdapter();
+			}
+			@Override
+			public Adapter caseIStateFormula(IStateFormula object) {
+				return createIStateFormulaAdapter();
+			}
+			@Override
+			public Adapter caseBinaryStateFormula(BinaryStateFormula object) {
+				return createBinaryStateFormulaAdapter();
+			}
+			@Override
+			public Adapter caseNotStateFormula(NotStateFormula object) {
+				return createNotStateFormulaAdapter();
+			}
+			@Override
+			public Adapter caseStateExpression(StateExpression object) {
+				return createStateExpressionAdapter();
+			}
+			@Override
+			public Adapter caseRegion(Region object) {
+				return createRegionAdapter();
+			}
+			@Override
+			public Adapter caseEMFVariableAssignment(EMFVariableAssignment object) {
+				return createEMFVariableAssignmentAdapter();
+			}
+			@Override
+			public Adapter caseFlatModel(FlatModel object) {
+				return createFlatModelAdapter();
+			}
+			@Override
+			public Adapter casePropertyInitialCondition(PropertyInitialCondition object) {
+				return createPropertyInitialConditionAdapter();
+			}
+			@Override
+			public Adapter caseRateUnit(RateUnit object) {
+				return createRateUnitAdapter();
+			}
+			@Override
+			public Adapter caseATGCDirection(ATGCDirection object) {
+				return createATGCDirectionAdapter();
+			}
+			@Override
+			public Adapter caseATGCArrange(ATGCArrange object) {
+				return createATGCArrangeAdapter();
+			}
+			@Override
+			public Adapter caseATGCCloningSites(ATGCCloningSites object) {
+				return createATGCCloningSitesAdapter();
+			}
+			@Override
+			public Adapter caseFlatModelPropertyPair(FlatModelPropertyPair object) {
+				return createFlatModelPropertyPairAdapter();
+			}
+			@Override
+			public Adapter caseIArithmeticExpression(IArithmeticExpression object) {
+				return createIArithmeticExpressionAdapter();
+			}
+			@Override
+			public Adapter caseIArithmeticOperand(IArithmeticOperand object) {
+				return createIArithmeticOperandAdapter();
+			}
+			@Override
+			public Adapter caseBinaryArithmeticExpression(BinaryArithmeticExpression object) {
+				return createBinaryArithmeticExpressionAdapter();
+			}
+			@Override
+			public Adapter caseNumericLiteral(NumericLiteral object) {
+				return createNumericLiteralAdapter();
+			}
+			@Override
+			public Adapter caseVariableReference(VariableReference object) {
+				return createVariableReferenceAdapter();
+			}
+			@Override
+			public Adapter caseMonotonicityExpression(MonotonicityExpression object) {
+				return createMonotonicityExpressionAdapter();
+			}
+			@Override
+			public Adapter caseRelationalExpression(RelationalExpression object) {
+				return createRelationalExpressionAdapter();
+			}
+			@Override
+			public Adapter caseConcentrationQuantity(ConcentrationQuantity object) {
+				return createConcentrationQuantityAdapter();
+			}
+			@Override
+			public Adapter caseATGCTranslationRate(ATGCTranslationRate object) {
+				return createATGCTranslationRateAdapter();
+			}
+			@Override
+			public Adapter caseIMoleculeContainer(IMoleculeContainer object) {
+				return createIMoleculeContainerAdapter();
+			}
+			@Override
+			public Adapter caseIRuleContainer(IRuleContainer object) {
+				return createIRuleContainerAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
-	 * Creates an adapter for the <code>target</code>. <!-- begin-user-doc -->
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param target
-	 *            the object to adapt.
+	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**
@@ -408,12 +356,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Model <em>Model</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.Model
 	 * @generated
@@ -438,12 +385,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.Rule
 	 * @generated
@@ -453,12 +399,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}
-	 * '. <!-- begin-user-doc --> This default implementation returns null so
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so
 	 * that we can easily ignore cases; it's useful to ignore a case when
 	 * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.MolecularSpecies
 	 * @generated
@@ -483,12 +427,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}'. <!-- begin-user-doc
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}'.
+	 * <!-- begin-user-doc
 	 * --> This default implementation returns null so that we can easily ignore
 	 * cases; it's useful to ignore a case when inheritance will catch all the
 	 * cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.Cell
 	 * @generated
@@ -498,12 +441,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ATGCDirective
 	 * @generated
@@ -573,13 +514,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ProbabilityProperty
-	 * <em>Probability Property</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ProbabilityProperty <em>Probability Property</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ProbabilityProperty
 	 * @generated
@@ -589,13 +528,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.IProbabilityConstraint
-	 * <em>IProbability Constraint</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IProbabilityConstraint <em>IProbability Constraint</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.IProbabilityConstraint
 	 * @generated
@@ -605,13 +542,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint
-	 * <em>Concrete Probability Constraint</em>}'. <!-- begin-user-doc --> This
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint <em>Concrete Probability Constraint</em>}'.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint
 	 * @generated
@@ -621,13 +556,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint
-	 * <em>Unknown Probability Constraint</em>}'. <!-- begin-user-doc --> This
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint <em>Unknown Probability Constraint</em>}'.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint
 	 * @generated
@@ -637,12 +570,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ITimeConstraint <em>ITime Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ITimeConstraint <em>ITime Constraint</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ITimeConstraint
 	 * @generated
@@ -682,13 +613,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty
-	 * <em>Unary Probability Property</em>}'. <!-- begin-user-doc --> This
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.UnaryProbabilityProperty <em>Unary Probability Property</em>}'.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.UnaryProbabilityProperty
 	 * @generated
@@ -698,13 +627,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty
-	 * <em>Binary Probability Property</em>}'. <!-- begin-user-doc --> This
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.BinaryProbabilityProperty <em>Binary Probability Property</em>}'.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.BinaryProbabilityProperty
 	 * @generated
@@ -714,12 +641,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.RewardProperty <em>Reward Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.RewardProperty <em>Reward Property</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.RewardProperty
 	 * @generated
@@ -729,13 +654,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.SteadyStateProperty
-	 * <em>Steady State Property</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.SteadyStateProperty <em>Steady State Property</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.SteadyStateProperty
 	 * @generated
@@ -745,13 +668,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ConcentrationConstraint
-	 * <em>Concentration Constraint</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcentrationConstraint <em>Concentration Constraint</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ConcentrationConstraint
 	 * @generated
@@ -761,12 +682,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.IStateFormula <em>IState Formula</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IStateFormula <em>IState Formula</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.IStateFormula
 	 * @generated
@@ -776,13 +695,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.BinaryStateFormula
-	 * <em>Binary State Formula</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.BinaryStateFormula <em>Binary State Formula</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.BinaryStateFormula
 	 * @generated
@@ -792,12 +709,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.NotStateFormula <em>Not State Formula</em>}
-	 * '. <!-- begin-user-doc --> This default implementation returns null so
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.NotStateFormula <em>Not State Formula</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so
 	 * that we can easily ignore cases; it's useful to ignore a case when
 	 * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.NotStateFormula
 	 * @generated
@@ -807,12 +722,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.StateExpression <em>State Expression</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.StateExpression
 	 * @generated
@@ -837,13 +750,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment
-	 * <em>EMF Variable Assignment</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment <em>EMF Variable Assignment</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment
 	 * @generated
@@ -868,13 +779,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.PropertyInitialCondition
-	 * <em>Property Initial Condition</em>}'. <!-- begin-user-doc --> This
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.PropertyInitialCondition
 	 * @generated
@@ -899,12 +808,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCDirection <em>ATGC Direction</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ATGCDirection
 	 * @generated
@@ -929,12 +836,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>
-	 * }'. <!-- begin-user-doc --> This default implementation returns null so
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCCloningSites <em>ATGC Cloning Sites</em>}'.
+	 * <!-- begin-user-doc --> This default implementation returns null so
 	 * that we can easily ignore cases; it's useful to ignore a case when
 	 * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ATGCCloningSites
 	 * @generated
@@ -944,13 +849,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair
-	 * <em>Flat Model Property Pair</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.FlatModelPropertyPair <em>Flat Model Property Pair</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.FlatModelPropertyPair
 	 * @generated
@@ -960,13 +863,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.IArithmeticExpression
-	 * <em>IArithmetic Expression</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IArithmeticExpression <em>IArithmetic Expression</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.IArithmeticExpression
 	 * @generated
@@ -976,13 +877,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.IArithmeticOperand
-	 * <em>IArithmetic Operand</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IArithmeticOperand <em>IArithmetic Operand</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.IArithmeticOperand
 	 * @generated
@@ -992,13 +891,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression
-	 * <em>Binary Arithmetic Expression</em>}'. <!-- begin-user-doc --> This
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.BinaryArithmeticExpression <em>Binary Arithmetic Expression</em>}'.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases
 	 * anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.BinaryArithmeticExpression
 	 * @generated
@@ -1008,12 +905,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.NumericLiteral <em>Numeric Literal</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.NumericLiteral
 	 * @generated
@@ -1023,13 +918,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.VariableReference
-	 * <em>Variable Reference</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.VariableReference <em>Variable Reference</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.VariableReference
 	 * @generated
@@ -1039,13 +932,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.MonotonicityExpression
-	 * <em>Monotonicity Expression</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.MonotonicityExpression <em>Monotonicity Expression</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.MonotonicityExpression
 	 * @generated
@@ -1055,13 +946,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.RelationalExpression
-	 * <em>Relational Expression</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.RelationalExpression <em>Relational Expression</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.RelationalExpression
 	 * @generated
@@ -1071,13 +960,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ConcentrationQuantity
-	 * <em>Concentration Quantity</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ConcentrationQuantity <em>Concentration Quantity</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ConcentrationQuantity
 	 * @generated
@@ -1087,13 +974,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.ATGCTranslationRate
-	 * <em>ATGC Translation Rate</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.ATGCTranslationRate <em>ATGC Translation Rate</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.ATGCTranslationRate
 	 * @generated
@@ -1103,13 +988,11 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.IMoleculeContainer
-	 * <em>IMolecule Container</em>}'. <!-- begin-user-doc --> This default
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IMoleculeContainer <em>IMolecule Container</em>}'.
+	 * <!-- begin-user-doc --> This default
 	 * implementation returns null so that we can easily ignore cases; it's
 	 * useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.IMoleculeContainer
 	 * @generated
@@ -1119,12 +1002,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '
-	 * {@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}'.
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.IRuleContainer <em>IRule Container</em>}'.
 	 * <!-- begin-user-doc --> This default implementation returns null so that
 	 * we can easily ignore cases; it's useful to ignore a case when inheritance
 	 * will catch all the cases anyway. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @see roadblock.emf.ibl.Ibl.IRuleContainer
 	 * @generated
@@ -1134,9 +1015,9 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for the default case. <!-- begin-user-doc --> This
+	 * Creates a new adapter for the default case.
+	 * <!-- begin-user-doc --> This
 	 * default implementation returns null. <!-- end-user-doc -->
-	 * 
 	 * @return the new adapter.
 	 * @generated
 	 */
