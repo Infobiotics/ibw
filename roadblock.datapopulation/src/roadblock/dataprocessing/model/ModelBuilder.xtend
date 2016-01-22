@@ -316,6 +316,10 @@ class ModelBuilder extends IblSwitch<Object> {
 			switch member {
 				RuleDefinition:
 					process.ruleList.add(member.doSwitch as Rule)
+				ProcessInstantiation: {
+					var k = member.doSwitch as Kinetics
+					process.processList.add(k)
+				}
 			}
 		}
 
@@ -392,12 +396,17 @@ class ModelBuilder extends IblSwitch<Object> {
 		var semanticProcessDefinition = semanticProcessDefinitions.get(className)
 
 		var kinetics = EcoreUtil.copy(processDefinition)
-		kinetics.displayName = className
+		kinetics.displayName = processInstantiation.name.buildVariableName
 
 		// change process' formal parameters with the actual ones
 		val formalParams = semanticProcessDefinition.parameters.map[it.name.buildVariableName].toList
 		val actualParams = processInstantiation.parameters.map[it.buildVariableName].toList
-		for (rule : kinetics.ruleList) {
+		
+		// consider the rules of the process itself and its its child processes for parameter substitution
+		var rules = kinetics.ruleList
+		rules.addAll(kinetics.processList.map[it.ruleList].flatten.toList)
+		
+		for (rule : rules) {
 			rule.eAllContents.filter(MolecularSpecies).forEach [
 				{
 					if(it.displayName.isComplex) {

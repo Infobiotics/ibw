@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getDisplayName <em>Display Name</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getProcessList <em>Process List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getRuleList <em>Rule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Kinetics#getOutputList <em>Output List</em>}</li>
@@ -60,6 +61,16 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 	 * @ordered
 	 */
 	protected String displayName = DISPLAY_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProcessList() <em>Process List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcessList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Kinetics> processList;
 
 	/**
 	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
@@ -171,6 +182,27 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 		displayName = newDisplayName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.KINETICS__DISPLAY_NAME, oldDisplayName, displayName));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Process List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Kinetics}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Process List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Process List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getKinetics_ProcessList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<Kinetics> getProcessList() {
+		if (processList == null) {
+			processList = new EObjectContainmentEList<Kinetics>(Kinetics.class, this, IblPackage.KINETICS__PROCESS_LIST);
+		}
+		return processList;
 	}
 
 	/**
@@ -308,6 +340,8 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case IblPackage.KINETICS__PROCESS_LIST:
+				return ((InternalEList<?>)getProcessList()).basicRemove(otherEnd, msgs);
 			case IblPackage.KINETICS__RULE_LIST:
 				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
 			case IblPackage.KINETICS__MOLECULE_LIST:
@@ -330,6 +364,8 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 		switch (featureID) {
 			case IblPackage.KINETICS__DISPLAY_NAME:
 				return getDisplayName();
+			case IblPackage.KINETICS__PROCESS_LIST:
+				return getProcessList();
 			case IblPackage.KINETICS__RULE_LIST:
 				return getRuleList();
 			case IblPackage.KINETICS__MOLECULE_LIST:
@@ -355,6 +391,10 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 		switch (featureID) {
 			case IblPackage.KINETICS__DISPLAY_NAME:
 				setDisplayName((String)newValue);
+				return;
+			case IblPackage.KINETICS__PROCESS_LIST:
+				getProcessList().clear();
+				getProcessList().addAll((Collection<? extends Kinetics>)newValue);
 				return;
 			case IblPackage.KINETICS__RULE_LIST:
 				getRuleList().clear();
@@ -390,6 +430,9 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 			case IblPackage.KINETICS__DISPLAY_NAME:
 				setDisplayName(DISPLAY_NAME_EDEFAULT);
 				return;
+			case IblPackage.KINETICS__PROCESS_LIST:
+				getProcessList().clear();
+				return;
 			case IblPackage.KINETICS__RULE_LIST:
 				getRuleList().clear();
 				return;
@@ -419,6 +462,8 @@ public class Kinetics extends EObjectImpl implements IVisitable, IMoleculeContai
 		switch (featureID) {
 			case IblPackage.KINETICS__DISPLAY_NAME:
 				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
+			case IblPackage.KINETICS__PROCESS_LIST:
+				return processList != null && !processList.isEmpty();
 			case IblPackage.KINETICS__RULE_LIST:
 				return ruleList != null && !ruleList.isEmpty();
 			case IblPackage.KINETICS__MOLECULE_LIST:

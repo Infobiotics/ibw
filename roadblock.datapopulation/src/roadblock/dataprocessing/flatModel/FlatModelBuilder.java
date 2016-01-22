@@ -81,6 +81,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			model.accept(this);
 		} catch (Exception ex) {
 			this.childCompartmentsByCompartment = new HashMap<>();
+			ex.printStackTrace();
 		}
 	}
 
@@ -229,12 +230,18 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	}
 
 	@Override
-	public Void visit(Kinetics kinetics) {
+	public Void visit(Kinetics process) {
 
-		registerMolecules(kinetics);
+		// no molecule registration for the moment
+		registerMolecules(process);
+		
+		for (Kinetics kinetics : process.getProcessList()) {
+			registerChildCompartment(kinetics, kinetics.getDisplayName(), process);
+			kinetics.accept(this);
+		}
 
 		if (belongsToPropertyCompartment) {
-			register(kinetics.getRuleList(), kinetics);
+			register(process.getRuleList(), process);
 		}
 
 		return null;

@@ -219,13 +219,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int KINETICS__DISPLAY_NAME = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Process List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int KINETICS__PROCESS_LIST = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Rule List</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KINETICS__RULE_LIST = IVISITABLE_FEATURE_COUNT + 1;
+	public static final int KINETICS__RULE_LIST = IVISITABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Molecule List</b></em>' containment reference list.
@@ -234,7 +243,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KINETICS__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int KINETICS__MOLECULE_LIST = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Output List</b></em>' containment reference list.
@@ -243,7 +252,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KINETICS__OUTPUT_LIST = IVISITABLE_FEATURE_COUNT + 3;
+	public static final int KINETICS__OUTPUT_LIST = IVISITABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Option List</b></em>' containment reference list.
@@ -252,7 +261,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KINETICS__OPTION_LIST = IVISITABLE_FEATURE_COUNT + 4;
+	public static final int KINETICS__OPTION_LIST = IVISITABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -261,7 +270,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KINETICS__ID = IVISITABLE_FEATURE_COUNT + 5;
+	public static final int KINETICS__ID = IVISITABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Kinetics</em>' class.
@@ -270,7 +279,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int KINETICS_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 6;
+	public static final int KINETICS_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Rule <em>Rule</em>}' class.
@@ -2944,6 +2953,20 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Kinetics#getProcessList <em>Process List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Process List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Kinetics#getProcessList()
+	 * @see #getKinetics()
+	 * @generated
+	 */
+	public EReference getKinetics_ProcessList() {
+		return (EReference)kineticsEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Kinetics#getRuleList <em>Rule List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2953,7 +2976,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getKinetics_RuleList() {
-		return (EReference)kineticsEClass.getEStructuralFeatures().get(1);
+		return (EReference)kineticsEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2966,7 +2989,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getKinetics_MoleculeList() {
-		return (EReference)kineticsEClass.getEStructuralFeatures().get(2);
+		return (EReference)kineticsEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2979,7 +3002,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getKinetics_OutputList() {
-		return (EReference)kineticsEClass.getEStructuralFeatures().get(3);
+		return (EReference)kineticsEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2992,7 +3015,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getKinetics_OptionList() {
-		return (EReference)kineticsEClass.getEStructuralFeatures().get(4);
+		return (EReference)kineticsEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -3005,7 +3028,7 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EAttribute getKinetics_ID() {
-		return (EAttribute)kineticsEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)kineticsEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -5191,6 +5214,7 @@ public class IblPackage extends EPackageImpl {
 
 		kineticsEClass = createEClass(KINETICS);
 		createEAttribute(kineticsEClass, KINETICS__DISPLAY_NAME);
+		createEReference(kineticsEClass, KINETICS__PROCESS_LIST);
 		createEReference(kineticsEClass, KINETICS__RULE_LIST);
 		createEReference(kineticsEClass, KINETICS__MOLECULE_LIST);
 		createEReference(kineticsEClass, KINETICS__OUTPUT_LIST);
@@ -5678,6 +5702,7 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(kineticsEClass, Kinetics.class, "Kinetics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getKinetics_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getKinetics_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKinetics_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKinetics_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKinetics_OutputList(), this.getMolecularSpecies(), null, "outputList", null, 0, -1, Kinetics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6097,6 +6122,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute KINETICS__DISPLAY_NAME = eINSTANCE.getKinetics_DisplayName();
+
+		/**
+		 * The meta object literal for the '<em><b>Process List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference KINETICS__PROCESS_LIST = eINSTANCE.getKinetics_ProcessList();
 
 		/**
 		 * The meta object literal for the '<em><b>Rule List</b></em>' containment reference list feature.
