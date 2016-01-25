@@ -1,7 +1,6 @@
 package roadblock.simulation.ui.views;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,13 +16,10 @@ import org.csstudio.swt.xygraph.figures.Trace.TraceType;
 import org.csstudio.swt.xygraph.figures.XYGraph;
 import org.csstudio.swt.xygraph.util.XYGraphMediaFactory;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.draw2d.IClippingStrategy;
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.internal.Platform;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -32,6 +28,9 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Tracker;
+import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
 
 /**
@@ -39,7 +38,7 @@ import org.eclipse.ui.part.ViewPart;
  * @author Jonny Naylor
  *
  */
-public class ResultsView extends ViewPart {
+public class ResultsView extends ViewPart implements IPartListener2 {
 	
 	/**
 	 * The ID of the view as specified by the extension.
@@ -120,13 +119,30 @@ public class ResultsView extends ViewPart {
 	/**
 	 * Generate the GUI for interacting with the XYGraph
 	 */
-	public void createGUI() {
+	/*public void createGUI() {
 		
 		// create the gui (for interacting with the results view)
 		gui = new Group(parent, SWT.RESIZE);
-		gui.setText("GUI");
-		gui.setSize(100, 100);
-		gui.setBounds(0, 0, 100, 100);
+		gui.setText("Graph");
+		gui.setEnabled(true);
+		gui.setRedraw(true);
+		gui.setData(toolbarArmedXYGraph);
+		gui.addListener(SWT.MouseDown, new Listener() {
+
+		      public void handleEvent(Event e) {
+
+		        Tracker tracker = new Tracker(gui.getParent(), SWT.RESIZE);
+		        tracker.setStippled(true);
+		        Rectangle rect = gui.getBounds();
+		        tracker.setRectangles(new Rectangle[] { rect });
+		        if(tracker.open()){
+		          Rectangle after = tracker.getRectangles()[0];
+		          gui.setBounds(after);
+		        }
+		        gui.pack();
+		        tracker.dispose();
+		      }
+		    });
 		
 		// create and initialise the button states and function, then return it
 		Button button = new Button(gui, SWT.WRAP);
@@ -139,7 +155,7 @@ public class ResultsView extends ViewPart {
 				plot();
 			}
 		});	
-	}
+	}*/
 	
 	/**
 	 * Plot the generated results
@@ -174,6 +190,9 @@ public class ResultsView extends ViewPart {
 				
 		// generate the species table
 		createSpeciesTable();
+		xyGraph.primaryXAxis.setAutoFormat(true);
+		xyGraph.performAutoScale();
+		speciesTable.setRedraw(true);
 	}
 
 	/**
@@ -187,8 +206,8 @@ public class ResultsView extends ViewPart {
 		xyGraph.setTitle(title);
 		xyGraph.setShowLegend(false);
 		xyGraph.setFont(XYGraphMediaFactory.getInstance().getFont(XYGraphMediaFactory.FONT_TAHOMA));
-		xyGraph.primaryXAxis.setTitle("time (seconds)");
-		xyGraph.primaryYAxis.setTitle("concentration (micromolar)");
+		xyGraph.primaryXAxis.setTitle("time (deciseconds)");
+		xyGraph.primaryYAxis.setTitle("# molecules");
 		xyGraph.primaryYAxis.setAutoScale(true);
 		xyGraph.primaryXAxis.setAutoScaleThreshold(0);
 		
@@ -276,7 +295,24 @@ public class ResultsView extends ViewPart {
 		// add the trajectory trace to the xyGraph
 		addTrace(trace);
 	}
-
+	
+	/**
+	 * Generate a sample for the trace data provider.
+	 * @param trajectory The trajectory for which to generate a sample.
+	 * @param timeIndex The time index of the trajectory data at which to generate a sample.
+	 * @return Return the generated sample.
+	 */
+	public Sample generateSample(Trajectory trajectory, int timeIndex) {
+		return new Sample(
+			trajectory.getXValues().get(timeIndex),
+			trajectory.getYValues().get(timeIndex),
+			trajectory.getYValuesSD().get(timeIndex) / 2,
+			trajectory.getYValuesSD().get(timeIndex) / 2,
+			Double.NaN,
+			Double.NaN	
+		);	
+	}
+	
 	/**
 	 * Add a given trajectory trace to the XYGraph.
 	 * @param trace The trace to be plotted.
@@ -284,7 +320,7 @@ public class ResultsView extends ViewPart {
 	public void addTrace(Trace trace) {
 		
 		// set the trace properties
-		trace.setTraceType(TraceType.POINT);
+		trace.setTraceType(TraceType.SOLID_LINE);
 		trace.setLineWidth(1);
 		trace.setAreaAlpha(100);	
 		trace.setAntiAliasing(true);
@@ -349,44 +385,6 @@ public class ResultsView extends ViewPart {
 			traceDrawStates.put(trace, true);
 			xyGraph.addTrace(trace);
 		}
-	}
-	
-	/**
-	 * Generate a sample for the trace data provider.
-	 * @param trajectory The trajectory for which to generate a sample.
-	 * @param timeIndex The time index of the trajectory data at which to generate a sample.
-	 * @return Return the generated sample.
-	 */
-	public Sample generateSample(Trajectory trajectory, int timeIndex) {
-		return new Sample(
-			trajectory.getXValues().get(timeIndex),
-			trajectory.getYValues().get(timeIndex),
-			trajectory.getYValuesSD().get(timeIndex) / 2,
-			trajectory.getYValuesSD().get(timeIndex) / 2,
-			Double.NaN,
-			Double.NaN	
-		);	
-	}
-	
-	/**
-	 * Generate the GUI button for a given species to toggle whether or not to draw its trace
-	 * @param species The species to create a trace toggle button for
-	 * @return Return the created button
-	 */
-	public Button generateSpeciesTraceButton(final String species) {
-		
-		// create and initialise the button states and function, then return it
-		Button button = new Button(parent, SWT.WRAP);
-		button.setText(species);
-		button.setEnabled(true);
-		button.setLayoutData(new GridData(GridData.VERTICAL_ALIGN_BEGINNING));
-		button.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				toggleDrawingTrace(species);
-			}
-		});
-		return button;
 	}
 	
 	/**
@@ -473,28 +471,27 @@ public class ResultsView extends ViewPart {
 	 * Passing the focus request to the viewer's control.
 	 */
 	public void setFocus() {
-		
+		//updateUI();
 	}
 
+	/**
+	 * Update the view
+	 */
 	protected void updateUI() {
-		
+		plot();
 	}
 	
-	public void setContent() {
-		
-	}
-	
-	@Override
-	public void dispose() {
-		
-	}
-	
+	/** 
+	 * Set the parent of this view
+	 * @param parent The parent composite
+	 */
 	public void setParent(Composite parent){
 		this.parent = parent;
 	}
 	
+	
 	/**
-	 * Trajectory object - holds species time serires data for a graph trace
+	 * Trajectory object - holds species time series data for a graph trace
 	 * @author Jonny Naylor
 	 *
 	 */
@@ -550,4 +547,40 @@ public class ResultsView extends ViewPart {
 			this.yValuesSD = yValuesSD;
 		}
 	}
+	
+	
+	/**
+	 * Override methods
+	 */
+
+	@Override
+	public void dispose() {	}
+	
+	@Override
+	public void partActivated(IWorkbenchPartReference partRef) {
+		updateUI();
+	}
+	
+	@Override
+	public void partDeactivated(IWorkbenchPartReference partRef) {
+		updateUI();
+	}
+
+	@Override
+	public void partBroughtToTop(IWorkbenchPartReference partRef) {}
+
+	@Override
+	public void partClosed(IWorkbenchPartReference partRef) {}
+
+	@Override
+	public void partOpened(IWorkbenchPartReference partRef) {}
+
+	@Override
+	public void partHidden(IWorkbenchPartReference partRef) {}
+
+	@Override
+	public void partVisible(IWorkbenchPartReference partRef) {}
+
+	@Override
+	public void partInputChanged(IWorkbenchPartReference partRef) {}
 }
