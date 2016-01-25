@@ -32,8 +32,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IPartListener2;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.MessageConsole;
@@ -368,6 +371,17 @@ public class MainView extends ViewPart implements IPartListener2 {
 		simulator.runSimulation(exportFilename, consoleStream);
 
 		// XXX refresh project explorer
+		ResultsView resultsView = (ResultsView)getView("roadblock.simulation.ui.views.resultsView");
+		resultsView.plot();
+		
+	}
+	
+	public static IViewPart getView(String id) {
+		IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
+		for(int i = 0; i < viewReferences.length; i++)
+			if(id.equals(viewReferences[i].getId()))
+				return viewReferences[i].getView(false);
+		return null;
 	}
 
 	@SuppressWarnings("unused")
