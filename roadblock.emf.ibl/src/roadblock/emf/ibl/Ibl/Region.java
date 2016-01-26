@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getDisplayName <em>Display Name</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.Region#getKinetics <em>Kinetics</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Region#getCellList <em>Cell List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Region#getProcessList <em>Process List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getRuleList <em>Rule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getID <em>ID</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.Region#getCellList <em>Cell List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Region#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
  * </ul>
  *
@@ -63,14 +63,24 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 	protected String displayName = DISPLAY_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getKinetics() <em>Kinetics</em>}' containment reference.
+	 * The cached value of the '{@link #getCellList() <em>Cell List</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKinetics()
+	 * @see #getCellList()
 	 * @generated
 	 * @ordered
 	 */
-	protected Kinetics kinetics;
+	protected EList<Cell> cellList;
+
+	/**
+	 * The cached value of the '{@link #getProcessList() <em>Process List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcessList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Kinetics> processList;
 
 	/**
 	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
@@ -111,16 +121,6 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getCellList() <em>Cell List</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCellList()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Cell> cellList;
 
 	/**
 	 * The cached value of the '{@link #getVariableAssignmentList() <em>Variable Assignment List</em>}' containment reference list.
@@ -182,61 +182,6 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 		displayName = newDisplayName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.REGION__DISPLAY_NAME, oldDisplayName, displayName));
-	}
-
-	/**
-	 * Returns the value of the '<em><b>Kinetics</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Kinetics</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kinetics</em>' containment reference.
-	 * @see #setKinetics(Kinetics)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion_Kinetics()
-	 * @model containment="true"
-	 * @generated
-	 */
-	public Kinetics getKinetics() {
-		return kinetics;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetKinetics(Kinetics newKinetics, NotificationChain msgs) {
-		Kinetics oldKinetics = kinetics;
-		kinetics = newKinetics;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.REGION__KINETICS, oldKinetics, newKinetics);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Region#getKinetics <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kinetics</em>' containment reference.
-	 * @see #getKinetics()
-	 * @generated
-	 */
-	public void setKinetics(Kinetics newKinetics) {
-		if (newKinetics != kinetics) {
-			NotificationChain msgs = null;
-			if (kinetics != null)
-				msgs = ((InternalEObject)kinetics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.REGION__KINETICS, null, msgs);
-			if (newKinetics != null)
-				msgs = ((InternalEObject)newKinetics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.REGION__KINETICS, null, msgs);
-			msgs = basicSetKinetics(newKinetics, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.REGION__KINETICS, newKinetics, newKinetics));
 	}
 
 	/**
@@ -336,6 +281,27 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Process List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Kinetics}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Process List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Process List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRegion_ProcessList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<Kinetics> getProcessList() {
+		if (processList == null) {
+			processList = new EObjectContainmentEList<Kinetics>(Kinetics.class, this, IblPackage.REGION__PROCESS_LIST);
+		}
+		return processList;
+	}
+
+	/**
 	 * Returns the value of the '<em><b>Variable Assignment List</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.EMFVariableAssignment}.
 	 * <!-- begin-user-doc -->
@@ -374,14 +340,14 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IblPackage.REGION__KINETICS:
-				return basicSetKinetics(null, msgs);
+			case IblPackage.REGION__CELL_LIST:
+				return ((InternalEList<?>)getCellList()).basicRemove(otherEnd, msgs);
+			case IblPackage.REGION__PROCESS_LIST:
+				return ((InternalEList<?>)getProcessList()).basicRemove(otherEnd, msgs);
 			case IblPackage.REGION__RULE_LIST:
 				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
 			case IblPackage.REGION__MOLECULE_LIST:
 				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
-			case IblPackage.REGION__CELL_LIST:
-				return ((InternalEList<?>)getCellList()).basicRemove(otherEnd, msgs);
 			case IblPackage.REGION__VARIABLE_ASSIGNMENT_LIST:
 				return ((InternalEList<?>)getVariableAssignmentList()).basicRemove(otherEnd, msgs);
 		}
@@ -398,16 +364,16 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 		switch (featureID) {
 			case IblPackage.REGION__DISPLAY_NAME:
 				return getDisplayName();
-			case IblPackage.REGION__KINETICS:
-				return getKinetics();
+			case IblPackage.REGION__CELL_LIST:
+				return getCellList();
+			case IblPackage.REGION__PROCESS_LIST:
+				return getProcessList();
 			case IblPackage.REGION__RULE_LIST:
 				return getRuleList();
 			case IblPackage.REGION__MOLECULE_LIST:
 				return getMoleculeList();
 			case IblPackage.REGION__ID:
 				return getID();
-			case IblPackage.REGION__CELL_LIST:
-				return getCellList();
 			case IblPackage.REGION__VARIABLE_ASSIGNMENT_LIST:
 				return getVariableAssignmentList();
 		}
@@ -426,8 +392,13 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 			case IblPackage.REGION__DISPLAY_NAME:
 				setDisplayName((String)newValue);
 				return;
-			case IblPackage.REGION__KINETICS:
-				setKinetics((Kinetics)newValue);
+			case IblPackage.REGION__CELL_LIST:
+				getCellList().clear();
+				getCellList().addAll((Collection<? extends Cell>)newValue);
+				return;
+			case IblPackage.REGION__PROCESS_LIST:
+				getProcessList().clear();
+				getProcessList().addAll((Collection<? extends Kinetics>)newValue);
 				return;
 			case IblPackage.REGION__RULE_LIST:
 				getRuleList().clear();
@@ -439,10 +410,6 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 				return;
 			case IblPackage.REGION__ID:
 				setID((String)newValue);
-				return;
-			case IblPackage.REGION__CELL_LIST:
-				getCellList().clear();
-				getCellList().addAll((Collection<? extends Cell>)newValue);
 				return;
 			case IblPackage.REGION__VARIABLE_ASSIGNMENT_LIST:
 				getVariableAssignmentList().clear();
@@ -463,8 +430,11 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 			case IblPackage.REGION__DISPLAY_NAME:
 				setDisplayName(DISPLAY_NAME_EDEFAULT);
 				return;
-			case IblPackage.REGION__KINETICS:
-				setKinetics((Kinetics)null);
+			case IblPackage.REGION__CELL_LIST:
+				getCellList().clear();
+				return;
+			case IblPackage.REGION__PROCESS_LIST:
+				getProcessList().clear();
 				return;
 			case IblPackage.REGION__RULE_LIST:
 				getRuleList().clear();
@@ -474,9 +444,6 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 				return;
 			case IblPackage.REGION__ID:
 				setID(ID_EDEFAULT);
-				return;
-			case IblPackage.REGION__CELL_LIST:
-				getCellList().clear();
 				return;
 			case IblPackage.REGION__VARIABLE_ASSIGNMENT_LIST:
 				getVariableAssignmentList().clear();
@@ -495,16 +462,16 @@ public class Region extends EObjectImpl implements IVisitable, IRuleContainer, I
 		switch (featureID) {
 			case IblPackage.REGION__DISPLAY_NAME:
 				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
-			case IblPackage.REGION__KINETICS:
-				return kinetics != null;
+			case IblPackage.REGION__CELL_LIST:
+				return cellList != null && !cellList.isEmpty();
+			case IblPackage.REGION__PROCESS_LIST:
+				return processList != null && !processList.isEmpty();
 			case IblPackage.REGION__RULE_LIST:
 				return ruleList != null && !ruleList.isEmpty();
 			case IblPackage.REGION__MOLECULE_LIST:
 				return moleculeList != null && !moleculeList.isEmpty();
 			case IblPackage.REGION__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IblPackage.REGION__CELL_LIST:
-				return cellList != null && !cellList.isEmpty();
 			case IblPackage.REGION__VARIABLE_ASSIGNMENT_LIST:
 				return variableAssignmentList != null && !variableAssignmentList.isEmpty();
 		}

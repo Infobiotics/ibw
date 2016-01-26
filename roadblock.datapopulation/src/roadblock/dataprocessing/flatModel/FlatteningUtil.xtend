@@ -32,8 +32,7 @@ public class FlatteningUtil {
 		return instance;
 	}
 
-	def public List<MolecularSpecies> getFlatMolecules(EObject compartment,
-		Map<EObject, Map<String, MolecularSpecies>> flatMoleculesByCompartment) {
+	def public List<MolecularSpecies> getFlatMolecules(EObject compartment, Map<EObject, Map<String, MolecularSpecies>> flatMoleculesByCompartment) {
 
 		var flatMoleculesByFlatName = new HashMap<String, MolecularSpecies>();
 		var parentCompartment = compartment.eContainer;
@@ -82,8 +81,7 @@ public class FlatteningUtil {
 		].toList;
 		for (rule : leftOutsideRules) {
 			for (molecule : rule.rightHandSide) {
-				flatMoleculesByFlatName.put(molecule.displayName,
-					flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
+				flatMoleculesByFlatName.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
 			}
 		}
 
@@ -93,16 +91,14 @@ public class FlatteningUtil {
 		].toList;
 		for (rule : rightOutsideRules) {
 			for (molecule : rule.leftHandSide) {
-				flatMoleculesByFlatName.put(molecule.displayName,
-					flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
+				flatMoleculesByFlatName.put(molecule.displayName, flatMoleculesByCompartment.get(parentCompartment).get(molecule.displayName));
 			}
 		}
 
 		return flatMoleculesByFlatName.values.toList;
 	}
 
-	def public List<Rule> getFlatRules(EObject compartment,
-		Map<EObject, Map<String, MolecularSpecies>> flatMoleculesByCompartment) {
+	def public List<Rule> getFlatRules(EObject compartment, Map<EObject, Map<String, MolecularSpecies>> flatMoleculesByCompartment) {
 
 		var flatRules = new ArrayList<Rule>;
 
@@ -113,24 +109,23 @@ public class FlatteningUtil {
 			var lhsMolecules = new ArrayList<MolecularSpecies>;
 			var rhsMolecules = new ArrayList<MolecularSpecies>;
 			var isLeftOutside = rule.leftHandSide.size() == 1 && rule.leftHandSide.get(0).displayName.equals("OUTSIDE");
-			var isRightOutside = rule.rightHandSide.size() == 1 &&
-				rule.rightHandSide.get(0).displayName.equals("OUTSIDE");
+			var isRightOutside = rule.rightHandSide.size() == 1 && rule.rightHandSide.get(0).displayName.equals("OUTSIDE");
 
 			for (lhsMolecule : rule.leftHandSide) {
 
-				if (!lhsMolecule.displayName.equals("OUTSIDE")) {
+				if(!lhsMolecule.displayName.equals("OUTSIDE")) {
 
 					var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(lhsMolecule.displayName);
 
-					if (molecule != null) {
+					if(molecule != null) {
 						lhsMolecules.add(EcoreUtil.copy(molecule));
 					}
 
-					if (isRightOutside) {
+					if(isRightOutside) {
 
 						molecule = flatMoleculesByCompartment.get(parentCompartment).get(lhsMolecule.displayName);
 
-						if (molecule != null) {
+						if(molecule != null) {
 							rhsMolecules.add(EcoreUtil.copy(molecule));
 						}
 					}
@@ -139,19 +134,19 @@ public class FlatteningUtil {
 
 			for (rhsMolecule : rule.rightHandSide) {
 
-				if (!rhsMolecule.displayName.equals("OUTSIDE")) {
+				if(!rhsMolecule.displayName.equals("OUTSIDE")) {
 
 					var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(rhsMolecule.getDisplayName());
 
-					if (molecule != null) {
+					if(molecule != null) {
 						rhsMolecules.add(EcoreUtil.copy(molecule));
 					}
 
-					if (isLeftOutside) {
+					if(isLeftOutside) {
 
 						molecule = flatMoleculesByCompartment.get(parentCompartment).get(rhsMolecule.getDisplayName());
 
-						if (molecule != null) {
+						if(molecule != null) {
 							lhsMolecules.add(EcoreUtil.copy(molecule));
 						}
 					}
@@ -164,21 +159,23 @@ public class FlatteningUtil {
 			clonedRule.rightHandSide.clear();
 			clonedRule.rightHandSide.addAll(rhsMolecules);
 
-			if (clonedRule.forwardRateUnit != null) {
-				clonedRule.forwardRate = UnitConverter::getInstance().getBaseRate(clonedRule.forwardRate,
-					clonedRule.forwardRateUnit);
+			if(clonedRule.forwardRateUnit != null) {
+				clonedRule.forwardRate = UnitConverter::getInstance().getBaseRate(clonedRule.forwardRate, clonedRule.forwardRateUnit);
 				clonedRule.forwardRateUnit = IblFactory::eINSTANCE.createRateUnit;
 			}
 
-			if (clonedRule.reverseRateUnit != null) {
-				clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate,
-					clonedRule.reverseRateUnit);
+			if(clonedRule.reverseRateUnit != null) {
+				clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate, clonedRule.reverseRateUnit);
 				clonedRule.reverseRateUnit = IblFactory::eINSTANCE.createRateUnit;
 			}
 
-			// eliminate rules with no specified or zero rate
-			if (clonedRule.forwardRate != null && clonedRule.forwardRate > 0 && clonedRule.reverseRate != null &&
-				clonedRule.reverseRate > 0) {
+			// eliminate rules with no specified or zero rates		
+			if(clonedRule.isIsBidirectional) {
+				if ((clonedRule.forwardRate != null && clonedRule.forwardRate > 0) || (clonedRule.reverseRate != null && clonedRule.reverseRate > 0)) {
+					flatRules.add(clonedRule);
+				}
+			}
+			else if (clonedRule.forwardRate != null && clonedRule.forwardRate > 0) {
 				flatRules.add(clonedRule);
 			}
 		}
@@ -186,72 +183,65 @@ public class FlatteningUtil {
 		return flatRules;
 	}
 
-	def public IProperty getFlatProperty(IProperty property, EObject propertyCompartment,
-		Map<String, EObject> compartmentsByName,
+	def public IProperty getFlatProperty(IProperty property, EObject propertyCompartment, Map<String, EObject> compartmentsByName,
 		Map<EObject, Map<String, MolecularSpecies>> flatMoleculesByCompartment) {
 
-			var flatProperty = EcoreUtil.copy(property as EObject);
+		var flatProperty = EcoreUtil.copy(property as EObject);
 
-			// flatten variable references
-			var moleculeReferences = flatProperty.eAllContents.filter(VariableReference).toList;
-			for (moleculeReference : moleculeReferences) {
+		// flatten variable references
+		var moleculeReferences = flatProperty.eAllContents.filter(VariableReference).toList;
+		for (moleculeReference : moleculeReferences) {
 
-				var EObject moleculeCompartment = null;
+			var EObject moleculeCompartment = null;
 
-				if (moleculeReference.containerName.nullOrEmpty) {
-					moleculeCompartment = propertyCompartment;
-				} else {
-					moleculeCompartment = compartmentsByName.get(moleculeReference.containerName);
-				}
-
-				moleculeReference.name = flatMoleculesByCompartment.get(moleculeCompartment).get(
-					moleculeReference.name).displayName;
+			if(moleculeReference.containerName.nullOrEmpty) {
+				moleculeCompartment = propertyCompartment;
+			} else {
+				moleculeCompartment = compartmentsByName.get(moleculeReference.containerName);
 			}
 
-			// flatten concentration constraints
-			var concentrationConstraints = flatProperty.eAllContents.filter(ConcentrationConstraint).toList;
-			for (concentrationConstraint : concentrationConstraints) {
-				concentrationConstraint.value = UnitConverter::getInstance.getBaseConcentration(
-					concentrationConstraint.value, concentrationConstraint.unit);
-				concentrationConstraint.unit = ConcentrationUnit.MOLECULE;
-			}
-
-			// flatten concentration quantities
-			var concentrationQuantities = flatProperty.eAllContents.filter(ConcentrationQuantity).toList;
-			for (concentrationQuantity : concentrationQuantities) {
-				concentrationQuantity.amount = UnitConverter::getInstance.getBaseConcentration(
-					concentrationQuantity.amount, concentrationQuantity.unit);
-				concentrationQuantity.unit = ConcentrationUnit.MOLECULE;
-			}
-
-			// flatten time intervals
-			var timeIntervals = flatProperty.eAllContents.filter(TimeInterval).toList;
-			for (timeInterval : timeIntervals) {
-				timeInterval.lowerBound = UnitConverter.getInstance().getBaseTime(timeInterval.lowerBound,
-					timeInterval.unit);
-				timeInterval.upperBound = UnitConverter.getInstance().getBaseTime(timeInterval.upperBound,
-					timeInterval.unit);
-				timeInterval.unit = TimeUnit.SECOND;
-			}
-
-			// flatten time instants
-			var timeInstants = flatProperty.eAllContents.filter(TimeInstant).toList;
-			for (timeInstant : timeInstants) {
-				timeInstant.value = UnitConverter.getInstance().getBaseTime(timeInstant.value, timeInstant.unit);
-				timeInstant.unit = TimeUnit.SECOND;
-			}
-
-			// flatten initial conditions' concentrations
-			var initialConditions = (flatProperty).eAllContents.filter(PropertyInitialCondition).toList;
-			for (initialCondition : initialConditions) {
-				initialCondition.amount = UnitConverter::getInstance.getBaseConcentration(initialCondition.amount,
-					initialCondition.unit);
-				initialCondition.unit = ConcentrationUnit.MOLECULE;
-			}
-
-			return flatProperty as IProperty;
+			moleculeReference.name = flatMoleculesByCompartment.get(moleculeCompartment).get(moleculeReference.name).displayName;
 		}
 
-		private new() {
+		// flatten concentration constraints
+		var concentrationConstraints = flatProperty.eAllContents.filter(ConcentrationConstraint).toList;
+		for (concentrationConstraint : concentrationConstraints) {
+			concentrationConstraint.value = UnitConverter::getInstance.getBaseConcentration(concentrationConstraint.value, concentrationConstraint.unit);
+			concentrationConstraint.unit = ConcentrationUnit.MOLECULE;
 		}
+
+		// flatten concentration quantities
+		var concentrationQuantities = flatProperty.eAllContents.filter(ConcentrationQuantity).toList;
+		for (concentrationQuantity : concentrationQuantities) {
+			concentrationQuantity.amount = UnitConverter::getInstance.getBaseConcentration(concentrationQuantity.amount, concentrationQuantity.unit);
+			concentrationQuantity.unit = ConcentrationUnit.MOLECULE;
+		}
+
+		// flatten time intervals
+		var timeIntervals = flatProperty.eAllContents.filter(TimeInterval).toList;
+		for (timeInterval : timeIntervals) {
+			timeInterval.lowerBound = UnitConverter.getInstance().getBaseTime(timeInterval.lowerBound, timeInterval.unit);
+			timeInterval.upperBound = UnitConverter.getInstance().getBaseTime(timeInterval.upperBound, timeInterval.unit);
+			timeInterval.unit = TimeUnit.SECOND;
+		}
+
+		// flatten time instants
+		var timeInstants = flatProperty.eAllContents.filter(TimeInstant).toList;
+		for (timeInstant : timeInstants) {
+			timeInstant.value = UnitConverter.getInstance().getBaseTime(timeInstant.value, timeInstant.unit);
+			timeInstant.unit = TimeUnit.SECOND;
+		}
+
+		// flatten initial conditions' concentrations
+		var initialConditions = (flatProperty).eAllContents.filter(PropertyInitialCondition).toList;
+		for (initialCondition : initialConditions) {
+			initialCondition.amount = UnitConverter::getInstance.getBaseConcentration(initialCondition.amount, initialCondition.unit);
+			initialCondition.unit = ConcentrationUnit.MOLECULE;
+		}
+
+		return flatProperty as IProperty;
 	}
+
+	private new() {
+	}
+}

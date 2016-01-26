@@ -1,7 +1,9 @@
 package roadblock.dataprocessing.model
 
+import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
+import java.util.Map
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.util.EcoreUtil
 import roadblock.emf.ibl.Ibl.ATGCArrange
@@ -12,6 +14,7 @@ import roadblock.emf.ibl.Ibl.Device
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment
 import roadblock.emf.ibl.Ibl.IProperty
 import roadblock.emf.ibl.Ibl.IblFactory
+import roadblock.emf.ibl.Ibl.Kinetics
 import roadblock.emf.ibl.Ibl.MolecularSpecies
 import roadblock.emf.ibl.Ibl.RateConcentrationUnit
 import roadblock.emf.ibl.Ibl.RateTimeUnit
@@ -25,11 +28,15 @@ import roadblock.xtext.ibl.ibl.AtomicVariableExpressionObject
 import roadblock.xtext.ibl.ibl.CellBody
 import roadblock.xtext.ibl.ibl.CellInstantiation
 import roadblock.xtext.ibl.ibl.DeviceDefinition
+import roadblock.xtext.ibl.ibl.FunctionContent
 import roadblock.xtext.ibl.ibl.FunctionDefinition
 import roadblock.xtext.ibl.ibl.Model
 import roadblock.xtext.ibl.ibl.Outside
+import roadblock.xtext.ibl.ibl.ProcessBody
+import roadblock.xtext.ibl.ibl.ProcessInstantiation
 import roadblock.xtext.ibl.ibl.PropertyDefinition
 import roadblock.xtext.ibl.ibl.Quantity
+import roadblock.xtext.ibl.ibl.RateSetDefinition
 import roadblock.xtext.ibl.ibl.RealConstant
 import roadblock.xtext.ibl.ibl.RegionBody
 import roadblock.xtext.ibl.ibl.RuleDefinition
@@ -58,6 +65,10 @@ class ModelBuilder extends IblSwitch<Object> {
 
 	var semanticEntityByProperty = new HashMap<IProperty, EObject>();
 
+	var Map<String, Kinetics> processDefinitions = new HashMap<String, Kinetics>();
+	var Map<String, FunctionContent> semanticProcessDefinitions = new HashMap<String, FunctionContent>();
+	var List<Cell> cellDefinitions = new ArrayList<Cell>();
+
 	// useful constant
 	val BIOLOGICALPART = #{'PROMOTER', 'GENE', 'RBS', 'SPACER', 'TERMINATOR'}
 
@@ -67,7 +78,7 @@ class ModelBuilder extends IblSwitch<Object> {
 
 		for (concreteProperty : emfModel.eAllContents.toList.filter(IProperty)) {
 			for (entry : semanticEntityByProperty.entrySet) {
-				if (EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
+				if(EcoreUtil.equals(concreteProperty as EObject, entry.key as EObject)) {
 					mapper.put(concreteProperty, entry.value);
 				}
 			}
@@ -85,7 +96,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	}
 
 	def addComplexToContainer(List<MolecularSpecies> moleculeList, String complexName) {
-		if (moleculeList.filter[displayName == complexName].size == 0) {
+		if(moleculeList.filter[displayName == complexName].size == 0) {
 			val complex = modelFactory.createMolecularSpecies
 			complex => [
 				displayName = complexName
@@ -197,13 +208,16 @@ class ModelBuilder extends IblSwitch<Object> {
 				CellBody: {
 					var cell = functionDefinition.functionBody.doSwitch as Cell
 					cell.displayName = name
-					emfModel.cellList.add(cell)
+					cellDefinitions.add(cell)
+				}
+				ProcessBody: {
+					var process = functionDefinition.functionBody.doSwitch as Kinetics
+					process.displayName = name
+					processDefinitions.put(name, process)
+					semanticProcessDefinitions.put(name, (functionDefinition.functionBody as ProcessBody).functionContent)
 				}
 			}
 		}
-
-		// remove the abstract classes
-		emfModel.cellList.clear
 
 		// variable assignment resolution
 		// limited to rules and identical container for the time being
@@ -212,13 +226,11 @@ class ModelBuilder extends IblSwitch<Object> {
 			var EObject variable
 			switch container {
 				Region:
-					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].
-						head
+					variable = (container as Region).ruleList.filter[displayName == variableAssignment.variableName].head
 				Cell:
 					variable = (container as Cell).ruleList.filter[displayName == variableAssignment.variableName].head
 				Device:
-					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].
-						head
+					variable = (container as Device).ruleList.filter[displayName == variableAssignment.variableName].head
 			}
 
 			switch variable {
@@ -226,7 +238,6 @@ class ModelBuilder extends IblSwitch<Object> {
 			}
 
 			EcoreUtil.delete(variableAssignment)
-
 		}
 
 		// create molecular species instances for complexes
@@ -249,6 +260,10 @@ class ModelBuilder extends IblSwitch<Object> {
 					}
 					Cell: {
 						val container = (rule.eContainer as Cell)
+						container.moleculeList.addComplexToContainer(molecule)
+					}
+					Kinetics: {
+						val container = (rule.eContainer as Kinetics)
 						container.moleculeList.addComplexToContainer(molecule)
 					}
 				}
@@ -275,6 +290,8 @@ class ModelBuilder extends IblSwitch<Object> {
 					cell.ruleList.add(member.doSwitch as Rule)
 				DeviceDefinition:
 					cell.deviceList.add(member.doSwitch as Device)
+				ProcessInstantiation:
+					cell.processList.add(member.doSwitch as Kinetics)
 				VariableDefinition:
 					cell.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment:
@@ -292,11 +309,28 @@ class ModelBuilder extends IblSwitch<Object> {
 		return cell
 	}
 
+	override caseProcessBody(ProcessBody processBody) {
+		var process = modelFactory.createKinetics
+
+		for (member : processBody.functionContent.members) {
+			switch member {
+				RuleDefinition:
+					process.ruleList.add(member.doSwitch as Rule)
+				ProcessInstantiation: {
+					var k = member.doSwitch as Kinetics
+					process.processList.add(k)
+				}
+			}
+		}
+
+		return process
+	}
+
 	override caseATGCTranslationRate(ATGCTranslationRate atgcTranslationRate) {
 		var emfAtgcTranslationRate = modelFactory.createATGCTranslationRate
 		emfAtgcTranslationRate.translationRate = atgcTranslationRate.translationRate
-		return emfAtgcTranslationRate
 
+		return emfAtgcTranslationRate
 	}
 
 	override caseATGCArrange(roadblock.xtext.ibl.ibl.ATGCArrange atgcArrange) {
@@ -330,12 +364,13 @@ class ModelBuilder extends IblSwitch<Object> {
 		for (member : regionBody.functionContent.members) {
 			switch member {
 				CellInstantiation: region.cellList.add(member.doSwitch as Cell)
+				ProcessInstantiation: region.processList.add(member.doSwitch as Kinetics)
 				RuleDefinition: region.ruleList.add(member.doSwitch as Rule)
 				VariableDefinition: region.moleculeList.add(member.definition.doSwitch as MolecularSpecies)
 				VariableAssignment: region.variableAssignmentList.add(member.doSwitch as EMFVariableAssignment)
 			}
-
 		}
+
 		return region
 	}
 
@@ -345,10 +380,64 @@ class ModelBuilder extends IblSwitch<Object> {
 		val className = cellInstantiation.constructor.name
 
 		// create an instantiated copy
-		var cell = EcoreUtil.copy(emfModel.cellList.filter[displayName == className].head)
+		var cell = EcoreUtil.copy(cellDefinitions.filter[displayName == className].head)
 		cell.displayName = cellInstantiation.name.buildVariableName
 
 		return cell
+	}
+
+	override caseProcessInstantiation(ProcessInstantiation processInstantiation) {
+
+		// look for its definition
+		val className = processInstantiation.constructor.name
+
+		// create an instantiated copy
+		var processDefinition = processDefinitions.get(className)
+		var semanticProcessDefinition = semanticProcessDefinitions.get(className)
+
+		var kinetics = EcoreUtil.copy(processDefinition)
+		kinetics.displayName = processInstantiation.name.buildVariableName
+
+		// change process' formal parameters with the actual ones
+		val formalParams = semanticProcessDefinition.parameters.map[it.name.buildVariableName].toList
+		val actualParams = processInstantiation.parameters.map[it.buildVariableName].toList
+		
+		// consider the rules of the process itself and its its child processes for parameter substitution
+		var rules = kinetics.ruleList
+		rules.addAll(kinetics.processList.map[it.ruleList].flatten.toList)
+		
+		for (rule : rules) {
+			rule.eAllContents.filter(MolecularSpecies).forEach [
+				{
+					if(it.displayName.isComplex) {
+						val individualMolecules = it.displayName.split("~")
+						it.displayName = individualMolecules.map[actualParams.get(formalParams.indexOf(it))].join('~')
+					} else {
+						val paramIndex = formalParams.indexOf(it.displayName)
+						it.displayName = actualParams.get(paramIndex)
+					}
+				}
+			]
+		}
+
+		// assign rates to rules
+		var rates = processInstantiation.using.map [ rateDefinition |
+			{
+				val predicate = [EObject o|o instanceof RateSetDefinition && (o as RateSetDefinition).name.buildVariableName == rateDefinition.name.buildVariableName]
+				var ruleSet = (findFirstUpstream(processInstantiation.eContainer, predicate) as RateSetDefinition)
+
+				if(ruleSet != null) {
+					ruleSet.rateAssignments.map[it.doSwitch as EMFVariableAssignment]
+				}
+			}
+		].flatten
+
+		for (rate : rates) {
+			var rule = kinetics.ruleList.filter[it.displayName == rate.variableName].head
+			updateRule(rule, rate)
+		}
+
+		return kinetics
 	}
 
 	override caseRuleDefinition(RuleDefinition ruleDefinition) {
@@ -371,6 +460,8 @@ class ModelBuilder extends IblSwitch<Object> {
 
 		for (member : deviceDefinition.members) {
 			switch member {
+				ProcessInstantiation:
+					device.processList.add(member.doSwitch as Kinetics)
 				RuleDefinition:
 					device.ruleList.add(member.doSwitch as Rule)
 				VariableDefinition:
@@ -431,7 +522,7 @@ class ModelBuilder extends IblSwitch<Object> {
 		]
 
 		// Defaults for parts and molecules
-		if (isPart(type))
+		if(isPart(type))
 			molecule => [
 				amount = 1.0;
 				unit = getConcentrationUnit('molecule');
@@ -523,6 +614,18 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 
 		return emfVariableAssignment
+	}
+
+	private def EObject findFirstUpstream(EObject container, (EObject)=>Boolean predicate) {
+		var result = container.eContents.filter[predicate.apply(it)]
+
+		if(result.size > 0) {
+			return result.head
+		} else if(container.eContainer == null) {
+			return null
+		} else {
+			return findFirstUpstream(container.eContainer, predicate)
+		}
 	}
 
 	private def getConcentrationUnit(String unit) {

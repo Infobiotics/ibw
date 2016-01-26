@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName <em>Display Name</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getDeviceList <em>Device List</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getProcessList <em>Process List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getRuleList <em>Rule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getATGCCommandList <em>ATGC Command List</em>}</li>
@@ -71,13 +71,14 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	protected EList<Device> deviceList;
 
 	/**
-	 * The cached value of the '{@link #getKinetics() <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getKinetics()
+	 * The cached value of the '{@link #getProcessList() <em>Process List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProcessList()
 	 * @generated
 	 * @ordered
 	 */
-	protected Kinetics kinetics;
+	protected EList<Kinetics> processList;
 
 	/**
 	 * The cached value of the '{@link #getRuleList() <em>Rule List</em>}' containment reference list.
@@ -222,57 +223,24 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Kinetics</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Process List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Kinetics}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Kinetics</em>' containment reference isn't
-	 * clear, there really should be more of a description here...
+	 * If the meaning of the '<em>Process List</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kinetics</em>' containment reference.
-	 * @see #setKinetics(Kinetics)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_Kinetics()
+	 * @return the value of the '<em>Process List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_ProcessList()
 	 * @model containment="true"
 	 * @generated
 	 */
-	public Kinetics getKinetics() {
-		return kinetics;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetKinetics(Kinetics newKinetics, NotificationChain msgs) {
-		Kinetics oldKinetics = kinetics;
-		kinetics = newKinetics;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.CELL__KINETICS, oldKinetics, newKinetics);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public List<Kinetics> getProcessList() {
+		if (processList == null) {
+			processList = new EObjectContainmentEList<Kinetics>(Kinetics.class, this, IblPackage.CELL__PROCESS_LIST);
 		}
-		return msgs;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getKinetics <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Kinetics</em>' containment reference.
-	 * @see #getKinetics()
-	 * @generated
-	 */
-	public void setKinetics(Kinetics newKinetics) {
-		if (newKinetics != kinetics) {
-			NotificationChain msgs = null;
-			if (kinetics != null)
-				msgs = ((InternalEObject)kinetics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.CELL__KINETICS, null, msgs);
-			if (newKinetics != null)
-				msgs = ((InternalEObject)newKinetics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.CELL__KINETICS, null, msgs);
-			msgs = basicSetKinetics(newKinetics, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.CELL__KINETICS, newKinetics, newKinetics));
+		return processList;
 	}
 
 	/**
@@ -434,8 +402,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 		switch (featureID) {
 			case IblPackage.CELL__DEVICE_LIST:
 				return ((InternalEList<?>)getDeviceList()).basicRemove(otherEnd, msgs);
-			case IblPackage.CELL__KINETICS:
-				return basicSetKinetics(null, msgs);
+			case IblPackage.CELL__PROCESS_LIST:
+				return ((InternalEList<?>)getProcessList()).basicRemove(otherEnd, msgs);
 			case IblPackage.CELL__RULE_LIST:
 				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
 			case IblPackage.CELL__MOLECULE_LIST:
@@ -461,8 +429,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				return getDisplayName();
 			case IblPackage.CELL__DEVICE_LIST:
 				return getDeviceList();
-			case IblPackage.CELL__KINETICS:
-				return getKinetics();
+			case IblPackage.CELL__PROCESS_LIST:
+				return getProcessList();
 			case IblPackage.CELL__RULE_LIST:
 				return getRuleList();
 			case IblPackage.CELL__MOLECULE_LIST:
@@ -494,8 +462,9 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				getDeviceList().clear();
 				getDeviceList().addAll((Collection<? extends Device>)newValue);
 				return;
-			case IblPackage.CELL__KINETICS:
-				setKinetics((Kinetics)newValue);
+			case IblPackage.CELL__PROCESS_LIST:
+				getProcessList().clear();
+				getProcessList().addAll((Collection<? extends Kinetics>)newValue);
 				return;
 			case IblPackage.CELL__RULE_LIST:
 				getRuleList().clear();
@@ -537,8 +506,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 			case IblPackage.CELL__DEVICE_LIST:
 				getDeviceList().clear();
 				return;
-			case IblPackage.CELL__KINETICS:
-				setKinetics((Kinetics)null);
+			case IblPackage.CELL__PROCESS_LIST:
+				getProcessList().clear();
 				return;
 			case IblPackage.CELL__RULE_LIST:
 				getRuleList().clear();
@@ -573,8 +542,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				return DISPLAY_NAME_EDEFAULT == null ? displayName != null : !DISPLAY_NAME_EDEFAULT.equals(displayName);
 			case IblPackage.CELL__DEVICE_LIST:
 				return deviceList != null && !deviceList.isEmpty();
-			case IblPackage.CELL__KINETICS:
-				return kinetics != null;
+			case IblPackage.CELL__PROCESS_LIST:
+				return processList != null && !processList.isEmpty();
 			case IblPackage.CELL__RULE_LIST:
 				return ruleList != null && !ruleList.isEmpty();
 			case IblPackage.CELL__MOLECULE_LIST:

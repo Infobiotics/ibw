@@ -1,0 +1,57 @@
+define myProcType2 typeof PROCESS(MOLECULE m1, MOLECULE m2) {
+	RULE rule21 : m1 + m2 <-> m1~m2 + m2	
+}
+  
+define myProcType1 typeof PROCESS(MOLECULE m1, MOLECULE m2, MOLECULE m3, MOLECULE m4) {
+	RULE rule11 : m1 + m2 <-> m1~m1	
+	rule11.forwardRate = 1.60e-8 M-1 s-1
+	
+	RULE rule12 : m1 + m3 <-> m1~m3 + m4
+	
+	myRates2 = RATES {
+		rule21.forwardRate = 0.77e-8 M-1 s-1
+		rule21.backwardRate = 0.21e-8 M-1 s-1
+	}
+	
+	PROCESS myProc3 = new myProcType2(m2, m3) USING myRates2
+}
+
+define myCellType typeof CELL(){
+
+	A = MOLECULE()
+	B = MOLECULE()
+	C = MOLECULE()
+	D = MOLECULE()
+
+	// (3) XylS2 activation by SA
+	RULE rule01: C + D <-> C~D
+	rule01.forwardRate = 10.0e+4 M-1 s-1
+	rule01.backwardRate = 10.0e-5 s-1
+	
+	myRates1 = RATES {
+		rule11.forwardRate = 5.60e-8 M-1 s-1
+		rule11.backwardRate = 6.60e-8 M-1 s-1
+		
+		rule12.forwardRate = 3.60e-8 M-1 s-1
+		rule12.backwardRate = 4.60e-8 M-1 s-1
+	}
+	
+	myRates2 = RATES {
+		rule21.forwardRate = 1.60e-8 M-1 s-1
+		rule21.backwardRate = 2.60e-8 M-1 s-1
+	}
+
+	NahRLasRProduction = DEVICE(parts=[C], input=[], output=[D]) {
+		
+		E = MOLECULE()
+		
+		PROCESS myProc2 = new myProcType2(C, E) USING myRates2
+	}
+	
+	PROCESS myProc1 = new myProcType1(A, B, C, D) USING myRates1
+}
+
+define site typeof REGION() {
+	CELL cell = new myCellType()	
+}
+

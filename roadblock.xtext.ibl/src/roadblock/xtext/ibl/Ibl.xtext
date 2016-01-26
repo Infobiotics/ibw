@@ -30,11 +30,7 @@ ImportStatement:
 // Function definition //
 /////////////////////////
 
-// function types
-FunctionType:
-	'PROCESS' | 'SYSTEM' | 'CHROMOSOME' | 'PLASMID' | 'CELL' | 'REGION';
-
-	// a function definition
+// a function definition
 FunctionDefinition:
 	{FunctionDefinition}
 	'define' name=VariableName 'typeof' functionBody=FunctionBodyType
@@ -102,9 +98,9 @@ FunctionContent:
 // See iblRefactoringGrammar.R for some automation
 FunctionBodyMember:
 	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
-	ProcessInstantiation | PropertyDefinition |
-	RuleDefinition | SystemInstantiation |
-	VariableAssignment | VariableDefinition;
+	ProcessInstantiation | RateSetDefinition | PropertyDefinition | RuleDefinition | SystemInstantiation |
+	VariableAssignment |
+	VariableDefinition;
 
 	//////////////////////
 // function members //
@@ -123,6 +119,14 @@ FunctionParameterScope:
 FunctionUseMember:
 	type=VariableType name=VariableName;
 
+	// rate set definition
+RateSetDefinition:
+	{RateSetDefinition}
+	name=VariableName '=' 'RATES'
+	'{'
+	(rateAssignments+=VariableAssignment*)
+	'}';
+
 	/////////////
 // devices //
 ////////////
@@ -133,7 +137,7 @@ DeviceDefinition:
 	name=VariableName '=' 'DEVICE'
 	'('
 	'parts' '=' parts=List
-	('input' '=' input=List)?
+	(',' 'input' '=' input=List)?
 	(',' 'output' '=' output=List)?
 	')'
 	'{'
@@ -141,7 +145,8 @@ DeviceDefinition:
 	'}';
 
 DeviceMembers:
-	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RuleDefinition | VariableAssignment;
+	VariableDefinition | PropertyDefinition | ATGCDefinition | ProcessInstantiation | RateSetDefinition | RuleDefinition |
+	VariableAssignment;
 
 	////////////////////
 // instantiations //
@@ -151,8 +156,13 @@ DeviceMembers:
 ProcessInstantiation:
 	{ProcessInstantiation}
 	'PROCESS' name=VariableName
-	('=' 'new' constructor=VariableName '(' (parameters+=ParameterAssignment (',' parameters+=ParameterAssignment)*)?
-	')')?;
+	('=' 'new' constructor=VariableName
+	'(' (parameters+=VariableName (',' parameters+=VariableName)*)? ')'
+	('USING' using+=ProcessUnsingMember (',' using+=ProcessUnsingMember)*)?)?;
+
+ProcessUnsingMember:
+	{ProcessUnsingMember}
+	name=VariableName;
 
 	// System instantiation 
 SystemInstantiation:

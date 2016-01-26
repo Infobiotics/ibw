@@ -42,6 +42,7 @@ import roadblock.xtext.ibl.ibl.impl.PlasmidBodyImpl
 import roadblock.xtext.ibl.ibl.impl.ProcessBodyImpl
 import roadblock.xtext.ibl.ibl.impl.RegionBodyImpl
 import roadblock.xtext.ibl.ibl.impl.SystemBodyImpl
+import roadblock.xtext.ibl.ibl.ProcessBody
 
 // utility class, used for checking forbidden containers
 @Data
@@ -79,7 +80,7 @@ class IblValidator extends AbstractIblValidator {
 		EStructuralFeature feature
 	) {
 		containerList.filter[k, v|forbiddenContainers.contains(k)].forEach [ k, v |
-			if(definition.getDefinitionContainer.class == v.type)
+			if (definition.getDefinitionContainer.class == v.type)
 				error(errorMessage + v.displayName, feature)
 		]
 	}
@@ -89,10 +90,9 @@ class IblValidator extends AbstractIblValidator {
 			FunctionContent: return (container as FunctionContent).members.filter(VariableDefinition)
 			DeviceDefinition: return (container as DeviceDefinition).members.filter(VariableDefinition)
 		}
-		
-		}
-		
-	def getAllCellInstantiations(EObject container){
+	}
+
+	def getAllCellInstantiations(EObject container) {
 		switch (container) {
 			FunctionContent: return (container as FunctionContent).members.filter(CellInstantiation)
 		}
@@ -103,7 +103,6 @@ class IblValidator extends AbstractIblValidator {
 			FunctionContent: return (container as FunctionContent).members.filter(RuleDefinition)
 			DeviceDefinition: return (container as DeviceDefinition).members.filter(RuleDefinition)
 		}
-
 	}
 
 	def getVariableNamesCreatedByRules(EObject container) {
@@ -113,17 +112,19 @@ class IblValidator extends AbstractIblValidator {
 		// * it's on the right hand-side
 		switch (container) {
 			FunctionContent: {
-				var names = (container as FunctionContent).members.filter(RuleDefinition).filter[it.reversible].map[lhs].toSet
+				var names = (container as FunctionContent).members.filter(RuleDefinition).filter[it.reversible].
+					map[lhs].toSet
 				names.addAll((container as FunctionContent).members.filter(RuleDefinition).map[rhs].toSet)
 				return names.flatten.filter(VariableKind).map[buildVariableName]
 			}
 			DeviceDefinition: {
-				var names = (container as DeviceDefinition).members.filter(RuleDefinition).filter[it.reversible].map[lhs].toSet
+				var names = (container as DeviceDefinition).members.filter(RuleDefinition).filter[it.reversible].map [
+					lhs
+				].toSet
 				names.addAll((container as DeviceDefinition).members.filter(RuleDefinition).map[rhs].toSet)
 				return names.flatten.filter(VariableKind).map[buildVariableName]
 			}
 		}
-
 	}
 
 	def getVariableName(VariableDefinition variableDefinition) {
@@ -168,7 +169,6 @@ class IblValidator extends AbstractIblValidator {
 				VariableComplex: (it as VariableComplex).complex
 			}
 		]
-
 	}
 
 	def getPartsInDeviceSignature(DeviceDefinition device) {
@@ -184,80 +184,89 @@ class IblValidator extends AbstractIblValidator {
 	}
 
 	def getAllArgumentsInDeviceSignature(DeviceDefinition device) {
-		var  set = new ArrayList<VariableKind>()
-		if(device.parts!=null) set.addAll(getPartsInDeviceSignature(device))
-		if(device.input!=null) set.addAll(getInputsInDeviceSignature(device))
-		if(device.output!=null) set.addAll(getOutputsInDeviceSignature(device))
+		var set = new ArrayList<VariableKind>()
+		if(device.parts != null) set.addAll(getPartsInDeviceSignature(device))
+		if(device.input != null) set.addAll(getInputsInDeviceSignature(device))
+		if(device.output != null) set.addAll(getOutputsInDeviceSignature(device))
 		return set.toSet
 	}
 
 	def isObservable(VariableDefinition variableDefinition) {
 		variableDefinition.qualifier == 'observable'
-
 	}
 
 	// =================================================================================
-	// 					enforce declarations
+	// enforce declarations
 	// =================================================================================
 	def Boolean hasBeenDeclared(String variableName, EObject container) {
 
-		//if complex: check if it is created by a rule
-		if(isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
+		// if complex: check if it is created by a rule
+		if (isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
 			return true
 
 		// otherwise check if it's been created somewhere else
-		
 		// check if locally declared
-		if(getAllVariableDefinitions(container).exists[it.variableName == variableName])
+		if (getAllVariableDefinitions(container).exists[it.variableName == variableName])
 			return true
 
 		// check if it's a rule's name
-		if(getAllRules(container).exists[it.name.buildVariableName == variableName])
+		if (getAllRules(container).exists[it.name.buildVariableName == variableName])
 			return true
 
 		// if in device: check signature and observables in device's container 
 		switch (container) {
 			DeviceDefinition: {
-				if(getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists[it.buildVariableName == variableName])
-					return true
-				if(getAllVariableDefinitions(container.eContainer).filter[observable].exists[it.variableName == variableName])
-					return true
+				if(getAllArgumentsInDeviceSignature(container as DeviceDefinition).exists [
+					it.buildVariableName == variableName
+				]) return true
+
+				if(getAllVariableDefinitions(container.eContainer).filter[observable].exists [
+					it.variableName == variableName
+				]) return true
 			}
-			
+			FunctionContent: {
+				switch (container.eContainer) {
+					ProcessBody:
+						if(container.parameters.exists [
+							it.name.buildVariableName == variableName
+						]) return true
+				}
+			}
 		}
 
 		return false
 	}
 
-	def  getVariableType(String variableName, EObject container) {
+	def getVariableType(String variableName, EObject container) {
 		// return type of variableName if it has been declared, or null otherwise
-		if(container.eContainer==null) return null
-		
-		//if complex: check if it is created by a rule
-		if(isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
+		if(container.eContainer == null) return null
+
+		// if complex: check if it is created by a rule
+		if (isComplex(variableName) && getVariableNamesCreatedByRules(container).exists[it == variableName])
 			return "Complex"
 
 		// otherwise check if it's been created somewhere else
-		
 		// check if locally declared
 		var variableDefinitions = getAllVariableDefinitions(container)
 //		if(variableDefinitions.size>0) println("\tVariable definitions: " + variableDefinitions.map[it.variableName].join(', '))
-		 
-		if(variableDefinitions.exists[it.variableName == variableName]){
+		if (variableDefinitions.exists[it.variableName == variableName]) {
 			val variableDefinition = variableDefinitions.findFirst[it.variableName == variableName]
-			switch (variableDefinition.definition){
-				VariableDefinitionBuiltIn: {return (variableDefinition.definition as VariableDefinitionBuiltIn).type}
-				VariableDefinitionUserDefined: {return (variableDefinition.definition as VariableDefinitionUserDefined).constructor}
+			switch (variableDefinition.definition) {
+				VariableDefinitionBuiltIn: {
+					return (variableDefinition.definition as VariableDefinitionBuiltIn).type
+				}
+				VariableDefinitionUserDefined: {
+					return (variableDefinition.definition as VariableDefinitionUserDefined).constructor
+				}
 			}
 		}
-		
-		// Else go up and search again for a definition
-		return getVariableType(variableName, container.eContainer)		
 
+		// Else go up and search again for a definition
+		return getVariableType(variableName, container.eContainer)
 	}
 
 	def errorMessage(String variableName) {
-		if(variableName.complex)
+		if (variableName.complex)
 			return "Complex '" + variableName + "' must be created by a rule or passed on as a parameter."
 		"Variable '" + variableName + "' must be declared."
 	}
@@ -266,24 +275,25 @@ class IblValidator extends AbstractIblValidator {
 	@Check
 	def checkEnforceVariableDeclaration(VariableAssignment variableAssignment) {
 		val variableName = variableAssignment.buildVariableName
-		if(!hasBeenDeclared(variableName, variableAssignment.eContainer))
+		if (!hasBeenDeclared(variableName, variableAssignment.eContainer))
 			error(variableName.errorMessage, IblPackage::eINSTANCE.variableAssignment_Variable)
 	}
 
 	// ATGC ARRANGE
-
 	@Check
-	def checkEnforceVariableDeclaration(ATGCArrange atgcArrange){
+	def checkEnforceVariableDeclaration(ATGCArrange atgcArrange) {
 		// also checks if variable is a biological part
-		for(variableName: atgcArrange.arguments.map[buildVariableName]){
-			if(!hasBeenDeclared(variableName, atgcArrange.eContainer.eContainer))
-				error(variableName.errorMessage,IblPackage::eINSTANCE.ATGCArrange_Arguments)
+		for (variableName : atgcArrange.arguments.map[buildVariableName]) {
+			if (!hasBeenDeclared(variableName, atgcArrange.eContainer.eContainer))
+				error(variableName.errorMessage, IblPackage::eINSTANCE.ATGCArrange_Arguments)
 			else {
-				val type = getVariableType(variableName,atgcArrange.eContainer.eContainer)
-				if(type!=null){
-					val variableType = 	(type as VariableType).name
-					if(!#['PROMOTER', 'GENE', 'INTEGER','RATE','RBS','TERMINATOR' , 'CLONINGSITE'].contains(variableType)) 
-						error(variableName + " must be a biological part. " + variableName + " is a " + variableType, IblPackage::eINSTANCE.ATGCArrange_Arguments)
+				val type = getVariableType(variableName, atgcArrange.eContainer.eContainer)
+				if (type != null) {
+					val variableType = (type as VariableType).name
+					if (!#['PROMOTER', 'GENE', 'INTEGER', 'RATE', 'RBS', 'TERMINATOR', 'CLONINGSITE'].contains(
+						variableType))
+						error(variableName + " must be a biological part. " + variableName + " is a " + variableType,
+							IblPackage::eINSTANCE.ATGCArrange_Arguments)
 				}
 			}
 		}
@@ -292,44 +302,51 @@ class IblValidator extends AbstractIblValidator {
 	// Rule
 	@Check
 	def checkEnforceVariableDeclaration(RuleDefinition rule) {
-
 		// left hand-side
 		for (variableName : rule.lhs.filter(VariableKind).map[buildVariableName]) {
-			if(!hasBeenDeclared(variableName, rule.eContainer))
+			if (!hasBeenDeclared(variableName, rule.eContainer))
 				error(variableName.errorMessage, IblPackage::eINSTANCE.ruleDefinition_Name)
 		}
 
 		// right hand-side
 		for (variableName : rule.rhs.filter(VariableKind).map[buildVariableName]) {
-			if(!hasBeenDeclared(variableName, rule.eContainer))
+			if (!hasBeenDeclared(variableName, rule.eContainer))
 				error(variableName.errorMessage, IblPackage::eINSTANCE.ruleDefinition_Name)
 		}
-
 	}
 
 	// Device's signature
 	@Check
 	def checkEnforceVariableDeclaration(DeviceDefinition device) {
 		for (variableName : device.partsInDeviceSignature.map[buildVariableName]) {
-			if(!hasBeenDeclared(variableName, device.eContainer))
+			if (!hasBeenDeclared(variableName, device.eContainer))
 				error(variableName.errorMessage, IblPackage::eINSTANCE.deviceDefinition_Parts)
 		}
 
 		for (variableName : device.inputsInDeviceSignature.map[buildVariableName]) {
-			if(!hasBeenDeclared(variableName, device.eContainer))
+			if (!hasBeenDeclared(variableName, device.eContainer))
 				error(variableName.errorMessage, IblPackage::eINSTANCE.deviceDefinition_Input)
 		}
 
 		for (variableName : device.outputsInDeviceSignature.map[buildVariableName]) {
-			if(!hasBeenDeclared(variableName, device.eContainer))
+			if (!hasBeenDeclared(variableName, device.eContainer))
 				error(variableName.errorMessage, IblPackage::eINSTANCE.deviceDefinition_Output)
+		}
+	}
+
+	// Process Instantiation
+	@Check
+	def checkEnforceVariableDeclaration(ProcessInstantiation process) {
+		for (variableName : process.parameters.map[buildVariableName]) {
+			if (!hasBeenDeclared(variableName, process.eContainer))
+				error(variableName.errorMessage, IblPackage::eINSTANCE.processInstantiation_Parameters)
 		}
 	}
 
 	def ArrayList<VariableKind> getAllVariablesInStateFormula(StateFormula stateFormula) {
 		if(stateFormula.isNegation) return stateFormula.negatedFormula.getAllVariablesInStateFormula
 
-		if(stateFormula.isConjunction || stateFormula.isDisjunction || stateFormula.isImplication) {
+		if (stateFormula.isConjunction || stateFormula.isDisjunction || stateFormula.isImplication) {
 			var left = stateFormula.leftFormula.getAllVariablesInStateFormula
 			left.addAll(stateFormula.rightFormula.getAllVariablesInStateFormula)
 			return left
@@ -342,7 +359,7 @@ class IblValidator extends AbstractIblValidator {
 
 		var variables = new ArrayList<VariableKind>(expression.operand1.getAllVariables)
 
-		if(expression.operand2 != null) {
+		if (expression.operand2 != null) {
 			variables.addAll(expression.operand2.getAllVariables);
 		}
 
@@ -353,7 +370,7 @@ class IblValidator extends AbstractIblValidator {
 
 		var variables = new ArrayList<VariableKind>(expression.operand1.getAllVariables)
 
-		if(expression.operand2 != null) {
+		if (expression.operand2 != null) {
 			variables.addAll(expression.operand2.getAllVariables);
 		}
 
@@ -362,7 +379,7 @@ class IblValidator extends AbstractIblValidator {
 
 	def ArrayList<VariableKind> getAllVariables(ArithmeticOperand operand) {
 
-		if(operand.expression != null) {
+		if (operand.expression != null) {
 			return operand.expression.getAllVariables
 		}
 
@@ -377,55 +394,57 @@ class IblValidator extends AbstractIblValidator {
 		for (variableReference : property.eAllContents.filter(PropertyVariableReference).toList) {
 			var variableName = variableReference.name.buildVariableName;
 
-			if(variableReference.container == null) {
-				if(!hasBeenDeclared(variableName, propertyDefinition.eContainer)) {
+			if (variableReference.container == null) {
+				if (!hasBeenDeclared(variableName, propertyDefinition.eContainer)) {
 					error(variableName.errorMessage, IblPackage::eINSTANCE.propertyDefinition_Property)
 				}
 			} else {
 			}
-			
-			
 		}
 
-	//if(!hasBeenDeclared(variableName, propertyDefinition.eContainer))
+	// if(!hasBeenDeclared(variableName, propertyDefinition.eContainer))
 	}
 
 	// =================================================================================
-	// 						forbid multiple declarations
+	// forbid multiple declarations
 	// =================================================================================
 	@Check
 	def checkMultipleVariableDefinition(VariableDefinition variableDefinition) {
 		val variableName = variableDefinition.variableName
 		val container = variableDefinition.eContainer
-		if(container.getAllVariableDefinitions.filter[it.variableName == variableName].size > 1) {
-			error("Variable '" + variableName + "' is declared twice in the same container.", IblPackage::eINSTANCE.variableDefinition_Definition)
-		}
-	}
-	//TODO: same for all instantiations (PROCESS etc. Cf grammar)
-	@Check
-	def checkMultipleCellInstantiation(CellInstantiation cellInstantiation){
-		val cellName = cellInstantiation.name.name
-		val container = cellInstantiation.eContainer
-		if(container.getAllCellInstantiations.filter[it.name.name == cellName].size >1){
-			error("Cell'" + cellName + "' is declared twice in the same container.", IblPackage::eINSTANCE.cellInstantiation_Name)
+		if (container.getAllVariableDefinitions.filter[it.variableName == variableName].size > 1) {
+			error("Variable '" + variableName + "' is declared twice in the same container.",
+				IblPackage::eINSTANCE.variableDefinition_Definition)
 		}
 	}
 
-	//def getAllRules
+	// TODO: same for all instantiations (PROCESS etc. Cf grammar)
+	@Check
+	def checkMultipleCellInstantiation(CellInstantiation cellInstantiation) {
+		val cellName = cellInstantiation.name.name
+		val container = cellInstantiation.eContainer
+		if (container.getAllCellInstantiations.filter[it.name.name == cellName].size > 1) {
+			error("Cell'" + cellName + "' is declared twice in the same container.",
+				IblPackage::eINSTANCE.cellInstantiation_Name)
+		}
+	}
+
+	// def getAllRules
 	@Check
 	def checkMultipleRuleDefinition(RuleDefinition ruleDefinition) {
 		val ruleName = ruleDefinition.name.buildVariableName
 		val container = ruleDefinition.eContainer
-		if(container.getAllRules.filter[it.name.buildVariableName == ruleName].size > 1) {
-			error("Rule '" + ruleName + "' is declared twice in the same container.", IblPackage::eINSTANCE.ruleDefinition_Name)
+		if (container.getAllRules.filter[it.name.buildVariableName == ruleName].size > 1) {
+			error("Rule '" + ruleName + "' is declared twice in the same container.",
+				IblPackage::eINSTANCE.ruleDefinition_Name)
 		}
 	}
+
 // =================================================================================
 // 						Container checks for function body members
 // =================================================================================
-
 	// =================================================================================
-	// 						Container checks for function body members
+	// Container checks for function body members
 	// =================================================================================
 	@Check
 	def checkContainerOfATGCDefinition(ATGCDefinition atgcDefinition) {
@@ -445,9 +464,6 @@ class IblValidator extends AbstractIblValidator {
 		)
 	}
 
-
-	
-	
 	@Check
 	def checkContainerOfChromosomeInstantiation(ChromosomeInstantiation chromosomeInstantiation) {
 		chromosomeInstantiation.generateWrongContainerError(
@@ -505,27 +521,24 @@ class IblValidator extends AbstractIblValidator {
 
 	// =================================================================================
 	@Check // OUTSIDE must be used on its own, if used at all
-
-	def checkRuleOutside(RuleDefinition rule){
-		//number of OUTSIDE on the left hand side
+	def checkRuleOutside(RuleDefinition rule) {
+		// number of OUTSIDE on the left hand side
 		val left = rule.lhs
 		val n1 = left.filter(Outside).size
 
-		//number of OUTSIDE on the right hand side
+		// number of OUTSIDE on the right hand side
 		val right = rule.rhs
 		val n2 = right.filter(Outside).size
 
 		// error if n1 + n2 > 1
-		if(n1 + n2 > 1)
+		if (n1 + n2 > 1)
 			error("OUTSIDE must be used at most once", IblPackage::eINSTANCE.ruleDefinition_Name)
 
 		// error if not used on its own
-		if((n1 == 1) && (left.size > 1))
+		if ((n1 == 1) && (left.size > 1))
 			error("OUTSIDE must be used on its own", IblPackage::eINSTANCE.ruleDefinition_Lhs)
 
-		if((n2 == 1) && (right.size > 1))
+		if ((n2 == 1) && (right.size > 1))
 			error("OUTSIDE must be used on its own", IblPackage::eINSTANCE.ruleDefinition_Rhs)
-
 	}
-	
 }

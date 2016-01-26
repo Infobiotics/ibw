@@ -159,9 +159,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Kinetics" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processList" upperBound="-1"
+        eType="#//Kinetics" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
         eType="#//Rule" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="MoleculeList" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputList" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
@@ -220,8 +222,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ATGCCommandList" upperBound="-1"
         eType="#//ATGCDirective" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="kinetics" eType="#//Kinetics"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputList" upperBound="-1"
@@ -240,8 +240,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deviceList" upperBound="-1"
         eType="#//Device" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Kinetics" eType="#//Kinetics"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processList" upperBound="-1"
+        eType="#//Kinetics" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
         eType="#//Rule" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
@@ -390,15 +390,15 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//IVisitable #//IRuleContainer #//IMoleculeContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Kinetics" eType="#//Kinetics"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cellList" upperBound="-1"
+        eType="#//Cell" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processList" upperBound="-1"
+        eType="#//Kinetics" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
         eType="#//Rule" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="moleculeList" upperBound="-1"
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cellList" upperBound="-1"
-        eType="#//Cell" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableAssignmentList"
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
   </eClassifiers>

@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getPartList <em>Part List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getATGCCommandList <em>ATGC Command List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getID <em>ID</em>}</li>
- *   <li>{@link roadblock.emf.ibl.Ibl.Device#getKinetics <em>Kinetics</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getOutputList <em>Output List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Device#getInputList <em>Input List</em>}</li>
@@ -117,15 +116,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getKinetics() <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @see #getKinetics()
-	 * @generated
-	 * @ordered
-	 */
-	protected Kinetics kinetics;
 
 	/**
 	 * The cached value of the '{@link #getMoleculeList() <em>Molecule List</em>}' containment reference list.
@@ -343,60 +333,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Kinetics</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Kinetics</em>' containment reference isn't
-	 * clear, there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kinetics</em>' containment reference.
-	 * @see #setKinetics(Kinetics)
-	 * @see roadblock.emf.ibl.Ibl.IblPackage#getDevice_Kinetics()
-	 * @model containment="true"
-	 * @generated
-	 */
-	public Kinetics getKinetics() {
-		return kinetics;
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetKinetics(Kinetics newKinetics, NotificationChain msgs) {
-		Kinetics oldKinetics = kinetics;
-		kinetics = newKinetics;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE__KINETICS, oldKinetics, newKinetics);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Device#getKinetics <em>Kinetics</em>}' containment reference.
-	 * <!-- begin-user-doc --> <!--
-	 * end-user-doc -->
-	 * @param value the new value of the '<em>Kinetics</em>' containment reference.
-	 * @see #getKinetics()
-	 * @generated
-	 */
-	public void setKinetics(Kinetics newKinetics) {
-		if (newKinetics != kinetics) {
-			NotificationChain msgs = null;
-			if (kinetics != null)
-				msgs = ((InternalEObject)kinetics).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE__KINETICS, null, msgs);
-			if (newKinetics != null)
-				msgs = ((InternalEObject)newKinetics).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.DEVICE__KINETICS, null, msgs);
-			msgs = basicSetKinetics(newKinetics, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.DEVICE__KINETICS, newKinetics, newKinetics));
-	}
-
-	/**
 	 * Returns the value of the '<em><b>Molecule List</b></em>' containment reference list.
 	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.MolecularSpecies}.
 	 * <!-- begin-user-doc -->
@@ -528,8 +464,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 				return ((InternalEList<?>)getPartList()).basicRemove(otherEnd, msgs);
 			case IblPackage.DEVICE__ATGC_COMMAND_LIST:
 				return ((InternalEList<?>)getATGCCommandList()).basicRemove(otherEnd, msgs);
-			case IblPackage.DEVICE__KINETICS:
-				return basicSetKinetics(null, msgs);
 			case IblPackage.DEVICE__MOLECULE_LIST:
 				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
 			case IblPackage.DEVICE__OUTPUT_LIST:
@@ -563,8 +497,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 				return getATGCCommandList();
 			case IblPackage.DEVICE__ID:
 				return getID();
-			case IblPackage.DEVICE__KINETICS:
-				return getKinetics();
 			case IblPackage.DEVICE__MOLECULE_LIST:
 				return getMoleculeList();
 			case IblPackage.DEVICE__OUTPUT_LIST:
@@ -608,9 +540,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 				return;
 			case IblPackage.DEVICE__ID:
 				setID((String)newValue);
-				return;
-			case IblPackage.DEVICE__KINETICS:
-				setKinetics((Kinetics)newValue);
 				return;
 			case IblPackage.DEVICE__MOLECULE_LIST:
 				getMoleculeList().clear();
@@ -661,9 +590,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 			case IblPackage.DEVICE__ID:
 				setID(ID_EDEFAULT);
 				return;
-			case IblPackage.DEVICE__KINETICS:
-				setKinetics((Kinetics)null);
-				return;
 			case IblPackage.DEVICE__MOLECULE_LIST:
 				getMoleculeList().clear();
 				return;
@@ -702,8 +628,6 @@ public class Device extends EObjectImpl implements IVisitable, IMoleculeContaine
 				return atgcCommandList != null && !atgcCommandList.isEmpty();
 			case IblPackage.DEVICE__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case IblPackage.DEVICE__KINETICS:
-				return kinetics != null;
 			case IblPackage.DEVICE__MOLECULE_LIST:
 				return moleculeList != null && !moleculeList.isEmpty();
 			case IblPackage.DEVICE__OUTPUT_LIST:

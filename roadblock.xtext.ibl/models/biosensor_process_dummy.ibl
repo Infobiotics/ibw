@@ -6,6 +6,23 @@
 // Harold Fellermann, Omer Markovitch, Laurentiu Mierla, Christophe Ladroue
 // after discussion with Felix Dafhnis-Calas and Stephan Heeb
   
+define myProcType2 typeof PROCESS(MOLECULE m1, MOLECULE m2) {
+	RULE rule21 : m1 + m2 <-> m1~m2 + m2	
+}
+  
+define myProcType1 typeof PROCESS(MOLECULE m1, MOLECULE m2, MOLECULE m3, MOLECULE m4) {
+	RULE rule11 : m1 + m2 <-> m1~m1	
+	rule11.forwardRate = 1.60e-8 M-1 s-1
+	
+	RULE rule12 : m1 + m3 <-> m1~m3 + m4
+	
+	myRates2 = RATES {
+		rule21.forwardRate = 0.77e-8 M-1 s-1
+		rule21.backwardRate = 0.21e-8 M-1 s-1
+	}
+	
+	PROCESS myProc3 = new myProcType2(m2, m3) USING myRates2
+}
 
 define SentinelCell typeof CELL(){
 	rnaP = MOLECULE(concentration=1e-6 M) : observable
@@ -62,8 +79,21 @@ define SentinelCell typeof CELL(){
 	lasR = GENE(URI = "atgc://user-submitted/part/lasr")
 	NahR = PROTEIN()
 	LasR = PROTEIN()
+	
+	myRates1 = RATES {
+		rule11.forwardRate = 5.60e-8 M-1 s-1
+		rule11.backwardRate = 6.60e-8 M-1 s-1
+		
+		rule12.forwardRate = 3.60e-8 M-1 s-1
+		rule12.backwardRate = 4.60e-8 M-1 s-1
+	}
+	
+	myRates2 = RATES {
+		rule21.forwardRate = 1.60e-8 M-1 s-1
+		rule21.backwardRate = 2.60e-8 M-1 s-1
+	}
 
-	NahRLasRProduction = DEVICE(parts=[PnahR,nahR,lasR] input=[], output=[NahR,LasR]) {
+	NahRLasRProduction = DEVICE(parts=[PnahR,nahR,lasR], input=[], output=[NahR,LasR]) {
 		mrna = RNA()
 		
 		// (12) constitutive transcription
@@ -86,6 +116,8 @@ define SentinelCell typeof CELL(){
 		// (16) rna degradation
 		RULE mrnaDegradation : mrna ->
 		mrnaDegradation.forwardRate = 2.78e-3 s-1
+		
+		PROCESS myProc2 = new myProcType2(PnahR, rnaP) USING myRates2
 	}
 
 	// components of the XylS2Production device
@@ -93,7 +125,7 @@ define SentinelCell typeof CELL(){
 	xylS = GENE(URI = "atgc://user-submitted/part/xysl2")
 	XylS = PROTEIN()
 
-	XylS2Production = DEVICE(parts=[Psal,xylS] input=[NahR,SA], output=[XylS]){
+	XylS2Production = DEVICE(parts=[Psal,xylS], input=[NahR,SA], output=[XylS]){
 		mrna = RNA()
 
 		// (17) background promoter binding
@@ -136,7 +168,7 @@ define SentinelCell typeof CELL(){
 	luxr = GENE(URI = "http://parts.igem.org/Part:BBa_K592012")
 	LuxR = PROTEIN()
    
-	LuxRProduction = DEVICE(parts=[Pm,PrsaL,luxr] input=[XylS~SA,LasR~AHL], output=[LuxR]){
+	LuxRProduction = DEVICE(parts=[Pm,PrsaL,luxr], input=[XylS~SA,LasR~AHL], output=[LuxR]){
 		mrna = RNA()
 		ATGC CLONING SITES: 5
   
@@ -209,11 +241,14 @@ define SentinelCell typeof CELL(){
 	VERIFY EXPECTED [XylS] WITHIN 1000 s IS ?
      
 	ATGC ARRANGE nahR, PnahR, Psal, xylS
+	
+	PROCESS myProc1 = new myProcType1(PnahR, LasR, rnaP, nahR) USING myRates1
 }
 
 define site typeof REGION() {
 	AHL = MOLECULE()
 	SA = MOLECULE()
 
-	CELL cell = new SentinelCell()
+	CELL cell = new SentinelCell()	
 }
+
