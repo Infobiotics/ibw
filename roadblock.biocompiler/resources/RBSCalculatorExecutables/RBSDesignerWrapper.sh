@@ -6,8 +6,8 @@
 cd `dirname $0` 
 
 # export path for nupack
-export PATH="$PATH:$(pwd)/nupack3.0.4/bin"    
-export NUPACKHOME="$(pwd)/nupack3.0.4"
+export PATH="$PATH:$(pwd)/nupack3.0.5/bin"    
+export NUPACKHOME="$(pwd)/nupack3.0.5"
 
 
 # run RBS_Design
