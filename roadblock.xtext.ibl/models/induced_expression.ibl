@@ -1,0 +1,92 @@
+define Cell typeof CELL()
+{
+	Ptrc2   = PROMOTER()
+	PLs1con = PROMOTER()
+	GFPmut3 = PROTEIN()
+	LacI    = PROTEIN()
+	cI      = PROTEIN()
+
+	RULE lac_dimerization : LacI + LacI <-> LacI~LacI
+	// from Levandoski et al. J. Mol. Biol. (1996) 260(5):697-717
+	// http://www.sciencedirect.com/science/article/pii/S0022283696904313
+	lac_dimerization.forwardRate  = 1e12 M-1 min-1
+	lac_dimerization.backwardRate = 1e0 min-1
+
+	// LacI degradation
+	// from Purcell et al. J Biol Eng (2012) 6:10
+	// doi:10.1186/1754-1611-6-10
+	RULE lac_degradation : LacI ->
+	lac_degradation.forwardRate = 0.125e0 min-1
+
+	// cI dimerization
+	RULE ci_dimerization : cI + cI <-> cI~cI
+	ci_dimerization.forwardRate  = 1e12 M-1 min-1 // copied from LacI
+	ci_dimerization.backwardRate = 1e0 min-1 // copied from LacI
+
+	// XXX cI degradation
+	RULE cI_degradation : cI ->
+	cI_degradation.forwardRate = 0.125e0 min-1
+
+	// GFP degradation
+	// 0.013216397448e0 min-1 from Gardner data
+	// 2.5e-2 min-1 from Andersen et al. Appl Env Microbiol (1998) 64(6):2240-2246
+	RULE gfp_degradation : GFPmut3 ->
+	gfp_degradation.forwardRate = 2.5e-2 min-1
+
+
+	repressor17 = DEVICE(parts=[Ptrc2], input=[LacI~LacI], output=[cI,GFPmut3])
+	{
+		mrna = RNA()
+
+		// promoter regulation
+		// from Levandoski et al. J. Mol. Biol. (1996) 260(5):697-717
+		// http://www.sciencedirect.com/science/article/pii/S0022283696904313
+		RULE inhibition : Ptrc2 + LacI~LacI <-> Ptrc2~LacI~LacI
+		inhibition.forwardRate = 8.5e11 M-1 min-1
+		inhibition.backwardRate = 1e0 min-1
+
+		// gene expression
+		// XXX 10-100 nt/s http://book.bionumbers.org/what-is-faster-transcription-or-translation/  21.4 nt/s http://onlinelibrary.wiley.com/doi/10.15252/msb.20145794/pdf
+		RULE transcription : Ptrc2 -> Ptrc2 + mrna
+		transcription.forwardRate = 1e0 min-1
+
+		RULE translation : mrna -> mrna + cI + GFPmut3
+		translation.forwardRate = 5 min-1 // XXX
+	
+		// mRNA degradation
+		// from Semsey et al. Nucl. Acid. Res. (2013) 1-10
+		// doi:10.1093/nar/gkt351
+		RULE rna_degradation : mrna ->
+		rna_degradation.forwardRate = 0.263e0 min-1
+	}
+
+	repressor2 = DEVICE(parts=[PLs1con], input=[cI~cI], output=[LacI])
+	{
+		mrna = RNA()
+
+		RULE inhibition : PLs1con + cI~cI <-> PLs1con~cI~cI
+		//RULE inhibition : PLs1con + cI~cI <-> PLs1con2~cI~cI
+		// from Koblan and Ackers, Biochem. (1991) 30(31):7822-7827
+		// http://pubs.acs.org/doi/abs/10.1021/bi00245a023
+		inhibition.forwardRate = 1e12 M-1 min-1
+		inhibition.backwardRate = 1e0 min-1
+
+		// gene expression
+		// XXX 10-100 nt/s http://book.bionumbers.org/what-is-faster-transcription-or-translation/  21.4 nt/s http://onlinelibrary.wiley.com/doi/10.15252/msb.20145794/pdf
+		RULE transcription : PLs1con -> PLs1con + mrna
+		transcription.forwardRate = 1e0 min-1
+
+		RULE translation : mrna -> mrna + LacI
+		translation.forwardRate = 2.5 min-1
+	
+		// mRNA degradation
+		// from Semsey et al. Nucl. Acid. Res. (2013) 1-10
+		// doi:10.1093/nar/gkt351
+		RULE rna_degradation : mrna ->
+		rna_degradation.forwardRate = 0.263e0 min-1
+	}
+}
+
+ define site typeof REGION() {
+	CELL cell = new Cell()
+}

@@ -471,7 +471,7 @@ RELATIONAL_OPERATOR:
 	'=' | '!=' | '<' | '>' | '<=' | '>=';
 
 Unit:
-	TIME_UNIT | FLUX_UNIT | CONCENTRATION_UNIT | RATE_TIME_UNIT | RATE_CONCENTRATION_UNIT;
+	TIME_UNIT | CONCENTRATION_UNIT | RATE_TIME_UNIT | RATE_CONCENTRATION_UNIT;
 
 terminal UNIT_INTERVAL returns ecore::EDouble:
 	'1' ('.' '0'?)? | '0.' DIGITS? | '.' DIGITS?;
@@ -502,9 +502,6 @@ terminal fragment SIGN:
 
 terminal TIME_UNIT:
 	's' | 'min' | 'mins';
-
-terminal FLUX_UNIT:
-	's^-1' | 'min^-1';
 
 terminal CONCENTRATION_UNIT:
 	'M' | 'mM' | 'uM' | 'nM' | 'pM' | 'fM' | 'molecule' | 'molecules';

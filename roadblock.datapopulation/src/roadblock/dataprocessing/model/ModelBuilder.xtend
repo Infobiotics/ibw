@@ -649,15 +649,15 @@ class ModelBuilder extends IblSwitch<Object> {
 
 		for (unit : units) {
 			switch unit {
-				case "s^-1": rateUnit.rateTimeUnit = RateTimeUnit.PER_SECOND
-				case "min^-1": rateUnit.rateTimeUnit = RateTimeUnit.PER_MINUTE
-				case "M": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_M
-				case "mM": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_MM
-				case "uM": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_UM
-				case "nM": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_NM
-				case "pM": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_PM
-				case "fM": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_FM
-				case "molecule": rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_MOLECULE
+				case unit.toLowerCase.startsWith("s"): rateUnit.rateTimeUnit = RateTimeUnit.PER_SECOND
+				case unit.toLowerCase.startsWith("min"): rateUnit.rateTimeUnit = RateTimeUnit.PER_MINUTE
+				case unit.toLowerCase.startsWith("molecule"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_MOLECULE
+				case unit.toLowerCase.startsWith("mm"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_MM
+				case unit.toLowerCase.startsWith("m"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_M
+				case unit.toLowerCase.startsWith("um"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_UM
+				case unit.toLowerCase.startsWith("nm"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_NM
+				case unit.toLowerCase.startsWith("pm"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_PM
+				case unit.toLowerCase.startsWith("fm"): rateUnit.rateConcentrationUnit = RateConcentrationUnit.PER_FM
 			}
 		}
 
