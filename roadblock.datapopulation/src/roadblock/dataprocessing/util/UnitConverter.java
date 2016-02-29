@@ -82,7 +82,7 @@ public class UnitConverter {
 			if (unit.getRateConcentrationUnit() != RateConcentrationUnit.PER_MOLECULE) {
 
 				double v = 1e-15;
-				double n = 6e23;
+				double n = 6.02214179e23;
 				double weight = 1;
 
 				switch (unit.getRateConcentrationUnit()) {
@@ -109,7 +109,7 @@ public class UnitConverter {
 					break;
 				}
 
-				newAmount = newAmount * v * n / weight;
+				newAmount = newAmount / v / n / weight;
 			}
 		}
 
