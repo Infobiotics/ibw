@@ -13,6 +13,7 @@ Export-Package: roadblock.emf.bioparts.Bioparts,
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  roadblock.bin;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
 Import-Package: org.jacop.constraints,
  org.jacop.constraints.binpacking,
  org.jacop.constraints.geost,
