@@ -72,4 +72,5 @@ Bundle-ClassPath: resources/swt-xy-graph/org.csstudio.swt.widgets_2.1.0.20120912
  resources/jacop-4.0.0.jar,
  resources/libSBOLj-core-1.0.0-SNAPSHOT.jar,
  resources/commons-io-2.4.jar,
+ resources/mc2.jar,
  .

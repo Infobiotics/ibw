@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="resources/mc2.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/libSBOLj-core-1.0.0-SNAPSHOT.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/commons-io-2.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/jacop-4.0.0.jar"/>
