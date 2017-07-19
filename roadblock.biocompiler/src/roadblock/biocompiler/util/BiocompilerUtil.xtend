@@ -129,7 +129,7 @@ class BiocompilerUtil {
 		println("\tpost: " + postSequence)
 		println("\trate: " + translationInitiationRate)
 
-		var useFake = true
+		var useFake = false
 		var RBSWrapperName = ""
 		var Process process = null
 
