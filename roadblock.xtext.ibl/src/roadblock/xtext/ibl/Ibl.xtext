@@ -423,7 +423,7 @@ RewardTimeInstant:
 
 ProbabilityConstraint:
 	{ProbabilityConstraint}
-	'WITH PROBABILITY' ((operator=RELATIONAL_OPERATOR probability=UNIT_INTERVAL) | hasUnknownProbability?='?');
+	'WITH PROBABILITY' ((operator=RELATIONAL_OPERATOR probability=Real) | hasUnknownProbability?='?');
 
 ConcentrationConstraint:
 	{ConcentrationConstraint}
@@ -473,14 +473,12 @@ RELATIONAL_OPERATOR:
 Unit:
 	TIME_UNIT | CONCENTRATION_UNIT | RATE_TIME_UNIT | RATE_CONCENTRATION_UNIT;
 
-terminal UNIT_INTERVAL returns ecore::EDouble:
-	'1' ('.' '0'?)? | '0.' DIGITS? | '.' DIGITS?;
-
+@Override 
 terminal INT returns ecore::EInt:
 	'0' | (NON_ZERO_DIGIT DIGITS?);
 
 terminal FLOAT returns ecore::EDouble:
-	INT '.' DIGITS? EXPONENT_PART? | '.' DIGITS EXPONENT_PART? | INT EXPONENT_PART;
+	(INT '.' DIGITS? EXPONENT_PART?) | ('.' DIGITS EXPONENT_PART?) | (INT EXPONENT_PART);
 
 terminal fragment DIGITS:
 	('0'..'9')+;
