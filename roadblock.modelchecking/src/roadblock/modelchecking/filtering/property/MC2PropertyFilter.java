@@ -48,7 +48,7 @@ public class MC2PropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(SteadyStateProperty expression) {
-		return false;
+		return true;
 	}
 
 	@Override
