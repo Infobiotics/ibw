@@ -1,5 +1,6 @@
 package roadblock.modelchecking.ui.components;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 			}
 
 			for (IProperty property : cell.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.verificationType)) {
+				if (canBeVerified(property)) {
 					hasChildren = true;
 					break;
 				}
@@ -82,7 +83,7 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 			Device device = (Device) element;
 
 			for (IProperty property : device.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.verificationType)) {
+				if (canBeVerified(property)) {
 					hasChildren = true;
 					break;
 				}
@@ -116,7 +117,7 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 			}
 
 			for (IProperty property : cell.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.verificationType)) {
+				if (canBeVerified(property)) {
 					childElements.add(getPropertySemanticEntityPair(property));
 				}
 			}
@@ -124,7 +125,7 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 			Device device = (Device) parentContainer;
 
 			for (IProperty property : device.getProperties()) {
-				if (FilteringManager.getInstance().canVerify(property, data.verificationType)) {
+				if (canBeVerified(property)) {
 					childElements.add(getPropertySemanticEntityPair(property));
 				}
 			}
@@ -152,5 +153,20 @@ public class IblTreeContentProvider implements ITreeContentProvider {
 		pair.property = property;
 		pair.semanticEntity = data.semanticEntityByProperty.get(property);
 		return pair;
+	}
+
+	private boolean canBeVerified(IProperty property) {
+		boolean canBeVerified = true;
+
+		if (data.verificationType != null) {
+			canBeVerified &= FilteringManager.getInstance().canVerify(property, data.verificationType);
+		}
+
+		if (data.modelcheckingTarget != null) {
+			canBeVerified &= FilteringManager.getInstance().canVerify(property,
+					Arrays.asList(data.modelcheckingTarget));
+		}
+
+		return canBeVerified;
 	}
 }

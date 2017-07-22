@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
+import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.VerificationType;
 
 public class PropertyTreeData {
@@ -15,4 +16,6 @@ public class PropertyTreeData {
 	public Map<IProperty, EObject> semanticEntityByProperty;
 	
 	public VerificationType verificationType;
+	
+	public ModelcheckingTarget modelcheckingTarget;
 }

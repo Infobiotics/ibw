@@ -20,6 +20,7 @@ public class Configuration {
 	public Integer runs;
 	public String simulationAlgorithm;
 	public String verificationType;
+	public String modelcheckingTarget;
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		changeSupport.addPropertyChangeListener(listener);
@@ -143,5 +144,13 @@ public class Configuration {
 
 	public void setVerificationType(String verificationType) {
 		changeSupport.firePropertyChange("verificationType", this.verificationType, this.verificationType = verificationType);
+	}
+	
+	public String getModelcheckingTarget() {
+		return modelcheckingTarget;
+	}
+	
+	public void setModelcheckingTarget(String modelcheckingTarget) {
+		changeSupport.firePropertyChange("modelcheckingTarget", this.modelcheckingTarget, this.modelcheckingTarget = modelcheckingTarget);
 	}
 }

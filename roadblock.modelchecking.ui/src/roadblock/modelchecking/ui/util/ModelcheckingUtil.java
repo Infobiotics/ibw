@@ -17,7 +17,7 @@ public class ModelcheckingUtil {
 		return instance;
 	}
 
-	public PropertyTreeData getPropertyTreeData(XtextResource iblResource, VerificationType verificationType) {
+	public PropertyTreeData getPropertyTreeData(XtextResource iblResource, VerificationType verificationType, ModelcheckingTarget modelcheckingTarget) {
 
 		roadblock.xtext.ibl.ibl.Model semanticModel = (roadblock.xtext.ibl.ibl.Model) iblResource.getContents().get(0);
 		ModelBuilder modelBuilder = new ModelBuilder();
@@ -26,6 +26,7 @@ public class ModelcheckingUtil {
 		modelData.model = semanticModel != null ? modelBuilder.populate(semanticModel) : null;
 		modelData.semanticEntityByProperty = modelBuilder.getPropertySemanticEntityMapper();
 		modelData.verificationType = verificationType;
+		modelData.modelcheckingTarget = modelcheckingTarget;
 
 		return modelData;
 	}

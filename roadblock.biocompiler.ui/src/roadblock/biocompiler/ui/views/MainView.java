@@ -15,8 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
@@ -37,9 +38,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IPartListener2;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
@@ -47,22 +45,20 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.biocompiler.Biocompiler;
 import roadblock.biocompiler.ui.Activator;
 import roadblock.biocompiler.ui.util.BiocompilationUtil;
 import roadblock.emf.ibl.Ibl.Model;
+import roadblock.resource.IblResourceObservable;
 
-public class MainView extends ViewPart implements IPartListener2 {
+public class MainView extends ViewPart implements Observer {
 
 	public static final String ID = "roadblock.biocompiler.ui.views.mainView";
 
 	private Model model;
-	private String biocopilationWorkspace = String.format("%s%s%s%s%s%s", Platform.getLocation().toString(), File.separator, ".tmp", File.separator, "biocompilation",
-			File.separator);
+	private String biocopilationWorkspace = String.format("%s%s%s%s%s%s", Platform.getLocation().toString(),
+			File.separator, ".tmp", File.separator, "biocompilation", File.separator);
 	private XtextResource currentIblResource;
 
 	private Button compilationButton;
@@ -73,13 +69,11 @@ public class MainView extends ViewPart implements IPartListener2 {
 	@Override
 	public void createPartControl(Composite parent) {
 
-		atgcConsole = new MessageConsole("Raw output", null);
+		atgcConsole = new MessageConsole("Biocompilation Output", null);
+		atgcConsole.activate();
 
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { atgcConsole });
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(atgcConsole);
-
-		// add change listener model
-		getSite().getPage().addPartListener(this);
 
 		// create widget layout
 		GridLayout layout = new GridLayout(1, false);
@@ -114,6 +108,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 		browser = new Browser(parent, SWT.FILL);
 		browser.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1));
 		browser.setText("<BODY > empty model</BODY>");
+
+		// add change listener model
+		getSite().getPage().addPartListener(IblResourceObservable.getInstance());
+		IblResourceObservable.getInstance().addObserver(this);
 	}
 
 	private void refreshModel() {
@@ -126,29 +124,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	@Override
-	public void partActivated(IWorkbenchPartReference partRef) {
-		IWorkbenchPart part = partRef.getPart(true);
-		if (part instanceof XtextEditor) {
-			XtextEditor iblEditor = (XtextEditor) part;
-			if (iblEditor.getLanguageName().equals("roadblock.xtext.ibl.Ibl")) {
-				IXtextDocument iblDocument = iblEditor.getDocument();
-				XtextResource iblResource = iblDocument.readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
-					@Override
-					public XtextResource exec(XtextResource state) throws Exception {
-						return state;
-					}
-				});
-
-				if (iblResource != currentIblResource) {
-					currentIblResource = iblResource;
-				}
-			}
-		}
-	}
-
-	@Override
 	public void dispose() {
-		getSite().getPage().removePartListener(this);
+		getSite().getPage().removePartListener(IblResourceObservable.getInstance());
+		IblResourceObservable.getInstance().deleteObserver(this);
 	}
 
 	public void runBiocompiler(final String xmlFilename, final String command) {
@@ -174,7 +152,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 			};
 
 			try {
-				ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
+				ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(
+						getSite().getWorkbenchWindow().getShell());
 				progressDialog.getProgressMonitor().setTaskName("Compilation...");
 				progressDialog.run(true, true, verificationTask);
 			} catch (InvocationTargetException | InterruptedException e) {
@@ -211,7 +190,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 			}
 
 			try {
-				String identifiedParts = readFile(biocopilationWorkspace + "identifiedParts.html", Charset.defaultCharset());
+				String identifiedParts = readFile(biocopilationWorkspace + "identifiedParts.html",
+						Charset.defaultCharset());
 				browser.setText(identifiedParts);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -222,7 +202,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	private void updateConsoleView() {
-		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().findView("roadblock.biocompiler.ui.views.consoleView");
+		ConsoleView myConsole = (ConsoleView) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.findView("roadblock.biocompiler.ui.views.consoleView");
 		try {
 			String console = readFile(biocopilationWorkspace + "console.html", Charset.defaultCharset());
 			myConsole.setContent(console);
@@ -308,12 +289,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 		for (String line : trace.split(System.getProperty("line.separator"))) {
 			childStatuses.add(new Status(IStatus.ERROR, Activator.PLUGIN_ID, line));
 		}
-		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
+		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}),
+				t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
-	}
-
-	@Override
-	public void partDeactivated(IWorkbenchPartReference partRef) {
 	}
 
 	@Override
@@ -323,38 +301,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	@Override
-	public void partBroughtToTop(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
+	public void update(Observable o, Object arg) {
+		if (IblResourceObservable.getInstance().getCurrentIblResource() != null) {
+			currentIblResource = IblResourceObservable.getInstance().getCurrentIblResource();
+		}
 	}
 
-	@Override
-	public void partClosed(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partOpened(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partHidden(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partVisible(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partInputChanged(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
 }

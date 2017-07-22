@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
@@ -31,11 +33,8 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
@@ -43,17 +42,15 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.caching.ModelCache;
+import roadblock.resource.IblResourceObservable;
 import roadblock.simulation.ngss.Simulator;
 import roadblock.simulation.ui.Activator;
 import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
 
-public class MainView extends ViewPart implements IPartListener2 {
+public class MainView extends ViewPart implements Observer {
 
 	public static final String ID = "roadblock.simulation.ui.views.mainView";
 
@@ -72,10 +69,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 	@Override
 	public void createPartControl(Composite parent) {
 
-		// add change listener model
-		getSite().getPage().addPartListener(this);
+		simulationConsole = new MessageConsole("Simulation Output", null);
+		simulationConsole.activate();
 
-		simulationConsole = new MessageConsole("Simulation Results", null);
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { simulationConsole });
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(simulationConsole);
 
@@ -155,8 +151,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 		SSAlgorithm.setData("Composition Rejection", "cr");
 		SSAlgorithm.add("Tau Leaping");
 		SSAlgorithm.setData("Tau Leaping", "tl");
-		//SSAlgorithm.select(0);
-		
+		// SSAlgorithm.select(0);
+
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
 		simulationButton.setText("Simulate");
@@ -168,38 +164,16 @@ public class MainView extends ViewPart implements IPartListener2 {
 		});
 		simulationButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 		simulationButton.setEnabled(false);
-	}
 
-	@Override
-	public void partActivated(IWorkbenchPartReference partRef) {
-		IWorkbenchPart part = partRef.getPart(true);
-		if (part instanceof XtextEditor) {
-			XtextEditor iblEditor = (XtextEditor) part;
-			if (iblEditor.getLanguageName().equals("roadblock.xtext.ibl.Ibl")) {
-				IXtextDocument iblDocument = iblEditor.getDocument();
-				XtextResource iblResource = iblDocument.readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
-					@Override
-					public XtextResource exec(XtextResource state) throws Exception {
-						return state;
-					}
-				});
-
-				if (iblResource != currentIblResource) {
-					currentIblResource = iblResource;
-					ensureConfig();
-					bindValues();
-				}
-
-				if (iblResource.getErrors().size() == 0) {
-					updateUi();
-				}
-			}
-		}
+		// add change listener model
+		getSite().getPage().addPartListener(IblResourceObservable.getInstance());
+		IblResourceObservable.getInstance().addObserver(this);
 	}
 
 	@Override
 	public void dispose() {
-		getSite().getPage().removePartListener(this);
+		getSite().getPage().removePartListener(IblResourceObservable.getInstance());
+		IblResourceObservable.getInstance().deleteObserver(this);
 	}
 
 	protected void updateUi() {
@@ -272,7 +246,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// max_time
- 		widgetValue = WidgetProperties.text(SWT.Modify).observe(maxTime);
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(maxTime);
 		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
 		validator = new IValidator() {
 			// decimal number validator
@@ -292,9 +266,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-		
+
 		// logInterval
- 		widgetValue = WidgetProperties.text(SWT.Modify).observe(logInterval);
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(logInterval);
 		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
 		validator = new IValidator() {
 			// decimal number validator
@@ -314,9 +288,9 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-		
+
 		// sampleNumber
- 		widgetValue = WidgetProperties.text(SWT.Modify).observe(sampleNumber);
+		widgetValue = WidgetProperties.text(SWT.Modify).observe(sampleNumber);
 		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
 		validator = new IValidator() {
 			// integer number validator
@@ -336,7 +310,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-		
+
 		// SSAlgorithm
 		widgetValue = WidgetProperties.selection().observe(SSAlgorithm);
 		modelValue = BeanProperties.value(Configuration.class, "SSAlgorithm").observe(config);
@@ -345,16 +319,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	private void ensureConfig() {
-		if (config == null) {
-			config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
-		}
+		config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
 	}
 
 	// launch simulator
 	private void performSimulation() {
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
+				config.getDataFile());
 		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
 		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
@@ -371,15 +344,18 @@ public class MainView extends ViewPart implements IPartListener2 {
 		simulator.runSimulation(exportFilename, consoleStream);
 
 		// XXX refresh project explorer
-		ResultsView resultsView = (ResultsView)getView("roadblock.simulation.ui.views.resultsView");
-		resultsView.plot();
-		
+		ResultsView resultsView = (ResultsView) getView("roadblock.simulation.ui.views.resultsView");
+		if (resultsView != null) {
+			resultsView.plot();
+		}
+
 	}
-	
+
 	public static IViewPart getView(String id) {
-		IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
-		for(int i = 0; i < viewReferences.length; i++)
-			if(id.equals(viewReferences[i].getId()))
+		IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+				.getViewReferences();
+		for (int i = 0; i < viewReferences.length; i++)
+			if (id.equals(viewReferences[i].getId()))
 				return viewReferences[i].getView(false);
 		return null;
 	}
@@ -396,54 +372,27 @@ public class MainView extends ViewPart implements IPartListener2 {
 		for (String line : trace.split(System.getProperty("line.separator"))) {
 			childStatuses.add(new Status(IStatus.ERROR, Activator.PLUGIN_ID, line));
 		}
-		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
+		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}),
+				t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
 
 	@Override
-	public void partDeactivated(IWorkbenchPartReference partRef) {
-		updateUi();
+	public void update(Observable o, Object arg) {
+		if (IblResourceObservable.getInstance().getCurrentIblResource() != null) {
+			currentIblResource = IblResourceObservable.getInstance().getCurrentIblResource();
+			ensureConfig();
+			bindValues();
+
+			if (currentIblResource.getErrors().size() == 0) {
+				updateUi();
+			}
+		}
 	}
 
 	@Override
 	public void setFocus() {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partBroughtToTop(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partClosed(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partOpened(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partHidden(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partVisible(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partInputChanged(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
+		// TODO Auto-generated method stub
 
 	}
 }

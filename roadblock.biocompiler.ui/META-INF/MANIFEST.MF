@@ -22,6 +22,7 @@ Import-Package: roadblock.biocompiler,
  roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
+ roadblock.resource,
  roadblock.simulation.ngss,
  roadblock.xtext.ibl.generator,
  roadblock.xtext.ibl.ibl

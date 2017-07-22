@@ -1,7 +1,6 @@
 package roadblock.modelchecking.ui.views;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,10 +8,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Observable;
+import java.util.Observer;
 
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
@@ -54,9 +52,6 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
-import org.eclipse.ui.IPartListener2;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.MessageConsole;
@@ -66,9 +61,6 @@ import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.editor.model.IXtextModelListener;
-import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
@@ -87,8 +79,9 @@ import roadblock.modelchecking.ui.model.PropertySemanticEntityPair;
 import roadblock.modelchecking.ui.model.PropertyTreeData;
 import roadblock.modelchecking.ui.util.ConfigurationUtil;
 import roadblock.modelchecking.ui.util.ModelcheckingUtil;
+import roadblock.resource.IblResourceObservable;
 
-public class MainView extends ViewPart implements IPartListener2 {
+public class MainView extends ViewPart implements Observer {
 
 	public static final String ID = "roadblock.modelchecking.ui.views.mainView";
 
@@ -106,6 +99,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private Text txtModelFile;
 	private Text txtDataFile;
 	private Combo ddlVerificationType;
+	private Combo ddlModelChecker;
 
 	private Group prismGroup;
 	private Text txtConfidenceValue;
@@ -129,16 +123,15 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		parentComposite = parent;
 
-		// add change listener model
-		// final Composite parentComposite = parent;
-		getSite().getPage().addPartListener(this);
+		verificationConsole = new MessageConsole("Verification Output", null);
+		verificationConsole.activate();
 
-		verificationConsole = new MessageConsole("Verification Results", null);
 		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { verificationConsole });
 		ConsolePlugin.getDefault().getConsoleManager().showConsoleView(verificationConsole);
 
 		// make temporary directory
-		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID + ".tmp";
+		tmpDirPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator + "." + ID
+				+ ".tmp";
 		tmpDir = new File(tmpDirPath);
 		tmpDir.mkdir();
 
@@ -188,10 +181,34 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				handlePropertyItemChecked(Collections.<PropertySemanticEntityPair> emptyList());
+				handleVerificationTypeChanged();
 
 				parentComposite.layout();
 				updateUi();
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+			}
+		});
+
+		// create model checker algorithm widget
+		Label modelCheckerLabel = new Label(parent, SWT.NONE);
+		modelCheckerLabel.setText("Model checker: ");
+		modelCheckerLabel.setToolTipText("model checker to use");
+		ddlModelChecker = new Combo(parent, SWT.READ_ONLY);
+		ddlModelChecker.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		ddlModelChecker.add("PRISM");
+		ddlModelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
+		ddlModelChecker.add("NuSMV");
+		ddlModelChecker.setData("NuSMV", ModelcheckingTarget.NUSMV);
+		ddlModelChecker.add("MC2");
+		ddlModelChecker.setData("MC2", ModelcheckingTarget.MC2);
+		ddlModelChecker.addSelectionListener(new SelectionListener() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				handleModelcheckerChanged();
 			}
 
 			@Override
@@ -307,22 +324,14 @@ public class MainView extends ViewPart implements IPartListener2 {
 					btnExport.setEnabled(isAnyPropertyChecked);
 					btnVerify.setEnabled(isAnyPropertyChecked);
 				}
-
-				List<PropertySemanticEntityPair> propertyItems = new ArrayList<>();
-				for (Object o : ctvPropertyTreeViewer.getCheckedElements()) {
-					if (o instanceof PropertySemanticEntityPair) {
-						propertyItems.add((PropertySemanticEntityPair) o);
-					}
-				}
-
-				handlePropertyItemChecked(propertyItems);
 			}
 		});
 		tree.addSelectionListener(new SelectionListener() {
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if (iblEditor != null && propertyTreeData != null && e.item.getData() instanceof PropertySemanticEntityPair) {
+				if (iblEditor != null && propertyTreeData != null
+						&& e.item.getData() instanceof PropertySemanticEntityPair) {
 					PropertySemanticEntityPair selection = (PropertySemanticEntityPair) e.item.getData();
 
 					INode propertyNode = NodeModelUtils.getNode(selection.semanticEntity);
@@ -368,54 +377,20 @@ public class MainView extends ViewPart implements IPartListener2 {
 		btnVerify.setEnabled(false);
 
 		ddlVerificationType.select(0);
+		ddlModelChecker.select(0);
 		ddlSimulator.select(0);
 
-		handlePropertyItemChecked(Collections.<PropertySemanticEntityPair> emptyList());
-	}
+		handleModelcheckerChanged();
 
-	@Override
-	public void partActivated(IWorkbenchPartReference partRef) {
-		IWorkbenchPart part = partRef.getPart(true);
-		if (part instanceof XtextEditor) {
-			iblEditor = (XtextEditor) part;
-			if (iblEditor.getLanguageName().equals("roadblock.xtext.ibl.Ibl")) {
-				IXtextDocument iblDocument = iblEditor.getDocument();
-				iblDocument.addModelListener(new IXtextModelListener() {
-
-					@Override
-					public void modelChanged(XtextResource resource) {
-						if (resource != currentIblResource) {
-							System.out.println("Changed!");
-						}
-					}
-
-				});
-				XtextResource iblResource = iblDocument.readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
-					@Override
-					public XtextResource exec(XtextResource state) throws Exception {
-						return state;
-					}
-				});
-
-				if (iblResource != currentIblResource) {
-					currentIblResource = iblResource;
-					if (config == null) {
-						ensureConfig();
-						bindValues();
-					}
-				}
-
-				if (iblResource.getErrors().size() == 0) {
-					updateUi();
-					handlePropertyItemChecked(null);
-				}
-			}
-		}
+		// add change listener model
+		getSite().getPage().addPartListener(IblResourceObservable.getInstance());
+		IblResourceObservable.getInstance().addObserver(this);
 	}
 
 	@Override
 	public void dispose() {
-		getSite().getPage().removePartListener(this);
+		getSite().getPage().removePartListener(IblResourceObservable.getInstance());
+		IblResourceObservable.getInstance().deleteObserver(this);
 	}
 
 	protected void updateUi() {
@@ -425,8 +400,12 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		if (currentIblResource != null) {
 
-			VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
-			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource, verificationType);
+			VerificationType verificationType = (VerificationType) ddlVerificationType
+					.getData(ddlVerificationType.getText());
+			ModelcheckingTarget modelcheckingTarget = (ModelcheckingTarget) ddlModelChecker
+					.getData(ddlModelChecker.getText());
+			propertyTreeData = ModelcheckingUtil.getInstance().getPropertyTreeData(currentIblResource, verificationType,
+					modelcheckingTarget);
 
 			if (propertyTreeData != null) {
 				ctvPropertyTreeViewer.setInput(propertyTreeData);
@@ -662,21 +641,24 @@ public class MainView extends ViewPart implements IPartListener2 {
 		widgetValue = WidgetProperties.selection().observe(ddlVerificationType);
 		modelValue = BeanProperties.value(Configuration.class, "verificationType").observe(config);
 
+		// modelchecking target widget
+		widgetValue = WidgetProperties.selection().observe(ddlModelChecker);
+		modelValue = BeanProperties.value(Configuration.class, "modelcheckingTarget").observe(config);
+
 		strategy = new UpdateValueStrategy();
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 	}
 
 	private void ensureConfig() {
-		if (config == null) {
-			config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
-		}
+		config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
 	}
 
 	private void exportVerificationModel() {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
-		final VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator, config.getDataFile());
+		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
+		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
+				config.getDataFile());
 
 		IRunnableWithProgress exportTask = new IRunnableWithProgress() {
 			@Override
@@ -690,12 +672,10 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 
-							List<ModelcheckingTarget> targets = FilteringManager.getInstance().getModelcheckingTargets(property);
-							ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(targets, verificationType);
-
 							String exportFilename = String.format("%s%s", filename, ++exportIndex);
 
-							VerificationManager.getInstance().export(propertyTreeData.model, property, target, exportFilename);
+							VerificationManager.getInstance().export(propertyTreeData.model, property, target,
+									exportFilename);
 						}
 					}
 				} catch (IOException e) {
@@ -717,7 +697,7 @@ public class MainView extends ViewPart implements IPartListener2 {
 	private void performModelChecking() {
 
 		final Object[] selectedPropertyPairs = ctvPropertyTreeViewer.getCheckedElements();
-		final VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
+		final ModelcheckingTarget target = (ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText());
 
 		final String filename = config.getDataFile();
 
@@ -747,9 +727,6 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 
-							List<ModelcheckingTarget> targets = FilteringManager.getInstance().getModelcheckingTargets(property);
-							ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(targets, verificationType);
-
 							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
 							IModelcheckingConfiguration config = null;
 
@@ -778,36 +755,29 @@ public class MainView extends ViewPart implements IPartListener2 {
 								break;
 							}
 
-							final Process verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target,
-									config);
+							final Process verificationProcess = runningProcess = VerificationManager.getInstance()
+									.verify(propertyTreeData.model, property, target, config);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
 
 									try {
 
-										BufferedReader in = new BufferedReader(new InputStreamReader(verificationProcess.getInputStream()));
-										BufferedReader err = new BufferedReader(new InputStreamReader(verificationProcess.getErrorStream()));
-										BufferedWriter fileStream = new BufferedWriter(new PrintWriter(exportFileName + ".result"));
+										BufferedReader in = new BufferedReader(
+												new InputStreamReader(verificationProcess.getInputStream()));
+										BufferedReader err = new BufferedReader(
+												new InputStreamReader(verificationProcess.getErrorStream()));
 
 										String part = null;
 										while ((part = in.readLine()) != null) {
-											fileStream.write(part);
-											fileStream.newLine();
 											consoleStream.println(part);
-											fileStream.flush();
 										}
 										in.close();
 
 										while ((part = err.readLine()) != null) {
-											fileStream.write(part);
-											fileStream.newLine();
 											consoleStream.println(part);
-											fileStream.flush();
 										}
 										err.close();
-
-										fileStream.close();
 
 									} catch (IOException e) {
 										verificationProcess.destroy();
@@ -842,7 +812,8 @@ public class MainView extends ViewPart implements IPartListener2 {
 
 		try {
 			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
-			progressDialog.getProgressMonitor().setTaskName("Performing verification for the " + config.modelName + " model...");
+			progressDialog.getProgressMonitor()
+					.setTaskName("Performing verification for the " + config.modelName + " model...");
 			progressDialog.run(true, true, verificationTask);
 		} catch (InvocationTargetException | InterruptedException e) {
 			errorDialogWithStackTrace("Failed verifying the " + config.modelName + " model", e);
@@ -860,40 +831,62 @@ public class MainView extends ViewPart implements IPartListener2 {
 		for (String line : trace.split(System.getProperty("line.separator"))) {
 			childStatuses.add(new Status(IStatus.ERROR, Activator.PLUGIN_ID, line));
 		}
-		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}), t.getLocalizedMessage(), t);
+		MultiStatus ms = new MultiStatus(Activator.PLUGIN_ID, IStatus.ERROR, childStatuses.toArray(new Status[] {}),
+				t.getLocalizedMessage(), t);
 		ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Error", msg, ms);
 	}
 
-	private void handlePropertyItemChecked(List<PropertySemanticEntityPair> checkedPropertyItems) {
+	private void handleModelcheckerChanged() {
+
+		switch ((ModelcheckingTarget) ddlModelChecker.getData(ddlModelChecker.getText())) {
+		case PRISM:
+			toggleControls(prismGroup, true);
+			toggleControls(mc2Group, false);
+			break;
+		case NUSMV:
+			toggleControls(prismGroup, false);
+			toggleControls(mc2Group, false);
+			break;
+		case MC2:
+			toggleControls(mc2Group, true);
+			toggleControls(prismGroup, false);
+			break;
+		}
+
+		parentComposite.layout();
+		updateUi();
+	}
+
+	private void handleVerificationTypeChanged() {
 
 		toggleControls(prismGroup, false);
 		toggleControls(mc2Group, false);
+		ddlModelChecker.removeAll();
 
-		if (checkedPropertyItems != null) {
-			Set<ModelcheckingTarget> targets = new HashSet<>();
+		VerificationType verificationType = (VerificationType) ddlVerificationType
+				.getData(ddlVerificationType.getText());
 
-			for (PropertySemanticEntityPair item : checkedPropertyItems) {
-				List<ModelcheckingTarget> availableTargets = FilteringManager.getInstance().getModelcheckingTargets(item.property);
-				VerificationType verificationType = (VerificationType) ddlVerificationType.getData(ddlVerificationType.getText());
-				ModelcheckingTarget target = ModelcheckingUtil.getInstance().getPreferredTarget(availableTargets, verificationType);
-
-				targets.add(target);
-			}
-
-			for (ModelcheckingTarget target : targets) {
-				switch (target) {
-				case PRISM:
-					toggleControls(prismGroup, true);
-					break;
-				case MC2:
-					toggleControls(mc2Group, true);
-					break;
-				default:
-					break;
-				}
-			}
+		switch (verificationType) {
+		case QUALITATIVE:
+			ddlModelChecker.add("PRISM");
+			ddlModelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
+			ddlModelChecker.add("MC2");
+			ddlModelChecker.setData("MC2", ModelcheckingTarget.MC2);
+			ddlModelChecker.add("NuSMV");
+			ddlModelChecker.setData("NuSMV", ModelcheckingTarget.NUSMV);
+			break;
+		case QUANTITATIVE:
+			ddlModelChecker.add("PRISM");
+			ddlModelChecker.setData("PRISM", ModelcheckingTarget.PRISM);
+			ddlModelChecker.add("MC2");
+			ddlModelChecker.setData("MC2", ModelcheckingTarget.MC2);
+			break;
+		default:
+			break;
 		}
 
+		ddlModelChecker.select(0);
+		handleModelcheckerChanged();
 		parentComposite.layout();
 	}
 
@@ -904,49 +897,21 @@ public class MainView extends ViewPart implements IPartListener2 {
 	}
 
 	@Override
-	public void partDeactivated(IWorkbenchPartReference partRef) {
-		updateUi();
-	}
-
-	@Override
 	public void setFocus() {
-		// Auto-generated method stub
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void partBroughtToTop(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
+	public void update(Observable o, Object arg) {
+		if (IblResourceObservable.getInstance().getCurrentIblResource() != null) {
+			currentIblResource = IblResourceObservable.getInstance().getCurrentIblResource();
+			ensureConfig();
+			bindValues();
 
-	}
-
-	@Override
-	public void partClosed(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partOpened(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partHidden(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partVisible(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
-	}
-
-	@Override
-	public void partInputChanged(IWorkbenchPartReference partRef) {
-		// Auto-generated method stub
-
+			if (currentIblResource.getErrors().size() == 0) {
+				updateUi();
+			}
+		}
 	}
 }
