@@ -66,9 +66,9 @@
          category="roadblock.ibw.ui"
          icon="./icons/import1.png">
          <description> 
-            A simple engine that exports Web project 
+            SBOL Export Wizard
          </description> 
-         <selection class="org.eclipse.core.resources.IProject"/> 
+         <selection class="org.eclipse.xtext.resource.XtextResource" />
       </wizard>
    </extension>
 </plugin>
