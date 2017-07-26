@@ -53,5 +53,22 @@
             name="IBW Biocompilation">
       </perspective>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.exportWizards">
+         <category
+            name="IBW"
+            id="roadblock.ibw.ui">
+      </category>
+      <wizard 
+         id="roadblock.ibw.exports.sbol.sbolExportWizard" 
+         name="SBOL" 
+         class="roadblock.ibw.exports.sbol.SBOLExportWizard" 
+         category="roadblock.ibw.ui"
+         icon="./icons/import1.png">
+         <description> 
+            A simple engine that exports Web project 
+         </description> 
+         <selection class="org.eclipse.core.resources.IProject"/> 
+      </wizard>
+   </extension>
 </plugin>
