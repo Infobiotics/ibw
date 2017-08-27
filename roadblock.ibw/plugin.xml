@@ -71,4 +71,22 @@
          <selection class="org.eclipse.xtext.resource.XtextResource" />
       </wizard>
    </extension>
+      <extension
+         point="org.eclipse.ui.exportWizards">
+         <category
+            name="IBW"
+            id="roadblock.ibw.ui">
+      </category>
+      <wizard 
+         id="roadblock.ibw.exports.sbml.SBMLExportWizard" 
+         name="SBML" 
+         class="roadblock.ibw.exports.sbml.SBMLExportWizard" 
+         category="roadblock.ibw.ui"
+         icon="./icons/import1.png">
+         <description> 
+            SBML Export Wizard
+         </description> 
+         <selection class="org.eclipse.xtext.resource.XtextResource" />
+      </wizard>
+   </extension>
 </plugin>

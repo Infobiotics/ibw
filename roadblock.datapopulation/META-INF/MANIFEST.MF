@@ -12,11 +12,21 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.emf.ecore.util,
+ org.jacop.core,
+ roadblock.emf.bioparts.Bioparts,
  roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util,
  roadblock.xtext.ibl.ibl,
  roadblock.xtext.ibl.ibl.impl,
  roadblock.xtext.ibl.ibl.util
-Export-Package: roadblock.dataprocessing.model,
- roadblock.dataprocessing.flatModel
+Export-Package: org.sbml.jsbml,
+ org.sbolstandard.core2,
+ org.synbiohub.frontend,
+ roadblock.dataprocessing.export,
+ roadblock.dataprocessing.flatModel,
+ roadblock.dataprocessing.model
+Bundle-ClassPath: libSBOLj-2.2.1-withDependencies.jar,
+ .,
+ jsbml-comp-1.0-b1.jar,
+ jsbml-1.3-SNAPSHOT-with-dependencies.jar
 

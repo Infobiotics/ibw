@@ -491,6 +491,32 @@ class ModelBuilder extends IblSwitch<Object> {
 			device.partList.add(biopart)
 
 		}
+		
+		for (molecule : deviceDefinition.input.entries.map [
+			switch (it) {
+				VariableReference: (it as VariableReference).variable.buildVariableName
+				VariableComplex: (it as VariableComplex).complex.buildVariableName
+			}
+		]) {
+			// create an empty molecule, just for reference. Validation should have ensured that the molecule has already been declared.
+			var inputMolecule = modelFactory.createMolecularSpecies
+			inputMolecule.displayName = molecule
+			device.inputList.add(inputMolecule)
+			
+		}
+
+		for (molecule : deviceDefinition.output.entries.map [
+			switch (it) {
+				VariableReference: (it as VariableReference).variable.buildVariableName
+				VariableComplex: (it as VariableComplex).complex.buildVariableName
+			}
+		]) {
+			// create an empty molecule, just for reference. Validation should have ensured that the molecule has already been declared.
+			var outputMolecule = modelFactory.createMolecularSpecies
+			outputMolecule.displayName = molecule
+			device.outputList.add(outputMolecule)
+			
+		}
 
 		return device
 	}
