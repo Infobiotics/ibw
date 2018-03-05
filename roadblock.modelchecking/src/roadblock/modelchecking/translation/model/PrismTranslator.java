@@ -129,7 +129,7 @@ public class PrismTranslator implements IModelTranslator {
 			if (rule.getForwardRate() != null && rule.getForwardRate() > 0) {
 
 				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
-				ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules));
+				ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules, producedMolecules));
 				ruleTemplate.add("rate", rule.getForwardRate());
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(consumedMolecules, producedMolecules));
 
@@ -141,7 +141,7 @@ public class PrismTranslator implements IModelTranslator {
 			if (rule.isIsBidirectional() && rule.getReverseRate() != null && rule.getReverseRate() > 0) {
 
 				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
-				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules));
+				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules, consumedMolecules));
 				ruleTemplate.add("rate", rule.getReverseRate());
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(producedMolecules, consumedMolecules));
 
@@ -152,11 +152,11 @@ public class PrismTranslator implements IModelTranslator {
 		return translatedRules;
 	}
 
-	private String getTranslatedRuleGuard(Map<String, Integer> consumedMolecules) {
+	private String getTranslatedRuleGuard(Map<String, Integer> consumedMolecules, Map<String, Integer> producedMolecules) {
 
 		String ruleGuardTranslation = "true";
 
-		if (consumedMolecules.size() > 0) {
+		if (consumedMolecules.size() > 0 && producedMolecules.size() > 0) {
 
 			ST ruleGuardTemplate = prismTemplates.getInstanceOf("ruleGuard");
 
