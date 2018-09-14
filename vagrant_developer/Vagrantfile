@@ -1,0 +1,15 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  
+  config.vm.box = "halvards/lubuntu1604"
+  config.vm.box_version = "20160611.0.0"
+
+  print "Username for Roadblock: "
+  username = STDIN.gets.chomp
+  print "Password for Roadblock: "
+  password = STDIN.gets.chomp
+  config.vm.provision "shell", keep_color: true, path: "provision_env.sh", :args => [username, password]
+
+end
