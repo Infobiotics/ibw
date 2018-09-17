@@ -50,3 +50,5 @@ roadblock.datapopulation/xtend-gen/
 roadblock.biocompiler/xtend-gen/
 roadblock.simulation/xtend-gen/
 
+vagrant_developer/.vagrant/
+vagrat_user/.vagrant/

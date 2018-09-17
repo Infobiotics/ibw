@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   print "Username for Roadblock: "
   username = STDIN.gets.chomp
   print "Password for Roadblock: "
-  password = STDIN.gets.chomp
+  password = STDIN.noecho(&:gets).chomp
   config.vm.provision "shell", keep_color: true, path: "provision_env.sh", :args => [username, password]
 
 end
