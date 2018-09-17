@@ -13,7 +13,7 @@ cd roadblock.xtext
 git checkout develop
 cd ..
 
-wget --progress=bar:force:mega http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/mars/2/eclipse-rcp-mars-2-linux-gtk-x86_64.tar.gz -O eclipse_download.tar.gz
+wget --progress=bar:force http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/mars/2/eclipse-rcp-mars-2-linux-gtk-x86_64.tar.gz -O eclipse_download.tar.gz
 tar -zxf eclipse_download.tar.gz
 rm eclipse_download.tar.gz
 
