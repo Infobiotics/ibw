@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=IBW
+Exec=/home/vagrant/infobiotics/ibw
+Icon=/home/vagrant/ibw_icon.png
+Terminal=false
+Type=Application
+Categories=Utility;Application;

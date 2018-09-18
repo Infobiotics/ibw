@@ -12,9 +12,19 @@
 `$ cd vagrant_developer`  
 `$ vagrant up`
 
-## Usage
+## Launch
 `$ cd vagrant_[role]`  
-`$ vagrant up`
+`$ vagrant up`  
+
+Click on the corresponding desktop shortcut for access to either the Eclipse workbench IBW code (developer) or the IBW workbench (user) itself.  
+
+## Shutdown
+`$ vagrant halt`  
+
+## Troubleshooting
+If any part of the launch process breaks, consider reprovisioning the machine by first destroying the current Vagrant resources and then relaunching the setup.  
+`$ vagrant destroy`  
+`$ vagrant up`  
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -24,10 +24,6 @@ wget --progress=bar:force http://www.eclipse.org/downloads/download.php?file=/te
 tar -zxf eclipse_download.tar.gz
 rm eclipse_download.tar.gz
 
-git clone https://github.com/seeq12/eclipse-import-projects-plugin.git
-cp eclipse-import-projects-plugin/jar/* eclipse/plugins 
-rm -rf eclipse-import-projects-plugin
-
 cd eclipse
 ./eclipse -noSplash -application org.eclipse.equinox.p2.director \
 -repository \
@@ -47,5 +43,7 @@ org.eclipse.cdt,\
 org.eclipse.cdt.managedbuilder.core
 
 ./eclipse -noSplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
--data ../ibw_workspace \
--importAll ../roadblock.xtext 
+-data ../workspace \
+-importAll ../roadblock.xtext
+
+chown -R vagrant: ../workspace 
