@@ -10,6 +10,8 @@ Vagrant.configure("2") do |config|
   username = STDIN.gets.chomp
   print "Password for Roadblock: "
   password = STDIN.noecho(&:gets).chomp
+
+  config.vm.provision "file", source: "./eclipse.desktop", destination: "./Desktop/eclipse.desktop"
   config.vm.provision "shell", keep_color: true, path: "provision_env.sh", :args => [username, password]
 
 end

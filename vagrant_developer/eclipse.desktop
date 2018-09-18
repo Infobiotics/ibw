@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Eclipse
+Exec=/home/vagrant/eclipse/eclipse
+Icon=/home/vagrant/eclipse/icon.xpm
+Terminal=false
+Type=Application
+Categories=Utility;Application;
