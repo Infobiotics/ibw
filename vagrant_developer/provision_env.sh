@@ -5,11 +5,15 @@ USERNAME=$1
 PASSWORD=$2
 
 sudo apt-get update
-sudo apt-get -y install git
-sudo apt-get install -y python-software-properties debconf-utils
+sudo apt-get install -y git python-software-properties debconf-utils software-properties-common
+export http_proxy="http://username:password@proxy:port/"
+export https_proxy="https://username:password@proxy:port/"
 sudo add-apt-repository -y ppa:webupd8team/java
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
-sudo apt-get install -y oracle-java8-installer
+sudo apt-get update
+sudo apt-get install -y --allow-unauthenticated oracle-java8-installer
+unset http_proxy
+unset https_proxy
 
 git clone https://$USERNAME:$PASSWORD@code.ico2s.org/roadblock.xtext
 cd roadblock.xtext
