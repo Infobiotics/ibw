@@ -13,16 +13,17 @@
 `$ vagrant up`
 
 ## Launch
+Launch the START executable in a Vagrant IBW directory or execute the following commands from the base of the repository.
 `$ cd vagrant_[role]`  
 `$ vagrant up`  
 
 Click on the corresponding desktop shortcut for access to either the Eclipse workbench IBW code (developer) or the IBW workbench (user) itself.  
 
 ## Shutdown
-`$ vagrant halt`  
+`$ vagrant halt`
 
 ## Troubleshooting
-If any part of the launch process breaks, consider reprovisioning the machine by first destroying the current Vagrant resources and then relaunching the setup.  
+If any part of the launch process breaks, a complete Vagrant reset can be accomplished by executing the following comands in either Vagrant IBW directory.  
 `$ vagrant destroy`  
 `$ vagrant up`  
 
