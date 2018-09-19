@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
+# Information to clone IBW remote repo
 USERNAME=$1
 PASSWORD=$2
 
+# Headless installation of Oracle's Java 8
 sudo apt-get update
 sudo apt-get install -y git python-software-properties debconf-utils software-properties-common
 export http_proxy="http://username:password@proxy:port/"
@@ -15,16 +17,19 @@ sudo apt-get install -y --allow-unauthenticated oracle-java8-installer
 unset http_proxy
 unset https_proxy
 
+# Clone IBW repository
 git clone https://$USERNAME:$PASSWORD@code.ico2s.org/roadblock.xtext
 cd roadblock.xtext
 git checkout develop
 cd ..
 
+# Download Eclipse
 wget --progress=bar:force http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/mars/2/eclipse-rcp-mars-2-linux-gtk-x86_64.tar.gz -O eclipse_download.tar.gz
 tar -zxf eclipse_download.tar.gz
 rm eclipse_download.tar.gz
 
 cd eclipse
+# Install necessary Eclipse plugins
 ./eclipse -noSplash -application org.eclipse.equinox.p2.director \
 -repository \
 http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/,\
@@ -42,8 +47,11 @@ de.itemis.xtext.antlr.sdk.feature.group/2.1.1.v201405091103,\
 org.eclipse.cdt,\
 org.eclipse.cdt.managedbuilder.core
 
+# Import IBW project into Eclipse
 ./eclipse -noSplash -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
 -data ../workspace \
 -importAll ../roadblock.xtext
 
-chown -R vagrant: ../workspace 
+# Change ownership of directories from root to vagrant
+chown -R vagrant: ../workspace
+chown -R vagrant: ../roadblock.xtext
