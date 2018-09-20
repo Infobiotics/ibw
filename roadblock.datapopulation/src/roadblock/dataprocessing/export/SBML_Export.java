@@ -37,6 +37,21 @@ import roadblock.emf.ibl.Ibl.RateUnit;
 import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.Rule;
 
+/**
+ * SBML_Export implements the core functionality for converting IBL models to SBML.
+ *
+ * A SBML Model is created for every Region, Cell, and Device in the IBL Model, and
+ * Compartments are created for every Cell and Device. MolecularSpecies are defined
+ * by SBML Species, and all units are expressed in discrete "items". Any IBL unit
+ * of mole or variant on mole is automatically converted to "items". Rules are
+ * defined through Reactions driven by an underlying Kinetic Law. The volume of
+ * every Compartment in IBW is by default defined to be 1 fL, which is the volume
+ * measurement that our SBML conversion mechanism also uses. The Cell Compartment
+ * replaces each of its Device compartments, and Species defined in the Cell
+ * Compartment replace its corresponding input and output Species in the Device
+ * Compartments. Replacements and the hierarchical model structure are achieved with
+ * the SBML Comp extension package.
+ */
 public class SBML_Export {
 
 	// Helper marker for uniqifying display IDs via incrementation

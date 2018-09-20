@@ -36,6 +36,18 @@ import roadblock.emf.ibl.Ibl.MolecularSpecies;
 import roadblock.emf.ibl.Ibl.Region;
 import roadblock.emf.ibl.Ibl.Rule;
 
+/**
+ * SBOL_Export implements the core functionality for converting IBL models to SBOL.
+ * 
+ * During the conversion process, a SBOL ModelDefinition is created for every
+ * Region, Cell, and Device in the IBL model. Each IBL MolecularSpecies is defined
+ * via ComponentDefinitions and instantiated via FunctionalComponents, and Device
+ * input and output MolecularSpecies are mapped to their ComponentDefinition within
+ * the overall Cell. For each IBW DNA molecule, its subparts are defined by
+ * ComponentDefinitions and instantiated as Components in the overall DNA
+ * ComponentDefinition. Their sequences are captured by SequenceAnnotations.
+ * Interactions are defined between DNA molecules and their regulators and products.
+ */
 public class SBOL_Export {
 
 	// Helper marker for uniqifying display IDs via incrementation
