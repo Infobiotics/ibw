@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "halvards/lubuntu1604"
   config.vm.box_version = "20160611.0.0"
   config.vm.provider :virtualbox do |vb|
-    vb.name = "ibw-lubuntu"
+    vb.name = "ibw-dev"
   end
 
   print "Username for Roadblock: "
