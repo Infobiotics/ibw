@@ -23,6 +23,7 @@ Import-Package: org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.impl,
  roadblock.bin,
  roadblock.dataprocessing.flatModel,
+ roadblock.dataprocessing.util,
  roadblock.emf.ibl.Ibl,
  roadblock.emf.ibl.Ibl.util
 Bundle-ClassPath: lib/ST-4.0.8.jar,
