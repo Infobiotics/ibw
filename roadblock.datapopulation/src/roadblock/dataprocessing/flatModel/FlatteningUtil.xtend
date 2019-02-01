@@ -117,7 +117,7 @@ public class FlatteningUtil {
 
 					var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(lhsMolecule.displayName);
 
-					if(molecule != null) {
+					if(molecule !== null) {
 						lhsMolecules.add(EcoreUtil.copy(molecule));
 					}
 
@@ -125,7 +125,7 @@ public class FlatteningUtil {
 
 						molecule = flatMoleculesByCompartment.get(parentCompartment).get(lhsMolecule.displayName);
 
-						if(molecule != null) {
+						if(molecule !== null) {
 							rhsMolecules.add(EcoreUtil.copy(molecule));
 						}
 					}
@@ -138,7 +138,7 @@ public class FlatteningUtil {
 
 					var molecule = flatMoleculesByCompartment.get(ruleCompartment).get(rhsMolecule.getDisplayName());
 
-					if(molecule != null) {
+					if(molecule !== null) {
 						rhsMolecules.add(EcoreUtil.copy(molecule));
 					}
 
@@ -146,7 +146,7 @@ public class FlatteningUtil {
 
 						molecule = flatMoleculesByCompartment.get(parentCompartment).get(rhsMolecule.getDisplayName());
 
-						if(molecule != null) {
+						if(molecule !== null) {
 							lhsMolecules.add(EcoreUtil.copy(molecule));
 						}
 					}
@@ -159,23 +159,23 @@ public class FlatteningUtil {
 			clonedRule.rightHandSide.clear();
 			clonedRule.rightHandSide.addAll(rhsMolecules);
 
-			if(clonedRule.forwardRateUnit != null) {
-				clonedRule.forwardRate = UnitConverter::getInstance().getBaseRate(clonedRule.forwardRate, clonedRule.forwardRateUnit);
+			if(clonedRule.forwardRateUnit !== null) {
+				clonedRule.forwardRate = UnitConverter::getInstance().getBaseRate(clonedRule.forwardRate, clonedRule.forwardRateUnit, clonedRule.leftHandSide);
 				clonedRule.forwardRateUnit = IblFactory::eINSTANCE.createRateUnit;
 			}
 
-			if(clonedRule.reverseRateUnit != null) {
-				clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate, clonedRule.reverseRateUnit);
+			if(clonedRule.reverseRateUnit !== null) {
+				clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate, clonedRule.reverseRateUnit, clonedRule.leftHandSide);
 				clonedRule.reverseRateUnit = IblFactory::eINSTANCE.createRateUnit;
 			}
 
 			// eliminate rules with no specified or zero rates		
 			if(clonedRule.isIsBidirectional) {
-				if ((clonedRule.forwardRate != null && clonedRule.forwardRate > 0) || (clonedRule.reverseRate != null && clonedRule.reverseRate > 0)) {
+				if ((clonedRule.forwardRate !== null && clonedRule.forwardRate > 0) || (clonedRule.reverseRate !== null && clonedRule.reverseRate > 0)) {
 					flatRules.add(clonedRule);
 				}
 			}
-			else if (clonedRule.forwardRate != null && clonedRule.forwardRate > 0) {
+			else if (clonedRule.forwardRate !== null && clonedRule.forwardRate > 0) {
 				flatRules.add(clonedRule);
 			}
 		}

@@ -1,6 +1,9 @@
 package roadblock.dataprocessing.util;
 
+import java.util.List;
+
 import roadblock.emf.ibl.Ibl.ConcentrationUnit;
+import roadblock.emf.ibl.Ibl.MolecularSpecies;
 import roadblock.emf.ibl.Ibl.RateConcentrationUnit;
 import roadblock.emf.ibl.Ibl.RateTimeUnit;
 import roadblock.emf.ibl.Ibl.RateUnit;
@@ -70,7 +73,7 @@ public class UnitConverter {
 		return newAmount;
 	}
 
-	public Double getBaseRate(Double amount, RateUnit unit) {
+	public Double getBaseRate(Double amount, RateUnit unit, List<MolecularSpecies> reactants) {
 
 		Double newAmount = amount;
 
@@ -81,8 +84,6 @@ public class UnitConverter {
 
 			if (unit.getRateConcentrationUnit() != RateConcentrationUnit.PER_MOLECULE) {
 
-				double v = 1e-15;
-				double n = 6.02214179e23;
 				double weight = 1;
 
 				switch (unit.getRateConcentrationUnit()) {
@@ -109,8 +110,10 @@ public class UnitConverter {
 					break;
 				}
 
-				newAmount = newAmount / v / n / weight;
+				newAmount = newAmount / weight;
 			}
+			
+			newAmount = PropensityUtil.getInstance().computeStoichiometricRateConstant(reactants, newAmount);
 		}
 
 		return newAmount;

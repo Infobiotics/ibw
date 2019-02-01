@@ -130,7 +130,7 @@ public class PrismTranslator implements IModelTranslator {
 
 				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
 				ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules, producedMolecules));
-				ruleTemplate.add("rate", rule.getForwardRate());
+				ruleTemplate.add("rate", PropensityUtil.getInstance().computePropensity(rule.getLeftHandSide(), rule.getForwardRate()));
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(consumedMolecules, producedMolecules));
 
 				translatedRules.add(ruleTemplate.render());
@@ -142,7 +142,7 @@ public class PrismTranslator implements IModelTranslator {
 
 				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
 				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules, consumedMolecules));
-				ruleTemplate.add("rate", rule.getReverseRate());
+				ruleTemplate.add("rate", PropensityUtil.getInstance().computePropensity(rule.getLeftHandSide(), rule.getReverseRate()));
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(producedMolecules, consumedMolecules));
 
 				translatedRules.add(ruleTemplate.render());

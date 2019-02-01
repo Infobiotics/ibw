@@ -23,7 +23,6 @@ Import-Package: org.eclipse.ui.console,
  org.sbolstandard.core2,
  roadblock.biocompiler,
  roadblock.caching,
- roadblock.dataprocessing.export,
  roadblock.emf.bioparts.Bioparts,
  roadblock.emf.ibl.Ibl,
  roadblock.resource

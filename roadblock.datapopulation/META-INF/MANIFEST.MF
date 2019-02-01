@@ -19,14 +19,7 @@ Import-Package: org.eclipse.emf.ecore.util,
  roadblock.xtext.ibl.ibl,
  roadblock.xtext.ibl.ibl.impl,
  roadblock.xtext.ibl.ibl.util
-Export-Package: org.sbml.jsbml,
- org.sbolstandard.core2,
- org.synbiohub.frontend,
- roadblock.dataprocessing.export,
- roadblock.dataprocessing.flatModel,
+Export-Package: roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model
-Bundle-ClassPath: libSBOLj-2.2.1-withDependencies.jar,
- .,
- jsbml-comp-1.0-b1.jar,
- jsbml-1.3-SNAPSHOT-with-dependencies.jar
+Bundle-ClassPath: .
 

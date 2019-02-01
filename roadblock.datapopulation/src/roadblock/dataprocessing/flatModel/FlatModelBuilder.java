@@ -585,12 +585,12 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			clonedRule.getRightHandSide().addAll(rhsMolecules);
 
 			if (clonedRule.getForwardRate() != null && clonedRule.getForwardRateUnit() != null) {
-				clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit()));
+				clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit(), clonedRule.getLeftHandSide()));
 				clonedRule.setForwardRateUnit(IblFactory.eINSTANCE.createRateUnit());
 			}
 
 			if (clonedRule.getReverseRate() != null && clonedRule.getReverseRateUnit() != null) {
-				clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit()));
+				clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit(), clonedRule.getLeftHandSide()));
 				clonedRule.setReverseRateUnit(IblFactory.eINSTANCE.createRateUnit());
 			}
 
