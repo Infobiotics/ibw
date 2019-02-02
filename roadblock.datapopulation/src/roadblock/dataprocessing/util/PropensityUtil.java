@@ -1,8 +1,11 @@
 package roadblock.dataprocessing.util;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.math3.util.CombinatoricsUtils;
 
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
 
@@ -34,7 +37,7 @@ public class PropensityUtil {
 			int n = totalAmountByReactant.get(reactant).intValue();
 			int v = stoichiometryByReactant.get(reactant);
 			
-			reactionFactor *= computeFactorial(n) / (computeFactorial(v) * computeFactorial(n - v));
+			reactionFactor *= CombinatoricsUtils.binomialCoefficient(n, v);
 		}
 		
 		return reactionFactor;
@@ -50,7 +53,7 @@ public class PropensityUtil {
 		
 		double stoichiometricRate = 1;
 		for(int stoichiometry : stoichiometryByReactant.values())
-			stoichiometricRate *= computeFactorial(stoichiometry);
+			stoichiometricRate *= CombinatoricsUtils.factorial(stoichiometry);
 		
 		stoichiometricRate *= kineticRate / v;
 		
@@ -87,13 +90,6 @@ public class PropensityUtil {
 		return sum;
 	}
 	
-	private long computeFactorial(int n) {
-		long fact = 1;
-		for(int i = 2; i <= n; i++)
-			fact *= i;
-		
-		return fact;
-	}
 	
 	private PropensityUtil() {
 	}

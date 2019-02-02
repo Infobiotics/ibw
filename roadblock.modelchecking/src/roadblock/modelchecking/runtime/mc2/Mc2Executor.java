@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
@@ -28,7 +30,8 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 	private TranslationManager translationManager = TranslationManager.getInstance();
 
 	@Override
-	public void export(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException {
+	public void export(Model model, IProperty property, ModelcheckingTarget target, String filename)
+			throws IOException {
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
 
@@ -39,7 +42,8 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 	}
 
 	@Override
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, Mc2Configuration config) throws IOException, InterruptedException {
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, Mc2Configuration config)
+			throws IOException, InterruptedException {
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
@@ -48,16 +52,19 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 
 		String ngssPath = BinaryPathProvider.getInstance().getNgssPath();
-		String mc2Directory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification", File.separator, "mc2", File.separator);
+		String mc2Directory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification",
+				File.separator, "mc2", File.separator);
 		String workspacePath = Platform.getLocation().toString() + mc2Directory;
 		String mc2Path = BinaryPathProvider.getInstance().getMc2Path();
 
 		String simulationFileName = workspacePath + config.modelFileName + ".csv";
 		String propertiesFileName = workspacePath + config.modelFileName + ".queries";
 
-		String[] simulationCommand = new String[] { ngssPath, workspacePath, Double.toString(config.maxTime), "0.0", config.simulationAlgorithm, simulationFileName,
-				Double.toString(config.logInterval), Long.toString(config.runs), "0" };
-		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName, propertiesFileName, "-time" };
+		String[] simulationCommand = new String[] { ngssPath, workspacePath, Double.toString(config.maxTime), "0.0",
+				config.simulationAlgorithm, simulationFileName, Double.toString(config.logInterval),
+				Long.toString(config.runs), "0" };
+		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName,
+				propertiesFileName, "-time" };
 
 		runSimulation(simulationCommand, xmlFlatModel, workspacePath, simulationFileName);
 
@@ -68,7 +75,8 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		return verificationProcess;
 	}
 
-	private Process runSimulation(String[] command, String xmlFlatModel, String workspacePath, String simulationFileName) throws IOException, InterruptedException {
+	private Process runSimulation(String[] command, String xmlFlatModel, String workspacePath,
+			String simulationFileName) throws IOException, InterruptedException {
 
 		Process simulationProcess = Runtime.getRuntime().exec(command);
 
@@ -84,25 +92,38 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		File simulationDirectory = new File(workspacePath + "/-rundata");
 		File[] simulationRunFiles = simulationDirectory.listFiles();
 
-		Writer writer = new PrintWriter(simulationFileName);
-		CSVWriter csvWriter = new CSVWriter(writer, ' ', CSVWriter.NO_QUOTE_CHARACTER);
-
 		if (simulationRunFiles.length > 0) {
 			File run0File = simulationRunFiles[0];
+
+			Writer writer = new PrintWriter(simulationFileName);
+			CSVWriter csvWriter = new CSVWriter(writer, ' ', CSVWriter.NO_QUOTE_CHARACTER);
+
 			CSVReader csvReader = new CSVReader(new FileReader(run0File), ',');
-			csvWriter.writeAll(csvReader.readAll());
+
+			String[] entries = null;
+			while ((entries = csvReader.readNext()) != null) {
+				ArrayList<String> list = new ArrayList<String>();
+				list.add("0");
+				list.addAll(Arrays.asList(entries));
+				csvWriter.writeNext(list.toArray(new String[] {}));
+			}
 			csvReader.close();
 
 			for (int i = 1; i < simulationRunFiles.length; i++) {
 				File runFile = simulationRunFiles[i];
 				csvReader = new CSVReader(new FileReader(runFile), ',', CSVWriter.NO_QUOTE_CHARACTER, 1);
-				csvWriter.writeAll(csvReader.readAll());
+				while ((entries = csvReader.readNext()) != null) {
+					ArrayList<String> list = new ArrayList<String>();
+					list.add("0");
+					list.addAll(Arrays.asList(entries));
+					csvWriter.writeNext(list.toArray(new String[] {}));
+				}
 				csvReader.close();
 			}
-		}
 
-		csvWriter.close();
-		writer.close();
+			csvWriter.close();
+			writer.close();
+		}
 
 		return simulationProcess;
 	}

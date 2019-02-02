@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupFile;
 
-import roadblock.dataprocessing.util.PropensityUtil;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.MolecularSpecies;
@@ -22,7 +22,8 @@ import roadblock.modelchecking.ModelcheckingTarget;
 
 public class PrismTranslator implements IModelTranslator {
 
-	private static STGroup prismTemplates = new STGroupFile(PrismTranslator.class.getResource("templates/PRISM.stg").getFile());
+	private static STGroup prismTemplates = new STGroupFile(
+			PrismTranslator.class.getResource("templates/PRISM.stg").getFile());
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();
@@ -50,8 +51,9 @@ public class PrismTranslator implements IModelTranslator {
 		modelTemplate.add("name", "PRISMModel");
 		modelTemplate.add("rules", getTranslatedRules(model));
 		modelTemplate.add("molecules", getTranslatedMolecules(model));
-		modelTemplate.add("rewards", property != null && property instanceof RewardProperty ? getTranslatedReward((RewardProperty) property)
-				: "// n/a");
+		modelTemplate.add("rewards",
+				property != null && property instanceof RewardProperty ? getTranslatedReward((RewardProperty) property)
+						: "// n/a");
 
 		return modelTemplate.render();
 	}
@@ -130,8 +132,9 @@ public class PrismTranslator implements IModelTranslator {
 			if (rule.getForwardRate() != null && rule.getForwardRate() > 0) {
 
 				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
-				ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules, producedMolecules));
-				ruleTemplate.add("rate", PropensityUtil.getInstance().computePropensity(rule.getLeftHandSide(), rule.getForwardRate()));
+				ruleTemplate.add("guard", getTranslatedRuleGuard(consumedMolecules));
+				ruleTemplate.add("rate", getTranslatedPropensity(new TreeMap<String, Integer>(consumedMolecules),
+						rule.getForwardRate()));
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(consumedMolecules, producedMolecules));
 
 				translatedRules.add(ruleTemplate.render());
@@ -142,8 +145,9 @@ public class PrismTranslator implements IModelTranslator {
 			if (rule.isIsBidirectional() && rule.getReverseRate() != null && rule.getReverseRate() > 0) {
 
 				ST ruleTemplate = prismTemplates.getInstanceOf("rule");
-				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules, consumedMolecules));
-				ruleTemplate.add("rate", PropensityUtil.getInstance().computePropensity(rule.getLeftHandSide(), rule.getReverseRate()));
+				ruleTemplate.add("guard", getTranslatedRuleGuard(producedMolecules));
+				ruleTemplate.add("rate", getTranslatedPropensity(new TreeMap<String, Integer>(producedMolecules),
+						rule.getForwardRate()));
 				ruleTemplate.add("updates", getTranslatedRuleUpdates(producedMolecules, consumedMolecules));
 
 				translatedRules.add(ruleTemplate.render());
@@ -153,11 +157,11 @@ public class PrismTranslator implements IModelTranslator {
 		return translatedRules;
 	}
 
-	private String getTranslatedRuleGuard(Map<String, Integer> consumedMolecules, Map<String, Integer> producedMolecules) {
+	private String getTranslatedRuleGuard(Map<String, Integer> consumedMolecules) {
 
 		String ruleGuardTranslation = "true";
 
-		if (consumedMolecules.size() > 0 && producedMolecules.size() > 0) {
+		if (consumedMolecules.size() > 0) {
 
 			ST ruleGuardTemplate = prismTemplates.getInstanceOf("ruleGuard");
 
@@ -171,7 +175,8 @@ public class PrismTranslator implements IModelTranslator {
 		return ruleGuardTranslation;
 	}
 
-	private String getTranslatedRuleUpdates(Map<String, Integer> consumedMolecules, Map<String, Integer> producedMolecules) {
+	private String getTranslatedRuleUpdates(Map<String, Integer> consumedMolecules,
+			Map<String, Integer> producedMolecules) {
 
 		String ruleUpdatesTranslation = "";
 
@@ -208,7 +213,8 @@ public class PrismTranslator implements IModelTranslator {
 			ST ruleMoleculeConsumptionTemplate = prismTemplates.getInstanceOf("ruleMoleculeConsumption");
 
 			for (Entry<String, Integer> molecule : consumed.entrySet()) {
-				ruleMoleculeConsumptionTemplate.addAggr("molecules.{name, multiplicity}", molecule.getKey(), molecule.getValue());
+				ruleMoleculeConsumptionTemplate.addAggr("molecules.{name, multiplicity}", molecule.getKey(),
+						molecule.getValue());
 			}
 
 			ruleUpdatesTranslation += ruleMoleculeConsumptionTemplate.render();
@@ -220,7 +226,8 @@ public class PrismTranslator implements IModelTranslator {
 			ST ruleMoleculeProductionTemplate = prismTemplates.getInstanceOf("ruleMoleculeProduction");
 
 			for (Entry<String, Integer> molecule : produced.entrySet()) {
-				ruleMoleculeProductionTemplate.addAggr("molecules.{name, multiplicity}", molecule.getKey(), molecule.getValue());
+				ruleMoleculeProductionTemplate.addAggr("molecules.{name, multiplicity}", molecule.getKey(),
+						molecule.getValue());
 			}
 
 			if (!ruleUpdatesTranslation.equals("")) {
@@ -240,6 +247,60 @@ public class PrismTranslator implements IModelTranslator {
 		rewardTemplate.add("molecule", property.getVariable().getName());
 
 		return rewardTemplate.render();
+	}
+
+	private String getTranslatedPropensity(TreeMap<String, Integer> consumedMolecules, double rate) {
+
+		ST propensityTemplate = prismTemplates.getInstanceOf("propensity");
+
+		// if first-order reaction
+		if (consumedMolecules.size() == 1) {
+			Map.Entry<String, Integer> moleculeX = consumedMolecules.entrySet().iterator().next();
+
+			switch (moleculeX.getValue()) {
+			case 1:
+				propensityTemplate = prismTemplates.getInstanceOf("xPropensity");
+				break;
+			case 2:
+				propensityTemplate = prismTemplates.getInstanceOf("xxPropensity");
+				break;
+			case 3:
+				propensityTemplate = prismTemplates.getInstanceOf("xxxPropensity");
+				break;
+			}
+
+			propensityTemplate.add("moleculeX", moleculeX.getKey());
+		}
+		// if second-order reaction
+		else if (consumedMolecules.size() == 2) {
+			Map.Entry<String, Integer> moleculeY = consumedMolecules.entrySet().iterator().next();
+			Map.Entry<String, Integer> moleculeX = consumedMolecules.entrySet().iterator().next();
+
+			if (moleculeX.getValue() == 1) {
+				propensityTemplate = prismTemplates.getInstanceOf("xyPropensity");
+			} else {
+				propensityTemplate = prismTemplates.getInstanceOf("xxyPropensity");
+			}
+
+			propensityTemplate.add("moleculeX", moleculeX.getKey());
+			propensityTemplate.add("moleculeY", moleculeY.getKey());
+
+		}
+		// if third-order reaction
+		else if (consumedMolecules.size() == 3) {
+			Map.Entry<String, Integer> moleculeX = consumedMolecules.entrySet().iterator().next();
+			Map.Entry<String, Integer> moleculeY = consumedMolecules.entrySet().iterator().next();
+			Map.Entry<String, Integer> moleculeZ = consumedMolecules.entrySet().iterator().next();
+
+			propensityTemplate = prismTemplates.getInstanceOf("xxyPropensity");
+			propensityTemplate.add("moleculeX", moleculeX.getKey());
+			propensityTemplate.add("moleculeY", moleculeY.getKey());
+			propensityTemplate.add("moleculeZ", moleculeZ.getKey());
+		}
+
+		propensityTemplate.add("rate", rate);
+
+		return propensityTemplate.render();
 	}
 
 	private String getTranslatedName(MolecularSpecies molecule) {

@@ -19,6 +19,7 @@ Export-Package: au.com.bytecode.opencsv,
  org.apache.commons.io.input,
  org.apache.commons.io.monitor,
  org.apache.commons.io.output,
+ org.apache.commons.math3.util,
  org.csstudio.swt.widgets.datadefinition,
  org.csstudio.swt.widgets.figureparts,
  org.csstudio.swt.widgets.figures,
@@ -83,4 +84,5 @@ Bundle-ClassPath: resources/swt-xy-graph/org.csstudio.swt.widgets_2.1.0.20120912
  resources/commons-io-2.4.jar,
  resources/mc2.jar,
  resources/jsbml-comp-1.0-b1.jar,
+ resources/commons-math3-3.6.1.jar,
  .

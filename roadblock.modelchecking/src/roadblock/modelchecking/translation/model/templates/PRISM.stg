@@ -51,3 +51,31 @@ rewards "<molecule>_rew"
     true : <molecule>;
 endrewards
 >>
+
+propensity(rate) ::= <<
+<rate>
+>>
+
+xPropensity(moleculeX, rate) ::= <<
+<rate> * <moleculeX>
+>>
+
+xxPropensity(moleculeX, rate) ::= <<
+<rate> * <moleculeX> * (<moleculeX> - 1) / 2
+>>
+
+xyPropensity(moleculeX, moleculeY, rate) ::= <<
+<rate> * <moleculeX> * <moleculeY>
+>>
+
+xxxPropensity(moleculeX, rate) ::= <<
+<rate> * <moleculeX> * (<moleculeX> - 1) * (<moleculeX> - 2) / 6
+>>
+
+xxyPropensity(moleculeX, moleculeY, rate) ::= <<
+<rate> * <moleculeX> * (<moleculeX> - 1) * <moleculeY> / 2
+>>
+
+xyzPropensity(moleculeX, moleculeY, moleculeZ, rate) ::= <<
+<rate> * <moleculeX> * <moleculeY> * <moleculeZ>
+>>
