@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -95,34 +96,36 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		if (simulationRunFiles.length > 0) {
 			File run0File = simulationRunFiles[0];
 
-			Writer writer = new PrintWriter(simulationFileName);
-			CSVWriter csvWriter = new CSVWriter(writer, ' ', CSVWriter.NO_QUOTE_CHARACTER);
+			Writer fileWriter = new PrintWriter(simulationFileName);
 
 			CSVReader csvReader = new CSVReader(new FileReader(run0File), ',');
 
 			String[] entries = null;
-			while ((entries = csvReader.readNext()) != null) {
-				ArrayList<String> list = new ArrayList<String>();
-				list.add("0");
-				list.addAll(Arrays.asList(entries));
-				csvWriter.writeNext(list.toArray(new String[] {}));
-			}
-			csvReader.close();
 
-			for (int i = 1; i < simulationRunFiles.length; i++) {
+			for (int i = 0; i < simulationRunFiles.length; i++) {
 				File runFile = simulationRunFiles[i];
-				csvReader = new CSVReader(new FileReader(runFile), ',', CSVWriter.NO_QUOTE_CHARACTER, 1);
+				csvReader = new CSVReader(new FileReader(runFile), ',', CSVWriter.NO_QUOTE_CHARACTER, 0);
+				
+				StringWriter memoryWriter = new StringWriter();
+				CSVWriter csvWriter = new CSVWriter(memoryWriter, ' ', CSVWriter.NO_QUOTE_CHARACTER);
+				
 				while ((entries = csvReader.readNext()) != null) {
 					ArrayList<String> list = new ArrayList<String>();
 					list.add("0");
 					list.addAll(Arrays.asList(entries));
 					csvWriter.writeNext(list.toArray(new String[] {}));
 				}
+				
 				csvReader.close();
+				csvWriter.flush();
+				
+				fileWriter.append(memoryWriter.toString());
+				fileWriter.append("\r\n\n");
+				
+				csvWriter.close();
 			}
-
-			csvWriter.close();
-			writer.close();
+			
+			fileWriter.close();
 		}
 
 		return simulationProcess;
