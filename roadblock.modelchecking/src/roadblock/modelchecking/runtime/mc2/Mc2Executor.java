@@ -120,7 +120,7 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 				csvWriter.flush();
 				
 				fileWriter.append(memoryWriter.toString());
-				fileWriter.append("\r\n\n");
+				fileWriter.append("\r\n");
 				
 				csvWriter.close();
 			}
