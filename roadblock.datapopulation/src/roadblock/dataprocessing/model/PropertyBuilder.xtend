@@ -470,7 +470,7 @@ public class PropertyBuilder extends IblSwitch<Object> {
 
 	private def getRelationalOperator(String operator) {
 		switch operator {
-			case "==": RelationalOperator.EQ
+			case "=": RelationalOperator.EQ
 			case "!=": RelationalOperator.NE
 			case "<": RelationalOperator.LT
 			case ">": RelationalOperator.GT
