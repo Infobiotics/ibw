@@ -346,7 +346,7 @@ public class MainView extends ViewPart implements Observer {
 		// XXX refresh project explorer
 		ResultsView resultsView = (ResultsView) getView("roadblock.simulation.ui.views.resultsView");
 		if (resultsView != null) {
-			resultsView.plot();
+			resultsView.plotTrajectories();
 		}
 
 	}

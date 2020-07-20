@@ -1,14 +1,17 @@
 package roadblock.simulation.ui.views;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.csstudio.swt.xygraph.dataprovider.CircularBufferDataProvider;
-import org.csstudio.swt.xygraph.dataprovider.CircularBufferDataProvider.UpdateMode;
 import org.csstudio.swt.xygraph.dataprovider.Sample;
 import org.csstudio.swt.xygraph.figures.ToolbarArmedXYGraph;
 import org.csstudio.swt.xygraph.figures.Trace;
@@ -18,10 +21,11 @@ import org.csstudio.swt.xygraph.figures.XYGraph;
 import org.csstudio.swt.xygraph.linearscale.Range;
 import org.csstudio.swt.xygraph.util.XYGraphMediaFactory;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.draw2d.IClippingStrategy;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -30,10 +34,11 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.Tracker;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.part.ViewPart;
+
+import roadblock.simulation.ui.Activator;
 
 /**
  * ResultsView - The view to display the results of a simulation
@@ -47,6 +52,8 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 * The ID of the view as specified by the extension.
 	 */
 	public static final String ID = "roadblock.simulation.ui.views.resultsView";
+
+	private Browser browser;
 
 	/**
 	 * Parent of this view.
@@ -111,45 +118,49 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 
 		// store the parent composite
 		setParent(parent);
+		browser = new Browser(parent, SWT.NONE);
+
+		//plotTrajectories();
 
 		// create the gui
 		// createGUI();
 
 		// plot the results
-		plot();
+		// plot();
 	}
-
-	/**
-	 * Generate the GUI for interacting with the XYGraph
-	 */
-	/*
-	 * public void createGUI() {
-	 * 
-	 * // create the gui (for interacting with the results view) gui = new
-	 * Group(parent, SWT.RESIZE); gui.setText("Graph"); gui.setEnabled(true);
-	 * gui.setRedraw(true); gui.setData(toolbarArmedXYGraph);
-	 * gui.addListener(SWT.MouseDown, new Listener() {
-	 * 
-	 * public void handleEvent(Event e) {
-	 * 
-	 * Tracker tracker = new Tracker(gui.getParent(), SWT.RESIZE);
-	 * tracker.setStippled(true); Rectangle rect = gui.getBounds();
-	 * tracker.setRectangles(new Rectangle[] { rect }); if(tracker.open()){
-	 * Rectangle after = tracker.getRectangles()[0]; gui.setBounds(after); }
-	 * gui.pack(); tracker.dispose(); } });
-	 * 
-	 * // create and initialise the button states and function, then return it
-	 * Button button = new Button(gui, SWT.WRAP); button.setText("Refresh");
-	 * button.setEnabled(true); button.setLayoutData(new
-	 * GridData(GridData.VERTICAL_ALIGN_BEGINNING)); button.addSelectionListener(new
-	 * SelectionAdapter() {
-	 * 
-	 * @Override public void widgetSelected(SelectionEvent e) { plot(); } }); }
-	 */
 
 	/**
 	 * Plot the generated results
 	 */
+	public void plotTrajectories() {
+
+		// clear all of the trajectories and trace history before loading new data
+		trajectories.clear();
+
+		// get the directory in which the results are stored
+		String resultsDataPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+				+ "/.tmp/simulation/";
+
+		// load the trajectory data from a csv
+		loadCSVData(resultsDataPath + ".output.csv");
+
+		// add traces to the graph
+		try {
+			URL chartTemplateURL = Platform.getBundle(Activator.PLUGIN_ID).getEntry("/resources/charts/line-chart/");
+			String chartTempaltePath = FileLocator.resolve(chartTemplateURL).getPath().trim();
+
+			String chartHtml = FileUtils.readFileToString(new File(chartTempaltePath + "index.htm"), "UTF-8");
+
+			String chartSeries = getChartSeries(trajectories);
+			chartHtml = chartHtml.replace("<ChartDependencyPath>",chartTempaltePath + "../");
+			chartHtml = chartHtml.replace("<ChartSeriesData>", chartSeries);
+
+			browser.setText(chartHtml);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void plot() {
 
 		// if the graph already exists, clean it and remove the species table
@@ -178,7 +189,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 
 		// add traces to the graph
 		plotTrajectories(trajectories);
-		
+
 		// set the range of the X Axis
 		setXAxisRange(trajectories);
 
@@ -264,6 +275,23 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	/**
 	 * Plot a given list of trajectories to the XYGraph.
 	 */
+	public String getChartSeries(ArrayList<Trajectory> trajectories) {
+		StringBuilder seriesBuilder = new StringBuilder();
+
+		seriesBuilder.append("[");
+
+		List<String> dataItems = new ArrayList<>();
+		for (int i = 0; i < trajectories.size(); i++) {
+			dataItems.add(getChartData(trajectories.get(i), i));
+		}
+
+		seriesBuilder.append(String.join(",", dataItems));
+
+		seriesBuilder.append("]");
+
+		return seriesBuilder.toString();
+	}
+
 	public void plotTrajectories(ArrayList<Trajectory> trajectories) {
 		for (Trajectory t : trajectories)
 			plotTrajectory(t);
@@ -290,6 +318,55 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 * @param trajectory
 	 *            The trajectory to be plotted.
 	 */
+	public String getChartData(Trajectory trajectory, int index) {
+		StringBuilder dataBuilder = new StringBuilder();
+
+		dataBuilder.append("{");
+		dataBuilder.append("name: '" + trajectory.species + "',");
+		dataBuilder.append("zIndex: 1,");
+		dataBuilder.append("lineColor: Highcharts.getOptions().colors[" + (index - 1) + "],");
+		dataBuilder.append("marker: { enabled: false },");
+		dataBuilder.append("data: [");
+
+		List<String> points = new ArrayList<>();
+		for (int timeIndex = 0; timeIndex < trajectory.getXValues().size(); timeIndex++) {
+			points.add(
+					"[" + trajectory.getXValues().get(timeIndex) + "," + trajectory.getYValues().get(timeIndex) + "]");
+		}
+
+		dataBuilder.append(String.join(",", points));
+
+		dataBuilder.append("]");
+		dataBuilder.append("},");
+		
+		
+		dataBuilder.append("{");
+		dataBuilder.append("name: '" + trajectory.species + "',");
+		dataBuilder.append("type: 'arearange',");
+		dataBuilder.append("linkedTo: ':previous',");
+		dataBuilder.append("fillOpacity: 0.2,");
+		dataBuilder.append("zIndex: 0,");
+		dataBuilder.append("lineWidth: 0,");
+		dataBuilder.append("color: Highcharts.getOptions().colors[" + (index - 1) + "],");
+		dataBuilder.append("marker: { enabled: false },");
+		dataBuilder.append("data: [");
+
+		List<String> ranges = new ArrayList<>();
+		for (int timeIndex = 0; timeIndex < trajectory.getXValues().size(); timeIndex++) {
+			ranges.add(
+					"[" + trajectory.getXValues().get(timeIndex) + 
+					"," + (trajectory.getYValues().get(timeIndex) - trajectory.getYValuesSD().get(timeIndex) / 2) + 
+					"," + (trajectory.getYValues().get(timeIndex) + trajectory.getYValuesSD().get(timeIndex) / 2) + "]");
+		}
+
+		dataBuilder.append(String.join(",", ranges));
+
+		dataBuilder.append("]");
+		dataBuilder.append("}");
+
+		return dataBuilder.toString();
+	}
+
 	public void plotTrajectory(Trajectory trajectory) {
 
 		// create a trace data provider, which will provide the data to the trace.
@@ -513,7 +590,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 * Update the view
 	 */
 	protected void updateUI() {
-		plot();
+		plotTrajectories();
 	}
 
 	/**
