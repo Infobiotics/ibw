@@ -17,6 +17,7 @@ import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
@@ -42,10 +43,15 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
+import org.sbml.jsbml.SBMLWriter;
 
 import roadblock.caching.ModelCache;
+import roadblock.dataprocessing.export.SBML_Export;
+import roadblock.emf.ibl.Ibl.FlatModel;
+import roadblock.emf.ibl.Ibl.Model;
 import roadblock.resource.IblResourceObservable;
 import roadblock.simulation.ngss.Simulator;
+import roadblock.simulation.ssapredict.SSAPredictManager;
 import roadblock.simulation.ui.Activator;
 import roadblock.simulation.ui.model.Configuration;
 import roadblock.simulation.ui.util.ConfigurationUtil;
@@ -129,10 +135,10 @@ public class MainView extends ViewPart implements Observer {
 
 		// create stochastic simulation algorithm widget
 		Label SSLabel = new Label(parent, SWT.NONE);
-		SSLabel.setText("Simulation algorithm: ");
+		SSLabel.setText("Algorithm: ");
 		SSLabel.setToolTipText("simulation algorithm to use");
 		SSAlgorithm = new Combo(parent, SWT.NONE);
-		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
 		SSAlgorithm.add("Direct Method");
 		SSAlgorithm.setData("Direct Method", "dm");
 		SSAlgorithm.add("First Reaction Method");
@@ -141,8 +147,8 @@ public class MainView extends ViewPart implements Observer {
 		SSAlgorithm.setData("Next Reaction Method", "nrm");
 		SSAlgorithm.add("Optimized Direct Method");
 		SSAlgorithm.setData("Optimized Direct Method", "odm");
-		SSAlgorithm.add("Sorted Direct Method");
-		SSAlgorithm.setData("Sorted Direct Method", "sdm");
+		SSAlgorithm.add("Sorting Direct Method");
+		SSAlgorithm.setData("Sorting Direct Method", "sdm");
 		SSAlgorithm.add("Logarithmic Direct Method");
 		SSAlgorithm.setData("Logarithmic Direct Method", "ldm");
 		SSAlgorithm.add("Partial Propensity Direct Method");
@@ -151,6 +157,15 @@ public class MainView extends ViewPart implements Observer {
 		SSAlgorithm.setData("Composition Rejection", "cr");
 		SSAlgorithm.add("Tau Leaping");
 		SSAlgorithm.setData("Tau Leaping", "tl");
+		Button detectAlgButton = new Button(parent, SWT.PUSH);
+		detectAlgButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		detectAlgButton.setText("Detect");
+		detectAlgButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				performAlgorithmDetection();
+			}
+		});
 		// SSAlgorithm.select(0);
 
 		// create simulation button
@@ -322,6 +337,40 @@ public class MainView extends ViewPart implements Observer {
 		config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
 	}
 
+	private void performAlgorithmDetection() {
+		SSAPredictManager ssaPredictManager = SSAPredictManager.getInstance();
+
+		try {
+			String simulationTmpPath = Platform.getLocation().toOSString() + "/.tmp/simulation/";
+			String sbmlExportFilename = "export.smbl";
+
+			SBMLWriter writer = new SBMLWriter();
+
+			Model model = ModelCache.getInstance().getModel(currentIblResource);
+			FlatModel emfFlatModel = ModelCache.getInstance().getFlatModel(currentIblResource);
+			writer.writeSBMLToFile(SBML_Export.makeSBMLDocument(null, emfFlatModel),
+					simulationTmpPath + sbmlExportFilename);
+
+			File sbmlFile = new File(simulationTmpPath + sbmlExportFilename);
+
+			String predictedAlgorithm = ssaPredictManager.predictSimulationAlgorithm(sbmlFile);
+			predictedAlgorithm = predictedAlgorithm.substring(0, predictedAlgorithm.length() -  6);
+
+			if (predictedAlgorithm != null) {
+				String[] algos = SSAlgorithm.getItems();
+
+				for (int i = 0; i < algos.length; i++) {
+					if (algos[i].contains(predictedAlgorithm)) {
+						SSAlgorithm.select(i);
+						break;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	// launch simulator
 	private void performSimulation() {
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
@@ -348,7 +397,6 @@ public class MainView extends ViewPart implements Observer {
 		if (resultsView != null) {
 			resultsView.plotTrajectories();
 		}
-
 	}
 
 	public static IViewPart getView(String id) {

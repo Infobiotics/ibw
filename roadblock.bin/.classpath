@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="resources/httpclient-4.5.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources/httpmime-4.5.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="resources/httpcore-4.4.13.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/commons-math3-3.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="resources/jsbml-comp-1.0-b1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>

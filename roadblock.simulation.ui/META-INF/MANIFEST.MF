@@ -19,10 +19,12 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.simulation.ui.views
 Import-Package: roadblock.caching,
+ roadblock.dataprocessing.export,
  roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,
  roadblock.emf.ibl.Ibl,
  roadblock.resource,
  roadblock.simulation.ngss,
+ roadblock.simulation.ssapredict,
  roadblock.xtext.ibl.generator,
  roadblock.xtext.ibl.ibl
