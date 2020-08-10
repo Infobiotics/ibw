@@ -324,7 +324,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 		dataBuilder.append("{");
 		dataBuilder.append("name: '" + trajectory.species + "',");
 		dataBuilder.append("zIndex: 1,");
-		dataBuilder.append("lineColor: Highcharts.getOptions().colors[" + (index - 1) + "],");
+		dataBuilder.append("lineColor: Highcharts.getOptions().colors[" + (index) + "],");
 		dataBuilder.append("marker: { enabled: false },");
 		dataBuilder.append("data: [");
 
@@ -347,7 +347,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 		dataBuilder.append("fillOpacity: 0.2,");
 		dataBuilder.append("zIndex: 0,");
 		dataBuilder.append("lineWidth: 0,");
-		dataBuilder.append("color: Highcharts.getOptions().colors[" + (index - 1) + "],");
+		dataBuilder.append("color: Highcharts.getOptions().colors[" + (index) + "],");
 		dataBuilder.append("marker: { enabled: false },");
 		dataBuilder.append("data: [");
 
