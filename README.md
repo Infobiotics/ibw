@@ -30,7 +30,7 @@ Infobiotics Workbench is a synthetic biology IDE built on top of the Eclipse Pla
    - *Xtend IDE 2.22.0*, *Xtext Complete SDK 2.22.0*, *Xtext Redistributable 2.22.0* and *Xtend Library for GWT 2.10.0* from [http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/](http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/);
    - *EMF - Eclipse Modeling Framework SDK 2.22.0* from [http://download.eclipse.org/modeling/emf/emf/updates/](http://download.eclipse.org/modeling/emf/emf/updates/);
    - *Xtext Antlr Runtime Feature 2.1.1* and *Xtext Antlr SDK Feature 2.1.1* from [http://download.itemis.com/updates/](http://download.itemis.com/updates/).
-2. **Import** the **IBW source code** into the current workspace, by using *File -> Import -> Existing Projects into Workspace* and select all the available projects from the `dev` branch of this Git repository;
+2. **Import** the **IBW source code** into the current workspace, by using *File -> Import -> Existing Projects into Workspace* and select all the available projects from the `develop` branch of this Git repository;
 3. **Generate** the variuos **Xtext/EMF artifacts**, as below:
    - Right click on *roadblock.xtext.ibl/src/roadblock.xtext.ibl/Ibl.xtext* -> *Run As* -> *Generate Xtext Artifacts*;
    - Open the *roadblock.emf.ibl/model/ibl.genmodel* file. Right click on the *Ibl* (root node) of the EMF model -> *Generate Model Code*;
