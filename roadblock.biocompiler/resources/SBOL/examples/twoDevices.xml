@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:sbol="http://sbols.org/v1#"
+	xmlns:sublime="http://clarkparsia.com/sublime#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+<sbol:DnaComponent rdf:about="urn:166cd1e8-c991-4ab3-9b30-a84c8e2cc857">
+	<sbol:displayId>wholeConstruct</sbol:displayId>
+	<sbol:name></sbol:name>
+	<sbol:description></sbol:description>
+	<sbol:dnaSequence>
+		<sbol:DnaSequence rdf:about="urn:2b88517d-c762-440f-b5aa-28421aa4bd8d">
+			<sbol:nucleotides>ttatgacaacttgacggctacatcattcactttttcttcacaaccggcacggaactcgctcgggctggccccggtgcattttttaaatacccgcgagaaatagagttgatcgtcaaaaccaacattgcgaccgacggtggcgataggcatccgggtggtgctcaaaagcagcttcgcctggctgatacgttggtcctcgcgccagcttaagacgctaatccctaactgctggcggaaaagatgtgacagacgcgacggcgacaagcaaacatgctgtgcgacgctggcgatatcaaaattgctgtctgccaggtgatcgctgatgtactgacaagcctcgcgtacccgattatccatcggtggatggagcgactcgttaatcgcttccatgcgccgcagtaacaattgctcaagcagatttatcgccagcagctccgaatagcgcccttccccttgcccggcgttaatgatttgcccaaacaggtcgctgaaatgcggctggtgcgcttcatccgggcgaaagaaccccgtattggcaaatattgacggccagttaagccattcatgccagtaggcgcgcggacgaaagtaaacccactggtgataccattcgcgagcctccggatgacgaccgtagtgatgaatctctcctggcgggaacagcaaaatatcacccggtcggcaaacaaattctcgtccctgatttttcaccaccccctgaccgcgaatggtgagattgagaatataacctttcattcccagcggtcggtcgataaaaaaatcgagataaccgttggcctcaatcggcgttaaacccgccaccagatgggcattaaacgagtatcccggcagcaggggatcattttgcgcttcagccatacttttcatactcccgccattcagagaagaaaccaattgtccatattgcatcagacattgccgtcactgcgtcttttactggctcttctcgctaaccaaaccggtaaccccgcttattaaaagcattctgtaacaaagcgggaccaaagccatgacaaaaacgcgtaacaaaagtgtctataatcacggcagaaaagtccacattgattatttgcacggcgtcacactttgctatgccatagcatttttatccataagattagcggatcctacctgacgctttttatcgcaactctctactgtttctccatacccgtttttttgggctagcattaaagaggagaaaatggtgaatgtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcaggctgcaaacgacgaaaactacgctttagtagcttaataaccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctcacctgtaggatcgtacaggtttacgcaagaaaatggtttgttatagtcgaatacctctggcggtgataaaagaggagaaaatgagcaaaatcagggtgttatctgtcgatgattcggcactgatgcgccagatcatgacagaaatcatcaacagccatagcgacatggaaatggtggcgaccgcgcctgatccgctggtcgcgcgtgacttgattaagaaattcaatcccgatgtgctgacgctggatgttgaaatgccgcggatggacggactggatttcctcgaaaaattaatgcgtttgcgtccaatgcccgttgtgatggtttcttccctgaccggcaaagggtcagaagtcacgctgcgcgcgctggagctgggggcgatagattttgtcaccaaaccgcaactgggtattcgcgaaggtatgctggcgtataacgaaatgattgctgaaaaggtgcgtacggcagcaaaggcgagccttgcagcacataagccattgtcggcaccgacaacgctgaaggcggggccgttgttgagttctgaaaaactgattgcgattggtgcttcaacgggtggaactgaggcaattcgtcacgtactgcaaccgttgccgctttccagcccggcactgttaattacccagcatatgccgcccggtttcacccgctcttttgccgacagacttaataagctttgccagatcggggttaaagaagccgaagacggagaacgtgtcttgccggggcatgcctatattgcgccgggcgatcggcatatggagctgtcgcgtagtggcgcaaattaccaaatcaaaattcacgatggcccggcggttaaccgtcatcggccttcggtagatgtgttgttccattctgtcgccaaacaggcggggcgtaatgcggttggggtgatcctgaccggtatgggcaacgacggcgcggcgggaatgttggcgatgcgtcaggcgggggcatggacccttgcgcaaaacgaagcaagttgcgtggtgttcggcatgccgcgcgaggccatcaatatgggtggtgtctgcgaagtggtcgatcttagccaggtaagccagcaaatgttggcaaaaattagtgccggacaggcgatacgtatttaataaggagagcgttcaccgacaaacaacagataaaacgaaaggcccagtctttcgactgagcctttcgttttatttgatgcctggt</sbol:nucleotides>
+		</sbol:DnaSequence>
+	</sbol:dnaSequence>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:684b56eb-7fcc-4765-93f0-4bb97d0e9e36">
+			<sbol:precedes rdf:resource="urn:4ac80d60-4dde-4320-8ddc-daeeadb74ed3"/>
+			<sbol:bioStart>1</sbol:bioStart>
+			<sbol:bioEnd>1210</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_I0500">
+					<sbol:displayId>BBa_I0500</sbol:displayId>
+					<sbol:name>pBad/araC</sbol:name>
+					<sbol:description>Inducible pBad/araC promoter</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_2916">
+							<sbol:nucleotides>ttatgacaacttgacggctacatcattcactttttcttcacaaccggcacggaactcgctcgggctggccccggtgcattttttaaatacccgcgagaaatagagttgatcgtcaaaaccaacattgcgaccgacggtggcgataggcatccgggtggtgctcaaaagcagcttcgcctggctgatacgttggtcctcgcgccagcttaagacgctaatccctaactgctggcggaaaagatgtgacagacgcgacggcgacaagcaaacatgctgtgcgacgctggcgatatcaaaattgctgtctgccaggtgatcgctgatgtactgacaagcctcgcgtacccgattatccatcggtggatggagcgactcgttaatcgcttccatgcgccgcagtaacaattgctcaagcagatttatcgccagcagctccgaatagcgcccttccccttgcccggcgttaatgatttgcccaaacaggtcgctgaaatgcggctggtgcgcttcatccgggcgaaagaaccccgtattggcaaatattgacggccagttaagccattcatgccagtaggcgcgcggacgaaagtaaacccactggtgataccattcgcgagcctccggatgacgaccgtagtgatgaatctctcctggcgggaacagcaaaatatcacccggtcggcaaacaaattctcgtccctgatttttcaccaccccctgaccgcgaatggtgagattgagaatataacctttcattcccagcggtcggtcgataaaaaaatcgagataaccgttggcctcaatcggcgttaaacccgccaccagatgggcattaaacgagtatcccggcagcaggggatcattttgcgcttcagccatacttttcatactcccgccattcagagaagaaaccaattgtccatattgcatcagacattgccgtcactgcgtcttttactggctcttctcgctaaccaaaccggtaaccccgcttattaaaagcattctgtaacaaagcgggaccaaagccatgacaaaaacgcgtaacaaaagtgtctataatcacggcagaaaagtccacattgattatttgcacggcgtcacactttgctatgccatagcatttttatccataagattagcggatcctacctgacgctttttatcgcaactctctactgtttctccatacccgtttttttgggctagc</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000167"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:4ac80d60-4dde-4320-8ddc-daeeadb74ed3">
+			<sbol:precedes rdf:resource="urn:ac48be95-3be5-480a-ba3d-722efd0862fb"/>
+			<sbol:bioStart>1211</sbol:bioStart>
+			<sbol:bioEnd>1225</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0030">
+					<sbol:displayId>BBa_B0030</sbol:displayId>
+					<sbol:name></sbol:name>
+					<sbol:description>RBS.1 (strong) -- modified from R. Weiss</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_147">
+							<sbol:nucleotides>attaaagaggagaaa</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:ac48be95-3be5-480a-ba3d-722efd0862fb">
+			<sbol:precedes rdf:resource="urn:5b804162-d69a-4f71-98fe-db8620acc0ea"/>
+			<sbol:bioStart>1226</sbol:bioStart>
+			<sbol:bioEnd>2353</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_C0012">
+					<sbol:displayId>BBa_C0012</sbol:displayId>
+					<sbol:name>lacI</sbol:name>
+					<sbol:description>lacI repressor from E. coli (+LVA)</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_153">
+							<sbol:nucleotides>atggtgaatgtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctcttatcagaccgtttcccgcgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaacagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaagcggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcaggctgcaaacgacgaaaactacgctttagtagcttaataa</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000316"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:5b804162-d69a-4f71-98fe-db8620acc0ea">
+			<sbol:precedes rdf:resource="urn:6cc271bd-cf3a-4f6a-879b-622bcb962d41"/>
+			<sbol:bioStart>2354</sbol:bioStart>
+			<sbol:bioEnd>2433</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0010">
+					<sbol:displayId>BBa_B0010</sbol:displayId>
+					<sbol:name></sbol:name>
+					<sbol:description>T1 from E. coli rrnB</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_603">
+							<sbol:nucleotides>ccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctc</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000141"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:6cc271bd-cf3a-4f6a-879b-622bcb962d41">
+			<sbol:precedes rdf:resource="urn:ec69ae75-94d1-4d6b-993f-412c4841c77d"/>
+			<sbol:bioStart>2434</sbol:bioStart>
+			<sbol:bioEnd>2501</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_I1051">
+					<sbol:displayId>BBa_I1051</sbol:displayId>
+					<sbol:name>Lux</sbol:name>
+					<sbol:description>Lux cassette right promoter</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_181">
+							<sbol:nucleotides>acctgtaggatcgtacaggtttacgcaagaaaatggtttgttatagtcgaatacctctggcggtgata</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000167"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:ec69ae75-94d1-4d6b-993f-412c4841c77d">
+			<sbol:precedes rdf:resource="urn:725c4585-ccba-4742-8825-7d89f190a2f2"/>
+			<sbol:bioStart>2502</sbol:bioStart>
+			<sbol:bioEnd>2513</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0034">
+					<sbol:displayId>BBa_B0034</sbol:displayId>
+					<sbol:name></sbol:name>
+					<sbol:description>RBS (Elowitz 1999) -- defines RBS efficiency</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_151">
+							<sbol:nucleotides>aaagaggagaaa</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000139"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:725c4585-ccba-4742-8825-7d89f190a2f2">
+			<sbol:precedes rdf:resource="urn:477de125-1b19-4555-b0cc-d4ec9d9d6a74"/>
+			<sbol:bioStart>2514</sbol:bioStart>
+			<sbol:bioEnd>3566</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_C0024">
+					<sbol:displayId>BBa_C0024</sbol:displayId>
+					<sbol:name>cheB</sbol:name>
+					<sbol:description>CheB chemotaxis coding sequence (protein glutamate methylesterase)</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_4961">
+							<sbol:nucleotides>atgagcaaaatcagggtgttatctgtcgatgattcggcactgatgcgccagatcatgacagaaatcatcaacagccatagcgacatggaaatggtggcgaccgcgcctgatccgctggtcgcgcgtgacttgattaagaaattcaatcccgatgtgctgacgctggatgttgaaatgccgcggatggacggactggatttcctcgaaaaattaatgcgtttgcgtccaatgcccgttgtgatggtttcttccctgaccggcaaagggtcagaagtcacgctgcgcgcgctggagctgggggcgatagattttgtcaccaaaccgcaactgggtattcgcgaaggtatgctggcgtataacgaaatgattgctgaaaaggtgcgtacggcagcaaaggcgagccttgcagcacataagccattgtcggcaccgacaacgctgaaggcggggccgttgttgagttctgaaaaactgattgcgattggtgcttcaacgggtggaactgaggcaattcgtcacgtactgcaaccgttgccgctttccagcccggcactgttaattacccagcatatgccgcccggtttcacccgctcttttgccgacagacttaataagctttgccagatcggggttaaagaagccgaagacggagaacgtgtcttgccggggcatgcctatattgcgccgggcgatcggcatatggagctgtcgcgtagtggcgcaaattaccaaatcaaaattcacgatggcccggcggttaaccgtcatcggccttcggtagatgtgttgttccattctgtcgccaaacaggcggggcgtaatgcggttggggtgatcctgaccggtatgggcaacgacggcgcggcgggaatgttggcgatgcgtcaggcgggggcatggacccttgcgcaaaacgaagcaagttgcgtggtgttcggcatgccgcgcgaggccatcaatatgggtggtgtctgcgaagtggtcgatcttagccaggtaagccagcaaatgttggcaaaaattagtgccggacaggcgatacgtatttaataa</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000316"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<sbol:annotation>
+		<sbol:SequenceAnnotation rdf:about="urn:477de125-1b19-4555-b0cc-d4ec9d9d6a74">
+			<sbol:bioStart>3567</sbol:bioStart>
+			<sbol:bioEnd>3648</sbol:bioEnd>
+			<sbol:strand>+</sbol:strand>
+			<sbol:subComponent>
+				<sbol:DnaComponent rdf:about="http://partsregistry.org/part/BBa_B0020">
+					<sbol:displayId>BBa_B0020</sbol:displayId>
+					<sbol:name></sbol:name>
+					<sbol:description>Terminator (Reverse B0010)</sbol:description>
+					<sbol:dnaSequence>
+						<sbol:DnaSequence rdf:about="http://partsregistry.org/seq/partseq_582">
+							<sbol:nucleotides>ggagagcgttcaccgacaaacaacagataaaacgaaaggcccagtctttcgactgagcctttcgttttatttgatgcctggt</sbol:nucleotides>
+						</sbol:DnaSequence>
+					</sbol:dnaSequence>
+					<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000141"/>
+				</sbol:DnaComponent>
+			</sbol:subComponent>
+		</sbol:SequenceAnnotation>
+	</sbol:annotation>
+	<rdf:type rdf:resource="http://purl.obolibrary.org/obo/SO_0000110"/>
+</sbol:DnaComponent>
+
+</rdf:RDF>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" displayName="The EMF Model" ID="TheEMFmodel">
+  <regionList displayName="myRegion">
+    <cellList displayName="foo">
+      <deviceList displayName="device1">
+        <partList displayName="p1aa" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="g1bb" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCCloningSites" cloningSites="5"/>
+        <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCDirection" direction="BACKWARD"/>
+      </deviceList>
+      <deviceList displayName="device2">
+        <partList displayName="p2aa" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="g2bb" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="g2cc" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
+          <partList displayName="g2cc" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="cgttcggcgagttgccttccgacaccctgcgtcaatgcaaaaaggaagtggcttga" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g2cc"/>
+          <partList displayName="g2bb" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="ggtatcgtactaggtgcatcaaacgctgcggtctattgtt" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g2bb"/>
+        </ATGCCommandList>
+      </deviceList>
+      <moleculeList displayName="p1aa" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" sequence="gcgtggcgatgggccgacagtgaacacggggaccaggtgt" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="p1aa"/>
+      <moleculeList displayName="g1bb" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="taccttgggtgtgggatacggcgcgtagaccggctcgggcagtg" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g1bb"/>
+      <moleculeList displayName="p2aa" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" sequence="atttatcaatattgtttgctccgttatcgttattaacaagtcatcaataaagccatc" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="p2aa"/>
+      <moleculeList displayName="g2bb" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="ggtatcgtactaggtgcatcaaacgctgcggtctattgtt" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g2bb"/>
+      <moleculeList displayName="g2cc" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="cgttcggcgagttgccttccgacaccctgcgtcaatgcaaaaaggaagtggcttga" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="g2cc"/>
+      <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
+        <partList displayName="p1aa" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" sequence="gcgtggcgatgggccgacagtgaacacggggaccaggtgt" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="p1aa"/>
+        <partList displayName="p2aa" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" sequence="atttatcaatattgtttgctccgttatcgttattaacaagtcatcaataaagccatc" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="p2aa"/>
+      </ATGCCommandList>
+    </cellList>
+  </regionList>
+</roadblock.emf.ibl:Model>

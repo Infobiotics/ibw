@@ -1,0 +1,98 @@
+model(name, molecules, invariant, choiceConstraints, initialConcentrations, updateRules) ::= <<
+
+MODULE main
+VAR
+	--*******************
+	-- molecular species
+	--*******************
+	<molecules:{molecule | <molecule>}; separator="\n">
+	
+INVAR
+	--*******************
+	-- invariant states
+	--*******************
+	<invariant>
+
+ASSIGN
+	--*******************
+	-- discover the set of executable rules
+	--*******************
+	<choiceConstraints>
+
+	--*******************
+	-- initial molecule concentrations
+	--*******************
+	<initialConcentrations:{concentration | <concentration>}; separator="\n">
+
+	--*******************
+	-- update rules
+	--*******************
+	<updateRules:{updateRule | <updateRule>}; separator="\n">
+>>
+
+initialConcentration(name, concentration) ::= <<
+init(<name>) := <concentration>;
+>>
+
+molecule(name, maxConcentration) ::= <<
+<name> : 0..<maxConcentration>;
+>>
+
+variableUpdate(name, value) ::= <<
+next(<name>) := <value>;
+>>
+
+caseExpression(variable, branches) ::= <<
+	
+	case 
+		<branches:{branch | <branch>}; separator="\n">
+		TRUE : <variable>;
+	esac
+>>
+
+caseBranch(guard, value) ::= <<
+<guard> : <value>;
+>>
+
+choiceConsumptionGuard(ruleIndex, consumedMolecules) ::= <<
+(_choice = <ruleIndex>)<consumedMolecules:{molecule |  & (<molecule.name> > <molecule.multiplicity>)}; separator="">
+>>
+
+choiceProductionGuard(ruleIndex, producedMolecule, consumedMolecules) ::= <<
+(_choice = <ruleIndex>)<consumedMolecules:{molecule |  & (<molecule.name> > <molecule.multiplicity>)}; separator=""> & (<moleculeProduction(producedMolecule)> \<= <producedMolecule.maxConcentration>)
+>>
+
+productionGuard(producedMolecule, consumedMolecules) ::= <<
+<consumedMolecules:{molecule | (<molecule.name> > <molecule.multiplicity>)}; separator=" & "> & (<moleculeProduction(producedMolecule)> \<= <producedMolecule.maxConcentration>)
+>>
+
+consumptionGuard(consumedMolecules) ::= <<
+<consumedMolecules:{molecule | (<molecule.name> > <molecule.multiplicity>)}; separator=" & ">
+>>
+
+moleculeConsumption(molecule) ::= <<
+<molecule.name> - <molecule.multiplicity>
+>>
+
+moleculeProduction(molecule) ::= <<
+<molecule.name> + <molecule.multiplicity>
+>>
+
+guardedInvariant(constraints) ::= <<
+case
+	<constraints:{constraint | (<constraint>)}; separator=" | "> : _choice != 0;
+	TRUE : _choice = 0;
+esac;
+>>
+
+invariant() ::= <<
+_choice != 0;
+>>
+
+choiceConstraints(constraints) ::= <<
+_choice := <constraints:{constraint | 
+	case 
+		<constraint.guard> : {<constraint.ruleIndex>\};
+		TRUE : {0\};
+	esac}; separator=" union">;
+>> 

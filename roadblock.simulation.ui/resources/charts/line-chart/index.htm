@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+#container {
+	min-width: 310px;
+	height: 350px;
+	margin: 0 auto
+}
+		</style>
+	</head>
+	<body>
+<script src="<ChartDependencyPath>/code/highcharts.js"></script>
+<script src="<ChartDependencyPath>/code/highcharts-more.js"></script>
+<script src="<ChartDependencyPath>/code/modules/accessibility.js"></script>
+<div id="container"></div>
+
+
+
+		<script type="text/javascript">
+Highcharts.chart('container', {
+
+    title: {
+        text: 'Simulation Results'
+    },
+    
+	xAxis: {
+        title: {
+            text: 'Time (seconds)'
+        }
+    },
+    
+    yAxis: {
+        title: {
+            text: '# of Molecules'
+        }
+    },
+    
+    tooltip: {
+        crosshairs: true,
+        shared: true
+    },
+    
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+        }
+    },
+
+    series: <ChartSeriesData>,
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+		</script>
+	</body>
+</html>

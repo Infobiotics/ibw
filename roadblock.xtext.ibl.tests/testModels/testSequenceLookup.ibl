@@ -1,0 +1,35 @@
+define myCell typeof CELL() {
+	// user submitted
+	puser = PROMOTER(sequence = "AAA")
+    guser = GENE(sequence = "TTT")
+
+	// built-in or biofab
+	pbiofab = PROMOTER(URI = "ATGC://biofab/part/PLTETo1")
+    gbiofab = GENE(URI = "ATGC://user-submitted/part/lasr")
+	
+	// parts registry
+	ppartsregistry = PROMOTER(URI = "http://parts.igem.org/Part:BBa_I14033")
+	gpartsregistry = GENE(URI = "http://parts.igem.org/Part:BBa_K592009")
+		
+	// virtual parts repository Newcastle
+	pncl = PROMOTER(URI = "http://sbol.ncl.ac.uk:8081/part/BO_2689")
+	gncl = GENE(URI = "http://sbol.ncl.ac.uk:8081/part/BO_28536")
+     
+	
+	DEVICE userSubmitted = new DEVICE(parts = [puser, guser])(input = [], output = []){
+		}
+
+	DEVICE database = new DEVICE(parts = [pbiofab, gbiofab])(input = [], output = []){
+		}
+
+	DEVICE partsRegistry = new DEVICE(parts = [ppartsregistry, gpartsregistry])(input = [], output = []){
+		}
+
+	DEVICE newcastle = new DEVICE(parts = [pncl, gncl])(input = [], output = []){
+		}
+} 
+ 	 	
+define myRegion typeof REGION(){
+	CELL foo = new myCell()	
+
+}

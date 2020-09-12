@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="product"
+         name="Infobiotics Workbench"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Infobiotics Workbench">
+         <property
+               name="appName"
+               value="Infobiotics Workbench">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="5,275,445,15">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="roadblock.ibw.perspectives.modelchecking"
+         name="Model Checking Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Modelchecking"
+            id="roadblock.ibw.perspectives.modelchecking"
+            name="IBW Verification">
+      </perspective>
+   </extension>
+   <extension
+         id="roadblock.ibw.perspectives.simulation"
+         name="Simulation Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Simulation"
+            id="roadblock.ibw.perspectives.simulation"
+            name="IBW Simulation">
+      </perspective>
+   </extension>
+   <extension
+         id="roadblock.ibw.perspectives.biocompiler"
+         name="Biocompiler Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="roadblock.ibw.perspectives.Biocompiler"
+            id="roadblock.ibw.perspectives.biocompiler"
+            name="IBW Biocompilation">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+         <category
+            name="IBW"
+            id="roadblock.ibw.ui">
+      </category>
+      <wizard 
+         id="roadblock.ibw.exports.sbol.sbolExportWizard" 
+         name="SBOL" 
+         class="roadblock.ibw.exports.sbol.SBOLExportWizard" 
+         category="roadblock.ibw.ui"
+         icon="./icons/import1.png">
+         <description> 
+            SBOL Export Wizard
+         </description> 
+         <selection class="org.eclipse.xtext.resource.XtextResource" />
+      </wizard>
+   </extension>
+      <extension
+         point="org.eclipse.ui.exportWizards">
+         <category
+            name="IBW"
+            id="roadblock.ibw.ui">
+      </category>
+      <wizard 
+         id="roadblock.ibw.exports.sbml.SBMLExportWizard" 
+         name="SBML" 
+         class="roadblock.ibw.exports.sbml.SBMLExportWizard" 
+         category="roadblock.ibw.ui"
+         icon="./icons/import1.png">
+         <description> 
+            SBML Export Wizard
+         </description> 
+         <selection class="org.eclipse.xtext.resource.XtextResource" />
+      </wizard>
+   </extension>
+</plugin>

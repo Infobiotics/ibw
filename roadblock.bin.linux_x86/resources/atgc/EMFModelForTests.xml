@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" displayName="The EMF Model" ID="TheEMFmodel">
+  <regionList displayName="site">
+    <moleculeList displayName="AHL" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="MOLECULE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="AHL"/>
+    <moleculeList displayName="SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="MOLECULE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="SA"/>
+    <cellList displayName="cell">
+      <deviceList displayName="NahRLasRProduction">
+        <ruleList displayName="promoterBinding" isBidirectional="true" forwardRate="5.6E-7" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PnahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PnahR~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="transcription" forwardRate="0.0184" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PnahR~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PnahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="translationNahR" forwardRate="-111.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="NahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="translationLasR" forwardRate="0.0625" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="LasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="mrnaDegradation" forwardRate="0.00278" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <partList displayName="PnahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="nahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="lasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="mrna" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RNA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="mrna"/>
+        <moleculeList displayName="PnahR~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </deviceList>
+      <deviceList displayName="XylS2Production">
+        <ruleList displayName="backgroundPromoterBinding" isBidirectional="true" forwardRate="5.6E-8" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Psal" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Psal~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="backgroundTranscription" forwardRate="0.00452" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Psal~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Psal" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="NahRBinding" isBidirectional="true" forwardRate="0.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Psal" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="NahR~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Psal~NahR~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="regulatedPromoterBinding" isBidirectional="true" forwardRate="5.6E-8" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Psal~NahR~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Psal~NahR~SA~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="regulatedTranscription" forwardRate="0.00452" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Psal~NahR~SA~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Psal" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="NahR~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="translation" forwardRate="0.0467" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="XylS" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="mrnaDegradation" forwardRate="0.00278" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <partList displayName="Psal" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="xylS" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="mrna" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RNA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="mrna"/>
+        <moleculeList displayName="Psal~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="NahR~SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="Psal~NahR~SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="Psal~NahR~SA~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="EVENTUALLY">
+          <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+            <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="XylS" isMaximumOfInterest="false" containerName=""/>
+            <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+          </stateFormula>
+        </properties>
+      </deviceList>
+      <deviceList displayName="LuxRProduction">
+        <ruleList displayName="backgroundBinding1" isBidirectional="true" forwardRate="5.6E-8" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Pm~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="backgroundTranscription1" forwardRate="0.208" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="Pm~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="backgroundBinding2" isBidirectional="true" forwardRate="5.6E-8" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PrsaL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PrsaL~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="backgroundTranscription2" forwardRate="0.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PrsaL~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PrsaL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="LasRBinding" isBidirectional="true" forwardRate="78200.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PrsaL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="LasR~AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PrsaL~LasR~AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="LasRInitiation" isBidirectional="true" forwardRate="5.6E-7" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PrsaL~LasR~AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PrsaL~LasR~AHL~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="LasRTranscription" forwardRate="0.208" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="PrsaL~LasR~AHL~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="PrsaL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="LasR~AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="XylSBinding" isBidirectional="true" forwardRate="78200.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="XylS~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="XylS~SA~Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="XylSInitiation" isBidirectional="true" forwardRate="5.6E-7" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="XylS~SA~Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <leftHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="XylS~SA~Pm~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="XylSTranscription" forwardRate="0.208" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="XylS~SA~Pm~rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="XylS~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="rnaP" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="translation" forwardRate="0.0595" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+          <rightHandSide displayName="LuxR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <ruleList displayName="mrnaDegradation" forwardRate="0.00278" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+          <leftHandSide displayName="mrna" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        </ruleList>
+        <partList displayName="Pm" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="PrsaL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="luxr" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCCloningSites" cloningSites="5"/>
+        <moleculeList displayName="mrna" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="RNA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="mrna"/>
+        <moleculeList displayName="Pm~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="PrsaL~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="LasR~AHL" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="PrsaL~LasR~AHL" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="PrsaL~LasR~AHL~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="XylS~SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="XylS~SA~Pm" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <moleculeList displayName="XylS~SA~Pm~rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="EVENTUALLY">
+          <stateFormula xsi:type="roadblock.emf.ibl:BinaryStateFormula" operator="IMPLIES">
+            <leftOperand xsi:type="roadblock.emf.ibl:NotStateFormula">
+              <negatedOperand xsi:type="roadblock.emf.ibl:RelationalExpression">
+                <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="PrsaL" isMaximumOfInterest="false" containerName=""/>
+                <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" amount="50.0" unit="uM"/>
+              </negatedOperand>
+            </leftOperand>
+            <rightOperand xsi:type="roadblock.emf.ibl:BinaryStateFormula">
+              <leftOperand xsi:type="roadblock.emf.ibl:RelationalExpression" operator="LT">
+                <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="rnaP" isMaximumOfInterest="false" containerName=""/>
+                <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" amount="40.0" unit="uM"/>
+              </leftOperand>
+              <rightOperand xsi:type="roadblock.emf.ibl:RelationalExpression" operator="LT">
+                <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="LuxR" isMaximumOfInterest="false" containerName=""/>
+                <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" amount="100.0" unit="uM"/>
+              </rightOperand>
+            </rightOperand>
+          </stateFormula>
+        </properties>
+      </deviceList>
+      <ruleList displayName="XylSActivation" isBidirectional="true" forwardRate="100000.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="XylS" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <leftHandSide displayName="SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <rightHandSide displayName="XylS~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="LasRActivation" isBidirectional="true" forwardRate="100000.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="LasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <leftHandSide displayName="AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <rightHandSide displayName="LasR~AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="NahRActivation" isBidirectional="true" forwardRate="100000.0" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="NahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <leftHandSide displayName="SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <rightHandSide displayName="NahR~SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="SADegradation" forwardRate="5.66E-5" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="SA" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="AHLDegradation" forwardRate="1.54E-6" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="AHL" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="NahRDegradation" forwardRate="1.4E-5" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="NahR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="LasRDegradation" forwardRate="1.4E-5" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="LasR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="XylSDegradation" forwardRate="1.4E-5" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="XylS" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <ruleList displayName="LuxRDegradation" forwardRate="1.4E-5" reverseRate="0.0" ID="" forwardRateUnit="PER_SECOND" reverseRateUnit="PER_SECOND">
+        <leftHandSide displayName="LuxR" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </ruleList>
+      <moleculeList displayName="rnaP" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="MOLECULE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="rnaP"/>
+      <moleculeList displayName="SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="MOLECULE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="SA"/>
+      <moleculeList displayName="AHL" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="MOLECULE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="AHL"/>
+      <moleculeList displayName="PnahR" URI="atgc://user-submitted/part/pnahr" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/pnahr"/>
+      <moleculeList displayName="nahR" URI="atgc://user-submitted/part/nahr" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/nahr"/>
+      <moleculeList displayName="lasR" URI="atgc://user-submitted/part/lasr" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/lasr"/>
+      <moleculeList displayName="NahR" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROTEIN" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="NahR"/>
+      <moleculeList displayName="LasR" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROTEIN" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="LasR"/>
+      <moleculeList displayName="Psal" URI="atgc://user-submitted/part/psal" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/psal"/>
+      <moleculeList displayName="xylS" URI="atgc://user-submitted/part/xysl2" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/xysl2"/>
+      <moleculeList displayName="XylS" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROTEIN" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="XylS"/>
+      <moleculeList displayName="Pm" URI="atgc://user-submitted/part/pm" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/pm"/>
+      <moleculeList displayName="PrsaL" URI="atgc://user-submitted/part/prsal" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/prsal"/>
+      <moleculeList displayName="luxr" URI="http://parts.igem.org/Part:BBa_K592012" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="http://parts.igem.org/Part:BBa_K592012"/>
+      <moleculeList displayName="LuxR" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROTEIN" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="LuxR"/>
+      <moleculeList displayName="XylS~SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      <moleculeList displayName="LasR~AHL" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      <moleculeList displayName="NahR~SA" amount="0.0" unit="uM" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="COMPLEX" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      <ATGCCommandList xsi:type="roadblock.emf.ibl:ATGCArrange">
+        <partList displayName="nahR" URI="atgc://user-submitted/part/nahr" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/nahr"/>
+        <partList displayName="PnahR" URI="atgc://user-submitted/part/pnahr" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/pnahr"/>
+        <partList displayName="Psal" URI="atgc://user-submitted/part/psal" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/psal"/>
+        <partList displayName="xylS" URI="atgc://user-submitted/part/xysl2" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="atgc://user-submitted/part/xysl2"/>
+      </ATGCCommandList>
+      <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="EVENTUALLY">
+        <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="SA" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </stateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="EVENTUALLY">
+        <timeConstraint xsi:type="roadblock.emf.ibl:TimeInterval" lowerBound="100" upperBound="200"/>
+        <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="AHL" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </stateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="EVENTUALLY">
+        <timeConstraint xsi:type="roadblock.emf.ibl:TimeInterval" lowerBound="100" upperBound="200"/>
+        <probabilityConstraint xsi:type="roadblock.emf.ibl:ConcreteProbabilityConstraint" operator="GE" bound="0.9"/>
+        <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="NahR" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </stateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="NEVER">
+        <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="LasR" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </stateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="ALWAYS">
+        <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="SA" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </stateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:SteadyStateProperty">
+        <StateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="SA" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </StateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:UnaryProbabilityProperty" operator="INFINITELY_OFTEN">
+        <stateFormula xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="SA" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </stateFormula>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:BinaryProbabilityProperty">
+        <leftOperand xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="AHL" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </leftOperand>
+        <rightOperand xsi:type="roadblock.emf.ibl:RelationalExpression">
+          <leftOperand xsi:type="roadblock.emf.ibl:VariableReference" name="SA" isMaximumOfInterest="false" containerName=""/>
+          <rightOperand xsi:type="roadblock.emf.ibl:ConcentrationQuantity" unit="uM"/>
+        </rightOperand>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:RewardProperty">
+        <variable name="XylS" isMaximumOfInterest="false" containerName=""/>
+        <timeConstraint value="1000" operator="EQ"/>
+      </properties>
+      <properties xsi:type="roadblock.emf.ibl:RewardProperty">
+        <variable name="XylS" isMaximumOfInterest="false" containerName=""/>
+        <timeConstraint value="1000" operator="LE"/>
+      </properties>
+    </cellList>
+  </regionList>
+</roadblock.emf.ibl:Model>

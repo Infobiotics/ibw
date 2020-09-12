@@ -15,12 +15,14 @@ Require-Bundle: roadblock.xtext.ibl;visibility:=reexport,
  org.antlr.runtime,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
- org.eclipse.compare
+ org.eclipse.compare,
+ org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.xtext.ibl.ui.quickfix,
  roadblock.xtext.ibl.ui.contentassist,
  roadblock.xtext.ibl.ui.contentassist.antlr,
- roadblock.xtext.ibl.ui.internal
+ roadblock.xtext.ibl.ui.internal,
+ roadblock.xtext.ibl.ui.contentassist.antlr.internal
 Bundle-Activator: roadblock.xtext.ibl.ui.internal.IblActivator

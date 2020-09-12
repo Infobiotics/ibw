@@ -1,0 +1,32 @@
+// used by iblGeneratorTests/testATGCDirectives.xtend
+// URI formats: 
+//		atgc://biofab/part/, 
+//		atgc://user-submitted/part/, 
+//		http://parts.igem.org/Part:BBa_J23101
+//		http://sbol.ncl.ac.uk:8081/part/BO_2690
+
+define myCell typeof CELL() {
+	p1aa = PROMOTER(sequence = "atgacgtaatggtcgatttgacgtacgtaagtaa")
+    g1bb = GENE(sequence = 	   "taccttgggtgtgggatacggcgcgtagaccggctcgggcagtggatc")
+    
+    
+	p2aa = PROMOTER(sequence = "gtgactgatttttgttagagtagacgatcatgcaaga")
+    g2bb = GENE(sequence =     "ggtatcgtactaggtgcatcaaacgctgcggtctattgtt")
+    g2cc = GENE(sequence =     "cgttcggcgagttgccttccgacaccctgcgtcaatgcaaaaaggaagtggcttga")
+	
+	DEVICE device1 = new DEVICE(parts = [p1aa, g1bb])(input = [], output = []){
+		ATGC CLONING SITES: 5
+		ATGC DIRECTION: BACKWARD
+		ATGC TRANSLATION RATE: 5000 
+		}
+   
+	DEVICE device2 = new DEVICE(parts = [p2aa, g2bb,g2cc])(input = [], output = []){
+		ATGC ARRANGE g2cc, g2bb
+		  
+		}
+	ATGC ARRANGE p1aa,p2aa
+	}  
+         	      
+define myRegion typeof REGION(){
+	CELL foo = new myCell()	 
+   }     

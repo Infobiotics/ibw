@@ -1,22 +1,36 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: roadblock.xtext.ibl.tests
-Bundle-Vendor: My Company
+Bundle-Name: Tests
+Bundle-SymbolicName: roadblock.xtext.ibl.tests
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: roadblock.xtext.ibl.tests; singleton:=true
-Bundle-ActivationPolicy: lazy
+Bundle-Activator: roadblock.xtext.ibl.tests.Activator
 Require-Bundle: roadblock.xtext.ibl,
  roadblock.xtext.ibl.ui,
  org.eclipse.core.runtime,
  org.eclipse.xtext.junit4,
- org.eclipse.ui.workbench;resolution:=optional
+ org.eclipse.ui.workbench;resolution:=optional,
+ org.eclipse.ui,
+ org.eclipse.jdt.core;bundle-version="3.8.3",
+ org.eclipse.xtext.xbase.junit;bundle-version="2.5.0",
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.log4j,
+ org.hamcrest.core,
  org.junit;version="4.5.0",
+ org.junit.rules;version="4.11.0",
  org.junit.runner;version="4.5.0",
  org.junit.runner.manipulation;version="4.5.0",
  org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0",
- org.hamcrest.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ roadblock.biocompiler,
+ roadblock.dataprocessing.flatModel,
+ roadblock.dataprocessing.model,
+ roadblock.emf.ibl.Ibl,
+ roadblock.modelchecking,
+ roadblock.modelchecking.translation,
+ roadblock.modelchecking.translation.model,
+ roadblock.modelchecking.translation.property
+Bundle-ActivationPolicy: lazy
 Export-Package: roadblock.xtext.ibl

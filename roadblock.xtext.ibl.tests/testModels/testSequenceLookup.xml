@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roadblock.emf.ibl:Model xmlns:roadblock.emf.ibl="http://www.roadblock.org/ibl.ecore" displayName="The EMF Model" ID="TheEMFmodel">
+  <regionList displayName="myRegion">
+    <cellList displayName="foo">
+      <deviceList displayName="userSubmitted">
+        <partList displayName="puser" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="guser" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </deviceList>
+      <deviceList displayName="database">
+        <partList displayName="pbiofab" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="gbiofab" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </deviceList>
+      <deviceList displayName="partsRegistry">
+        <partList displayName="ppartsregistry" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="gpartsregistry" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </deviceList>
+      <deviceList displayName="newcastle">
+        <partList displayName="pncl" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+        <partList displayName="gncl" amount="0.0" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND"/>
+      </deviceList>
+      <moleculeList displayName="puser" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" sequence="AAA" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="puser"/>
+      <moleculeList displayName="guser" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" sequence="TTT" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="guser"/>
+      <moleculeList displayName="pbiofab" URI="ATGC://biofab/part/PLTETo1" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="ATGC://biofab/part/PLTETo1"/>
+      <moleculeList displayName="gbiofab" URI="ATGC://user-submitted/part/lasr" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="ATGC://user-submitted/part/lasr"/>
+      <moleculeList displayName="ppartsregistry" URI="http://parts.igem.org/Part:BBa_I14033" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="http://parts.igem.org/Part:BBa_I14033"/>
+      <moleculeList displayName="gpartsregistry" URI="http://parts.igem.org/Part:BBa_K592009" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="http://parts.igem.org/Part:BBa_K592009"/>
+      <moleculeList displayName="pncl" URI="http://sbol.ncl.ac.uk:8081/part/BO_2689" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="PROMOTER" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="http://sbol.ncl.ac.uk:8081/part/BO_2689"/>
+      <moleculeList displayName="gncl" URI="http://sbol.ncl.ac.uk:8081/part/BO_28536" amount="1.0" unit="MOLECULE" degradationRate="0.0" bindingRate="0.0" unbindingRate="0.0" biologicalType="GENE" degradationRateUnit="PER_SECOND" bindingRateUnit="PER_SECOND" unbindingRateUnit="PER_SECOND" ID="http://sbol.ncl.ac.uk:8081/part/BO_28536"/>
+    </cellList>
+  </regionList>
+</roadblock.emf.ibl:Model>
