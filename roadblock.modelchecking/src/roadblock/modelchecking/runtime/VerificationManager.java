@@ -31,7 +31,7 @@ public class VerificationManager {
 		executor.export(model, property, target, filename);
 	}
 
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, IModelcheckingConfiguration config) throws IOException, InterruptedException {
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, IModelcheckingConfiguration config, String workspaceDir) throws IOException, InterruptedException {
 
 		IModelcheckingExecutor<? extends IModelcheckingConfiguration> executor = getExecutor(target);
 		Process verificationProcess = null;
@@ -39,15 +39,15 @@ public class VerificationManager {
 		switch (target) {
 		case PRISM:
 			PrismExecutor prismExecutor = (PrismExecutor) executor;
-			verificationProcess = prismExecutor.verify(model, property, target, (PrismConfiguration) config);
+			verificationProcess = prismExecutor.verify(model, property, target, (PrismConfiguration) config, workspaceDir);
 			break;
 		case NUSMV:
 			NuSmvExecutor nuSmvExecutor = (NuSmvExecutor) executor;
-			verificationProcess = nuSmvExecutor.verify(model, property, target, (NuSmvConfiguration) config);
+			verificationProcess = nuSmvExecutor.verify(model, property, target, (NuSmvConfiguration) config, workspaceDir);
 			break;
 		case MC2:
 			Mc2Executor mc2Executor = (Mc2Executor) executor;
-			verificationProcess = mc2Executor.verify(model, property, target, (Mc2Configuration) config);
+			verificationProcess = mc2Executor.verify(model, property, target, (Mc2Configuration) config, workspaceDir);
 			break;
 		default:
 			break;

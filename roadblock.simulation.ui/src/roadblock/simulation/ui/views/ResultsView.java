@@ -138,8 +138,7 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 		trajectories.clear();
 
 		// get the directory in which the results are stored
-		String resultsDataPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
-				+ "/.tmp/simulation/";
+		String resultsDataPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + "/.tmp/simulation/";
 
 		// load the trajectory data from a csv
 		loadCSVData(resultsDataPath + ".output.csv");

@@ -373,13 +373,31 @@ public class IblPackage extends EPackageImpl {
 	public static final int RULE__REVERSE_RATE_UNIT = IVISITABLE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Forward Rate Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RULE__FORWARD_RATE_EXPRESSION = IVISITABLE_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Reverse Rate Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RULE__REVERSE_RATE_EXPRESSION = IVISITABLE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RULE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
+	public static final int RULE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}' class.
@@ -1623,13 +1641,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int EMF_VARIABLE_ASSIGNMENT__AMOUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EMF_VARIABLE_ASSIGNMENT__EXPRESSION = IVISITABLE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>EMF Variable Assignment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EMF_VARIABLE_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 4;
+	public static final int EMF_VARIABLE_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}' class.
@@ -2740,7 +2767,7 @@ public class IblPackage extends EPackageImpl {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link IblPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -2754,7 +2781,8 @@ public class IblPackage extends EPackageImpl {
 		if (isInited) return (IblPackage)EPackage.Registry.INSTANCE.getEPackage(IblPackage.eNS_URI);
 
 		// Obtain or create and register package
-		IblPackage theIblPackage = (IblPackage)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IblPackage ? EPackage.Registry.INSTANCE.get(eNS_URI) : new IblPackage());
+		Object registeredIblPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		IblPackage theIblPackage = registeredIblPackage instanceof IblPackage ? (IblPackage)registeredIblPackage : new IblPackage();
 
 		isInited = true;
 
@@ -2767,7 +2795,6 @@ public class IblPackage extends EPackageImpl {
 		// Mark meta-data to indicate it can't be changed
 		theIblPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(IblPackage.eNS_URI, theIblPackage);
 		return theIblPackage;
@@ -3159,6 +3186,34 @@ public class IblPackage extends EPackageImpl {
 	public EReference getRule_ReverseRateUnit() {
 		return (EReference)ruleEClass.getEStructuralFeatures().get(8);
 	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateExpression <em>Forward Rate Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Forward Rate Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Rule#getForwardRateExpression()
+	 * @see #getRule()
+	 * @generated
+	 */
+	public EAttribute getRule_ForwardRateExpression() {
+		return (EAttribute)ruleEClass.getEStructuralFeatures().get(9);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateExpression <em>Reverse Rate Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reverse Rate Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Rule#getReverseRateExpression()
+	 * @see #getRule()
+	 * @generated
+	 */
+	public EAttribute getRule_ReverseRateExpression() {
+		return (EAttribute)ruleEClass.getEStructuralFeatures().get(10);
+	}
+
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}'.
@@ -4490,6 +4545,20 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EMFVariableAssignment#getExpression()
+	 * @see #getEMFVariableAssignment()
+	 * @generated
+	 */
+	public EAttribute getEMFVariableAssignment_Expression() {
+		return (EAttribute)emfVariableAssignmentEClass.getEStructuralFeatures().get(4);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5231,6 +5300,8 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(ruleEClass, RULE__ID);
 		createEReference(ruleEClass, RULE__FORWARD_RATE_UNIT);
 		createEReference(ruleEClass, RULE__REVERSE_RATE_UNIT);
+		createEAttribute(ruleEClass, RULE__FORWARD_RATE_EXPRESSION);
+		createEAttribute(ruleEClass, RULE__REVERSE_RATE_EXPRESSION);
 
 		molecularSpeciesEClass = createEClass(MOLECULAR_SPECIES);
 		createEAttribute(molecularSpeciesEClass, MOLECULAR_SPECIES__ID);
@@ -5361,6 +5432,7 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__VARIABLE_ATTRIBUTE);
 		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__UNITS);
 		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__AMOUNT);
+		createEAttribute(emfVariableAssignmentEClass, EMF_VARIABLE_ASSIGNMENT__EXPRESSION);
 
 		flatModelEClass = createEClass(FLAT_MODEL);
 		createEReference(flatModelEClass, FLAT_MODEL__MOLECULE_LIST);
@@ -5719,6 +5791,8 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getRule_ID(), ecorePackage.getEString(), "ID", "", 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_ForwardRateUnit(), this.getRateUnit(), null, "forwardRateUnit", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_ReverseRateUnit(), this.getRateUnit(), null, "reverseRateUnit", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ForwardRateExpression(), ecorePackage.getEString(), "forwardRateExpression", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_ReverseRateExpression(), ecorePackage.getEString(), "reverseRateExpression", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(molecularSpeciesEClass, MolecularSpecies.class, "MolecularSpecies", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMolecularSpecies_ID(), ecorePackage.getEString(), "ID", null, 0, 1, MolecularSpecies.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5858,6 +5932,7 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getEMFVariableAssignment_VariableAttribute(), ecorePackage.getEString(), "variableAttribute", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEMFVariableAssignment_Units(), ecorePackage.getEString(), "units", "", 0, -1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEMFVariableAssignment_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEMFVariableAssignment_Expression(), ecorePackage.getEString(), "expression", null, 0, 1, EMFVariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(flatModelEClass, FlatModel.class, "FlatModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFlatModel_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6252,6 +6327,22 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference RULE__REVERSE_RATE_UNIT = eINSTANCE.getRule_ReverseRateUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Forward Rate Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RULE__FORWARD_RATE_EXPRESSION = eINSTANCE.getRule_ForwardRateExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Reverse Rate Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RULE__REVERSE_RATE_EXPRESSION = eINSTANCE.getRule_ReverseRateExpression();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.MolecularSpecies <em>Molecular Species</em>}' class.
@@ -7136,6 +7227,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__AMOUNT = eINSTANCE.getEMFVariableAssignment_Amount();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EMF_VARIABLE_ASSIGNMENT__EXPRESSION = eINSTANCE.getEMFVariableAssignment_Expression();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.FlatModel <em>Flat Model</em>}' class.

@@ -37,6 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getID <em>ID</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateExpression <em>Forward Rate Expression</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateExpression <em>Reverse Rate Expression</em>}</li>
  * </ul>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getRule()
@@ -185,6 +187,46 @@ public class Rule extends EObjectImpl implements IVisitable {
 	protected RateUnit reverseRateUnit;
 
 	/**
+	 * The default value of the '{@link #getForwardRateExpression() <em>Forward Rate Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForwardRateExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FORWARD_RATE_EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getForwardRateExpression() <em>Forward Rate Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getForwardRateExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String forwardRateExpression = FORWARD_RATE_EXPRESSION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getReverseRateExpression() <em>Reverse Rate Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReverseRateExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REVERSE_RATE_EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getReverseRateExpression() <em>Reverse Rate Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReverseRateExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String reverseRateExpression = REVERSE_RATE_EXPRESSION_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -225,7 +267,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getDisplayName <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Display Name</em>' attribute.
+	 * @param newDisplayName the new value of the '<em>Display Name</em>' attribute.
 	 * @see #getDisplayName()
 	 * @generated
 	 */
@@ -258,7 +300,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#isIsBidirectional <em>Is Bidirectional</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Bidirectional</em>' attribute.
+	 * @param newIsBidirectional the new value of the '<em>Is Bidirectional</em>' attribute.
 	 * @see #isIsBidirectional()
 	 * @generated
 	 */
@@ -292,7 +334,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRate <em>Forward Rate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Forward Rate</em>' attribute.
+	 * @param newForwardRate the new value of the '<em>Forward Rate</em>' attribute.
 	 * @see #getForwardRate()
 	 * @generated
 	 */
@@ -326,7 +368,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRate <em>Reverse Rate</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reverse Rate</em>' attribute.
+	 * @param newReverseRate the new value of the '<em>Reverse Rate</em>' attribute.
 	 * @see #getReverseRate()
 	 * @generated
 	 */
@@ -374,7 +416,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateUnit <em>Forward Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Forward Rate Unit</em>' containment reference.
+	 * @param newForwardRateUnit the new value of the '<em>Forward Rate Unit</em>' containment reference.
 	 * @see #getForwardRateUnit()
 	 * @generated
 	 */
@@ -382,9 +424,9 @@ public class Rule extends EObjectImpl implements IVisitable {
 		if (newForwardRateUnit != forwardRateUnit) {
 			NotificationChain msgs = null;
 			if (forwardRateUnit != null)
-				msgs = ((InternalEObject)forwardRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__FORWARD_RATE_UNIT, null, msgs);
+				msgs = forwardRateUnit.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__FORWARD_RATE_UNIT, null, msgs);
 			if (newForwardRateUnit != null)
-				msgs = ((InternalEObject)newForwardRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__FORWARD_RATE_UNIT, null, msgs);
+				msgs = newForwardRateUnit.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__FORWARD_RATE_UNIT, null, msgs);
 			msgs = basicSetForwardRateUnit(newForwardRateUnit, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -429,7 +471,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateUnit <em>Reverse Rate Unit</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reverse Rate Unit</em>' containment reference.
+	 * @param newReverseRateUnit the new value of the '<em>Reverse Rate Unit</em>' containment reference.
 	 * @see #getReverseRateUnit()
 	 * @generated
 	 */
@@ -437,14 +479,72 @@ public class Rule extends EObjectImpl implements IVisitable {
 		if (newReverseRateUnit != reverseRateUnit) {
 			NotificationChain msgs = null;
 			if (reverseRateUnit != null)
-				msgs = ((InternalEObject)reverseRateUnit).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__REVERSE_RATE_UNIT, null, msgs);
+				msgs = reverseRateUnit.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__REVERSE_RATE_UNIT, null, msgs);
 			if (newReverseRateUnit != null)
-				msgs = ((InternalEObject)newReverseRateUnit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__REVERSE_RATE_UNIT, null, msgs);
+				msgs = newReverseRateUnit.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IblPackage.RULE__REVERSE_RATE_UNIT, null, msgs);
 			msgs = basicSetReverseRateUnit(newReverseRateUnit, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_UNIT, newReverseRateUnit, newReverseRateUnit));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Forward Rate Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Forward Rate Expression</em>' attribute.
+	 * @see #setForwardRateExpression(String)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ForwardRateExpression()
+	 * @model
+	 * @generated
+	 */
+	public String getForwardRateExpression() {
+		return forwardRateExpression;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getForwardRateExpression <em>Forward Rate Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param newForwardRateExpression the new value of the '<em>Forward Rate Expression</em>' attribute.
+	 * @see #getForwardRateExpression()
+	 * @generated
+	 */
+	public void setForwardRateExpression(String newForwardRateExpression) {
+		String oldForwardRateExpression = forwardRateExpression;
+		forwardRateExpression = newForwardRateExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__FORWARD_RATE_EXPRESSION, oldForwardRateExpression, forwardRateExpression));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Reverse Rate Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Reverse Rate Expression</em>' attribute.
+	 * @see #setReverseRateExpression(String)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRule_ReverseRateExpression()
+	 * @model
+	 * @generated
+	 */
+	public String getReverseRateExpression() {
+		return reverseRateExpression;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getReverseRateExpression <em>Reverse Rate Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param newReverseRateExpression the new value of the '<em>Reverse Rate Expression</em>' attribute.
+	 * @see #getReverseRateExpression()
+	 * @generated
+	 */
+	public void setReverseRateExpression(String newReverseRateExpression) {
+		String oldReverseRateExpression = reverseRateExpression;
+		reverseRateExpression = newReverseRateExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.RULE__REVERSE_RATE_EXPRESSION, oldReverseRateExpression, reverseRateExpression));
 	}
 
 	/**
@@ -512,7 +612,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Rule#getID <em>ID</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>ID</em>' attribute.
+	 * @param newID the new value of the '<em>ID</em>' attribute.
 	 * @see #getID()
 	 * @generated
 	 */
@@ -579,6 +679,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				return getForwardRateUnit();
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
 				return getReverseRateUnit();
+			case IblPackage.RULE__FORWARD_RATE_EXPRESSION:
+				return getForwardRateExpression();
+			case IblPackage.RULE__REVERSE_RATE_EXPRESSION:
+				return getReverseRateExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -621,6 +725,12 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
 				setReverseRateUnit((RateUnit)newValue);
 				return;
+			case IblPackage.RULE__FORWARD_RATE_EXPRESSION:
+				setForwardRateExpression((String)newValue);
+				return;
+			case IblPackage.RULE__REVERSE_RATE_EXPRESSION:
+				setReverseRateExpression((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -660,6 +770,12 @@ public class Rule extends EObjectImpl implements IVisitable {
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
 				setReverseRateUnit((RateUnit)null);
 				return;
+			case IblPackage.RULE__FORWARD_RATE_EXPRESSION:
+				setForwardRateExpression(FORWARD_RATE_EXPRESSION_EDEFAULT);
+				return;
+			case IblPackage.RULE__REVERSE_RATE_EXPRESSION:
+				setReverseRateExpression(REVERSE_RATE_EXPRESSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -690,6 +806,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 				return forwardRateUnit != null;
 			case IblPackage.RULE__REVERSE_RATE_UNIT:
 				return reverseRateUnit != null;
+			case IblPackage.RULE__FORWARD_RATE_EXPRESSION:
+				return FORWARD_RATE_EXPRESSION_EDEFAULT == null ? forwardRateExpression != null : !FORWARD_RATE_EXPRESSION_EDEFAULT.equals(forwardRateExpression);
+			case IblPackage.RULE__REVERSE_RATE_EXPRESSION:
+				return REVERSE_RATE_EXPRESSION_EDEFAULT == null ? reverseRateExpression != null : !REVERSE_RATE_EXPRESSION_EDEFAULT.equals(reverseRateExpression);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -703,7 +823,7 @@ public class Rule extends EObjectImpl implements IVisitable {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (displayName: ");
 		result.append(displayName);
 		result.append(", isBidirectional: ");
@@ -714,6 +834,10 @@ public class Rule extends EObjectImpl implements IVisitable {
 		result.append(reverseRate);
 		result.append(", ID: ");
 		result.append(id);
+		result.append(", forwardRateExpression: ");
+		result.append(forwardRateExpression);
+		result.append(", reverseRateExpression: ");
+		result.append(reverseRateExpression);
 		result.append(')');
 		return result.toString();
 	}

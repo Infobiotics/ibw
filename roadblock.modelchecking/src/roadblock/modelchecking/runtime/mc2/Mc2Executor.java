@@ -10,7 +10,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.eclipse.core.runtime.Platform;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
@@ -43,7 +44,7 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 	}
 
 	@Override
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, Mc2Configuration config)
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, Mc2Configuration config, String workspaceDir)
 			throws IOException, InterruptedException {
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
@@ -55,7 +56,7 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		String ngssPath = BinaryPathProvider.getInstance().getNgssPath();
 		String mc2Directory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification",
 				File.separator, "mc2", File.separator);
-		String workspacePath = Platform.getLocation().toString() + mc2Directory;
+		String workspacePath = workspaceDir + mc2Directory;	
 		String mc2Path = BinaryPathProvider.getInstance().getMc2Path();
 
 		String simulationFileName = workspacePath + config.modelFileName + ".csv";
@@ -66,6 +67,9 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 				Long.toString(config.runs), "0" };
 		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName,
 				propertiesFileName, "-time" };
+		
+		FileUtils.forceMkdir(new File(workspacePath));
+		FileUtils.cleanDirectory(new File(workspacePath));
 
 		runSimulation(simulationCommand, xmlFlatModel, workspacePath, simulationFileName);
 
@@ -78,8 +82,10 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 
 	private Process runSimulation(String[] command, String xmlFlatModel, String workspacePath,
 			String simulationFileName) throws IOException, InterruptedException {
-
-		Process simulationProcess = Runtime.getRuntime().exec(command);
+		
+		ProcessBuilder pb = new ProcessBuilder(command);
+		pb.directory(new File(workspacePath));
+		Process simulationProcess = pb.start();
 
 		// pass the input model
 		OutputStream input = simulationProcess.getOutputStream();
@@ -90,7 +96,8 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		simulationProcess.waitFor();
 
 		// combine the results of the different simulation runs
-		File simulationDirectory = new File(workspacePath + "/-rundata");
+		String runsDirectory = FilenameUtils.removeExtension(simulationFileName) + "-runs";
+		File simulationDirectory = new File(runsDirectory);
 		File[] simulationRunFiles = simulationDirectory.listFiles();
 
 		if (simulationRunFiles.length > 0) {

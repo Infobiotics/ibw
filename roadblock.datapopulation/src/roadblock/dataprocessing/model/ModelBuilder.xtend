@@ -170,20 +170,35 @@ class ModelBuilder extends IblSwitch<Object> {
 		// update its properties
 		switch variableAssignment.variableAttribute {
 			case 'forwardRate':
-				rule => [
-					forwardRate = variableAssignment.amount;
-					forwardRateUnit = getRateUnit(variableAssignment.units)
-				]
+				if (variableAssignment.expression === null)
+					rule => [
+						forwardRate = variableAssignment.amount;
+						forwardRateUnit = getRateUnit(variableAssignment.units)
+					] 
+				else
+					rule => [
+						forwardRateExpression = variableAssignment.expression;
+					]
 			case 'backwardRate':
-				rule => [
-					reverseRate = variableAssignment.amount;
-					reverseRateUnit = getRateUnit(variableAssignment.units)
-				]
+				if (variableAssignment.expression === null)
+					rule => [
+						reverseRate = variableAssignment.amount;
+						reverseRateUnit = getRateUnit(variableAssignment.units)
+					]
+				else
+					rule => [
+						reverseRateExpression = variableAssignment.expression;
+					]
 			case 'rate':
-				rule => [
-					forwardRate = variableAssignment.amount;
-					forwardRateUnit = getRateUnit(variableAssignment.units)
-				]
+				if (variableAssignment.expression === null)
+					rule => [
+						forwardRate = variableAssignment.amount;
+						forwardRateUnit = getRateUnit(variableAssignment.units)
+					]
+				else
+					rule => [
+						forwardRateExpression = variableAssignment.expression;
+					]
 		}
 	}
 
@@ -564,9 +579,16 @@ class ModelBuilder extends IblSwitch<Object> {
 			switch parameter.name.buildVariableName {
 				case 'displayID':
 					molecule.displayName = parameter.value.doSwitch as String
+				case 'amount',
 				case 'concentration': {
-					val q = parameter.value.doSwitch as Quantity;
-					molecule => [amount = q.value; unit = getConcentrationUnit(q.units.get(0))]
+					if(parameter.value instanceof Quantity) {
+						val q = parameter.value.doSwitch as Quantity;
+						molecule => [amount = q.value; unit = getConcentrationUnit(q.units.get(0))]
+					}
+					else if(parameter.value instanceof RealConstant) {
+						val q = parameter.value as RealConstant;
+						molecule => [amount = q.value ]
+					}
 				}
 				case 'URI':
 					molecule.URI = parameter.value.doSwitch as String
@@ -628,12 +650,16 @@ class ModelBuilder extends IblSwitch<Object> {
 				emfVariableAssignment => [variableName = 'NOT IMPLEMENTED'; variableAttribute = 'NOT IMPLEMENTED']
 		}
 
-		val expression = variableAssignment.expression.members.head.doSwitch
-		switch expression {
+		val varExpression = variableAssignment.expression.members.head.doSwitch
+		switch varExpression {
 			Quantity:
 				emfVariableAssignment => [
-					amount = expression.value
-					units.addAll(expression.units)
+					amount = varExpression.value
+					units.addAll(varExpression.units)
+				]
+			String:
+			emfVariableAssignment => [
+					expression = varExpression
 				]
 			default:
 				emfVariableAssignment => [amount = -111; units.addAll(#['NOT IMPLEMENTED'])]

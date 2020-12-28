@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getUnits <em>Units</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment()
@@ -104,6 +105,26 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	protected double amount = AMOUNT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getExpression() <em>Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EXPRESSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected String expression = EXPRESSION_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -144,7 +165,7 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableName <em>Variable Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable Name</em>' attribute.
+	 * @param newVariableName the new value of the '<em>Variable Name</em>' attribute.
 	 * @see #getVariableName()
 	 * @generated
 	 */
@@ -177,7 +198,7 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getVariableAttribute <em>Variable Attribute</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Variable Attribute</em>' attribute.
+	 * @param newVariableAttribute the new value of the '<em>Variable Attribute</em>' attribute.
 	 * @see #getVariableAttribute()
 	 * @generated
 	 */
@@ -231,7 +252,7 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getAmount <em>Amount</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Amount</em>' attribute.
+	 * @param newAmount the new value of the '<em>Amount</em>' attribute.
 	 * @see #getAmount()
 	 * @generated
 	 */
@@ -240,6 +261,35 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 		amount = newAmount;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT, oldAmount, amount));
+	}
+
+	/**
+	 * Returns the value of the '<em><b>Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Expression</em>' attribute.
+	 * @see #setExpression(String)
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEMFVariableAssignment_Expression()
+	 * @model
+	 * @generated
+	 */
+	public String getExpression() {
+		return expression;
+	}
+
+	/**
+	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.EMFVariableAssignment#getExpression <em>Expression</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param newExpression the new value of the '<em>Expression</em>' attribute.
+	 * @see #getExpression()
+	 * @generated
+	 */
+	public void setExpression(String newExpression) {
+		String oldExpression = expression;
+		expression = newExpression;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, IblPackage.EMF_VARIABLE_ASSIGNMENT__EXPRESSION, oldExpression, expression));
 	}
 
 	/**
@@ -268,6 +318,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 				return getUnits();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				return getAmount();
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__EXPRESSION:
+				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -294,6 +346,9 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				setAmount((Double)newValue);
 				return;
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__EXPRESSION:
+				setExpression((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -318,6 +373,9 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				setAmount(AMOUNT_EDEFAULT);
 				return;
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__EXPRESSION:
+				setExpression(EXPRESSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,6 +396,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 				return units != null && !units.isEmpty();
 			case IblPackage.EMF_VARIABLE_ASSIGNMENT__AMOUNT:
 				return amount != AMOUNT_EDEFAULT;
+			case IblPackage.EMF_VARIABLE_ASSIGNMENT__EXPRESSION:
+				return EXPRESSION_EDEFAULT == null ? expression != null : !EXPRESSION_EDEFAULT.equals(expression);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -351,7 +411,7 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (variableName: ");
 		result.append(variableName);
 		result.append(", variableAttribute: ");
@@ -360,6 +420,8 @@ public class EMFVariableAssignment extends EObjectImpl implements IVisitable {
 		result.append(units);
 		result.append(", amount: ");
 		result.append(amount);
+		result.append(", expression: ");
+		result.append(expression);
 		result.append(')');
 		return result.toString();
 	}

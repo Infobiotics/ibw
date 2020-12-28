@@ -23,10 +23,12 @@ import roadblock.emf.ibl.Ibl.TimeInstant
 import roadblock.emf.ibl.Ibl.TimeInterval
 import roadblock.emf.ibl.Ibl.TimeUnit
 import roadblock.emf.ibl.Ibl.VariableReference
+import java.util.regex.Pattern
 
 public class FlatteningUtil {
 
 	private static var instance = new FlatteningUtil();
+	private Pattern rateExpressionSpeciesPattern = Pattern.compile("\\[(.*?)\\]");
 
 	def public static FlatteningUtil getInstance() {
 		return instance;
@@ -168,14 +170,37 @@ public class FlatteningUtil {
 				clonedRule.reverseRate = UnitConverter::getInstance().getBaseRate(clonedRule.reverseRate, clonedRule.reverseRateUnit, clonedRule.leftHandSide);
 				clonedRule.reverseRateUnit = IblFactory::eINSTANCE.createRateUnit;
 			}
+			
+			if(clonedRule.getForwardRateExpression() !== null) {
+				val matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getForwardRateExpression());
+				while(matcher.find()) {
+		            val speciesName = matcher.group(0).replace("[", "").replace("]", "");
+		            val species = flatMoleculesByCompartment.get(compartment).get(speciesName);
+		            val flatSpeciesName = species.getDisplayName();
+		            clonedRule.setForwardRateExpression(clonedRule.getForwardRateExpression().replace(matcher.group(0), flatSpeciesName));
+		        }
+			}
+			
+			if(clonedRule.getReverseRateExpression() !== null) {
+				val matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getReverseRateExpression());
+				while(matcher.find()) {
+					val speciesName = matcher.group(0).replace("[", "").replace("]", "");
+		            val species = flatMoleculesByCompartment.get(compartment).get(speciesName);
+		            val flatSpeciesName = species.getDisplayName();
+		            clonedRule.setReverseRateExpression(clonedRule.getReverseRateExpression().replace(matcher.group(0), flatSpeciesName));
+		        }
+			}
 
 			// eliminate rules with no specified or zero rates		
 			if(clonedRule.isIsBidirectional) {
-				if ((clonedRule.forwardRate !== null && clonedRule.forwardRate > 0) || (clonedRule.reverseRate !== null && clonedRule.reverseRate > 0)) {
+				if (
+						(clonedRule.forwardRate !== null && clonedRule.forwardRate > 0 || clonedRule.forwardRateExpression !== null) || 
+						(clonedRule.reverseRate !== null && clonedRule.reverseRate > 0 || clonedRule.reverseRateExpression !== null)
+					) {
 					flatRules.add(clonedRule);
 				}
 			}
-			else if (clonedRule.forwardRate !== null && clonedRule.forwardRate > 0) {
+			else if (clonedRule.forwardRate !== null && clonedRule.forwardRate > 0 || clonedRule.forwardRateExpression !== null) {
 				flatRules.add(clonedRule);
 			}
 		}

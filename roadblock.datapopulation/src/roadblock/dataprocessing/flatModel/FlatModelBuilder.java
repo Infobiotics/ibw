@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -64,6 +66,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	private Map<Object, String> prefixByCompartment;
 	// child compartments are stored by their original name
 	private Map<Object, Map<String, Object>> childCompartmentsByCompartment;
+	private Pattern rateExpressionSpeciesPattern = Pattern.compile("\\[(.*?)\\]");
 
 	public void build() {
 
@@ -593,14 +596,37 @@ public class FlatModelBuilder implements IVisitor<Void> {
 				clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit(), clonedRule.getLeftHandSide()));
 				clonedRule.setReverseRateUnit(IblFactory.eINSTANCE.createRateUnit());
 			}
+			
+			if(clonedRule.getForwardRateExpression() != null) {
+				Matcher matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getForwardRateExpression());
+				while(matcher.find()) {
+		            String speciesName = matcher.group(0).replace("[", "").replace("]", "");
+		            MolecularSpecies species = moleculesByCompartment.get(compartment).get(speciesName);
+		            String flatSpeciesName = species.getDisplayName();
+		            clonedRule.setForwardRateExpression(clonedRule.getForwardRateExpression().replace(matcher.group(0), flatSpeciesName));
+		        }
+			}
+			
+			if(clonedRule.getReverseRateExpression() != null) {
+				Matcher matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getReverseRateExpression());
+				while(matcher.find()) {
+					String speciesName = matcher.group(0).replace("[", "").replace("]", "");
+		            MolecularSpecies species = moleculesByCompartment.get(compartment).get(speciesName);
+		            String flatSpeciesName = species.getDisplayName();
+		            clonedRule.setReverseRateExpression(clonedRule.getReverseRateExpression().replace(matcher.group(0), flatSpeciesName));
+		        }
+			}
 
 			// eliminate rules with no specified or zero rates
 			if(clonedRule.isIsBidirectional()) {
-				if ((clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0) || (clonedRule.getReverseRate() != null && clonedRule.getReverseRate() > 0)) {
+				if (
+						(clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0 || clonedRule.getForwardRateExpression() != null) || 
+						(clonedRule.getReverseRate() != null && clonedRule.getReverseRate() > 0 || clonedRule.getReverseRateExpression() != null)
+					) {
 					flatModel.getRuleList().add(clonedRule);
 				}
 			}
-			else if (clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0) {
+			else if (clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0 || clonedRule.getForwardRateExpression() != null) {
 				flatModel.getRuleList().add(clonedRule);
 			}
 		}

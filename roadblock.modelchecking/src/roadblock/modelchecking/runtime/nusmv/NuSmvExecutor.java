@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.eclipse.core.runtime.Platform;
+import org.apache.commons.io.FileUtils;
 
 import roadblock.bin.BinaryPathProvider;
 import roadblock.dataprocessing.flatModel.FlatModelManager;
@@ -32,10 +32,10 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 	}
 
 	@Override
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, NuSmvConfiguration config) throws IOException {
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, NuSmvConfiguration config, String workspaceDir) throws IOException {
 
 		String nuSmvDirectory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification", File.separator, "nuxmv", File.separator);
-		String workspacePath = Platform.getLocation().toString() + nuSmvDirectory;
+		String workspacePath = workspaceDir + nuSmvDirectory;
 
 		String verificationModelFileName = workspacePath + config.modelFileName + ".smv";
 
@@ -44,6 +44,9 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 		FlatModelPropertyPair flatData = flatModelManager.getFlatData(property);
 		String propetyTranslation = translationManager.translate(flatData.getProperty(), target);
 		String modelTranslation = translationManager.translate(flatData.getFlatModel(), flatData.getProperty(), target);
+		
+		FileUtils.forceMkdir(new File(workspacePath));
+		FileUtils.cleanDirectory(new File(workspacePath));
 
 		writeModel(verificationModelFileName, modelTranslation, propetyTranslation, true);
 

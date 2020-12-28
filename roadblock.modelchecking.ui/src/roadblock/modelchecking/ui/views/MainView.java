@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
@@ -718,6 +719,7 @@ public class MainView extends ViewPart implements Observer {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
 				Process runningProcess = null;
+				final String workspaceDir = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator;
 
 				try {
 					int exportIndex = 0;
@@ -756,7 +758,7 @@ public class MainView extends ViewPart implements Observer {
 							}
 
 							final Process verificationProcess = runningProcess = VerificationManager.getInstance()
-									.verify(propertyTreeData.model, property, target, config);
+									.verify(propertyTreeData.model, property, target, config, workspaceDir);
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {

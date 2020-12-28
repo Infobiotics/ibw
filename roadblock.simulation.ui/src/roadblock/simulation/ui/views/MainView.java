@@ -1,6 +1,7 @@
 package roadblock.simulation.ui.views;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
@@ -15,6 +17,7 @@ import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Platform;
@@ -375,8 +378,10 @@ public class MainView extends ViewPart implements Observer {
 	private void performSimulation() {
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
+		final String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + "/.tmp/simulation/";
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
 				config.getDataFile());
+		
 		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
 		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
@@ -390,7 +395,7 @@ public class MainView extends ViewPart implements Observer {
 		simulator.simulation_algorithm = SSAlgorithm.getData(config.SSAlgorithm).toString();
 		// simulator.max_runtime = 0.0;
 		// simulator.seed = 0;
-		simulator.runSimulation(exportFilename, consoleStream);
+		simulator.runSimulation(workspacePath, exportFilename, consoleStream);
 
 		// XXX refresh project explorer
 		ResultsView resultsView = (ResultsView) getView("roadblock.simulation.ui.views.resultsView");

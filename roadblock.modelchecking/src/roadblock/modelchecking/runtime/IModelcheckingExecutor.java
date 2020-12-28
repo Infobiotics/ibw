@@ -10,5 +10,5 @@ public interface IModelcheckingExecutor<TConfiguration extends IModelcheckingCon
 
 	public void export(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException;
 
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, TConfiguration config) throws IOException, InterruptedException;
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, TConfiguration config, String workspacePath) throws IOException, InterruptedException;
 }
