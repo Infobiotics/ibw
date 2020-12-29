@@ -19,7 +19,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: roadblock.simulation.ui.views
 Eclipse-BundleShape: dir
-Import-Package: roadblock.caching,
+Import-Package: org.apache.commons.lang;version="2.6.0",
+ roadblock.caching,
  roadblock.dataprocessing.export,
  roadblock.dataprocessing.flatModel,
  roadblock.dataprocessing.model,

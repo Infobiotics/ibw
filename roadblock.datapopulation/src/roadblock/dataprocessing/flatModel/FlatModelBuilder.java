@@ -64,7 +64,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	private Map<Object, String> prefixByCompartment;
 	// child compartments are stored by their original name
 	private Map<Object, Map<String, Object>> childCompartmentsByCompartment;
-
+	private final String COMPARTMENT_SEPARATOR = "__";
+	
 	public void build() {
 
 		this.flatModel = IblFactory.eINSTANCE.createFlatModel();
@@ -459,7 +460,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Map<String, MolecularSpecies> molecules = new HashMap<>();
 
 		moleculesByCompartment.put(cell, molecules);
-		prefixByCompartment.put(cell, prefixByCompartment.get(parentCompartment) + "_" + cell.getDisplayName());
+		prefixByCompartment.put(cell, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + cell.getDisplayName());
 
 		for (MolecularSpecies molecule : cell.getMoleculeList()) {
 			register(molecule, cell);
@@ -472,7 +473,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Map<String, MolecularSpecies> molecules = new HashMap<>(moleculesByCompartment.get(parentCompartment));
 
 		moleculesByCompartment.put(device, molecules);
-		prefixByCompartment.put(device, prefixByCompartment.get(parentCompartment) + "_" + device.getDisplayName());
+		prefixByCompartment.put(device, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + device.getDisplayName());
 
 		for (MolecularSpecies molecule : device.getMoleculeList()) {
 			register(molecule, device);
@@ -485,7 +486,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Map<String, MolecularSpecies> molecules = new HashMap<>(moleculesByCompartment.get(parentCompartment));
 
 		moleculesByCompartment.put(process, molecules);
-		prefixByCompartment.put(process, prefixByCompartment.get(parentCompartment) + "_" + process.getDisplayName());
+		prefixByCompartment.put(process, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + process.getDisplayName());
 
 		for (MolecularSpecies molecule : process.getMoleculeList()) {
 			register(molecule, process);
@@ -502,12 +503,12 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			String complexMoleculeName = "";
 
 			for (String moleculeName : componentMolecules) {
-				complexMoleculeName += moleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
+				complexMoleculeName += moleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "___";
 			}
 
-			molecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 1));
+			molecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 3));
 		} else {
-			molecule.setDisplayName(prefixByCompartment.get(compartment) + "_" + molecularSpecies.getDisplayName());
+			molecule.setDisplayName(prefixByCompartment.get(compartment) + COMPARTMENT_SEPARATOR + molecularSpecies.getDisplayName());
 		}
 
 		molecule.setAmount(UnitConverter.getInstance().getBaseConcentration(molecularSpecies.getAmount(), molecularSpecies.getUnit()));

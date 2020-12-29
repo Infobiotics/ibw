@@ -32,6 +32,7 @@ public class ByPropertyFlattening {
 	private Map<String, MolecularSpecies> moleculesByFlatName;
 	private Map<EObject, String> prefixByCompartment;
 	private Map<String, EObject> compartmentsByName;
+	private final String COMPARTMENT_SEPARATOR = "__";
 
 	def public FlatModelPropertyPair getFlatData() {
 
@@ -106,15 +107,15 @@ public class ByPropertyFlattening {
 				prefixByCompartment.put(compartment, compartment.getDisplayName());
 			}
 			Cell: {
-				prefixByCompartment.put(compartment, prefixByCompartment.get(parentCompartment) + "_" + compartment.getDisplayName());
+				prefixByCompartment.put(compartment, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + compartment.getDisplayName());
 			}
 			Device: {
 				molecules.putAll(flatMoleculesByCompartment.get(parentCompartment));
-				prefixByCompartment.put(compartment, prefixByCompartment.get(parentCompartment) + "_" + compartment.getDisplayName());
+				prefixByCompartment.put(compartment, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + compartment.getDisplayName());
 			}
 			Kinetics: {
 				molecules.putAll(flatMoleculesByCompartment.get(parentCompartment));
-				prefixByCompartment.put(compartment, prefixByCompartment.get(parentCompartment) + "_" + compartment.getDisplayName());
+				prefixByCompartment.put(compartment, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + compartment.getDisplayName());
 			}
 		}
 
@@ -152,12 +153,12 @@ public class ByPropertyFlattening {
 					var complexMoleculeName = "";
 
 					for (String moleculeName : componentMolecules) {
-						complexMoleculeName = complexMoleculeName + flatMoleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "_";
+						complexMoleculeName = complexMoleculeName + flatMoleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "___";
 					}
 
-					clonedMolecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 1));
+					clonedMolecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 3));
 				} else {
-					clonedMolecule.setDisplayName(prefixByCompartment.get(compartment) + "_" + molecule.getDisplayName());
+					clonedMolecule.setDisplayName(prefixByCompartment.get(compartment) + COMPARTMENT_SEPARATOR + molecule.getDisplayName());
 				}
 
 				clonedMolecule.setAmount(UnitConverter::getInstance.getBaseConcentration(molecule.getAmount(), molecule.getUnit()));
