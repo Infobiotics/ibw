@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.csstudio.swt.xygraph.dataprovider.CircularBufferDataProvider;
 import org.csstudio.swt.xygraph.dataprovider.Sample;
 import org.csstudio.swt.xygraph.figures.ToolbarArmedXYGraph;
@@ -275,6 +276,8 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 	 * Plot a given list of trajectories to the XYGraph.
 	 */
 	public String getChartSeries(ArrayList<Trajectory> trajectories) {
+		performPrettyNaming(trajectories);
+		
 		StringBuilder seriesBuilder = new StringBuilder();
 
 		seriesBuilder.append("[");
@@ -309,6 +312,27 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 		}
 
 		xyGraph.primaryXAxis.setRange(new Range(minRange, maxRange));
+	}
+	
+	/**
+	 * Adjust the species name such that the hierarchy is easier to be read.
+	 * @param trajectories
+	 */
+	public void performPrettyNaming(ArrayList<Trajectory> trajectories) {
+		for(Trajectory t : trajectories) {
+			// Find and apply the common prefix
+			String[] parts = t.species.split("___");
+			String prefix = StringUtils.getCommonPrefix(parts);
+			
+			for(int i = 0; i < parts.length; i++) {
+				parts[i] = parts[i].substring(prefix.length()); 
+			}
+			
+			t.species = prefix + String.join("~", parts);
+			
+			// Use the > character to represent hierarchy
+			t.species = t.species.replace("__", " > ");
+		}
 	}
 
 	/**
