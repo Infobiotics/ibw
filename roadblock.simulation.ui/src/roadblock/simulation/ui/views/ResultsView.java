@@ -323,7 +323,18 @@ public class ResultsView extends ViewPart implements IPartListener2 {
 		for(Trajectory t : trajectories) {
 			// Find and apply the common prefix
 			String[] parts = t.species.split("___");
-			String prefix = StringUtils.getCommonPrefix(parts);
+			String[] partPaths = new String[parts.length];
+			
+			for(int i = 0; i < parts.length; i++) {
+				if(parts[i].contains("__")) {
+					partPaths[i] = parts[i].substring(0, parts[i].lastIndexOf("__") + 2);
+				}
+				else {
+					partPaths[i] = parts[i];
+				}
+			}
+			
+			String prefix = StringUtils.getCommonPrefix(partPaths);
 			
 			for(int i = 0; i < parts.length; i++) {
 				parts[i] = parts[i].substring(prefix.length()); 
