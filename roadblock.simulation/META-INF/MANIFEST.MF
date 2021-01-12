@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: roadblock.simulation
 Bundle-SymbolicName: roadblock.simulation;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Export-Package: roadblock.simulation.ngss,
+Export-Package: roadblock.simulation,
+ roadblock.simulation.ngss,
  roadblock.simulation.ssapredict
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,

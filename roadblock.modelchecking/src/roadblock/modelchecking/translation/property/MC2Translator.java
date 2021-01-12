@@ -96,12 +96,14 @@ public class MC2Translator implements IPropertyTranslator {
 
 		if (expression.getOperator() == TemporalPattern.FOLLOWED_BY) {
 			if (tc != null) {
-				String pattern = "P%s [ G ((%s) => F (%s ^ %s)) ]";
+				//String pattern = "P%s [ G ((%s) -> F (%s ^ %s)) ]";
+				String pattern = "P%s [ G (\u00ac(%s) V F (%s ^ %s)) ]";
 				String timeConstraint = tc.accept(this);
 
 				translation = String.format(pattern, probabilityConstraint, leftStateFormula, rightStateFormula, timeConstraint);
 			} else {
-				String pattern = "P%s [ G ((%s) => F (%s)) ]";
+				//String pattern = "P%s [ G ((%s) -> F (%s)) ]";
+				String pattern = "P%s [ G (\u00ac(%s) V F (%s)) ]";
 				translation = String.format(pattern, probabilityConstraint, leftStateFormula, rightStateFormula);
 			}
 		} else if (expression.getOperator() == TemporalPattern.UNTIL) {
@@ -135,7 +137,7 @@ public class MC2Translator implements IPropertyTranslator {
 	@Override
 	public String visit(NotStateFormula expression) {
 
-		String pattern = "! (%s)";
+		String pattern = "\u00ac(%s)";
 		String stateFormula = expression.getNegatedOperand().accept(this);
 
 		return String.format(pattern, stateFormula);
@@ -144,12 +146,21 @@ public class MC2Translator implements IPropertyTranslator {
 	@Override
 	public String visit(BinaryStateFormula expression) {
 
-		String pattern = "(%s) %s (%s)";
-		String leftFormula = expression.getLeftOperand().accept(this);
-		String rightFormula = expression.getRightOperand().accept(this);
-		String relationalOperator = Translate(expression.getOperator());
+		if(expression.getOperator() == BooleanOperator.IMPLIES) {
+			String pattern = "\u00ac(%s) V (%s)";
+			String leftFormula = expression.getLeftOperand().accept(this);
+			String rightFormula = expression.getRightOperand().accept(this);
 
-		return String.format(pattern, leftFormula, relationalOperator, rightFormula);
+			return String.format(pattern, leftFormula, rightFormula);
+		}
+		else {
+			String pattern = "(%s) %s (%s)";
+			String leftFormula = expression.getLeftOperand().accept(this);
+			String rightFormula = expression.getRightOperand().accept(this);
+			String relationalOperator = Translate(expression.getOperator());
+
+			return String.format(pattern, leftFormula, relationalOperator, rightFormula);
+		}
 	}
 
 	@Override
@@ -263,7 +274,7 @@ public class MC2Translator implements IPropertyTranslator {
 		case INFINITELY_OFTEN:
 			return "G F";
 		case NEVER:
-			return "G !";
+			return "G \u00ac";
 		case UNTIL:
 			return "U";
 		case STEADY_STATE:
@@ -299,9 +310,9 @@ public class MC2Translator implements IPropertyTranslator {
 		case AND:
 			return "^";
 		case OR:
-			return "|";
+			return "V";
 		case IMPLIES:
-			return "=>";
+			return "->";
 		default:
 			return "";
 		}

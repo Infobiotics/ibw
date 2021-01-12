@@ -111,7 +111,6 @@ public class MainView extends ViewPart implements Observer {
 	private Text txtMaxTime;
 	private Text txtInterval;
 	private Text txtRuns;
-	private Combo ddlSimulator;
 
 	private Button btnVerify;
 	private Button btnExport;
@@ -275,23 +274,6 @@ public class MainView extends ViewPart implements Observer {
 		txtRuns = new Text(mc2Group, SWT.BORDER);
 		txtRuns.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 
-		// create stochastic simulation algorithm widget
-		Label simulatorLabel = new Label(mc2Group, SWT.NONE);
-		simulatorLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1));
-		simulatorLabel.setText("Simulator: ");
-		simulatorLabel.setToolTipText("simulation algorithm to use");
-		ddlSimulator = new Combo(mc2Group, SWT.READ_ONLY);
-		ddlSimulator.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
-		ddlSimulator.add("dm");
-		ddlSimulator.add("frm");
-		ddlSimulator.add("cr");
-		ddlSimulator.add("tl");
-		ddlSimulator.add("nrm");
-		ddlSimulator.add("pdm");
-		ddlSimulator.add("ldm");
-		ddlSimulator.add("sdm");
-		ddlSimulator.add("odm");
-
 		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
 		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
 
@@ -379,7 +361,6 @@ public class MainView extends ViewPart implements Observer {
 
 		ddlVerificationType.select(0);
 		ddlModelChecker.select(0);
-		ddlSimulator.select(0);
 
 		handleModelcheckerChanged();
 
@@ -631,13 +612,6 @@ public class MainView extends ViewPart implements Observer {
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
-		// simulation algorithm widget
-		widgetValue = WidgetProperties.selection().observe(ddlSimulator);
-		modelValue = BeanProperties.value(Configuration.class, "simulationAlgorithm").observe(config);
-
-		strategy = new UpdateValueStrategy();
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
-
 		// verification type widget
 		widgetValue = WidgetProperties.selection().observe(ddlVerificationType);
 		modelValue = BeanProperties.value(Configuration.class, "verificationType").observe(config);
@@ -709,7 +683,7 @@ public class MainView extends ViewPart implements Observer {
 		final double maxTime = Double.parseDouble(txtMaxTime.getText());
 		final double logInterval = Double.parseDouble(txtInterval.getText());
 		final long runs = Long.parseLong(txtRuns.getText());
-		final String simulationAlgorithm = ddlSimulator.getText();
+		final String simulationAlgorithm = "dm"; // Use Gillespie Direct Method
 
 		final MessageConsoleStream consoleStream = verificationConsole.newMessageStream();
 

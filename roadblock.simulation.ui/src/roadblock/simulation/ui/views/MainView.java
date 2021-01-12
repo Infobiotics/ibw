@@ -1,7 +1,6 @@
 package roadblock.simulation.ui.views;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -20,11 +19,11 @@ import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -46,13 +45,14 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.util.PolymorphicDispatcher.WarningErrorHandler;
 import org.sbml.jsbml.SBMLWriter;
 
 import roadblock.caching.ModelCache;
 import roadblock.dataprocessing.export.SBML_Export;
 import roadblock.emf.ibl.Ibl.FlatModel;
-import roadblock.emf.ibl.Ibl.Model;
 import roadblock.resource.IblResourceObservable;
+import roadblock.simulation.EnvironmentType;
 import roadblock.simulation.ngss.Simulator;
 import roadblock.simulation.ssapredict.SSAPredictManager;
 import roadblock.simulation.ui.Activator;
@@ -72,7 +72,7 @@ public class MainView extends ViewPart implements Observer {
 	private Text maxTime;
 	private Text logInterval;
 	private Text sampleNumber;
-	private Combo SSAlgorithm;
+	private Combo comboRunOn;
 	private Button simulationButton;
 
 	@Override
@@ -133,43 +133,18 @@ public class MainView extends ViewPart implements Observer {
 		sampleNumber = new Text(parent, SWT.BORDER);
 		sampleNumber.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
 
+		Label runOnLabel = new Label(parent, SWT.NONE);
+		runOnLabel.setText("Run on: ");
+		comboRunOn = new Combo(parent, SWT.READ_ONLY);
+		comboRunOn.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 2, 1));
+		comboRunOn.add("Local Environment");
+		comboRunOn.setData("Local Environment", EnvironmentType.LOCAL);
+		comboRunOn.add("Remote HPC Environment (GPU)");
+		comboRunOn.setData("Remote HPC Environment (GPU)", EnvironmentType.REMOTE_HPC);
+		comboRunOn.select(0);
+
 		Label separator1 = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
 		separator1.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 3, 1));
-
-		// create stochastic simulation algorithm widget
-		Label SSLabel = new Label(parent, SWT.NONE);
-		SSLabel.setText("Algorithm: ");
-		SSLabel.setToolTipText("simulation algorithm to use");
-		SSAlgorithm = new Combo(parent, SWT.NONE);
-		SSAlgorithm.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-		SSAlgorithm.add("Direct Method");
-		SSAlgorithm.setData("Direct Method", "dm");
-		SSAlgorithm.add("First Reaction Method");
-		SSAlgorithm.setData("First Reaction Method", "frm");
-		SSAlgorithm.add("Next Reaction Method");
-		SSAlgorithm.setData("Next Reaction Method", "nrm");
-		SSAlgorithm.add("Optimized Direct Method");
-		SSAlgorithm.setData("Optimized Direct Method", "odm");
-		SSAlgorithm.add("Sorting Direct Method");
-		SSAlgorithm.setData("Sorting Direct Method", "sdm");
-		SSAlgorithm.add("Logarithmic Direct Method");
-		SSAlgorithm.setData("Logarithmic Direct Method", "ldm");
-		SSAlgorithm.add("Partial Propensity Direct Method");
-		SSAlgorithm.setData("Partial Propensity Direct Method", "pdm");
-		SSAlgorithm.add("Composition Rejection");
-		SSAlgorithm.setData("Composition Rejection", "cr");
-		SSAlgorithm.add("Tau Leaping");
-		SSAlgorithm.setData("Tau Leaping", "tl");
-		Button detectAlgButton = new Button(parent, SWT.PUSH);
-		detectAlgButton.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
-		detectAlgButton.setText("Detect");
-		detectAlgButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				performAlgorithmDetection();
-			}
-		});
-		// SSAlgorithm.select(0);
 
 		// create simulation button
 		simulationButton = new Button(parent, SWT.PUSH);
@@ -328,71 +303,77 @@ public class MainView extends ViewPart implements Observer {
 		strategy.setBeforeSetValidator(validator);
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
-
-		// SSAlgorithm
-		widgetValue = WidgetProperties.selection().observe(SSAlgorithm);
-		modelValue = BeanProperties.value(Configuration.class, "SSAlgorithm").observe(config);
-		strategy = new UpdateValueStrategy();
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 	}
 
 	private void ensureConfig() {
 		config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
 	}
 
-	private void performAlgorithmDetection() {
+	private String getOptimalSSA() {
 		SSAPredictManager ssaPredictManager = SSAPredictManager.getInstance();
 
 		try {
-			String simulationTmpPath = Platform.getLocation().toOSString() + "/.tmp/simulation/";
-			String sbmlExportFilename = "export.smbl";
+			String simulationTmpPath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+					+ "/.tmp/simulation/";
+			String sbmlExportFilename = "export.sbml";
+			String sbmlExportFullFulename = simulationTmpPath + sbmlExportFilename;
+
+			FileUtils.forceMkdir(new File(simulationTmpPath));
+			FileUtils.cleanDirectory(new File(simulationTmpPath));
 
 			SBMLWriter writer = new SBMLWriter();
 
-			Model model = ModelCache.getInstance().getModel(currentIblResource);
 			FlatModel emfFlatModel = ModelCache.getInstance().getFlatModel(currentIblResource);
-			writer.writeSBMLToFile(SBML_Export.makeSBMLDocument(null, emfFlatModel),
-					simulationTmpPath + sbmlExportFilename);
+			writer.writeSBMLToFile(SBML_Export.makeSBMLDocument(null, emfFlatModel), sbmlExportFullFulename);
 
-			File sbmlFile = new File(simulationTmpPath + sbmlExportFilename);
+			File sbmlFile = new File(sbmlExportFullFulename);
 
 			String predictedAlgorithm = ssaPredictManager.predictSimulationAlgorithm(sbmlFile);
-			predictedAlgorithm = predictedAlgorithm.substring(0, predictedAlgorithm.length() -  6);
+			predictedAlgorithm = predictedAlgorithm.substring(0, predictedAlgorithm.length() - 6);
 
-			if (predictedAlgorithm != null) {
-				String[] algos = SSAlgorithm.getItems();
+			return predictedAlgorithm;
 
-				for (int i = 0; i < algos.length; i++) {
-					if (algos[i].contains(predictedAlgorithm)) {
-						SSAlgorithm.select(i);
-						break;
-					}
-				}
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		return "dm";
 	}
 
 	// launch simulator
 	private void performSimulation() {
+		EnvironmentType simulationEnvironment = (EnvironmentType) comboRunOn.getData(comboRunOn.getText());
+
+		switch (simulationEnvironment) {
+		case LOCAL:
+			performLocalSimulation();
+			break;
+		case REMOTE_HPC:
+			performRemoteHPCSimulation();
+			break;
+		}
+	}
+
+	private void performLocalSimulation() {
 		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
-		final String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + "/.tmp/simulation/";
+		final String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+				+ "/.tmp/simulation/";
 		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
 				config.getDataFile());
-		
+
 		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
 		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
 		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
 
 		String xml = ModelCache.getInstance().getSerialisedFlatModel(currentIblResource);
+		String optimalSSA = getOptimalSSA();
 
 		Simulator simulator = new Simulator(xml);
 		simulator.max_time = config.getMaxTime();
 		simulator.log_interval = config.getLogInterval();
 		simulator.runs = config.getSampleNumber();
-		simulator.simulation_algorithm = SSAlgorithm.getData(config.SSAlgorithm).toString();
+		simulator.simulation_algorithm = optimalSSA;
 		// simulator.max_runtime = 0.0;
 		// simulator.seed = 0;
 		simulator.runSimulation(workspacePath, exportFilename, consoleStream);
@@ -402,6 +383,10 @@ public class MainView extends ViewPart implements Observer {
 		if (resultsView != null) {
 			resultsView.plotTrajectories();
 		}
+	}
+
+	private void performRemoteHPCSimulation() {
+		MessageDialog.openWarning(getSite().getShell(), "HPC Offline", "The HPC environment is currently offline.");
 	}
 
 	public static IViewPart getView(String id) {
@@ -446,6 +431,5 @@ public class MainView extends ViewPart implements Observer {
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
-
 	}
 }

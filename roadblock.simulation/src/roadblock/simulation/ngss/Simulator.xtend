@@ -49,7 +49,7 @@ class Simulator {
 
 		val ngssPath = BinaryPathProvider.getInstance().getNgssPath()
 		//Platform.getLocation().toOSString + "/.tmp/simulation";
-		var resFilename = workspacePath + File.separator + ".output.csv"
+		var resFilename = workspacePath + ".output.csv"
 
 		val String[] simulationCommand = #[ngssPath, workspacePath, this.max_time.toString, this.max_runtime.toString,
 			this.simulation_algorithm, resFilename, this.log_interval.toString, this.runs.toString,

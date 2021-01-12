@@ -46,13 +46,18 @@ public class IblResourceObservable extends Observable implements IPartListener2 
 					}
 				});
 
+				/*
 				if (iblResource != null && iblResource != currentIblResource) {
 					currentIblResource = iblResource;
 					setChanged();
 					notifyObservers(currentIblResource);
 				}
-
+				*/
+				
 				if (iblResource.getErrors().size() == 0) {
+					currentIblResource = iblResource;
+					setChanged();
+					notifyObservers(currentIblResource);
 				}
 			}
 		}
@@ -77,7 +82,7 @@ public class IblResourceObservable extends Observable implements IPartListener2 
 
 	@Override
 	public void partDeactivated(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
+		inspectPart(partRef);
 	}
 
 	@Override
