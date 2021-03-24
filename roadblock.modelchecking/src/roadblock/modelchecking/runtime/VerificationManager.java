@@ -1,6 +1,7 @@
 package roadblock.modelchecking.runtime;
 
 import java.io.IOException;
+import java.util.List;
 
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
@@ -48,6 +49,23 @@ public class VerificationManager {
 		case MC2:
 			Mc2Executor mc2Executor = (Mc2Executor) executor;
 			verificationProcess = mc2Executor.verify(model, property, target, (Mc2Configuration) config, workspaceDir);
+			break;
+		default:
+			break;
+		}
+
+		return verificationProcess;
+	}
+	
+	public Process verify(Model model, List<IProperty> properties, ModelcheckingTarget target, IModelcheckingConfiguration config, String workspaceDir) throws IOException, InterruptedException {
+
+		IModelcheckingExecutor<? extends IModelcheckingConfiguration> executor = getExecutor(target);
+		Process verificationProcess = null;
+
+		switch (target) {
+		case MC2:
+			Mc2Executor mc2Executor = (Mc2Executor) executor;
+			verificationProcess = mc2Executor.verify(model, properties, target, (Mc2Configuration) config, workspaceDir);
 			break;
 		default:
 			break;

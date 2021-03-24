@@ -9,6 +9,8 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -25,6 +27,7 @@ import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.runtime.IModelcheckingExecutor;
+import roadblock.modelchecking.runtime.prism.PrismConfiguration;
 import roadblock.modelchecking.translation.TranslationManager;
 
 public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
@@ -78,6 +81,41 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		Process verificationProcess = Runtime.getRuntime().exec(verificationCommand);
 
 		return verificationProcess;
+	}
+	
+	@Override
+	public Process verify(Model model, List<IProperty> properties, ModelcheckingTarget target, Mc2Configuration config, String workspaceDir) throws IOException, InterruptedException {
+		FlatModelManager flatModelManager = new FlatModelManager(model);
+		FlatModel flatModel = flatModelManager.getFlatModel();
+		String xmlFlatModel = convertToXml(flatModel);
+		List<String> propetyTranslations = properties.stream().map(p -> translationManager.translate(flatModelManager.getFlatData(p).getProperty(), target)).collect(Collectors.toList());
+
+		String ngssPath = BinaryPathProvider.getInstance().getNgssPath();
+		String mc2Directory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification",
+				File.separator, "mc2", File.separator);
+		String workspacePath = workspaceDir + mc2Directory;	
+		String mc2Path = BinaryPathProvider.getInstance().getMc2Path();
+
+		String simulationFileName = workspacePath + config.modelFileName + ".csv";
+		String propertiesFileName = workspacePath + config.modelFileName + ".queries";
+
+		String[] simulationCommand = new String[] { ngssPath, workspacePath, Double.toString(config.maxTime), "0.0",
+				config.simulationAlgorithm, simulationFileName, Double.toString(config.logInterval),
+				Long.toString(config.runs), "0" };
+		String[] verificationCommand = new String[] { "java", "-jar", mc2Path, "stoch", simulationFileName,
+				propertiesFileName, "-time" };
+		
+		FileUtils.forceMkdir(new File(workspacePath));
+		FileUtils.cleanDirectory(new File(workspacePath));
+
+		runSimulation(simulationCommand, xmlFlatModel, workspacePath, simulationFileName);
+
+		writeFile(propertiesFileName, propetyTranslations);
+
+		Process verificationProcess = Runtime.getRuntime().exec(verificationCommand);
+
+		return verificationProcess;
+
 	}
 
 	private Process runSimulation(String[] command, String xmlFlatModel, String workspacePath,
@@ -155,6 +193,17 @@ public class Mc2Executor implements IModelcheckingExecutor<Mc2Configuration> {
 		PrintWriter writer = new PrintWriter(fileName);
 
 		writer.write(property);
+		writer.close();
+	}
+	
+	private void writeFile(String fileName, List<String> properties) throws IOException {
+
+		PrintWriter writer = new PrintWriter(fileName);
+
+		for(String property : properties) {
+			writer.write(property  + "\n");
+		}
+		
 		writer.close();
 	}
 }

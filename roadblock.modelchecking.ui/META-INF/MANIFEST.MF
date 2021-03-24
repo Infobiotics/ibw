@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.console;bundle-version="3.5.100",
  ch.qos.logback.classic;bundle-version="1.0.7"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: roadblock.modelchecking.ui.views
 Import-Package: org.apache.commons.io,
  roadblock.caching,

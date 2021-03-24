@@ -3,6 +3,7 @@ package roadblock.modelchecking.runtime.prism;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
@@ -20,7 +21,8 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 	private TranslationManager translationManager = TranslationManager.getInstance();
 
 	@Override
-	public void export(Model model, IProperty property, ModelcheckingTarget target, String filename) throws IOException {
+	public void export(Model model, IProperty property, ModelcheckingTarget target, String filename)
+			throws IOException {
 
 		FlatModelManager flatModelManager = new FlatModelManager(model);
 
@@ -32,9 +34,11 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 	}
 
 	@Override
-	public Process verify(Model model, IProperty property, ModelcheckingTarget target, PrismConfiguration config, String workspaceDir) throws IOException {
+	public Process verify(Model model, IProperty property, ModelcheckingTarget target, PrismConfiguration config,
+			String workspaceDir) throws IOException {
 
-		String nuSmvDirectory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification", File.separator, "prism", File.separator);
+		String nuSmvDirectory = String.format("%s%s%s%s%s%s%s", File.separator, ".tmp", File.separator, "verification",
+				File.separator, "prism", File.separator);
 		String workspacePath = workspaceDir + nuSmvDirectory;
 
 		String verificationModelFileName = workspacePath + config.modelFileName + ".sm";
@@ -47,15 +51,22 @@ public class PrismExecutor implements IModelcheckingExecutor<PrismConfiguration>
 
 		FileUtils.forceMkdir(new File(workspacePath));
 		FileUtils.cleanDirectory(new File(workspacePath));
-		
+
 		writeFile(verificationModelFileName, modelTranslation, propetyTranslation);
 
 		String toolPath = BinaryPathProvider.getInstance().getPrismPath();
 
-		String[] verificationCommand = new String[] { toolPath, verificationModelFileName, "-csl", propetyTranslation, "-sim", "-simmethod", "ci", "-simconf",
-				String.valueOf(config.confidence), "-simsamples", String.valueOf(config.samples), "-simpathlen", String.valueOf(config.pathLength) };
+		String[] verificationCommand = new String[] { toolPath, verificationModelFileName, "-csl", propetyTranslation,
+				"-sim", "-simmethod", "ci", "-simconf", String.valueOf(config.confidence), "-simsamples",
+				String.valueOf(config.samples), "-simpathlen", String.valueOf(config.pathLength) };
 
 		return Runtime.getRuntime().exec(verificationCommand);
+	}
+
+	@Override
+	public Process verify(Model model, List<IProperty> properties, ModelcheckingTarget target,
+			PrismConfiguration config, String workspacePath) throws IOException, InterruptedException {
+		throw new UnsupportedOperationException();
 	}
 
 	private void writeFile(String fileName, String model, String property) throws IOException {

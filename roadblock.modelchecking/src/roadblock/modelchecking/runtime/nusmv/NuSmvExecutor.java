@@ -3,6 +3,7 @@ package roadblock.modelchecking.runtime.nusmv;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
@@ -13,6 +14,7 @@ import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.Model;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.runtime.IModelcheckingExecutor;
+import roadblock.modelchecking.runtime.prism.PrismConfiguration;
 import roadblock.modelchecking.translation.TranslationManager;
 
 public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration> {
@@ -55,6 +57,12 @@ public class NuSmvExecutor implements IModelcheckingExecutor<NuSmvConfiguration>
 		String[] verificationCommand = new String[] { toolPath, verificationModelFileName };
 
 		return Runtime.getRuntime().exec(verificationCommand);
+	}
+	
+	@Override
+	public Process verify(Model model, List<IProperty> properties, ModelcheckingTarget target,
+			NuSmvConfiguration config, String workspacePath) throws IOException, InterruptedException {
+		throw new UnsupportedOperationException();
 	}
 
 	private void writeModel(String fileName, String model, String property, boolean writeProperty) throws IOException {

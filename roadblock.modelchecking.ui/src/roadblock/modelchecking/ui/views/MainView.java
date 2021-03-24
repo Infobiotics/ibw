@@ -8,11 +8,12 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.stream.Collectors;
 
-import org.apache.commons.io.FileUtils;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
@@ -66,7 +67,6 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.modelchecking.ModelcheckingTarget;
 import roadblock.modelchecking.VerificationType;
-import roadblock.modelchecking.filtering.FilteringManager;
 import roadblock.modelchecking.runtime.IModelcheckingConfiguration;
 import roadblock.modelchecking.runtime.VerificationManager;
 import roadblock.modelchecking.runtime.mc2.Mc2Configuration;
@@ -693,14 +693,20 @@ public class MainView extends ViewPart implements Observer {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
 				Process runningProcess = null;
-				final String workspaceDir = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString() + File.separator;
+				final String workspaceDir = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+						+ File.separator;
 
 				try {
 					int exportIndex = 0;
+					boolean isMc2 = false;
 
 					for (Object checkedProperty : selectedPropertyPairs) {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
+							if(isMc2) {
+								break;
+							}
+							
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 
 							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
@@ -731,8 +737,17 @@ public class MainView extends ViewPart implements Observer {
 								break;
 							}
 
-							final Process verificationProcess = runningProcess = VerificationManager.getInstance()
-									.verify(propertyTreeData.model, property, target, config, workspaceDir);
+							final Process verificationProcess;
+
+							if (target == ModelcheckingTarget.MC2) {
+								isMc2 = true;
+								List<IProperty> properties = Arrays.stream(selectedPropertyPairs)
+										.filter(p -> p instanceof PropertySemanticEntityPair)
+										.map(p -> ((PropertySemanticEntityPair) p).property).collect(Collectors.toList());
+								verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, properties, target, config, workspaceDir);
+							} else {
+								verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target, config, workspaceDir);
+							}
 
 							Thread streamingThread = new Thread(new Runnable() {
 								public void run() {
