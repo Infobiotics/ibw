@@ -1,5 +1,6 @@
 package roadblock.modelchecking.translation.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.core.runtime.FileLocator;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupFile;
@@ -22,13 +24,20 @@ import roadblock.modelchecking.ModelcheckingTarget;
 
 public class PrismTranslator implements IModelTranslator {
 
-	private static STGroup prismTemplates = new STGroupFile(
-			PrismTranslator.class.getResource("templates/PRISM.stg").getFile());
+	private static STGroup prismTemplates;
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();
 	private Map<String, Integer> moleculeMaxConcentrations = new HashMap<>();
 
+	static {
+		try {
+			prismTemplates = new STGroupFile(FileLocator.resolve(PrismTranslator.class.getResource("templates/PRISM.stg")).getFile());
+		} catch (IOException e) {
+			e.printStackTrace();
+		};
+	}
+	
 	@Override
 	public String translate(FlatModel model) {
 

@@ -1,0 +1,38 @@
+model(name, molecules, rules) ::= <<
+define Cell typeof CELL() {
+	
+	// Species
+	<molecules:{molecule | <molecule>}; separator="\n">
+	
+	// Rules
+	<rules:{rule | <rule>}; separator="\n\n">
+
+}
+
+define <name> typeof REGION () {
+	CELL Cell = new Cell()
+}
+>>
+
+molecule(name, initConcentration) ::= <<
+<name> = MOLECULE(concentration=<initConcentration> molecules)
+>>
+
+rule(name, reactants, products, rate) ::= <<
+RULE <name> : <reactants:{reactant | <reactant>}; separator=" + "> -> <products:{product | <product>}; separator=" + ">
+<name>.forwardRate = <rate>
+>>
+
+reversibleRule(name, reactants, products, forwardRate, backwardRate) ::= <<
+RULE <name> : <reactants:{reactant | <reactant>}; separator=" + "> <-> <products:{product | <product>}; separator=" + ">
+<name>.forwardRate = <forwardRate>
+<name>.backwardRate = <backwardRate>
+>>
+
+numericRate(rate) ::= <<
+<rate>
+>>
+
+expressionRate(rate) ::= <<
+'<rate>'
+>>

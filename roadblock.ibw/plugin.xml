@@ -89,4 +89,32 @@
          <selection class="org.eclipse.xtext.resource.XtextResource" />
       </wizard>
    </extension>
+      <extension
+            point="org.eclipse.ui.importWizards">
+         <category
+               id="roadblock.ibw.ui"
+               name="IBW">
+         </category>
+         <wizard
+               category="roadblock.ibw.ui"
+               class="roadblock.ibw.imports.sbol.SBOLImportWizard"
+               icon="./icons/import1.png"
+               id="roadblock.ibw.imports.sbol.sbolImportWizard"
+               name="SBOL">
+         </wizard>
+      </extension>
+      <extension
+            point="org.eclipse.ui.importWizards">
+         <category
+               id="roadblock.ibw.ui"
+               name="IBW">
+         </category>
+         <wizard
+               category="roadblock.ibw.ui"
+               class="roadblock.ibw.imports.sbml.SBMLImportWizard"
+               icon="./icons/import1.png"
+               id="roadblock.ibw.imports.sbml.sbmlImportWizard"
+               name="SBML">
+         </wizard>
+      </extension>
 </plugin>

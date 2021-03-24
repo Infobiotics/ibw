@@ -3,6 +3,7 @@
 
 <product name="Infobiotics Workbench" uid="IBW" id="roadblock.ibw.product" application="org.eclipse.ui.ide.workbench" version="1.0" useFeatures="false" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
@@ -21,6 +22,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -342,6 +344,7 @@
       <plugin id="roadblock.emf.bioparts"/>
       <plugin id="roadblock.emf.ibl"/>
       <plugin id="roadblock.ibw"/>
+      <plugin id="roadblock.import"/>
       <plugin id="roadblock.modelchecking"/>
       <plugin id="roadblock.modelchecking.ui"/>
       <plugin id="roadblock.simulation"/>

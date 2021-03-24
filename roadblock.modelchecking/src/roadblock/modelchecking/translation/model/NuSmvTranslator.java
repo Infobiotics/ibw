@@ -1,5 +1,6 @@
 package roadblock.modelchecking.translation.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.core.runtime.FileLocator;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupFile;
@@ -27,10 +29,10 @@ public class NuSmvTranslator implements IModelTranslator {
 		public boolean isProduction;
 		public int multiplicity;
 	}
-
-	private static STGroup nusmvTemplates = new STGroupFile(NuSmvTranslator.class.getResource("templates/NuSMV.stg").getFile());
+	
+	private static STGroup nusmvTemplates;
 	private static List<String> restrictedMoleculeNames = Arrays.asList(new String[] { "OUTSIDE" });
-
+	
 	private HashMap<String, List<UpdateRule>> updateRulesByMolecule = new HashMap<>();
 
 	private Map<String, String> moleculeNameTranslations = new HashMap<>();
@@ -41,6 +43,14 @@ public class NuSmvTranslator implements IModelTranslator {
 	private boolean hasPureProductionRules = false;
 
 	private String choiceVariableName = "_choice";
+	
+	static {
+		try {
+			nusmvTemplates = new STGroupFile(FileLocator.resolve(NuSmvTranslator.class.getResource("templates/NuSMV.stg")).getFile());
+		} catch (IOException e) {
+			e.printStackTrace();
+		};
+	}
 
 	@Override
 	public String translate(FlatModel model) {
