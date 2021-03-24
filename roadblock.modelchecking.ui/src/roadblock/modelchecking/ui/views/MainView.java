@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
@@ -418,7 +418,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// model file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtModelFile);
-		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "modelFile").observe(config);
 
 		// add a validator so can only be a non-empty string
 		validator = new IValidator() {
@@ -427,11 +427,11 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof String) {
 					String stringValue = String.valueOf(value);
 					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
+						return ValidationStatus.error("Cannot be empty");
 					}
 					return ValidationStatus.ok();
 				}
-				return ValidationStatus.error("not a string");
+				return ValidationStatus.error("Not a string");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -441,7 +441,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// data file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtDataFile);
-		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "dataFile").observe(config);
 
 		// add a validator so can only be a non-empty string
 		validator = new IValidator() {
@@ -450,11 +450,11 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof String) {
 					String stringValue = String.valueOf(value);
 					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
+						return ValidationStatus.error("Cannot be empty");
 					}
 					return ValidationStatus.ok();
 				}
-				return ValidationStatus.error("not a string");
+				return ValidationStatus.error("Not a string");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -464,7 +464,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// confidence value widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtConfidenceValue);
-		modelValue = BeanProperties.value(Configuration.class, "confidenceValue").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "confidenceValue").observe(config);
 
 		// add a validator so can only be a decimal number
 		validator = new IValidator() {
@@ -473,13 +473,13 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof Double) {
 					Double doubleValue = (Double) value;
 					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
+						return ValidationStatus.error("Should be greater than 0");
 					}
 
 					return ValidationStatus.ok();
 				}
 
-				return ValidationStatus.error("not a decimal number");
+				return ValidationStatus.error("Not a decimal number");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -489,7 +489,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// sample number value widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtSampleNumber);
-		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "sampleNumber").observe(config);
 
 		// add a validator so can only be an integer number
 		validator = new IValidator() {
@@ -498,13 +498,13 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof Integer) {
 					Integer intValue = (Integer) value;
 					if (intValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
+						return ValidationStatus.error("Should be greater than 0");
 					}
 
 					return ValidationStatus.ok();
 				}
 
-				return ValidationStatus.error("not an integer number");
+				return ValidationStatus.error("Not an integer number");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -514,7 +514,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// path length value widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtPathLength);
-		modelValue = BeanProperties.value(Configuration.class, "pathLength").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "pathLength").observe(config);
 
 		// add a validator so can only be an integer number
 		validator = new IValidator() {
@@ -523,13 +523,13 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof Integer) {
 					Integer intValue = (Integer) value;
 					if (intValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
+						return ValidationStatus.error("Should be greater than 0");
 					}
 
 					return ValidationStatus.ok();
 				}
 
-				return ValidationStatus.error("not an integer number");
+				return ValidationStatus.error("Not an integer number");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -539,7 +539,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// max time widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtMaxTime);
-		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "maxTime").observe(config);
 
 		// add a validator so can only be a decimal number
 		validator = new IValidator() {
@@ -548,13 +548,13 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof Double) {
 					Double doubleValue = (Double) value;
 					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
+						return ValidationStatus.error("Should be greater than 0");
 					}
 
 					return ValidationStatus.ok();
 				}
 
-				return ValidationStatus.error("not a decimal number");
+				return ValidationStatus.error("Not a decimal number");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -564,7 +564,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// log interval widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtInterval);
-		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "logInterval").observe(config);
 
 		// add a validator so can only be a decimal number
 		validator = new IValidator() {
@@ -573,13 +573,13 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof Double) {
 					Double doubleValue = (Double) value;
 					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
+						return ValidationStatus.error("Should be greater than 0");
 					}
 
 					return ValidationStatus.ok();
 				}
 
-				return ValidationStatus.error("not a decimal number");
+				return ValidationStatus.error("Not a decimal number");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -589,7 +589,7 @@ public class MainView extends ViewPart implements Observer {
 
 		// no. of runs widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(txtRuns);
-		modelValue = BeanProperties.value(Configuration.class, "runs").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "runs").observe(config);
 
 		// add a validator so can only be an integer number
 		validator = new IValidator() {
@@ -598,13 +598,13 @@ public class MainView extends ViewPart implements Observer {
 				if (value instanceof Integer) {
 					Integer intValue = (Integer) value;
 					if (intValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
+						return ValidationStatus.error("Should be greater than 0");
 					}
 
 					return ValidationStatus.ok();
 				}
 
-				return ValidationStatus.error("not an integer number");
+				return ValidationStatus.error("Not an integer number");
 			}
 		};
 		strategy = new UpdateValueStrategy();
@@ -614,18 +614,21 @@ public class MainView extends ViewPart implements Observer {
 
 		// verification type widget
 		widgetValue = WidgetProperties.selection().observe(ddlVerificationType);
-		modelValue = BeanProperties.value(Configuration.class, "verificationType").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "verificationType").observe(config);
 
 		// modelchecking target widget
 		widgetValue = WidgetProperties.selection().observe(ddlModelChecker);
-		modelValue = BeanProperties.value(Configuration.class, "modelcheckingTarget").observe(config);
+		modelValue = PojoProperties.value(Configuration.class, "modelcheckingTarget").observe(config);
 
 		strategy = new UpdateValueStrategy();
 		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
 	}
 
 	private void ensureConfig() {
-		config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
+		if (config == null) {
+			// config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
+			config = ConfigurationUtil.getInstance().getConfig(currentIblResource);
+		}
 	}
 
 	private void exportVerificationModel() {
@@ -703,10 +706,10 @@ public class MainView extends ViewPart implements Observer {
 					for (Object checkedProperty : selectedPropertyPairs) {
 						if (checkedProperty instanceof PropertySemanticEntityPair) {
 
-							if(isMc2) {
+							if (isMc2) {
 								break;
 							}
-							
+
 							IProperty property = ((PropertySemanticEntityPair) checkedProperty).property;
 
 							final String exportFileName = String.format("%s%s", filename, ++exportIndex);
@@ -743,10 +746,13 @@ public class MainView extends ViewPart implements Observer {
 								isMc2 = true;
 								List<IProperty> properties = Arrays.stream(selectedPropertyPairs)
 										.filter(p -> p instanceof PropertySemanticEntityPair)
-										.map(p -> ((PropertySemanticEntityPair) p).property).collect(Collectors.toList());
-								verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, properties, target, config, workspaceDir);
+										.map(p -> ((PropertySemanticEntityPair) p).property)
+										.collect(Collectors.toList());
+								verificationProcess = runningProcess = VerificationManager.getInstance()
+										.verify(propertyTreeData.model, properties, target, config, workspaceDir);
 							} else {
-								verificationProcess = runningProcess = VerificationManager.getInstance().verify(propertyTreeData.model, property, target, config, workspaceDir);
+								verificationProcess = runningProcess = VerificationManager.getInstance()
+										.verify(propertyTreeData.model, property, target, config, workspaceDir);
 							}
 
 							Thread streamingThread = new Thread(new Runnable() {

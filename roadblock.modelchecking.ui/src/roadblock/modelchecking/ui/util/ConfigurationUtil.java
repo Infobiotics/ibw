@@ -91,7 +91,7 @@ public class ConfigurationUtil {
 		config.sampleNumber = 100;
 		config.maxTime = 100.0;
 		config.logInterval = 1.0;
-		config.runs = 1;
+		config.runs = 10;
 		config.simulationAlgorithm = "";
 		
 		return config;

@@ -80,9 +80,9 @@ public class ConfigurationUtil {
 		config.modelFile = "";
 		config.dataFile = "";
 		config.dataDirectory = "";
-		config.logInterval = 0.1;
+		config.logInterval = 1.;
 		config.maxTime = 100.;
-		config.sampleNumber = 1;
+		config.sampleNumber = 10;
 		config.SSAlgorithm = "Direct Method";
 		return config;
 	}

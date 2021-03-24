@@ -3,6 +3,7 @@ package roadblock.simulation.ui.views;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -12,18 +13,21 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeanProperties;
+import org.eclipse.core.databinding.beans.typed.PojoProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.databinding.fieldassist.ControlDecorationSupport;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -45,7 +49,6 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.util.PolymorphicDispatcher.WarningErrorHandler;
 import org.sbml.jsbml.SBMLWriter;
 
 import roadblock.caching.ModelCache;
@@ -188,125 +191,91 @@ public class MainView extends ViewPart implements Observer {
 	private void bindValues() {
 
 		DataBindingContext ctx = new DataBindingContext();
-		IObservableValue widgetValue;
-		IObservableValue modelValue;
-		IValidator validator;
-		UpdateValueStrategy strategy;
 		Binding bindValue;
 
-		// model file widget
-		widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
-		modelValue = BeanProperties.value(Configuration.class, "modelFile").observe(config);
-		validator = new IValidator() {
-			// non-empty string validator
+		IValidator<Double> positiveDoubleValidator = new IValidator<Double>() {
+			// decimal number validator
 			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof String) {
-					String stringValue = String.valueOf(value);
-					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
-					}
-					return ValidationStatus.ok();
+			public IStatus validate(Double value) {
+				Double doubleValue = (Double) value;
+				if (doubleValue <= 0) {
+					return ValidationStatus.error("Should be greater than 0");
 				}
-				return ValidationStatus.error("not a string");
+				return ValidationStatus.ok();
 			}
 		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+
+		IValidator<Integer> positiveIntegerValidator = new IValidator<Integer>() {
+			// integer number validator
+			@Override
+			public IStatus validate(Integer value) {
+				Integer intValue = (Integer) value;
+				if (intValue <= 0) {
+					return ValidationStatus.error("should be greater than 0");
+				}
+				return ValidationStatus.ok();
+			}
+		};
+
+		IValidator<String> nonEmptyStringValidator = new IValidator<String>() {
+			// non-empty string validator
+			@Override
+			public IStatus validate(String value) {
+				String stringValue = String.valueOf(value);
+				if (stringValue.isEmpty()) {
+					return ValidationStatus.error("Cannot be empty");
+				}
+				return ValidationStatus.ok();
+			}
+		};
+
+		// model file widget
+		IObservableValue<String> widgetValue = WidgetProperties.text(SWT.Modify).observe(modelFile);
+		IObservableValue<Object> modelValue = PojoProperties.value(Configuration.class, "modelFile").observe(config);
+		UpdateValueStrategy<String, String> stringUpdateStrategy = new UpdateValueStrategy<String, String>();
+		stringUpdateStrategy.setBeforeSetValidator(nonEmptyStringValidator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, stringUpdateStrategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// data file widget
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(dataFile);
-		modelValue = BeanProperties.value(Configuration.class, "dataFile").observe(config);
-		validator = new IValidator() {
-			// non-empty string validator
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof String) {
-					String stringValue = String.valueOf(value);
-					if (stringValue.isEmpty()) {
-						return ValidationStatus.error("cannot be empty");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a string");
-			}
-		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		modelValue = PojoProperties.value(Configuration.class, "dataFile").observe(config);
+		stringUpdateStrategy = new UpdateValueStrategy<String, String>();
+		stringUpdateStrategy.setBeforeSetValidator(nonEmptyStringValidator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, stringUpdateStrategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// max_time
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(maxTime);
-		modelValue = BeanProperties.value(Configuration.class, "maxTime").observe(config);
-		validator = new IValidator() {
-			// decimal number validator
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof Double) {
-					Double doubleValue = (Double) value;
-					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a decimal number");
-			}
-		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		modelValue = PojoProperties.value(Configuration.class, "maxTime").observe(config);
+		UpdateValueStrategy<String, Double> doubleUpdateStrategy = new UpdateValueStrategy<String, Double>();
+		doubleUpdateStrategy.setBeforeSetValidator(positiveDoubleValidator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, doubleUpdateStrategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// logInterval
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(logInterval);
-		modelValue = BeanProperties.value(Configuration.class, "logInterval").observe(config);
-		validator = new IValidator() {
-			// decimal number validator
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof Double) {
-					Double doubleValue = (Double) value;
-					if (doubleValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not a decimal number");
-			}
-		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		modelValue = PojoProperties.value(Configuration.class, "logInterval").observe(config);
+		doubleUpdateStrategy = new UpdateValueStrategy<String, Double>();
+		doubleUpdateStrategy.setBeforeSetValidator(positiveDoubleValidator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, doubleUpdateStrategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 
 		// sampleNumber
 		widgetValue = WidgetProperties.text(SWT.Modify).observe(sampleNumber);
-		modelValue = BeanProperties.value(Configuration.class, "sampleNumber").observe(config);
-		validator = new IValidator() {
-			// integer number validator
-			@Override
-			public IStatus validate(Object value) {
-				if (value instanceof Integer) {
-					Integer intValue = (Integer) value;
-					if (intValue <= 0) {
-						return ValidationStatus.error("should be greater than 0");
-					}
-					return ValidationStatus.ok();
-				}
-				return ValidationStatus.error("not an integer number");
-			}
-		};
-		strategy = new UpdateValueStrategy();
-		strategy.setBeforeSetValidator(validator);
-		bindValue = ctx.bindValue(widgetValue, modelValue, strategy, null);
+		modelValue = PojoProperties.value(Configuration.class, "sampleNumber").observe(config);
+		UpdateValueStrategy<String, Integer> integerUpdateStrategy = new UpdateValueStrategy<String, Integer>();
+		integerUpdateStrategy.setBeforeSetValidator(positiveIntegerValidator);
+		bindValue = ctx.bindValue(widgetValue, modelValue, integerUpdateStrategy, null);
 		ControlDecorationSupport.create(bindValue, SWT.TOP | SWT.LEFT);
 	}
 
 	private void ensureConfig() {
-		config = ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
+		if (config == null) {
+			// config =
+			// ConfigurationUtil.getInstance(currentIblResource).getConfig(currentIblResource);
+			config = ConfigurationUtil.getInstance().getConfig(currentIblResource);
+		}
 	}
 
 	private String getOptimalSSA() {
@@ -355,33 +324,57 @@ public class MainView extends ViewPart implements Observer {
 	}
 
 	private void performLocalSimulation() {
-		final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
+		IRunnableWithProgress simulationTask = new IRunnableWithProgress() {
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
-		final String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
-				+ "/.tmp/simulation/";
-		final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
-				config.getDataFile());
+				try {
+					monitor.internalWorked(30);
+					
+					final MessageConsoleStream consoleStream = simulationConsole.newMessageStream();
 
-		final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
-		final String fileExtension = filename.substring(filename.lastIndexOf('.'));
-		final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
+					final String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString()
+							+ "/.tmp/simulation/";
+					final String filename = String.format("%s%s%s", config.getDataDirectory(), File.separator,
+							config.getDataFile());
 
-		String xml = ModelCache.getInstance().getSerialisedFlatModel(currentIblResource);
-		String optimalSSA = getOptimalSSA();
+					final String filenameWithoutExtension = filename.substring(0, filename.lastIndexOf('.'));
+					final String fileExtension = filename.substring(filename.lastIndexOf('.'));
+					final String exportFilename = String.format("%s%s", filenameWithoutExtension, fileExtension);
 
-		Simulator simulator = new Simulator(xml);
-		simulator.max_time = config.getMaxTime();
-		simulator.log_interval = config.getLogInterval();
-		simulator.runs = config.getSampleNumber();
-		simulator.simulation_algorithm = optimalSSA;
-		// simulator.max_runtime = 0.0;
-		// simulator.seed = 0;
-		simulator.runSimulation(workspacePath, exportFilename, consoleStream);
+					String xml = ModelCache.getInstance().getSerialisedFlatModel(currentIblResource);
+					String optimalSSA = getOptimalSSA();
 
-		// XXX refresh project explorer
-		ResultsView resultsView = (ResultsView) getView("roadblock.simulation.ui.views.resultsView");
-		if (resultsView != null) {
-			resultsView.plotTrajectories();
+					Simulator simulator = new Simulator(xml);
+					simulator.max_time = config.getMaxTime();
+					simulator.log_interval = config.getLogInterval();
+					simulator.runs = config.getSampleNumber();
+					simulator.simulation_algorithm = optimalSSA;
+					simulator.runSimulation(workspacePath, exportFilename, consoleStream);
+
+					monitor.done();
+
+				} catch (Exception e) {
+					errorDialogWithStackTrace("Failed simulating the " + config.modelName + " model", e);
+				}
+			}
+		};
+
+		try {
+			ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(getSite().getWorkbenchWindow().getShell());
+			progressDialog.getProgressMonitor()
+					.setTaskName("Performing simulation for the " + config.modelName + " model...");
+			progressDialog.run(true, true, simulationTask);
+			progressDialog.close();
+			
+			// refresh project explorer
+			ResultsView resultsView = (ResultsView) getView("roadblock.simulation.ui.views.resultsView");
+			if (resultsView != null) {
+				resultsView.plotTrajectories();
+			}
+			
+		} catch (InvocationTargetException | InterruptedException e) {
+			errorDialogWithStackTrace("Failed simulating the " + config.modelName + " model", e);
 		}
 	}
 
@@ -389,9 +382,10 @@ public class MainView extends ViewPart implements Observer {
 		MessageDialog.openWarning(getSite().getShell(), "HPC Offline", "The HPC environment is currently offline.");
 	}
 
-	public static IViewPart getView(String id) {
-		IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+	public IViewPart getView(String id) {
+		IViewReference viewReferences[] = getSite().getWorkbenchWindow().getActivePage()
 				.getViewReferences();
+		//IViewReference viewReferences[] = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
 		for (int i = 0; i < viewReferences.length; i++)
 			if (id.equals(viewReferences[i].getId()))
 				return viewReferences[i].getView(false);
