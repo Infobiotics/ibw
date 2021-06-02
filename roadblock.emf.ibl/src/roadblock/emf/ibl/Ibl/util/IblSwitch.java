@@ -21,6 +21,8 @@ import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.Event;
+import roadblock.emf.ibl.Ibl.EventAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.FlatModelPropertyPair;
 import roadblock.emf.ibl.Ibl.IArithmeticExpression;
@@ -480,6 +482,20 @@ public class IblSwitch<T> extends Switch<T> {
 			case IblPackage.IRULE_CONTAINER: {
 				IRuleContainer iRuleContainer = (IRuleContainer)theEObject;
 				T result = caseIRuleContainer(iRuleContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.EVENT: {
+				Event event = (Event)theEObject;
+				T result = caseEvent(event);
+				if (result == null) result = caseIVisitable(event);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.EVENT_ASSIGNMENT: {
+				EventAssignment eventAssignment = (EventAssignment)theEObject;
+				T result = caseEventAssignment(eventAssignment);
+				if (result == null) result = caseIVisitable(eventAssignment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1176,6 +1192,36 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIRuleContainer(IRuleContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvent(Event object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event Assignment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEventAssignment(EventAssignment object) {
 		return null;
 	}
 

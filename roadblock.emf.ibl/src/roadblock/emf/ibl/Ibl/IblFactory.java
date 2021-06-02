@@ -103,6 +103,8 @@ public class IblFactory extends EFactoryImpl {
 			case IblPackage.RELATIONAL_EXPRESSION: return (EObject)createRelationalExpression();
 			case IblPackage.CONCENTRATION_QUANTITY: return (EObject)createConcentrationQuantity();
 			case IblPackage.ATGC_TRANSLATION_RATE: return (EObject)createATGCTranslationRate();
+			case IblPackage.EVENT: return (EObject)createEvent();
+			case IblPackage.EVENT_ASSIGNMENT: return (EObject)createEventAssignment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -548,6 +550,26 @@ public class IblFactory extends EFactoryImpl {
 	public ATGCTranslationRate createATGCTranslationRate() {
 		ATGCTranslationRate atgcTranslationRate = new ATGCTranslationRate();
 		return atgcTranslationRate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Event createEvent() {
+		Event event = new Event();
+		return event;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EventAssignment createEventAssignment() {
+		EventAssignment eventAssignment = new EventAssignment();
+		return eventAssignment;
 	}
 
 	/**

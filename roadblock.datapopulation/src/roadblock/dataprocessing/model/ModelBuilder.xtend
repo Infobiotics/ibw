@@ -54,6 +54,8 @@ import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.util.IblSwitch
+import roadblock.xtext.ibl.ibl.EventDefinition
+import org.sbml.jsbml.EventAssignment
 
 class ModelBuilder extends IblSwitch<Object> {
 
@@ -316,6 +318,9 @@ class ModelBuilder extends IblSwitch<Object> {
 					cell.properties.add(property);
 					semanticEntityByProperty.put(property, member);
 				}
+				EventDefinition: {
+					cell.events.add(member.doSwitch as Event)
+				}
 				ATGCDefinition:
 					cell.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
 			}
@@ -487,6 +492,9 @@ class ModelBuilder extends IblSwitch<Object> {
 					var property = propertyBuilder.build(member.property);
 					device.properties.add(property)
 					semanticEntityByProperty.put(property, member);
+				}
+				EventDefinition: {
+					cell.events.add(member.doSwitch as Event)
 				}
 				ATGCDefinition:
 					device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
@@ -666,6 +674,20 @@ class ModelBuilder extends IblSwitch<Object> {
 		}
 
 		return emfVariableAssignment
+	}
+	
+	override caseEventDefinition(EventDefinition eventDefinition) {
+		val event = modelFactory.createEvent
+
+		
+		return event
+	}
+	
+	override caseEventAssignment(EventAssignment iblEventAssignment) {
+		val eventAssignment = modelFactory.createEventAssignment
+
+		
+		return event
 	}
 
 	private def EObject findFirstUpstream(EObject container, (EObject)=>Boolean predicate) {

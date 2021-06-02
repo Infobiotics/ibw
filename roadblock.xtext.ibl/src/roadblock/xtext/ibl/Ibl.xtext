@@ -99,8 +99,7 @@ FunctionContent:
 FunctionBodyMember:
 	ATGCDefinition | CellInstantiation | ChromosomeInstantiation | DeviceDefinition | PlasmidInstantiation |
 	ProcessInstantiation | RateSetDefinition | PropertyDefinition | RuleDefinition | SystemInstantiation |
-	VariableAssignment |
-	VariableDefinition;
+	VariableAssignment | VariableDefinition | EventDefinition;
 
 	//////////////////////
 // function members //
@@ -280,7 +279,7 @@ VariableDefinitionBasic:
 ParameterAssignment:
 	name=VariableName '=' value=VariableExpressionObject;
 
-	// a variable assignment
+// a variable assignment
 VariableAssignment:
 	{VariableAssignment} variable=VariableAssignmentObject '=' expression=VariableExpression;
 
@@ -310,7 +309,7 @@ CompoundVariableExpressionObject:
 VariableExpressionOperator:
 	'+' | '-' | '|';
 
-	///////////
+///////////
 // rules //
 ///////////
 
@@ -326,7 +325,8 @@ RuleObject:
 Outside:
 	{Outside}
 	'OUTSIDE';
-	////////////////
+
+////////////////
 // atgc rules //
 ////////////////
 ATGCDefinition:
@@ -348,7 +348,9 @@ ATGCDirection:
 ATGCTranslationRate:
 	{ATGCTranslationRate}
 	'TRANSLATION RATE' ':' translationRate=Real;
-	/////////////////////////
+	
+	
+/////////////////////////
 // model checker rules //
 /////////////////////////
 PropertyDefinition:
@@ -393,7 +395,9 @@ StateFormula:
 
 StateExpression:
 	{StateExpression}
-	(operand1=AdditionSubtractionExpression operator=RELATIONAL_OPERATOR operand2=AdditionSubtractionExpression);
+	(operand1=AdditionSubtractionExpression operator=RELATIONAL_OPERATOR operand2=AdditionSubtractionExpression) |
+	isTrue?='TRUE' |
+	isFalse?='FALSE';
 
 AdditionSubtractionExpression:
 	{AdditionSubtractionExpression}
@@ -429,9 +433,6 @@ ConcentrationConstraint:
 	{ConcentrationConstraint}
 	(operator=RELATIONAL_OPERATOR value=Real unit=CONCENTRATION_UNIT) | isUnknown?='?';
 
-	//StateFormula:
-//	{StateFormula}
-//'[' stateFormula+=StateFormula (BooleanOperator stateFormula+=StateFormula)* ']'
 PropertyInitialCondition:
 	{PropertyInitialCondition}
 	'[' variable=PropertyVariableReference '=' value=ConcentrationQuantity ']';
@@ -449,7 +450,19 @@ ConcentrationQuantity:
 	{ConcentrationQuantity}
 	value=Real unit=CONCENTRATION_UNIT;
 
-	// qualified name
+
+/////////////////
+// event rules //
+/////////////////
+EventDefinition:
+	{EventDefinition}
+	'EVENT' assignments+=EventAssignment (',' assignments+=EventAssignment)* 'WHEN' trigger+=StateFormula;
+
+EventAssignment:
+	{EventAssignment}
+	'[' variable=VariableAssignmentObject '=' expression=AdditionSubtractionExpression ']';
+
+// qualified name
 QualifiedNameWithWildcard:
 	QualifiedName ('.*')?;
 
@@ -460,7 +473,7 @@ List:
 	{List}
 	'[' (entries+=AtomicVariableExpressionObject (',' entries+=AtomicVariableExpressionObject)*)? ']';
 
-	/////////////////
+/////////////////
 // basic types //
 /////////////////
 Real returns ecore::EDouble:

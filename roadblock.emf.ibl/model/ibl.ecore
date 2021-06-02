@@ -520,4 +520,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="IRuleContainer" abstract="true" interface="true">
     <eOperations name="getRuleList" upperBound="-1" eType="#//Rule"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//IVisitable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
+        eType="#//EventAssignment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventAssignment" eSuperTypes="#//IVisitable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//IArithmeticOperand"/>
+  </eClassifiers>
 </ecore:EPackage>

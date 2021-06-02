@@ -2244,6 +2244,71 @@ public class IblPackage extends EPackageImpl {
 	public static final int IRULE_CONTAINER_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Event <em>Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.Event
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEvent()
+	 * @generated
+	 */
+	public static final int EVENT = 49;
+
+	/**
+	 * The feature id for the '<em><b>Assignments</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT__ASSIGNMENTS = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.EventAssignment <em>Event Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.EventAssignment
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getEventAssignment()
+	 * @generated
+	 */
+	public static final int EVENT_ASSIGNMENT = 50;
+
+	/**
+	 * The feature id for the '<em><b>Variable Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT_ASSIGNMENT__VARIABLE_NAME = IVISITABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT_ASSIGNMENT__EXPRESSION = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Event Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2251,7 +2316,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 49;
+	public static final int TIME_UNIT = 51;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}' enum.
@@ -2261,7 +2326,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalPattern()
 	 * @generated
 	 */
-	public static final int TEMPORAL_PATTERN = 50;
+	public static final int TEMPORAL_PATTERN = 52;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -2271,7 +2336,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 51;
+	public static final int RELATIONAL_OPERATOR = 53;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -2281,7 +2346,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 52;
+	public static final int BOOLEAN_OPERATOR = 54;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -2291,7 +2356,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 53;
+	public static final int CONCENTRATION_UNIT = 55;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateTimeUnit <em>Rate Time Unit</em>}' enum.
@@ -2301,7 +2366,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateTimeUnit()
 	 * @generated
 	 */
-	public static final int RATE_TIME_UNIT = 54;
+	public static final int RATE_TIME_UNIT = 56;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateConcentrationUnit <em>Rate Concentration Unit</em>}' enum.
@@ -2311,7 +2376,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateConcentrationUnit()
 	 * @generated
 	 */
-	public static final int RATE_CONCENTRATION_UNIT = 55;
+	public static final int RATE_CONCENTRATION_UNIT = 57;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
@@ -2321,7 +2386,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getArithmeticOperator()
 	 * @generated
 	 */
-	public static final int ARITHMETIC_OPERATOR = 56;
+	public static final int ARITHMETIC_OPERATOR = 58;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}' enum.
@@ -2331,7 +2396,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityType()
 	 * @generated
 	 */
-	public static final int MONOTONICITY_TYPE = 57;
+	public static final int MONOTONICITY_TYPE = 59;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2675,6 +2740,20 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass iRuleContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass eventAssignmentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5129,6 +5208,74 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Event <em>Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Event</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Event
+	 * @generated
+	 */
+	public EClass getEvent() {
+		return eventEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Event#getAssignments <em>Assignments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Assignments</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Event#getAssignments()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	public EReference getEvent_Assignments() {
+		return (EReference)eventEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.EventAssignment <em>Event Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Event Assignment</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EventAssignment
+	 * @generated
+	 */
+	public EClass getEventAssignment() {
+		return eventAssignmentEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EventAssignment#getVariableName <em>Variable Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Variable Name</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EventAssignment#getVariableName()
+	 * @see #getEventAssignment()
+	 * @generated
+	 */
+	public EAttribute getEventAssignment_VariableName() {
+		return (EAttribute)eventAssignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.EventAssignment#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EventAssignment#getExpression()
+	 * @see #getEventAssignment()
+	 * @generated
+	 */
+	public EReference getEventAssignment_Expression() {
+		return (EReference)eventAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5497,6 +5644,13 @@ public class IblPackage extends EPackageImpl {
 
 		iRuleContainerEClass = createEClass(IRULE_CONTAINER);
 
+		eventEClass = createEClass(EVENT);
+		createEReference(eventEClass, EVENT__ASSIGNMENTS);
+
+		eventAssignmentEClass = createEClass(EVENT_ASSIGNMENT);
+		createEAttribute(eventAssignmentEClass, EVENT_ASSIGNMENT__VARIABLE_NAME);
+		createEReference(eventAssignmentEClass, EVENT_ASSIGNMENT__EXPRESSION);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalPatternEEnum = createEEnum(TEMPORAL_PATTERN);
@@ -5591,6 +5745,8 @@ public class IblPackage extends EPackageImpl {
 		relationalExpressionEClass.getESuperTypes().add(this.getIStateFormula());
 		concentrationQuantityEClass.getESuperTypes().add(this.getIArithmeticOperand());
 		atgcTranslationRateEClass.getESuperTypes().add(this.getATGCDirective());
+		eventEClass.getESuperTypes().add(this.getIVisitable());
+		eventAssignmentEClass.getESuperTypes().add(this.getIVisitable());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -6000,6 +6156,13 @@ public class IblPackage extends EPackageImpl {
 		initEClass(iRuleContainerEClass, IRuleContainer.class, "IRuleContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		addEOperation(iRuleContainerEClass, this.getRule(), "getRuleList", 0, -1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEvent_Assignments(), this.getEventAssignment(), null, "assignments", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(eventAssignmentEClass, EventAssignment.class, "EventAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEventAssignment_VariableName(), ecorePackage.getEString(), "variableName", "", 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventAssignment_Expression(), this.getIArithmeticOperand(), null, "expression", null, 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -7631,6 +7794,50 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EClass IRULE_CONTAINER = eINSTANCE.getIRuleContainer();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Event <em>Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.Event
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getEvent()
+		 * @generated
+		 */
+		public static final EClass EVENT = eINSTANCE.getEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Assignments</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference EVENT__ASSIGNMENTS = eINSTANCE.getEvent_Assignments();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.EventAssignment <em>Event Assignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.EventAssignment
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getEventAssignment()
+		 * @generated
+		 */
+		public static final EClass EVENT_ASSIGNMENT = eINSTANCE.getEventAssignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EVENT_ASSIGNMENT__VARIABLE_NAME = eINSTANCE.getEventAssignment_VariableName();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference EVENT_ASSIGNMENT__EXPRESSION = eINSTANCE.getEventAssignment_Expression();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
