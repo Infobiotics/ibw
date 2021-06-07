@@ -390,5 +390,12 @@
     <genClasses image="false" ecoreClass="ibl.ecore#//IRuleContainer">
       <genOperations ecoreOperation="ibl.ecore#//IRuleContainer/getRuleList"/>
     </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//Event">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Event/assignments"/>
+    </genClasses>
+    <genClasses ecoreClass="ibl.ecore#//EventAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EventAssignment/variableName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//EventAssignment/expression"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

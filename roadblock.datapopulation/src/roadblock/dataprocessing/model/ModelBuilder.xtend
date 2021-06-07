@@ -55,7 +55,6 @@ import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 import roadblock.xtext.ibl.ibl.EventDefinition
-import org.sbml.jsbml.EventAssignment
 
 class ModelBuilder extends IblSwitch<Object> {
 
@@ -319,7 +318,7 @@ class ModelBuilder extends IblSwitch<Object> {
 					semanticEntityByProperty.put(property, member);
 				}
 				EventDefinition: {
-					cell.events.add(member.doSwitch as Event)
+					//cell.events.add(member.doSwitch as Event)
 				}
 				ATGCDefinition:
 					cell.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
@@ -494,7 +493,7 @@ class ModelBuilder extends IblSwitch<Object> {
 					semanticEntityByProperty.put(property, member);
 				}
 				EventDefinition: {
-					cell.events.add(member.doSwitch as Event)
+					//cell.events.add(member.doSwitch as Event)
 				}
 				ATGCDefinition:
 					device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
@@ -678,13 +677,6 @@ class ModelBuilder extends IblSwitch<Object> {
 	
 	override caseEventDefinition(EventDefinition eventDefinition) {
 		val event = modelFactory.createEvent
-
-		
-		return event
-	}
-	
-	override caseEventAssignment(EventAssignment iblEventAssignment) {
-		val eventAssignment = modelFactory.createEventAssignment
 
 		
 		return event
