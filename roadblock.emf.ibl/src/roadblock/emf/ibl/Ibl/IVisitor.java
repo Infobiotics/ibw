@@ -262,4 +262,20 @@ public interface IVisitor<TResult> {
 	 */
 	TResult visit(RelationalExpression expression);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(Event event);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(EventAssignment eventAssignment);
+
 } // IVisitor

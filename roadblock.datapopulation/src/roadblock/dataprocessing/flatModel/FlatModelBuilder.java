@@ -23,6 +23,8 @@ import roadblock.emf.ibl.Ibl.ConcentrationUnit;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.Event;
+import roadblock.emf.ibl.Ibl.EventAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProperty;
 import roadblock.emf.ibl.Ibl.IVisitor;
@@ -181,6 +183,12 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		}
 
 		if (belongsToPropertyCompartment) {
+			for (Event event : cell.getEvents()) {
+				register(event, cell);
+			}
+		}
+
+		if (belongsToPropertyCompartment) {
 
 			register(cell.getRuleList(), cell);
 
@@ -216,6 +224,12 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		}
 
 		if (belongsToPropertyCompartment) {
+			for (Event event : device.getEvents()) {
+				register(event, device);
+			}
+		}
+
+		if (belongsToPropertyCompartment) {
 
 			register(device.getRuleList(), device);
 
@@ -238,7 +252,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 		// no molecule registration for the moment
 		registerMolecules(process);
-		
+
 		for (Kinetics kinetics : process.getProcessList()) {
 			registerChildCompartment(kinetics, kinetics.getDisplayName(), process);
 			kinetics.accept(this);
@@ -246,6 +260,41 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 		if (belongsToPropertyCompartment) {
 			register(process.getRuleList(), process);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(Event event) {
+
+		if (event.getTrigger() != null) {
+			event.getTrigger().accept(this);
+		}
+
+		if (event.getDelay() != null) {
+			event.getDelay().accept(this);
+		}
+
+		for (EventAssignment eventAssignment : event.getAssignments()) {
+			eventAssignment.accept(this);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Void visit(EventAssignment eventAssignment) {
+
+		Object moleculeCompartment = propertyCompartment;
+		
+		String flatVariableName = moleculesByCompartment.get(moleculeCompartment).get(eventAssignment.getVariableName())
+				.getDisplayName();
+
+		eventAssignment.setVariableName(flatVariableName);
+		
+		if (eventAssignment.getExpression() != null) {
+			eventAssignment.getExpression().accept(this);
 		}
 
 		return null;
@@ -354,7 +403,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(ConcentrationQuantity expression) {
 
-		expression.setAmount(UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
+		expression.setAmount(
+				UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
 		expression.setUnit(ConcentrationUnit.MOLECULE);
 
 		return null;
@@ -363,8 +413,10 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(TimeInterval expression) {
 
-		expression.setLowerBound(UnitConverter.getInstance().getBaseTime(expression.getLowerBound(), expression.getUnit()));
-		expression.setUpperBound(UnitConverter.getInstance().getBaseTime(expression.getUpperBound(), expression.getUnit()));
+		expression.setLowerBound(
+				UnitConverter.getInstance().getBaseTime(expression.getLowerBound(), expression.getUnit()));
+		expression.setUpperBound(
+				UnitConverter.getInstance().getBaseTime(expression.getUpperBound(), expression.getUnit()));
 		expression.setUnit(TimeUnit.SECOND);
 
 		return null;
@@ -384,7 +436,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 		expression.getVariable().accept(this);
 
-		expression.setAmount(UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
+		expression.setAmount(
+				UnitConverter.getInstance().getBaseConcentration(expression.getAmount(), expression.getUnit()));
 		expression.setUnit(ConcentrationUnit.MOLECULE);
 
 		return null;
@@ -393,7 +446,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(ConcentrationConstraint expression) {
 
-		expression.setValue(UnitConverter.getInstance().getBaseConcentration(expression.getValue(), expression.getUnit()));
+		expression.setValue(
+				UnitConverter.getInstance().getBaseConcentration(expression.getValue(), expression.getUnit()));
 		expression.setUnit(ConcentrationUnit.MOLECULE);
 
 		return null;
@@ -431,10 +485,12 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Object moleculeCompartment = propertyCompartment;
 
 		if (variable.getContainerName() != null && !variable.getContainerName().isEmpty()) {
-			moleculeCompartment = childCompartmentsByCompartment.get(propertyCompartment).get(variable.getContainerName());
+			moleculeCompartment = childCompartmentsByCompartment.get(propertyCompartment)
+					.get(variable.getContainerName());
 		}
 
-		String flatVariableName = moleculesByCompartment.get(moleculeCompartment).get(variable.getName()).getDisplayName();
+		String flatVariableName = moleculesByCompartment.get(moleculeCompartment).get(variable.getName())
+				.getDisplayName();
 
 		variable.setName(flatVariableName);
 
@@ -463,7 +519,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Map<String, MolecularSpecies> molecules = new HashMap<>();
 
 		moleculesByCompartment.put(cell, molecules);
-		prefixByCompartment.put(cell, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + cell.getDisplayName());
+		prefixByCompartment.put(cell,
+				prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + cell.getDisplayName());
 
 		for (MolecularSpecies molecule : cell.getMoleculeList()) {
 			register(molecule, cell);
@@ -476,7 +533,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Map<String, MolecularSpecies> molecules = new HashMap<>(moleculesByCompartment.get(parentCompartment));
 
 		moleculesByCompartment.put(device, molecules);
-		prefixByCompartment.put(device, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + device.getDisplayName());
+		prefixByCompartment.put(device,
+				prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + device.getDisplayName());
 
 		for (MolecularSpecies molecule : device.getMoleculeList()) {
 			register(molecule, device);
@@ -489,7 +547,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 		Map<String, MolecularSpecies> molecules = new HashMap<>(moleculesByCompartment.get(parentCompartment));
 
 		moleculesByCompartment.put(process, molecules);
-		prefixByCompartment.put(process, prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + process.getDisplayName());
+		prefixByCompartment.put(process,
+				prefixByCompartment.get(parentCompartment) + COMPARTMENT_SEPARATOR + process.getDisplayName());
 
 		for (MolecularSpecies molecule : process.getMoleculeList()) {
 			register(molecule, process);
@@ -506,15 +565,18 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			String complexMoleculeName = "";
 
 			for (String moleculeName : componentMolecules) {
-				complexMoleculeName += moleculesByCompartment.get(compartment).get(moleculeName).getDisplayName() + "___";
+				complexMoleculeName += moleculesByCompartment.get(compartment).get(moleculeName).getDisplayName()
+						+ "___";
 			}
 
 			molecule.setDisplayName(complexMoleculeName.substring(0, complexMoleculeName.length() - 3));
 		} else {
-			molecule.setDisplayName(prefixByCompartment.get(compartment) + COMPARTMENT_SEPARATOR + molecularSpecies.getDisplayName());
+			molecule.setDisplayName(
+					prefixByCompartment.get(compartment) + COMPARTMENT_SEPARATOR + molecularSpecies.getDisplayName());
 		}
 
-		molecule.setAmount(UnitConverter.getInstance().getBaseConcentration(molecularSpecies.getAmount(), molecularSpecies.getUnit()));
+		molecule.setAmount(UnitConverter.getInstance().getBaseConcentration(molecularSpecies.getAmount(),
+				molecularSpecies.getUnit()));
 		molecule.setUnit(ConcentrationUnit.MOLECULE);
 
 		moleculesByCompartment.get(compartment).put(molecularSpecies.getDisplayName(), molecule);
@@ -537,14 +599,17 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 			List<MolecularSpecies> lhsMolecules = new ArrayList<>();
 			List<MolecularSpecies> rhsMolecules = new ArrayList<>();
-			boolean isLeftOutside = rule.getLeftHandSide().size() == 1 && rule.getLeftHandSide().get(0).getDisplayName().equals("OUTSIDE");
-			boolean isRightOutside = rule.getRightHandSide().size() == 1 && rule.getRightHandSide().get(0).getDisplayName().equals("OUTSIDE");
+			boolean isLeftOutside = rule.getLeftHandSide().size() == 1
+					&& rule.getLeftHandSide().get(0).getDisplayName().equals("OUTSIDE");
+			boolean isRightOutside = rule.getRightHandSide().size() == 1
+					&& rule.getRightHandSide().get(0).getDisplayName().equals("OUTSIDE");
 
 			for (MolecularSpecies molecularSpecies : rule.getLeftHandSide()) {
 
 				if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
 
-					MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
+					MolecularSpecies molecule = moleculesByCompartment.get(compartment)
+							.get(molecularSpecies.getDisplayName());
 
 					if (molecule != null) {
 						lhsMolecules.add(EcoreUtil.copy(molecule));
@@ -552,7 +617,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 					if (isRightOutside) {
 
-						molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment)).get(molecularSpecies.getDisplayName());
+						molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment))
+								.get(molecularSpecies.getDisplayName());
 
 						if (molecule != null) {
 							rhsMolecules.add(EcoreUtil.copy(molecule));
@@ -565,7 +631,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 				if (!molecularSpecies.getDisplayName().equals("OUTSIDE")) {
 
-					MolecularSpecies molecule = moleculesByCompartment.get(compartment).get(molecularSpecies.getDisplayName());
+					MolecularSpecies molecule = moleculesByCompartment.get(compartment)
+							.get(molecularSpecies.getDisplayName());
 
 					if (molecule != null) {
 						rhsMolecules.add(EcoreUtil.copy(molecule));
@@ -573,7 +640,8 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 					if (isLeftOutside) {
 
-						molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment)).get(molecularSpecies.getDisplayName());
+						molecule = moleculesByCompartment.get(parentsByCompartment.get(compartment))
+								.get(molecularSpecies.getDisplayName());
 
 						if (molecule != null) {
 							lhsMolecules.add(EcoreUtil.copy(molecule));
@@ -589,48 +657,83 @@ public class FlatModelBuilder implements IVisitor<Void> {
 			clonedRule.getRightHandSide().addAll(rhsMolecules);
 
 			if (clonedRule.getForwardRate() != null && clonedRule.getForwardRateUnit() != null) {
-				clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(), clonedRule.getForwardRateUnit(), clonedRule.getLeftHandSide()));
+				clonedRule.setForwardRate(UnitConverter.getInstance().getBaseRate(clonedRule.getForwardRate(),
+						clonedRule.getForwardRateUnit(), clonedRule.getLeftHandSide()));
 				clonedRule.setForwardRateUnit(IblFactory.eINSTANCE.createRateUnit());
 			}
 
 			if (clonedRule.getReverseRate() != null && clonedRule.getReverseRateUnit() != null) {
-				clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(), clonedRule.getReverseRateUnit(), clonedRule.getLeftHandSide()));
+				clonedRule.setReverseRate(UnitConverter.getInstance().getBaseRate(clonedRule.getReverseRate(),
+						clonedRule.getReverseRateUnit(), clonedRule.getLeftHandSide()));
 				clonedRule.setReverseRateUnit(IblFactory.eINSTANCE.createRateUnit());
 			}
-			
-			if(clonedRule.getForwardRateExpression() != null) {
+
+			if (clonedRule.getForwardRateExpression() != null) {
 				Matcher matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getForwardRateExpression());
-				while(matcher.find()) {
-		            String speciesName = matcher.group(0).replace("[", "").replace("]", "");
-		            MolecularSpecies species = moleculesByCompartment.get(compartment).get(speciesName);
-		            String flatSpeciesName = species.getDisplayName();
-		            clonedRule.setForwardRateExpression(clonedRule.getForwardRateExpression().replace(matcher.group(0), flatSpeciesName));
-		        }
-			}
-			
-			if(clonedRule.getReverseRateExpression() != null) {
-				Matcher matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getReverseRateExpression());
-				while(matcher.find()) {
+				while (matcher.find()) {
 					String speciesName = matcher.group(0).replace("[", "").replace("]", "");
-		            MolecularSpecies species = moleculesByCompartment.get(compartment).get(speciesName);
-		            String flatSpeciesName = species.getDisplayName();
-		            clonedRule.setReverseRateExpression(clonedRule.getReverseRateExpression().replace(matcher.group(0), flatSpeciesName));
-		        }
+					MolecularSpecies species = moleculesByCompartment.get(compartment).get(speciesName);
+					String flatSpeciesName = species.getDisplayName();
+					clonedRule.setForwardRateExpression(
+							clonedRule.getForwardRateExpression().replace(matcher.group(0), flatSpeciesName));
+				}
+			}
+
+			if (clonedRule.getReverseRateExpression() != null) {
+				Matcher matcher = rateExpressionSpeciesPattern.matcher(clonedRule.getReverseRateExpression());
+				while (matcher.find()) {
+					String speciesName = matcher.group(0).replace("[", "").replace("]", "");
+					MolecularSpecies species = moleculesByCompartment.get(compartment).get(speciesName);
+					String flatSpeciesName = species.getDisplayName();
+					clonedRule.setReverseRateExpression(
+							clonedRule.getReverseRateExpression().replace(matcher.group(0), flatSpeciesName));
+				}
 			}
 
 			// eliminate rules with no specified or zero rates
-			if(clonedRule.isIsBidirectional()) {
-				if (
-						(clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0 || clonedRule.getForwardRateExpression() != null) || 
-						(clonedRule.getReverseRate() != null && clonedRule.getReverseRate() > 0 || clonedRule.getReverseRateExpression() != null)
-					) {
+			if (clonedRule.isIsBidirectional()) {
+				if ((clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0
+						|| clonedRule.getForwardRateExpression() != null)
+						|| (clonedRule.getReverseRate() != null && clonedRule.getReverseRate() > 0
+								|| clonedRule.getReverseRateExpression() != null)) {
 					flatModel.getRuleList().add(clonedRule);
 				}
-			}
-			else if (clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0 || clonedRule.getForwardRateExpression() != null) {
+			} else if (clonedRule.getForwardRate() != null && clonedRule.getForwardRate() > 0
+					|| clonedRule.getForwardRateExpression() != null) {
 				flatModel.getRuleList().add(clonedRule);
 			}
 		}
+	}
+
+	private void register(Event event, Object compartment) {
+
+		// Clone the event and clean up the redundant members
+		Event clonedEvent = EcoreUtil.copy(event);
+
+		// Perform flattening for the event members
+		propertyCompartment = compartment;
+		clonedEvent.accept(this);
+		
+		// Generate the MuParser expressions
+		if (clonedEvent.getTrigger() != null) {
+			clonedEvent.setFlatTrigger(MuParserTranslator.getInstance().translate(clonedEvent.getTrigger()));
+			clonedEvent.setTrigger(null);
+		}
+
+		if (clonedEvent.getDelay() != null) {
+			clonedEvent.setFlatDelay(MuParserTranslator.getInstance().translate(clonedEvent.getDelay()));
+			clonedEvent.setDelay(null);
+		}
+
+		for (EventAssignment eventAssignment : clonedEvent.getAssignments()) {
+			if (eventAssignment.getExpression() != null) {
+				eventAssignment.setFlatExpression(MuParserTranslator.getInstance().translate(eventAssignment.getExpression()));
+				eventAssignment.setExpression(null);
+			}
+		}
+
+		// Add the flattened event to the flat model
+		flatModel.getEventList().add(clonedEvent);
 	}
 
 	private void registerChildCompartment(Object compartment, String compartmentName, Object parentCompartment) {

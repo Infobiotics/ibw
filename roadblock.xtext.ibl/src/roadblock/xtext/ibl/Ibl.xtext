@@ -456,11 +456,13 @@ ConcentrationQuantity:
 /////////////////
 EventDefinition:
 	{EventDefinition}
-	'EVENT' assignments+=EventAssignment (',' assignments+=EventAssignment)* 'WHEN' trigger+=StateFormula;
+	'EVENT' assignments+=EventAssignmentDefinition (',' assignments+=EventAssignmentDefinition)* 
+	'WHEN' trigger=StateFormula
+	('WITH' 'DELAY' '[' delay=AdditionSubtractionExpression delayUnit=TIME_UNIT ']')?;
 
-EventAssignment:
-	{EventAssignment}
-	'[' variable=VariableAssignmentObject '=' expression=AdditionSubtractionExpression ']';
+EventAssignmentDefinition:
+	{EventAssignmentDefinition}
+	'[' variable=VariableKind '=' expression=AdditionSubtractionExpression ']';
 
 // qualified name
 QualifiedNameWithWildcard:

@@ -13,6 +13,8 @@ import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.Event;
+import roadblock.emf.ibl.Ibl.EventAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.Kinetics;
 import roadblock.emf.ibl.Ibl.Model;
@@ -318,6 +320,16 @@ public class NuSmvTranslator implements IPropertyTranslator {
 
 	@Override
 	public String visit(MonotonicityExpression expression) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(Event event) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String visit(EventAssignment eventAssignment) {
 		throw new UnsupportedOperationException();
 	}
 }

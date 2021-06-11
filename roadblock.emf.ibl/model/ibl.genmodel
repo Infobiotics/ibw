@@ -167,6 +167,12 @@
       <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.30">
         <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.30/expression"/>
       </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.31">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.31/event"/>
+      </genOperations>
+      <genOperations ecoreOperation="ibl.ecore#//IVisitor/visit.32">
+        <genParameters ecoreParameter="ibl.ecore#//IVisitor/visit.32/eventAssignment"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Model/displayName"/>
@@ -228,6 +234,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/inputList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/variableAssignmentList"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Device/events"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Cell">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/displayName"/>
@@ -239,6 +246,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Cell/ID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/variableAssignmentList"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Cell/events"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//ATGCDirective"/>
     <genClasses ecoreClass="ibl.ecore#//System"/>
@@ -330,6 +338,7 @@
     <genClasses ecoreClass="ibl.ecore#//FlatModel">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModel/moleculeList"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModel/ruleList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//FlatModel/eventList"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//PropertyInitialCondition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//PropertyInitialCondition/variable"/>
@@ -392,10 +401,15 @@
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//Event">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Event/assignments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Event/trigger"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ibl.ecore#//Event/delay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Event/flatTrigger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//Event/flatDelay"/>
     </genClasses>
     <genClasses ecoreClass="ibl.ecore#//EventAssignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EventAssignment/variableName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ibl.ecore#//EventAssignment/expression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ibl.ecore#//EventAssignment/flatExpression"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

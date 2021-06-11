@@ -645,13 +645,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int DEVICE__PROPERTIES = IVISITABLE_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DEVICE__EVENTS = IVISITABLE_FEATURE_COUNT + 11;
+
+	/**
 	 * The number of structural features of the '<em>Device</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 11;
+	public static final int DEVICE_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
@@ -745,13 +754,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int CELL__PROPERTIES = IVISITABLE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CELL__EVENTS = IVISITABLE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Cell</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 9;
+	public static final int CELL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}' class.
@@ -1687,13 +1705,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int FLAT_MODEL__RULE_LIST = IVISITABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Event List</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int FLAT_MODEL__EVENT_LIST = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Flat Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FLAT_MODEL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int FLAT_MODEL_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}' class.
@@ -2263,13 +2290,49 @@ public class IblPackage extends EPackageImpl {
 	public static final int EVENT__ASSIGNMENTS = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Trigger</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT__TRIGGER = IVISITABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Delay</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT__DELAY = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Flat Trigger</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT__FLAT_TRIGGER = IVISITABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Flat Delay</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT__FLAT_DELAY = IVISITABLE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Event</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EVENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 1;
+	public static final int EVENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.EventAssignment <em>Event Assignment</em>}' class.
@@ -2291,7 +2354,7 @@ public class IblPackage extends EPackageImpl {
 	public static final int EVENT_ASSIGNMENT__VARIABLE_NAME = IVISITABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Expression</b></em>' reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2300,13 +2363,22 @@ public class IblPackage extends EPackageImpl {
 	public static final int EVENT_ASSIGNMENT__EXPRESSION = IVISITABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Flat Expression</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int EVENT_ASSIGNMENT__FLAT_EXPRESSION = IVISITABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Event Assignment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int EVENT_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 2;
+	public static final int EVENT_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
@@ -3632,6 +3704,20 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Device#getEvents <em>Events</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Events</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Device#getEvents()
+	 * @see #getDevice()
+	 * @generated
+	 */
+	public EReference getDevice_Events() {
+		return (EReference)deviceEClass.getEStructuralFeatures().get(11);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3760,6 +3846,20 @@ public class IblPackage extends EPackageImpl {
 	public EReference getCell_Properties() {
 		return (EReference)cellEClass.getEStructuralFeatures().get(8);
 	}
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.Cell#getEvents <em>Events</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Events</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Cell#getEvents()
+	 * @see #getCell()
+	 * @generated
+	 */
+	public EReference getCell_Events() {
+		return (EReference)cellEClass.getEStructuralFeatures().get(9);
+	}
+
 
 	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}'.
@@ -4676,6 +4776,20 @@ public class IblPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link roadblock.emf.ibl.Ibl.FlatModel#getEventList <em>Event List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Event List</em>'.
+	 * @see roadblock.emf.ibl.Ibl.FlatModel#getEventList()
+	 * @see #getFlatModel()
+	 * @generated
+	 */
+	public EReference getFlatModel_EventList() {
+		return (EReference)flatModelEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5235,6 +5349,62 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Event#getTrigger <em>Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Trigger</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Event#getTrigger()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	public EReference getEvent_Trigger() {
+		return (EReference)eventEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.Event#getDelay <em>Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Delay</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Event#getDelay()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	public EReference getEvent_Delay() {
+		return (EReference)eventEClass.getEStructuralFeatures().get(2);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Event#getFlatTrigger <em>Flat Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Flat Trigger</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Event#getFlatTrigger()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	public EAttribute getEvent_FlatTrigger() {
+		return (EAttribute)eventEClass.getEStructuralFeatures().get(3);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.Event#getFlatDelay <em>Flat Delay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Flat Delay</em>'.
+	 * @see roadblock.emf.ibl.Ibl.Event#getFlatDelay()
+	 * @see #getEvent()
+	 * @generated
+	 */
+	public EAttribute getEvent_FlatDelay() {
+		return (EAttribute)eventEClass.getEStructuralFeatures().get(4);
+	}
+
+
+	/**
 	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.EventAssignment <em>Event Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5262,16 +5432,30 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for the reference '{@link roadblock.emf.ibl.Ibl.EventAssignment#getExpression <em>Expression</em>}'.
+	 * Returns the meta object for the containment reference '{@link roadblock.emf.ibl.Ibl.EventAssignment#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Expression</em>'.
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
 	 * @see roadblock.emf.ibl.Ibl.EventAssignment#getExpression()
 	 * @see #getEventAssignment()
 	 * @generated
 	 */
 	public EReference getEventAssignment_Expression() {
 		return (EReference)eventAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.EventAssignment#getFlatExpression <em>Flat Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Flat Expression</em>'.
+	 * @see roadblock.emf.ibl.Ibl.EventAssignment#getFlatExpression()
+	 * @see #getEventAssignment()
+	 * @generated
+	 */
+	public EAttribute getEventAssignment_FlatExpression() {
+		return (EAttribute)eventAssignmentEClass.getEStructuralFeatures().get(2);
 	}
 
 
@@ -5477,6 +5661,7 @@ public class IblPackage extends EPackageImpl {
 		createEReference(deviceEClass, DEVICE__INPUT_LIST);
 		createEReference(deviceEClass, DEVICE__VARIABLE_ASSIGNMENT_LIST);
 		createEReference(deviceEClass, DEVICE__PROPERTIES);
+		createEReference(deviceEClass, DEVICE__EVENTS);
 
 		cellEClass = createEClass(CELL);
 		createEAttribute(cellEClass, CELL__DISPLAY_NAME);
@@ -5488,6 +5673,7 @@ public class IblPackage extends EPackageImpl {
 		createEAttribute(cellEClass, CELL__ID);
 		createEReference(cellEClass, CELL__VARIABLE_ASSIGNMENT_LIST);
 		createEReference(cellEClass, CELL__PROPERTIES);
+		createEReference(cellEClass, CELL__EVENTS);
 
 		atgcDirectiveEClass = createEClass(ATGC_DIRECTIVE);
 
@@ -5584,6 +5770,7 @@ public class IblPackage extends EPackageImpl {
 		flatModelEClass = createEClass(FLAT_MODEL);
 		createEReference(flatModelEClass, FLAT_MODEL__MOLECULE_LIST);
 		createEReference(flatModelEClass, FLAT_MODEL__RULE_LIST);
+		createEReference(flatModelEClass, FLAT_MODEL__EVENT_LIST);
 
 		propertyInitialConditionEClass = createEClass(PROPERTY_INITIAL_CONDITION);
 		createEReference(propertyInitialConditionEClass, PROPERTY_INITIAL_CONDITION__VARIABLE);
@@ -5646,10 +5833,15 @@ public class IblPackage extends EPackageImpl {
 
 		eventEClass = createEClass(EVENT);
 		createEReference(eventEClass, EVENT__ASSIGNMENTS);
+		createEReference(eventEClass, EVENT__TRIGGER);
+		createEReference(eventEClass, EVENT__DELAY);
+		createEAttribute(eventEClass, EVENT__FLAT_TRIGGER);
+		createEAttribute(eventEClass, EVENT__FLAT_DELAY);
 
 		eventAssignmentEClass = createEClass(EVENT_ASSIGNMENT);
 		createEAttribute(eventAssignmentEClass, EVENT_ASSIGNMENT__VARIABLE_NAME);
 		createEReference(eventAssignmentEClass, EVENT_ASSIGNMENT__EXPRESSION);
+		createEAttribute(eventAssignmentEClass, EVENT_ASSIGNMENT__FLAT_EXPRESSION);
 
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
@@ -5917,6 +6109,16 @@ public class IblPackage extends EPackageImpl {
 		g1 = createEGenericType(iVisitorEClass_TResult);
 		initEOperation(op, g1);
 
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getEvent(), "event", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getEventAssignment(), "eventAssignment", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getModel_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_ProcessList(), this.getKinetics(), null, "processList", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5977,6 +6179,7 @@ public class IblPackage extends EPackageImpl {
 		initEReference(getDevice_InputList(), this.getMolecularSpecies(), null, "inputList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDevice_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDevice_Events(), this.getEvent(), null, "events", null, 0, -1, Device.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_DisplayName(), ecorePackage.getEString(), "displayName", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5988,6 +6191,7 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getCell_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_VariableAssignmentList(), this.getEMFVariableAssignment(), null, "variableAssignmentList", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCell_Properties(), this.getIProperty(), null, "properties", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCell_Events(), this.getEvent(), null, "events", null, 0, -1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(atgcDirectiveEClass, ATGCDirective.class, "ATGCDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -6093,6 +6297,7 @@ public class IblPackage extends EPackageImpl {
 		initEClass(flatModelEClass, FlatModel.class, "FlatModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFlatModel_MoleculeList(), this.getMolecularSpecies(), null, "moleculeList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlatModel_RuleList(), this.getRule(), null, "ruleList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFlatModel_EventList(), this.getEvent(), null, "eventList", null, 0, -1, FlatModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyInitialConditionEClass, PropertyInitialCondition.class, "PropertyInitialCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyInitialCondition_Variable(), this.getVariableReference(), null, "variable", null, 0, 1, PropertyInitialCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6159,10 +6364,15 @@ public class IblPackage extends EPackageImpl {
 
 		initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEvent_Assignments(), this.getEventAssignment(), null, "assignments", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEvent_Trigger(), this.getIStateFormula(), null, "trigger", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEvent_Delay(), this.getIArithmeticOperand(), null, "delay", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEvent_FlatTrigger(), ecorePackage.getEString(), "flatTrigger", "", 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEvent_FlatDelay(), ecorePackage.getEString(), "flatDelay", "", 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eventAssignmentEClass, EventAssignment.class, "EventAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEventAssignment_VariableName(), ecorePackage.getEString(), "variableName", "", 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEventAssignment_Expression(), this.getIArithmeticOperand(), null, "expression", null, 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEventAssignment_Expression(), this.getIArithmeticOperand(), null, "expression", null, 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEventAssignment_FlatExpression(), ecorePackage.getEString(), "flatExpression", "", 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -6720,6 +6930,14 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference DEVICE__PROPERTIES = eINSTANCE.getDevice_Properties();
 
 		/**
+		 * The meta object literal for the '<em><b>Events</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference DEVICE__EVENTS = eINSTANCE.getDevice_Events();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.Cell <em>Cell</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6800,6 +7018,14 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference CELL__PROPERTIES = eINSTANCE.getCell_Properties();
+
+		/**
+		 * The meta object literal for the '<em><b>Events</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference CELL__EVENTS = eINSTANCE.getCell_Events();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.ATGCDirective <em>ATGC Directive</em>}' class.
@@ -7426,6 +7652,14 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference FLAT_MODEL__RULE_LIST = eINSTANCE.getFlatModel_RuleList();
 
 		/**
+		 * The meta object literal for the '<em><b>Event List</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference FLAT_MODEL__EVENT_LIST = eINSTANCE.getFlatModel_EventList();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.PropertyInitialCondition <em>Property Initial Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7814,6 +8048,38 @@ public class IblPackage extends EPackageImpl {
 		public static final EReference EVENT__ASSIGNMENTS = eINSTANCE.getEvent_Assignments();
 
 		/**
+		 * The meta object literal for the '<em><b>Trigger</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference EVENT__TRIGGER = eINSTANCE.getEvent_Trigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Delay</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference EVENT__DELAY = eINSTANCE.getEvent_Delay();
+
+		/**
+		 * The meta object literal for the '<em><b>Flat Trigger</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EVENT__FLAT_TRIGGER = eINSTANCE.getEvent_FlatTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Flat Delay</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EVENT__FLAT_DELAY = eINSTANCE.getEvent_FlatDelay();
+
+		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.EventAssignment <em>Event Assignment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7832,12 +8098,20 @@ public class IblPackage extends EPackageImpl {
 		public static final EAttribute EVENT_ASSIGNMENT__VARIABLE_NAME = eINSTANCE.getEventAssignment_VariableName();
 
 		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		public static final EReference EVENT_ASSIGNMENT__EXPRESSION = eINSTANCE.getEventAssignment_Expression();
+
+		/**
+		 * The meta object literal for the '<em><b>Flat Expression</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute EVENT_ASSIGNMENT__FLAT_EXPRESSION = eINSTANCE.getEventAssignment_FlatExpression();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

@@ -138,6 +138,14 @@
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
       <eParameters name="expression" eType="#//RelationalExpression"/>
     </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="event" eType="#//Event"/>
+    </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="eventAssignment" eType="#//EventAssignment"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -236,6 +244,8 @@
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//IProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//Event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -257,6 +267,8 @@
         upperBound="-1" eType="#//EMFVariableAssignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//IProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//Event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATGCDirective" eSuperTypes="#//IVisitable"/>
   <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//IVisitable"/>
@@ -419,6 +431,8 @@
         eType="#//MolecularSpecies" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ruleList" upperBound="-1"
         eType="#//Rule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventList" upperBound="-1"
+        eType="#//Event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyInitialCondition" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//VariableReference"
@@ -523,10 +537,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
         eType="#//EventAssignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//IStateFormula"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delay" eType="#//IArithmeticOperand"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flatTrigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flatDelay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EventAssignment" eSuperTypes="#//IVisitable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="variableName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//IArithmeticOperand"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//IArithmeticOperand"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="flatExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
   </eClassifiers>
 </ecore:EPackage>

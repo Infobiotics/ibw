@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link roadblock.emf.ibl.Ibl.FlatModel#getMoleculeList <em>Molecule List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.FlatModel#getRuleList <em>Rule List</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.FlatModel#getEventList <em>Event List</em>}</li>
  * </ul>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel()
@@ -48,6 +49,16 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	 * @ordered
 	 */
 	protected EList<Rule> ruleList;
+
+	/**
+	 * The cached value of the '{@link #getEventList() <em>Event List</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEventList()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Event> eventList;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -109,6 +120,23 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Event List</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Event}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Event List</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getFlatModel_EventList()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<Event> getEventList() {
+		if (eventList == null) {
+			eventList = new EObjectContainmentEList<Event>(Event.class, this, IblPackage.FLAT_MODEL__EVENT_LIST);
+		}
+		return eventList;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @model
@@ -129,6 +157,8 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 				return ((InternalEList<?>)getMoleculeList()).basicRemove(otherEnd, msgs);
 			case IblPackage.FLAT_MODEL__RULE_LIST:
 				return ((InternalEList<?>)getRuleList()).basicRemove(otherEnd, msgs);
+			case IblPackage.FLAT_MODEL__EVENT_LIST:
+				return ((InternalEList<?>)getEventList()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -144,6 +174,8 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 				return getMoleculeList();
 			case IblPackage.FLAT_MODEL__RULE_LIST:
 				return getRuleList();
+			case IblPackage.FLAT_MODEL__EVENT_LIST:
+				return getEventList();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,6 +196,10 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 				getRuleList().clear();
 				getRuleList().addAll((Collection<? extends Rule>)newValue);
 				return;
+			case IblPackage.FLAT_MODEL__EVENT_LIST:
+				getEventList().clear();
+				getEventList().addAll((Collection<? extends Event>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,6 +217,9 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 			case IblPackage.FLAT_MODEL__RULE_LIST:
 				getRuleList().clear();
 				return;
+			case IblPackage.FLAT_MODEL__EVENT_LIST:
+				getEventList().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +235,8 @@ public class FlatModel extends EObjectImpl implements IVisitable {
 				return moleculeList != null && !moleculeList.isEmpty();
 			case IblPackage.FLAT_MODEL__RULE_LIST:
 				return ruleList != null && !ruleList.isEmpty();
+			case IblPackage.FLAT_MODEL__EVENT_LIST:
+				return eventList != null && !eventList.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getVariableAssignmentList <em>Variable Assignment List</em>}</li>
  *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getProperties <em>Properties</em>}</li>
+ *   <li>{@link roadblock.emf.ibl.Ibl.Cell#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @see roadblock.emf.ibl.Ibl.IblPackage#getCell()
@@ -151,6 +152,16 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	protected EList<IProperty> properties;
 
 	/**
+	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Event> events;
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -190,7 +201,7 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getDisplayName <em>Display Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * @param value the new value of the '<em>Display Name</em>' attribute.
+	 * @param newDisplayName the new value of the '<em>Display Name</em>' attribute.
 	 * @see #getDisplayName()
 	 * @generated
 	 */
@@ -328,7 +339,7 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	/**
 	 * Sets the value of the '{@link roadblock.emf.ibl.Ibl.Cell#getID <em>ID</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @param value the new value of the '<em>ID</em>' attribute.
+	 * @param newID the new value of the '<em>ID</em>' attribute.
 	 * @see #getID()
 	 * @generated
 	 */
@@ -384,6 +395,23 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.
+	 * The list contents are of type {@link roadblock.emf.ibl.Ibl.Event}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Events</em>' containment reference list.
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getCell_Events()
+	 * @model containment="true"
+	 * @generated
+	 */
+	public List<Event> getEvents() {
+		if (events == null) {
+			events = new EObjectContainmentEList<Event>(Event.class, this, IblPackage.CELL__EVENTS);
+		}
+		return events;
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @model
@@ -414,6 +442,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				return ((InternalEList<?>)getVariableAssignmentList()).basicRemove(otherEnd, msgs);
 			case IblPackage.CELL__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case IblPackage.CELL__EVENTS:
+				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -443,6 +473,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				return getVariableAssignmentList();
 			case IblPackage.CELL__PROPERTIES:
 				return getProperties();
+			case IblPackage.CELL__EVENTS:
+				return getEvents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -489,6 +521,10 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends IProperty>)newValue);
 				return;
+			case IblPackage.CELL__EVENTS:
+				getEvents().clear();
+				getEvents().addAll((Collection<? extends Event>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -527,6 +563,9 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 			case IblPackage.CELL__PROPERTIES:
 				getProperties().clear();
 				return;
+			case IblPackage.CELL__EVENTS:
+				getEvents().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -556,6 +595,8 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 				return variableAssignmentList != null && !variableAssignmentList.isEmpty();
 			case IblPackage.CELL__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case IblPackage.CELL__EVENTS:
+				return events != null && !events.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -568,7 +609,7 @@ public class Cell extends EObjectImpl implements IVisitable, IMoleculeContainer,
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (displayName: ");
 		result.append(displayName);
 		result.append(", ID: ");

@@ -66,6 +66,10 @@ class Simulator {
 			if (result != 0) {
 				// write error message to console
 				var String line
+				var output = new BufferedReader(new InputStreamReader(thread.process.getInputStream()))
+				while ((line = output.readLine()) !== null)
+					errorStream.write(line.getBytes())
+				output.close()
 				var error = new BufferedReader(new InputStreamReader(thread.process.getErrorStream()))
 				while ((line = error.readLine()) !== null)
 					errorStream.write(line.getBytes())

@@ -11,6 +11,8 @@ import roadblock.emf.ibl.Ibl.ConcentrationQuantity;
 import roadblock.emf.ibl.Ibl.ConcreteProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.Device;
 import roadblock.emf.ibl.Ibl.EMFVariableAssignment;
+import roadblock.emf.ibl.Ibl.Event;
+import roadblock.emf.ibl.Ibl.EventAssignment;
 import roadblock.emf.ibl.Ibl.FlatModel;
 import roadblock.emf.ibl.Ibl.IProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.ITimeConstraint;
@@ -214,6 +216,16 @@ public class NuSmvPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(EMFVariableAssignment expression) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Boolean visit(Event event) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public Boolean visit(EventAssignment eventAssignment) {
 		throw new UnsupportedOperationException();
 	}
 

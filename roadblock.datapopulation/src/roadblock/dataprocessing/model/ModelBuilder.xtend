@@ -55,6 +55,11 @@ import roadblock.xtext.ibl.ibl.VariableReference
 import roadblock.xtext.ibl.ibl.VariableType
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 import roadblock.xtext.ibl.ibl.EventDefinition
+import roadblock.emf.ibl.Ibl.Event
+import roadblock.xtext.ibl.ibl.EventAssignmentDefinition
+import roadblock.emf.ibl.Ibl.IStateFormula
+import roadblock.emf.ibl.Ibl.EventAssignment
+import roadblock.emf.ibl.Ibl.IArithmeticOperand
 
 class ModelBuilder extends IblSwitch<Object> {
 
@@ -318,7 +323,7 @@ class ModelBuilder extends IblSwitch<Object> {
 					semanticEntityByProperty.put(property, member);
 				}
 				EventDefinition: {
-					//cell.events.add(member.doSwitch as Event)
+					cell.events.add(member.doSwitch as Event)
 				}
 				ATGCDefinition:
 					cell.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
@@ -493,7 +498,7 @@ class ModelBuilder extends IblSwitch<Object> {
 					semanticEntityByProperty.put(property, member);
 				}
 				EventDefinition: {
-					//cell.events.add(member.doSwitch as Event)
+					device.events.add(member.doSwitch as Event)
 				}
 				ATGCDefinition:
 					device.ATGCCommandList.add(member.command.doSwitch as ATGCDirective)
@@ -677,9 +682,23 @@ class ModelBuilder extends IblSwitch<Object> {
 	
 	override caseEventDefinition(EventDefinition eventDefinition) {
 		val event = modelFactory.createEvent
-
+		
+		event.trigger = propertyBuilder.caseStateFormula(eventDefinition.trigger) as IStateFormula
+		
+		for (eventAssignemntDefinition : eventDefinition.assignments) {
+			event.assignments.add(caseEventAssignmentDefinition(eventAssignemntDefinition) as EventAssignment)
+		}
 		
 		return event
+	}
+	
+	override caseEventAssignmentDefinition(EventAssignmentDefinition eventAssignmentDefinition) {
+		val eventAssignment = modelFactory.createEventAssignment
+		
+		eventAssignment.variableName = eventAssignmentDefinition.variable.buildVariableName
+		eventAssignment.expression = propertyBuilder.caseAdditionSubtractionExpression(eventAssignmentDefinition.expression) as IArithmeticOperand
+		
+		return eventAssignment
 	}
 
 	private def EObject findFirstUpstream(EObject container, (EObject)=>Boolean predicate) {
