@@ -35,6 +35,7 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -233,6 +234,11 @@ public class PropertyCollector implements IVisitor<Void> {
 
 	@Override
 	public Void visit(ConcentrationQuantity expression) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Void visit(TimeQuantity expression) {
 		throw new UnsupportedOperationException();
 	}
 

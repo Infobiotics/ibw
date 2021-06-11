@@ -278,4 +278,12 @@ public interface IVisitor<TResult> {
 	 */
 	TResult visit(EventAssignment eventAssignment);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TResult visit(TimeQuantity expression);
+
 } // IVisitor

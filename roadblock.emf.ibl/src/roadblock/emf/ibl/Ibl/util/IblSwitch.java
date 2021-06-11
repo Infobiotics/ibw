@@ -54,6 +54,7 @@ import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -496,6 +497,14 @@ public class IblSwitch<T> extends Switch<T> {
 				EventAssignment eventAssignment = (EventAssignment)theEObject;
 				T result = caseEventAssignment(eventAssignment);
 				if (result == null) result = caseIVisitable(eventAssignment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IblPackage.TIME_QUANTITY: {
+				TimeQuantity timeQuantity = (TimeQuantity)theEObject;
+				T result = caseTimeQuantity(timeQuantity);
+				if (result == null) result = caseIArithmeticOperand(timeQuantity);
+				if (result == null) result = caseIVisitable(timeQuantity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1222,6 +1231,21 @@ public class IblSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEventAssignment(EventAssignment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Time Quantity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Time Quantity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTimeQuantity(TimeQuantity object) {
 		return null;
 	}
 

@@ -77,6 +77,8 @@ class ModelBuilder extends IblSwitch<Object> {
 
 	// useful constant
 	val BIOLOGICALPART = #{'PROMOTER', 'GENE', 'RBS', 'SPACER', 'TERMINATOR'}
+	
+	val TIME_VAR = "__time__"
 
 	def getPropertySemanticEntityMapper() {
 
@@ -118,7 +120,7 @@ class ModelBuilder extends IblSwitch<Object> {
 	// helpers to build the name of a variableKind (either VariableName or VariableComplex)
 	//
 	def buildVariableName(VariableName variableName) {
-		variableName.name
+		variableName.isIsTime ? TIME_VAR : variableName.name
 	}
 
 	def buildVariableName(VariableComplex variableComplex) {

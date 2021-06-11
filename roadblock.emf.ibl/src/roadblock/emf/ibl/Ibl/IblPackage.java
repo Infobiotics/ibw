@@ -2381,6 +2381,43 @@ public class IblPackage extends EPackageImpl {
 	public static final int EVENT_ASSIGNMENT_FEATURE_COUNT = IVISITABLE_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeQuantity <em>Time Quantity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see roadblock.emf.ibl.Ibl.TimeQuantity
+	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeQuantity()
+	 * @generated
+	 */
+	public static final int TIME_QUANTITY = 51;
+
+	/**
+	 * The feature id for the '<em><b>Amount</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME_QUANTITY__AMOUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME_QUANTITY__UNIT = IARITHMETIC_OPERAND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Quantity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME_QUANTITY_FEATURE_COUNT = IARITHMETIC_OPERAND_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2388,7 +2425,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeUnit()
 	 * @generated
 	 */
-	public static final int TIME_UNIT = 51;
+	public static final int TIME_UNIT = 52;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.TemporalPattern <em>Temporal Pattern</em>}' enum.
@@ -2398,7 +2435,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getTemporalPattern()
 	 * @generated
 	 */
-	public static final int TEMPORAL_PATTERN = 52;
+	public static final int TEMPORAL_PATTERN = 53;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -2408,7 +2445,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRelationalOperator()
 	 * @generated
 	 */
-	public static final int RELATIONAL_OPERATOR = 53;
+	public static final int RELATIONAL_OPERATOR = 54;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.BooleanOperator <em>Boolean Operator</em>}' enum.
@@ -2418,7 +2455,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getBooleanOperator()
 	 * @generated
 	 */
-	public static final int BOOLEAN_OPERATOR = 54;
+	public static final int BOOLEAN_OPERATOR = 55;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ConcentrationUnit <em>Concentration Unit</em>}' enum.
@@ -2428,7 +2465,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getConcentrationUnit()
 	 * @generated
 	 */
-	public static final int CONCENTRATION_UNIT = 55;
+	public static final int CONCENTRATION_UNIT = 56;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateTimeUnit <em>Rate Time Unit</em>}' enum.
@@ -2438,7 +2475,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateTimeUnit()
 	 * @generated
 	 */
-	public static final int RATE_TIME_UNIT = 56;
+	public static final int RATE_TIME_UNIT = 57;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.RateConcentrationUnit <em>Rate Concentration Unit</em>}' enum.
@@ -2448,7 +2485,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getRateConcentrationUnit()
 	 * @generated
 	 */
-	public static final int RATE_CONCENTRATION_UNIT = 57;
+	public static final int RATE_CONCENTRATION_UNIT = 58;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.ArithmeticOperator <em>Arithmetic Operator</em>}' enum.
@@ -2458,7 +2495,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getArithmeticOperator()
 	 * @generated
 	 */
-	public static final int ARITHMETIC_OPERATOR = 58;
+	public static final int ARITHMETIC_OPERATOR = 59;
 
 	/**
 	 * The meta object id for the '{@link roadblock.emf.ibl.Ibl.MonotonicityType <em>Monotonicity Type</em>}' enum.
@@ -2468,7 +2505,7 @@ public class IblPackage extends EPackageImpl {
 	 * @see roadblock.emf.ibl.Ibl.IblPackage#getMonotonicityType()
 	 * @generated
 	 */
-	public static final int MONOTONICITY_TYPE = 59;
+	public static final int MONOTONICITY_TYPE = 60;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2826,6 +2863,13 @@ public class IblPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass eventAssignmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass timeQuantityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -5460,6 +5504,47 @@ public class IblPackage extends EPackageImpl {
 
 
 	/**
+	 * Returns the meta object for class '{@link roadblock.emf.ibl.Ibl.TimeQuantity <em>Time Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Quantity</em>'.
+	 * @see roadblock.emf.ibl.Ibl.TimeQuantity
+	 * @generated
+	 */
+	public EClass getTimeQuantity() {
+		return timeQuantityEClass;
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.TimeQuantity#getAmount <em>Amount</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Amount</em>'.
+	 * @see roadblock.emf.ibl.Ibl.TimeQuantity#getAmount()
+	 * @see #getTimeQuantity()
+	 * @generated
+	 */
+	public EAttribute getTimeQuantity_Amount() {
+		return (EAttribute)timeQuantityEClass.getEStructuralFeatures().get(0);
+	}
+
+
+	/**
+	 * Returns the meta object for the attribute '{@link roadblock.emf.ibl.Ibl.TimeQuantity#getUnit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see roadblock.emf.ibl.Ibl.TimeQuantity#getUnit()
+	 * @see #getTimeQuantity()
+	 * @generated
+	 */
+	public EAttribute getTimeQuantity_Unit() {
+		return (EAttribute)timeQuantityEClass.getEStructuralFeatures().get(1);
+	}
+
+
+	/**
 	 * Returns the meta object for enum '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5843,6 +5928,10 @@ public class IblPackage extends EPackageImpl {
 		createEReference(eventAssignmentEClass, EVENT_ASSIGNMENT__EXPRESSION);
 		createEAttribute(eventAssignmentEClass, EVENT_ASSIGNMENT__FLAT_EXPRESSION);
 
+		timeQuantityEClass = createEClass(TIME_QUANTITY);
+		createEAttribute(timeQuantityEClass, TIME_QUANTITY__AMOUNT);
+		createEAttribute(timeQuantityEClass, TIME_QUANTITY__UNIT);
+
 		// Create enums
 		timeUnitEEnum = createEEnum(TIME_UNIT);
 		temporalPatternEEnum = createEEnum(TEMPORAL_PATTERN);
@@ -5939,6 +6028,7 @@ public class IblPackage extends EPackageImpl {
 		atgcTranslationRateEClass.getESuperTypes().add(this.getATGCDirective());
 		eventEClass.getESuperTypes().add(this.getIVisitable());
 		eventAssignmentEClass.getESuperTypes().add(this.getIVisitable());
+		timeQuantityEClass.getESuperTypes().add(this.getIArithmeticOperand());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(iVisitableEClass, IVisitable.class, "IVisitable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -6116,6 +6206,11 @@ public class IblPackage extends EPackageImpl {
 
 		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getEventAssignment(), "eventAssignment", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(iVisitorEClass_TResult);
+		initEOperation(op, g1);
+
+		op = addEOperation(iVisitorEClass, null, "visit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getTimeQuantity(), "expression", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(iVisitorEClass_TResult);
 		initEOperation(op, g1);
 
@@ -6373,6 +6468,10 @@ public class IblPackage extends EPackageImpl {
 		initEAttribute(getEventAssignment_VariableName(), ecorePackage.getEString(), "variableName", "", 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventAssignment_Expression(), this.getIArithmeticOperand(), null, "expression", null, 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEventAssignment_FlatExpression(), ecorePackage.getEString(), "flatExpression", "", 0, 1, EventAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(timeQuantityEClass, TimeQuantity.class, "TimeQuantity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTimeQuantity_Amount(), ecorePackage.getEDouble(), "amount", null, 0, 1, TimeQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTimeQuantity_Unit(), this.getTimeUnit(), "unit", null, 0, 1, TimeQuantity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(timeUnitEEnum, TimeUnit.class, "TimeUnit");
@@ -8112,6 +8211,32 @@ public class IblPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute EVENT_ASSIGNMENT__FLAT_EXPRESSION = eINSTANCE.getEventAssignment_FlatExpression();
+
+		/**
+		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeQuantity <em>Time Quantity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see roadblock.emf.ibl.Ibl.TimeQuantity
+		 * @see roadblock.emf.ibl.Ibl.IblPackage#getTimeQuantity()
+		 * @generated
+		 */
+		public static final EClass TIME_QUANTITY = eINSTANCE.getTimeQuantity();
+
+		/**
+		 * The meta object literal for the '<em><b>Amount</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute TIME_QUANTITY__AMOUNT = eINSTANCE.getTimeQuantity_Amount();
+
+		/**
+		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute TIME_QUANTITY__UNIT = eINSTANCE.getTimeQuantity_Unit();
 
 		/**
 		 * The meta object literal for the '{@link roadblock.emf.ibl.Ibl.TimeUnit <em>Time Unit</em>}' enum.

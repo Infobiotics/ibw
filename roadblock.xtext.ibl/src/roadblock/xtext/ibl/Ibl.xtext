@@ -199,7 +199,8 @@ VariableKind:
 
 VariableName:
 	{VariableName}
-	name=ID;
+	name=ID |
+	isTime?='TIME';
 
 VariableComplex:
 	{VariableComplex}
@@ -409,7 +410,7 @@ MultiplicationDivisionExpression:
 
 ArithmeticOperand:
 	{ArithmeticOperand}
-	numericLiteral=Real | concentrationQuantity=ConcentrationQuantity | variable=PropertyVariableReference |
+	numericLiteral=Real | concentrationQuantity=ConcentrationQuantity | timeQuantity=TimeQuantity | variable=PropertyVariableReference |
 	isMaximumOfInterest?='MAX(' variable=PropertyVariableReference ')' | '(' expression=AdditionSubtractionExpression ')';
 
 TimeInstant:
@@ -450,6 +451,9 @@ ConcentrationQuantity:
 	{ConcentrationQuantity}
 	value=Real unit=CONCENTRATION_UNIT;
 
+TimeQuantity:
+	{TimeQuantity}
+	value=Real unit=TIME_UNIT;
 
 /////////////////
 // event rules //
@@ -458,7 +462,7 @@ EventDefinition:
 	{EventDefinition}
 	'EVENT' assignments+=EventAssignmentDefinition (',' assignments+=EventAssignmentDefinition)* 
 	'WHEN' trigger=StateFormula
-	('WITH' 'DELAY' '[' delay=AdditionSubtractionExpression delayUnit=TIME_UNIT ']')?;
+	('WITH' 'DELAY' '[' delay=AdditionSubtractionExpression ']')?;
 
 EventAssignmentDefinition:
 	{EventAssignmentDefinition}

@@ -36,6 +36,7 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -104,7 +105,11 @@ public class MuParserTranslator implements IVisitor<String> {
 	
 	@Override
 	public String visit(ConcentrationQuantity expression) {
-		//ToDo: Take into consideration the concentration unit
+		return Double.toString(expression.getAmount());
+	}
+	
+	@Override
+	public String visit(TimeQuantity expression) {
 		return Double.toString(expression.getAmount());
 	}
 	

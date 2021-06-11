@@ -55,6 +55,7 @@ import roadblock.emf.ibl.Ibl.StateExpression;
 import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -315,6 +316,10 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEventAssignment(EventAssignment object) {
 				return createEventAssignmentAdapter();
+			}
+			@Override
+			public Adapter caseTimeQuantity(TimeQuantity object) {
+				return createTimeQuantityAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -1049,6 +1054,20 @@ public class IblAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventAssignmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link roadblock.emf.ibl.Ibl.TimeQuantity <em>Time Quantity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see roadblock.emf.ibl.Ibl.TimeQuantity
+	 * @generated
+	 */
+	public Adapter createTimeQuantityAdapter() {
 		return null;
 	}
 

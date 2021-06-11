@@ -33,6 +33,7 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -147,6 +148,11 @@ public class NuSmvTranslator implements IPropertyTranslator {
 	@Override
 	public String visit(ConcentrationQuantity expression) {
 		return Integer.toString((int) expression.getAmount());
+	}
+	
+	@Override
+	public String visit(TimeQuantity expression) {
+		return Double.toString(expression.getAmount());
 	}
 
 	@Override

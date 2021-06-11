@@ -72,6 +72,17 @@ public class UnitConverter {
 
 		return newAmount;
 	}
+	
+	public double getBaseTime(double amount, TimeUnit unit) {
+
+		double newAmount = amount;
+
+		if (unit == TimeUnit.MINUTE) {
+			newAmount = amount * 60;
+		}
+
+		return newAmount;
+	}
 
 	public Double getBaseRate(Double amount, RateUnit unit, List<MolecularSpecies> reactants) {
 

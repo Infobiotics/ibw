@@ -31,6 +31,7 @@ import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TemporalPattern;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -170,6 +171,11 @@ public class MC2PropertyFilter implements IPropertyFilter {
 	
 	@Override
 	public Boolean visit(ConcentrationQuantity expression) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Boolean visit(TimeQuantity expression) {
 		throw new UnsupportedOperationException();
 	}
 	

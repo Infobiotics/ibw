@@ -39,14 +39,17 @@ import roadblock.xtext.ibl.ibl.VariableKind
 import roadblock.xtext.ibl.ibl.VariableName
 import roadblock.xtext.ibl.ibl.util.IblSwitch
 import roadblock.xtext.ibl.ibl.ConcentrationQuantity
+import roadblock.xtext.ibl.ibl.TimeQuantity
 
 public class PropertyBuilder extends IblSwitch<Object> {
 
 	var modelFactory = IblFactory::eINSTANCE;
+	
+	val TIME_VAR = "__time__"
 
 	// helpers to build the name of a variableKind (either VariableName or VariableComplex)
 	def buildVariableName(VariableName variableName) {
-		variableName.name
+		variableName.isIsTime ? TIME_VAR : variableName.name
 	}
 
 	def buildVariableName(VariableComplex variableComplex) {
@@ -292,6 +295,8 @@ public class PropertyBuilder extends IblSwitch<Object> {
 			operand = doSwitch(arithmeticOperand.expression) as  IArithmeticOperand;
 		} else if(arithmeticOperand.concentrationQuantity != null) {
 			operand = doSwitch(arithmeticOperand.concentrationQuantity) as  IArithmeticOperand;
+		} else if(arithmeticOperand.timeQuantity != null) {
+			operand = doSwitch(arithmeticOperand.timeQuantity) as  IArithmeticOperand;
 		} else {
 			var numericLiteral = modelFactory.createNumericLiteral
 			numericLiteral.value = arithmeticOperand.numericLiteral;
@@ -309,6 +314,16 @@ public class PropertyBuilder extends IblSwitch<Object> {
 		concentration.unit = getConcentrationUnit(concentrationQuantity.unit);
 		
 		return concentration;
+	}
+	
+	override caseTimeQuantity(TimeQuantity timeQuantity) {
+		
+		var time = modelFactory.createTimeQuantity;
+		
+		time.amount = timeQuantity.value;
+		time.unit = getTimeUnit(timeQuantity.unit);
+		
+		return time;
 	}
 
 	override casePropertyVariableReference(PropertyVariableReference propertyVariableReference) {

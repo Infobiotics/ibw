@@ -46,6 +46,7 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.TimeUnit;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
@@ -70,6 +71,7 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	private Map<Object, Map<String, Object>> childCompartmentsByCompartment;
 	private Pattern rateExpressionSpeciesPattern = Pattern.compile("\\[(.*?)\\]");
 	private final String COMPARTMENT_SEPARATOR = "__";
+	private final String TIME_VAR = "__time__";
 
 	public void build() {
 
@@ -409,6 +411,16 @@ public class FlatModelBuilder implements IVisitor<Void> {
 
 		return null;
 	}
+	
+	@Override
+	public Void visit(TimeQuantity expression) {
+
+		expression.setAmount(
+				UnitConverter.getInstance().getBaseTime(expression.getAmount(), expression.getUnit()));
+		expression.setUnit(TimeUnit.SECOND);
+
+		return null;
+	}
 
 	@Override
 	public Void visit(TimeInterval expression) {
@@ -482,17 +494,19 @@ public class FlatModelBuilder implements IVisitor<Void> {
 	@Override
 	public Void visit(VariableReference variable) {
 
-		Object moleculeCompartment = propertyCompartment;
-
-		if (variable.getContainerName() != null && !variable.getContainerName().isEmpty()) {
-			moleculeCompartment = childCompartmentsByCompartment.get(propertyCompartment)
-					.get(variable.getContainerName());
+		if(!variable.getName().equals(TIME_VAR)) {
+			Object moleculeCompartment = propertyCompartment;
+	
+			if (variable.getContainerName() != null && !variable.getContainerName().isEmpty()) {
+				moleculeCompartment = childCompartmentsByCompartment.get(propertyCompartment)
+						.get(variable.getContainerName());
+			}
+	
+			String flatVariableName = moleculesByCompartment.get(moleculeCompartment).get(variable.getName())
+					.getDisplayName();
+	
+			variable.setName(flatVariableName);
 		}
-
-		String flatVariableName = moleculesByCompartment.get(moleculeCompartment).get(variable.getName())
-				.getDisplayName();
-
-		variable.setName(flatVariableName);
 
 		return null;
 	}

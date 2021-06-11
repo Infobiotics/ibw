@@ -146,6 +146,10 @@
       <eGenericType eTypeParameter="#//IVisitor/TResult"/>
       <eParameters name="eventAssignment" eType="#//EventAssignment"/>
     </eOperations>
+    <eOperations name="visit">
+      <eGenericType eTypeParameter="#//IVisitor/TResult"/>
+      <eParameters name="expression" eType="#//TimeQuantity"/>
+    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//IVisitable #//IMoleculeContainer #//IRuleContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -553,5 +557,9 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="flatExpression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeQuantity" eSuperTypes="#//IArithmeticOperand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//TimeUnit"/>
   </eClassifiers>
 </ecore:EPackage>

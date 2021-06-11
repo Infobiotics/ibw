@@ -32,6 +32,7 @@ import roadblock.emf.ibl.Ibl.SteadyStateProperty;
 import roadblock.emf.ibl.Ibl.System;
 import roadblock.emf.ibl.Ibl.TimeInstant;
 import roadblock.emf.ibl.Ibl.TimeInterval;
+import roadblock.emf.ibl.Ibl.TimeQuantity;
 import roadblock.emf.ibl.Ibl.UnaryProbabilityProperty;
 import roadblock.emf.ibl.Ibl.UnknownProbabilityConstraint;
 import roadblock.emf.ibl.Ibl.VariableReference;
@@ -146,6 +147,11 @@ public class NuSmvPropertyFilter implements IPropertyFilter {
 
 	@Override
 	public Boolean visit(ConcentrationConstraint expression) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public Boolean visit(TimeQuantity expression) {
 		throw new UnsupportedOperationException();
 	}
 
